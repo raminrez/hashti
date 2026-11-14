@@ -192,10 +192,16 @@ function SelectDefault<T extends object, M extends SelectionMode = "single">({
     if (!cancelled) setMirror(value);
   };
 
+  // Owned when the consumer does not own it, so an agent's write repaints the trigger.
+  // `Key` from react-aria-components is React's (it carries bigint); RAC's own prop is string | number.
+  const selectedKey = (
+    props.selectedKey !== undefined ? props.selectedKey : mirror
+  ) as SelectRootProps<T, M>["selectedKey"];
+
   useAgentSurface({
     component: "select",
     label: typeof label === "string" ? label : props["aria-label"],
-    value: isMultiple ? undefined : (props.selectedKey !== undefined ? (props.selectedKey as Key) : mirror),
+    value: isMultiple ? undefined : selectedKey,
     actions: {
       setValue: ([key]) =>
         handleSelectionChange(String(key) as Key, "agent", "setValue"),
@@ -206,6 +212,7 @@ function SelectDefault<T extends object, M extends SelectionMode = "single">({
   return (
     <SelectRoot<T, M>
       {...props}
+      {...(isMultiple ? {} : { selectedKey, defaultSelectedKey: undefined })}
       onSelectionChange={handleSelectionChange as never}
       placeholder={placeholder}
       size={size}

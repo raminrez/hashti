@@ -43,10 +43,13 @@ export function Button({
 }: ButtonProps) {
   const size = requestedSize === undefined ? "lg" : requestedSize;
   const toolbar = useContext(ToolbarContext);
+  // Whitespace text is not a name: the Select trigger and icon-only slotted buttons render some.
   const label =
-    props["aria-label"] ??
-    (typeof children === "function" ? undefined : textOf(children)) ??
-    undefined;
+    (
+      props["aria-label"] ??
+      (typeof children === "function" ? undefined : textOf(children)) ??
+      ""
+    ).trim() || undefined;
 
   useAgentSurface({
     component: "button",

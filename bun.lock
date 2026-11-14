@@ -69,6 +69,7 @@
       "name": "@hashti/storybook",
       "version": "0.1.0",
       "devDependencies": {
+        "@hashti/agent": "workspace:*",
         "@hashti/react": "workspace:*",
         "@hashti/tokens": "workspace:*",
         "@storybook/addon-a11y": "10.6.6",
@@ -98,7 +99,7 @@
       "name": "@hashti/react",
       "version": "0.1.0",
       "dependencies": {
-        "@hashti/agent": "workspace:*",
+        "@hashti/agent": "0.1.0",
         "@internationalized/date": "catalog:",
       },
       "devDependencies": {

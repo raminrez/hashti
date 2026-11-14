@@ -9,6 +9,7 @@
     "typecheck": "bun run --cwd ../.. build:packages && tsc --noEmit --project tsconfig.json && tsc --noEmit --project .storybook/tsconfig.consumer.json"
   },
   "devDependencies": {
+    "@hashti/agent": "workspace:*",
     "@hashti/react": "workspace:*",
     "@hashti/tokens": "workspace:*",
     "@storybook/addon-a11y": "10.6.6",

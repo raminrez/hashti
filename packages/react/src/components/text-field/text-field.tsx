@@ -91,10 +91,14 @@ function TextFieldDefault({
     if (!cancelled) setMirror(value);
   };
 
+  // The component owns the value when the consumer does not, so an agent's write repaints the
+  // control instead of only the snapshot. See the ADR's "one owner of the value" consequence.
+  const value = props.value ?? mirror;
+
   useAgentSurface({
     component: "text-field",
     label: typeof label === "string" ? label : props["aria-label"],
-    value: props.value ?? mirror,
+    value,
     actions: {
       setValue: ([value]) => handleChange(String(value), "agent", "setValue"),
       clear: () => handleChange("", "agent", "clear"),
@@ -105,6 +109,9 @@ function TextFieldDefault({
   return (
     <TextFieldRoot
       {...props}
+      value={value}
+      // RAC warns when a field is both controlled and given a default; the mirror already seeded from it.
+      defaultValue={undefined}
       onChange={handleChange}
       size={size}
       className={className}
