@@ -6,7 +6,7 @@ import '@hashti/react/styles.css'
 import './index.css'
 import App from './App.tsx'
 import Compare from './Compare.tsx'
-import { createAgent } from '@hashti/agent'
+import { createAgent, registerTools } from '@hashti/agent'
 
 declare global {
   interface Window {
@@ -14,7 +14,13 @@ declare global {
   }
 }
 
-window.agent = createAgent({ allow: () => window.confirm('Run this step?') })
+const allow = (request: { action: string; label?: string; component: string }) =>
+  window.confirm(`Run ${request.action} on ${request.label ?? request.component}?`)
+
+window.agent = createAgent({ allow })
+
+// Look for them in a browser with WebMCP: --enable-features=WebMCP
+registerTools(window.agent, { allow })
 
 const compare = new URLSearchParams(location.search).has("compare")
 

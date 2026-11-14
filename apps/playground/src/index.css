@@ -20,6 +20,22 @@ body {
   font-size: 20px;
 }
 
+.playground__tags {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.playground__tags h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.playground__tags ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
 .playground__page {
   margin: 0;
   padding: 12px;
