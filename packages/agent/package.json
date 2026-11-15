@@ -1,6 +1,6 @@
 {
   "name": "@hashti/agent",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Agent surface for Hashti components: snapshot, act and query over a page.",
   "type": "module",
   "license": "Apache-2.0",

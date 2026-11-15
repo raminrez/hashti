@@ -1,6 +1,6 @@
 {
   "name": "@hashti/react",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Hashti modern React components, built on React Aria Components.",
   "type": "module",
   "license": "Apache-2.0",
