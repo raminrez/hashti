@@ -72,7 +72,10 @@ export const Playground: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText("System Overview")).toBeInTheDocument();
-    expect(canvas.getByRole("link", { name: /System Overview/ })).toHaveAttribute("aria-current", "page");
+    expect(canvas.getByRole("link", { name: /System Overview/ })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
     expect(canvas.getByRole("link", { name: /Kubernetes Nodes/ })).toBeInTheDocument();
   },
 };
@@ -86,9 +89,7 @@ function LongContentAndLocalesExample() {
         <div dir="rtl" className="layout-card">
           <div>
             <h4 className="layout-card-title">ناوبری ستونی (فارسی)</h4>
-            <p className="layout-card-description">
-              منوی عمودی داشبورد در محیط راست‌به‌چپ
-            </p>
+            <p className="layout-card-description">منوی عمودی داشبورد در محیط راست‌به‌چپ</p>
           </div>
           <div className="layout-shell-preview">
             <SideNav aria-label="منوی ناوبری جانبی سامانه">
@@ -126,6 +127,9 @@ export const LongContentAndLocales: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText("نمای کلی سامانه")).toBeInTheDocument();
-    expect(canvas.getByRole("link", { name: /نمای کلی سامانه/ })).toHaveAttribute("aria-current", "page");
+    expect(canvas.getByRole("link", { name: /نمای کلی سامانه/ })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
   },
 };

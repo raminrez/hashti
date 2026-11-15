@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useRef,
-  useState,
-  type ClipboardEvent,
-  type KeyboardEvent,
-  type Ref,
-} from "react";
+import { useRef, useState, type ClipboardEvent, type KeyboardEvent, type Ref } from "react";
 import { cx } from "../../utils";
 
 export interface InputOTPProps {
@@ -74,7 +68,7 @@ export function InputOTP({
   };
 
   const handleChange = (index: number, char: string) => {
-    const clean = char.replace(/[^0-9a-zA-Z]/g, "");
+    const clean = char.replace(/[^0-9]/g, "");
     if (!clean) return;
 
     const currentDigits = Array.from({ length }, (_, i) => digits[i] ?? "");
@@ -89,7 +83,7 @@ export function InputOTP({
 
   const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const pasted = e.clipboardData.getData("text").replace(/[^0-9a-zA-Z]/g, "");
+    const pasted = e.clipboardData.getData("text").replace(/[^0-9]/g, "");
     if (!pasted) return;
 
     updateValue(pasted);
@@ -102,7 +96,7 @@ export function InputOTP({
       ref={ref}
       role="group"
       aria-label={ariaLabel}
-      className={cx("hashti-input-otp hashti-input-otp", className)}
+      className={cx("hashti-input-otp", className)}
     >
       {Array.from({ length }, (_, index) => {
         const digit = digits[index] ?? "";
@@ -119,9 +113,10 @@ export function InputOTP({
             value={digit}
             disabled={isDisabled}
             aria-label={`Digit ${index + 1} of ${length}`}
+            aria-invalid={isInvalid || undefined}
             data-filled={digit ? "true" : undefined}
             data-invalid={isInvalid ? "true" : undefined}
-            className="hashti-input-otp-slot hashti-input-otp-slot"
+            className="hashti-input-otp-slot"
             onChange={(e) => handleChange(index, e.target.value)}
             onKeyDown={(e) => handleKeyDown(index, e)}
             onPaste={handlePaste}

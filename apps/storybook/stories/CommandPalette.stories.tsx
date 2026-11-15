@@ -1,12 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, waitFor, within, userEvent } from "storybook/test";
-import {
-  CommandPalette,
-  Button,
-  Icon,
-  Kbd,
-} from "@hashti/react";
+import { CommandPalette, Button, Icon, Kbd } from "@hashti/react";
 import "./overlays.css";
 
 const meta = {
@@ -116,15 +111,15 @@ function PlaygroundExample() {
         enableShortcut
       >
         <CommandPalette.Dialog aria-label="Quick Commands">
-          <CommandPalette.Input
-            placeholder="Type a command or search..."
-          />
-          <CommandPalette.List emptyContent={
-            <CommandPalette.Empty
-              title="No matching commands"
-              description={`No results found for "${query}"`}
-            />
-          }>
+          <CommandPalette.Input placeholder="Type a command or search..." />
+          <CommandPalette.List
+            emptyContent={
+              <CommandPalette.Empty
+                title="No matching commands"
+                description={`No results found for "${query}"`}
+              />
+            }
+          >
             {groups.map((group) => (
               <CommandPalette.Group key={group} heading={group}>
                 {filteredCommands
@@ -165,7 +160,7 @@ export const Playground: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    expect(dialog).toBeVisible();
+    await waitFor(() => expect(dialog).toBeVisible());
 
     const input = within(dialog).getByRole("searchbox", { name: "Search commands" });
     expect(input).toBeInTheDocument();
@@ -187,9 +182,7 @@ function EmptyStateExample() {
 
   return (
     <div className="overlay-story-stack">
-      <Button onPress={() => setIsOpen(true)}>
-        Open Empty Palette Demo
-      </Button>
+      <Button onPress={() => setIsOpen(true)}>Open Empty Palette Demo</Button>
 
       <CommandPalette
         isOpen={isOpen}
@@ -199,12 +192,14 @@ function EmptyStateExample() {
       >
         <CommandPalette.Dialog aria-label="Empty State Commands">
           <CommandPalette.Input />
-          <CommandPalette.List>
-            <CommandPalette.Empty
-              title="No commands found"
-              description="No tools or documents match your query."
-            />
-          </CommandPalette.List>
+          <CommandPalette.List
+            emptyContent={
+              <CommandPalette.Empty
+                title="No commands found"
+                description="No tools or documents match your query."
+              />
+            }
+          />
           <CommandPalette.Footer />
         </CommandPalette.Dialog>
       </CommandPalette>

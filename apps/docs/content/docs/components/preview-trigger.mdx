@@ -9,10 +9,12 @@ A **Preview Trigger** (often referred to as a **HoverCard**) is a contextual pre
 
 Unlike text-only `<Tooltip>`, a Preview Trigger accommodates rich formatted content including **avatars, status badges, secondary action buttons, and live metadata**, while supporting deliberate enter/leave delays, keyboard accessibility, and pointer bridge persistence.
 
-<ComponentPreview title="Preview Trigger" description="Hover-activated telemetry card with graceful delay physics.">
+<ComponentPreview
+  title="Preview Trigger"
+  description="Hover-activated telemetry card with graceful delay physics."
+>
   <PreviewTriggerLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -33,9 +35,7 @@ import { PreviewTrigger } from "@hashti/react";
   <PreviewTrigger.Trigger>
     <Link href="/team/ramin">@ramin</Link>
   </PreviewTrigger.Trigger>
-  <PreviewTrigger.Content>
-    {/* Rich user profile preview card */}
-  </PreviewTrigger.Content>
+  <PreviewTrigger.Content>{/* Rich user profile preview card */}</PreviewTrigger.Content>
 </PreviewTrigger>
 ```
 
@@ -73,8 +73,12 @@ export function UserProfilePreviewExample() {
                 Staff Designer & Systems Engineer. Architecting Hashti Design System.
               </p>
               <div className="flex items-center gap-4 mt-3 text-xs text-[var(--text-muted)]">
-                <span><strong>48</strong> Components</span>
-                <span><strong>8</strong> Themes</span>
+                <span>
+                  <strong>48</strong> Components
+                </span>
+                <span>
+                  <strong>8</strong> Themes
+                </span>
               </div>
             </div>
           </div>
@@ -110,7 +114,8 @@ export function RichLinkPreviewExample() {
               <span>Hashti Architecture</span>
             </div>
             <p className="text-xs text-[var(--text)] leading-relaxed">
-              Explore how the octagonal vestibule acts as a sensory pause between bustling public streets and private tranquil courtyards.
+              Explore how the octagonal vestibule acts as a sensory pause between bustling public
+              streets and private tranquil courtyards.
             </p>
             <span className="text-[10px] text-[var(--text-muted)] font-mono">
               docs/foundations/spacing-geometry.mdx
@@ -145,29 +150,29 @@ A `delay` (default 500ms) prevents unwanted flickering when users merely pass th
 
 ### PreviewTrigger (`PreviewTrigger.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `isOpen` | `boolean` | — | Controlled visibility state of the preview popover. |
-| `defaultOpen` | `boolean` | `false` | Default uncontrolled open state. |
-| `onOpenChange` | `(isOpen: boolean) => void` | — | Callback fired when open state changes. |
-| `delay` | `number` | `500` | Duration in milliseconds before popover appears upon hover. |
-| `closeDelay` | `number` | `300` | Duration in milliseconds before popover closes when cursor leaves trigger and content. |
-| `placement` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` | Preferred cardinal placement relative to trigger. |
-| `offset` | `number` | `8` | Distance in pixels between trigger and popover card. |
-| `children` | `ReactNode` | — | Trigger element and Content popover. |
+| Prop           | Type                                     | Default    | Description                                                                            |
+| :------------- | :--------------------------------------- | :--------- | :------------------------------------------------------------------------------------- |
+| `isOpen`       | `boolean`                                | —          | Controlled visibility state of the preview popover.                                    |
+| `defaultOpen`  | `boolean`                                | `false`    | Default uncontrolled open state.                                                       |
+| `onOpenChange` | `(isOpen: boolean) => void`              | —          | Callback fired when open state changes.                                                |
+| `delay`        | `number`                                 | `500`      | Duration in milliseconds before popover appears upon hover.                            |
+| `closeDelay`   | `number`                                 | `300`      | Duration in milliseconds before popover closes when cursor leaves trigger and content. |
+| `placement`    | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` | Preferred cardinal placement relative to trigger.                                      |
+| `offset`       | `number`                                 | `8`        | Distance in pixels between trigger and popover card.                                   |
+| `children`     | `ReactNode`                              | —          | Trigger element and Content popover.                                                   |
 
 ### PreviewTrigger.Trigger
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `children` | `ReactNode` | — | The anchor element (link, button, mention) that activates the preview. |
+| Prop       | Type        | Default | Description                                                            |
+| :--------- | :---------- | :------ | :--------------------------------------------------------------------- |
+| `children` | `ReactNode` | —       | The anchor element (link, button, mention) that activates the preview. |
 
 ### PreviewTrigger.Content
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `className` | `string` | — | Custom CSS classes for padding, width, and typography. |
-| `children` | `ReactNode` | — | Rich interactive card layout. |
+| Prop        | Type        | Default | Description                                            |
+| :---------- | :---------- | :------ | :----------------------------------------------------- |
+| `className` | `string`    | —       | Custom CSS classes for padding, width, and typography. |
+| `children`  | `ReactNode` | —       | Rich interactive card layout.                          |
 
 ---
 
@@ -185,28 +190,29 @@ Hashti PreviewTrigger adheres strictly to **WCAG 2.1 Success Criterion 1.4.13 (C
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied Element |
-| :--- | :--- | :--- |
-| Surface Background | `--surface-raised` | Preview card background |
-| Border | `--divider` | 1px clean card boundary outline |
-| Elevation Shadow | `--elevation-overlay` | Subtle floating elevation shadow |
-| Corner Radius | `--radius-lg` | 12px rounded corner geometry |
-| Text Primary | `--text` | Card header and body text |
-| Text Secondary | `--text-muted` | Metadata and secondary statistics |
+| Token              | CSS Variable          | Applied Element                   |
+| :----------------- | :-------------------- | :-------------------------------- |
+| Surface Background | `--surface-raised`    | Preview card background           |
+| Border             | `--divider`           | 1px clean card boundary outline   |
+| Elevation Shadow   | `--elevation-overlay` | Subtle floating elevation shadow  |
+| Corner Radius      | `--radius-lg`         | 12px rounded corner geometry      |
+| Text Primary       | `--text`              | Card header and body text         |
+| Text Secondary     | `--text-muted`        | Metadata and secondary statistics |
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key            | Action                                                           |
+| :------------- | :--------------------------------------------------------------- |
 | <kbd>Tab</kbd> | Moves focus onto preview trigger element, opening card on focus. |
-| <kbd>Esc</kbd> | Dismisses preview overlay card. |
+| <kbd>Esc</kbd> | Dismisses preview overlay card.                                  |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute         | Target       | Description                                 |
+| :---------------- | :----------- | :------------------------------------------ |
 | `[data-entering]` | Preview Card | Applied during entrance opacity transition. |
-| `[data-exiting]` | Preview Card | Applied during exit opacity transition. |
+| `[data-exiting]`  | Preview Card | Applied during exit opacity transition.     |

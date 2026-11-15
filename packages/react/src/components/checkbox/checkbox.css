@@ -1,6 +1,5 @@
 /* Hashti Modern Aesthetic - Checkbox */
 @layer hashti.components {
-  .hashti-checkbox,
   .hashti-checkbox {
     display: inline-flex;
     align-items: center;
@@ -11,7 +10,6 @@
     user-select: none;
   }
 
-  .hashti-checkbox-control,
   .hashti-checkbox-control {
     display: inline-flex;
     align-items: center;
@@ -21,16 +19,19 @@
     border-radius: 6px;
     border: 2px solid var(--hashti-border-strong, #8d8d8d);
     background-color: var(--hashti-field, #ffffff);
-    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
     color: #ffffff;
   }
 
   .hashti-checkbox[data-selected] .hashti-checkbox-control,
-  .hashti-checkbox[data-selected] .hashti-checkbox-control,
   .hashti-checkbox[data-indeterminate] .hashti-checkbox-control,
   .hashti-checkbox[data-indeterminate] .hashti-checkbox-control {
-    background-color: var(--hashti-primary, #08BDBA);
-    border-color: var(--hashti-primary, #08BDBA);
+    background-color: var(--hashti-focus);
+    border-color: var(--hashti-focus);
   }
 
   .hashti-checkbox[data-pressed] .hashti-checkbox-control,
@@ -41,7 +42,10 @@
   .hashti-checkbox[data-focus-visible] .hashti-checkbox-control,
   .hashti-checkbox[data-focus-visible] .hashti-checkbox-control {
     outline: none;
-    box-shadow: 0 0 0 2px var(--hashti-background, #ffffff), 0 0 0 4px var(--hashti-focus, #0f62fe), 0 0 8px rgba(15, 98, 254, 0.35);
+    box-shadow:
+      0 0 0 2px var(--hashti-background, #ffffff),
+      0 0 0 4px var(--hashti-focus, #0f62fe),
+      0 0 8px rgba(15, 98, 254, 0.35);
   }
 
   .hashti-checkbox[data-disabled],

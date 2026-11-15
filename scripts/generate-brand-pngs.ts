@@ -27,7 +27,13 @@ async function main() {
   await page.evaluate(() => document.fonts.ready);
 
   // Helper to render SVG content to PNG
-  async function renderSvgToPng(svgContent: string, width: number, height: number, outputPath: string, omitBackground = true) {
+  async function renderSvgToPng(
+    svgContent: string,
+    width: number,
+    height: number,
+    outputPath: string,
+    omitBackground = true,
+  ) {
     await page.setViewportSize({ width, height });
     const html = `
       <!DOCTYPE html>
@@ -61,7 +67,6 @@ async function main() {
 
   // Read source SVGs
   const markSvg = readFileSync(resolve(publicDir, "hashti-mark.svg"), "utf-8");
-  const markDarkSvg = readFileSync(resolve(publicDir, "hashti-mark-dark.svg"), "utf-8");
   const appIconSvg = readFileSync(resolve(publicDir, "hashti-app-icon.svg"), "utf-8");
   const horizontalSvg = readFileSync(resolve(publicDir, "hashti-horizontal.svg"), "utf-8");
   const horizontalDarkSvg = readFileSync(resolve(publicDir, "hashti-horizontal-dark.svg"), "utf-8");
@@ -90,7 +95,13 @@ async function main() {
   const hDarkBg = resolve(publicDir, "hashti-horizontal-dark-bg.png");
   await renderSvgToPng(horizontalSvg, 1040, 320, hLight);
   await renderSvgToPng(horizontalDarkSvg, 1040, 320, hDark);
-  await renderSvgToPng(`<div style="background:#000000; width:100%; height:100%; display:flex; align-items:center; justify-content:center; border-radius:24px; padding:24px;">${horizontalDarkSvg}</div>`, 1040, 320, hDarkBg, false);
+  await renderSvgToPng(
+    `<div style="background:#000000; width:100%; height:100%; display:flex; align-items:center; justify-content:center; border-radius:24px; padding:24px;">${horizontalDarkSvg}</div>`,
+    1040,
+    320,
+    hDarkBg,
+    false,
+  );
   copyFileSync(hLight, resolve(tokensDir, "hashti-horizontal-light.png"));
   copyFileSync(hDark, resolve(tokensDir, "hashti-horizontal-dark.png"));
   copyFileSync(hDarkBg, resolve(tokensDir, "hashti-horizontal-dark-bg.png"));
@@ -101,7 +112,13 @@ async function main() {
   const vDarkBg = resolve(publicDir, "hashti-vertical-dark-bg.png");
   await renderSvgToPng(verticalSvg, 640, 760, vLight);
   await renderSvgToPng(verticalDarkSvg, 640, 760, vDark);
-  await renderSvgToPng(`<div style="background:#000000; width:100%; height:100%; display:flex; align-items:center; justify-content:center; border-radius:24px; padding:32px;">${verticalDarkSvg}</div>`, 640, 760, vDarkBg, false);
+  await renderSvgToPng(
+    `<div style="background:#000000; width:100%; height:100%; display:flex; align-items:center; justify-content:center; border-radius:24px; padding:32px;">${verticalDarkSvg}</div>`,
+    640,
+    760,
+    vDarkBg,
+    false,
+  );
   copyFileSync(vLight, resolve(tokensDir, "hashti-vertical-light.png"));
   copyFileSync(vDark, resolve(tokensDir, "hashti-vertical-dark.png"));
   copyFileSync(vDarkBg, resolve(tokensDir, "hashti-vertical-dark-bg.png"));

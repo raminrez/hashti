@@ -13,10 +13,12 @@ export function TabsLiveDemo() {
           The Sar-Dar announces identity with Muqarnas vaulted niches and welcoming brickwork.
         </TabPanel>
         <TabPanel id="vestibule" className="p-4 text-sm text-neutral-600 dark:text-neutral-400">
-          The Hashti provides a tranquil pause, dividing circulation paths toward private and guest quarters.
+          The Hashti provides a tranquil pause, dividing circulation paths toward private and guest
+          quarters.
         </TabPanel>
         <TabPanel id="corridor" className="p-4 text-sm text-neutral-600 dark:text-neutral-400">
-          The Dalan turns at sharp 90-degree angles to preserve acoustic privacy and prevent direct visual sightlines.
+          The Dalan turns at sharp 90-degree angles to preserve acoustic privacy and prevent direct
+          visual sightlines.
         </TabPanel>
       </Tabs>
     </div>

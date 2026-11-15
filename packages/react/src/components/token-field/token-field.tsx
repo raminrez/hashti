@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { createContext, useContext, type ReactNode, type Ref } from "react";
 import {
   TokenField as AriaTokenField,
   TokenInput as AriaTokenInput,
@@ -16,13 +11,10 @@ import {
   type TokenInputProps as AriaTokenInputProps,
   type TokenProps as AriaTokenProps,
 } from "react-aria-components/TokenField";
-import { useSlottedContext } from "react-aria-components";
 import {
-  FieldLabel,
-  FieldDescription,
-  FieldErrorMessage,
-  FieldHelp,
-  useFieldPresentation,
+  useFieldAnatomy,
+  fieldClassName,
+  fieldParts,
   type FieldPresentationProps,
   FieldLayout,
   type FieldContentProps,
@@ -71,11 +63,9 @@ export function TokenFieldRoot<T extends TokenFieldValue = TokenFieldValue>({
   ref,
   ...props
 }: TokenFieldRootProps<T>) {
-  const context = useSlottedContext(AriaTokenFieldContext, props.slot);
-  const presentation = useFieldPresentation(
+  const anatomy = useFieldAnatomy(
     { ...props, status, statusVariant, isOptional },
-    context?.["aria-describedby"],
-    "attached",
+    AriaTokenFieldContext,
   );
   const resolvedAllowsNewlines = multiline || allowsNewlines;
 
@@ -91,27 +81,29 @@ export function TokenFieldRoot<T extends TokenFieldValue = TokenFieldValue>({
     >
       <AriaTokenField<T>
         {...props}
-        {...presentation.props}
+        {...anatomy.props}
         ref={ref}
         allowsNewlines={resolvedAllowsNewlines}
         data-size={size}
         data-multiline={multiline || undefined}
         className={classes(
           cx(
-            "hashti-field hashti-token-field",
+            fieldClassName("token-field"),
             multiline ? "hashti-token-field--multiline" : undefined,
           ),
           className,
         )}
       >
-        {(presentation.wrap as any)(children, context?.children)}
+        {anatomy.wrap(children, anatomy.slotted?.children)}
       </AriaTokenField>
     </TokenFieldContext.Provider>
   );
 }
 
-export interface TokenInputProps<T extends TokenFieldValue = TokenFieldValue>
-  extends Omit<AriaTokenInputProps<T>, "children" | "className"> {
+export interface TokenInputProps<T extends TokenFieldValue = TokenFieldValue> extends Omit<
+  AriaTokenInputProps<T>,
+  "children" | "className"
+> {
   placeholder?: string;
   className?: string;
   children?: (segment: TokenSegment<any>) => React.ReactElement;
@@ -131,9 +123,7 @@ export function TokenFieldInput<T extends TokenFieldValue = TokenFieldValue>({
   const multiline = ctx.multiline;
 
   const defaultRender = (segment: TokenSegment<any>) => (
-    <TokenFieldToken key={segment.text}>
-      {segment.text}
-    </TokenFieldToken>
+    <TokenFieldToken key={segment.text}>{segment.text}</TokenFieldToken>
   );
 
   return (
@@ -195,7 +185,6 @@ export function TokenFieldToken({
           {onRemove && !isDisabled && !isReadOnly && (
             <button
               type="button"
-              tabIndex={-1}
               aria-label="Remove token"
               className="hashti-token__remove"
               onPointerDown={(e) => {
@@ -254,9 +243,7 @@ function TokenFieldDefault<T extends TokenFieldValue = TokenFieldValue>({
           description={description}
           errorMessage={errorMessage}
         >
-          <TokenFieldInput
-            placeholder={placeholder}
-          >
+          <TokenFieldInput placeholder={placeholder}>
             {isFunctionChildren
               ? (children as (segment: TokenSegment<any>) => React.ReactElement)
               : undefined}
@@ -271,8 +258,5 @@ export const TokenField = Object.assign(TokenFieldDefault, {
   Root: TokenFieldRoot,
   Input: TokenFieldInput,
   Token: TokenFieldToken,
-  Label: FieldLabel,
-  Description: FieldDescription,
-  ErrorMessage: FieldErrorMessage,
-  Help: FieldHelp,
+  ...fieldParts,
 });

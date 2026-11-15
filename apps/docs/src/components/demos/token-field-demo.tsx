@@ -10,7 +10,7 @@ export function TokenFieldLiveDemo() {
         { type: "text", text: " with " },
         { type: "token", text: "@TurquoiseAccent", value: { id: "accent" } },
         { type: "text", text: " " },
-      ])
+      ]),
   );
 
   return (
@@ -22,9 +22,7 @@ export function TokenFieldLiveDemo() {
         onChange={setValue}
         multiline
       />
-      <div className="text-xs text-neutral-500 font-mono">
-        Serialized: {value?.toString()}
-      </div>
+      <div className="text-xs text-neutral-500 font-mono">Serialized: {value?.toString()}</div>
     </div>
   );
 }

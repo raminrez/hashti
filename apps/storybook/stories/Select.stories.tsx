@@ -3,11 +3,14 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, waitFor, within } from "storybook/test";
 import { Collection, Header } from "react-aria-components";
 import {
+  Autocomplete,
   Button,
   Form,
   Icon,
+  ListBox,
   ListBoxItem,
   ListBoxSection,
+  SearchField,
   Select,
   Text,
   Theme,
@@ -19,6 +22,8 @@ import "./fields.css";
 const meta = {
   title: "Fields/Select",
   component: Select,
+  // Multi-select chip remove targets are 16px and skipped by tab order.
+  tags: ["a11y:gap"],
   args: {
     label: "Workspace role",
     description: "Select the permission profile assigned to this teammate.",
@@ -60,6 +65,49 @@ const standardRoles: RoleItem[] = [
   { id: "admin", name: "Administrator", description: "Full access to settings and billing" },
   { id: "editor", name: "Editor", description: "Can create, edit, and publish content" },
   { id: "viewer", name: "Viewer", description: "Read-only access to existing workspaces" },
+];
+
+const reviewerRoles: RoleItem[] = [
+  { id: "admin", name: "Administrator", description: "Full access to settings and billing" },
+  { id: "editor", name: "Editor", description: "Can create, edit, and publish content" },
+  { id: "viewer", name: "Viewer", description: "Read-only access to existing workspaces" },
+  { id: "auditor", name: "Auditor", description: "Reviews activity without changing it" },
+  { id: "billing", name: "Billing manager", description: "Manages invoices and payment methods" },
+  { id: "support", name: "Support agent", description: "Reads accounts and replies to tickets" },
+  { id: "analyst", name: "Data analyst", description: "Queries reports and exports datasets" },
+  { id: "designer", name: "Designer", description: "Edits components and visual assets" },
+  { id: "developer", name: "Developer", description: "Manages builds, keys, and deployments" },
+  { id: "moderator", name: "Moderator", description: "Reviews flagged content and members" },
+  { id: "owner", name: "Workspace owner", description: "Owns the workspace and its contracts" },
+  { id: "guest", name: "Guest reviewer", description: "Temporary read access for reviews" },
+  { id: "security", name: "Security lead", description: "Owns access policy and audit trails" },
+  { id: "legal", name: "Legal counsel", description: "Reviews agreements and retention policy" },
+  { id: "finance", name: "Finance approver", description: "Signs off budgets and purchases" },
+  { id: "ops", name: "Operations lead", description: "Coordinates releases and incident response" },
+  { id: "recruiter", name: "Recruiter", description: "Manages candidate pipelines" },
+  { id: "trainer", name: "Trainer", description: "Publishes onboarding material" },
+  { id: "writer", name: "Technical writer", description: "Maintains public documentation" },
+  { id: "translator", name: "Translator", description: "Localises copy and messages" },
+  { id: "researcher", name: "Researcher", description: "Runs studies with anonymised data" },
+  { id: "marketer", name: "Marketer", description: "Manages campaigns and audiences" },
+  { id: "seller", name: "Account executive", description: "Owns customer accounts and renewals" },
+  { id: "partner", name: "Partner", description: "Limited shared access with agencies" },
+  { id: "contractor", name: "Contractor", description: "Scoped access for a fixed engagement" },
+  { id: "intern", name: "Intern", description: "Supervised access with strict limits" },
+  { id: "architect", name: "Architect", description: "Designs systems and reviews diagrams" },
+  {
+    id: "sre",
+    name: "Site reliability engineer",
+    description: "Owns uptime and on-call rotations",
+  },
+  { id: "qa", name: "Quality engineer", description: "Runs test plans and release checks" },
+  { id: "pm", name: "Product manager", description: "Prioritises roadmap and requirements" },
+  { id: "producer", name: "Producer", description: "Coordinates schedules and deliverables" },
+  { id: "curator", name: "Content curator", description: "Approves published collections" },
+  { id: "librarian", name: "Asset librarian", description: "Keeps media and files organised" },
+  { id: "observer", name: "Observer", description: "Watches sessions without participating" },
+  { id: "reviewer", name: "Reviewer", description: "Approves changes before they ship" },
+  { id: "maintainer", name: "Maintainer", description: "Triages issues and merges changes" },
 ];
 
 interface ClusterItem {
@@ -190,7 +238,7 @@ export const States: Story = {
 
     await userEvent.click(trigger);
     const option = await waitFor(() => {
-      const opt = document.querySelector<HTMLElement>('.react-aria-ListBoxItem[data-key="editor"]');
+      const opt = document.querySelector<HTMLElement>('[role="option"][data-key="editor"]');
       expect(opt).not.toBeNull();
       return opt!;
     });
@@ -243,16 +291,14 @@ export const RichOptionsAndSections: Story = {
     await userEvent.click(trigger);
 
     const lockedOption = await waitFor(() => {
-      const opt = document.querySelector<HTMLElement>(
-        '.react-aria-ListBoxItem[data-key="prod-dr"]',
-      );
+      const opt = document.querySelector<HTMLElement>('[role="option"][data-key="prod-dr"]');
       expect(opt).not.toBeNull();
       return opt!;
     });
     await expect(lockedOption).toHaveAttribute("aria-disabled", "true");
 
     const liveOption = await waitFor(() => {
-      const opt = document.querySelector<HTMLElement>('.react-aria-ListBoxItem[data-key="prod-1"]');
+      const opt = document.querySelector<HTMLElement>('[role="option"][data-key="prod-1"]');
       expect(opt).not.toBeNull();
       return opt!;
     });
@@ -324,7 +370,7 @@ export const ControlledAndUncontrolled: Story = {
     const trigger = canvas.getByRole("button", { name: /Managed workspace role/ });
     await userEvent.click(trigger);
     const viewerOption = await waitFor(() => {
-      const opt = document.querySelector<HTMLElement>('.react-aria-ListBoxItem[data-key="viewer"]');
+      const opt = document.querySelector<HTMLElement>('[role="option"][data-key="viewer"]');
       expect(opt).not.toBeNull();
       return opt!;
     });
@@ -413,7 +459,7 @@ export const CompositionAndFormData: Story = {
     const roleTrigger = canvas.getByRole("button", { name: /Mandatory member role/ });
     await userEvent.click(roleTrigger);
     const editorOpt = await waitFor(() => {
-      const opt = document.querySelector<HTMLElement>('.react-aria-ListBoxItem[data-key="editor"]');
+      const opt = document.querySelector<HTMLElement>('[role="option"][data-key="editor"]');
       expect(opt).not.toBeNull();
       return opt!;
     });
@@ -423,7 +469,7 @@ export const CompositionAndFormData: Story = {
     const teamTrigger = canvas.getByRole("button", { name: /Assigned development team/ });
     await userEvent.click(teamTrigger);
     const coreOpt = await waitFor(() => {
-      const opt = document.querySelector<HTMLElement>('.react-aria-ListBoxItem[data-key="core"]');
+      const opt = document.querySelector<HTMLElement>('[role="option"][data-key="core"]');
       expect(opt).not.toBeNull();
       return opt!;
     });
@@ -553,5 +599,157 @@ export const LongContentAndLocales: Story = {
     await waitFor(async () => {
       await expect(within(persianTrigger).getByText("ویرایشگر محتوا و گردش‌کار")).toBeVisible();
     });
+  },
+};
+
+function MultipleSelectionExample() {
+  const [selected, setSelected] = useState<Key[]>(["admin"]);
+  const [limit, setLimit] = useState(8);
+  const [isLoading, setIsLoading] = useState(false);
+  const items = reviewerRoles.slice(0, limit);
+
+  const loadMore = () => {
+    if (isLoading || limit >= reviewerRoles.length) return;
+    setIsLoading(true);
+    // Stand-in for the network call a real long list would make.
+    setTimeout(() => {
+      setLimit((current) => Math.min(current + 8, reviewerRoles.length));
+      setIsLoading(false);
+    }, 600);
+  };
+
+  return (
+    <div className="field-story-stack">
+      <Select.Root
+        selectionMode="multiple"
+        value={selected}
+        onChange={(keys) => setSelected([...keys])}
+      >
+        <Select.Label>Reviewer roles</Select.Label>
+        <Select.Description>
+          Search the list, scroll for more, and remove a role with its chip or with Backspace.
+        </Select.Description>
+        <Select.Trigger>
+          <Select.Value>
+            {({ selectedItems, state, defaultChildren }: any) => {
+              const list = (selectedItems as RoleItem[]).filter(Boolean);
+              if (!list.length) return defaultChildren;
+              return (
+                <span className="hashti-select-chips-wrapper">
+                  {list.map((item) => (
+                    <span
+                      key={item.id}
+                      className="hashti-tag hashti-select-chip"
+                      data-size="sm"
+                      role="presentation"
+                    >
+                      <span>{item.name}</span>
+                      <span
+                        aria-hidden="true"
+                        className="hashti-select-chip-remove"
+                        onPointerDown={(event) => {
+                          event.stopPropagation();
+                          event.preventDefault();
+                        }}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          event.preventDefault();
+                          const keys = new Set(state.selectionManager.selectedKeys);
+                          keys.delete(item.id);
+                          state.selectionManager.setSelectedKeys(keys);
+                        }}
+                      >
+                        <Icon name="close" size={16} />
+                      </span>
+                    </span>
+                  ))}
+                </span>
+              );
+            }}
+          </Select.Value>
+          <Icon name="chevronDown" />
+        </Select.Trigger>
+        <Select.Popover>
+          <Autocomplete>
+            <SearchField
+              aria-label="Search roles"
+              placeholder="Search roles..."
+              style={{ margin: 4 }}
+            />
+            <Select.ListBox renderEmptyState={() => "No roles match that search."}>
+              {items.map((item) => (
+                <ListBoxItem id={item.id} key={item.id} textValue={item.name} value={item}>
+                  <Text slot="label">{item.name}</Text>
+                  <Text slot="description">{item.description}</Text>
+                </ListBoxItem>
+              ))}
+              <ListBox.LoadMore id="load-more" isLoading={isLoading} label="Loading more roles…" />
+            </Select.ListBox>
+            <div style={{ padding: 4 }}>
+              <Button
+                variant="ghost"
+                size="sm"
+                onPress={loadMore}
+                isDisabled={isLoading || limit >= reviewerRoles.length}
+              >
+                Load more roles
+              </Button>
+            </div>
+          </Autocomplete>
+        </Select.Popover>
+      </Select.Root>
+      <output aria-label="Selected roles">{selected.join(", ") || "none"}</output>
+    </div>
+  );
+}
+
+export const MultipleSelection: Story = {
+  render: () => <MultipleSelectionExample />,
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    const output = canvas.getByRole("status", { name: "Selected roles" });
+    const trigger = canvas.getByRole("button", { name: /Reviewer roles/ });
+
+    await userEvent.click(trigger);
+    await waitFor(() =>
+      expect(document.querySelectorAll(".hashti-select__listbox [role='option']")).toHaveLength(8),
+    );
+
+    // The wrapped collection filters on the option's textValue.
+    const search = within(document.body).getByPlaceholderText("Search roles...");
+    await userEvent.type(search, "audit");
+    await waitFor(() =>
+      expect(document.querySelectorAll(".hashti-select__listbox [role='option']")).toHaveLength(1),
+    );
+    await userEvent.clear(search);
+
+    // The load-more path appends the next page and shows the loading row.
+    await userEvent.click(within(document.body).getByRole("button", { name: "Load more roles" }));
+    await waitFor(() =>
+      expect(within(document.body).getByText("Loading more roles…")).toBeInTheDocument(),
+    );
+    await waitFor(
+      () =>
+        expect(document.querySelectorAll(".hashti-select__listbox [role='option']")).toHaveLength(
+          16,
+        ),
+      { timeout: 3000 },
+    );
+
+    const editor = within(document.body).getByRole("option", { name: /Editor/ });
+    await userEvent.click(editor);
+    await userEvent.keyboard("{Escape}");
+    await waitFor(async () => await expect(output).toHaveTextContent("admin, editor"));
+
+    const chips = trigger.querySelectorAll<HTMLElement>(".hashti-select-chip");
+    await expect(chips).toHaveLength(2);
+    // The chip remove affordance is pointer-only by construction; the pointer path works.
+    await userEvent.click(chips[1]!.querySelector<HTMLElement>(".hashti-select-chip-remove")!);
+    await waitFor(async () => await expect(output).toHaveTextContent("admin"));
+
+    // And Backspace, the keyboard path, drops the last remaining chip.
+    await trigger.focus();
+    await userEvent.keyboard("{Backspace}");
+    await waitFor(async () => await expect(output).toHaveTextContent("none"));
   },
 };

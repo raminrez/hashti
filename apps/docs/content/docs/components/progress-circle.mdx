@@ -9,10 +9,12 @@ The Progress Circle communicates progress or system activity within tight, circu
 
 Like its linear sibling, Progress Circle supports both determinate percentage rings and continuous indeterminate spinners, rendering sharp SVG geometry scaled for high-density enterprise interfaces.
 
-<ComponentPreview title="Progress Circle" description="Radial loading spinner with precise stroke geometry.">
+<ComponentPreview
+  title="Progress Circle"
+  description="Radial loading spinner with precise stroke geometry."
+>
   <ProgressCircleLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -36,18 +38,9 @@ import { ProgressCircle } from "@hashti/react";
 export function DeterminateCircleExample() {
   return (
     <div className="flex items-center gap-6">
-      <ProgressCircle
-        aria-label="Exporting archives"
-        value={25}
-      />
-      <ProgressCircle
-        aria-label="Encrypting data"
-        value={60}
-      />
-      <ProgressCircle
-        aria-label="Optimization complete"
-        value={100}
-      />
+      <ProgressCircle aria-label="Exporting archives" value={25} />
+      <ProgressCircle aria-label="Encrypting data" value={60} />
+      <ProgressCircle aria-label="Optimization complete" value={100} />
     </div>
   );
 }
@@ -63,10 +56,7 @@ import { ProgressCircle } from "@hashti/react";
 export function IndeterminateCircleExample() {
   return (
     <div className="flex items-center gap-6">
-      <ProgressCircle
-        aria-label="Loading workspace contents"
-        isIndeterminate
-      />
+      <ProgressCircle aria-label="Loading workspace contents" isIndeterminate />
       <span className="text-sm text-subtle">Synchronizing repository...</span>
     </div>
   );
@@ -76,6 +66,7 @@ export function IndeterminateCircleExample() {
 ### Sizes
 
 Progress Circle is available in three standard diameters:
+
 - `sm`: **32px** (with 2.5px stroke), ideal for inline badges, buttons, and high-density tables.
 - `md`: **48px** (with 3.5px stroke, default), standard for cards and widgets.
 - `lg`: **64px** (with 4.5px stroke), prominent for hero cards and standalone loading screens.
@@ -115,19 +106,9 @@ import { ProgressCircle } from "@hashti/react";
 export function CenteredLabelExample() {
   return (
     <div className="flex items-center gap-8">
-      <ProgressCircle
-        size="md"
-        value={50}
-        showValueLabel
-        aria-label="Download 50% complete"
-      />
+      <ProgressCircle size="md" value={50} showValueLabel aria-label="Download 50% complete" />
 
-      <ProgressCircle
-        size="lg"
-        value={78}
-        showValueLabel
-        aria-label="Processing 78% complete"
-      />
+      <ProgressCircle size="lg" value={78} showValueLabel aria-label="Processing 78% complete" />
     </div>
   );
 }
@@ -143,26 +124,10 @@ import { ProgressCircle } from "@hashti/react";
 export function CircleStatusesExample() {
   return (
     <div className="flex items-center gap-6">
-      <ProgressCircle
-        status="active"
-        value={60}
-        aria-label="Active backup"
-      />
-      <ProgressCircle
-        status="success"
-        value={100}
-        aria-label="Backup completed"
-      />
-      <ProgressCircle
-        status="warning"
-        value={88}
-        aria-label="Storage capacity warning"
-      />
-      <ProgressCircle
-        status="error"
-        value={42}
-        aria-label="Pipeline failure"
-      />
+      <ProgressCircle status="active" value={60} aria-label="Active backup" />
+      <ProgressCircle status="success" value={100} aria-label="Backup completed" />
+      <ProgressCircle status="warning" value={88} aria-label="Storage capacity warning" />
+      <ProgressCircle status="error" value={42} aria-label="Pipeline failure" />
     </div>
   );
 }
@@ -172,17 +137,17 @@ export function CircleStatusesExample() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `number` | `0` | The current numeric progress value. |
-| `minValue` | `number` | `0` | The minimum possible progress boundary. |
-| `maxValue` | `number` | `100` | The maximum possible progress boundary. |
-| `isIndeterminate` | `boolean` | `false` | Whether to display a continuous rotational loading animation. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | The diameter of the circular meter: `sm` (32px), `md` (48px), or `lg` (64px). |
-| `status` | `'active' \| 'success' \| 'warning' \| 'error'` | `'active'` | Semantic color applied to the active progress stroke. |
-| `showValueLabel` | `boolean` | `false` | When `true`, renders the formatted percentage string centered inside the circle. |
-| `aria-label` | `string` | — | **Recommended**: Accessible name announced by screen readers describing the in-flight process. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop              | Type                                            | Default    | Description                                                                                    |
+| :---------------- | :---------------------------------------------- | :--------- | :--------------------------------------------------------------------------------------------- |
+| `value`           | `number`                                        | `0`        | The current numeric progress value.                                                            |
+| `minValue`        | `number`                                        | `0`        | The minimum possible progress boundary.                                                        |
+| `maxValue`        | `number`                                        | `100`      | The maximum possible progress boundary.                                                        |
+| `isIndeterminate` | `boolean`                                       | `false`    | Whether to display a continuous rotational loading animation.                                  |
+| `size`            | `'sm' \| 'md' \| 'lg'`                          | `'md'`     | The diameter of the circular meter: `sm` (32px), `md` (48px), or `lg` (64px).                  |
+| `status`          | `'active' \| 'success' \| 'warning' \| 'error'` | `'active'` | Semantic color applied to the active progress stroke.                                          |
+| `showValueLabel`  | `boolean`                                       | `false`    | When `true`, renders the formatted percentage string centered inside the circle.               |
+| `aria-label`      | `string`                                        | —          | **Recommended**: Accessible name announced by screen readers describing the in-flight process. |
+| `className`       | `string`                                        | —          | Additional CSS class names.                                                                    |
 
 ---
 
@@ -192,10 +157,11 @@ export function CircleStatusesExample() {
 - **Accessible Labelling**: Because circular indicators often omit a visible text heading, always supply an `aria-label` (e.g. `aria-label="Downloading assets"`) or `aria-labelledby` pointing to an adjacent descriptive title.
 - **Value Announcements**: Screen readers dynamically read `aria-valuenow`, `aria-valuemin`, and `aria-valuemax` as values update.
 - **Decorative SVGs**: The internal SVG element is marked with `aria-hidden="true"`, preventing screen readers from vocalizing unnecessary geometric path or circle tags.
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute              | Target         | Description                                               |
+| :--------------------- | :------------- | :-------------------------------------------------------- |
 | `[data-indeterminate]` | ProgressCircle | Present when circular spinner is in continuous spin mode. |

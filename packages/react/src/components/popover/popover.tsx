@@ -24,7 +24,7 @@ export function Popover({ className, ...props }: PopoverProps) {
       {...props}
       {...theme}
       lang={props.lang ?? theme.lang}
-      className={classes("hashti-popover hashti-popover", classes(appearanceClassName ?? "", className))}
+      className={classes("hashti-popover", classes(appearanceClassName ?? "", className))}
     />
   );
 }

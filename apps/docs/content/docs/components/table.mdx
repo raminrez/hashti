@@ -9,10 +9,12 @@ Tables present structured, tabular datasets across rows and columns. In Hashti, 
 
 Built on React Aria Components, Table implements the ARIA DataGrid pattern, ensuring that large enterprise datasets remain accessible, performant, and tranquil.
 
-<ComponentPreview title="Table" description="Data table with row selection and accessible header semantics.">
+<ComponentPreview
+  title="Table"
+  description="Data table with row selection and accessible header semantics."
+>
   <TableLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -40,14 +42,7 @@ import {
 Construct a structured data table using `<TableHeader>`, `<Column>`, `<TableBody>`, `<Row>`, and `<Cell>`:
 
 ```tsx
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  Column,
-  Row,
-  Cell,
-} from "@hashti/react";
+import { Table, TableHeader, TableBody, Column, Row, Cell } from "@hashti/react";
 
 export function BasicTableExample() {
   return (
@@ -96,14 +91,7 @@ Enable column sorting with `allowsSorting` on `<Column>`, and manage state via `
 
 ```tsx
 import { useState } from "react";
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  Column,
-  Row,
-  Cell,
-} from "@hashti/react";
+import { Table, TableHeader, TableBody, Column, Row, Cell } from "@hashti/react";
 import type { SortDescriptor } from "@hashti/react";
 
 interface ServiceRecord {
@@ -172,14 +160,7 @@ Enable `selectionMode="multiple"` or `selectionMode="single"` to add native row 
 
 ```tsx
 import { useState } from "react";
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  Column,
-  Row,
-  Cell,
-} from "@hashti/react";
+import { Table, TableHeader, TableBody, Column, Row, Cell } from "@hashti/react";
 import type { Selection } from "@hashti/react";
 
 export function SelectableTableExample() {
@@ -218,7 +199,8 @@ export function SelectableTableExample() {
       </Table>
 
       <p className="text-xs text-subtle">
-        Selected IDs: {selectedKeys === "all" ? "All" : Array.from(selectedKeys).join(", ") || "None"}
+        Selected IDs:{" "}
+        {selectedKeys === "all" ? "All" : Array.from(selectedKeys).join(", ") || "None"}
       </p>
     </div>
   );
@@ -244,8 +226,14 @@ export function TableSizesExample() {
             <Column>Value</Column>
           </TableHeader>
           <TableBody>
-            <Row><Cell>NODE_ENV</Cell><Cell>production</Cell></Row>
-            <Row><Cell>PORT</Cell><Cell>8080</Cell></Row>
+            <Row>
+              <Cell>NODE_ENV</Cell>
+              <Cell>production</Cell>
+            </Row>
+            <Row>
+              <Cell>PORT</Cell>
+              <Cell>8080</Cell>
+            </Row>
           </TableBody>
         </Table>
       </div>
@@ -259,8 +247,14 @@ export function TableSizesExample() {
             <Column>Value</Column>
           </TableHeader>
           <TableBody>
-            <Row><Cell>NODE_ENV</Cell><Cell>production</Cell></Row>
-            <Row><Cell>PORT</Cell><Cell>8080</Cell></Row>
+            <Row>
+              <Cell>NODE_ENV</Cell>
+              <Cell>production</Cell>
+            </Row>
+            <Row>
+              <Cell>PORT</Cell>
+              <Cell>8080</Cell>
+            </Row>
           </TableBody>
         </Table>
       </div>
@@ -275,27 +269,27 @@ export function TableSizesExample() {
 
 ### Table Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `aria-label` | `string` | — | **Required**: Accessible name describing the table to assistive technologies. |
-| `size` | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'lg'` | Density scale dictating vertical cell padding and typography size. |
-| `selectionMode` | `'none' \| 'single' \| 'multiple'` | `'none'` | The selection mode for rows. When enabled, checkboxes or selection indicators render automatically. |
-| `selectedKeys` | `'all' \| Iterable<Key>` | — | The currently selected keys (for controlled selection). |
-| `onSelectionChange` | `(keys: Selection) => void` | — | Handler invoked when row selection changes. |
-| `sortDescriptor` | `SortDescriptor` | — | Current sort column key and direction (`'ascending' \| 'descending'`). |
-| `onSortChange` | `(descriptor: SortDescriptor) => void` | — | Handler invoked when a sortable column header is activated. |
-| `disabledKeys` | `Iterable<Key>` | — | Collection of row keys that cannot be selected or activated. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop                | Type                                   | Default  | Description                                                                                         |
+| :------------------ | :------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------- |
+| `aria-label`        | `string`                               | —        | **Required**: Accessible name describing the table to assistive technologies.                       |
+| `size`              | `'sm' \| 'md' \| 'lg' \| 'xl'`         | `'lg'`   | Density scale dictating vertical cell padding and typography size.                                  |
+| `selectionMode`     | `'none' \| 'single' \| 'multiple'`     | `'none'` | The selection mode for rows. When enabled, checkboxes or selection indicators render automatically. |
+| `selectedKeys`      | `'all' \| Iterable<Key>`               | —        | The currently selected keys (for controlled selection).                                             |
+| `onSelectionChange` | `(keys: Selection) => void`            | —        | Handler invoked when row selection changes.                                                         |
+| `sortDescriptor`    | `SortDescriptor`                       | —        | Current sort column key and direction (`'ascending' \| 'descending'`).                              |
+| `onSortChange`      | `(descriptor: SortDescriptor) => void` | —        | Handler invoked when a sortable column header is activated.                                         |
+| `disabledKeys`      | `Iterable<Key>`                        | —        | Collection of row keys that cannot be selected or activated.                                        |
+| `className`         | `string`                               | —        | Additional CSS class names.                                                                         |
 
 ### Column Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `Key` | — | Unique identifier for sorting and selection. Defaults to the column text if string. |
-| `allowsSorting` | `boolean` | `false` | Whether clicking the column header toggles ascending/descending sort. |
-| `isRowHeader` | `boolean` | `false` | Whether this column functions as the primary row header describing the entire row. |
-| `width` | `string \| number` | — | Static or percentage column width. |
-| `children` | `ReactNode \| ((values) => ReactNode)` | — | Column header text or render function. |
+| Prop            | Type                                   | Default | Description                                                                         |
+| :-------------- | :------------------------------------- | :------ | :---------------------------------------------------------------------------------- |
+| `id`            | `Key`                                  | —       | Unique identifier for sorting and selection. Defaults to the column text if string. |
+| `allowsSorting` | `boolean`                              | `false` | Whether clicking the column header toggles ascending/descending sort.               |
+| `isRowHeader`   | `boolean`                              | `false` | Whether this column functions as the primary row header describing the entire row.  |
+| `width`         | `string \| number`                     | —       | Static or percentage column width.                                                  |
+| `children`      | `ReactNode \| ((values) => ReactNode)` | —       | Column header text or render function.                                              |
 
 ---
 
@@ -309,24 +303,25 @@ export function TableSizesExample() {
 - **Selection**: Press <kbd>Space</kbd> to toggle the selection of the currently focused row. Hold <kbd>Shift</kbd> + <kbd>ArrowDown</kbd> to select contiguous ranges.
 - **Sort Announcements**: Sortable column headers announce their active sort status (`aria-sort="ascending"` or `aria-sort="descending"`), avoiding silent visual-only indicators.
 - **Row Headers**: Mark the primary identity column (such as name or ID) with `isRowHeader` so screen readers announce it when reading across subsequent data cells.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>→</kbd> / <kbd>←</kbd> | Moves focus between adjacent cells in the same row. |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Moves focus to the cell directly below or above. |
-| <kbd>Home</kbd> / <kbd>End</kbd> | Jumps to the first or last cell in the row. |
-| <kbd>Space</kbd> | Toggles row selection in selectable tables. |
+| Key                              | Action                                              |
+| :------------------------------- | :-------------------------------------------------- |
+| <kbd>→</kbd> / <kbd>←</kbd>      | Moves focus between adjacent cells in the same row. |
+| <kbd>↓</kbd> / <kbd>↑</kbd>      | Moves focus to the cell directly below or above.    |
+| <kbd>Home</kbd> / <kbd>End</kbd> | Jumps to the first or last cell in the row.         |
+| <kbd>Space</kbd>                 | Toggles row selection in selectable tables.         |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Row | Present when pointer hovers over table row. |
-| `[data-selected]` | Row | Set when table row is selected. |
-| `[data-focused]` | Cell, Row | Active when cell or row holds focus. |
-| `[data-disabled]` | Row | Present on disabled table rows. |
+| Attribute         | Target    | Description                                 |
+| :---------------- | :-------- | :------------------------------------------ |
+| `[data-hovered]`  | Row       | Present when pointer hovers over table row. |
+| `[data-selected]` | Row       | Set when table row is selected.             |
+| `[data-focused]`  | Cell, Row | Active when cell or row holds focus.        |
+| `[data-disabled]` | Row       | Present on disabled table rows.             |

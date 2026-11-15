@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  useState,
-  type ComponentPropsWithRef,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { useState, type ComponentPropsWithRef, type ReactNode, type Ref } from "react";
 import { cx } from "../../utils";
 
 export interface KbdProps extends ComponentPropsWithRef<"kbd"> {
@@ -86,11 +81,7 @@ export function Kbd({ keys, children, className, ref, ...props }: KbdProps) {
   const keyList = keys ? (Array.isArray(keys) ? keys : [keys]) : null;
 
   return (
-    <kbd
-      {...props}
-      ref={ref}
-      className={cx("hashti-kbd", className)}
-    >
+    <kbd {...props} ref={ref} className={cx("hashti-kbd", className)}>
       {keyList
         ? keyList.map((k, i) => (
             <span key={i} className="hashti-kbd-key">

@@ -51,8 +51,8 @@ export function DropZoneRoot({
       ref={ref}
       data-variant={variant}
       className={classes(
-        cx("hashti-dropzone", `hashti-dropzone--${variant}`),
-        className
+        cx("react-aria-DropZone", "hashti-dropzone", `hashti-dropzone--${variant}`),
+        className,
       )}
       onDrop={async (e) => {
         onDrop?.(e);
@@ -157,6 +157,7 @@ export function FileUploader({
   className,
 }: FileUploaderProps) {
   const id = useId();
+  const errorId = `${id}-error`;
   const [localFiles, setLocalFiles] = useState<File[]>([]);
   const [error, setError] = useState("");
   const files = controlledFiles ?? localFiles;
@@ -179,18 +180,22 @@ export function FileUploader({
   }
 
   return (
-    <div className={["hashti-file-uploader hashti-file-uploader", className].filter(Boolean).join(" ")}>
-      <div id={`${id}-label`} className="hashti-file-label hashti-file-label">
+    <div className={["hashti-file-uploader", className].filter(Boolean).join(" ")}>
+      <div id={`${id}-label`} className="hashti-file-label">
         {label}
       </div>
       {description && (
-        <p id={`${id}-description`} className="hashti-description hashti-description">
+        <p id={`${id}-description`} className="hashti-description">
           {description}
         </p>
       )}
       <DropZoneRoot
         aria-labelledby={`${id}-label`}
-        aria-describedby={description ? `${id}-description` : undefined}
+        aria-describedby={
+          [description ? `${id}-description` : undefined, error ? errorId : undefined]
+            .filter(Boolean)
+            .join(" ") || undefined
+        }
         isDisabled={isDisabled}
         onDrop={async (event) => {
           const incoming = await Promise.all(
@@ -211,20 +216,20 @@ export function FileUploader({
         </FileTrigger>
       </DropZoneRoot>
       {error && (
-        <p role="alert" className="hashti-error-message hashti-error-message">
+        <p id={errorId} role="alert" className="hashti-error-message">
           {error}
         </p>
       )}
-      <ul className="hashti-file-list hashti-file-list">
+      <ul className="hashti-file-list">
         {files.map((file, index) => (
           <li key={`${file.name}-${file.lastModified}-${index}`}>
             <Icon name="file" />
             <span>{file.name}</span>
-            <span className="hashti-description hashti-description">
+            <span className="hashti-description">
               {new Intl.NumberFormat(undefined, { maximumFractionDigits: 1 }).format(
-                file.size / 1024,
+                file.size >= 1024 * 1024 ? file.size / (1024 * 1024) : file.size / 1024,
               )}{" "}
-              KB
+              {file.size >= 1024 * 1024 ? "MB" : "KB"}
             </span>
             <Button
               variant="ghost"
@@ -242,4 +247,3 @@ export function FileUploader({
     </div>
   );
 }
-

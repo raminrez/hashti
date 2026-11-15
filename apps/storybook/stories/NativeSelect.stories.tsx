@@ -1,12 +1,13 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, within } from "storybook/test";
+import { expect, waitFor, within } from "storybook/test";
 import { NativeSelect, Theme, useTheme } from "@hashti/react";
 import "./fields.css";
 
 const meta = {
   title: "Fields/NativeSelect",
   component: NativeSelect,
+  tags: ["a11y:gap"],
   parameters: {
     docs: {
       description: {
@@ -52,7 +53,7 @@ export const Playground: Story = {
 
     await userEvent.selectOptions(select, "50");
     expect(select).toHaveValue("50");
-    expect(canvas.getByText("50")).toBeVisible();
+    await waitFor(() => expect(canvas.getByText("50")).toBeVisible());
   },
 };
 
@@ -140,7 +141,9 @@ export const Validation: Story = {
 
     const select = canvas.getByRole("combobox", { name: "Required deployment target" });
     expect(select).toHaveAttribute("aria-invalid", "true");
-    expect(canvas.getByText("Please select a cluster before deploying.")).toBeVisible();
+    await waitFor(() =>
+      expect(canvas.getByText("Please select a cluster before deploying.")).toBeVisible(),
+    );
   },
 };
 

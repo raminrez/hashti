@@ -13,16 +13,16 @@ Hashti’s layout engine is built upon an **8-point spatial grid system** reinfo
 
 Every layout offset, container padding, and inter-component margin aligns strictly with powers or multiples of 8 (with 4px reserved as a half-step micro-grid unit):
 
-| Spacing Token | Pixel Value | Rem Equiv. | Common Application |
-| :--- | :--- | :--- | :--- |
-| `--hashti-spacing-01` | `4px` | `0.25rem` | Icon-to-text gaps, badge inner padding, micro offsets. |
-| `--hashti-spacing-02` | `8px` | `0.5rem` | Related item spacing, compact button inline padding. |
-| `--hashti-spacing-03` | `12px` | `0.75rem` | Control padding, input field horizontal gutter. |
-| `--hashti-spacing-04` | `16px` | `1.0rem` | Default card padding, compact stack gap, standard gutter. |
-| `--hashti-spacing-05` | `24px` | `1.5rem` | Modal dialog padding, section separation, form row gap. |
-| `--hashti-spacing-06` | `32px` | `2.0rem` | Page section margins, hero layout boundaries. |
-| `--hashti-spacing-07` | `48px` | `3.0rem` | Large section dividers, macro container margins. |
-| `--hashti-spacing-08` | `64px` | `4.0rem` | Page canvas gutters, major architectural thresholds. |
+| Spacing Token         | Pixel Value | Rem Equiv. | Common Application                                        |
+| :-------------------- | :---------- | :--------- | :-------------------------------------------------------- |
+| `--hashti-spacing-01` | `4px`       | `0.25rem`  | Icon-to-text gaps, badge inner padding, micro offsets.    |
+| `--hashti-spacing-02` | `8px`       | `0.5rem`   | Related item spacing, compact button inline padding.      |
+| `--hashti-spacing-03` | `12px`      | `0.75rem`  | Control padding, input field horizontal gutter.           |
+| `--hashti-spacing-04` | `16px`      | `1.0rem`   | Default card padding, compact stack gap, standard gutter. |
+| `--hashti-spacing-05` | `24px`      | `1.5rem`   | Modal dialog padding, section separation, form row gap.   |
+| `--hashti-spacing-06` | `32px`      | `2.0rem`   | Page section margins, hero layout boundaries.             |
+| `--hashti-spacing-07` | `48px`      | `3.0rem`   | Large section dividers, macro container margins.          |
+| `--hashti-spacing-08` | `64px`      | `4.0rem`   | Page canvas gutters, major architectural thresholds.      |
 
 ---
 
@@ -30,11 +30,11 @@ Every layout offset, container padding, and inter-component margin aligns strict
 
 All interactive controls (Buttons, TextFields, Select dropdowns, SearchFields, DatePickers) share synchronized vertical heights across three ergonomic sizes:
 
-| Size | Height | Typography | Ideal Context |
-| :--- | :--- | :--- | :--- |
-| **Small (`sm`)** | `32px` | `13px` / Caption | High-density tables, compact toolbars, data-heavy inspection drawers. |
-| **Medium (`md`)** | `40px` *(Default)* | `14px` / Body | Standard forms, general product workflows, dialogue action rows. |
-| **Large (`lg`)** | `48px` | `16px` / Title | Mobile-optimized touch surfaces, public landing pages, search hero bars. |
+| Size              | Height             | Typography       | Ideal Context                                                            |
+| :---------------- | :----------------- | :--------------- | :----------------------------------------------------------------------- |
+| **Small (`sm`)**  | `32px`             | `13px` / Caption | High-density tables, compact toolbars, data-heavy inspection drawers.    |
+| **Medium (`md`)** | `40px` _(Default)_ | `14px` / Body    | Standard forms, general product workflows, dialogue action rows.         |
+| **Large (`lg`)**  | `48px`             | `16px` / Title   | Mobile-optimized touch surfaces, public landing pages, search hero bars. |
 
 > [!NOTE]
 > The default 40px height provides a comfortable 48px touch target buffer with padding, satisfying WCAG 2.2 Target Size (Minimum) criteria.
@@ -67,12 +67,12 @@ The visual identity of Hashti is anchored in the classic **pointed ogival arch**
 
 Corners in Hashti are disciplined and intentional, avoiding the overly pill-shaped look of consumer apps while maintaining soft modern tactile edges:
 
-| Radius Token | Value | Applied To |
-| :--- | :--- | :--- |
-| `--hashti-radius-sm` | `2px` | Checkbox boxes, progress bar indicators, table row highlights. |
-| `--hashti-radius-md` | `6px` | Standard buttons, input controls, dropdown popovers, badges. |
-| `--hashti-radius-lg` | `12px` | Cards, modal dialogs, flyout drawers, floating sheets. |
-| `--hashti-radius-full` | `9999px` | Avatars, circular icon buttons, status indicator dots. |
+| Radius Token           | Value    | Applied To                                                     |
+| :--------------------- | :------- | :------------------------------------------------------------- |
+| `--hashti-radius-sm`   | `2px`    | Checkbox boxes, progress bar indicators, table row highlights. |
+| `--hashti-radius-md`   | `6px`    | Standard buttons, input controls, dropdown popovers, badges.   |
+| `--hashti-radius-lg`   | `12px`   | Cards, modal dialogs, flyout drawers, floating sheets.         |
+| `--hashti-radius-full` | `9999px` | Avatars, circular icon buttons, status indicator dots.         |
 
 ```css
 /* Example radius token usage */

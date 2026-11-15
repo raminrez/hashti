@@ -7,16 +7,18 @@ description: Visual representation of a user, team, or entity with image, initia
 
 Avatars visually represent users, teams, organizations, or automated agents. Hashti's `Avatar` and `AvatarGroup` components feature automatic image error fallbacks, grapheme-safe international initials (with native support for Persian and Arabic scripts), five standardized geometric sizes, presence badges, and stacked group layouts.
 
-<ComponentPreview title="Avatar" description="Scalable identity tokens with automated initials fallback.">
+<ComponentPreview
+  title="Avatar"
+  description="Scalable identity tokens with automated initials fallback."
+>
   <AvatarLiveDemo />
 </ComponentPreview>
-
 
 ---
 
 ## Architectural Affordances & Grapheme Clusters
 
-In international design systems, extracting the first letter of a name often fails with non-Latin scripts (e.g., Persian *گ*, *چ*, Arabic ligatures, or multi-byte emoji combinations). Hashti's `Avatar` incorporates an `Intl.Segmenter` engine via `getInitials`:
+In international design systems, extracting the first letter of a name often fails with non-Latin scripts (e.g., Persian _گ_, _چ_, Arabic ligatures, or multi-byte emoji combinations). Hashti's `Avatar` incorporates an `Intl.Segmenter` engine via `getInitials`:
 
 ```
 "Sara Moradi"       ──► "SM"
@@ -115,13 +117,13 @@ export function AvatarSizesDemo() {
 }
 ```
 
-| Size | Dimension | Use Cases |
-| :--- | :--- | :--- |
-| `xs` | 24px | Dense table cells, inline comments, chat thread sub-replies |
-| `sm` | 32px | Header user menus, list items, card author stamps |
-| `md` | 40px (Default) | Standard profile cards, member directories |
-| `lg` | 48px | Modal profile overviews, workspace headers |
-| `xl` | 64px | Account settings pages, profile hero sections |
+| Size | Dimension      | Use Cases                                                   |
+| :--- | :------------- | :---------------------------------------------------------- |
+| `xs` | 24px           | Dense table cells, inline comments, chat thread sub-replies |
+| `sm` | 32px           | Header user menus, list items, card author stamps           |
+| `md` | 40px (Default) | Standard profile cards, member directories                  |
+| `lg` | 48px           | Modal profile overviews, workspace headers                  |
+| `xl` | 64px           | Account settings pages, profile hero sections               |
 
 ---
 
@@ -186,26 +188,26 @@ export function AvatarGroupDemo() {
 
 ### Avatar Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `src` | `string` | — | Image source URL. |
-| `alt` | `string` | `''` | Alt text for the image element. |
-| `name` | `string` | — | Full name used to generate initials and accessible label. |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Geometric size (inherited from `AvatarGroup` if present). |
-| `presence` | `'online' \| 'offline' \| 'away' \| 'busy' \| 'dnd'` | — | Current presence status indicator. |
-| `presenceLabel` | `string` | — | Accessible screen reader description for the presence status. |
-| `fallback` | `ReactNode` | — | Custom fallback node rendered if image fails and name is not supplied. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop            | Type                                                 | Default | Description                                                            |
+| :-------------- | :--------------------------------------------------- | :------ | :--------------------------------------------------------------------- |
+| `src`           | `string`                                             | —       | Image source URL.                                                      |
+| `alt`           | `string`                                             | `''`    | Alt text for the image element.                                        |
+| `name`          | `string`                                             | —       | Full name used to generate initials and accessible label.              |
+| `size`          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`               | `'md'`  | Geometric size (inherited from `AvatarGroup` if present).              |
+| `presence`      | `'online' \| 'offline' \| 'away' \| 'busy' \| 'dnd'` | —       | Current presence status indicator.                                     |
+| `presenceLabel` | `string`                                             | —       | Accessible screen reader description for the presence status.          |
+| `fallback`      | `ReactNode`                                          | —       | Custom fallback node rendered if image fails and name is not supplied. |
+| `className`     | `string`                                             | —       | Additional CSS class names.                                            |
 
 ### AvatarGroup Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Inherited size for all member avatars in the group. |
-| `max` | `number` | — | Maximum number of avatars visible before rendering the `+N` badge. |
-| `overflowRenderer` | `(count: number) => ReactNode` | — | Custom renderer for the overflow count badge. |
-| `children` | `ReactNode` | — | Collection of `<Avatar />` components. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop               | Type                                   | Default | Description                                                        |
+| :----------------- | :------------------------------------- | :------ | :----------------------------------------------------------------- |
+| `size`             | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`  | Inherited size for all member avatars in the group.                |
+| `max`              | `number`                               | —       | Maximum number of avatars visible before rendering the `+N` badge. |
+| `overflowRenderer` | `(count: number) => ReactNode`         | —       | Custom renderer for the overflow count badge.                      |
+| `children`         | `ReactNode`                            | —       | Collection of `<Avatar />` components.                             |
+| `className`        | `string`                               | —       | Additional CSS class names.                                        |
 
 ---
 
@@ -216,10 +218,11 @@ export function AvatarGroupDemo() {
 - **Presence Status Announcement**: Presence dots render with `role="status"` and `aria-label={presenceLabel ?? presence}`.
 - **International Grapheme Segmentation**: Uses `Intl.Segmenter` to avoid splitting compound characters or emoji ligatures, ensuring polite rendering across all languages.
 - **AvatarGroup Semantics**: The group wrapper receives `role="group"` with an accessible label on the overflow counter (e.g., `aria-label="3 more members"`).
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute     | Target | Description                                           |
+| :------------ | :----- | :---------------------------------------------------- |
 | `[data-size]` | Avatar | Avatar diameter scale (`xs`, `sm`, `md`, `lg`, `xl`). |

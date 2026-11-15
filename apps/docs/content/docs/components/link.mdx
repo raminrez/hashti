@@ -7,10 +7,12 @@ description: Navigational element for navigating between routes and external URL
 
 Links allow users to navigate between pages, jump to specific page anchors, or navigate to external web resources. Built on [React Aria Components Link](https://react-spectrum.adobe.com/react-aria/Link.html), Hashti's `Link` component seamlessly supports traditional hyperlinks, client-side single page app (SPA) routers, and accessible inline prose citations.
 
-<ComponentPreview title="Link" description="Navigational anchors with high-contrast hover and focus states.">
+<ComponentPreview
+  title="Link"
+  description="Navigational anchors with high-contrast hover and focus states."
+>
   <LinkLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -77,7 +79,10 @@ export function StandaloneLinkDemo() {
         <Icon name="arrowRight" size={16} />
       </Link>
 
-      <Link href="/docs/foundations/theming" className="inline-flex items-center gap-1.5 font-medium">
+      <Link
+        href="/docs/foundations/theming"
+        className="inline-flex items-center gap-1.5 font-medium"
+      >
         Discover Theme Tokens
         <Icon name="arrowRight" size={16} />
       </Link>
@@ -137,16 +142,16 @@ export function DisabledLinkDemo() {
 
 `Link` extends `RACLinkProps` from `react-aria-components`.
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `href` | `string` | — | The URL or anchor destination for the link. |
-| `inline` | `boolean` | `false` | When true, renders a persistent underline for inline prose readability. |
-| `target` | `string` | — | Window target (e.g., `'_blank'`, `'_self'`). |
-| `rel` | `string` | — | Relationship attribute (recommended `'noopener noreferrer'` for external links). |
-| `isDisabled` | `boolean` | `false` | Whether the link is inactive and disabled. |
-| `onPress` | `(e: PressEvent) => void` | — | Interaction callback triggered on mouse click or keyboard Enter key. |
-| `children` | `ReactNode \| ((values: LinkRenderProps) => ReactNode)` | — | Content or children rendered inside the link. |
-| `className` | `string` | — | Custom CSS classes applied to the root element. |
+| Prop         | Type                                                    | Default | Description                                                                      |
+| :----------- | :------------------------------------------------------ | :------ | :------------------------------------------------------------------------------- |
+| `href`       | `string`                                                | —       | The URL or anchor destination for the link.                                      |
+| `inline`     | `boolean`                                               | `false` | When true, renders a persistent underline for inline prose readability.          |
+| `target`     | `string`                                                | —       | Window target (e.g., `'_blank'`, `'_self'`).                                     |
+| `rel`        | `string`                                                | —       | Relationship attribute (recommended `'noopener noreferrer'` for external links). |
+| `isDisabled` | `boolean`                                               | `false` | Whether the link is inactive and disabled.                                       |
+| `onPress`    | `(e: PressEvent) => void`                               | —       | Interaction callback triggered on mouse click or keyboard Enter key.             |
+| `children`   | `ReactNode \| ((values: LinkRenderProps) => ReactNode)` | —       | Content or children rendered inside the link.                                    |
+| `className`  | `string`                                                | —       | Custom CSS classes applied to the root element.                                  |
 
 ---
 
@@ -164,22 +169,23 @@ Hashti links adhere to W3C ARIA practices for hyperlink controls:
 - **Native Anchors**: When `href` is supplied and `isDisabled` is false, renders standard `<a href="...">` elements that assistive technologies report as links.
 - **External Notifications**: Always provide visual and auditory indicators (such as `<span className="sr-only">(opens in new tab)</span>`) when a link opens a new browser window or tab.
 - **Color Distinguishability**: Under WCAG 2.2 Criterion 1.4.1 (Use of Color), links surrounded by text must be distinguishable by more than color alone. Using `inline={true}` applies an underline that guarantees compliance.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Enter</kbd> | Activates link navigation. |
-| <kbd>Tab</kbd> | Moves focus into and out of link. |
+| Key              | Action                            |
+| :--------------- | :-------------------------------- |
+| <kbd>Enter</kbd> | Activates link navigation.        |
+| <kbd>Tab</kbd>   | Moves focus into and out of link. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Link | Present on pointer hover. |
-| `[data-focused]` | Link | Active on keyboard focus. |
-| `[data-pressed]` | Link | Active during click/press. |
-| `[data-disabled]` | Link | Present when link is disabled. |
+| Attribute         | Target | Description                    |
+| :---------------- | :----- | :----------------------------- |
+| `[data-hovered]`  | Link   | Present on pointer hover.      |
+| `[data-focused]`  | Link   | Active on keyboard focus.      |
+| `[data-pressed]`  | Link   | Active during click/press.     |
+| `[data-disabled]` | Link   | Present when link is disabled. |

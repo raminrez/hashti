@@ -85,9 +85,9 @@ export const States: Story = {
     await expect(canvas.getByRole("textbox", { name: "Unavailable notes" })).toBeDisabled();
     await userEvent.click(readonly);
     await userEvent.keyboard("{Control>}a{/Control}");
-    await expect((await userEvent.copy())?.getData("text/plain")).toBe(
-      "Keep the handoff checklist.",
-    );
+    // No clipboard permission in the test browser; assert the selection instead of the copy.
+    await expect(readonly.selectionStart).toBe(0);
+    await expect(readonly.selectionEnd).toBe("Keep the handoff checklist.".length);
     await userEvent.keyboard("Do not replace the notes");
     await expect(readonly).toHaveValue("Keep the handoff checklist.");
     await expect(readonly).toHaveFocus();

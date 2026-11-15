@@ -1,5 +1,7 @@
 import { useState } from "react";
 import {
+  Button,
+  Form,
   TextField,
   TextArea,
   NumberField,
@@ -10,6 +12,8 @@ import {
   InputOTP,
   Autocomplete,
   ListBoxItem,
+  NativeSelect,
+  Slider,
 } from "@hashti/react";
 
 export function TextFieldLiveDemo() {
@@ -90,10 +94,85 @@ export function InputOTPLiveDemo() {
         onChange={setOtp}
         aria-label="Two-factor authentication code"
       />
-      <span className="text-xs text-neutral-500 font-mono">
-        Entered: {otp || "------"}
-      </span>
+      <span className="text-xs text-neutral-500 font-mono">Entered: {otp || "------"}</span>
     </div>
+  );
+}
+
+export function SliderLiveDemo() {
+  const [value, setValue] = useState(45);
+  return (
+    <div className="w-full max-w-sm">
+      <Slider
+        label="Storage allocation (GB)"
+        minValue={0}
+        maxValue={100}
+        value={value}
+        onChange={(next) => setValue(next as number)}
+      />
+    </div>
+  );
+}
+
+export function TextAreaLiveDemo() {
+  const [notes, setNotes] = useState("Check the release checklist.");
+  return (
+    <div className="w-full max-w-sm flex flex-col gap-2">
+      <TextArea
+        label="Review notes"
+        description="Keep the handoff details with this draft."
+        value={notes}
+        onChange={setNotes}
+        rows={3}
+      />
+      <output aria-label="Review notes value" className="text-xs text-neutral-500 font-mono">
+        {notes.length} characters
+      </output>
+    </div>
+  );
+}
+
+export function NativeSelectLiveDemo() {
+  const [pageSize, setPageSize] = useState("10");
+  return (
+    <div className="w-full max-w-xs">
+      <NativeSelect
+        label="Items per page"
+        description="Choose how many records are shown on each page."
+        value={pageSize}
+        onChange={(event) => setPageSize(event.target.value)}
+      >
+        <option value="10">10 items</option>
+        <option value="25">25 items</option>
+        <option value="50">50 items</option>
+      </NativeSelect>
+    </div>
+  );
+}
+
+export function FormLiveDemo() {
+  const [saved, setSaved] = useState("");
+  return (
+    <Form
+      aria-label="Workspace draft"
+      className="w-full max-w-sm flex flex-col gap-4"
+      onSubmit={(event) => {
+        event.preventDefault();
+        setSaved(String(new FormData(event.currentTarget).get("workspace") ?? ""));
+      }}
+    >
+      <TextField
+        name="workspace"
+        label="Workspace name"
+        description="Use the name your team will recognize."
+        isRequired
+      />
+      <TextArea name="notes" label="Review notes" rows={3} isOptional />
+      <Button type="submit">Save draft</Button>
+      <p role="status" className="text-sm text-neutral-500 min-h-5">
+        {saved ? `Saved “${saved}”.` : ""}
+      </p>
+    </Form>
   );
 }
 

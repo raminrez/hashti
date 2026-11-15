@@ -3,11 +3,7 @@ title: Brandbook & Identity System
 description: Official brand assets, vector lockups, architectural geometry specifications, typography hierarchy, and voice guidelines for Hashti.
 ---
 
-# Hashti Brandbook & Identity System
-
 The **Hashti (هشتی)** brand identity unites ancient Persian spatial architectural traditions with rigorous modern software engineering. Every curve, ratio, and mineral tone reflects intentional transition, sensory calm, and uncompromising accessibility.
-
----
 
 ## Official Vector Assets & Downloads
 
@@ -16,6 +12,7 @@ All official Hashti marks are precision-drafted vectors rendered in crisp SVG fo
 <BrandbookAssets client:load />
 
 ### Clear Space & Minimum Sizing
+
 - **Clear Margin:** Maintain a breathing boundary around the mark equal to at least half the width of the outer arch on all sides.
 - **Minimum Size:**
   - Standalone mark: **16px** (favicons and compact status icons)
@@ -27,7 +24,7 @@ All official Hashti marks are precision-drafted vectors rendered in crisp SVG fo
 
 ## Architectural Geometry & Drafting Formulas
 
-The Hashti emblem is mathematically derived from the **pointed ogival arch** (*chahar-gousheh*) characteristic of Iranian vaulted vestibules.
+The Hashti emblem is mathematically derived from the **pointed ogival arch** (_chahar-gousheh_) characteristic of Iranian vaulted vestibules.
 
 ```
                   ▲ Zenith (0° / 180° Tangent)
@@ -42,6 +39,7 @@ The Hashti emblem is mathematically derived from the **pointed ogival arch** (*c
 ```
 
 ### Proportional Relationships
+
 1. **Concentric Ratios**: The three nested vaults represent the spatial sequence:
    - Outer Arch: **Darvazeh** (The monumental public threshold)
    - Middle Vault: **Hashti** (The octagonal chamber of equilibrium)
@@ -56,39 +54,47 @@ The Hashti emblem is mathematically derived from the **pointed ogival arch** (*c
 
 ## Color System Foundations
 
-The Hashti palette draws directly from the mineral glazes and raw earthen textures of Isfahan and Yazd:
+The brand palette is the same one the library measures, because a brandbook that names a different
+palette is a bug, not a tribute. Roles come from `DESIGN.md` and the Frame tokens in
+`packages/tokens/src/frame.ts`:
 
-| Role | Color Name | Hex Token | CSS Variable | WCAG AAA Contrast |
-| :--- | :--- | :--- | :--- | :--- |
-| **Obsidian** | Basalt Black | `#000000` | `--hashti-background-base` | > 21:1 on white |
-| **Chalk** | Pure White | `#FFFFFF` | `--hashti-surface-0` | > 21:1 on black |
-| **Primary Accent** | Persian Turquoise | `#08BDBA` | `--hashti-accent-turquoise` | 4.6:1 on black, 5.2:1 on dark |
-| **Secondary Warmth** | Isfahan Amber | `#D97706` | `--hashti-accent-amber` | > 4.5:1 on light & dark layers |
-| **Alert / Danger** | Terracotta Clay | `#DC2626` | `--hashti-support-danger` | > 4.8:1 on light & dark layers |
+| Role                  | Token (light / dark)                               | What it is for                                            |
+| :-------------------- | :------------------------------------------------- | :-------------------------------------------------------- |
+| **Action**            | `#272A32` / `#F1F2F6` (`--hashti-action`)          | The filled primary control — ink, never a brand colour    |
+| **Focus & selection** | `#365CCB` / `#A9BDFF` (`--hashti-focus`)           | Keyboard ring, selected states, current navigation, links |
+| **Canvas / surface**  | `#F5F6F8` / `#18191D`, `#FFFFFF` / `#22242A`       | Page ground vs working surface                            |
+| **Text / muted**      | `#25272C` / `#F1F2F6`, `#606674` / `#B1B6C3`       | Main ink vs guidance                                      |
+| **Error**             | `#AA2735` / `#FFACB3` (`--hashti-support-error`)   | Problems and destructive intent                           |
+| **Warning**           | `#75500D` / `#E7C383` (`--hashti-support-warning`) | Attention                                                 |
+| **Success**           | `#246343` / `#A4D9B8` (`--hashti-support-success`) | A result is confirmed                                     |
+
+Two rules keep the palette honest:
+
+- **Action is not the brand accent.** A control is ink because it is a commitment; blue is reserved
+  for focus and selection. Nothing in the product is turquoise because the mark's arch is.
+- **Heritage hues are decoration only.** Persian turquoise and Isfahan amber may appear in
+  illustrations, the brandbook's own artwork and marketing surfaces. They are not interface tokens.
 
 ---
 
 ## Typography Hierarchy
 
-Hashti pairs a modern geometric grotesque for Latin typography with an architectural typeface for Persian and Arabic:
+The product's working type is the system sans — the same stack `DESIGN.md` fixes for every role
+(`ui-sans-serif, system-ui`), because a design system that requires a font download is not
+portable. Weight and size come from the role, not the family:
 
-### 1. Latin Display & Body: Satoshi
-Designed by Indian Type Foundry, **Satoshi** balances industrial geometric discipline with subtle humanist warmth:
-- `900 Black`: Major page headlines and hero statements
-- `700 Bold`: Section titles, card headers, and button labels
-- `500 Medium`: Form inputs, table cells, and navigation links
-- `400 Regular`: Long-form documentation and explanatory prose
-
-### 2. Persian & Arabic: Vazirmatn
-Designed by Saber Rastikerdar, **Vazirmatn** is the gold standard for legible, modern Persian screen typography. It provides authentic Naskh proportions optimized for pixel grids:
-- Seamless RTL bidirectional alignment
-- Precise baseline harmony when paired with Satoshi
-- Strict diacritic rendering and Arabic numeral ligature clarity
-
-### 3. Monospace Code: JetBrains Mono
-For source code snippets, terminal commands, and token formulas:
-- Increased letter height and distinct punctuation glyphs
-- Custom ligatures for programming operators (`=>`, `===`, `!==`)
+- `headline 30px/600`: page titles, hero statements
+- `title 18px/600`: section titles and card headers
+- `label 14px/600`: field names and control labels
+- `action 14px/500`: buttons and interactive labels
+- `body 14px/400`: operational copy
+- `input 16px/400`: entered values — the Readable Value Rule: they never shrink to fit
+- `helper 13px/400`: guidance and recovery
+- **Persian & Arabic:** the same system stack carries RTL copy. The brandbook's own Persian
+  headings may use Vazirmatn as a display face; it is a presentational choice for this page,
+  not a product requirement.
+- **Identifiers:** the existing IBM Plex Mono stack marks tokens, keys and code. JetBrains Mono is
+  not part of the system.
 
 ---
 
@@ -97,10 +103,10 @@ For source code snippets, terminal commands, and token formulas:
 When authoring documentation, error messages, and UI microcopy:
 
 1. **Architectural & Serene**
-   - Favor spatial, calm terminology: *threshold, elevation, sanctuary, surface, pathway*.
+   - Favor spatial, calm terminology: _threshold, elevation, sanctuary, surface, pathway_.
    - Avoid frantic tech hype, noisy exclamation marks, or aggressive alert banners.
 
-2. **Dignified Hospitality (*Ta'arof without Friction*)**
+2. **Dignified Hospitality (_Ta'arof without Friction_)**
    - Welcome the developer with clarity and respect.
    - Explain errors constructively with clear recovery actions rather than dead-ends.
 

@@ -71,6 +71,54 @@ export const Playground: Story = {
   },
 };
 
+function AlertDialogBackdropDemo({ backdrop }: { backdrop: "dim" | "blur" | "none" }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="overlay-story-case">
+      <Button variant="danger" onPress={() => setIsOpen(true)}>
+        {`Open ${backdrop} alert`}
+      </Button>
+      <AlertDialog
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+        backdrop={backdrop}
+        kind="danger"
+        title={`Backdrop: ${backdrop}`}
+        description="AlertDialog forwards the same backdrop prop as Modal."
+        cancelLabel="Cancel"
+        confirmLabel="Delete"
+        onConfirm={() => setIsOpen(false)}
+        onCancel={() => setIsOpen(false)}
+      />
+    </div>
+  );
+}
+
+export const Backdrops: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "AlertDialog applies the same `backdrop` variants as Modal (`dim`, `blur`, `none`).",
+      },
+    },
+  },
+  render: () => (
+    <div className="overlay-story-grid">
+      {(["dim", "blur", "none"] as const).map((backdrop) => (
+        <AlertDialogBackdropDemo key={backdrop} backdrop={backdrop} />
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("button", { name: "Open blur alert" }));
+    const body = within(document.body);
+    expect(await body.findByRole("alertdialog")).toBeInTheDocument();
+    expect(await body.findByText("Backdrop: blur")).toBeInTheDocument();
+    await userEvent.click(body.getByRole("button", { name: "Cancel" }));
+  },
+};
+
 function AlertDialogRtlDemo() {
   const [isOpen, setIsOpen] = useState(false);
   return (

@@ -28,27 +28,22 @@ describe("Toolbar & Disclosure unit tests", () => {
           <Toolbar.Group ariaLabel="History">
             <Button variant="ghost">Undo</Button>
           </Toolbar.Group>
-        </Toolbar>
+        </Toolbar>,
       );
 
       expect(html).toContain('role="toolbar"');
       expect(html).toContain('data-size="md"');
       expect(html).toContain('data-orientation="horizontal"');
       expect(html).toContain('data-variant="flat"');
-      expect(html).toContain('hashti-toolbar');
-      expect(html).toContain('hashti-toolbar-group');
-      expect(html).toContain('hashti-toolbar-separator');
+      expect(html).toContain("hashti-toolbar");
+      expect(html).toContain("hashti-toolbar-group");
+      expect(html).toContain("hashti-toolbar-separator");
       expect(html).toContain('aria-orientation="vertical"');
     });
 
     test("renders vertical floating Toolbar with custom size", () => {
       const html = ReactDOMServer.renderToString(
-        <Toolbar
-          orientation="vertical"
-          variant="floating"
-          size="sm"
-          aria-label="Vertical tools"
-        >
+        <Toolbar orientation="vertical" variant="floating" size="sm" aria-label="Vertical tools">
           <Toolbar.Item>
             <Button variant="ghost" size="sm">
               Draw
@@ -60,16 +55,16 @@ describe("Toolbar & Disclosure unit tests", () => {
               Erase
             </Button>
           </Toolbar.Item>
-        </Toolbar>
+        </Toolbar>,
       );
 
       expect(html).toContain('data-orientation="vertical"');
       expect(html).toContain('data-variant="floating"');
       expect(html).toContain('data-size="sm"');
-      expect(html).toContain('hashti-toolbar-item');
+      expect(html).toContain("hashti-toolbar-item");
       // In vertical toolbar, the separator renders as horizontal divider (<hr>)
-      expect(html).toContain('<hr');
-      expect(html).toContain('hashti-toolbar-separator');
+      expect(html).toContain("<hr");
+      expect(html).toContain("hashti-toolbar-separator");
     });
 
     test("supports disabled toolbar state and standalone component imports", () => {
@@ -81,7 +76,7 @@ describe("Toolbar & Disclosure unit tests", () => {
             </ToolbarItem>
             <ToolbarSeparator />
           </ToolbarGroup>
-        </Toolbar>
+        </Toolbar>,
       );
 
       expect(html).toContain('data-disabled="true"');
@@ -100,19 +95,19 @@ describe("Toolbar & Disclosure unit tests", () => {
           <Disclosure.Panel>
             <p>Panel details and content</p>
           </Disclosure.Panel>
-        </Disclosure>
+        </Disclosure>,
       );
 
-      expect(html).toContain('hashti-disclosure');
+      expect(html).toContain("hashti-disclosure");
       expect(html).toContain('data-size="md"');
       expect(html).toContain('data-variant="default"');
       expect(html).toContain('data-expanded="true"');
-      expect(html).toContain('<h2');
-      expect(html).toContain('hashti-disclosure-trigger');
-      expect(html).toContain('hashti-disclosure-indicator');
-      expect(html).toContain('hashti-disclosure-panel');
-      expect(html).toContain('hashti-disclosure-panel-inner');
-      expect(html).toContain('Panel details and content');
+      expect(html).toContain("<h2");
+      expect(html).toContain("hashti-disclosure-trigger");
+      expect(html).toContain("hashti-disclosure-indicator");
+      expect(html).toContain("hashti-disclosure-panel");
+      expect(html).toContain("hashti-disclosure-panel-inner");
+      expect(html).toContain("Panel details and content");
     });
 
     test("renders Disclosure with card and flush variants", () => {
@@ -120,7 +115,7 @@ describe("Toolbar & Disclosure unit tests", () => {
         <Disclosure variant="card" size="lg">
           <Disclosure.Trigger>Card Summary</Disclosure.Trigger>
           <Disclosure.Panel>Card Body</Disclosure.Panel>
-        </Disclosure>
+        </Disclosure>,
       );
 
       expect(cardHtml).toContain('data-variant="card"');
@@ -130,7 +125,7 @@ describe("Toolbar & Disclosure unit tests", () => {
         <Disclosure variant="flush" size="sm">
           <Disclosure.Trigger>Flush Summary</Disclosure.Trigger>
           <Disclosure.Panel>Flush Body</Disclosure.Panel>
-        </Disclosure>
+        </Disclosure>,
       );
 
       expect(flushHtml).toContain('data-variant="flush"');
@@ -146,21 +141,17 @@ describe("Toolbar & Disclosure unit tests", () => {
           size="sm"
         >
           <Disclosure id="general">
-            <Disclosure.Trigger headingLevel={3}>
-              General Settings
-            </Disclosure.Trigger>
+            <Disclosure.Trigger headingLevel={3}>General Settings</Disclosure.Trigger>
             <Disclosure.Panel>General details</Disclosure.Panel>
           </Disclosure>
           <Disclosure id="security">
-            <Disclosure.Trigger headingLevel={3}>
-              Security Settings
-            </Disclosure.Trigger>
+            <Disclosure.Trigger headingLevel={3}>Security Settings</Disclosure.Trigger>
             <Disclosure.Panel>Security details</Disclosure.Panel>
           </Disclosure>
-        </DisclosureGroup>
+        </DisclosureGroup>,
       );
 
-      expect(html).toContain('hashti-disclosure-group');
+      expect(html).toContain("hashti-disclosure-group");
       expect(html).toContain('data-variant="card"');
       expect(html).toContain('data-size="sm"');
       // id="security" is expanded
@@ -173,13 +164,13 @@ describe("Toolbar & Disclosure unit tests", () => {
           <DisclosureTrigger>Trigger</DisclosureTrigger>
           <DisclosureIndicator />
           <DisclosurePanel>Panel</DisclosurePanel>
-        </DisclosureRoot>
+        </DisclosureRoot>,
       );
 
-      expect(html).toContain('hashti-disclosure');
-      expect(html).toContain('hashti-disclosure-trigger');
-      expect(html).toContain('hashti-disclosure-indicator');
-      expect(html).toContain('hashti-disclosure-panel');
+      expect(html).toContain("hashti-disclosure");
+      expect(html).toContain("hashti-disclosure-trigger");
+      expect(html).toContain("hashti-disclosure-indicator");
+      expect(html).toContain("hashti-disclosure-panel");
     });
   });
 });

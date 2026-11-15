@@ -9,7 +9,10 @@ A **Tree** displays hierarchical data structured into expandable and collapsible
 
 Built upon React Aria Components' `Tree` pattern, Hashti unites architectural TreeView elegance with RAC's accessible `treegrid` implementation. Features include optional architectural guideline rules (`showGuideLines`), recursive chevron indicators, multi-item selection with checkboxes, and keyboard branch navigation.
 
-<ComponentPreview title="Live Interactive Navigation Tree" description="Keyboard roving arrow navigation and link href routing.">
+<ComponentPreview
+  title="Live Interactive Navigation Tree"
+  description="Keyboard roving arrow navigation and link href routing."
+>
   <TreeLiveDemo />
 </ComponentPreview>
 
@@ -79,12 +82,7 @@ export function FileTreeExplorer() {
   return (
     <div className="max-w-md p-4 border border-[var(--divider)] rounded-lg">
       <h3 className="text-sm font-semibold mb-3">Project Directory</h3>
-      <Tree
-        aria-label="Filesystem Tree"
-        items={fileHierarchy}
-        showGuideLines
-        size="md"
-      >
+      <Tree aria-label="Filesystem Tree" items={fileHierarchy} showGuideLines size="md">
         {function renderItem(item: any) {
           const isFolder = item.type === "folder";
           return (
@@ -171,37 +169,37 @@ The `showGuideLines` prop renders subtle vertical alignment lines connecting nes
 
 ### Tree (`Tree.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `selectionMode` | `'none' \| 'single' \| 'multiple'` | `'none'` | Row selection mode. |
-| `selectedKeys` | `'all' \| Iterable<Key>` | — | Currently selected node keys. |
-| `onSelectionChange` | `(keys: Selection) => void` | — | Callback fired on selection change. |
-| `expandedKeys` | `'all' \| Iterable<Key>` | — | Keys of nodes currently expanded. |
-| `defaultExpandedKeys` | `'all' \| Iterable<Key>` | — | Keys expanded initially. |
-| `onExpandedChange` | `(keys: Set<Key>) => void` | — | Callback fired when branches expand or collapse. |
-| `showGuideLines` | `boolean` | `true` | Whether to display vertical dashed branch guideline rules. |
-| `size` | `'sm' \| 'md'` | `'md'` | Row height and indentation density. |
-| `aria-label` | `string` | — | Accessible tree description. |
+| Prop                  | Type                               | Default  | Description                                                |
+| :-------------------- | :--------------------------------- | :------- | :--------------------------------------------------------- |
+| `selectionMode`       | `'none' \| 'single' \| 'multiple'` | `'none'` | Row selection mode.                                        |
+| `selectedKeys`        | `'all' \| Iterable<Key>`           | —        | Currently selected node keys.                              |
+| `onSelectionChange`   | `(keys: Selection) => void`        | —        | Callback fired on selection change.                        |
+| `expandedKeys`        | `'all' \| Iterable<Key>`           | —        | Keys of nodes currently expanded.                          |
+| `defaultExpandedKeys` | `'all' \| Iterable<Key>`           | —        | Keys expanded initially.                                   |
+| `onExpandedChange`    | `(keys: Set<Key>) => void`         | —        | Callback fired when branches expand or collapse.           |
+| `showGuideLines`      | `boolean`                          | `true`   | Whether to display vertical dashed branch guideline rules. |
+| `size`                | `'sm' \| 'md'`                     | `'md'`   | Row height and indentation density.                        |
+| `aria-label`          | `string`                           | —        | Accessible tree description.                               |
 
 ### Tree.Item (`TreeItem`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `Key` | — | Unique key identifying this tree node. |
-| `textValue` | `string` | — | Plain text string used for keyboard typeahead navigation. |
-| `isDisabled` | `boolean` | `false` | Whether this node cannot be expanded or selected. |
+| Prop         | Type      | Default | Description                                               |
+| :----------- | :-------- | :------ | :-------------------------------------------------------- |
+| `id`         | `Key`     | —       | Unique key identifying this tree node.                    |
+| `textValue`  | `string`  | —       | Plain text string used for keyboard typeahead navigation. |
+| `isDisabled` | `boolean` | `false` | Whether this node cannot be expanded or selected.         |
 
 ### Tree.Indicator (`TreeIndicator`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
+| Prop       | Type        | Default                        | Description                                       |
+| :--------- | :---------- | :----------------------------- | :------------------------------------------------ |
 | `children` | `ReactNode` | `<Icon name="chevronRight" />` | Expand/collapse arrow. Rotates 90° when expanded. |
 
 ### Tree.Checkbox (`TreeCheckbox`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `children` | `ReactNode` | — | Optional custom checkbox label. |
+| Prop       | Type        | Default | Description                     |
+| :--------- | :---------- | :------ | :------------------------------ |
+| `children` | `ReactNode` | —       | Optional custom checkbox label. |
 
 ---
 
@@ -209,46 +207,47 @@ The `showGuideLines` prop renders subtle vertical alignment lines connecting nes
 
 Hashti Tree adheres to the **WAI-ARIA Treegrid Pattern**:
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>→</kbd> | When on a collapsed node, expands the branch. When on an expanded node, moves focus to the first child. |
-| <kbd>←</kbd> | When on an expanded node, collapses the branch. When on a child node, moves focus to the parent node. |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Moves focus vertically between visible nodes without expanding closed branches. |
-| <kbd>Enter</kbd> / <kbd>Space</kbd> | Toggles node selection or activates the primary action. |
-| <kbd>*</kbd> (Asterisk) | Expands the focused node and all its siblings at the same depth. |
-| <kbd>Home</kbd> / <kbd>End</kbd> | Moves focus directly to the first or last visible node. |
+| Key                                 | Action                                                                                                  |
+| :---------------------------------- | :------------------------------------------------------------------------------------------------------ |
+| <kbd>→</kbd>                        | When on a collapsed node, expands the branch. When on an expanded node, moves focus to the first child. |
+| <kbd>←</kbd>                        | When on an expanded node, collapses the branch. When on a child node, moves focus to the parent node.   |
+| <kbd>↓</kbd> / <kbd>↑</kbd>         | Moves focus vertically between visible nodes without expanding closed branches.                         |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Toggles node selection or activates the primary action.                                                 |
+| <kbd>\*</kbd> (Asterisk)            | Expands the focused node and all its siblings at the same depth.                                        |
+| <kbd>Home</kbd> / <kbd>End</kbd>    | Moves focus directly to the first or last visible node.                                                 |
 
 ---
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied Element |
-| :--- | :--- | :--- |
-| Guideline Stroke | `--divider` | 1px vertical branch indentation guide |
+| Token            | CSS Variable             | Applied Element                         |
+| :--------------- | :----------------------- | :-------------------------------------- |
+| Guideline Stroke | `--divider`              | 1px vertical branch indentation guide   |
 | Selected Surface | `--selected` (`#e7edff`) | Highlight background for selected nodes |
-| Focus Ring | `--focus` | 2px focus border on active node |
-| Hover State | `--surface-hover` | Subtle row hover feedback |
-| Text Main | `--text` | Primary node label |
-| Text Muted | `--text-muted` | File icons and metadata |
+| Focus Ring       | `--focus`                | 2px focus border on active node         |
+| Hover State      | `--surface-hover`        | Subtle row hover feedback               |
+| Text Main        | `--text`                 | Primary node label                      |
+| Text Muted       | `--text-muted`           | File icons and metadata                 |
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Navigates between visible tree nodes. |
-| <kbd>→</kbd> | Expands collapsed branch node, or moves into first child. |
-| <kbd>←</kbd> | Collapses expanded branch node, or moves back to parent. |
-| <kbd>Home</kbd> / <kbd>End</kbd> | Jumps to the first or last visible tree node. |
-| <kbd>Space</kbd> | Toggles node selection. |
+| Key                              | Action                                                    |
+| :------------------------------- | :-------------------------------------------------------- |
+| <kbd>↓</kbd> / <kbd>↑</kbd>      | Navigates between visible tree nodes.                     |
+| <kbd>→</kbd>                     | Expands collapsed branch node, or moves into first child. |
+| <kbd>←</kbd>                     | Collapses expanded branch node, or moves back to parent.  |
+| <kbd>Home</kbd> / <kbd>End</kbd> | Jumps to the first or last visible tree node.             |
+| <kbd>Space</kbd>                 | Toggles node selection.                                   |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Tree Node | Active on pointer hover. |
-| `[data-selected]` | Tree Node | Set when tree item is selected. |
+| Attribute         | Target      | Description                       |
+| :---------------- | :---------- | :-------------------------------- |
+| `[data-hovered]`  | Tree Node   | Active on pointer hover.          |
+| `[data-selected]` | Tree Node   | Set when tree item is selected.   |
 | `[data-expanded]` | Tree Branch | Present on expanded branch nodes. |
-| `[data-focused]` | Tree Node | Set when tree item holds focus. |
+| `[data-focused]`  | Tree Node   | Set when tree item holds focus.   |

@@ -9,10 +9,12 @@ The **NumberField** component enables users to enter, increment, and decrement n
 
 Like all Hashti components, NumberField reflects deliberate geometric proportions and provides full accessibility according to the W3C WAI-ARIA `spinbutton` pattern.
 
-<ComponentPreview title="NumberField" description="Ergonomic numerical input with step buttons and unit formatting.">
+<ComponentPreview
+  title="NumberField"
+  description="Ergonomic numerical input with step buttons and unit formatting."
+>
   <NumberFieldLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -25,12 +27,7 @@ import { NumberField } from "@hashti/react";
 Compositional sub-components are also available:
 
 ```tsx
-import {
-  NumberField,
-  FieldControl,
-  FieldGroupInput,
-  FieldButton,
-} from "@hashti/react";
+import { NumberField, FieldControl, FieldGroupInput, FieldButton } from "@hashti/react";
 ```
 
 ---
@@ -196,23 +193,23 @@ export function StatesDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `number` | — | The controlled numerical value. |
-| `defaultValue` | `number` | — | The default numerical value for uncontrolled usage. |
-| `onChange` | `(value: number) => void` | — | Callback invoked with the parsed numeric value upon change. |
-| `minValue` | `number` | — | The minimum permissible value. |
-| `maxValue` | `number` | — | The maximum permissible value. |
-| `step` | `number` | `1` | The amount to increment or decrement per step. |
-| `formatOptions` | `Intl.NumberFormatOptions` | — | Formatting options for currency, percentage, decimals, or units. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and control sizing of the input and buttons. |
-| `label` | `ReactNode` | — | Accessible field label. |
-| `description` | `ReactNode` | — | Explanatory helper text beneath or above the control. |
-| `errorMessage` | `ReactNode` | — | Error text rendered when in an invalid state. |
-| `isInvalid` | `boolean` | `false` | Whether the number field currently violates validation rules. |
-| `isRequired` | `boolean` | `false` | Marks the number field as required for submission. |
-| `isDisabled` | `boolean` | `false` | Prevents user interaction with the input and stepper controls. |
-| `isReadOnly` | `boolean` | `false` | Allows viewing and copying the value while preventing changes. |
+| Prop            | Type                       | Default | Description                                                      |
+| :-------------- | :------------------------- | :------ | :--------------------------------------------------------------- |
+| `value`         | `number`                   | —       | The controlled numerical value.                                  |
+| `defaultValue`  | `number`                   | —       | The default numerical value for uncontrolled usage.              |
+| `onChange`      | `(value: number) => void`  | —       | Callback invoked with the parsed numeric value upon change.      |
+| `minValue`      | `number`                   | —       | The minimum permissible value.                                   |
+| `maxValue`      | `number`                   | —       | The maximum permissible value.                                   |
+| `step`          | `number`                   | `1`     | The amount to increment or decrement per step.                   |
+| `formatOptions` | `Intl.NumberFormatOptions` | —       | Formatting options for currency, percentage, decimals, or units. |
+| `size`          | `'sm' \| 'md' \| 'lg'`     | `'md'`  | Height and control sizing of the input and buttons.              |
+| `label`         | `ReactNode`                | —       | Accessible field label.                                          |
+| `description`   | `ReactNode`                | —       | Explanatory helper text beneath or above the control.            |
+| `errorMessage`  | `ReactNode`                | —       | Error text rendered when in an invalid state.                    |
+| `isInvalid`     | `boolean`                  | `false` | Whether the number field currently violates validation rules.    |
+| `isRequired`    | `boolean`                  | `false` | Marks the number field as required for submission.               |
+| `isDisabled`    | `boolean`                  | `false` | Prevents user interaction with the input and stepper controls.   |
+| `isReadOnly`    | `boolean`                  | `false` | Allows viewing and copying the value while preventing changes.   |
 
 ---
 
@@ -225,23 +222,24 @@ NumberField implements the **WAI-ARIA `spinbutton`** role pattern:
 - **Home & End**: Pressing <kbd>Home</kbd> immediately jumps to `minValue` (if defined); pressing <kbd>End</kbd> jumps to `maxValue` (if defined).
 - **Accessible Stepper Buttons**: Decrement and increment buttons feature clear localized labels (`aria-label="Decrement"`, `aria-label="Increment"`) and are marked `tabIndex={-1}` so keyboard users navigate smoothly through form fields without extra tab stops.
 - **Screen Reader Announcements**: The component sets `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, and `aria-valuetext` (reflecting internationalized currency and percentage strings) so screen readers accurately speak the formatted value.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>↑</kbd> / <kbd>↓</kbd> | Increments or decrements the numeric value by `step`. |
-| <kbd>Page Up</kbd> / <kbd>Page Down</kbd> | Increments or decrements value by larger page step. |
-| <kbd>Home</kbd> / <kbd>End</kbd> | Jumps directly to minimum or maximum permitted value. |
-| <kbd>Tab</kbd> | Moves focus into or out of the number input control. |
+| Key                                       | Action                                                |
+| :---------------------------------------- | :---------------------------------------------------- |
+| <kbd>↑</kbd> / <kbd>↓</kbd>               | Increments or decrements the numeric value by `step`. |
+| <kbd>Page Up</kbd> / <kbd>Page Down</kbd> | Increments or decrements value by larger page step.   |
+| <kbd>Home</kbd> / <kbd>End</kbd>          | Jumps directly to minimum or maximum permitted value. |
+| <kbd>Tab</kbd>                            | Moves focus into or out of the number input control.  |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Stepper, Input | Present when hovered by pointer. |
-| `[data-focused]` | Stepper, Input | Active when receiving focus. |
+| Attribute         | Target         | Description                       |
+| :---------------- | :------------- | :-------------------------------- |
+| `[data-hovered]`  | Stepper, Input | Present when hovered by pointer.  |
+| `[data-focused]`  | Stepper, Input | Active when receiving focus.      |
 | `[data-disabled]` | Stepper, Input | Set when interaction is disabled. |

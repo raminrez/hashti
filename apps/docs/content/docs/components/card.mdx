@@ -7,16 +7,18 @@ description: Container component grouping related content, actions, and media.
 
 Cards are versatile structural containers used to group related information, media, and interactive actions. In Hashti, cards draw inspiration from the delineated chambers and courtyards of Persian architectural complexes, presenting distinct visual boundaries, multiple depth elevations, structured semantic sub-components (`CardHeader`, `CardBody`, `CardFooter`), and accessible pressable behaviors.
 
-<ComponentPreview title="Card" description="Elevated surface containers with standard 16px geometry.">
+<ComponentPreview
+  title="Card"
+  description="Elevated surface containers with standard 16px geometry."
+>
   <CardLiveDemo />
 </ComponentPreview>
-
 
 ---
 
 ## Architectural Composition
 
-In Persian spatial planning (*Chahar Taq* and *Koushk* pavilions), perimeter plinths elevate living areas above the ground level, establishing clear functional zones. Hashti's `Card` brings this structural clarity into user interfaces:
+In Persian spatial planning (_Chahar Taq_ and _Koushk_ pavilions), perimeter plinths elevate living areas above the ground level, establishing clear functional zones. Hashti's `Card` brings this structural clarity into user interfaces:
 
 ```
 ┌──────────────────────────────────────────────┐
@@ -69,14 +71,18 @@ export function StandardCardDemo() {
 
       <CardBody>
         <p className="text-sm text-neutral-600 dark:text-neutral-300">
-          Cluster deployed across 3 availability zones in Frankfurt (eu-central-1).
-          Current throughput is 42,000 req/sec with average latency of 4.2ms.
+          Cluster deployed across 3 availability zones in Frankfurt (eu-central-1). Current
+          throughput is 42,000 req/sec with average latency of 4.2ms.
         </p>
       </CardBody>
 
       <CardFooter className="flex justify-end gap-2">
-        <Button variant="ghost" size="sm">View Metrics</Button>
-        <Button variant="primary" size="sm">Configure Route</Button>
+        <Button variant="ghost" size="sm">
+          View Metrics
+        </Button>
+        <Button variant="primary" size="sm">
+          Configure Route
+        </Button>
       </CardFooter>
     </Card>
   );
@@ -182,36 +188,36 @@ export function PressableCardDemo() {
 
 ### Card Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `elevation` | `'flat' \| 'raised' \| 'overlay'` | `'flat'` | Shadow elevation and depth treatment. |
-| `isPressable` | `boolean` | `false` | When true, renders with interactive button semantics, hover states, and keyboard triggering. |
-| `onPress` | `() => void` | — | Callback invoked when an interactive card is clicked or triggered via keyboard. |
-| `children` | `ReactNode` | — | Card content (typically `CardHeader`, `CardBody`, and `CardFooter`). |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop          | Type                              | Default  | Description                                                                                  |
+| :------------ | :-------------------------------- | :------- | :------------------------------------------------------------------------------------------- |
+| `elevation`   | `'flat' \| 'raised' \| 'overlay'` | `'flat'` | Shadow elevation and depth treatment.                                                        |
+| `isPressable` | `boolean`                         | `false`  | When true, renders with interactive button semantics, hover states, and keyboard triggering. |
+| `onPress`     | `() => void`                      | —        | Callback invoked when an interactive card is clicked or triggered via keyboard.              |
+| `children`    | `ReactNode`                       | —        | Card content (typically `CardHeader`, `CardBody`, and `CardFooter`).                         |
+| `className`   | `string`                          | —        | Additional CSS class names.                                                                  |
 
 ### CardHeader Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `title` | `ReactNode` | — | Title text or node. Strings are automatically wrapped in an `<h3 className="hashti-card-title">`. |
-| `description` | `ReactNode` | — | Subtitle or description text, wrapped in `<p className="hashti-card-description">`. |
-| `action` | `ReactNode` | — | Trailing element (such as a `<Button>`, `<Badge>`, or menu icon). |
-| `children` | `ReactNode` | — | Custom children when custom header layout is needed. |
+| Prop          | Type        | Default | Description                                                                                       |
+| :------------ | :---------- | :------ | :------------------------------------------------------------------------------------------------ |
+| `title`       | `ReactNode` | —       | Title text or node. Strings are automatically wrapped in an `<h3 className="hashti-card-title">`. |
+| `description` | `ReactNode` | —       | Subtitle or description text, wrapped in `<p className="hashti-card-description">`.               |
+| `action`      | `ReactNode` | —       | Trailing element (such as a `<Button>`, `<Badge>`, or menu icon).                                 |
+| `children`    | `ReactNode` | —       | Custom children when custom header layout is needed.                                              |
 
 ### CardBody Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `children` | `ReactNode` | — | Primary body content of the card. |
-| `className` | `string` | — | Additional CSS classes for internal padding and layout. |
+| Prop        | Type        | Default | Description                                             |
+| :---------- | :---------- | :------ | :------------------------------------------------------ |
+| `children`  | `ReactNode` | —       | Primary body content of the card.                       |
+| `className` | `string`    | —       | Additional CSS classes for internal padding and layout. |
 
 ### CardFooter Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `children` | `ReactNode` | — | Footer actions, meta labels, or pagination controls. |
-| `className` | `string` | — | Additional CSS classes for alignment and spacing. |
+| Prop        | Type        | Default | Description                                          |
+| :---------- | :---------- | :------ | :--------------------------------------------------- |
+| `children`  | `ReactNode` | —       | Footer actions, meta labels, or pagination controls. |
+| `className` | `string`    | —       | Additional CSS classes for alignment and spacing.    |
 
 ---
 
@@ -223,12 +229,13 @@ export function PressableCardDemo() {
   - Responds to both <kbd>Enter</kbd> and <kbd>Space</kbd> keys, invoking `onPress()`.
   - Focus rings appear via `:focus-visible` without triggering on mouse clicks.
 - **Nested Controls Warning**: Avoid placing interactive nested buttons inside a pressable card without stopping event propagation, as nested buttons inside a `role="button"` violate accessibility guidelines. For cards containing nested buttons, use a non-pressable card and place discrete buttons in `CardFooter` or `CardHeader`.
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-interactive]` | Card | Present when card has an associated press or link action. |
-| `[data-hovered]` | Card | Present on pointer hover when interactive. |
-| `[data-focused]` | Card | Present on keyboard focus when interactive. |
+| Attribute            | Target | Description                                               |
+| :------------------- | :----- | :-------------------------------------------------------- |
+| `[data-interactive]` | Card   | Present when card has an associated press or link action. |
+| `[data-hovered]`     | Card   | Present on pointer hover when interactive.                |
+| `[data-focused]`     | Card   | Present on keyboard focus when interactive.               |

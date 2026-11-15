@@ -1,9 +1,29 @@
 {
   "name": "@hashti/react",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "description": "Hashti modern React components, built on React Aria Components.",
   "type": "module",
   "license": "Apache-2.0",
+  "author": "Ramin Rezaei <raminxrez@gmail.com>",
+  "homepage": "https://hashti.raminrez.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raminrez/hashti.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/raminrez/hashti/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "react-aria-components",
+    "design-system",
+    "components",
+    "hashti"
+  ],
   "files": [
     "dist",
     "README.md",
@@ -22,16 +42,16 @@
     "./dist/*": "./dist/*"
   },
   "peerDependencies": {
-    "@hashti/tokens": "0.1.0",
+    "@hashti/tokens": "workspace:*",
     "react": ">=19.0.0 <20",
     "react-dom": ">=19.0.0 <20",
     "react-aria-components": ">=1.22.0 <2"
   },
   "dependencies": {
+    "@hashti/agent": "workspace:*",
     "@internationalized/date": "catalog:"
   },
   "devDependencies": {
-    "@hashti/tokens": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-aria-components": "catalog:",

@@ -32,12 +32,17 @@ export const Playground: Story = {
         />
         <CardBody>
           <p style={{ margin: 0 }}>
-            Every component adheres to rigorous accessibility standards with high-contrast forced colors and full internationalization.
+            Every component adheres to rigorous accessibility standards with high-contrast forced
+            colors and full internationalization.
           </p>
         </CardBody>
         <CardFooter style={{ display: "flex", justifyContent: "flex-end", gap: "0.5rem" }}>
-          <Button variant="ghost" size="sm">Dismiss</Button>
-          <Button variant="primary" size="sm">Review Details</Button>
+          <Button variant="ghost" size="sm">
+            Dismiss
+          </Button>
+          <Button variant="primary" size="sm">
+            Review Details
+          </Button>
         </CardFooter>
       </Card>
     </div>
@@ -123,7 +128,9 @@ export const RTL: Story = {
           </p>
         </CardBody>
         <CardFooter style={{ display: "flex", justifyContent: "flex-end", gap: "0.5rem" }}>
-          <Button variant="primary" size="sm">تایید</Button>
+          <Button variant="primary" size="sm">
+            تایید
+          </Button>
         </CardFooter>
       </Card>
     </div>

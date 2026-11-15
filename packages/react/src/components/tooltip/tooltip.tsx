@@ -22,7 +22,7 @@ export function Tooltip({ children, className, ...props }: TooltipProps) {
       {...props}
       {...theme}
       lang={props.lang ?? theme.lang}
-      className={classes("hashti-tooltip hashti-tooltip", classes(appearanceClassName ?? "", className))}
+      className={classes("hashti-tooltip", classes(appearanceClassName ?? "", className))}
     >
       {(state) => (
         <>

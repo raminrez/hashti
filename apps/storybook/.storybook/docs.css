@@ -1,0 +1,61 @@
+/* Storybook's Source block paints itself near-black in light docs (addon-docs'
+   StyledSource hardcodes rgba(0, 0, 0, 0.85)) and the highlighter always ships
+   the dark Prism palette, so an expanded snippet reads as a terminal slab with
+   invisible punctuation. Its wrappers carry generated class names only, hence
+   the shape-based selectors. Repaint both as one docs surface. */
+.sbdocs div:has(> div > div > pre.prismjs),
+.sbdocs div:has(> div > div > div > pre.prismjs) {
+  background: var(--hashti-layer-02, #f4f4f4);
+  color: var(--hashti-text-primary, #25272c);
+}
+
+.sbdocs div:has(> div > div > div > pre.prismjs) {
+  border: 1px solid var(--hashti-border-subtle, #dde1e8);
+  border-radius: var(--hashti-control-radius, 0.625rem);
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.sbdocs pre.prismjs {
+  background: transparent;
+  color: var(--hashti-text-primary, #25272c);
+  font-family: var(--hashti-font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  padding: 1rem 1.25rem;
+  border: 0;
+}
+
+.sbdocs pre.prismjs code {
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* The highlighter's own palette is the dark one; these class-based colours win
+   on specificity, so the snippet stays on our tokens in either docs theme. */
+.sbdocs pre.prismjs .token {
+  color: var(--hashti-text-primary, #25272c);
+}
+
+.sbdocs pre.prismjs :is(.token.comment, .token.punctuation, .token.operator) {
+  color: var(--hashti-text-secondary, #606674);
+}
+
+.sbdocs pre.prismjs :is(.token.tag, .token.attr-name, .token.keyword) {
+  color: #5b3fc4;
+}
+
+.sbdocs pre.prismjs :is(.token.string, .token.attr-value) {
+  color: #24a148;
+}
+
+.sbdocs pre.prismjs :is(.token.number) {
+  color: #aa2735;
+}
+
+.sbdocs pre.prismjs :is(.token.function, .token.class-name, .token.property) {
+  color: #0043ce;
+}

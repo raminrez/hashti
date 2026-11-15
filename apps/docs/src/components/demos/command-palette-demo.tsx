@@ -32,7 +32,10 @@ export function CommandPaletteLiveDemo() {
 
       {lastSelected && (
         <span className="text-xs text-neutral-500 font-mono">
-          Executed: <span className="font-semibold text-neutral-800 dark:text-neutral-200">{lastSelected}</span>
+          Executed:{" "}
+          <span className="font-semibold text-neutral-800 dark:text-neutral-200">
+            {lastSelected}
+          </span>
         </span>
       )}
 

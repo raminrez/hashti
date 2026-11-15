@@ -38,7 +38,14 @@ function PlaygroundExample() {
       <div className="content-tile-grid">
         {/* Base Tile */}
         <Tile>
-          <span style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "var(--hashti-text-secondary)", letterSpacing: "0.05em" }}>
+          <span
+            style={{
+              fontSize: "0.75rem",
+              textTransform: "uppercase",
+              color: "var(--hashti-text-secondary)",
+              letterSpacing: "0.05em",
+            }}
+          >
             Base Tile
           </span>
           <h4 style={{ margin: "0.5rem 0 0.25rem", color: "var(--hashti-text-primary)" }}>
@@ -51,7 +58,14 @@ function PlaygroundExample() {
 
         {/* Clickable Tile */}
         <ClickableTile href="#metrics">
-          <span style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "var(--hashti-interactive)", letterSpacing: "0.05em" }}>
+          <span
+            style={{
+              fontSize: "0.75rem",
+              textTransform: "uppercase",
+              color: "var(--hashti-interactive)",
+              letterSpacing: "0.05em",
+            }}
+          >
             Clickable Tile →
           </span>
           <h4 style={{ margin: "0.5rem 0 0.25rem", color: "var(--hashti-text-primary)" }}>
@@ -70,7 +84,14 @@ function PlaygroundExample() {
           onChange={setSelected}
           title="Enable SSD Persistent Storage"
         >
-          <span style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "var(--hashti-text-secondary)", letterSpacing: "0.05em" }}>
+          <span
+            style={{
+              fontSize: "0.75rem",
+              textTransform: "uppercase",
+              color: "var(--hashti-text-secondary)",
+              letterSpacing: "0.05em",
+            }}
+          >
             Selectable Choice
           </span>
           <h4 style={{ margin: "0.5rem 0 0.25rem", color: "var(--hashti-text-primary)" }}>
@@ -119,19 +140,38 @@ function ExpandableExample() {
           onToggle={setIsExpanded}
           tileAboveTheFoldContent={
             <div>
-              <span style={{ fontSize: "0.75rem", color: "var(--hashti-text-secondary)", textTransform: "uppercase" }}>
+              <span
+                style={{
+                  fontSize: "0.75rem",
+                  color: "var(--hashti-text-secondary)",
+                  textTransform: "uppercase",
+                }}
+              >
                 Audit Record #9482
               </span>
               <h4 style={{ margin: "0.25rem 0 0", color: "var(--hashti-text-primary)" }}>
                 Deployment Pipeline Executed
               </h4>
-              <p style={{ margin: "0.25rem 0 0", fontSize: "0.875rem", color: "var(--hashti-text-secondary)" }}>
+              <p
+                style={{
+                  margin: "0.25rem 0 0",
+                  fontSize: "0.875rem",
+                  color: "var(--hashti-text-secondary)",
+                }}
+              >
                 Triggered by commit a4f89d1 on branch main.
               </p>
             </div>
           }
           tileBelowTheFoldContent={
-            <div style={{ paddingTop: "0.75rem", borderTop: "1px dashed var(--hashti-border-subtle)", fontSize: "0.875rem", color: "var(--hashti-text-secondary)" }}>
+            <div
+              style={{
+                paddingTop: "0.75rem",
+                borderTop: "1px dashed var(--hashti-border-subtle)",
+                fontSize: "0.875rem",
+                color: "var(--hashti-text-secondary)",
+              }}
+            >
               <p style={{ margin: "0 0 0.5rem" }}>
                 <strong>Target Cluster:</strong> edge-prod-us-east-1
               </p>

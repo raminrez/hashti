@@ -9,7 +9,10 @@ Tabs organize related content across multiple layered panel views, allowing user
 
 Built on React Aria Components, Hashti's Tabs adhere strictly to the WAI-ARIA Tabs design pattern, providing automatic roving keyboard focus, high-contrast visual focus rings, smooth indicator transitions, and support for both horizontal and vertical orientations.
 
-<ComponentPreview title="Live Interactive Tabs" description="Switch between architectural panels with keyboard arrow navigation.">
+<ComponentPreview
+  title="Live Interactive Tabs"
+  description="Switch between architectural panels with keyboard arrow navigation."
+>
   <TabsLiveDemo />
 </ComponentPreview>
 
@@ -77,6 +80,7 @@ export function BasicTabsExample() {
 ### Visual Variants: Line vs. Contained
 
 Hashti supports two primary styling variants via the `variant` prop:
+
 - `variant="line"` (default): Underlined tabs with an animated accent indicator.
 - `variant="contained"`: Solid boxed tabs that resemble card or folder tabs.
 
@@ -138,7 +142,9 @@ export function VerticalTabsExample() {
 
         <TabPanel id="api" className="p-4 bg-layer-1 border border-subtle rounded">
           <h4 className="font-medium mb-2">API Keys & Webhooks</h4>
-          <p className="text-sm text-subtle">Generate scoped access tokens for continuous integration.</p>
+          <p className="text-sm text-subtle">
+            Generate scoped access tokens for continuous integration.
+          </p>
         </TabPanel>
 
         <TabPanel id="sessions" className="p-4 bg-layer-1 border border-subtle rounded">
@@ -174,11 +180,7 @@ export function ControlledTabsExample() {
         </Button>
       </div>
 
-      <Tabs
-        selectedKey={selectedKey}
-        onSelectionChange={setSelectedKey}
-        disabledKeys={["step3"]}
-      >
+      <Tabs selectedKey={selectedKey} onSelectionChange={setSelectedKey} disabledKeys={["step3"]}>
         <TabList aria-label="Onboarding Wizard">
           <Tab id="step1">1. Account Setup</Tab>
           <Tab id="step2">2. Team Members</Tab>
@@ -206,24 +208,24 @@ export function ControlledTabsExample() {
 
 ### Tabs Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `variant` | `'line' \| 'contained'` | `'line'` | Visual styling variant. `'line'` displays underlined tabs; `'contained'` displays solid pill-like tabs. |
-| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Layout direction of the tab strip. |
-| `selectedKey` | `Key` | — | The currently selected tab key (for controlled usage). |
-| `defaultSelectedKey` | `Key` | — | Initial active tab key when uncontrolled. |
-| `onSelectionChange` | `(key: Key) => void` | — | Handler invoked whenever the active tab changes. |
-| `disabledKeys` | `Iterable<Key>` | — | Collection of keys for tabs that should be disabled. |
-| `keyboardActivation` | `'automatic' \| 'manual'` | `'automatic'` | Whether arrow keys activate tabs immediately (`automatic`) or only move focus until <kbd>Enter</kbd> or <kbd>Space</kbd> is pressed (`manual`). |
-| `className` | `string` | — | Additional CSS class names applied to the container. |
+| Prop                 | Type                         | Default        | Description                                                                                                                                     |
+| :------------------- | :--------------------------- | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `variant`            | `'line' \| 'contained'`      | `'line'`       | Visual styling variant. `'line'` displays underlined tabs; `'contained'` displays solid pill-like tabs.                                         |
+| `orientation`        | `'horizontal' \| 'vertical'` | `'horizontal'` | Layout direction of the tab strip.                                                                                                              |
+| `selectedKey`        | `Key`                        | —              | The currently selected tab key (for controlled usage).                                                                                          |
+| `defaultSelectedKey` | `Key`                        | —              | Initial active tab key when uncontrolled.                                                                                                       |
+| `onSelectionChange`  | `(key: Key) => void`         | —              | Handler invoked whenever the active tab changes.                                                                                                |
+| `disabledKeys`       | `Iterable<Key>`              | —              | Collection of keys for tabs that should be disabled.                                                                                            |
+| `keyboardActivation` | `'automatic' \| 'manual'`    | `'automatic'`  | Whether arrow keys activate tabs immediately (`automatic`) or only move focus until <kbd>Enter</kbd> or <kbd>Space</kbd> is pressed (`manual`). |
+| `className`          | `string`                     | —              | Additional CSS class names applied to the container.                                                                                            |
 
 ### TabList & Tab Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `aria-label` | `string` | — | Accessible label for the `<TabList>` describing the grouping to screen readers. |
-| `id` | `Key` | **Required** | Unique identifier for each `<Tab>` and corresponding `<TabPanel>`. |
-| `isDisabled` | `boolean` | `false` | Whether an individual `<Tab>` is disabled. |
+| Prop         | Type      | Default      | Description                                                                     |
+| :----------- | :-------- | :----------- | :------------------------------------------------------------------------------ |
+| `aria-label` | `string`  | —            | Accessible label for the `<TabList>` describing the grouping to screen readers. |
+| `id`         | `Key`     | **Required** | Unique identifier for each `<Tab>` and corresponding `<TabPanel>`.              |
+| `isDisabled` | `boolean` | `false`      | Whether an individual `<Tab>` is disabled.                                      |
 
 ---
 
@@ -237,24 +239,25 @@ export function ControlledTabsExample() {
   - Press <kbd>Tab</kbd> to move focus directly from the active tab into the contents of the active tab panel.
 - **Dynamic Linking**: React Aria Components automatically connects `aria-controls` on each tab to the corresponding tab panel's `id`, and sets `aria-labelledby` on the panel pointing back to the tab.
 - **RTL Adaptability**: Arrow keys automatically reverse direction in right-to-left (RTL) scripts, ensuring seamless bidirectional usability.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>→</kbd> / <kbd>←</kbd> | Moves focus horizontally between tab triggers. |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Moves focus vertically in vertical tab list. |
-| <kbd>Home</kbd> / <kbd>End</kbd> | Jumps focus to first or last tab in the list. |
-| <kbd>Space</kbd> / <kbd>Enter</kbd> | Activates focused tab if selection is manual. |
+| Key                                 | Action                                         |
+| :---------------------------------- | :--------------------------------------------- |
+| <kbd>→</kbd> / <kbd>←</kbd>         | Moves focus horizontally between tab triggers. |
+| <kbd>↓</kbd> / <kbd>↑</kbd>         | Moves focus vertically in vertical tab list.   |
+| <kbd>Home</kbd> / <kbd>End</kbd>    | Jumps focus to first or last tab in the list.  |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | Activates focused tab if selection is manual.  |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Tab | Applied on pointer hover. |
-| `[data-selected]` | Tab | Active on currently selected tab. |
-| `[data-focused]` | Tab | Present when tab trigger receives focus. |
-| `[data-disabled]` | Tab | Present when tab is disabled. |
+| Attribute         | Target | Description                              |
+| :---------------- | :----- | :--------------------------------------- |
+| `[data-hovered]`  | Tab    | Applied on pointer hover.                |
+| `[data-selected]` | Tab    | Active on currently selected tab.        |
+| `[data-focused]`  | Tab    | Present when tab trigger receives focus. |
+| `[data-disabled]` | Tab    | Present when tab is disabled.            |

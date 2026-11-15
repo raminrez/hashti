@@ -69,11 +69,13 @@ export function BasicMeterExample() {
 ### Thresholds & Semantic Tones
 
 The Meter automatically evaluates whether the current value is optimal or concerning based on HTML5 meter standard attributes:
+
 - `low`: Low boundary threshold.
 - `high`: High boundary threshold.
 - `optimum`: Ideal value point.
 
 Depending on whether lower values are better (e.g. CPU temperature, error rate) or higher values are better (e.g. battery level, test score), Hashti automatically applies semantic colors:
+
 - `success`: `--success` (Turquoise/Emerald)
 - `warning`: `--warning` (Isfahan Amber)
 - `error`: `--error` (Terracotta Red)
@@ -183,20 +185,20 @@ export function CircularMeterExample() {
 
 ### Meter (`Meter.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `number` | `0` | Current measured numerical value. |
-| `minValue` | `number` | `0` | Lower bound of the range. |
-| `maxValue` | `number` | `100` | Upper bound of the range. |
-| `low` | `number` | — | Threshold boundary below which value is considered low. |
-| `high` | `number` | — | Threshold boundary above which value is considered high. |
-| `optimum` | `number` | — | Ideal target value point used for tone evaluation. |
-| `tone` | `'auto' \| 'neutral' \| 'success' \| 'warning' \| 'error'` | `'auto'` | Force a specific semantic color or calculate automatically. |
-| `variant` | `'bar' \| 'circular'` | `'bar'` | Linear progress bar or circular radial dial gauge. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Track height or radial circumference. |
-| `label` | `ReactNode` | — | Accessible label announced to screen readers. |
-| `formatOptions` | `Intl.NumberFormatOptions` | — | Native number formatting options (e.g. `{ style: 'percent' }` or `{ style: 'unit', unit: 'gigabyte' }`). |
-| `segments` | `MeterSegment[]` | — | Multi-color partition segments array `{ value, color, label }`. |
+| Prop            | Type                                                       | Default  | Description                                                                                              |
+| :-------------- | :--------------------------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------- |
+| `value`         | `number`                                                   | `0`      | Current measured numerical value.                                                                        |
+| `minValue`      | `number`                                                   | `0`      | Lower bound of the range.                                                                                |
+| `maxValue`      | `number`                                                   | `100`    | Upper bound of the range.                                                                                |
+| `low`           | `number`                                                   | —        | Threshold boundary below which value is considered low.                                                  |
+| `high`          | `number`                                                   | —        | Threshold boundary above which value is considered high.                                                 |
+| `optimum`       | `number`                                                   | —        | Ideal target value point used for tone evaluation.                                                       |
+| `tone`          | `'auto' \| 'neutral' \| 'success' \| 'warning' \| 'error'` | `'auto'` | Force a specific semantic color or calculate automatically.                                              |
+| `variant`       | `'bar' \| 'circular'`                                      | `'bar'`  | Linear progress bar or circular radial dial gauge.                                                       |
+| `size`          | `'sm' \| 'md' \| 'lg'`                                     | `'md'`   | Track height or radial circumference.                                                                    |
+| `label`         | `ReactNode`                                                | —        | Accessible label announced to screen readers.                                                            |
+| `formatOptions` | `Intl.NumberFormatOptions`                                 | —        | Native number formatting options (e.g. `{ style: 'percent' }` or `{ style: 'unit', unit: 'gigabyte' }`). |
+| `segments`      | `MeterSegment[]`                                           | —        | Multi-color partition segments array `{ value, color, label }`.                                          |
 
 ---
 
@@ -211,21 +213,22 @@ export function CircularMeterExample() {
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied State |
-| :--- | :--- | :--- |
-| Background Track | `--surface-raised` / `--divider` | Inactive meter trough |
-| Success Tone | `--success` (`#246343`) | Healthy range indicator |
-| Warning Tone | `--warning` (`#D97706`) | Caution boundary indicator |
-| Error Tone | `--error` (`#DC2626`) | Critical boundary indicator |
-| Neutral Tone | `--action` | Unspecified threshold fill |
-| Label Text | `--text` | Primary headline typography |
-| Subtitle Text | `--text-muted` | Descriptive helper text |
+| Token            | CSS Variable                     | Applied State               |
+| :--------------- | :------------------------------- | :-------------------------- |
+| Background Track | `--surface-raised` / `--divider` | Inactive meter trough       |
+| Success Tone     | `--success` (`#246343`)          | Healthy range indicator     |
+| Warning Tone     | `--warning` (`#D97706`)          | Caution boundary indicator  |
+| Error Tone       | `--error` (`#DC2626`)            | Critical boundary indicator |
+| Neutral Tone     | `--action`                       | Unspecified threshold fill  |
+| Label Text       | `--text`                         | Primary headline typography |
+| Subtitle Text    | `--text-muted`                   | Descriptive helper text     |
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-optimum]` | Meter | Set when value is within optimal range. |
-| `[data-sub-optimum]` | Meter | Set when value enters warning range. |
-| `[data-critical]` | Meter | Set when value enters critical threshold. |
+| Attribute            | Target | Description                               |
+| :------------------- | :----- | :---------------------------------------- |
+| `[data-optimum]`     | Meter  | Set when value is within optimal range.   |
+| `[data-sub-optimum]` | Meter  | Set when value enters warning range.      |
+| `[data-critical]`    | Meter  | Set when value enters critical threshold. |

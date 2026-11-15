@@ -1,10 +1,9 @@
 "use client";
 
-import type { Ref } from "react";
+import type { ReactNode, Ref } from "react";
 import {
   NumberField as RACNumberField,
   NumberFieldContext,
-  useSlottedContext,
   type NumberFieldProps as RACNumberFieldProps,
 } from "react-aria-components";
 import { Icon } from "../../icons";
@@ -13,7 +12,8 @@ import {
   FieldGroupInput,
   FieldButton,
   FieldControl,
-  useFieldPresentation,
+  useFieldAnatomy,
+  fieldClassName,
   fieldParts,
   type FieldContentProps,
   type FieldPresentationProps,
@@ -34,20 +34,18 @@ function NumberFieldRoot({
   isOptional,
   ...props
 }: NumberFieldRootProps) {
-  const context = useSlottedContext(NumberFieldContext, props.slot);
-  const presentation = useFieldPresentation(
+  const anatomy = useFieldAnatomy(
     { ...props, status, statusVariant, isOptional },
-    context?.["aria-describedby"],
-    "attached",
+    NumberFieldContext as Parameters<typeof useFieldAnatomy>[1],
   );
   return (
     <RACNumberField
       {...props}
-      {...presentation.props}
+      {...anatomy.props}
       data-size={size}
-      className={classes("hashti-field hashti-number-field hashti-field hashti-number-field", className)}
+      className={classes(fieldClassName("number-field"), className)}
     >
-      {presentation.wrap(children, context?.children)}
+      {anatomy.wrap(children, anatomy.slotted?.children as ReactNode)}
     </RACNumberField>
   );
 }

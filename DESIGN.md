@@ -289,6 +289,16 @@ popover entrance, and modal entrance. Preserve their reduced-motion treatment.
 Motion must explain a state or relationship; it must not delay the task. Exact
 inherited durations and easing are recorded in the sidecar.
 
+Frame times motion on a six-step ladder: 130ms for hover, colour, and release
+feedback, 175ms for popover and tooltip entrance, 230ms for panel and disclosure
+changes, 310ms for modal and backdrop entrance, with 410ms and 730ms reserved for
+large surfaces. Entrances use an expo-style ease-out (`0.16, 1, 0.3, 1`); exits are
+shorter and accelerate. Pressable controls scale by 0.96–0.98 while pressed and
+spring back over the release duration. Fields, accordion rows, and disclosure rows
+answer a press with ink rather than travel. An overlay grows from the edge that
+touches its trigger, never from center. A reader who asks for reduced motion gets no
+travel, scale, or entrance animation, and every state change lands instantly.
+
 ## Shapes
 
 Controls have gently curved corners; grouped surfaces are a little softer;
@@ -345,6 +355,7 @@ explicitly state that it is a draft, as detailed in the system specification.
 ### Feedback and notifications
 
 Alerts, inline notifications, and toasts provide three rich visual variants:
+
 - **Subtle (default):** Soft surface tint with a matched, full 1px border. Per the
   Impeccable craft floor, heavy colored left-accent borders (>1px) are avoided in favor of
   complete, balanced boundary definitions.

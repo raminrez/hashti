@@ -1,12 +1,6 @@
 import { expect, test, describe } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
-import {
-  Meter,
-  deriveMeterTone,
-  DropZone,
-  FileTrigger,
-  Button,
-} from "@hashti/react";
+import { Meter, deriveMeterTone, DropZone, FileTrigger, Button } from "@hashti/react";
 
 describe("Meter unit tests", () => {
   describe("deriveMeterTone logic", () => {
@@ -44,13 +38,7 @@ describe("Meter unit tests", () => {
   describe("Meter rendering & anatomy", () => {
     test("renders standard bar Meter with label, value, and track", () => {
       const html = renderToStaticMarkup(
-        <Meter
-          label="Disk Usage"
-          value={45}
-          low={60}
-          high={80}
-          optimum={20}
-        />
+        <Meter label="Disk Usage" value={45} low={60} high={80} optimum={20} />,
       );
       expect(html).toContain("hashti-meter");
       expect(html).toContain("hashti-meter-track");
@@ -73,7 +61,7 @@ describe("Meter unit tests", () => {
           minValue={0}
           maxValue={100}
           segments={segments}
-        />
+        />,
       );
       expect(html).toContain("hashti-meter-segment");
       expect(html).toContain("background-color:#0f62fe");
@@ -92,7 +80,7 @@ describe("Meter unit tests", () => {
           high={80}
           optimum={20}
           size="lg"
-        />
+        />,
       );
       expect(html).toContain("hashti-meter--circular");
       expect(html).toContain("hashti-meter-circle-container");
@@ -112,7 +100,7 @@ describe("Meter unit tests", () => {
             <Meter.Fill />
           </Meter.Track>
           <Meter.HelperText>Approaching limit</Meter.HelperText>
-        </Meter.Root>
+        </Meter.Root>,
       );
       expect(html).toContain("hashti-meter-label-text");
       expect(html).toContain("Compound Meter");
@@ -130,7 +118,7 @@ describe("DropZone & FileTrigger unit tests", () => {
     const html = renderToStaticMarkup(
       <DropZone aria-label="Drop area">
         <span>Drop files here</span>
-      </DropZone>
+      </DropZone>,
     );
     expect(html).toContain("hashti-dropzone");
     expect(html).toContain("hashti-dropzone--dashed");
@@ -142,7 +130,7 @@ describe("DropZone & FileTrigger unit tests", () => {
     const solidHtml = renderToStaticMarkup(
       <DropZone variant="solid" aria-label="Solid drop area">
         <span>Drop files</span>
-      </DropZone>
+      </DropZone>,
     );
     expect(solidHtml).toContain("hashti-dropzone--solid");
     expect(solidHtml).toContain('data-variant="solid"');
@@ -150,7 +138,7 @@ describe("DropZone & FileTrigger unit tests", () => {
     const cardHtml = renderToStaticMarkup(
       <DropZone variant="card" aria-label="Card drop area">
         <span>Drop files</span>
-      </DropZone>
+      </DropZone>,
     );
     expect(cardHtml).toContain("hashti-dropzone--card");
     expect(cardHtml).toContain('data-variant="card"');
@@ -165,7 +153,7 @@ describe("DropZone & FileTrigger unit tests", () => {
             <Button variant="secondary">Browse files</Button>
           </FileTrigger>
         </DropZone.Feedback>
-      </DropZone>
+      </DropZone>,
     );
     expect(html).toContain("hashti-dropzone-feedback");
     expect(html).toContain("Browse files");
@@ -181,7 +169,7 @@ describe("DropZone & FileTrigger unit tests", () => {
         <DropZone.FileTrigger>
           <Button>Upload</Button>
         </DropZone.FileTrigger>
-      </DropZone.Root>
+      </DropZone.Root>,
     );
     expect(html).toContain("hashti-dropzone--card");
     expect(html).toContain("hashti-dropzone-feedback");

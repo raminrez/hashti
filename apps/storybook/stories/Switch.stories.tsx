@@ -364,11 +364,21 @@ export const LongContentAndLocales: Story = {
 export const Colors: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", alignItems: "center" }}>
-      <Switch defaultSelected color="primary">Primary</Switch>
-      <Switch defaultSelected color="secondary">Secondary</Switch>
-      <Switch defaultSelected color="success">Success</Switch>
-      <Switch defaultSelected color="warning">Warning</Switch>
-      <Switch defaultSelected color="danger">Danger</Switch>
+      <Switch defaultSelected color="primary">
+        Primary
+      </Switch>
+      <Switch defaultSelected color="secondary">
+        Secondary
+      </Switch>
+      <Switch defaultSelected color="success">
+        Success
+      </Switch>
+      <Switch defaultSelected color="warning">
+        Warning
+      </Switch>
+      <Switch defaultSelected color="danger">
+        Danger
+      </Switch>
     </div>
   ),
   play: async ({ canvasElement }) => {

@@ -1,71 +1,49 @@
-/* Hashti Modern Aesthetic - Modal */
+/* Hashti Modern Aesthetic - Modal
+   Owner of the modal backdrop. DESIGN fixes the scrim at rgb(18 22 32 / 50%) (--hashti-overlay)
+   with no blur; `blur` adds depth, `none` is for surfaces that carry their own scrim. */
 @layer hashti.components {
-  .hashti-modal-overlay,
   .hashti-modal-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(8px);
-    transition: opacity 200ms ease;
+    background-color: var(--hashti-overlay);
   }
 
-  .hashti-modal-overlay[data-entering],
-  .hashti-modal-overlay[data-entering] {
-    opacity: 0;
+  /* Prefixed first: the bundler collapses the pair onto the last declaration, and the
+     standard property is the one Chrome reports from getComputedStyle. */
+  .hashti-modal-overlay[data-backdrop="blur"] {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
 
-  .hashti-modal-overlay[data-exiting],
-  .hashti-modal-overlay[data-exiting] {
-    opacity: 0;
+  .hashti-modal-overlay[data-backdrop="none"] {
+    background-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
-  .hashti-modal,
   .hashti-modal {
     position: relative;
     max-width: 90vw;
     width: 100%;
     border-radius: var(--hashti-surface-radius, 16px);
     border: 1px solid var(--hashti-border-subtle, #e0e0e0);
-    background-color: var(--hashti-layer, #ffffff);
+    background-color: var(--hashti-layer);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     outline: none;
     overflow: hidden;
-    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease;
   }
 
-  .hashti-modal[data-size="xs"],
   .hashti-modal[data-size="xs"] {
     max-width: 320px;
   }
 
-  .hashti-modal[data-size="sm"],
   .hashti-modal[data-size="sm"] {
     max-width: 440px;
   }
 
-  .hashti-modal[data-size="md"],
   .hashti-modal[data-size="md"] {
     max-width: 560px;
   }
 
-  .hashti-modal[data-size="lg"],
   .hashti-modal[data-size="lg"] {
     max-width: 720px;
-  }
-
-  .hashti-modal[data-entering],
-  .hashti-modal[data-entering] {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-
-  .hashti-modal[data-exiting],
-  .hashti-modal[data-exiting] {
-    transform: scale(0.95);
-    opacity: 0;
   }
 }

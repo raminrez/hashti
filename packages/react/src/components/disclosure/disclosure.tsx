@@ -1,18 +1,11 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  type ComponentProps,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { createContext, useContext, type ComponentProps, type ReactNode, type Ref } from "react";
 import {
   Disclosure as RACDisclosure,
   DisclosureGroup as RACDisclosureGroup,
   DisclosurePanel as RACDisclosurePanel,
   Heading,
-  composeRenderProps,
   type DisclosureProps as RACDisclosureProps,
   type DisclosureGroupProps as RACDisclosureGroupProps,
   type DisclosurePanelProps as RACDisclosurePanelProps,
@@ -38,13 +31,7 @@ export interface DisclosureProps extends Omit<RACDisclosureProps, "className"> {
   ref?: Ref<HTMLDivElement>;
 }
 
-export function DisclosureRoot({
-  size,
-  variant,
-  className,
-  children,
-  ...props
-}: DisclosureProps) {
+export function DisclosureRoot({ size, variant, className, children, ...props }: DisclosureProps) {
   const groupContext = useContext(DisclosureContext);
   const resolvedSize = size ?? groupContext.size ?? "md";
   const resolvedVariant = variant ?? groupContext.variant ?? "default";
@@ -68,8 +55,7 @@ export function DisclosureRoot({
   );
 }
 
-export interface DisclosureTriggerProps
-  extends Omit<ComponentProps<typeof Button>, "slot"> {
+export interface DisclosureTriggerProps extends Omit<ComponentProps<typeof Button>, "slot"> {
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   ref?: Ref<HTMLButtonElement>;
 }
@@ -109,45 +95,31 @@ export interface DisclosureIndicatorProps extends ComponentProps<"span"> {
   ref?: Ref<HTMLSpanElement>;
 }
 
-export function DisclosureIndicator({
-  children,
-  className,
-  ...props
-}: DisclosureIndicatorProps) {
+export function DisclosureIndicator({ children, className, ...props }: DisclosureIndicatorProps) {
   return (
-    <span
-      aria-hidden="true"
-      {...props}
-      className={cx("hashti-disclosure-indicator", className)}
-    >
+    <span aria-hidden="true" {...props} className={cx("hashti-disclosure-indicator", className)}>
       {children ?? <Icon name="chevronRight" />}
     </span>
   );
 }
 
-export interface DisclosurePanelProps
-  extends Omit<RACDisclosurePanelProps, "className"> {
+export interface DisclosurePanelProps extends Omit<RACDisclosurePanelProps, "className"> {
   className?: RACDisclosurePanelProps["className"];
   ref?: Ref<HTMLDivElement>;
 }
 
-export function DisclosurePanel({
-  className,
-  children,
-  ...props
-}: DisclosurePanelProps) {
+export function DisclosurePanel({ className, children, ...props }: DisclosurePanelProps) {
   return (
     <RACDisclosurePanel
       {...props}
-      className={classes("hashti-disclosure-panel", className)}
+      className={classes("react-aria-DisclosurePanel hashti-disclosure-panel", className)}
     >
       <div className="hashti-disclosure-panel-inner">{children}</div>
     </RACDisclosurePanel>
   );
 }
 
-export interface DisclosureGroupProps
-  extends Omit<RACDisclosureGroupProps, "className"> {
+export interface DisclosureGroupProps extends Omit<RACDisclosureGroupProps, "className"> {
   size?: ControlSize;
   variant?: "default" | "card" | "flush";
   className?: RACDisclosureGroupProps["className"];

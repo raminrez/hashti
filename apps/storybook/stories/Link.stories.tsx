@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, within } from "storybook/test";
 import { Button, Icon, Link, Theme, useTheme, type LinkProps } from "@hashti/react";
@@ -150,12 +149,10 @@ export const External: Story = {
 };
 
 function CustomLink(args: LinkProps) {
-  const ref = useRef<HTMLAnchorElement>(null);
   return (
     <div className="action-story-stack">
       <Link
         {...args}
-        ref={ref}
         className={({ isPressed }) =>
           `action-story-custom-link${isPressed ? " action-story-custom-link--pressed" : ""}`
         }
@@ -179,7 +176,11 @@ function CustomLink(args: LinkProps) {
           </>
         )}
       </Link>
-      <Button variant="ghost" onPress={() => ref.current?.focus()}>
+      {/* No JSX ref: Storybook's source serializer reads element.ref, which React 19 deprecates. */}
+      <Button
+        variant="ghost"
+        onPress={() => document.querySelector<HTMLAnchorElement>("[data-custom-render]")?.focus()}
+      >
         Focus guidelines link
       </Button>
       <Destination href={args.href} />

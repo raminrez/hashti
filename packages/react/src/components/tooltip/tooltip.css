@@ -1,16 +1,20 @@
 /* Hashti Modern Aesthetic - Tooltip */
 @layer hashti.components {
-  .hashti-tooltip,
   .hashti-tooltip {
     border-radius: 8px;
-    background-color: #161616;
-    color: #ffffff;
+    /* A portaled tooltip carries data-hashti-theme itself, so it is both the root and the limit
+       of the theme @scope: scoped theme rules never reach it. The inverse pair is declared here,
+       unscoped, from the tokens. */
+    background-color: var(--hashti-background-inverse, #272a32);
+    color: var(--hashti-text-inverse, #ffffff);
     font-size: 0.75rem;
     font-weight: 500;
     padding: 6px 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     outline: none;
-    transition: opacity 150ms ease, transform 150ms ease;
+    transition:
+      opacity 150ms ease,
+      transform 150ms ease;
   }
 
   .hashti-tooltip[data-entering],

@@ -23,24 +23,9 @@ export const Playground: Story = {
   render: () => (
     <div className="feedback-story-stack">
       <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-        <ProgressCircle
-          aria-label="Upload progress (small)"
-          size="sm"
-          value={65}
-          showValueLabel
-        />
-        <ProgressCircle
-          aria-label="Task progress (medium)"
-          size="md"
-          value={75}
-          showValueLabel
-        />
-        <ProgressCircle
-          aria-label="Storage quota (large)"
-          size="lg"
-          value={90}
-          showValueLabel
-        />
+        <ProgressCircle aria-label="Upload progress (small)" size="sm" value={65} showValueLabel />
+        <ProgressCircle aria-label="Task progress (medium)" size="md" value={75} showValueLabel />
+        <ProgressCircle aria-label="Storage quota (large)" size="lg" value={90} showValueLabel />
       </div>
     </div>
   ),
@@ -58,29 +43,10 @@ export const StatusesAndIndeterminate: Story = {
   render: () => (
     <div className="feedback-story-stack">
       <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-        <ProgressCircle
-          aria-label="Processing job"
-          isIndeterminate
-          size="md"
-        />
-        <ProgressCircle
-          aria-label="Completed job"
-          status="success"
-          value={100}
-          size="md"
-        />
-        <ProgressCircle
-          aria-label="Warning threshold"
-          status="warning"
-          value={85}
-          size="md"
-        />
-        <ProgressCircle
-          aria-label="Failed upload"
-          status="error"
-          value={45}
-          size="md"
-        />
+        <ProgressCircle aria-label="Processing job" isIndeterminate size="md" />
+        <ProgressCircle aria-label="Completed job" status="success" value={100} size="md" />
+        <ProgressCircle aria-label="Warning threshold" status="warning" value={85} size="md" />
+        <ProgressCircle aria-label="Failed upload" status="error" value={45} size="md" />
       </div>
     </div>
   ),
@@ -93,12 +59,7 @@ export const StatusesAndIndeterminate: Story = {
 export const RTL: Story = {
   render: () => (
     <div dir="rtl" className="feedback-story-stack">
-      <ProgressCircle
-        aria-label="پیشرفت بارگذاری"
-        value={60}
-        showValueLabel
-        size="md"
-      />
+      <ProgressCircle aria-label="پیشرفت بارگذاری" value={60} showValueLabel size="md" />
     </div>
   ),
   play: async ({ canvasElement }) => {

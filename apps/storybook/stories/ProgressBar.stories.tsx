@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
-import {
-  ProgressBar,
-  Meter,
-  Theme,
-  useTheme,
-} from "@hashti/react";
+import { ProgressBar, Meter, Theme, useTheme } from "@hashti/react";
 import "./feedback.css";
 
 const meta = {
@@ -116,7 +111,9 @@ function IndeterminateExample() {
       <div className="feedback-card">
         <div>
           <h4 className="feedback-card-title">Indeterminate Background Processing</h4>
-          <p className="feedback-card-description">Used when operation duration cannot be predetermined.</p>
+          <p className="feedback-card-description">
+            Used when operation duration cannot be predetermined.
+          </p>
         </div>
         <ProgressBar
           isIndeterminate
@@ -133,7 +130,9 @@ export const Indeterminate: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText("Provisioning virtual cluster instances")).toBeInTheDocument();
-    const progress = canvas.getByRole("progressbar", { name: /Provisioning virtual cluster instances/ });
+    const progress = canvas.getByRole("progressbar", {
+      name: /Provisioning virtual cluster instances/,
+    });
     expect(progress).not.toHaveAttribute("aria-valuenow");
   },
 };
@@ -188,7 +187,9 @@ function LongContentAndLocalesExample() {
         <div dir="rtl" className="feedback-card">
           <div>
             <h4 className="feedback-card-title">نمایش پیشرفت و ظرفیت منابع (فارسی)</h4>
-            <p className="feedback-card-description">نوار پیشرفت و اندازه‌گیری در محیط راست‌به‌چپ</p>
+            <p className="feedback-card-description">
+              نوار پیشرفت و اندازه‌گیری در محیط راست‌به‌چپ
+            </p>
           </div>
 
           <ProgressBar

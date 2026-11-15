@@ -18,7 +18,7 @@ export function Stack({
     <div
       {...props}
       data-orientation={orientation}
-      className={["hashti-stack hashti-stack", className].filter(Boolean).join(" ")}
+      className={["hashti-stack", className].filter(Boolean).join(" ")}
       style={
         {
           "--stack-gap": `var(--hashti-spacing-${String(gap).padStart(2, "0")}, var(--hashti-spacing-${String(gap).padStart(2, "0")}))`,
@@ -29,7 +29,7 @@ export function Stack({
   );
 }
 export function Grid({ className, ...props }: ComponentPropsWithRef<"div">) {
-  return <div {...props} className={["hashti-grid hashti-grid", className].filter(Boolean).join(" ")} />;
+  return <div {...props} className={["hashti-grid", className].filter(Boolean).join(" ")} />;
 }
 export interface ColumnLayoutProps extends ComponentPropsWithRef<"div"> {
   sm?: 1 | 2 | 3 | 4;
@@ -47,7 +47,7 @@ export function GridColumn({
   return (
     <div
       {...props}
-      className={["hashti-grid-column hashti-grid-column", className].filter(Boolean).join(" ")}
+      className={["hashti-grid-column", className].filter(Boolean).join(" ")}
       style={{ "--grid-sm": sm, "--grid-md": md, "--grid-lg": lg, ...style } as CSSProperties}
     />
   );
@@ -57,7 +57,7 @@ export interface HeaderProps extends ComponentPropsWithRef<"header"> {
   children: ReactNode;
 }
 export function Header({ className, ...props }: HeaderProps) {
-  return <header {...props} className={["hashti-header hashti-header", className].filter(Boolean).join(" ")} />;
+  return <header {...props} className={["hashti-header", className].filter(Boolean).join(" ")} />;
 }
 export function HeaderName({ className, ...props }: LinkProps) {
   return (
@@ -65,17 +65,17 @@ export function HeaderName({ className, ...props }: LinkProps) {
       {...props}
       className={
         typeof className === "function"
-          ? (state) => `hashti-header-name hashti-header-name ${className(state)}`
-          : `hashti-header-name hashti-header-name ${className ?? ""}`
+          ? (state) => `hashti-header-name ${className(state)}`
+          : `hashti-header-name ${className ?? ""}`
       }
     />
   );
 }
 export function HeaderNav({ className, ...props }: ComponentPropsWithRef<"nav">) {
-  return <nav {...props} className={["hashti-header-nav hashti-header-nav", className].filter(Boolean).join(" ")} />;
+  return <nav {...props} className={["hashti-header-nav", className].filter(Boolean).join(" ")} />;
 }
 export function SideNav({ className, ...props }: ComponentPropsWithRef<"nav">) {
-  return <nav {...props} className={["hashti-side-nav hashti-side-nav", className].filter(Boolean).join(" ")} />;
+  return <nav {...props} className={["hashti-side-nav", className].filter(Boolean).join(" ")} />;
 }
 
 export type ListProps =
@@ -85,10 +85,10 @@ export type ListProps =
 export function List(props: ListProps) {
   if (props.ordered) {
     const { ordered, className, ...rest } = props;
-    return <ol {...rest} className={["hashti-list hashti-list", className].filter(Boolean).join(" ")} />;
+    return <ol {...rest} className={["hashti-list", className].filter(Boolean).join(" ")} />;
   }
   const { ordered, className, ...rest } = props;
-  return <ul {...rest} className={["hashti-list hashti-list", className].filter(Boolean).join(" ")} />;
+  return <ul {...rest} className={["hashti-list", className].filter(Boolean).join(" ")} />;
 }
 
 export interface StructuredListProps extends ComponentPropsWithRef<"dl"> {
@@ -97,7 +97,7 @@ export interface StructuredListProps extends ComponentPropsWithRef<"dl"> {
 
 export function StructuredList({ className, ...props }: StructuredListProps) {
   return (
-    <dl {...props} className={["hashti-structured-list hashti-structured-list", className].filter(Boolean).join(" ")} />
+    <dl {...props} className={["hashti-structured-list", className].filter(Boolean).join(" ")} />
   );
 }
 
@@ -115,10 +115,7 @@ export function StructuredListRow({
   ...props
 }: StructuredListRowProps) {
   return (
-    <div
-      {...props}
-      className={["hashti-structured-list-row hashti-structured-list-row", className].filter(Boolean).join(" ")}
-    >
+    <div {...props} className={["hashti-structured-list-row", className].filter(Boolean).join(" ")}>
       {label && <dt>{label}</dt>}
       {value && <dd>{value}</dd>}
       {children}

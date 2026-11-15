@@ -1,0 +1,264 @@
+---
+title: FileUploader
+description: Drag-and-drop or browse file picker with client-side type and size limits, a selected-file list, and per-file removal.
+---
+
+# FileUploader
+
+**FileUploader** is a complete file-selection field: a labelled drop target, a keyboard-accessible "choose files" button, client-side validation of accepted types and maximum size, an error line, and a list of the currently selected files with remove buttons.
+
+It selects and validates files. It does not upload them — there is no request, no progress, and no retry. You own `File` handling; the component tells you what the user picked through `files` / `onFilesChange`.
+
+It is built on [`DropZone`](/docs/components/dropzone) plus React Aria's `FileTrigger`, so the drop target is a real button for keyboard and assistive-technology users, and the browse action opens the native file picker with the same `accept` filter.
+
+<ComponentPreview
+  title="FileUploader"
+  description="Single-file upload constrained to certificate formats."
+>
+  <FileUploaderLiveDemo />
+</ComponentPreview>
+
+---
+
+## Import
+
+```tsx
+import { FileUploader } from "@hashti/react";
+```
+
+---
+
+## Anatomy
+
+```tsx
+<FileUploader
+  label="Server certificate bundle"
+  description="Only PEM, CRT, or CER formats are supported."
+  acceptedFileTypes={[".crt", ".pem", ".cer"]}
+  files={files}
+  onFilesChange={setFiles}
+/>
+```
+
+```
+<div class="hashti-file-uploader">
+  <div class="hashti-file-label">Server certificate bundle</div>
+  <p class="hashti-description">Only PEM, CRT, or CER formats…</p>
+  <DropZone aria-labelledby="…-label" aria-describedby="…">
+    <FileTrigger>                       {/* opens the native picker */}
+      <Button>Drag files here or choose files</Button>
+    </FileTrigger>
+  </DropZone>
+  <p role="alert" class="hashti-error-message" />   {/* only when a file is rejected */}
+  <ul class="hashti-file-list">
+    <li><Icon /><span>file.crt</span><span>12.4 KB</span><Button aria-label="Remove file.crt" /></li>
+  </ul>
+</div>
+```
+
+---
+
+## Examples
+
+### Single File
+
+Without `allowsMultiple`, a new selection replaces the previous one. The component accepts only the first matching file from a multi-file drop.
+
+```tsx
+import { useState } from "react";
+import { FileUploader } from "@hashti/react";
+
+export function SingleFileExample() {
+  const [files, setFiles] = useState<File[]>([]);
+
+  return (
+    <FileUploader
+      label="Server certificate bundle"
+      description="Only PEM, CRT, or CER formats up to 5 MB are supported."
+      acceptedFileTypes={[".crt", ".pem", ".cer"]}
+      maxSize={5 * 1024 * 1024}
+      files={files}
+      onFilesChange={setFiles}
+    />
+  );
+}
+```
+
+### Multiple Files With Limits
+
+`allowsMultiple` appends each accepted batch to the existing list. `maxSize` is in bytes and is checked before the type filter.
+
+```tsx
+import { useState } from "react";
+import { FileUploader } from "@hashti/react";
+
+export function MultipleFilesExample() {
+  const [files, setFiles] = useState<File[]>([]);
+
+  return (
+    <FileUploader
+      label="Verification documents"
+      description="PDF, PNG, or JPG. Maximum 25 MB per file."
+      acceptedFileTypes={[".pdf", ".png", ".jpg", ".jpeg"]}
+      maxSize={25 * 1024 * 1024}
+      allowsMultiple
+      files={files}
+      onFilesChange={setFiles}
+    />
+  );
+}
+```
+
+### Rejected Files
+
+A rejected file never enters the list. Instead the reasons for every rejected file in the batch are joined into one `role="alert"` line under the drop target, and the message clears on the next selection.
+
+```tsx
+import { useState } from "react";
+import { FileUploader } from "@hashti/react";
+
+export function InvalidFileExample() {
+  const [files, setFiles] = useState<File[]>([]);
+
+  return (
+    <FileUploader
+      label="Signed audit report"
+      description="PDF only, maximum 2 MB."
+      acceptedFileTypes={[".pdf"]}
+      maxSize={2 * 1024 * 1024}
+      files={files}
+      onFilesChange={setFiles}
+    />
+  );
+}
+```
+
+Dropping a `.png` here produces `report.png is not an accepted file type.`; dropping a 4 MB PDF produces `report.pdf exceeds the size limit.`
+
+### MIME Patterns
+
+`acceptedFileTypes` accepts three forms, all matched case-insensitively: an extension (`.pdf`), a wildcard MIME (`image/*`), or an exact MIME (`application/pdf`).
+
+```tsx
+import { useState } from "react";
+import { FileUploader } from "@hashti/react";
+
+export function MimeExample() {
+  const [images, setImages] = useState<File[]>([]);
+
+  return (
+    <FileUploader
+      label="Screenshots"
+      description="Any image format."
+      acceptedFileTypes={["image/*"]}
+      allowsMultiple
+      files={images}
+      onFilesChange={setImages}
+    />
+  );
+}
+```
+
+### Disabled
+
+`isDisabled` disables the drop target and every remove button while keeping the existing file list readable.
+
+```tsx
+import { FileUploader } from "@hashti/react";
+
+export function DisabledExample() {
+  const locked = [new File(["{}"], "immutable-system-manifest.json", { type: "application/json" })];
+
+  return (
+    <FileUploader
+      label="System manifest"
+      description="Modifications are disabled by workspace release policy."
+      files={locked}
+      isDisabled
+    />
+  );
+}
+```
+
+### Uncontrolled
+
+Omit `files` and `onFilesChange` to let the component hold its own selection. Combine with a `key` to reset it.
+
+```tsx
+import { FileUploader } from "@hashti/react";
+
+export function UncontrolledExample() {
+  return <FileUploader label="Attachments" description="Pick whatever you need." allowsMultiple />;
+}
+```
+
+---
+
+## Props Reference
+
+| Prop                | Type                      | Default | Description                                                                       |
+| :------------------ | :------------------------ | :------ | :-------------------------------------------------------------------------------- |
+| `label`             | `ReactNode`               | —       | **Required.** Rendered as the drop target's accessible name (`aria-labelledby`).  |
+| `description`       | `ReactNode`               | —       | Helper text, also added to `aria-describedby`.                                    |
+| `acceptedFileTypes` | `string[]`                | —       | Extension (`.pdf`), wildcard MIME (`image/*`), or exact MIME (`application/pdf`). |
+| `allowsMultiple`    | `boolean`                 | `false` | Allow more than one file; accepted batches are appended to the list.              |
+| `maxSize`           | `number`                  | —       | Maximum bytes per file.                                                           |
+| `files`             | `readonly File[]`         | —       | Controlled selection. Omit to use the internal state.                             |
+| `onFilesChange`     | `(files: File[]) => void` | —       | Called after every accepted selection or removal.                                 |
+| `isDisabled`        | `boolean`                 | `false` | Disables the drop target and all remove buttons.                                  |
+| `className`         | `string`                  | —       | Extra class names on the root.                                                    |
+
+### What this component does not do
+
+- **No upload.** No request, progress, retry, or per-file status. `File` objects are handed to you as-is.
+- **No file-count limit.** Only type and per-file size are enforced; the Storybook copy that mentions “up to 10 files” describes example wording, not a prop.
+- **English-only validation messages.** `exceeds the size limit.` and `is not an accepted file type.` are hardcoded strings, one per rejected file, joined by spaces.
+- **Sizes always render in KB.** A 25 MB file shows as `25600 KB`; there is no MB threshold.
+- **No deduplication.** The same file dropped twice in multiple mode appears twice.
+- **No form submission.** Selected files are not part of a native `FormData`; send them yourself in your submit handler.
+- **No `name`, `isRequired`, or `isInvalid` props.** There is no required state and no way to force an invalid look; validation happens only through the built-in type/size checks.
+
+---
+
+## Accessibility
+
+- **Two focus stops.** The drop zone renders a visually hidden native button (labelled by the field label and description) as its accessible entry point, and the visible “Drag files here or choose files” `Button` is a second focusable control inside it. Both open the picker, so keyboard users tab through the field twice.
+- Pressing <kbd>Enter</kbd> or <kbd>Space</kbd> on either control opens the native file picker through `FileTrigger`, so selecting files never requires drag-and-drop.
+- Rejections are announced: the error paragraph carries `role="alert"`.
+- Every remove button has an accessible name derived from the file name (`Remove <filename>`).
+- Focus is visible on the drop zone via `[data-focus-visible]`, and the zone scales to 98% while pressed.
+- **Gap**: the file-size label is plain text in the list item and is not part of the remove button's accessible name, so a screen reader user hears the file name twice but never the size.
+
+---
+
+## Keyboard Interactions
+
+| Key                                 | Action                                                      |
+| :---------------------------------- | :---------------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves focus between the drop target and each remove button. |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | On the drop target, opens the file picker.                  |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | On a remove button, removes that file.                      |
+
+Dragging is pointer-only; there is no keyboard equivalent for dropping an existing file.
+
+---
+
+## WAI-ARIA & Data Attributes
+
+| Attribute              | Target        | Description                                       |
+| :--------------------- | :------------ | :------------------------------------------------ |
+| `role="button"`        | Hidden button | Visually hidden, labelled entry point.            |
+| `role="alert"`         | Error line    | Present only when at least one file was rejected. |
+| `[data-drop-target]`   | DropZone      | Present while a file is dragged over the zone.    |
+| `[data-disabled]`      | DropZone      | Present when `isDisabled` is set.                 |
+| `[data-focus-visible]` | DropZone      | Present on keyboard focus.                        |
+| `aria-labelledby`      | DropZone      | Points at the field label.                        |
+| `aria-describedby`     | DropZone      | Joins the description and the current error.      |
+
+---
+
+## Related
+
+- [DropZone](/docs/components/dropzone) — the underlying target, for custom drop surfaces.
+- [Form](/docs/components/form) — submission and validation around a set of fields.
+- [Button](/docs/components/button) — including `isPending` for the upload you build on top.

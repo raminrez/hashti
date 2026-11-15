@@ -13,13 +13,13 @@ Hashti’s chromatic system combines strict monochrome structural discipline wit
 
 The foundational identity of Hashti is built upon five iconic hues:
 
-| Color Name | Hex Code | RGB | Architectural Origin & Meaning | Semantic Token Binding |
-| :--- | :--- | :--- | :--- | :--- |
-| **Obsidian Black** | `#000000` | `rgb(0, 0, 0)` | Deep basalt stone and night sky. Establishes structural contrast, borders, and pure typographic weight. | `--hashti-text-primary`, `--hashti-border-strong` |
-| **Chalk White** | `#FFFFFF` | `rgb(255, 255, 255)` | Pure lime plaster (*gach-bori*) reflecting desert sun. Represents canvas tranquility and openness. | `--hashti-background`, `--hashti-surface` |
-| **Persian Turquoise** | `#0D9488` | `rgb(13, 148, 136)` | The luminous glazed tilework (*kashi-kari*) of the Shah Mosque in Isfahan. Symbolizes spiritual clarity, active focus, and positive progress. | `--hashti-interactive`, `--hashti-accent-turquoise` |
-| **Isfahan Amber** | `#D97706` | `rgb(217, 119, 6)` | Golden desert sunlight filtering through stained glass (*orosi*) windows. Represents warmth, caution, and pending activity. | `--hashti-warning`, `--hashti-accent-amber` |
-| **Terracotta Clay** | `#DC2626` | `rgb(220, 38, 38)` | Kiln-fired desert brick (*khesht*) and Persian crimson dyes. Denotes critical boundaries, errors, and urgent system alerts. | `--hashti-support-error`, `--hashti-accent-terracotta` |
+| Color Name            | Hex Code  | RGB                  | Architectural Origin & Meaning                                                                                                                | Semantic Token Binding                                 |
+| :-------------------- | :-------- | :------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------- |
+| **Obsidian Black**    | `#000000` | `rgb(0, 0, 0)`       | Deep basalt stone and night sky. Establishes structural contrast, borders, and pure typographic weight.                                       | `--hashti-text-primary`, `--hashti-border-strong`      |
+| **Chalk White**       | `#FFFFFF` | `rgb(255, 255, 255)` | Pure lime plaster (_gach-bori_) reflecting desert sun. Represents canvas tranquility and openness.                                            | `--hashti-background`, `--hashti-surface`              |
+| **Persian Turquoise** | `#0D9488` | `rgb(13, 148, 136)`  | The luminous glazed tilework (_kashi-kari_) of the Shah Mosque in Isfahan. Symbolizes spiritual clarity, active focus, and positive progress. | `--hashti-interactive`, `--hashti-accent-turquoise`    |
+| **Isfahan Amber**     | `#D97706` | `rgb(217, 119, 6)`   | Golden desert sunlight filtering through stained glass (_orosi_) windows. Represents warmth, caution, and pending activity.                   | `--hashti-warning`, `--hashti-accent-amber`            |
+| **Terracotta Clay**   | `#DC2626` | `rgb(220, 38, 38)`   | Kiln-fired desert brick (_khesht_) and Persian crimson dyes. Denotes critical boundaries, errors, and urgent system alerts.                   | `--hashti-support-error`, `--hashti-accent-terracotta` |
 
 ---
 
@@ -29,31 +29,31 @@ Rather than hardcoding hex values into application components, Hashti organizes 
 
 ### Surface & Background Tokens
 
-| Token Name | Light Theme Value | Dark Theme Value | Usage Purpose |
-| :--- | :--- | :--- | :--- |
-| `--hashti-background` | `#FFFFFF` | `#18191D` | Global page canvas behind all views. |
-| `--hashti-layer-01` | `#F5F6F8` | `#22242A` | Primary container surface (cards, sidebars, tables). |
-| `--hashti-layer-02` | `#EEF1F6` | `#2C2F38` | Secondary nested surface inside containers. |
-| `--hashti-layer-03` | `#E4E7ED` | `#353944` | Tertiary surface (elevated floating popovers). |
+| Token Name            | Light Theme Value | Dark Theme Value | Usage Purpose                                        |
+| :-------------------- | :---------------- | :--------------- | :--------------------------------------------------- |
+| `--hashti-background` | `#FFFFFF`         | `#18191D`        | Global page canvas behind all views.                 |
+| `--hashti-layer-01`   | `#F5F6F8`         | `#22242A`        | Primary container surface (cards, sidebars, tables). |
+| `--hashti-layer-02`   | `#EEF1F6`         | `#2C2F38`        | Secondary nested surface inside containers.          |
+| `--hashti-layer-03`   | `#E4E7ED`         | `#353944`        | Tertiary surface (elevated floating popovers).       |
 
 ### Typography & Border Tokens
 
-| Token Name | Light Theme Value | Dark Theme Value | Contrast Ratio |
-| :--- | :--- | :--- | :--- |
-| `--hashti-text-primary` | `#25272C` | `#F1F2F6` | **15.2:1** (Exceeds WCAG AAA) |
-| `--hashti-text-secondary` | `#606674` | `#B1B6C3` | **7.1:1** (Meets WCAG AAA) |
-| `--hashti-text-disabled` | `#A2A8B5` | `#5B616E` | Inactive controls and disabled states. |
-| `--hashti-border-subtle` | `#DDE1E8` | `#3E424D` | Subtle dividers and table grid lines. |
-| `--hashti-border-strong` | `#7F8795` | `#7D8493` | Form input borders and card boundaries. |
+| Token Name                | Light Theme Value | Dark Theme Value | Contrast Ratio                          |
+| :------------------------ | :---------------- | :--------------- | :-------------------------------------- |
+| `--hashti-text-primary`   | `#25272C`         | `#F1F2F6`        | **15.2:1** (Exceeds WCAG AAA)           |
+| `--hashti-text-secondary` | `#606674`         | `#B1B6C3`        | **7.1:1** (Meets WCAG AAA)              |
+| `--hashti-text-disabled`  | `#A2A8B5`         | `#5B616E`        | Inactive controls and disabled states.  |
+| `--hashti-border-subtle`  | `#DDE1E8`         | `#3E424D`        | Subtle dividers and table grid lines.   |
+| `--hashti-border-strong`  | `#7F8795`         | `#7D8493`        | Form input borders and card boundaries. |
 
 ### Feedback & Status Tokens
 
-| Token Name | Light Value | Dark Value | Meaning & Context |
-| :--- | :--- | :--- | :--- |
-| `--hashti-support-info` | `#365CCB` | `#A9BDFF` | Neutral informational notices and active focus rings. |
-| `--hashti-support-success` | `#246343` | `#A4D9B8` | Confirmation, healthy states, and successful saves. |
-| `--hashti-support-warning` | `#75500D` | `#E7C383` | Cautionary thresholds, storage warnings, non-blocking alerts. |
-| `--hashti-support-error` | `#AA2735` | `#FFACB3` | Validation errors, failed API transactions, danger actions. |
+| Token Name                 | Light Value | Dark Value | Meaning & Context                                             |
+| :------------------------- | :---------- | :--------- | :------------------------------------------------------------ |
+| `--hashti-support-info`    | `#365CCB`   | `#A9BDFF`  | Neutral informational notices and active focus rings.         |
+| `--hashti-support-success` | `#246343`   | `#A4D9B8`  | Confirmation, healthy states, and successful saves.           |
+| `--hashti-support-warning` | `#75500D`   | `#E7C383`  | Cautionary thresholds, storage warnings, non-blocking alerts. |
+| `--hashti-support-error`   | `#AA2735`   | `#FFACB3`  | Validation errors, failed API transactions, danger actions.   |
 
 ---
 
@@ -88,6 +88,6 @@ You can reference Hashti's color tokens directly in custom CSS or styled compone
 }
 
 .custom-architectural-card:hover {
-  border-color: var(--hashti-interactive, #0D9488);
+  border-color: var(--hashti-interactive, #0d9488);
 }
 ```

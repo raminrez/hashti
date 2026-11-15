@@ -14,7 +14,6 @@ import {
   ListBoxLoadMoreItem as RACListBoxLoadMoreItem,
   Header as RACHeader,
   Button as RACButton,
-  Checkbox as RACCheckbox,
   type ListBoxProps as RACListBoxProps,
   type ListBoxItemProps as RACListBoxItemProps,
   type ListBoxSectionProps as RACListBoxSectionProps,
@@ -27,6 +26,7 @@ import {
   type CheckboxRenderProps,
 } from "react-aria-components";
 import { classes, cx, type ControlSize } from "../../utils";
+import { Checkbox } from "../checkbox";
 import { Icon } from "../../icons";
 
 export interface ListBoxContextValue {
@@ -36,8 +36,7 @@ export interface ListBoxContextValue {
 
 export const ListBoxContext = createContext<ListBoxContextValue>({});
 
-export interface ListBoxRootProps<T extends object>
-  extends Omit<RACListBoxProps<T>, "className"> {
+export interface ListBoxRootProps<T extends object> extends Omit<RACListBoxProps<T>, "className"> {
   size?: ControlSize;
   variant?: "flat" | "bordered" | "card";
   emptyContent?: ReactNode;
@@ -55,9 +54,11 @@ export function ListBoxRoot<T extends object>({
   ref,
   ...props
 }: ListBoxRootProps<T>) {
-  const resolvedEmptyState = renderEmptyState ?? (emptyContent ? () => (
-    <div className="hashti-listbox-empty-content">{emptyContent}</div>
-  ) : undefined);
+  const resolvedEmptyState =
+    renderEmptyState ??
+    (emptyContent
+      ? () => <div className="hashti-listbox-empty-content">{emptyContent}</div>
+      : undefined);
 
   return (
     <ListBoxContext.Provider value={{ size, variant }}>
@@ -68,12 +69,8 @@ export function ListBoxRoot<T extends object>({
         data-size={size}
         data-variant={variant}
         className={classes(
-          cx(
-            "hashti-listbox",
-            `hashti-listbox--${size}`,
-            `hashti-listbox--${variant}`
-          ),
-          className
+          cx("hashti-listbox", `hashti-listbox--${size}`, `hashti-listbox--${variant}`),
+          className,
         )}
       >
         {children as any}
@@ -82,8 +79,10 @@ export function ListBoxRoot<T extends object>({
   );
 }
 
-export interface ListBoxItemProps<T extends object = object>
-  extends Omit<RACListBoxItemProps<T>, "className"> {
+export interface ListBoxItemProps<T extends object = object> extends Omit<
+  RACListBoxItemProps<T>,
+  "className"
+> {
   className?: string | ((values: ListBoxItemRenderProps) => string);
   ref?: Ref<HTMLDivElement>;
 }
@@ -103,11 +102,10 @@ export function ListBoxItem<T extends object = object>({
       data-size={size}
       data-variant={variant}
       className={classes(
-        cx(
-          "hashti-listbox-item",
-          size && `hashti-listbox-item--${size}`
-        ),
-        className
+        // RAC's own class carries the default item styling every stylesheet keys on;
+        // passing className alone would drop it.
+        cx("react-aria-ListBoxItem", "hashti-listbox-item", size && `hashti-listbox-item--${size}`),
+        className,
       )}
     >
       {children as any}
@@ -115,8 +113,7 @@ export function ListBoxItem<T extends object = object>({
   );
 }
 
-export interface ListBoxSectionProps<T extends object = object>
-  extends RACListBoxSectionProps<T> {
+export interface ListBoxSectionProps<T extends object = object> extends RACListBoxSectionProps<T> {
   title?: ReactNode;
 }
 
@@ -127,7 +124,10 @@ export function ListBoxSection<T extends object = object>({
   ...props
 }: ListBoxSectionProps<T>) {
   return (
-    <RACListBoxSection {...props} className={cx("hashti-listbox-section", className)}>
+    <RACListBoxSection
+      {...props}
+      className={cx("react-aria-ListBoxSection", "hashti-listbox-section", className)}
+    >
       {title && <RACHeader className="hashti-listbox-header">{title}</RACHeader>}
       {children as any}
     </RACListBoxSection>
@@ -173,13 +173,9 @@ export interface ListBoxCheckboxProps extends Omit<RACCheckboxProps, "className"
 
 export function ListBoxCheckbox({ className, children, ...props }: ListBoxCheckboxProps) {
   return (
-    <RACCheckbox
-      slot="selection"
-      {...props}
-      className={classes("hashti-listbox-checkbox", className)}
-    >
+    <Checkbox slot="selection" {...props} className={classes("hashti-listbox-checkbox", className)}>
       {children as any}
-    </RACCheckbox>
+    </Checkbox>
   );
 }
 
@@ -188,19 +184,14 @@ export interface ListBoxEmptyStateProps {
   className?: string;
 }
 
-export function ListBoxEmptyState({
-  children,
-  className,
-}: ListBoxEmptyStateProps) {
-  return (
-    <div className={cx("hashti-listbox-empty-state", className)}>
-      {children as any}
-    </div>
-  );
+export function ListBoxEmptyState({ children, className }: ListBoxEmptyStateProps) {
+  return <div className={cx("hashti-listbox-empty-state", className)}>{children as any}</div>;
 }
 
-export interface ListBoxLoadMoreProps
-  extends Omit<RACListBoxLoadMoreItemProps, "className" | "children"> {
+export interface ListBoxLoadMoreProps extends Omit<
+  RACListBoxLoadMoreItemProps,
+  "className" | "children"
+> {
   id?: string;
   label?: string;
   isError?: boolean;

@@ -1,6 +1,5 @@
 /* Hashti Modern Aesthetic - Radio */
 @layer hashti.components {
-  .hashti-radio,
   .hashti-radio {
     display: inline-flex;
     align-items: center;
@@ -11,7 +10,6 @@
     user-select: none;
   }
 
-  .hashti-radio-control,
   .hashti-radio-control {
     display: inline-flex;
     align-items: center;
@@ -22,12 +20,16 @@
     border: 2px solid var(--hashti-border-strong, #8d8d8d);
     background-color: var(--hashti-field, #ffffff);
     position: relative;
-    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hashti-radio[data-selected] .hashti-radio-control,
   .hashti-radio[data-selected] .hashti-radio-control {
-    border-color: var(--hashti-primary, #08BDBA);
+    border-color: var(--hashti-focus);
   }
 
   .hashti-radio[data-selected] .hashti-radio-control::after,
@@ -36,7 +38,7 @@
     width: 10px;
     height: 10px;
     border-radius: 9999px;
-    background-color: var(--hashti-primary, #08BDBA);
+    background-color: var(--hashti-focus);
   }
 
   .hashti-radio[data-pressed] .hashti-radio-control,
@@ -47,10 +49,12 @@
   .hashti-radio[data-focus-visible] .hashti-radio-control,
   .hashti-radio[data-focus-visible] .hashti-radio-control {
     outline: none;
-    box-shadow: 0 0 0 2px var(--hashti-background, #ffffff), 0 0 0 4px var(--hashti-focus, #0f62fe), 0 0 8px rgba(15, 98, 254, 0.35);
+    box-shadow:
+      0 0 0 2px var(--hashti-background, #ffffff),
+      0 0 0 4px var(--hashti-focus, #0f62fe),
+      0 0 8px rgba(15, 98, 254, 0.35);
   }
 
-  .hashti-radio-options,
   .hashti-radio-options {
     display: flex;
     flex-direction: column;

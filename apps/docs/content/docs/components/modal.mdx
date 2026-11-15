@@ -7,9 +7,12 @@ description: Dialog overlay that temporarily blocks page interaction to present 
 
 The **Modal** component creates a focused overlay container displayed above the main application interface. By dimming and blurring the background, it establishes an exclusive spatial threshold—demanding the user's attention for critical decisions, forms, or detailed sub-flows before returning to the underlying page.
 
-In Hashti's spatial vocabulary, a Modal functions much like entering an interior pavilion (*kushk*): outside distractions fade into a softened backdrop, while internal content is rendered with utmost clarity and geometric balance.
+In Hashti's spatial vocabulary, a Modal functions much like entering an interior pavilion (_kushk_): outside distractions fade into a softened backdrop, while internal content is rendered with utmost clarity and geometric balance.
 
-<ComponentPreview title="Live Interactive Modal Dialog" description="Open the modal to test backdrop blur, escape key dismissal, and focus trapping.">
+<ComponentPreview
+  title="Live Interactive Modal Dialog"
+  description="Open the modal to test backdrop blur, escape key dismissal, and focus trapping."
+>
   <ModalLiveDemo />
 </ComponentPreview>
 
@@ -44,8 +47,8 @@ export function BasicModalDemo() {
                 Create Restoration Workspace
               </Heading>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Configure your structural conservation initiative. You can invite team members
-                and link CAD models immediately after setup.
+                Configure your structural conservation initiative. You can invite team members and
+                link CAD models immediately after setup.
               </p>
               <div className="flex justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-800">
                 <Button variant="ghost" onPress={close}>
@@ -87,14 +90,8 @@ export function ControlledModalDemo() {
             <Heading slot="title" className="text-lg font-bold">
               Account Preferences
             </Heading>
-            <TextField
-              label="Display Name"
-              defaultValue="Parisa Rahimi"
-            />
-            <TextField
-              label="Contact Email"
-              defaultValue="parisa@heritage.org"
-            />
+            <TextField label="Display Name" defaultValue="Parisa Rahimi" />
+            <TextField label="Contact Email" defaultValue="parisa@heritage.org" />
             <div className="flex justify-end gap-3 pt-2">
               <Button variant="ghost" onPress={() => setIsOpen(false)}>
                 Cancel
@@ -187,8 +184,8 @@ export function NonDismissableModalDemo() {
                 Mandatory Agreement
               </Heading>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                You must explicitly accept or decline these heritage preservation terms.
-                Clicking outside this window or pressing Escape will not dismiss it.
+                You must explicitly accept or decline these heritage preservation terms. Clicking
+                outside this window or pressing Escape will not dismiss it.
               </p>
               <div className="flex justify-end gap-3 pt-4">
                 <Button variant="ghost" onPress={close}>
@@ -211,17 +208,17 @@ export function NonDismissableModalDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `isOpen` | `boolean` | — | Controlled open visibility state. |
-| `defaultOpen` | `boolean` | `false` | Default open state for uncontrolled usage. |
-| `onOpenChange` | `(isOpen: boolean) => void` | — | Callback fired whenever the modal requests open/close. |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Width and max-width dimension variant of the inner modal. |
-| `isDismissable` | `boolean` | `true` | Allows closing by clicking on the darkened backdrop or pressing <kbd>Esc</kbd>. |
-| `isKeyboardDismissDisabled` | `boolean` | `false` | Disables closing via the <kbd>Esc</kbd> key specifically. |
-| `overlayClassName` | `string` | — | Custom CSS classes applied to the backdrop overlay. |
-| `modalStyle` | `CSSProperties` | — | Inline style applied directly to the inner modal surface. |
-| `children` | `ReactNode` | — | Children to render, typically a `<Dialog>` element. |
+| Prop                        | Type                           | Default | Description                                                                     |
+| :-------------------------- | :----------------------------- | :------ | :------------------------------------------------------------------------------ |
+| `isOpen`                    | `boolean`                      | —       | Controlled open visibility state.                                               |
+| `defaultOpen`               | `boolean`                      | `false` | Default open state for uncontrolled usage.                                      |
+| `onOpenChange`              | `(isOpen: boolean) => void`    | —       | Callback fired whenever the modal requests open/close.                          |
+| `size`                      | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'`  | Width and max-width dimension variant of the inner modal.                       |
+| `isDismissable`             | `boolean`                      | `true`  | Allows closing by clicking on the darkened backdrop or pressing <kbd>Esc</kbd>. |
+| `isKeyboardDismissDisabled` | `boolean`                      | `false` | Disables closing via the <kbd>Esc</kbd> key specifically.                       |
+| `overlayClassName`          | `string`                       | —       | Custom CSS classes applied to the backdrop overlay.                             |
+| `modalStyle`                | `CSSProperties`                | —       | Inline style applied directly to the inner modal surface.                       |
+| `children`                  | `ReactNode`                    | —       | Children to render, typically a `<Dialog>` element.                             |
 
 ---
 
@@ -234,21 +231,22 @@ Modal strictly implements the **WAI-ARIA Dialog (Modal) Pattern**:
 - **Body Scroll Locking**: Document background scrolling is locked while the modal is open, preventing disorienting background scroll behavior.
 - **Inert Background**: Surrounding page content outside the modal container is automatically marked with the HTML `inert` attribute and `aria-hidden="true"`, ensuring assistive technologies can only inspect modal contents.
 - **Accessible Labelling**: When using `<Heading slot="title">`, the modal dialog is automatically linked via `aria-labelledby`.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Cycles focus forward through tabbable elements trapped inside modal. |
-| <kbd>Shift</kbd>+<kbd>Tab</kbd> | Cycles focus backward within modal dialog trap. |
-| <kbd>Esc</kbd> | Dismisses modal dialog and restores focus to open trigger. |
+| Key                             | Action                                                               |
+| :------------------------------ | :------------------------------------------------------------------- |
+| <kbd>Tab</kbd>                  | Cycles focus forward through tabbable elements trapped inside modal. |
+| <kbd>Shift</kbd>+<kbd>Tab</kbd> | Cycles focus backward within modal dialog trap.                      |
+| <kbd>Esc</kbd>                  | Dismisses modal dialog and restores focus to open trigger.           |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute         | Target        | Description                                 |
+| :---------------- | :------------ | :------------------------------------------ |
 | `[data-entering]` | Modal Overlay | Applied during entrance opacity transition. |
-| `[data-exiting]` | Modal Overlay | Applied during dismissal exit transition. |
+| `[data-exiting]`  | Modal Overlay | Applied during dismissal exit transition.   |

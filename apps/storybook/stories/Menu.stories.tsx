@@ -1,6 +1,5 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Header } from "react-aria-components";
 import { expect, waitFor, within } from "storybook/test";
 import {
   Button,
@@ -11,6 +10,7 @@ import {
   MenuTrigger,
   OverflowMenu,
   Popover,
+  SectionHeader,
   Separator,
   SubmenuTrigger,
   Theme,
@@ -84,15 +84,13 @@ export const Playground: Story = {
       name: "Delete repository",
     });
 
-    expect(viewItem).toBeVisible();
-    expect(deleteItem).toBeVisible();
+    await waitFor(() => expect(viewItem).toBeVisible());
+    await waitFor(() => expect(deleteItem).toBeVisible());
 
     // Activate item
     await userEvent.click(viewItem);
-    await waitFor(() => {
-      expect(canvas.getByText("Selected action: view")).toBeVisible();
-    });
-    expect(trigger).toHaveFocus();
+    await waitFor(() => expect(canvas.getByText("Selected action: view")).toBeVisible());
+    await waitFor(() => expect(trigger).toHaveFocus());
   },
 };
 
@@ -107,7 +105,7 @@ function SectionsAndSeparatorsExample() {
           <Popover>
             <Menu onAction={(k) => setAction(String(k))} disabledKeys={["paste"]}>
               <MenuSection>
-                <Header>Edit options</Header>
+                <SectionHeader>Edit options</SectionHeader>
                 <MenuItem id="cut">
                   Cut <Keyboard>⌘X</Keyboard>
                 </MenuItem>
@@ -120,7 +118,7 @@ function SectionsAndSeparatorsExample() {
               </MenuSection>
               <Separator />
               <MenuSection>
-                <Header>Export formats</Header>
+                <SectionHeader>Export formats</SectionHeader>
                 <MenuItem id="pdf">Download PDF</MenuItem>
                 <MenuItem id="csv">Export CSV</MenuItem>
               </MenuSection>
@@ -148,19 +146,21 @@ export const SectionsAndSeparators: Story = {
     const copyItem = await within(popover).findByRole("menuitem", { name: /Copy/ });
     const pasteItem = within(popover).getByRole("menuitem", { name: /Paste/ });
 
-    expect(copyItem).toBeVisible();
+    await waitFor(() => expect(copyItem).toBeVisible());
+    expect(within(popover).getByText("Edit options")).toBeInTheDocument();
+    expect(within(popover).getByText("Export formats")).toBeInTheDocument();
     expect(pasteItem).toHaveAttribute("aria-disabled", "true");
 
     await userEvent.click(copyItem);
-    await waitFor(() => {
-      expect(canvas.getByText("Action: copy")).toBeVisible();
-    });
+    await waitFor(() => expect(canvas.getByText("Action: copy")).toBeVisible());
   },
 };
 
 function SelectionMenuExample() {
   const [selectedSort, setSelectedSort] = useState<Selection>(new Set(["date"]));
-  const [selectedColumns, setSelectedColumns] = useState<Selection>(new Set(["status", "reviewer"]));
+  const [selectedColumns, setSelectedColumns] = useState<Selection>(
+    new Set(["status", "reviewer"]),
+  );
 
   return (
     <div className="navigation-story-stack">
@@ -208,11 +208,16 @@ export const SelectionModes: Story = {
     const sortTrigger = canvas.getByRole("button", { name: "Sort options (Single)" });
     await userEvent.click(sortTrigger);
 
-    const popover1 = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>(".hashti-popover");
-      expect(el).not.toBeNull();
-      return el!;
-    });
+    // The last popover in the DOM is the freshly opened one; earlier ones may still be exiting.
+    const openPopover = () =>
+      waitFor(() => {
+        const popovers = Array.from(document.querySelectorAll<HTMLElement>(".hashti-popover"));
+        const el = popovers[popovers.length - 1];
+        expect(el).not.toBeUndefined();
+        return el!;
+      });
+
+    const popover1 = await openPopover();
     const dateOption = await within(popover1).findByRole("menuitemradio", {
       name: "Sort by date",
     });
@@ -224,27 +229,21 @@ export const SelectionModes: Story = {
     await userEvent.click(priorityOption);
 
     // Verify change on reopening
+    await waitFor(() => expect(document.querySelectorAll(".hashti-popover")).toHaveLength(0));
     await userEvent.click(sortTrigger);
-    const popover2 = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>(".hashti-popover");
-      expect(el).not.toBeNull();
-      return el!;
-    });
+    const popover2 = await openPopover();
     const newPriorityOption = await within(popover2).findByRole("menuitemradio", {
       name: "Sort by priority",
     });
     expect(newPriorityOption).toHaveAttribute("aria-checked", "true");
     await userEvent.keyboard("{Escape}");
+    await waitFor(() => expect(document.querySelectorAll(".hashti-popover")).toHaveLength(0));
 
     // Test multiple selection
     const colTrigger = canvas.getByRole("button", { name: "Visible columns (Multiple)" });
     await userEvent.click(colTrigger);
 
-    const popover3 = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>(".hashti-popover");
-      expect(el).not.toBeNull();
-      return el!;
-    });
+    const popover3 = await openPopover();
     const statusCheck = await within(popover3).findByRole("menuitemcheckbox", {
       name: "Status column",
     });
@@ -296,7 +295,7 @@ export const KeyboardAndSubmenus: Story = {
       return el!;
     });
     const moreItem = await within(popover1).findByRole("menuitem", { name: /More tools/ });
-    expect(moreItem).toBeVisible();
+    await waitFor(() => expect(moreItem).toBeVisible());
 
     // Expand submenu via keyboard
     moreItem.focus();
@@ -310,7 +309,7 @@ export const KeyboardAndSubmenus: Story = {
     const profilerItem = await within(subpopover).findByRole("menuitem", {
       name: "Memory profiler",
     });
-    expect(profilerItem).toBeVisible();
+    await waitFor(() => expect(profilerItem).toBeVisible());
 
     // Close submenu
     await userEvent.keyboard("{ArrowLeft}");
@@ -334,10 +333,7 @@ function OverflowMenuExample() {
             Current state: Running (Last action: {action})
           </p>
         </div>
-        <OverflowMenu
-          aria-label="Instance actions"
-          onAction={(k) => setAction(String(k))}
-        >
+        <OverflowMenu aria-label="Instance actions" onAction={(k) => setAction(String(k))}>
           <MenuItem id="restart">Restart instance</MenuItem>
           <MenuItem id="snapshot">Create snapshot</MenuItem>
           <Separator />
@@ -357,7 +353,7 @@ export const OverflowMenuStory: Story = {
     const canvas = within(canvasElement);
 
     const trigger = canvas.getByRole("button", { name: "Instance actions" });
-    expect(trigger).toBeVisible();
+    await waitFor(() => expect(trigger).toBeVisible());
 
     await userEvent.click(trigger);
     const popover = await waitFor(() => {
@@ -368,12 +364,10 @@ export const OverflowMenuStory: Story = {
     const restartItem = await within(popover).findByRole("menuitem", {
       name: "Restart instance",
     });
-    expect(restartItem).toBeVisible();
+    await waitFor(() => expect(restartItem).toBeVisible());
 
     await userEvent.click(restartItem);
-    await waitFor(() => {
-      expect(canvas.getByText(/Last action: restart/)).toBeVisible();
-    });
+    await waitFor(() => expect(canvas.getByText(/Last action: restart/)).toBeVisible());
   },
 };
 
@@ -416,7 +410,7 @@ export const LongContentAndLocales: Story = {
       return el!;
     });
     const profileItem = await within(popover).findByRole("menuitem", { name: "نمایه کاربر" });
-    expect(profileItem).toBeVisible();
+    await waitFor(() => expect(profileItem).toBeVisible());
 
     await userEvent.keyboard("{Escape}");
     await waitFor(() => {

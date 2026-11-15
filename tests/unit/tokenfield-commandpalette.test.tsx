@@ -54,7 +54,7 @@ describe("TokenField & CommandPalette Unit Tests", () => {
           description="Type prompts and mention context tokens with @"
           placeholder="Ask a question..."
           value={value}
-        />
+        />,
       );
 
       expect(html).toContain("AI Model Directives");
@@ -88,11 +88,11 @@ describe("TokenField & CommandPalette Unit Tests", () => {
           </TokenField.Input>
           <TokenField.Description>Active workspace agents</TokenField.Description>
           <TokenField.ErrorMessage>Invalid token format</TokenField.ErrorMessage>
-        </TokenField.Root>
+        </TokenField.Root>,
       );
 
       expect(html).toContain("Context Selector");
-      expect(html).toContain("data-size=\"lg\"");
+      expect(html).toContain('data-size="lg"');
       expect(html).toContain("hashti-token-input");
       expect(html).toContain("gpt-4o");
       expect(html).toContain("hashti-token__icon");
@@ -102,9 +102,7 @@ describe("TokenField & CommandPalette Unit Tests", () => {
     });
 
     test("supports multiline=true for multi-line AI prompt boxes", () => {
-      const value = new TokenFieldValue([
-        { type: "text", text: "Line 1\nLine 2" },
-      ]);
+      const value = new TokenFieldValue([{ type: "text", text: "Line 1\nLine 2" }]);
 
       const html = ReactDOMServer.renderToString(
         <TokenField
@@ -112,7 +110,7 @@ describe("TokenField & CommandPalette Unit Tests", () => {
           multiline
           placeholder="Type multiline instructions..."
           value={value}
-        />
+        />,
       );
 
       expect(html).toContain('data-multiline="true"');
@@ -121,27 +119,17 @@ describe("TokenField & CommandPalette Unit Tests", () => {
     });
 
     test("supports isDisabled and isReadOnly states", () => {
-      const value = new TokenFieldValue([
-        { type: "token", text: "locked-token" },
-      ]);
+      const value = new TokenFieldValue([{ type: "token", text: "locked-token" }]);
 
       const disabledHtml = ReactDOMServer.renderToString(
-        <TokenField
-          label="Disabled Field"
-          isDisabled
-          value={value}
-        />
+        <TokenField label="Disabled Field" isDisabled value={value} />,
       );
-      expect(disabledHtml).toContain("data-disabled=\"true\"");
+      expect(disabledHtml).toContain('data-disabled="true"');
 
       const readOnlyHtml = ReactDOMServer.renderToString(
-        <TokenField
-          label="ReadOnly Field"
-          isReadOnly
-          value={value}
-        />
+        <TokenField label="ReadOnly Field" isReadOnly value={value} />,
       );
-      expect(readOnlyHtml).toContain("data-readonly=\"true\"");
+      expect(readOnlyHtml).toContain('data-readonly="true"');
     });
   });
 
@@ -185,7 +173,7 @@ describe("TokenField & CommandPalette Unit Tests", () => {
             </CommandPalette.Group>
           </CommandPalette.List>
           <CommandPalette.Footer />
-        </CommandPalette.Root>
+        </CommandPalette.Root>,
       );
 
       expect(html).toContain("hashti-command-palette__input-wrapper");
@@ -211,7 +199,7 @@ describe("TokenField & CommandPalette Unit Tests", () => {
               description="Try searching for files, settings, or AI actions."
             />
           </CommandPalette.List>
-        </CommandPalette.Root>
+        </CommandPalette.Root>,
       );
 
       expect(html).toContain("hashti-command-palette__empty");
@@ -228,7 +216,7 @@ describe("TokenField & CommandPalette Unit Tests", () => {
               <span>Next section</span>
             </div>
           </CommandPalette.Footer>
-        </CommandPalette.Root>
+        </CommandPalette.Root>,
       );
 
       expect(html).toContain("hashti-command-palette__footer");
@@ -269,7 +257,7 @@ describe("TokenField & CommandPalette Unit Tests", () => {
               {item.name}
             </ListBox.Item>
           )}
-        </ComboBox>
+        </ComboBox>,
       );
 
       expect(html).toContain("hashti-combobox");

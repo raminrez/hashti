@@ -1,8 +1,6 @@
 /* Hashti Modern Aesthetic - Tag */
 @layer hashti.components {
   .hashti-tag,
-  .hashti-tag,
-  .hashti-filter-tag,
   .hashti-filter-tag {
     display: inline-flex;
     align-items: center;
@@ -14,7 +12,11 @@
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1.2;
-    transition: all 150ms ease;
+    transition:
+      background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hashti-tag[data-size="sm"],
@@ -23,11 +25,121 @@
     font-size: 0.6875rem;
   }
 
-  .hashti-tag-group,
   .hashti-tag-group {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
     align-items: center;
+  }
+}
+
+@layer hashti.themes {
+  @scope ([data-hashti-theme="frame-light"], [data-hashti-theme="frame-dark"])
+    to ([data-hashti-theme]) {
+    .hashti-tag[data-size="sm"] {
+      min-height: 1.25rem;
+      padding: 0 0.5rem;
+      font-size: 0.6875rem;
+    }
+
+    .hashti-tag-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--hashti-spacing-02);
+    }
+
+    .hashti-tag-group > .react-aria-Label {
+      color: var(--hashti-text-secondary);
+      font-size: var(--hashti-body-compact-01-font-size);
+      font-weight: 500;
+    }
+
+    .hashti-tag-group .react-aria-TagList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--hashti-spacing-02);
+    }
+
+    .hashti-filter-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      min-height: 1.75rem;
+      padding-inline-start: 0.625rem;
+      padding-inline-end: 0.375rem;
+      background: var(--hashti-layer-01);
+      color: var(--hashti-text-primary);
+      border: 1px solid var(--hashti-border-subtle);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+      transition:
+        background var(--hashti-duration-fast-01),
+        border-color var(--hashti-duration-fast-01);
+    }
+
+    .hashti-filter-tag:not(:has(.hashti-button)) {
+      padding-inline-end: 0.625rem;
+    }
+
+    .hashti-filter-tag[data-hovered] {
+      background: var(--hashti-layer-hover);
+      border-color: var(--hashti-border-interactive);
+    }
+
+    .hashti-filter-tag[data-selected] {
+      background: var(--hashti-layer-accent);
+      border-color: var(--hashti-border-interactive);
+      color: var(--hashti-text-primary);
+    }
+
+    .hashti-filter-tag[data-focus-visible] {
+      outline: var(--hashti-focus-width) solid var(--hashti-focus);
+      outline-offset: 2px;
+    }
+
+    .hashti-filter-tag[data-disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .hashti-filter-tag .hashti-button {
+      margin-inline-start: 0.125rem;
+      padding: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      min-height: 1.5rem;
+      border-radius: 9999px;
+      color: var(--hashti-text-secondary);
+    }
+
+    .hashti-filter-tag .hashti-button[data-hovered] {
+      color: var(--hashti-text-primary);
+    }
+  }
+}
+
+@layer hashti.themes {
+  @scope ([data-hashti-theme="frame-light"], [data-hashti-theme="frame-dark"])
+    to ([data-hashti-theme]) {
+    /* Frame Tag & TagGroup & FilterTag */
+    .hashti-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      border-radius: 9999px;
+      padding: 0.125rem 0.625rem;
+      min-height: 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 1rem;
+      white-space: nowrap;
+      background: var(--tag-background, var(--hashti-tag-background-gray));
+      color: var(--tag-color, var(--hashti-tag-color-gray));
+      border: 1px solid transparent;
+      user-select: none;
+    }
   }
 }

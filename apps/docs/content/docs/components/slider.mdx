@@ -1,0 +1,250 @@
+---
+title: Slider
+description: Horizontal single- or multi-thumb control for picking a value or a range along a track, with step increments and localized number formatting.
+---
+
+# Slider
+
+A **Slider** lets users pick a numeric value (or a range of values) by moving a thumb along a horizontal track. It is a good fit for coarse, exploratory choices such as allocation sizes, thresholds, or budgets, where the exact number matters less than the position relative to the bounds.
+
+Hashti's `Slider` wraps React Aria's `Slider` with a label row, a formatted value readout, a styled track and fill, and thumb labels. The value readout is produced from the same `Intl.NumberFormat` options React Aria uses for the thumbs, so ranges, steps, and locales all stay in sync.
+
+<ComponentPreview title="Slider" description="Single-value slider with a live readout.">
+  <SliderLiveDemo />
+</ComponentPreview>
+
+---
+
+## Import
+
+```tsx
+import { Slider } from "@hashti/react";
+
+// Track parts, for a custom layout:
+import { SliderTrack, SliderThumb, SliderFill, SliderOutput } from "@hashti/react";
+```
+
+---
+
+## Anatomy
+
+```tsx
+<Slider label="Storage allocation (GB)" minValue={0} maxValue={100} defaultValue={45} />
+```
+
+The default rendering is:
+
+```
+<Slider>                     {/* div, .hashti-slider */}
+  <Label />                  {/* "Storage allocation (GB)" */}
+  <SliderOutput>             {/* formatted value, e.g. "45" or "25 – 75" */}
+  <SliderTrack>              {/* 8px track */}
+    <SliderFill />           {/* filled portion */}
+    <SliderThumb index={0} /> {/* one thumb per value */}
+  </SliderTrack>
+</Slider>
+```
+
+Pass `children` to replace that layout entirely; the wrapper then only supplies the `hashti-slider` class. Parts you compose yourself need both class names, because Hashti's stylesheet keys on `.hashti-slider-*` and React Aria's default rules key on `.react-aria-Slider*`.
+
+---
+
+## Examples
+
+### Single Value
+
+`value` / `defaultValue` take a number. The value readout sits next to the label.
+
+```tsx
+import { Slider } from "@hashti/react";
+
+export function SingleValueExample() {
+  return <Slider label="Upload bandwidth (MB/s)" minValue={1} maxValue={50} defaultValue={12} />;
+}
+```
+
+### Range With Two Thumbs
+
+Pass an array to render one thumb per value. `thumbLabels` supplies the accessible name for each thumb — without it Hashti falls back to the hardcoded English labels `"Minimum"` and `"Maximum"`, so non-English interfaces must set it.
+
+```tsx
+import { useState } from "react";
+import { Slider } from "@hashti/react";
+
+export function RangeExample() {
+  const [range, setRange] = useState<number[]>([25, 75]);
+
+  return (
+    <Slider
+      label="Throughput bounds (MB/s)"
+      minValue={0}
+      maxValue={100}
+      value={range}
+      thumbLabels={["Min bandwidth", "Max bandwidth"]}
+      onChange={(next) => setRange(next as number[])}
+    />
+  );
+}
+```
+
+### Steps and Bounds
+
+`minValue` (default `0`), `maxValue` (default `100`), and `step` (default `1`) define the allowed scale. Steps are counted from `minValue`: with `minValue={10}` and `step={10}` the valid values are 10, 20, 30, and so on.
+
+```tsx
+import { Slider } from "@hashti/react";
+
+export function StepExample() {
+  return (
+    <Slider
+      label="Cluster replica scale"
+      minValue={10}
+      maxValue={100}
+      step={10}
+      defaultValue={30}
+    />
+  );
+}
+```
+
+### Formatted Values
+
+`formatOptions` accepts any `Intl.NumberFormatOptions` and drives both the value readout and each thumb's `aria-valuetext`.
+
+```tsx
+import { Slider } from "@hashti/react";
+
+export function FormattedExample() {
+  return (
+    <Slider
+      label="Budget cap"
+      minValue={100}
+      maxValue={5000}
+      step={50}
+      defaultValue={1200}
+      formatOptions={{ style: "currency", currency: "USD" }}
+    />
+  );
+}
+```
+
+### Disabled
+
+`isDisabled` blocks pointer and keyboard interaction and marks each thumb `disabled` and `aria-disabled`.
+
+```tsx
+import { Slider } from "@hashti/react";
+
+export function DisabledExample() {
+  return (
+    <Slider
+      label="Locked provisioned IOPS"
+      minValue={1000}
+      maxValue={10000}
+      defaultValue={3000}
+      isDisabled
+    />
+  );
+}
+```
+
+### Controlled Value With `onChangeEnd`
+
+`onChange` fires on every move; `onChangeEnd` fires once the thumb is released or a keyboard adjustment completes. Use the latter for expensive work such as committing a setting.
+
+```tsx
+import { useState } from "react";
+import { Slider } from "@hashti/react";
+
+export function ChangeEndExample() {
+  const [draft, setDraft] = useState(40);
+  const [committed, setCommitted] = useState(40);
+
+  return (
+    <div className="flex flex-col gap-2">
+      <Slider
+        label="Cache size (GB)"
+        minValue={0}
+        maxValue={128}
+        value={draft}
+        onChange={(next) => setDraft(next as number)}
+        onChangeEnd={(next) => setCommitted(next as number)}
+      />
+      <p className="text-sm text-neutral-500">
+        Dragging: {draft} · Committed: {committed}
+      </p>
+    </div>
+  );
+}
+```
+
+---
+
+## Props Reference
+
+| Prop            | Type                         | Default        | Description                                                               |
+| :-------------- | :--------------------------- | :------------- | :------------------------------------------------------------------------ |
+| `label`         | `ReactNode`                  | —              | Label rendered above the track, next to the value readout.                |
+| `thumbLabels`   | `string[]`                   | —              | Accessible name per thumb. Only rendered when `children` is not provided. |
+| `value`         | `T` (`number` \| `number[]`) | —              | Controlled value. An array renders one thumb per entry.                   |
+| `defaultValue`  | `T`                          | —              | Uncontrolled initial value.                                               |
+| `onChange`      | `(value: T) => void`         | —              | Fires continuously while the value changes.                               |
+| `onChangeEnd`   | `(value: T) => void`         | —              | Fires when dragging stops or a keyboard step completes.                   |
+| `minValue`      | `number`                     | `0`            | Lower bound of the scale.                                                 |
+| `maxValue`      | `number`                     | `100`          | Upper bound of the scale.                                                 |
+| `step`          | `number`                     | `1`            | Increment between valid values, counted from `minValue`.                  |
+| `formatOptions` | `Intl.NumberFormatOptions`   | —              | Number formatting for the readout and `aria-valuetext`.                   |
+| `orientation`   | `'horizontal' \| 'vertical'` | `'horizontal'` | Forwarded to React Aria. See the note below before using `vertical`.      |
+| `isDisabled`    | `boolean`                    | `false`        | Disables the whole slider.                                                |
+| `children`      | `ReactNode`                  | —              | Replaces the default label/track layout with your own parts.              |
+| `className`     | `string`                     | —              | Extra class names on the root. `hashti-slider` is always kept.            |
+
+### What this component does not do
+
+- **No size variants.** Slider is one fixed height (20px thumb on an 8px track); there is no `sm`/`md`/`lg`.
+- **No vertical styling.** `orientation="vertical"` is forwarded, but `slider.css` only styles the horizontal layout, so a vertical slider renders unstyled.
+- **No validation or status messaging.** Unlike TextField or TimeField, Slider has no `isInvalid`, `errorMessage`, `description`, or `status` prop; show any supporting text yourself.
+- **No error/tone colouring.** The fill uses `--hashti-focus`; there is no danger or success variant.
+- **No disabled styling.** `slider.css` has no `[data-disabled]` rules, so a disabled slider keeps its normal colours; the thumb is non-interactive but does not look muted.
+
+---
+
+## Accessibility
+
+- **Role and value**: each thumb is an `input[type="range"]` exposed with `role="slider"`, synchronising `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, and `aria-valuetext` (populated from `formatOptions`).
+- **Labelling**: the root `Label` labels a single-thumb slider. Multi-thumb sliders need `thumbLabels`, or each thumb is announced as “Minimum”/“Maximum” in English regardless of locale.
+- **Touch target**: the thumb renders a 44×44px invisible hit area around the 20px visual thumb.
+- **Focus ring**: `[data-focus-visible]` draws a two-ring outline using `--hashti-focus`; `[data-dragging]` scales the thumb to 115%.
+- **Not announced**: value changes are not wrapped in a live region, so screen readers report the new value only while the thumb has focus. Announce committed changes yourself if the outcome matters.
+
+---
+
+## Keyboard Interactions
+
+| Key                                       | Action                                              |
+| :---------------------------------------- | :-------------------------------------------------- |
+| <kbd>→</kbd> / <kbd>↑</kbd>               | Increases the focused thumb by one `step`.          |
+| <kbd>←</kbd> / <kbd>↓</kbd>               | Decreases the focused thumb by one `step`.          |
+| <kbd>Shift</kbd> + arrow                  | Moves by a page-sized increment.                    |
+| <kbd>Page Up</kbd> / <kbd>Page Down</kbd> | Moves by a page-sized increment (`pageSize`).       |
+| <kbd>Home</kbd> / <kbd>End</kbd>          | Jumps to the thumb's minimum or maximum value.      |
+| <kbd>Tab</kbd>                            | Moves focus between thumbs in a multi-thumb slider. |
+
+---
+
+## WAI-ARIA & Data Attributes
+
+| Attribute              | Target | Description                                              |
+| :--------------------- | :----- | :------------------------------------------------------- |
+| `[data-dragging]`      | Thumb  | Present while the thumb is being dragged or keyed.       |
+| `[data-focus-visible]` | Thumb  | Present when focused via keyboard.                       |
+| `[data-disabled]`      | Slider | Present when `isDisabled` is set.                        |
+| `[data-orientation]`   | Slider | `horizontal` or `vertical`, from the `orientation` prop. |
+
+---
+
+## Related
+
+- [Meter](/docs/components/meter) — read-only scalar display.
+- [Number Field](/docs/components/number-field) — when the exact number must be typed.
+- [Progress Bar](/docs/components/progress-bar) — non-interactive progress.

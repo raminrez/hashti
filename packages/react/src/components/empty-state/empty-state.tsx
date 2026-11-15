@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  type ComponentPropsWithRef,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { type ComponentPropsWithRef, type ReactNode, type Ref } from "react";
 import { cx } from "../../utils";
 
 export interface EmptyStateProps extends Omit<ComponentPropsWithRef<"div">, "title"> {

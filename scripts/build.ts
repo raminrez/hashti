@@ -2,13 +2,21 @@ import { mkdir, rm, copyFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { siteLicenses } from "./licenses";
 const root = resolve(import.meta.dir, "..");
+// Linked workspace packages resolve to source; keep them as imports so consumers
+// (and this app) share one copy of each registry.
+const workspaceExternal = {
+  name: "workspace-external",
+  setup(build: { onResolve: (options: { filter: RegExp }, callback: (args: { path: string }) => { path: string; external: boolean }) => void }) {
+    build.onResolve({ filter: /^@hashti\// }, (args) => ({ path: args.path, external: true }));
+  },
+};
 const run = async (...command: string[]) => {
   const process = Bun.spawn(command, { cwd: root, stdout: "inherit", stderr: "inherit" });
   if ((await process.exited) !== 0) throw new Error(`Build step failed: ${command.join(" ")}`);
 };
 
 await run("bun", "run", "build:tokens");
-for (const name of ["tokens", "react"]) {
+for (const name of ["tokens", "agent", "react"]) {
   const folder = `${root}/packages/${name}`;
   if (!process.argv.includes("--no-clean")) {
     await rm(`${folder}/dist`, { recursive: true, force: true });
@@ -20,10 +28,11 @@ for (const name of ["tokens", "react"]) {
     format: "esm",
     jsx: { runtime: "automatic", development: false },
     packages: "external",
-    external: ["@hashti/tokens"],
+    external: ["@hashti/tokens", "@hashti/agent"],
+    plugins: [workspaceExternal],
     sourcemap: "linked",
     minify: false,
-    ...(name === "react" ? { banner: '"use client";' } : {}),
+    ...(name === "tokens" ? {} : { banner: '"use client";' }),
   });
   if (!result.success) throw new AggregateError(result.logs, `Could not build ${name}`);
   await run("bunx", "--bun", "tsc", "-p", `packages/${name}/tsconfig.build.json`);
@@ -36,7 +45,7 @@ for (const name of ["tokens", "react"]) {
         copyFile(`${folder}/src/${file}`, `${folder}/dist/${file}`),
       ),
     );
-  } else {
+  } else if (name === "react") {
     const css = await Bun.build({
       entrypoints: [`${folder}/src/styles.css`],
       outdir: `${folder}/dist`,
@@ -50,9 +59,10 @@ for (const name of ["tokens", "react"]) {
 if (process.argv.includes("--packages")) process.exit(0);
 
 await rm(`${root}/dist/site`, { recursive: true, force: true });
+await mkdir(`${root}/dist/site`, { recursive: true });
 await run("bun", "run", "--cwd", "apps/docs", "build");
 // Copy site build outputs to dist/site for preview/deployment
-await Bun.spawn(["cp", "-r", `${root}/apps/docs/dist/`, `${root}/dist/site`], { cwd: root }).exited;
+await run("cp", "-r", `${root}/apps/docs/dist/.`, `${root}/dist/site`);
 await Promise.all([
   copyFile(`${root}/LICENSE`, `${root}/dist/site/LICENSE.txt`),
   copyFile(`${root}/NOTICE`, `${root}/dist/site/NOTICE.txt`),

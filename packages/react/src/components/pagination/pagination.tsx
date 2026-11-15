@@ -1,7 +1,8 @@
 import { useId, type ComponentPropsWithRef, type ReactNode } from "react";
 import { Button } from "../button";
+import { Field } from "../field";
 import { Icon } from "../../icons";
-import type { ControlSize } from "../../utils";
+import { cx, type ControlSize } from "../../utils";
 
 export interface NativeSelectProps extends Omit<ComponentPropsWithRef<"select">, "size"> {
   label: ReactNode;
@@ -20,34 +21,38 @@ export function NativeSelect({
 }: NativeSelectProps) {
   const generatedId = useId();
   const id = providedId ?? generatedId;
-  const helpId = `${id}-help`;
+  const descriptionId = description ? `${id}-description` : undefined;
+  const errorId = errorMessage ? `${id}-error` : undefined;
   return (
-    <div
-      className={["hashti-field hashti-native-select", className].filter(Boolean).join(" ")}
+    <Field
+      className={cx("hashti-native-select", className)}
       data-size={size}
       data-disabled={props.disabled || undefined}
       data-invalid={Boolean(errorMessage) || undefined}
     >
-      <label htmlFor={id}>{label}</label>
+      <Field.Label htmlFor={id}>{label}</Field.Label>
+      {/* Guidance stays visible while recovery is shown: it sits outside the help row. */}
+      {description != null && (
+        <Field.Description id={descriptionId}>{description}</Field.Description>
+      )}
       <div className="hashti-native-select-control">
         <select
           {...props}
           id={id}
           aria-invalid={props["aria-invalid"] ?? Boolean(errorMessage)}
           aria-describedby={
-            [props["aria-describedby"], (errorMessage || description) && helpId]
-              .filter(Boolean)
-              .join(" ") || undefined
+            [props["aria-describedby"], descriptionId, errorId].filter(Boolean).join(" ") ||
+            undefined
           }
         />
         <Icon name="chevronDown" />
       </div>
-      {(errorMessage || description) && (
-        <span id={helpId} className={errorMessage ? "hashti-error-message" : "hashti-description"}>
-          {errorMessage || description}
-        </span>
+      {errorMessage != null && (
+        <Field.Help>
+          <Field.ErrorMessage id={errorId}>{errorMessage}</Field.ErrorMessage>
+        </Field.Help>
       )}
-    </div>
+    </Field>
   );
 }
 

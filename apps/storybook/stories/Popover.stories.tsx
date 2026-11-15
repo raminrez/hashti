@@ -92,8 +92,10 @@ export const Placements: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    await expect(popover).toBeVisible();
-    await expect(within(popover).getByRole("heading", { name: "Anchored: bottom" })).toBeVisible();
+    await waitFor(() => expect(popover).toBeVisible());
+    await waitFor(() =>
+      expect(within(popover).getByRole("heading", { name: "Anchored: bottom" })).toBeVisible(),
+    );
 
     await userEvent.keyboard("{Escape}");
     await waitFor(() => {
@@ -368,7 +370,9 @@ export const LongContentAndLocales: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    await expect(within(popover).getByRole("heading", { name: "گزینه‌های دسترسی" })).toBeVisible();
+    await waitFor(() =>
+      expect(within(popover).getByRole("heading", { name: "گزینه‌های دسترسی" })).toBeVisible(),
+    );
 
     await userEvent.keyboard("{Escape}");
     await waitFor(() => {

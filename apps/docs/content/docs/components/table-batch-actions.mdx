@@ -7,10 +7,12 @@ description: Floating toolbar surfacing bulk commands when one or more rows are 
 
 The Table Batch Actions bar provides a contextual bulk-action toolbar that floats directly above a data table whenever one or more items are selected. It displays the active count of selected records alongside bulk operation buttons—such as "Delete", "Export", "Assign Tags", or "Archive"—and an immediate "Cancel" trigger to clear the selection.
 
-<ComponentPreview title="Table Batch Actions" description="Floating action bar when multiple tabular rows are selected.">
+<ComponentPreview
+  title="Table Batch Actions"
+  description="Floating action bar when multiple tabular rows are selected."
+>
   <TableBatchActionsLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -49,10 +51,7 @@ export function StandaloneBatchExample() {
         </Button>
       </div>
 
-      <TableBatchActions
-        totalSelected={selectedCount}
-        onCancel={() => setSelectedCount(0)}
-      >
+      <TableBatchActions totalSelected={selectedCount} onCancel={() => setSelectedCount(0)}>
         <Button variant="danger" size="sm">
           <Icon name="trashCan" size={16} />
           <span>Delete</span>
@@ -107,8 +106,7 @@ const documents: DocumentRecord[] = [
 export function TableWithBatchActionsExample() {
   const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set());
 
-  const selectedCount =
-    selectedKeys === "all" ? documents.length : selectedKeys.size;
+  const selectedCount = selectedKeys === "all" ? documents.length : selectedKeys.size;
 
   const handleDelete = () => {
     alert(`Deleting ${selectedCount} items`);
@@ -190,14 +188,14 @@ export function CustomLabelExample() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `totalSelected` | `number` | **Required** | The total number of items currently selected. When `<= 0`, the component renders `null`. |
-| `onCancel` | `() => void` | — | Callback fired when the cancel/deselect button is pressed. |
-| `cancelLabel` | `string` | `'Cancel'` | Text rendered inside the deselect button. |
-| `selectedLabel` | `(count: number) => ReactNode` | — | Custom function returning the selection count label. Defaults to `${totalSelected} item(s) selected`. |
-| `children` | `ReactNode` | — | Action buttons (such as Delete, Export, or Tag) rendered inside the action group. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop            | Type                           | Default      | Description                                                                                           |
+| :-------------- | :----------------------------- | :----------- | :---------------------------------------------------------------------------------------------------- |
+| `totalSelected` | `number`                       | **Required** | The total number of items currently selected. When `<= 0`, the component renders `null`.              |
+| `onCancel`      | `() => void`                   | —            | Callback fired when the cancel/deselect button is pressed.                                            |
+| `cancelLabel`   | `string`                       | `'Cancel'`   | Text rendered inside the deselect button.                                                             |
+| `selectedLabel` | `(count: number) => ReactNode` | —            | Custom function returning the selection count label. Defaults to `${totalSelected} item(s) selected`. |
+| `children`      | `ReactNode`                    | —            | Action buttons (such as Delete, Export, or Tag) rendered inside the action group.                     |
+| `className`     | `string`                       | —            | Additional CSS class names.                                                                           |
 
 ---
 
@@ -209,20 +207,21 @@ export function CustomLabelExample() {
   - Activating the cancel button clears row selection and returns focus smoothly to the table header or previously focused row.
 - **Dynamic Mounting**: Because the component returns `null` when no rows are selected, it does not clutter the DOM or introduce extraneous tab stops when idle.
 - **High Contrast**: Designed with high-contrast surfaces ensuring that active action buttons are distinguishable from normal table borders.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key            | Action                                                       |
+| :------------- | :----------------------------------------------------------- |
 | <kbd>Tab</kbd> | Cycles focus between batch action buttons and cancel button. |
-| <kbd>Esc</kbd> | Clears active multi-row selection and dismisses batch bar. |
+| <kbd>Esc</kbd> | Clears active multi-row selection and dismisses batch bar.   |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-active]` | Batch Bar | Present when one or more rows are selected. |
-| `[data-hovered]` | Batch Button | Present on pointer hover. |
+| Attribute        | Target       | Description                                 |
+| :--------------- | :----------- | :------------------------------------------ |
+| `[data-active]`  | Batch Bar    | Present when one or more rows are selected. |
+| `[data-hovered]` | Batch Button | Present on pointer hover.                   |

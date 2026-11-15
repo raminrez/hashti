@@ -5,7 +5,7 @@ import type { Key, Selection } from "react-aria-components";
 export function SelectLiveDemo() {
   const [selectedCity, setSelectedCity] = useState<Key>("isfahan");
   const [multiSelected, setMultiSelected] = useState<Selection>(
-    new Set(["turquoise", "terracotta"])
+    new Set(["turquoise", "terracotta"]),
   );
 
   return (

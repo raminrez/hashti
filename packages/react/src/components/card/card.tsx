@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  type ComponentPropsWithRef,
-  type KeyboardEvent,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { type ComponentPropsWithRef, type KeyboardEvent, type ReactNode, type Ref } from "react";
 import { cx } from "../../utils";
 
 export type CardElevation = "flat" | "raised" | "overlay";
@@ -58,12 +53,7 @@ export function Card({
   }
 
   return (
-    <div
-      {...props}
-      ref={ref}
-      data-elevation={elevation}
-      className={cx("hashti-card", className)}
-    >
+    <div {...props} ref={ref} data-elevation={elevation} className={cx("hashti-card", className)}>
       {children}
     </div>
   );
@@ -89,8 +79,14 @@ export function CardHeader({
     <div {...props} ref={ref} className={cx("hashti-card-header", className)}>
       {title || description ? (
         <div className="hashti-card-header-content">
-          {title && (typeof title === "string" ? <h3 className="hashti-card-title">{title}</h3> : title)}
-          {description && (typeof description === "string" ? <p className="hashti-card-description">{description}</p> : description)}
+          {title &&
+            (typeof title === "string" ? <h3 className="hashti-card-title">{title}</h3> : title)}
+          {description &&
+            (typeof description === "string" ? (
+              <p className="hashti-card-description">{description}</p>
+            ) : (
+              description
+            ))}
         </div>
       ) : (
         children

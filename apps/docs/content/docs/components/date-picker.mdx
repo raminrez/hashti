@@ -8,15 +8,18 @@ description: Calendar-driven date selection suite supporting single dates, date 
 Hashti's date and time suite provides an accessible, culturally aware foundation for temporal data entry. Rather than relying on rigid browser defaults, Hashti implements segmented numerical date fields paired with smooth calendar popovers, offering full support for single dates, continuous date ranges, direct segment navigation, and international calendar systems (including the Persian Solar Hijri calendar).
 
 The suite is comprised of:
+
 - **`DatePicker`**: A segmented input with an attached calendar popup for single date selection.
 - **`DateRangePicker`**: Paired start/end segmented inputs with a range calendar for booking windows and timespans.
 - **`DateField` & `TimeField`**: Standalone keyboard-navigable segment inputs without a calendar popup.
 - **`Calendar` & `RangeCalendar`**: Embedded, standalone calendar grids.
 
-<ComponentPreview title="Date Picker" description="Localized calendar grid with range selection support.">
+<ComponentPreview
+  title="Date Picker"
+  description="Localized calendar grid with range selection support."
+>
   <DatePickerLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -94,7 +97,7 @@ export function DateRangePickerDemo() {
 
 ### Persian Solar Hijri Calendar Support
 
-Hashti includes architectural support for the Persian Solar Hijri (*Jalali*) calendar system via `@internationalized/date`'s `PersianCalendar`. When paired with an Iranian locale (`fa-IR`), month names, day orders (Saturday to Friday), and numeral formats correspond directly to Persian standards:
+Hashti includes architectural support for the Persian Solar Hijri (_Jalali_) calendar system via `@internationalized/date`'s `PersianCalendar`. When paired with an Iranian locale (`fa-IR`), month names, day orders (Saturday to Friday), and numeral formats correspond directly to Persian standards:
 
 ```tsx
 import { DatePicker } from "@hashti/react";
@@ -151,15 +154,9 @@ import { parseDate, parseTime } from "@internationalized/date";
 export function StandaloneFieldsDemo() {
   return (
     <div className="flex flex-col gap-4 max-w-xs">
-      <DateField
-        label="Archival Date"
-        defaultValue={parseDate("1971-10-14")}
-      />
+      <DateField label="Archival Date" defaultValue={parseDate("1971-10-14")} />
 
-      <TimeField
-        label="Acoustic Measurement Time"
-        defaultValue={parseTime("14:30")}
-      />
+      <TimeField label="Acoustic Measurement Time" defaultValue={parseTime("14:30")} />
     </div>
   );
 }
@@ -194,32 +191,32 @@ export function InlineCalendarDemo() {
 
 ### DatePicker Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `DateValue \| null` | — | Controlled date value. |
-| `defaultValue` | `DateValue` | — | Default date value for uncontrolled usage. |
-| `onChange` | `(value: DateValue \| null) => void` | — | Handler invoked when the selected date changes. |
-| `minValue` | `DateValue` | — | The earliest permissible date. |
-| `maxValue` | `DateValue` | — | The latest permissible date. |
-| `granularity` | `'day' \| 'hour' \| 'minute' \| 'second'` | `'day'` | Temporal precision level for the segmented field. |
-| `label` | `ReactNode` | — | Accessible field label. |
-| `description` | `ReactNode` | — | Helper text below or above the input. |
-| `errorMessage` | `ReactNode` | — | Error text rendered when validation fails. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and control sizing. |
-| `isDisabled` | `boolean` | `false` | Whether the date picker is disabled. |
-| `isReadOnly` | `boolean` | `false` | Whether the date picker is read-only. |
-| `isInvalid` | `boolean` | `false` | Whether the date picker is in an invalid error state. |
-| `isRequired` | `boolean` | `false` | Whether a date value is required for form submission. |
+| Prop           | Type                                      | Default | Description                                           |
+| :------------- | :---------------------------------------- | :------ | :---------------------------------------------------- |
+| `value`        | `DateValue \| null`                       | —       | Controlled date value.                                |
+| `defaultValue` | `DateValue`                               | —       | Default date value for uncontrolled usage.            |
+| `onChange`     | `(value: DateValue \| null) => void`      | —       | Handler invoked when the selected date changes.       |
+| `minValue`     | `DateValue`                               | —       | The earliest permissible date.                        |
+| `maxValue`     | `DateValue`                               | —       | The latest permissible date.                          |
+| `granularity`  | `'day' \| 'hour' \| 'minute' \| 'second'` | `'day'` | Temporal precision level for the segmented field.     |
+| `label`        | `ReactNode`                               | —       | Accessible field label.                               |
+| `description`  | `ReactNode`                               | —       | Helper text below or above the input.                 |
+| `errorMessage` | `ReactNode`                               | —       | Error text rendered when validation fails.            |
+| `size`         | `'sm' \| 'md' \| 'lg'`                    | `'md'`  | Height and control sizing.                            |
+| `isDisabled`   | `boolean`                                 | `false` | Whether the date picker is disabled.                  |
+| `isReadOnly`   | `boolean`                                 | `false` | Whether the date picker is read-only.                 |
+| `isInvalid`    | `boolean`                                 | `false` | Whether the date picker is in an invalid error state. |
+| `isRequired`   | `boolean`                                 | `false` | Whether a date value is required for form submission. |
 
 ### DateRangePicker Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `DateRange \| null` | — | Controlled `{ start: DateValue, end: DateValue }`. |
-| `defaultValue` | `DateRange` | — | Default start and end dates. |
-| `onChange` | `(range: DateRange \| null) => void` | — | Callback fired when the range changes. |
-| `minValue` | `DateValue` | — | Earliest selectable date. |
-| `maxValue` | `DateValue` | — | Latest selectable date. |
+| Prop           | Type                                 | Default | Description                                        |
+| :------------- | :----------------------------------- | :------ | :------------------------------------------------- |
+| `value`        | `DateRange \| null`                  | —       | Controlled `{ start: DateValue, end: DateValue }`. |
+| `defaultValue` | `DateRange`                          | —       | Default start and end dates.                       |
+| `onChange`     | `(range: DateRange \| null) => void` | —       | Callback fired when the range changes.             |
+| `minValue`     | `DateValue`                          | —       | Earliest selectable date.                          |
+| `maxValue`     | `DateValue`                          | —       | Latest selectable date.                            |
 
 ---
 
@@ -228,36 +225,42 @@ export function InlineCalendarDemo() {
 The date suite implements the **WAI-ARIA Date Picker Pattern** with comprehensive keyboard parity:
 
 ### Segmented Input Navigation
+
 - <kbd>→</kbd> and <kbd>←</kbd> move between date segments (Month, Day, Year).
 - <kbd>↑</kbd> and <kbd>↓</kbd> increment and decrement the focused segment.
 - Typing numbers directly sets the segment value (e.g., typing "0" then "5" in the month segment selects May).
 - In RTL locales, segment arrow navigation mirrors automatically.
 
 ### Calendar Grid Navigation
+
 - <kbd>→</kbd> and <kbd>←</kbd> navigate to the next / previous day.
 - <kbd>↑</kbd> and <kbd>↓</kbd> move focus one full week forward or backward.
 - <kbd>PageUp</kbd> and <kbd>PageDown</kbd> move focus by one month.
-- <kbd>Alt</kbd> + <kbd>PageUp</kbd> and <kbd>Alt</kbd> + <kbd>PageDown</kbd> move focus by one year.
-- <kbd>Home</kbd> moves to the first day of the month; <kbd>End</kbd> moves to the last day of the month.
-- <kbd>Enter</kbd> or <kbd>Space</kbd> selects the focused date and closes the popover (in single-date mode).
+- <kbd>Alt</kbd> + <kbd>PageUp</kbd> and <kbd>Alt</kbd> + <kbd>PageDown</kbd> move focus by one
+  year.
+- <kbd>Home</kbd> moves to the first day of the month; <kbd>End</kbd> moves to the last day of the
+  month.
+- <kbd>Enter</kbd> or <kbd>Space</kbd> selects the focused date and closes the popover (in
+  single-date mode).
 - <kbd>Esc</kbd> closes the calendar popover and returns focus to the trigger button.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>→</kbd> / <kbd>←</kbd> | Steps between day, month, and year segments. |
-| <kbd>↑</kbd> / <kbd>↓</kbd> | Increments or decrements active date segment value. |
-| <kbd>Space</kbd> / <kbd>Enter</kbd> | Opens the calendar popup dialog. |
-| <kbd>Esc</kbd> | Closes calendar popup and restores focus to input. |
+| Key                                 | Action                                              |
+| :---------------------------------- | :-------------------------------------------------- |
+| <kbd>→</kbd> / <kbd>←</kbd>         | Steps between day, month, and year segments.        |
+| <kbd>↑</kbd> / <kbd>↓</kbd>         | Increments or decrements active date segment value. |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | Opens the calendar popup dialog.                    |
+| <kbd>Esc</kbd>                      | Closes calendar popup and restores focus to input.  |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Segment, Calendar Cell | Active on pointer hover. |
-| `[data-focused]` | Segment, Calendar Cell | Active on focus. |
-| `[data-selected]` | Calendar Cell | Present on selected calendar date. |
+| Attribute         | Target                 | Description                        |
+| :---------------- | :--------------------- | :--------------------------------- |
+| `[data-hovered]`  | Segment, Calendar Cell | Active on pointer hover.           |
+| `[data-focused]`  | Segment, Calendar Cell | Active on focus.                   |
+| `[data-selected]` | Calendar Cell          | Present on selected calendar date. |

@@ -9,10 +9,12 @@ A **GridList** represents an interactive list of items where each element can be
 
 Built on React Aria Components' `GridList`, Hashti elevates this pattern with built-in selection checkboxes, drag-and-drop grab handles, empty state slots, and three density tiers.
 
-<ComponentPreview title="GridList" description="Multi-selection collection with drag-and-drop handles.">
+<ComponentPreview
+  title="GridList"
+  description="Multi-selection collection with drag-and-drop handles."
+>
   <GridListLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -79,7 +81,13 @@ export function SelectableTasksList() {
                 <span className="text-sm font-medium">{task.title}</span>
               </div>
               <Badge
-                kind={task.status === "completed" ? "success" : task.status === "in-progress" ? "info" : "neutral"}
+                kind={
+                  task.status === "completed"
+                    ? "success"
+                    : task.status === "in-progress"
+                      ? "info"
+                      : "neutral"
+                }
               >
                 {task.status}
               </Badge>
@@ -99,6 +107,7 @@ export function SelectableTasksList() {
 ### Visual Variants
 
 Hashti provides three container surface styles:
+
 - `bordered` (default): Encased in a single clean border with internal divider rules.
 - `flat`: Minimalist borderless item rows with subtle hover washes.
 - `card`: Floating raised card rows separated by discrete margins.
@@ -178,30 +187,30 @@ When no items match search criteria or the collection is empty, supply `emptyCon
 
 ### GridList (`GridList.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `selectionMode` | `'none' \| 'single' \| 'multiple'` | `'none'` | Allowed selection behavior for items. |
-| `selectedKeys` | `'all' \| Iterable<Key>` | — | Set of currently selected item keys (controlled). |
-| `defaultSelectedKeys` | `'all' \| Iterable<Key>` | — | Initial selected keys (uncontrolled). |
-| `onSelectionChange` | `(keys: Selection) => void` | — | Callback fired when the selection changes. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height density and internal item padding. |
-| `variant` | `'bordered' \| 'flat' \| 'card'` | `'bordered'` | Container background and border styling. |
-| `emptyContent` | `ReactNode` | — | Fallback content rendered when `items` is empty. |
-| `aria-label` | `string` | — | Accessible description of the collection. |
+| Prop                  | Type                               | Default      | Description                                       |
+| :-------------------- | :--------------------------------- | :----------- | :------------------------------------------------ |
+| `selectionMode`       | `'none' \| 'single' \| 'multiple'` | `'none'`     | Allowed selection behavior for items.             |
+| `selectedKeys`        | `'all' \| Iterable<Key>`           | —            | Set of currently selected item keys (controlled). |
+| `defaultSelectedKeys` | `'all' \| Iterable<Key>`           | —            | Initial selected keys (uncontrolled).             |
+| `onSelectionChange`   | `(keys: Selection) => void`        | —            | Callback fired when the selection changes.        |
+| `size`                | `'sm' \| 'md' \| 'lg'`             | `'md'`       | Height density and internal item padding.         |
+| `variant`             | `'bordered' \| 'flat' \| 'card'`   | `'bordered'` | Container background and border styling.          |
+| `emptyContent`        | `ReactNode`                        | —            | Fallback content rendered when `items` is empty.  |
+| `aria-label`          | `string`                           | —            | Accessible description of the collection.         |
 
 ### GridList.Item (`GridListItem`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `Key` | — | Unique key for the item within the collection. |
-| `textValue` | `string` | — | Plain text string representing item content for typeahead and accessibility. |
-| `isDisabled` | `boolean` | `false` | Disables interaction and selection for this item. |
-| `children` | `ReactNode` | — | Content, drag handle, or checkbox. |
+| Prop         | Type        | Default | Description                                                                  |
+| :----------- | :---------- | :------ | :--------------------------------------------------------------------------- |
+| `id`         | `Key`       | —       | Unique key for the item within the collection.                               |
+| `textValue`  | `string`    | —       | Plain text string representing item content for typeahead and accessibility. |
+| `isDisabled` | `boolean`   | `false` | Disables interaction and selection for this item.                            |
+| `children`   | `ReactNode` | —       | Content, drag handle, or checkbox.                                           |
 
 ### GridList.DragHandle (`GridListDragHandle`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
+| Prop         | Type     | Default          | Description                                  |
+| :----------- | :------- | :--------------- | :------------------------------------------- |
 | `aria-label` | `string` | `'Reorder item'` | Accessible label for the drag handle button. |
 
 ---
@@ -210,43 +219,44 @@ When no items match search criteria or the collection is empty, supply `emptyCon
 
 Hashti GridList follows the **WAI-ARIA Grid Pattern**:
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Navigates between items in the list. |
-| <kbd>Space</kbd> | Toggles selection of the focused item. |
-| <kbd>Shift</kbd> + <kbd>↓</kbd> / <kbd>↑</kbd> | Extends selection range across multiple items. |
-| <kbd>⌘</kbd> + <kbd>A</kbd> / <kbd>Ctrl</kbd> + <kbd>A</kbd> | Selects all items in multiple selection mode. |
-| <kbd>Enter</kbd> | Triggers the primary action on the focused item. |
-| <kbd>Home</kbd> / <kbd>End</kbd> | Moves focus directly to the first or last item in the list. |
+| Key                                                          | Action                                                      |
+| :----------------------------------------------------------- | :---------------------------------------------------------- |
+| <kbd>↓</kbd> / <kbd>↑</kbd>                                  | Navigates between items in the list.                        |
+| <kbd>Space</kbd>                                             | Toggles selection of the focused item.                      |
+| <kbd>Shift</kbd> + <kbd>↓</kbd> / <kbd>↑</kbd>               | Extends selection range across multiple items.              |
+| <kbd>⌘</kbd> + <kbd>A</kbd> / <kbd>Ctrl</kbd> + <kbd>A</kbd> | Selects all items in multiple selection mode.               |
+| <kbd>Enter</kbd>                                             | Triggers the primary action on the focused item.            |
+| <kbd>Home</kbd> / <kbd>End</kbd>                             | Moves focus directly to the first or last item in the list. |
 
 ---
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied State |
-| :--- | :--- | :--- |
-| Surface Normal | `--surface` | Item default background |
-| Surface Hover | `--surface-hover` | Row hover highlight |
-| Selection Surface | `--selected` (`#e7edff`) | Selected item tint |
-| Focus Ring | `--focus` | 2px focus border on active item |
-| Border Divider | `--divider` | Separator line between rows |
+| Token             | CSS Variable             | Applied State                   |
+| :---------------- | :----------------------- | :------------------------------ |
+| Surface Normal    | `--surface`              | Item default background         |
+| Surface Hover     | `--surface-hover`        | Row hover highlight             |
+| Selection Surface | `--selected` (`#e7edff`) | Selected item tint              |
+| Focus Ring        | `--focus`                | 2px focus border on active item |
+| Border Divider    | `--divider`              | Separator line between rows     |
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Moves keyboard focus between grid list items. |
-| <kbd>Space</kbd> | Toggles item selection in selectable mode. |
+| Key                                          | Action                                        |
+| :------------------------------------------- | :-------------------------------------------- |
+| <kbd>↓</kbd> / <kbd>↑</kbd>                  | Moves keyboard focus between grid list items. |
+| <kbd>Space</kbd>                             | Toggles item selection in selectable mode.    |
 | <kbd>⌘A</kbd> / <kbd>Ctrl</kbd>+<kbd>A</kbd> | Selects all items in multiple selection mode. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Item | Present when pointer hovers over item. |
-| `[data-selected]` | Item | Set on selected list items. |
-| `[data-focused]` | Item | Active on keyboard focus. |
-| `[data-disabled]` | Item | Present on disabled items. |
+| Attribute         | Target | Description                            |
+| :---------------- | :----- | :------------------------------------- |
+| `[data-hovered]`  | Item   | Present when pointer hovers over item. |
+| `[data-selected]` | Item   | Set on selected list items.            |
+| `[data-focused]`  | Item   | Active on keyboard focus.              |
+| `[data-disabled]` | Item   | Present on disabled items.             |

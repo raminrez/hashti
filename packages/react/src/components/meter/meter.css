@@ -3,7 +3,11 @@
   [data-hashti-theme] .hashti-meter,
   [data-hashti-theme] .hashti-meter {
     border-radius: var(--hashti-control-radius, 12px);
-    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
   [data-hashti-theme] .hashti-meter[data-pressed],
   [data-hashti-theme] .hashti-meter[data-pressed] {
@@ -12,6 +16,9 @@
   [data-hashti-theme] .hashti-meter[data-focus-visible],
   [data-hashti-theme] .hashti-meter[data-focus-visible] {
     outline: none;
-    box-shadow: 0 0 0 2px var(--hashti-background, var(--hashti-background)), 0 0 0 4px var(--hashti-focus, var(--hashti-focus)), 0 0 12px rgba(0, 180, 216, 0.35);
+    box-shadow:
+      0 0 0 2px var(--hashti-background, var(--hashti-background)),
+      0 0 0 4px var(--hashti-focus, var(--hashti-focus)),
+      0 0 12px rgba(0, 180, 216, 0.35);
   }
 }

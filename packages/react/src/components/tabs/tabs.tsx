@@ -21,11 +21,7 @@ export interface TabsProps extends RACTabsProps {
 
 export function Tabs({ variant = "line", className, ...props }: TabsProps) {
   return (
-    <RACTabs
-      {...props}
-      data-variant={variant}
-      className={classes("hashti-tabs hashti-tabs", className)}
-    />
+    <RACTabs {...props} data-variant={variant} className={classes("hashti-tabs", className)} />
   );
 }
 

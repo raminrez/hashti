@@ -34,10 +34,7 @@ function TableBatchActionsDemo() {
         </Button>
       </div>
 
-      <TableBatchActions
-        totalSelected={selectedCount}
-        onCancel={() => setSelectedCount(0)}
-      >
+      <TableBatchActions totalSelected={selectedCount} onCancel={() => setSelectedCount(0)}>
         <Button variant="ghost" size="sm">
           <Icon name="download" />
           Export

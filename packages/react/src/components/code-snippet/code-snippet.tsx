@@ -42,7 +42,7 @@ export function CodeSnippet({
     return (
       <span
         data-type="inline"
-        className={["hashti-code-snippet hashti-code-snippet", "hashti-code-snippet--inline hashti-code-snippet--inline", className]
+        className={["hashti-code-snippet", "hashti-code-snippet--inline", className]
           .filter(Boolean)
           .join(" ")}
       >
@@ -58,7 +58,7 @@ export function CodeSnippet({
             <Icon name={copyStatus === "Copied to clipboard" ? "check" : "copy"} />
           </Button>
         )}
-        <span role="status" className="hashti-visually-hidden hashti-visually-hidden">
+        <span role="status" className="hashti-visually-hidden">
           {copyStatus}
         </span>
       </span>
@@ -70,9 +70,9 @@ export function CodeSnippet({
       data-type={type}
       data-wrap={wrapText ? "true" : undefined}
       className={[
-        "hashti-code-snippet hashti-code-snippet",
+        "hashti-code-snippet",
         `hashti-code-snippet--${type} hashti-code-snippet--${type}`,
-        wrapText ? "hashti-code-snippet--wrap hashti-code-snippet--wrap" : undefined,
+        wrapText ? "hashti-code-snippet--wrap" : undefined,
         className,
       ]
         .filter(Boolean)
@@ -92,7 +92,7 @@ export function CodeSnippet({
       <pre tabIndex={0} aria-label={label} style={{ maxHeight }}>
         <code data-language={language}>{children}</code>
       </pre>
-      <span role="status" className="hashti-visually-hidden hashti-visually-hidden">
+      <span role="status" className="hashti-visually-hidden">
         {copyStatus}
       </span>
     </div>

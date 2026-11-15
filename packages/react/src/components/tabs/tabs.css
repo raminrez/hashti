@@ -1,6 +1,5 @@
 /* Hashti Modern Aesthetic - Tabs */
 @layer hashti.components {
-  .hashti-tabs,
   .hashti-tabs {
     display: flex;
     flex-direction: column;
@@ -30,7 +29,11 @@
     font-weight: 500;
     color: var(--hashti-text-secondary, #525252);
     border-bottom: 2px solid transparent;
-    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
     outline: none;
   }
 
@@ -41,8 +44,8 @@
 
   .hashti-tabs .react-aria-Tab[data-selected],
   .hashti-tabs .react-aria-Tab[data-selected] {
-    color: var(--hashti-primary, #08BDBA);
-    border-bottom-color: var(--hashti-primary, #08BDBA);
+    color: var(--hashti-focus);
+    border-bottom-color: var(--hashti-focus);
   }
 
   .hashti-tabs[data-variant="contained"] .react-aria-Tab,

@@ -5,14 +5,16 @@ description: Text inputs for single-line or multi-line textual and alphanumeric 
 
 # Text Field & Text Area
 
-The **TextField** and **TextArea** components provide accessible, tactile textual input fields for single-line or multi-line data capture. In Hashti's architectural design system, inputs are treated as welcoming thresholds—reminiscent of the *dalan* corridor leading from the outer portal to inner spaces—providing unambiguous cues, comfortable padding, and seamless bilingual support for both LTR and RTL scripts.
+The **TextField** and **TextArea** components provide accessible, tactile textual input fields for single-line or multi-line data capture. In Hashti's architectural design system, inputs are treated as welcoming thresholds—reminiscent of the _dalan_ corridor leading from the outer portal to inner spaces—providing unambiguous cues, comfortable padding, and seamless bilingual support for both LTR and RTL scripts.
 
 Both components are built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/TextField.html) and inherit robust state management, high-contrast focus indicators, integrated status messaging, and complete accessibility guarantees.
 
-<ComponentPreview title="TextField" description="Accessible text input fields with real-time feedback.">
+<ComponentPreview
+  title="TextField"
+  description="Accessible text input fields with real-time feedback."
+>
   <TextFieldLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -87,16 +89,8 @@ import { TextField } from "@hashti/react";
 export function RequiredDemo() {
   return (
     <div className="flex flex-col gap-4 max-w-sm">
-      <TextField
-        label="Work Email"
-        isRequired
-        placeholder="alex@example.com"
-      />
-      <TextField
-        label="Secondary Phone"
-        isOptional
-        placeholder="+1 (555) 019-2834"
-      />
+      <TextField label="Work Email" isRequired placeholder="alex@example.com" />
+      <TextField label="Secondary Phone" isOptional placeholder="+1 (555) 019-2834" />
     </div>
   );
 }
@@ -174,7 +168,7 @@ export function DisabledReadOnlyDemo() {
 
 ### Text Area (Multi-line)
 
-The `TextArea` component shares the exact same API and styling model as `TextField`, but renders a multi-line `<textarea>` with a customizable `rows` property.
+The `TextArea` component shares the `TextField` field anatomy — label, guidance, control, attached recovery, and the same validation wiring — but renders a multi-line `<textarea>` and takes `rows` instead of the single-line `size` scale.
 
 ```tsx
 import { TextArea } from "@hashti/react";
@@ -193,7 +187,7 @@ export function TextAreaDemo() {
 
 ### Bilingual & RTL Support (Persian / Arabic)
 
-Hashti is engineered from the ground up for right-to-left (RTL) scripts such as Persian (*Farsi*) and Arabic. When placed in an RTL container or passed `dir="rtl"`, text alignment, padding, icons, and error indicators mirror seamlessly.
+Hashti is engineered from the ground up for right-to-left (RTL) scripts such as Persian (_Farsi_) and Arabic. When placed in an RTL container or passed `dir="rtl"`, text alignment, padding, icons, and error indicators mirror seamlessly.
 
 ```tsx
 import { TextField, TextArea } from "@hashti/react";
@@ -248,35 +242,35 @@ export function CompositionalDemo() {
 
 ### TextField Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `label` | `ReactNode` | — | Accessible label for the input element. |
-| `description` | `ReactNode` | — | Supplementary description or guidance text. |
-| `errorMessage` | `ReactNode \| ((v: ValidationResult) => ReactNode)` | — | Error message displayed when `isInvalid` is true. |
-| `value` | `string` | — | Controlled value for the input. |
-| `defaultValue` | `string` | — | Default value for uncontrolled usage. |
-| `onChange` | `(value: string) => void` | — | Handler invoked when the input value changes. |
-| `placeholder` | `string` | — | Placeholder text displayed when input is empty. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and typographic scale of the input control. |
-| `isInvalid` | `boolean` | `false` | Whether the input is in an invalid error state. |
-| `isRequired` | `boolean` | `false` | Whether the input is required before form submission. |
-| `isOptional` | `boolean` | `false` | Renders an optional badge next to the field label. |
-| `isDisabled` | `boolean` | `false` | Whether the input is disabled from user interaction. |
-| `isReadOnly` | `boolean` | `false` | Whether the input is read-only. |
-| `labelTooltip` | `ReactNode` | — | Renders an informational tooltip icon beside the label. |
-| `status` | `FieldStatus` | — | Status presentation object (`{ type: 'warning' \| 'error' \| 'success', message?: ReactNode }`). |
-| `statusVariant`| `'attached' \| 'detached'` | `'attached'` | Layout variant for the status indicator message. |
-| `type` | `string` | `'text'` | Standard HTML input type (`'text'`, `'email'`, `'password'`, `'url'`, etc.). |
-| `inputRef` | `Ref<HTMLInputElement>` | — | Forwarded ref to the underlying HTML `<input>` element. |
+| Prop            | Type                                                | Default      | Description                                                                                      |
+| :-------------- | :-------------------------------------------------- | :----------- | :----------------------------------------------------------------------------------------------- |
+| `label`         | `ReactNode`                                         | —            | Accessible label for the input element.                                                          |
+| `description`   | `ReactNode`                                         | —            | Supplementary description or guidance text.                                                      |
+| `errorMessage`  | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —            | Error message displayed when `isInvalid` is true.                                                |
+| `value`         | `string`                                            | —            | Controlled value for the input.                                                                  |
+| `defaultValue`  | `string`                                            | —            | Default value for uncontrolled usage.                                                            |
+| `onChange`      | `(value: string) => void`                           | —            | Handler invoked when the input value changes.                                                    |
+| `placeholder`   | `string`                                            | —            | Placeholder text displayed when input is empty.                                                  |
+| `size`          | `'sm' \| 'md' \| 'lg'`                              | `'md'`       | Height and typographic scale of the input control.                                               |
+| `isInvalid`     | `boolean`                                           | `false`      | Whether the input is in an invalid error state.                                                  |
+| `isRequired`    | `boolean`                                           | `false`      | Whether the input is required before form submission.                                            |
+| `isOptional`    | `boolean`                                           | `false`      | Renders an optional badge next to the field label.                                               |
+| `isDisabled`    | `boolean`                                           | `false`      | Whether the input is disabled from user interaction.                                             |
+| `isReadOnly`    | `boolean`                                           | `false`      | Whether the input is read-only.                                                                  |
+| `labelTooltip`  | `ReactNode`                                         | —            | Renders an informational tooltip icon beside the label.                                          |
+| `status`        | `FieldStatus`                                       | —            | Status presentation object (`{ type: 'warning' \| 'error' \| 'success', message?: ReactNode }`). |
+| `statusVariant` | `'attached' \| 'detached'`                          | `'attached'` | Layout variant for the status indicator message.                                                 |
+| `type`          | `string`                                            | `'text'`     | Standard HTML input type (`'text'`, `'email'`, `'password'`, `'url'`, etc.).                     |
+| `inputRef`      | `Ref<HTMLInputElement>`                             | —            | Forwarded ref to the underlying HTML `<input>` element.                                          |
 
 ### TextArea Props
 
 In addition to the props above, `TextArea` accepts:
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `rows` | `number` | `4` | Number of visible text lines in the textarea control. |
-| `inputRef` | `Ref<HTMLTextAreaElement>` | — | Forwarded ref to the underlying HTML `<textarea>` element. |
+| Prop       | Type                       | Default | Description                                                |
+| :--------- | :------------------------- | :------ | :--------------------------------------------------------- |
+| `rows`     | `number`                   | `4`     | Number of visible text lines in the textarea control.      |
+| `inputRef` | `Ref<HTMLTextAreaElement>` | —       | Forwarded ref to the underlying HTML `<textarea>` element. |
 
 ---
 
@@ -286,23 +280,24 @@ In addition to the props above, `TextArea` accepts:
 - **Validation Linking**: When `isInvalid` is true, the input receives `aria-invalid="true"` and assistive technology automatically reads the error message upon focusing the field.
 - **Contrast**: Text, border lines, and focus outlines adhere to WCAG 2.2 AAA standards with a minimum 7:1 contrast ratio against the background layer.
 - **RTL & Dual Engine**: Automatically aligns cursor, text selection, and clear indicators with Arabic and Persian script standards.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Moves focus into or out of the input control. |
-| <kbd>Enter</kbd> | Submits the containing form (for single-line input). |
+| Key               | Action                                                    |
+| :---------------- | :-------------------------------------------------------- |
+| <kbd>Tab</kbd>    | Moves focus into or out of the input control.             |
+| <kbd>Enter</kbd>  | Submits the containing form (for single-line input).      |
 | Any Printable Key | Inserts typed text at the current cursor selection point. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Control | Present when the pointer is hovering over the field control. |
-| `[data-focused]` | Control | Active when the field receives focus. |
-| `[data-invalid]` | Control | Set when the input fails schema or native validation. |
-| `[data-disabled]` | Control | Applied when the input is disabled. |
+| Attribute         | Target  | Description                                                  |
+| :---------------- | :------ | :----------------------------------------------------------- |
+| `[data-hovered]`  | Control | Present when the pointer is hovering over the field control. |
+| `[data-focused]`  | Control | Active when the field receives focus.                        |
+| `[data-invalid]`  | Control | Set when the input fails schema or native validation.        |
+| `[data-disabled]` | Control | Applied when the input is disabled.                          |

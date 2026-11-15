@@ -1,15 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Header } from "react-aria-components";
 import { expect, waitFor, within } from "storybook/test";
-import {
-  ComboBox,
-  ListBoxItem,
-  ListBoxSection,
-  Theme,
-  useTheme,
-  type Key,
-} from "@hashti/react";
+import { ComboBox, ListBoxItem, ListBoxSection, Theme, useTheme, type Key } from "@hashti/react";
+import { http, HttpResponse } from "msw";
 import "./fields.css";
 
 const meta = {
@@ -60,6 +54,81 @@ function PlaygroundExample() {
   );
 }
 
+interface Service {
+  id: string;
+  name: string;
+}
+
+function AsyncComboBoxExample() {
+  const [services, setServices] = useState<Service[]>([]);
+  const [state, setState] = useState<"loading" | "ready" | "error">("loading");
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/services", { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json() as Promise<{ services: Service[] }>;
+      })
+      .then((payload) => {
+        setServices(payload.services);
+        setState("ready");
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setState("error");
+      });
+    return () => controller.abort();
+  }, []);
+
+  return (
+    <div className="field-story-stack">
+      <ComboBox
+        label="Service from the API"
+        description={
+          state === "loading"
+            ? "Loading services from /api/services..."
+            : state === "error"
+              ? "The service catalog could not be loaded."
+              : "Served by a mocked endpoint in this story."
+        }
+        isInvalid={state === "error"}
+        placeholder={state === "loading" ? "Loading..." : "Search services..."}
+        items={services}
+        isDisabled={state !== "ready"}
+      >
+        {(item: Service) => (
+          <ListBoxItem id={item.id} textValue={item.name}>
+            {item.name}
+          </ListBoxItem>
+        )}
+      </ComboBox>
+    </div>
+  );
+}
+
+export const AsyncOptions: Story = {
+  render: () => <AsyncComboBoxExample />,
+  beforeEach({ msw }) {
+    msw.use(
+      http.get("/api/services", () =>
+        HttpResponse.json({
+          services: [
+            { id: "vertex", name: "Vertex AI" },
+            { id: "bigquery", name: "BigQuery" },
+            { id: "spanner", name: "Cloud Spanner" },
+          ],
+        }),
+      ),
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("combobox", { name: /Service from the API/ });
+    await waitFor(() => expect(input).not.toBeDisabled());
+    await waitFor(() => expect(canvas.getByText(/mocked endpoint/)).toBeVisible());
+  },
+};
+
 export const Playground: Story = {
   render: () => <PlaygroundExample />,
   play: async ({ canvasElement, userEvent }) => {
@@ -68,7 +137,7 @@ export const Playground: Story = {
     const input = canvas.getByRole("combobox", { name: /Cloud infrastructure service/ });
     expect(input).toHaveValue("Kubernetes Engine (GKE)");
 
-    const trigger = canvas.getByRole("button", { name: /Show suggestions/ });
+    const trigger = canvas.getByRole("button", { name: /Open items list/ });
     await userEvent.click(trigger);
 
     const popover = await waitFor(() => {
@@ -80,7 +149,7 @@ export const Playground: Story = {
     const functionsOption = await within(popover).findByRole("option", {
       name: /Cloud Functions/,
     });
-    expect(functionsOption).toBeVisible();
+    await waitFor(() => expect(functionsOption).toBeVisible());
 
     await userEvent.click(functionsOption);
     expect(input).toHaveValue("Cloud Functions (Serverless)");
@@ -138,9 +207,9 @@ export const SizesAndStatus: Story = {
     const mdInput = canvas.getByRole("combobox", { name: /Medium \(md - default\) service/ });
     const lgInput = canvas.getByRole("combobox", { name: /Large \(lg\) service/ });
 
-    expect(smInput).toBeVisible();
-    expect(mdInput).toBeVisible();
-    expect(lgInput).toBeVisible();
+    await waitFor(() => expect(smInput).toBeVisible());
+    await waitFor(() => expect(mdInput).toBeVisible());
+    await waitFor(() => expect(lgInput).toBeVisible());
   },
 };
 
@@ -168,10 +237,7 @@ const serviceGroups = [
 export const SectionsAndGroups: Story = {
   render: () => (
     <div className="field-story-stack">
-      <ComboBox
-        label="Service category"
-        placeholder="Search categorized catalog..."
-      >
+      <ComboBox label="Service category" placeholder="Search categorized catalog...">
         {serviceGroups.map((grp) => (
           <ListBoxSection key={grp.id} id={grp.id}>
             <Header className="hashti-select-section-header">{grp.title}</Header>
@@ -188,7 +254,7 @@ export const SectionsAndGroups: Story = {
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
 
-    const trigger = canvas.getByRole("button", { name: /Show suggestions/ });
+    const trigger = canvas.getByRole("button", { name: /Open items list/ });
     await userEvent.click(trigger);
 
     const popover = await waitFor(() => {
@@ -200,7 +266,7 @@ export const SectionsAndGroups: Story = {
     const spannerOption = await within(popover).findByRole("option", {
       name: "Cloud Spanner",
     });
-    expect(spannerOption).toBeVisible();
+    await waitFor(() => expect(spannerOption).toBeVisible());
 
     await userEvent.click(spannerOption);
     const input = canvas.getByRole("combobox", { name: /Service category/ });
@@ -278,7 +344,9 @@ export const DisabledAndInvalid: Story = {
     const disabledInput = canvas.getByRole("combobox", { name: /Cluster zone \(Disabled\)/ });
     expect(disabledInput).toBeDisabled();
 
-    expect(canvas.getByText("Please select a cluster zone before continuing.")).toBeVisible();
+    await waitFor(() =>
+      expect(canvas.getByText("Please select a cluster zone before continuing.")).toBeVisible(),
+    );
   },
 };
 
@@ -321,7 +389,7 @@ export const LongContentAndLocales: Story = {
     const input = canvas.getByRole("combobox", { name: /ناحیه رایانش ابری/ });
     expect(input).toHaveValue("تهران (مرکز داده آسیاتک)");
 
-    const trigger = canvas.getByRole("button", { name: /Show suggestions/ });
+    const trigger = canvas.getByRole("button", { name: /Open items list/ });
     await userEvent.click(trigger);
 
     const popover = await waitFor(() => {
@@ -333,46 +401,48 @@ export const LongContentAndLocales: Story = {
     const shirazOption = await within(popover).findByRole("option", {
       name: /شیراز/,
     });
-    expect(shirazOption).toBeVisible();
+    await waitFor(() => expect(shirazOption).toBeVisible());
 
     await userEvent.click(shirazOption);
     expect(input).toHaveValue("شیراز (مرکز داده پارس)");
   },
 };
 
-export const DynamicItemCreation: Story = {
-  render: () => {
-    const [items, setItems] = useState([
-      { id: "react", name: "React" },
-      { id: "vue", name: "Vue" },
-      { id: "svelte", name: "Svelte" },
-    ]);
-    const [selected, setSelected] = useState<Key | null>(null);
+function DynamicItemCreationDemo() {
+  const [items, setItems] = useState([
+    { id: "react", name: "React" },
+    { id: "vue", name: "Vue" },
+    { id: "svelte", name: "Svelte" },
+  ]);
+  const [selected, setSelected] = useState<Key | null>(null);
 
-    return (
-      <div style={{ maxWidth: 360 }}>
-        <ComboBox
-          label="Project framework"
-          placeholder="Search or create framework..."
-          items={items}
-          allowCreateItem={true}
-          onCreateItem={(val) => {
-            const newItem = { id: val.toLowerCase().replace(/\s+/g, "-"), name: val };
-            setItems((prev) => [...prev, newItem]);
-            setSelected(newItem.id);
-          }}
-          selectedKey={selected}
-          onSelectionChange={setSelected}
-        >
-          {(item) => (
-            <ListBoxItem id={item.id} textValue={item.name}>
-              {item.name}
-            </ListBoxItem>
-          )}
-        </ComboBox>
-      </div>
-    );
-  },
+  return (
+    <div style={{ maxWidth: 360 }}>
+      <ComboBox
+        label="Project framework"
+        placeholder="Search or create framework..."
+        items={items}
+        allowCreateItem={true}
+        onCreateItem={(val) => {
+          const newItem = { id: val.toLowerCase().replace(/\s+/g, "-"), name: val };
+          setItems((prev) => [...prev, newItem]);
+          setSelected(newItem.id);
+        }}
+        selectedKey={selected}
+        onSelectionChange={setSelected}
+      >
+        {(item) => (
+          <ListBoxItem id={item.id} textValue={item.name}>
+            {item.name}
+          </ListBoxItem>
+        )}
+      </ComboBox>
+    </div>
+  );
+}
+
+export const DynamicItemCreation: Story = {
+  render: () => <DynamicItemCreationDemo />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole("combobox", { name: "Project framework" });

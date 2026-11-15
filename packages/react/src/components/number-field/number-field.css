@@ -1,6 +1,5 @@
 /* Hashti Modern Aesthetic - NumberField */
 @layer hashti.components {
-  .hashti-number-field,
   .hashti-number-field {
     display: flex;
     flex-direction: column;
@@ -15,13 +14,11 @@
     border: 1px solid var(--hashti-border-strong, #8d8d8d);
     background-color: var(--hashti-field, #ffffff);
     overflow: hidden;
-    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .hashti-number-field .hashti-field__control:focus-within,
-  .hashti-number-field .hashti-field__control:focus-within {
-    border-color: var(--hashti-focus, #0f62fe);
-    box-shadow: 0 0 0 2px var(--hashti-background, #ffffff), 0 0 0 4px var(--hashti-focus, #0f62fe), 0 0 12px rgba(15, 98, 254, 0.35);
+    transition:
+      background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hashti-number-field input,

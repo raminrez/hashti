@@ -9,10 +9,12 @@ The **InputOTP** component provides a clean, segmented code input specifically t
 
 Rather than forcing users into an awkward monolithic text box, InputOTP distributes characters across distinct tactile visual slots with automated focus shifting, backspace retreat, paste interception, and immediate `onComplete` triggers.
 
-<ComponentPreview title="Input OTP" description="Segmented verification code input with auto-advance.">
+<ComponentPreview
+  title="Input OTP"
+  description="Segmented verification code input with auto-advance."
+>
   <InputOTPLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -70,12 +72,7 @@ export function FourDigitPINDemo() {
   return (
     <div className="flex flex-col gap-3 max-w-xs">
       <label className="text-sm font-medium">Vault Access PIN</label>
-      <InputOTP
-        length={4}
-        value={pin}
-        onChange={setPin}
-        aria-label="4-digit security PIN"
-      />
+      <InputOTP length={4} value={pin} onChange={setPin} aria-label="4-digit security PIN" />
     </div>
   );
 }
@@ -108,12 +105,7 @@ export function PasteDemo() {
         <p className="text-xs text-gray-500 mb-3">
           Paste any 6-digit code directly into the first box.
         </p>
-        <InputOTP
-          length={6}
-          value={otp}
-          onChange={setOtp}
-          onComplete={handleComplete}
-        />
+        <InputOTP length={6} value={otp} onChange={setOtp} onComplete={handleComplete} />
       </div>
 
       <Button
@@ -173,12 +165,7 @@ import { InputOTP } from "@hashti/react";
 
 export function DisabledOTPDemo() {
   return (
-    <InputOTP
-      length={6}
-      defaultValue="982341"
-      isDisabled
-      aria-label="Locked verification code"
-    />
+    <InputOTP length={6} defaultValue="982341" isDisabled aria-label="Locked verification code" />
   );
 }
 ```
@@ -187,17 +174,17 @@ export function DisabledOTPDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `length` | `number` | `6` | Total number of individual code slots to display. |
-| `value` | `string` | — | The controlled string value across all slots. |
-| `defaultValue` | `string` | `""` | The initial uncontrolled value. |
-| `onChange` | `(value: string) => void` | — | Callback fired whenever any digit is entered, deleted, or pasted. |
-| `onComplete` | `(value: string) => void` | — | Callback fired immediately when all slots have been filled. |
-| `isDisabled` | `boolean` | `false` | Disables interaction with all slot inputs. |
-| `isInvalid` | `boolean` | `false` | Applies error styling across the slot borders. |
-| `aria-label` | `string` | `"One-time code"` | Accessible name for the input group container. |
-| `className` | `string` | — | Additional CSS classes for the container. |
+| Prop           | Type                      | Default           | Description                                                       |
+| :------------- | :------------------------ | :---------------- | :---------------------------------------------------------------- |
+| `length`       | `number`                  | `6`               | Total number of individual code slots to display.                 |
+| `value`        | `string`                  | —                 | The controlled string value across all slots.                     |
+| `defaultValue` | `string`                  | `""`              | The initial uncontrolled value.                                   |
+| `onChange`     | `(value: string) => void` | —                 | Callback fired whenever any digit is entered, deleted, or pasted. |
+| `onComplete`   | `(value: string) => void` | —                 | Callback fired immediately when all slots have been filled.       |
+| `isDisabled`   | `boolean`                 | `false`           | Disables interaction with all slot inputs.                        |
+| `isInvalid`    | `boolean`                 | `false`           | Applies error styling across the slot borders.                    |
+| `aria-label`   | `string`                  | `"One-time code"` | Accessible name for the input group container.                    |
+| `className`    | `string`                  | —                 | Additional CSS classes for the container.                         |
 
 ---
 
@@ -210,21 +197,22 @@ export function DisabledOTPDemo() {
   - Pressing <kbd>Backspace</kbd> clears the current slot; if already empty, it clears the preceding slot and moves focus back.
   - <kbd>←</kbd> and <kbd>→</kbd> navigate between adjacent slots without altering text.
 - **Mobile Autofill & Virtual Keyboards**: Slots use `inputMode="numeric"` to summon the numeric keypad on touch devices, and `autoComplete="one-time-code"` to integrate with iOS and Android automated SMS code autofill features.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| Digits (<kbd>0</kbd> - <kbd>9</kbd>) | Fills focused slot and auto-advances to next slot. |
-| <kbd>Backspace</kbd> | Clears current slot and moves focus back to previous slot. |
-| <kbd>→</kbd> / <kbd>←</kbd> | Navigates horizontally between slot inputs. |
+| Key                                  | Action                                                     |
+| :----------------------------------- | :--------------------------------------------------------- |
+| Digits (<kbd>0</kbd> - <kbd>9</kbd>) | Fills focused slot and auto-advances to next slot.         |
+| <kbd>Backspace</kbd>                 | Clears current slot and moves focus back to previous slot. |
+| <kbd>→</kbd> / <kbd>←</kbd>          | Navigates horizontally between slot inputs.                |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute        | Target   | Description                         |
+| :--------------- | :------- | :---------------------------------- |
 | `[data-focused]` | OTP Slot | Set on active slot receiving input. |
-| `[data-filled]` | OTP Slot | Set when slot has a digit. |
+| `[data-filled]`  | OTP Slot | Set when slot has a digit.          |

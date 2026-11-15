@@ -30,7 +30,9 @@ function StackExample() {
           </p>
         </div>
         <Stack gap={4}>
-          <div style={{ fontSize: "0.875rem", fontWeight: 600 }}>Horizontal Action Stack (gap=3)</div>
+          <div style={{ fontSize: "0.875rem", fontWeight: 600 }}>
+            Horizontal Action Stack (gap=3)
+          </div>
           <Stack orientation="horizontal" gap={3}>
             <Button variant="primary">Deploy Service</Button>
             <Button variant="secondary">Run Verification</Button>
@@ -104,9 +106,7 @@ function LongContentAndLocalesExample() {
         <div dir="rtl" className="layout-card">
           <div>
             <h4 className="layout-card-title">سیستم شبکه و چیدمان ستونی (فارسی)</h4>
-            <p className="layout-card-description">
-              تطبیق خودکار چینش ستون‌ها در زبان راست‌به‌چپ
-            </p>
+            <p className="layout-card-description">تطبیق خودکار چینش ستون‌ها در زبان راست‌به‌چپ</p>
           </div>
           <Grid>
             <GridColumn sm={4} md={4} lg={8}>

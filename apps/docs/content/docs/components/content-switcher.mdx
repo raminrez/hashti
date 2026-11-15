@@ -9,10 +9,12 @@ The Content Switcher (also known as a segmented button or pill toggle group) let
 
 Unlike standard buttons, all segments are joined in a single cohesive container where exactly one option remains selected at all times.
 
-<ComponentPreview title="Content Switcher" description="Binary or ternary view toggles with pill geometry.">
+<ComponentPreview
+  title="Content Switcher"
+  description="Binary or ternary view toggles with pill geometry."
+>
   <ContentSwitcherLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -174,23 +176,23 @@ export function BinarySwitcherExample() {
 
 ### ContentSwitcher Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and padding density applied to all contained toggle buttons. |
-| `selectedKeys` | `Iterable<Key>` | — | The keys of the currently active toggle button (controlled). |
-| `defaultSelectedKeys` | `Iterable<Key>` | — | Initial selected key when uncontrolled. |
-| `onSelectionChange` | `(keys: Set<Key>) => void` | — | Callback fired whenever the user selects a segment. |
-| `aria-label` | `string` | — | **Recommended**: Accessible name describing the toggle group to screen readers. |
-| `children` | `ReactNode` | **Required** | One or more `<ToggleButton>` components. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop                  | Type                       | Default      | Description                                                                     |
+| :-------------------- | :------------------------- | :----------- | :------------------------------------------------------------------------------ |
+| `size`                | `'sm' \| 'md' \| 'lg'`     | `'md'`       | Height and padding density applied to all contained toggle buttons.             |
+| `selectedKeys`        | `Iterable<Key>`            | —            | The keys of the currently active toggle button (controlled).                    |
+| `defaultSelectedKeys` | `Iterable<Key>`            | —            | Initial selected key when uncontrolled.                                         |
+| `onSelectionChange`   | `(keys: Set<Key>) => void` | —            | Callback fired whenever the user selects a segment.                             |
+| `aria-label`          | `string`                   | —            | **Recommended**: Accessible name describing the toggle group to screen readers. |
+| `children`            | `ReactNode`                | **Required** | One or more `<ToggleButton>` components.                                        |
+| `className`           | `string`                   | —            | Additional CSS class names.                                                     |
 
 ### ToggleButton Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `Key` | **Required** | Unique identifier for this button within the switcher. |
-| `children` | `ReactNode` | **Required** | Text label, icon, or content rendered inside the segment. |
-| `isDisabled` | `boolean` | `false` | Whether this individual segment is disabled. |
+| Prop         | Type        | Default      | Description                                               |
+| :----------- | :---------- | :----------- | :-------------------------------------------------------- |
+| `id`         | `Key`       | **Required** | Unique identifier for this button within the switcher.    |
+| `children`   | `ReactNode` | **Required** | Text label, icon, or content rendered inside the segment. |
+| `isDisabled` | `boolean`   | `false`      | Whether this individual segment is disabled.              |
 
 ---
 
@@ -203,20 +205,21 @@ export function BinarySwitcherExample() {
   - Press <kbd>Space</kbd> or <kbd>Enter</kbd> to select the focused option.
   - Focus order respects RTL layouts automatically.
 - **Group Labelling**: Always supply an `aria-label` (or `aria-labelledby`) on the `<ContentSwitcher>` so assistive technology users understand the grouping's purpose.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>→</kbd> / <kbd>←</kbd> | Moves selection across switcher segments. |
-| <kbd>Space</kbd> / <kbd>Enter</kbd> | Activates focused segment. |
+| Key                                 | Action                                    |
+| :---------------------------------- | :---------------------------------------- |
+| <kbd>→</kbd> / <kbd>←</kbd>         | Moves selection across switcher segments. |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | Activates focused segment.                |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-selected]` | Switcher Button | Active on selected view. |
-| `[data-focused]` | Switcher Button | Present on keyboard focus. |
+| Attribute         | Target          | Description                |
+| :---------------- | :-------------- | :------------------------- |
+| `[data-selected]` | Switcher Button | Active on selected view.   |
+| `[data-focused]`  | Switcher Button | Present on keyboard focus. |

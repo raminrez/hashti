@@ -85,11 +85,7 @@ export function Avatar({
     >
       <div className="hashti-avatar-inner">
         {showImage ? (
-          <img
-            src={src}
-            alt={alt}
-            onError={() => setImageFailed(true)}
-          />
+          <img src={src} alt={alt} onError={() => setImageFailed(true)} />
         ) : initials ? (
           <span aria-hidden="true">{initials}</span>
         ) : fallback ? (
@@ -136,12 +132,7 @@ export function AvatarGroup({
 
   return (
     <AvatarGroupContext.Provider value={{ size }}>
-      <div
-        {...props}
-        ref={ref}
-        role="group"
-        className={cx("hashti-avatar-group", className)}
-      >
+      <div {...props} ref={ref} role="group" className={cx("hashti-avatar-group", className)}>
         {visibleChildren}
 
         {overflowCount > 0 && (

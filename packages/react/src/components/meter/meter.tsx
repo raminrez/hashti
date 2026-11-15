@@ -90,7 +90,11 @@ export interface MeterRootProps extends Omit<RACMeterProps, "className" | "child
   size?: "sm" | "md" | "lg";
   variant?: "bar" | "circular";
   className?: string | ((values: MeterRenderProps) => string);
-  children?: ReactNode | ((values: MeterRenderProps & { derivedTone: "neutral" | "success" | "warning" | "error" }) => ReactNode);
+  children?:
+    | ReactNode
+    | ((
+        values: MeterRenderProps & { derivedTone: "neutral" | "success" | "warning" | "error" },
+      ) => ReactNode);
   ref?: Ref<HTMLDivElement>;
 }
 
@@ -133,7 +137,7 @@ export function MeterRoot({
       data-variant={variant}
       className={classes(
         cx("hashti-progress hashti-meter", variant === "circular" && "hashti-meter--circular"),
-        className
+        className,
       )}
     >
       {(renderProps) => {
@@ -148,7 +152,13 @@ export function MeterRoot({
         return (
           <MeterContext.Provider value={contextValue}>
             {typeof children === "function"
-              ? (children as (values: MeterRenderProps & { derivedTone: "neutral" | "success" | "warning" | "error" }) => ReactNode)({
+              ? (
+                  children as (
+                    values: MeterRenderProps & {
+                      derivedTone: "neutral" | "success" | "warning" | "error";
+                    },
+                  ) => ReactNode
+                )({
                   ...renderProps,
                   derivedTone,
                 })
@@ -191,7 +201,12 @@ export function MeterTrack({ children, className, ...props }: MeterTrackProps) {
 export interface MeterFillProps extends ComponentPropsWithRef<"div"> {
   percentage?: number;
 }
-export function MeterFill({ percentage: propPercentage, style, className, ...props }: MeterFillProps) {
+export function MeterFill({
+  percentage: propPercentage,
+  style,
+  className,
+  ...props
+}: MeterFillProps) {
   const { percentage: ctxPercentage } = useContext(MeterContext);
   const percent = propPercentage ?? ctxPercentage ?? 0;
   return (
@@ -218,7 +233,12 @@ export interface MeterCircleProps extends ComponentPropsWithRef<"div"> {
   showValueLabel?: boolean;
 }
 export function MeterCircle({ showValueLabel = true, className, ...props }: MeterCircleProps) {
-  const { percentage = 0, valueText, size = "md", derivedTone = "neutral" } = useContext(MeterContext);
+  const {
+    percentage = 0,
+    valueText,
+    size = "md",
+    derivedTone = "neutral",
+  } = useContext(MeterContext);
   const pixelSize = size === "sm" ? 36 : size === "lg" ? 64 : 48;
   const strokeWidth = size === "sm" ? 3 : size === "lg" ? 5 : 4;
   const radius = (pixelSize - strokeWidth) / 2;
@@ -256,9 +276,7 @@ export function MeterCircle({ showValueLabel = true, className, ...props }: Mete
           strokeDashoffset={strokeDashoffset}
         />
       </svg>
-      {showValueLabel && (
-        <span className="hashti-meter-circle-value">{valueText}</span>
-      )}
+      {showValueLabel && <span className="hashti-meter-circle-value">{valueText}</span>}
     </div>
   );
 }

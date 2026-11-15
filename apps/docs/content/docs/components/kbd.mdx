@@ -11,7 +11,6 @@ The `Kbd` component renders styled visual representations of keyboard keys and s
   <KbdLiveDemo />
 </ComponentPreview>
 
-
 ---
 
 ## Architectural Purpose
@@ -126,18 +125,18 @@ export function SearchFieldWithKbdDemo() {
 
 When using the `keys` prop, Hashti recognizes the following standard keywords:
 
-| Keyword | macOS Symbol | Windows / Linux Label |
-| :--- | :--- | :--- |
-| `'mod'` / `'meta'` / `'cmd'` | `⌘` (Command) | `Ctrl` |
-| `'ctrl'` / `'control'` | `⌃` (Control) | `Ctrl` |
-| `'alt'` / `'option'` | `⌥` (Option) | `Alt` |
-| `'shift'` | `⇧` (Shift) | `Shift` |
-| `'enter'` / `'return'` | `↵` | `Enter` |
-| `'escape'` / `'esc'` | `Esc` | `Esc` |
-| `'backspace'` | `⌫` | `Backspace` |
-| `'delete'` | `⌦` | `Del` |
-| `'tab'` | `⇥` | `Tab` |
-| `'up'` / `'down'` / `'left'` / `'right'` | `↑` `↓` `←` `→` | `↑` `↓` `←` `→` |
+| Keyword                                  | macOS Symbol    | Windows / Linux Label |
+| :--------------------------------------- | :-------------- | :-------------------- |
+| `'mod'` / `'meta'` / `'cmd'`             | `⌘` (Command)   | `Ctrl`                |
+| `'ctrl'` / `'control'`                   | `⌃` (Control)   | `Ctrl`                |
+| `'alt'` / `'option'`                     | `⌥` (Option)    | `Alt`                 |
+| `'shift'`                                | `⇧` (Shift)     | `Shift`               |
+| `'enter'` / `'return'`                   | `↵`             | `Enter`               |
+| `'escape'` / `'esc'`                     | `Esc`           | `Esc`                 |
+| `'backspace'`                            | `⌫`             | `Backspace`           |
+| `'delete'`                               | `⌦`             | `Del`                 |
+| `'tab'`                                  | `⇥`             | `Tab`                 |
+| `'up'` / `'down'` / `'left'` / `'right'` | `↑` `↓` `←` `→` | `↑` `↓` `←` `→`       |
 
 Single letters (such as `'k'`, `'p'`, `'s'`) are automatically capitalized (`K`, `P`, `S`).
 
@@ -147,11 +146,11 @@ Single letters (such as `'k'`, `'p'`, `'s'`) are automatically capitalized (`K`,
 
 `Kbd` extends `ComponentPropsWithRef<'kbd'>`.
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `keys` | `string \| string[]` | — | Keyword token or list of tokens to normalize and format into keycaps. |
-| `children` | `ReactNode` | — | Custom key content rendered if `keys` is not provided. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop        | Type                 | Default | Description                                                           |
+| :---------- | :------------------- | :------ | :-------------------------------------------------------------------- |
+| `keys`      | `string \| string[]` | —       | Keyword token or list of tokens to normalize and format into keycaps. |
+| `children`  | `ReactNode`          | —       | Custom key content rendered if `keys` is not provided.                |
+| `className` | `string`             | —       | Additional CSS class names.                                           |
 
 ---
 
@@ -160,10 +159,11 @@ Single letters (such as `'k'`, `'p'`, `'s'`) are automatically capitalized (`K`,
 - **Semantic HTML Tag**: Renders a native `<kbd>` element, which is the official W3C HTML element for identifying user keyboard input.
 - **Screen Reader Readability**: Screen readers announce `<kbd>` content as text. Using standard key words and symbols ensures text-to-speech engines can enunciate the shortcut (e.g. "Command K").
 - **Contrast Ratios**: The keycap border and text colors adhere to WCAG 2.2 AAA specifications against both light and dark application backgrounds.
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-size]` | Kbd | Key dimension scale (`sm`, `md`). |
+| Attribute     | Target | Description                       |
+| :------------ | :----- | :-------------------------------- |
+| `[data-size]` | Kbd    | Key dimension scale (`sm`, `md`). |

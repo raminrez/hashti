@@ -5,7 +5,10 @@ description: Fast, keyboard-first modal command menu composed from native Hashti
 
 The **CommandPalette** (also known as `CommandMenu`) is an accessible, keyboard-driven search and command execution dialog. Designed for rapid navigation, action triggering, and AI workflows, it is composed entirely of native Hashti primitives: `Modal`, `Dialog`, `SearchField`, `ListBox`, `Kbd`, and `EmptyState`.
 
-<ComponentPreview title="Live Interactive Command Palette" description="Click to launch or press ⌘K (Ctrl+K) on your keyboard.">
+<ComponentPreview
+  title="Live Interactive Command Palette"
+  description="Click to launch or press ⌘K (Ctrl+K) on your keyboard."
+>
   <CommandPaletteLiveDemo />
 </ComponentPreview>
 
@@ -14,10 +17,7 @@ The **CommandPalette** (also known as `CommandMenu`) is an accessible, keyboard-
 Hashti exports both the composite `CommandPalette` component and compound subcomponents:
 
 ```tsx
-import {
-  CommandPalette,
-  useCommandPaletteContext,
-} from "@hashti/react";
+import { CommandPalette, useCommandPaletteContext } from "@hashti/react";
 ```
 
 ## Anatomy & Compound Composition
@@ -28,18 +28,29 @@ import {
     <CommandPalette.Input placeholder="Type a command or search..." />
     <CommandPalette.List>
       <CommandPalette.Group heading="Navigation">
-        <CommandPalette.Item id="home" shortcut="⇧H">Home Portal</CommandPalette.Item>
-        <CommandPalette.Item id="docs" shortcut="⇧D">Documentation</CommandPalette.Item>
+        <CommandPalette.Item id="home" shortcut="⇧H">
+          Home Portal
+        </CommandPalette.Item>
+        <CommandPalette.Item id="docs" shortcut="⇧D">
+          Documentation
+        </CommandPalette.Item>
       </CommandPalette.Group>
       <CommandPalette.Group heading="Actions">
-        <CommandPalette.Item id="theme" shortcut="⌘T">Toggle Theme</CommandPalette.Item>
+        <CommandPalette.Item id="theme" shortcut="⌘T">
+          Toggle Theme
+        </CommandPalette.Item>
         <CommandPalette.Item id="copy">Copy Palette Tokens</CommandPalette.Item>
       </CommandPalette.Group>
       <CommandPalette.Empty>No matching commands found.</CommandPalette.Empty>
     </CommandPalette.List>
     <CommandPalette.Footer>
-      <span>Use <CommandPalette.Kbd>↑</CommandPalette.Kbd> <CommandPalette.Kbd>↓</CommandPalette.Kbd> to navigate</span>
-      <span>Press <CommandPalette.Kbd>ESC</CommandPalette.Kbd> to close</span>
+      <span>
+        Use <CommandPalette.Kbd>↑</CommandPalette.Kbd> <CommandPalette.Kbd>↓</CommandPalette.Kbd> to
+        navigate
+      </span>
+      <span>
+        Press <CommandPalette.Kbd>ESC</CommandPalette.Kbd> to close
+      </span>
     </CommandPalette.Footer>
   </CommandPalette.Dialog>
 </CommandPalette.Root>
@@ -129,11 +140,7 @@ export function ControlledQueryDemo() {
   const [query, setQuery] = useState("");
 
   return (
-    <CommandPalette
-      query={query}
-      onQueryChange={setQuery}
-      placeholder="Filter by keyword..."
-    >
+    <CommandPalette query={query} onQueryChange={setQuery} placeholder="Filter by keyword...">
       <CommandPalette.Group heading="Filtered Results">
         <CommandPalette.Item id="item-1">Result Item 1</CommandPalette.Item>
         <CommandPalette.Item id="item-2">Result Item 2</CommandPalette.Item>
@@ -149,24 +156,24 @@ export function ControlledQueryDemo() {
 
 ### CommandPalette (Root)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `isOpen` | `boolean` | `undefined` | Controlled open dialog state. |
-| `defaultOpen` | `boolean` | `false` | Initial open dialog state for uncontrolled usage. |
-| `onOpenChange` | `(open: boolean) => void` | `undefined` | Callback fired when the command palette opens or closes. |
-| `enableShortcut` | `boolean` | `true` | When true, registers global keyboard listener for ⌘K and Ctrl+K. |
-| `shortcutKey` | `string` | `"k"` | Custom single character key to combine with Meta/Ctrl. |
-| `closeOnSelect` | `boolean` | `true` | Automatically close the modal when an item is selected. |
-| `query` | `string` | `undefined` | Controlled query search string. |
-| `onQueryChange` | `(query: string) => void` | `undefined` | Search query change handler. |
+| Prop             | Type                      | Default     | Description                                                      |
+| :--------------- | :------------------------ | :---------- | :--------------------------------------------------------------- |
+| `isOpen`         | `boolean`                 | `undefined` | Controlled open dialog state.                                    |
+| `defaultOpen`    | `boolean`                 | `false`     | Initial open dialog state for uncontrolled usage.                |
+| `onOpenChange`   | `(open: boolean) => void` | `undefined` | Callback fired when the command palette opens or closes.         |
+| `enableShortcut` | `boolean`                 | `true`      | When true, registers global keyboard listener for ⌘K and Ctrl+K. |
+| `shortcutKey`    | `string`                  | `"k"`       | Custom single character key to combine with Meta/Ctrl.           |
+| `closeOnSelect`  | `boolean`                 | `true`      | Automatically close the modal when an item is selected.          |
+| `query`          | `string`                  | `undefined` | Controlled query search string.                                  |
+| `onQueryChange`  | `(query: string) => void` | `undefined` | Search query change handler.                                     |
 
 ### CommandPalette.Item
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `Key` | `required` | Unique identifier for the command item. |
-| `shortcut` | `string` | `undefined` | Keyboard shortcut text displayed as a `<Kbd>` badge on the trailing edge. |
-| `isDisabled` | `boolean` | `false` | Whether the command item is disabled. |
+| Prop         | Type      | Default     | Description                                                               |
+| :----------- | :-------- | :---------- | :------------------------------------------------------------------------ |
+| `id`         | `Key`     | `required`  | Unique identifier for the command item.                                   |
+| `shortcut`   | `string`  | `undefined` | Keyboard shortcut text displayed as a `<Kbd>` badge on the trailing edge. |
+| `isDisabled` | `boolean` | `false`     | Whether the command item is disabled.                                     |
 
 ---
 
@@ -177,23 +184,24 @@ export function ControlledQueryDemo() {
 - **Selection**: Pressing `Enter` executes the focused command.
 - **Dismissal**: Pressing `Escape` instantly closes the palette and returns focus to the initiating element.
 - **Screen Reader Announcements**: Uses ARIA `combobox` / `listbox` pattern with `aria-expanded` and live query feedback.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key                                          | Action                                                       |
+| :------------------------------------------- | :----------------------------------------------------------- |
 | <kbd>⌘K</kbd> / <kbd>Ctrl</kbd>+<kbd>K</kbd> | Global shortcut toggling the command palette open or closed. |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Navigates through filtered commands and options. |
-| <kbd>Enter</kbd> | Executes the selected command action and closes palette. |
-| <kbd>Esc</kbd> | Closes the command palette. |
+| <kbd>↓</kbd> / <kbd>↑</kbd>                  | Navigates through filtered commands and options.             |
+| <kbd>Enter</kbd>                             | Executes the selected command action and closes palette.     |
+| <kbd>Esc</kbd>                               | Closes the command palette.                                  |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Item | Present when mouse hovers over an item. |
-| `[data-selected]` | Item | Present on currently focused command. |
-| `[data-disabled]` | Item | Applied on disabled commands. |
+| Attribute         | Target | Description                             |
+| :---------------- | :----- | :-------------------------------------- |
+| `[data-hovered]`  | Item   | Present when mouse hovers over an item. |
+| `[data-selected]` | Item   | Present on currently focused command.   |
+| `[data-disabled]` | Item   | Applied on disabled commands.           |

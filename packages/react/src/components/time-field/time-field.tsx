@@ -7,7 +7,6 @@ import {
   DateSegment,
   DateFieldContext,
   TimeFieldContext,
-  useSlottedContext,
   type DateFieldProps as RACDateFieldProps,
   type TimeFieldProps as RACTimeFieldProps,
   type DateValue,
@@ -16,7 +15,8 @@ import {
 import {
   FieldLayout,
   FieldDateInput,
-  useFieldPresentation,
+  useFieldAnatomy,
+  fieldClassName,
   fieldParts,
   type FieldContentProps,
   type FieldPresentationProps,
@@ -38,20 +38,18 @@ function DateFieldRoot<T extends DateValue>({
   isOptional,
   ...props
 }: DateFieldRootProps<T>) {
-  const context = useSlottedContext(DateFieldContext, props.slot);
-  const presentation = useFieldPresentation(
+  const anatomy = useFieldAnatomy(
     { ...props, status, statusVariant, isOptional },
-    context?.["aria-describedby"],
-    "attached",
+    DateFieldContext,
   );
   return (
     <RACDateField<T>
       {...props}
-      {...presentation.props}
+      {...anatomy.props}
       data-size={size}
-      className={classes("hashti-field hashti-date-field hashti-field hashti-date-field", className)}
+      className={classes(fieldClassName("date-field"), className)}
     >
-      {presentation.wrap(children, context?.children)}
+      {anatomy.wrap(children, anatomy.slotted?.children)}
     </RACDateField>
   );
 }
@@ -113,20 +111,21 @@ function TimeFieldRoot<T extends TimeValue>({
   isOptional,
   ...props
 }: TimeFieldRootProps<T>) {
-  const context = useSlottedContext(TimeFieldContext, props.slot);
-  const presentation = useFieldPresentation(
+  const anatomy = useFieldAnatomy(
     { ...props, status, statusVariant, isOptional },
-    context?.["aria-describedby"],
-    "attached",
+    TimeFieldContext,
   );
   return (
     <RACTimeField<T>
       {...props}
-      {...presentation.props}
+      {...anatomy.props}
       data-size={size}
-      className={classes("hashti-field hashti-time-field hashti-field hashti-date-field", className)}
+      // TimeField is still styled through the DateField token: styles.css keys its input box
+      // (44px, border, radius) on .hashti-date-field. Keep the pair until those rules learn
+      // .hashti-time-field; renaming alone drops 44px height and the field surface.
+      className={classes(`${fieldClassName("time-field")} hashti-date-field`, className)}
     >
-      {presentation.wrap(children, context?.children)}
+      {anatomy.wrap(children, anatomy.slotted?.children)}
     </RACTimeField>
   );
 }

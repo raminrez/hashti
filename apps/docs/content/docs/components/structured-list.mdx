@@ -9,10 +9,12 @@ A Structured List presents structured, non-sortable key-value metadata, technica
 
 It is ideal for server specifications, infrastructure metadata, billing summaries, and feature comparison matrices.
 
-<ComponentPreview title="Structured List" description="Key-value data displays with aligned columns.">
+<ComponentPreview
+  title="Structured List"
+  description="Key-value data displays with aligned columns."
+>
   <StructuredListLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -37,26 +39,11 @@ export function KeyValueListExample() {
   return (
     <div className="max-w-xl border border-subtle rounded bg-layer-1 p-2">
       <StructuredList>
-        <StructuredListRow
-          label="Cluster Architecture"
-          value="ARM64 Graviton3 / 32 vCPU"
-        />
-        <StructuredListRow
-          label="Memory Allocation"
-          value="128 GB ECC DDR5"
-        />
-        <StructuredListRow
-          label="Primary Region"
-          value="Middle East (Isfahan-DC-01)"
-        />
-        <StructuredListRow
-          label="Ingress IP"
-          value="198.51.100.24"
-        />
-        <StructuredListRow
-          label="Health Status"
-          value={<Tag color="green">Operational</Tag>}
-        />
+        <StructuredListRow label="Cluster Architecture" value="ARM64 Graviton3 / 32 vCPU" />
+        <StructuredListRow label="Memory Allocation" value="128 GB ECC DDR5" />
+        <StructuredListRow label="Primary Region" value="Middle East (Isfahan-DC-01)" />
+        <StructuredListRow label="Ingress IP" value="198.51.100.24" />
+        <StructuredListRow label="Health Status" value={<Tag color="green">Operational</Tag>} />
       </StructuredList>
     </div>
   );
@@ -147,9 +134,7 @@ export function SelectableRowsExample() {
             <StructuredListRow
               key={plan.id}
               className={`cursor-pointer transition-colors p-3 rounded border ${
-                isSelected
-                  ? "border-primary bg-layer-2"
-                  : "border-transparent hover:bg-layer-1"
+                isSelected ? "border-primary bg-layer-2" : "border-transparent hover:bg-layer-1"
               }`}
               onClick={() => setSelectedPlan(plan.id)}
             >
@@ -165,7 +150,11 @@ export function SelectableRowsExample() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <span className="font-semibold text-sm">{plan.name}</span>
-                    {plan.tag && <Tag color="blue" size="sm">{plan.tag}</Tag>}
+                    {plan.tag && (
+                      <Tag color="blue" size="sm">
+                        {plan.tag}
+                      </Tag>
+                    )}
                   </div>
                   <span className="text-xs text-subtle">{plan.specs}</span>
                 </div>
@@ -186,19 +175,19 @@ export function SelectableRowsExample() {
 
 ### StructuredList Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `children` | `ReactNode` | **Required** | One or more `<StructuredListRow>` elements. |
-| `className` | `string` | — | Additional CSS class names applied to the `<dl>` container. |
+| Prop        | Type        | Default      | Description                                                 |
+| :---------- | :---------- | :----------- | :---------------------------------------------------------- |
+| `children`  | `ReactNode` | **Required** | One or more `<StructuredListRow>` elements.                 |
+| `className` | `string`    | —            | Additional CSS class names applied to the `<dl>` container. |
 
 ### StructuredListRow Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `label` | `ReactNode` | — | Content rendered in a semantic `<dt>` (description term) element. |
-| `value` | `ReactNode` | — | Content rendered in a semantic `<dd>` (description details) element. |
-| `children` | `ReactNode` | — | Additional children rendered inside the row. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop        | Type        | Default | Description                                                          |
+| :---------- | :---------- | :------ | :------------------------------------------------------------------- |
+| `label`     | `ReactNode` | —       | Content rendered in a semantic `<dt>` (description term) element.    |
+| `value`     | `ReactNode` | —       | Content rendered in a semantic `<dd>` (description details) element. |
+| `children`  | `ReactNode` | —       | Additional children rendered inside the row.                         |
+| `className` | `string`    | —       | Additional CSS class names.                                          |
 
 ---
 
@@ -208,21 +197,22 @@ export function SelectableRowsExample() {
 - **Screen Reader Pair Navigation**: Modern screen readers (VoiceOver, NVDA, JAWS) announce the total count of terms in the list and allow users to jump term-by-term, announcing corresponding values automatically.
 - **Form Controls in Rows**: When placing radio buttons or checkboxes inside rows for plan selection, each control should either be labeled by an `<input aria-label="...">` or linked to the row term via `id` and `htmlFor`.
 - **Keyboard Usability**: When interactive selection is enabled, radio elements receive native focus and arrow key navigation without requiring custom JavaScript listeners.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key                         | Action                                                         |
+| :-------------------------- | :------------------------------------------------------------- |
 | <kbd>↓</kbd> / <kbd>↑</kbd> | Moves focus between selectable rows when selection is enabled. |
-| <kbd>Space</kbd> | Toggles row selection in selectable mode. |
+| <kbd>Space</kbd>            | Toggles row selection in selectable mode.                      |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Row | Present on pointer hover over row. |
-| `[data-selected]` | Row | Present on selected rows. |
-| `[data-focused]` | Row | Set on focused list row. |
+| Attribute         | Target | Description                        |
+| :---------------- | :----- | :--------------------------------- |
+| `[data-hovered]`  | Row    | Present on pointer hover over row. |
+| `[data-selected]` | Row    | Present on selected rows.          |
+| `[data-focused]`  | Row    | Set on focused list row.           |

@@ -9,7 +9,10 @@ A **Sheet** is a gesture-enabled modal overlay that slides into the viewport fro
 
 Built with React Aria Components' overlay primitives and touch gesture physics, Hashti's Sheet elevates the mobile experience with smooth spring physics, backdrop dimming, and full keyboard parity.
 
-<ComponentPreview title="Live Interactive Gesture Sheet" description="Trigger the bottom sheet and drag or tap backdrop to dismiss.">
+<ComponentPreview
+  title="Live Interactive Gesture Sheet"
+  description="Trigger the bottom sheet and drag or tap backdrop to dismiss."
+>
   <SheetLiveDemo />
 </ComponentPreview>
 
@@ -69,11 +72,7 @@ export function MobileBottomSheetExample() {
         Open Mobile Sheet
       </Button>
 
-      <Sheet
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-        placement="bottom"
-      >
+      <Sheet isOpen={isOpen} onOpenChange={setIsOpen} placement="bottom">
         <Sheet.Backdrop />
         <Sheet.Content className="p-6">
           <Sheet.Handle />
@@ -109,11 +108,7 @@ export function SnapPointsSheetExample() {
   return (
     <Sheet.Trigger>
       <Button variant="secondary">Open Map Locations</Button>
-      <Sheet
-        placement="bottom"
-        snapPoints={[0.25, 0.5, 0.9]}
-        defaultSnapPoint={0.5}
-      >
+      <Sheet placement="bottom" snapPoints={[0.25, 0.5, 0.9]} defaultSnapPoint={0.5}>
         <Sheet.Backdrop />
         <Sheet.Content className="p-6">
           <Sheet.Handle />
@@ -178,34 +173,36 @@ export function SideFilterSheetExample() {
 
 ### Sheet (`Sheet.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `isOpen` | `boolean` | — | Controlled visibility state. |
-| `defaultOpen` | `boolean` | `false` | Default uncontrolled open state. |
-| `onOpenChange` | `(isOpen: boolean) => void` | — | Callback fired when the sheet opens or closes. |
-| `placement` | `'bottom' \| 'top' \| 'left' \| 'right'` | `'bottom'` | Edge of the screen from which the sheet emerges. |
-| `snapPoints` | `number[]` | `[1.0]` | Array of fractional viewport height/width rest stops (e.g. `[0.3, 0.6, 1.0]`). |
-| `defaultSnapPoint` | `number` | First point | The initial snap point when opened. |
-| `onSnapPointChange` | `(point: number) => void` | — | Callback fired when user releases drag at a snap point. |
-| `isDismissable` | `boolean` | `true` | Allows closing via backdrop tap, swipe-down, or <kbd>Esc</kbd>. |
-| `children` | `ReactNode` | — | Backdrop and Content elements. |
+| Prop                | Type                                     | Default     | Description                                                                    |
+| :------------------ | :--------------------------------------- | :---------- | :----------------------------------------------------------------------------- |
+| `isOpen`            | `boolean`                                | —           | Controlled visibility state.                                                   |
+| `defaultOpen`       | `boolean`                                | `false`     | Default uncontrolled open state.                                               |
+| `onOpenChange`      | `(isOpen: boolean) => void`              | —           | Callback fired when the sheet opens or closes.                                 |
+| `placement`         | `'bottom' \| 'top' \| 'left' \| 'right'` | `'bottom'`  | Edge of the screen from which the sheet emerges.                               |
+| `snapPoints`        | `number[]`                               | `[1.0]`     | Array of fractional viewport height/width rest stops (e.g. `[0.3, 0.6, 1.0]`). |
+| `defaultSnapPoint`  | `number`                                 | First point | The initial snap point when opened.                                            |
+| `onSnapPointChange` | `(point: number) => void`                | —           | Callback fired when user releases drag at a snap point.                        |
+| `isDismissable`     | `boolean`                                | `true`      | Allows closing via backdrop tap, swipe-down, or <kbd>Esc</kbd>.                |
+| `children`          | `ReactNode`                              | —           | Backdrop and Content elements.                                                 |
 
 ### Sheet.Handle (`SheetHandle`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `className` | `string` | — | Custom CSS class applied to the visual drag capsule pill. |
+| Prop        | Type     | Default | Description                                               |
+| :---------- | :------- | :------ | :-------------------------------------------------------- |
+| `className` | `string` | —       | Custom CSS class applied to the visual drag capsule pill. |
 
 ---
 
 ## Touch Gestures & Keyboard Accessibility
 
 ### Touch & Gesture Physics
+
 - **Swipe Down to Dismiss**: Swiping down past the lowest snap point with positive velocity triggers an immediate exit transition.
 - **Velocity Tracking**: Fast flick gestures automatically advance to the next snap point or dismiss without requiring the user to drag the full distance.
 - **Rubber-band Resistance**: Dragging upward past the maximum snap point applies elastic resistance.
 
 ### Keyboard & ARIA
+
 - **Role**: Emits native `role="dialog"` with `aria-modal="true"`.
 - **Focus Management**: Focus is trapped inside the sheet content when opened and restored to the trigger button upon dismissal.
 - **Escape Dismissal**: Pressing <kbd>Esc</kbd> smoothly transitions the sheet out and restores viewport interaction.
@@ -214,28 +211,29 @@ export function SideFilterSheetExample() {
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied Element |
-| :--- | :--- | :--- |
-| Sheet Surface | `--surface` | Content card background |
-| Backdrop Blur | `--backdrop` | 40% darkened backdrop with 4px backdrop-filter blur |
-| Grab Handle | `--control-border` | Pill handle (`4px` height, `32px` width, `--radius-full`) |
-| Top Border Radius | `--radius-lg` | 16px curved top corners on bottom sheets |
-| Shadow Elevation | `--elevation-overlay` | Multi-layered ambient drop shadow |
-| Motion Easing | `--motion-easing-standard` | Cubic-bezier slide-in and spring physics |
+| Token             | CSS Variable               | Applied Element                                           |
+| :---------------- | :------------------------- | :-------------------------------------------------------- |
+| Sheet Surface     | `--surface`                | Content card background                                   |
+| Backdrop Blur     | `--backdrop`               | 40% darkened backdrop with 4px backdrop-filter blur       |
+| Grab Handle       | `--control-border`         | Pill handle (`4px` height, `32px` width, `--radius-full`) |
+| Top Border Radius | `--radius-lg`              | 16px curved top corners on bottom sheets                  |
+| Shadow Elevation  | `--elevation-overlay`      | Multi-layered ambient drop shadow                         |
+| Motion Easing     | `--motion-easing-standard` | Cubic-bezier slide-in and spring physics                  |
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Traps focus within sheet contents. |
+| Key            | Action                                               |
+| :------------- | :--------------------------------------------------- |
+| <kbd>Tab</kbd> | Traps focus within sheet contents.                   |
 | <kbd>Esc</kbd> | Dismisses bottom sheet and returns focus to trigger. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-entering]` | Sheet Surface | Applied during slide-up entrance animation. |
-| `[data-exiting]` | Sheet Surface | Applied during dismissal slide-down animation. |
+| Attribute         | Target        | Description                                    |
+| :---------------- | :------------ | :--------------------------------------------- |
+| `[data-entering]` | Sheet Surface | Applied during slide-up entrance animation.    |
+| `[data-exiting]`  | Sheet Surface | Applied during dismissal slide-down animation. |

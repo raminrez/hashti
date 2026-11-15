@@ -55,7 +55,7 @@ export function ToastLiveDemo() {
       <Button onPress={triggerToast}>Trigger System Toast</Button>
       {toastMsg && (
         <div className="px-4 py-2.5 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-medium shadow-lg animate-fade-in flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#08BDBA]"></span>
+          <span className="w-2 h-2 rounded-full bg-[var(--hashti-focus)]"></span>
           <span>{toastMsg}</span>
         </div>
       )}
@@ -66,15 +66,8 @@ export function ToastLiveDemo() {
 export function ProgressBarLiveDemo() {
   return (
     <div className="w-full max-w-xs flex flex-col gap-4">
-      <ProgressBar
-        label="Portal Synchronization"
-        value={68}
-        showValue
-      />
-      <ProgressBar
-        label="Indeterminate Calculation"
-        isIndeterminate
-      />
+      <ProgressBar label="Portal Synchronization" value={68} showValue />
+      <ProgressBar label="Indeterminate Calculation" isIndeterminate />
     </div>
   );
 }
@@ -82,16 +75,8 @@ export function ProgressBarLiveDemo() {
 export function ProgressCircleLiveDemo() {
   return (
     <div className="flex items-center gap-6">
-      <ProgressCircle
-        aria-label="Solar Window"
-        value={75}
-        size="md"
-      />
-      <ProgressCircle
-        aria-label="Buffering Telemetry"
-        isIndeterminate
-        size="md"
-      />
+      <ProgressCircle aria-label="Solar Window" value={75} size="md" />
+      <ProgressCircle aria-label="Buffering Telemetry" isIndeterminate size="md" />
     </div>
   );
 }

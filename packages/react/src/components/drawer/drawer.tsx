@@ -12,6 +12,7 @@ import { Button } from "../button";
 import { Icon } from "../../icons";
 import { useOverlayTheme } from "../../theme";
 import { classes } from "../../utils";
+import { type ModalBackdrop } from "../modal";
 
 export type DrawerPlacement = "left" | "right" | "top" | "bottom" | "start" | "end";
 export type DrawerSize = "sm" | "md" | "lg" | "xl" | "full";
@@ -23,6 +24,8 @@ export interface DrawerProps extends Omit<ModalOverlayProps, "children"> {
   footer?: ReactNode;
   placement?: DrawerPlacement;
   size?: DrawerSize;
+  /** The scrim behind the drawer. Matches Modal: `dim` (default), `blur`, or `none`. */
+  backdrop?: ModalBackdrop;
   isDismissable?: boolean;
   dir?: "ltr" | "rtl";
   className?: string;
@@ -37,6 +40,7 @@ export function Drawer({
   footer,
   placement = "end",
   size = "md",
+  backdrop = "dim",
   isDismissable = true,
   dir,
   className,
@@ -53,6 +57,7 @@ export function Drawer({
       {...theme}
       dir={resolvedDir}
       isDismissable={isDismissable}
+      data-backdrop={backdrop}
       className={classes(
         "hashti-drawer-overlay",
         classes(appearanceClassName ?? "", overlayClassName),

@@ -9,7 +9,10 @@ The **Select** component presents a collapsible menu of options, enabling users 
 
 Built on React Aria Components' Select, it provides full typeahead searching, keyboard navigation, popover collision repositioning, and screen reader announcements.
 
-<ComponentPreview title="Live Interactive Select" description="Test single selection and multi-select chip tags with remove buttons.">
+<ComponentPreview
+  title="Live Interactive Select"
+  description="Test single selection and multi-select chip tags with remove buttons."
+>
   <SelectLiveDemo />
 </ComponentPreview>
 
@@ -24,12 +27,7 @@ import { Select, ListBoxItem, ListBoxSection, SectionHeader } from "@hashti/reac
 Sub-parts for advanced composition:
 
 ```tsx
-import {
-  Select,
-  FieldLayout,
-  Popover,
-  ListBox,
-} from "@hashti/react";
+import { Select, FieldLayout, Popover, ListBox } from "@hashti/react";
 ```
 
 ---
@@ -117,22 +115,14 @@ export function DisabledSelectDemo() {
   return (
     <div className="flex flex-col gap-4 max-w-xs">
       {/* Individual items disabled */}
-      <Select
-        label="Room Type"
-        disabledKeys={["penthouse"]}
-        placeholder="Select room"
-      >
+      <Select label="Room Type" disabledKeys={["penthouse"]} placeholder="Select room">
         <ListBoxItem id="standard">Standard Garden View</ListBoxItem>
         <ListBoxItem id="suite">Courtyard Suite</ListBoxItem>
         <ListBoxItem id="penthouse">Rooftop Pavilion (Sold Out)</ListBoxItem>
       </Select>
 
       {/* Whole component disabled */}
-      <Select
-        label="Booking Season"
-        isDisabled
-        defaultSelectedKey="spring"
-      >
+      <Select label="Booking Season" isDisabled defaultSelectedKey="spring">
         <ListBoxItem id="spring">Spring Nowruz (Bookings Closed)</ListBoxItem>
         <ListBoxItem id="autumn">Autumn</ListBoxItem>
       </Select>
@@ -169,6 +159,7 @@ export function InvalidSelectDemo() {
 ### Multi-Selection with Chips, Badges, or Text
 
 Set `selectionMode="multiple"` to enable picking several options. The `multipleDisplay` prop controls how the selected values are displayed in the closed trigger:
+
 - `'chips'` (default): Interactive tags with individual remove buttons (<kbd>×</kbd>).
 - `'badge'`: Displays the first selected item along with a count pill badge (e.g. `+2`).
 - `'text'`: Comma-separated plain text summary.
@@ -253,25 +244,25 @@ export function GroupedSelectDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `selectionMode` | `'single' \| 'multiple'` | `'single'` | Selection mode allowing single or multiple option choices. |
-| `multipleDisplay` | `'chips' \| 'badge' \| 'text'` | `'chips'` | Display format for multi-selected items in the trigger. |
-| `selectedKey` | `Key` | — | The currently selected option ID (controlled). |
-| `defaultSelectedKey` | `Key` | — | The initial selected option ID (uncontrolled). |
-| `onSelectionChange` | `(key: Key) => void` | — | Handler invoked when an option is selected. |
-| `items` | `Iterable<T>` | — | Dynamic item collection array or iterable. |
-| `children` | `ReactNode \| ((item: T) => ReactNode)` | — | Options to render within the select dropdown. |
-| `placeholder` | `string` | — | Prompt text shown when no item has been selected. |
-| `label` | `ReactNode` | — | Accessible label for the select element. |
-| `description` | `ReactNode` | — | Guidance text rendered with the field. |
-| `errorMessage` | `ReactNode` | — | Error text rendered when `isInvalid` is true. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and scale of the trigger button. |
-| `isDisabled` | `boolean` | `false` | Whether the select dropdown is disabled. |
-| `isInvalid` | `boolean` | `false` | Marks the select as invalid and activates error styling. |
-| `isRequired` | `boolean` | `false` | Indicates that an option selection is required. |
-| `disabledKeys` | `Iterable<Key>` | — | Keys of specific options that should be disabled. |
-| `renderValue` | `(items: T[]) => ReactNode` | — | Custom renderer for the closed trigger display value. |
+| Prop                 | Type                                    | Default    | Description                                                |
+| :------------------- | :-------------------------------------- | :--------- | :--------------------------------------------------------- |
+| `selectionMode`      | `'single' \| 'multiple'`                | `'single'` | Selection mode allowing single or multiple option choices. |
+| `multipleDisplay`    | `'chips' \| 'badge' \| 'text'`          | `'chips'`  | Display format for multi-selected items in the trigger.    |
+| `selectedKey`        | `Key`                                   | —          | The currently selected option ID (controlled).             |
+| `defaultSelectedKey` | `Key`                                   | —          | The initial selected option ID (uncontrolled).             |
+| `onSelectionChange`  | `(key: Key) => void`                    | —          | Handler invoked when an option is selected.                |
+| `items`              | `Iterable<T>`                           | —          | Dynamic item collection array or iterable.                 |
+| `children`           | `ReactNode \| ((item: T) => ReactNode)` | —          | Options to render within the select dropdown.              |
+| `placeholder`        | `string`                                | —          | Prompt text shown when no item has been selected.          |
+| `label`              | `ReactNode`                             | —          | Accessible label for the select element.                   |
+| `description`        | `ReactNode`                             | —          | Guidance text rendered with the field.                     |
+| `errorMessage`       | `ReactNode`                             | —          | Error text rendered when `isInvalid` is true.              |
+| `size`               | `'sm' \| 'md' \| 'lg'`                  | `'md'`     | Height and scale of the trigger button.                    |
+| `isDisabled`         | `boolean`                               | `false`    | Whether the select dropdown is disabled.                   |
+| `isInvalid`          | `boolean`                               | `false`    | Marks the select as invalid and activates error styling.   |
+| `isRequired`         | `boolean`                               | `false`    | Indicates that an option selection is required.            |
+| `disabledKeys`       | `Iterable<Key>`                         | —          | Keys of specific options that should be disabled.          |
+| `renderValue`        | `(items: T[]) => ReactNode`             | —          | Custom renderer for the closed trigger display value.      |
 
 ---
 
@@ -291,26 +282,27 @@ Select complies with the **WAI-ARIA `combobox`** specification:
   - While open, `aria-activedescendant` is tracked on the focused item, ensuring screen readers announce options accurately.
 - **ARIA Attributes**:
   - The trigger has `role="combobox"`, `aria-haspopup="listbox"`, `aria-expanded="false|true"`, and `aria-labelledby` referencing the label.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Space</kbd> / <kbd>Enter</kbd> / <kbd>↓</kbd> | Opens the dropdown listbox and focuses the active item. |
-| <kbd>↑</kbd> / <kbd>↓</kbd> | Navigates between items in the listbox. |
-| <kbd>Home</kbd> / <kbd>End</kbd> | Moves focus to the first or last available option. |
-| <kbd>Esc</kbd> | Closes the dropdown listbox and restores focus to the trigger. |
-| <kbd>Tab</kbd> | Closes the listbox and moves focus to the next interactive page element. |
+| Key                                                | Action                                                                   |
+| :------------------------------------------------- | :----------------------------------------------------------------------- |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> / <kbd>↓</kbd> | Opens the dropdown listbox and focuses the active item.                  |
+| <kbd>↑</kbd> / <kbd>↓</kbd>                        | Navigates between items in the listbox.                                  |
+| <kbd>Home</kbd> / <kbd>End</kbd>                   | Moves focus to the first or last available option.                       |
+| <kbd>Esc</kbd>                                     | Closes the dropdown listbox and restores focus to the trigger.           |
+| <kbd>Tab</kbd>                                     | Closes the listbox and moves focus to the next interactive page element. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Trigger, Item | Present when the pointer hovers over the element. |
-| `[data-focused]` | Trigger, Item | Present when the element holds keyboard or pointer focus. |
-| `[data-pressed]` | Trigger, Item | Active while the element is actively pressed. |
-| `[data-selected]` | Item | Present on currently selected listbox options. |
-| `[data-disabled]` | Trigger, Item | Present when the element is disabled from interaction. |
+| Attribute         | Target        | Description                                               |
+| :---------------- | :------------ | :-------------------------------------------------------- |
+| `[data-hovered]`  | Trigger, Item | Present when the pointer hovers over the element.         |
+| `[data-focused]`  | Trigger, Item | Present when the element holds keyboard or pointer focus. |
+| `[data-pressed]`  | Trigger, Item | Active while the element is actively pressed.             |
+| `[data-selected]` | Item          | Present on currently selected listbox options.            |
+| `[data-disabled]` | Trigger, Item | Present when the element is disabled from interaction.    |

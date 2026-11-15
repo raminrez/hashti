@@ -9,10 +9,12 @@ The **AlertDialog** component presents a high-urgency confirmation modal designe
 
 Unlike standard informational modals, an Alert Dialog strictly forces the user to make an explicit choice. Backdrop clicks do not dismiss the dialog (`isDismissable={false}`), and assistive technology is immediately notified via the W3C `alertdialog` role.
 
-<ComponentPreview title="Alert Dialog" description="Modal barrier for irreversible, destructive user decisions.">
+<ComponentPreview
+  title="Alert Dialog"
+  description="Modal barrier for irreversible, destructive user decisions."
+>
   <AlertDialogLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -175,21 +177,21 @@ export function AsyncAlertDialogDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `kind` | `'danger' \| 'warning' \| 'info'` | `'danger'` | Visual theme and icon variant for the dialog. |
-| `title` | `ReactNode` | — | Primary alert heading (required). |
-| `description` | `ReactNode` | — | Explanatory description detailing the consequences. |
-| `children` | `ReactNode` | — | Custom body content (overrides `description` if provided). |
-| `confirmLabel` | `string` | `"Confirm"` | Text label for the confirmation button. |
-| `cancelLabel` | `string` | `"Cancel"` | Text label for the cancellation button. |
-| `onConfirm` | `() => void` | — | Callback fired when the user confirms the action. |
-| `onCancel` | `() => void` | — | Callback fired when the user cancels or presses <kbd>Esc</kbd>. |
-| `isPending` | `boolean` | `false` | Disables buttons and displays loading spinners on the confirm button. |
-| `isOpen` | `boolean` | — | Controlled open visibility state. |
-| `defaultOpen` | `boolean` | `false` | Initial uncontrolled open state. |
-| `onOpenChange` | `(isOpen: boolean) => void` | — | Handler invoked when open state transitions. |
-| `dir` | `'ltr' \| 'rtl'` | — | Text direction override for bilingual layouts. |
+| Prop           | Type                              | Default     | Description                                                           |
+| :------------- | :-------------------------------- | :---------- | :-------------------------------------------------------------------- |
+| `kind`         | `'danger' \| 'warning' \| 'info'` | `'danger'`  | Visual theme and icon variant for the dialog.                         |
+| `title`        | `ReactNode`                       | —           | Primary alert heading (required).                                     |
+| `description`  | `ReactNode`                       | —           | Explanatory description detailing the consequences.                   |
+| `children`     | `ReactNode`                       | —           | Custom body content (overrides `description` if provided).            |
+| `confirmLabel` | `string`                          | `"Confirm"` | Text label for the confirmation button.                               |
+| `cancelLabel`  | `string`                          | `"Cancel"`  | Text label for the cancellation button.                               |
+| `onConfirm`    | `() => void`                      | —           | Callback fired when the user confirms the action.                     |
+| `onCancel`     | `() => void`                      | —           | Callback fired when the user cancels or presses <kbd>Esc</kbd>.       |
+| `isPending`    | `boolean`                         | `false`     | Disables buttons and displays loading spinners on the confirm button. |
+| `isOpen`       | `boolean`                         | —           | Controlled open visibility state.                                     |
+| `defaultOpen`  | `boolean`                         | `false`     | Initial uncontrolled open state.                                      |
+| `onOpenChange` | `(isOpen: boolean) => void`       | —           | Handler invoked when open state transitions.                          |
+| `dir`          | `'ltr' \| 'rtl'`                  | —           | Text direction override for bilingual layouts.                        |
 
 ---
 
@@ -201,20 +203,21 @@ AlertDialog implements the **WAI-ARIA `alertdialog`** specification:
 - **Initial Focus on the Safest Action**: In accordance with accessibility safety standards, focus is automatically initialized on the **Cancel** button rather than the destructive confirmation button. This guarantees that an accidental <kbd>Enter</kbd> or <kbd>Space</kbd> keystroke cancels rather than executes the dangerous action.
 - **Non-Dismissable Backdrop**: The background overlay click handler is disabled (`isDismissable={false}`), preventing inadvertent clicks outside from discarding critical prompts without a deliberate user choice.
 - **Escape Key Handling**: Pressing <kbd>Esc</kbd> triggers `onCancel` and closes the dialog safely.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Moves focus between Cancel and Confirm action buttons. |
+| Key            | Action                                                          |
+| :------------- | :-------------------------------------------------------------- |
+| <kbd>Tab</kbd> | Moves focus between Cancel and Confirm action buttons.          |
 | <kbd>Esc</kbd> | Dismisses alert dialog if configured to permit backdrop cancel. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute         | Target         | Description                    |
+| :---------------- | :------------- | :----------------------------- |
 | `[data-entering]` | Dialog Surface | Active during mount animation. |
-| `[data-exiting]` | Dialog Surface | Active during exit animation. |
+| `[data-exiting]`  | Dialog Surface | Active during exit animation.  |

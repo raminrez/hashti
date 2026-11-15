@@ -5,7 +5,7 @@ description: Master Hashti's 8 design themes, nested contextual Layering system,
 
 # Theming & Layering
 
-Hashti features a multi-tiered theming engine designed around disciplined spatial logic and Frame's refined modern aesthetic. 
+Hashti features a multi-tiered theming engine designed around disciplined spatial logic and Frame's refined modern aesthetic.
 
 Themes are applied via CSS custom properties scoped to the `data-hashti-theme` attribute or handled automatically using the `<Theme>` and `<Layer>` React components.
 
@@ -15,16 +15,16 @@ Themes are applied via CSS custom properties scoped to the `data-hashti-theme` a
 
 Hashti provides 8 first-class themes divided into three aesthetic families:
 
-| Theme Family | Theme Identifier | Mode | Description |
-| :--- | :--- | :--- | :--- |
-| **Hashti Core** | `white` | Light | Pristine high-contrast white theme for document-heavy workspaces. |
-| | `g10` | Light | Soft warm grey (Gray 10) reducing eye strain for long analytical sessions. |
-| | `g90` | Dark | Charcoal dark grey (Gray 90) balanced for low-light developer workflows. |
-| | `g100` | Dark | Deep obsidian black (Gray 100) high-contrast dark environment. |
-| **Relay** | `relay-light` | Light | Purpose-built for operational command hubs and developer tooling. |
-| | `relay-dark` | Dark | Tactical high-density dark UI for status monitoring and logs. |
-| **Frame (Recommended)** | `frame-light` | Light | Hashti's default aesthetic: crisp borders, calm backgrounds, 10px control radiuses, and Persian architectural serenity. |
-| | `frame-dark` | Dark | Deep ink surface with refined translucent layers and luminous turquoise accents. |
+| Theme Family            | Theme Identifier | Mode  | Description                                                                                                             |
+| :---------------------- | :--------------- | :---- | :---------------------------------------------------------------------------------------------------------------------- |
+| **Hashti Core**         | `white`          | Light | Pristine high-contrast white theme for document-heavy workspaces.                                                       |
+|                         | `g10`            | Light | Soft warm grey (Gray 10) reducing eye strain for long analytical sessions.                                              |
+|                         | `g90`            | Dark  | Charcoal dark grey (Gray 90) balanced for low-light developer workflows.                                                |
+|                         | `g100`           | Dark  | Deep obsidian black (Gray 100) high-contrast dark environment.                                                          |
+| **Relay**               | `relay-light`    | Light | Purpose-built for operational command hubs and developer tooling.                                                       |
+|                         | `relay-dark`     | Dark  | Tactical high-density dark UI for status monitoring and logs.                                                           |
+| **Frame (Recommended)** | `frame-light`    | Light | Hashti's default aesthetic: crisp borders, calm backgrounds, 10px control radiuses, and Persian architectural serenity. |
+|                         | `frame-dark`     | Dark  | Deep ink surface with refined translucent layers and luminous turquoise accents.                                        |
 
 ---
 
@@ -57,9 +57,7 @@ If you prefer applying themes directly in HTML or server-rendered layouts withou
   <body>
     ...
     <!-- Local dark theme island -->
-    <div data-hashti-theme="frame-dark" class="hashti-theme">
-      ...
-    </div>
+    <div data-hashti-theme="frame-dark" class="hashti-theme">...</div>
   </body>
 </html>
 ```
@@ -92,7 +90,9 @@ export function LayeredDashboard() {
 
         {/* Layer 1: Container / Sidebar */}
         <Layer>
-          <div style={{ background: "var(--hashti-layer-01)", padding: "24px", borderRadius: "8px" }}>
+          <div
+            style={{ background: "var(--hashti-layer-01)", padding: "24px", borderRadius: "8px" }}
+          >
             <h2>Sidebar Panel (Layer 1)</h2>
 
             {/* Layer 2: Nested Card */}
@@ -100,7 +100,9 @@ export function LayeredDashboard() {
               <Card style={{ background: "var(--hashti-layer-02)", padding: "16px" }}>
                 <h3>Inspector Card (Layer 2)</h3>
                 <TextField label="Resource Identifier" placeholder="res-8492" />
-                <Button variant="primary" style={{ marginTop: "12px" }}>Update</Button>
+                <Button variant="primary" style={{ marginTop: "12px" }}>
+                  Update
+                </Button>
               </Card>
             </Layer>
           </div>
@@ -130,15 +132,22 @@ export function ThemeSwitcherApp({ children }: { children: React.ReactNode }) {
 
   return (
     <Theme theme={theme}>
-      <header style={{ padding: "16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span>Current Theme: <strong>{theme}</strong></span>
+      <header
+        style={{
+          padding: "16px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <span>
+          Current Theme: <strong>{theme}</strong>
+        </span>
         <Button variant="secondary" onPress={toggleTheme}>
           Switch to {theme === "frame-light" ? "Dark Mode (🌙)" : "Light Mode (☀️)"}
         </Button>
       </header>
-      <main style={{ padding: "24px" }}>
-        {children}
-      </main>
+      <main style={{ padding: "24px" }}>{children}</main>
     </Theme>
   );
 }

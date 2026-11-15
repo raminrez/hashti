@@ -32,12 +32,15 @@ Instead, the journey is choreographed through a continuous sequence of **four de
 ## 1. The Portal Threshold: Darvazeh (دروازه)
 
 ### Architectural Origin
+
 The **Darvazeh** is the monumental pointed ogival entrance arch. Framed by delicate brick revetments and cool stucco muqarnas, it stands tall against the clay facade of the exterior wall. It does not conceal its presence; rather, it announces a clear threshold.
 
 Passing beneath the Darvazeh requires an intentional physical choice. It is the moment where an outsider chooses to pause, knock, or present credentials.
 
 ### Digital Mapping
+
 In user interface engineering, the Darvazeh maps to **boundary crossing and state entry**:
+
 - **Authentication Handshakes & Route Guards**: Clear, unambiguous entryways where identity is established before internal application state is revealed.
 - **Modals & Dialogs**: Controlled threshold overlays (`Modal`, `AlertDialog`, `Dialog`) that temporarily suspend background noise and ask the user for focused, deliberate action.
 - **Signaling Identity**: Clear typography and visual cues that confirm the context of the application before data mutation begins.
@@ -47,15 +50,19 @@ In user interface engineering, the Darvazeh maps to **boundary crossing and stat
 ## 2. The Octagonal Transitional Vestibule: Hashti (هشتی)
 
 ### Architectural Origin
-Immediately past the Darvazeh lies the **Hashti** (derived from *hasht*, the Persian word for eight). The Hashti is an octagonal or multi-faceted vaulted vestibule.
+
+Immediately past the Darvazeh lies the **Hashti** (derived from _hasht_, the Persian word for eight). The Hashti is an octagonal or multi-faceted vaulted vestibule.
 
 In the blistering desert heat, stepping into the Hashti provides instant sensory relief:
+
 - **Zenithal Illumination (Hoorno)**: A small aperture at the apex of the dome admits a single diffused shaft of sunlight, illuminating the center while keeping the perimeter cool and shadowed.
 - **Masonry Benches (Pir-neshin)**: Recessed masonry benches allow visitors or couriers to sit, pause, and conduct business without ever peering into the inner courtyard.
 - **Acoustic Dampening**: The thick earthen walls extinguish the roar of the street, calming the nervous system into a state of equilibrium.
 
 ### Digital Mapping
+
 The Hashti represents **state normalization, focus trapping, and sensory tranquility**:
+
 - **Focus Trapping**: Like the octagonal walls keeping the guest safely centered, modern accessible overlays trap keyboard focus (<kbd>Tab</kbd> / <kbd>Shift+Tab</kbd>) within the active container, preventing keystrokes from leaking into background DOM trees.
 - **Pending & Loading Equilibrium**: When an application awaits network responses, Hashti's native `isPending` states and localized skeleton loaders provide a sensory pause rather than jarring layout shifts.
 - **Theme Normalization (`<Theme>` and `<Layer>`)**: Just as the masonry benches insulate from ground heat, Hashti's nested Layer tokens (`Layer 0`, `Layer 1`, `Layer 2`) insulate interactive controls with guaranteed ≥ 4.5:1 contrast ratios.
@@ -65,15 +72,19 @@ The Hashti represents **state normalization, focus trapping, and sensory tranqui
 ## 3. The Indirect Corridors: Dalan (دالان)
 
 ### Architectural Origin
+
 From the Hashti, one does not look straight into the courtyard. Instead, one enters the **Dalan** — a narrow, gently bent corridor that turns at a sharp right angle (often 90° or 135°).
 
 This architectural bend fulfills crucial physical and cultural purposes:
+
 - **Visual Shielding (Mahramiyat)**: Even if the outer heavy oak door stands wide open, a passerby outside cannot peer into the living quarters.
 - **Acoustic & Thermal Buffer**: The turn traps desert sandstorms and blocks ambient wind drafts.
 - **Gradual Acclimatization**: The traveler walks a few paces in calm semi-darkness, allowing their eyes to adapt to the bright sunlight awaiting them in the garden.
 
 ### Digital Mapping
+
 In modern application architecture, the Dalan maps to **progressive disclosure and nested navigation**:
+
 - **Submenus & Overlays**: Menus that branch logically without cluttering the screen until explicitly requested.
 - **Drawers & Sheets (`Drawer`, `Sheet`)**: Secondary inspection panes that slide in along the spatial perimeter, preserving user position while exposing detailed context.
 - **Multi-Step Wizards & Breadcrumbs (`Breadcrumbs`)**: Guiding the user along an unambiguous sequential path, ensuring they never feel disoriented or lost within deep hierarchical data.
@@ -83,17 +94,21 @@ In modern application architecture, the Dalan maps to **progressive disclosure a
 ## 4. The Courtyard Sanctuary: Hayati (حیاطی)
 
 ### Architectural Origin
-At the conclusion of the Dalan, the traveler emerges into the **Hayati** (the sunken private courtyard garden). 
+
+At the conclusion of the Dalan, the traveler emerges into the **Hayati** (the sunken private courtyard garden).
 
 The contrast is breathtaking:
-- At the center rests a quiet rectangular pool filled with still turquoise water (*Howz*), reflecting the azure Iranian sky.
+
+- At the center rests a quiet rectangular pool filled with still turquoise water (_Howz_), reflecting the azure Iranian sky.
 - Pomegranate and citrus trees scent the air and provide dappled shade.
 - Symmetrical porticoes and vaulted alcoves offer quiet sanctuaries for work, contemplation, and communal hospitality.
 
 Here, tranquility is complete. The chaos of the city has been thoroughly filtered out.
 
 ### Digital Mapping
+
 The Hayati is the **finished, polished workspace application**:
+
 - **Visual Harmony**: Crisp monochromatic surfaces (Basalt `#000000` and Chalk `#FFFFFF`) energized by luminous Persian Turquoise (`#08BDBA`) and Isfahan Amber (`#D97706`).
 - **High-Contrast Readability**: Typography set in Satoshi and Vazirmatn that flows effortlessly, honoring both left-to-right and right-to-left scripts.
 - **Ergonomic Delight**: Tactile spring physics, micro-interactions, and 44px touch targets that make interacting with enterprise software feel graceful and calm.
@@ -115,6 +130,7 @@ The signature aesthetic of Hashti is inspired by the **pointed ogival arch** (ch
 ```
 
 ### Architectural Geometric Constants
+
 - **Arch Pitch**: A consistent 32° acute apex ratio.
 - **Base Control Radius**: `12px` (matching modern touch-screen ergonomical contours).
 - **Surface Elevation Radius**: `16px` (for floating card panels and popover surfaces).
@@ -128,6 +144,7 @@ The signature aesthetic of Hashti is inspired by the **pointed ogival arch** (ch
 Most software design systems treat UI components as a disconnected bag of widgets: a button here, a dropdown there, a table somewhere else.
 
 Hashti treats interface development as **spatial choreography**:
+
 1. **Never confront the user with raw complexity all at once.**
 2. **Provide intentional, tranquil pauses between major state transitions.**
 3. **Guard privacy and user focus with mathematical precision.**

@@ -7,10 +7,12 @@ description: Stylized code display block supporting inline, single-line, and mul
 
 The `CodeSnippet` component displays formatted commands, scripts, and code excerpts with integrated one-click copying, scrollable viewports, and accessible live-region status feedback. It supports three distinct visual display types: single-line terminal commands, multi-line code blocks, and compact inline snippets.
 
-<ComponentPreview title="Code Snippet" description="Monospace terminal and syntax display with instant copy.">
+<ComponentPreview
+  title="Code Snippet"
+  description="Monospace terminal and syntax display with instant copy."
+>
   <CodeSnippetLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -105,11 +107,8 @@ import { CodeSnippet } from "@hashti/react";
 export function InlineSnippetDemo() {
   return (
     <p className="text-sm text-neutral-800 dark:text-neutral-200">
-      Set the environment variable{" "}
-      <CodeSnippet type="inline">
-        HASHTI_VAULT_KEY
-      </CodeSnippet>{" "}
-      in your production secret manager before initiating container boot.
+      Set the environment variable <CodeSnippet type="inline">HASHTI_VAULT_KEY</CodeSnippet> in your
+      production secret manager before initiating container boot.
     </p>
   );
 }
@@ -137,16 +136,16 @@ export function NonCopyableSnippetDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `type` | `'single' \| 'multi' \| 'inline'` | `'multi'` | Display geometry and interaction layout. |
-| `children` | `string` | — | The exact raw string of code to render and copy to the clipboard. |
-| `label` | `string` | `'Code example'` | Descriptive label applied via `aria-label` to the container and copy button. |
-| `language` | `string` | — | Programming or syntax language tag (e.g. `'bash'`, `'tsx'`, `'json'`). |
-| `copyable` | `boolean` | `true` | Whether the one-click copy button is rendered. |
-| `maxHeight` | `string` | — | Maximum CSS height for multi-line viewports (e.g., `'280px'`). |
-| `wrapText` | `boolean` | `false` | When true, wraps long code lines instead of creating a horizontal scrollbar. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop        | Type                              | Default          | Description                                                                  |
+| :---------- | :-------------------------------- | :--------------- | :--------------------------------------------------------------------------- |
+| `type`      | `'single' \| 'multi' \| 'inline'` | `'multi'`        | Display geometry and interaction layout.                                     |
+| `children`  | `string`                          | —                | The exact raw string of code to render and copy to the clipboard.            |
+| `label`     | `string`                          | `'Code example'` | Descriptive label applied via `aria-label` to the container and copy button. |
+| `language`  | `string`                          | —                | Programming or syntax language tag (e.g. `'bash'`, `'tsx'`, `'json'`).       |
+| `copyable`  | `boolean`                         | `true`           | Whether the one-click copy button is rendered.                               |
+| `maxHeight` | `string`                          | —                | Maximum CSS height for multi-line viewports (e.g., `'280px'`).               |
+| `wrapText`  | `boolean`                         | `false`          | When true, wraps long code lines instead of creating a horizontal scrollbar. |
+| `className` | `string`                          | —                | Additional CSS class names.                                                  |
 
 ---
 
@@ -161,23 +160,24 @@ export function NonCopyableSnippetDemo() {
 ### Screen Reader & Live Region Semantics
 
 - **Copy Status Announcement**: When the copy button is pressed, the component updates an internal status string inside a `<span role="status" className="hashti-visually-hidden">`. Assistive technologies immediately announce "Copied to clipboard" without disturbing screen reader cursor focus.
-- **Descriptive Button Label**: The copy button utilizes `aria-label={\`Copy ${label.toLowerCase()}\`}` (e.g. *"Copy package installation command"*), ensuring screen reader users understand what payload will be copied.
+- **Descriptive Button Label**: The copy button utilizes `aria-label={\`Copy ${label.toLowerCase()}\`}` (e.g. _"Copy package installation command"_), ensuring screen reader users understand what payload will be copied.
 - **Scroll Container Semantics**: Scrollable code blocks include `aria-label={label}` so that the scrollable region has an unambiguous accessible name.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Moves focus to copy action button or scrollable code box. |
-| <kbd>Enter</kbd> / <kbd>Space</kbd> | Triggers copy action to clipboard. |
+| Key                                 | Action                                                    |
+| :---------------------------------- | :-------------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves focus to copy action button or scrollable code box. |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Triggers copy action to clipboard.                        |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Copy Button | Present on pointer hover. |
-| `[data-focused]` | Copy Button | Active on focus. |
-| `[data-copied]` | Copy Button | Active for 2 seconds after successful copy. |
+| Attribute        | Target      | Description                                 |
+| :--------------- | :---------- | :------------------------------------------ |
+| `[data-hovered]` | Copy Button | Present on pointer hover.                   |
+| `[data-focused]` | Copy Button | Active on focus.                            |
+| `[data-copied]`  | Copy Button | Active for 2 seconds after successful copy. |

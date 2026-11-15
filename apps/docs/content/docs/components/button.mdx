@@ -7,7 +7,10 @@ description: Interactive button control for executing actions, submitting forms,
 
 Buttons are foundational interactive controls that enable users to trigger actions, execute commands, and submit forms. Hashti's `Button` is built directly on [React Aria Components (RAC)](https://react-spectrum.adobe.com/react-aria/Button.html), ensuring full keyboard navigation, touch responsiveness, WCAG 2.2 AAA contrast compliance, and built-in pending/loading spinner management.
 
-<ComponentPreview title="Interactive Hashti Buttons" description="Live rendered button variants with active states and press feedback.">
+<ComponentPreview
+  title="Interactive Hashti Buttons"
+  description="Live rendered button variants with active states and press feedback."
+>
   <ButtonLiveDemo />
 </ComponentPreview>
 
@@ -15,7 +18,7 @@ Buttons are foundational interactive controls that enable users to trigger actio
 
 ## Architecture & Spatial Geometry
 
-In Persian architectural spatial design, entrance portals (*darvazeh* and *sar-dar*) clearly signal transitional affordances. Similarly, the Hashti `Button` provides unambiguous visual affordance through intentional elevation, contrast, and tactile focus states:
+In Persian architectural spatial design, entrance portals (_darvazeh_ and _sar-dar_) clearly signal transitional affordances. Similarly, the Hashti `Button` provides unambiguous visual affordance through intentional elevation, contrast, and tactile focus states:
 
 ```
 [Default Surface]  ──(Hover / Press)──►  [Elevation / Tint Shift]  ──(Async Action)──►  [Inline Spinner]
@@ -46,11 +49,7 @@ The standard `Button` uses the `primary` variant by default and responds to both
 import { Button } from "@hashti/react";
 
 export function BasicButtonDemo() {
-  return (
-    <Button onPress={() => alert("Action triggered!")}>
-      Save Changes
-    </Button>
-  );
+  return <Button onPress={() => alert("Action triggered!")}>Save Changes</Button>;
 }
 ```
 
@@ -92,13 +91,13 @@ export function ButtonVariantsDemo() {
 
 Hashti offers 5 control sizes. In the Frame theme family, the default control size is `lg` (44px target), matching touch-friendly human interface ergonomics:
 
-| Size | Height (Expressive) | Height (Compact) | Common Use Cases |
-| :--- | :--- | :--- | :--- |
-| `sm` | 32px | 32px | Compact data tables, tight filters, compact card headers |
-| `md` | 38px | 40px | Standard dialogs, sidebar forms, secondary navigation |
-| `lg` | 44px (default) | 48px | Primary forms, landing pages, standard page actions |
-| `xl` | 50px | 56px | Hero callouts, prominent promotional flows |
-| `2xl`| 56px | 64px | High-visibility onboarding steps, kiosk displays |
+| Size  | Height (Expressive) | Height (Compact) | Common Use Cases                                         |
+| :---- | :------------------ | :--------------- | :------------------------------------------------------- |
+| `sm`  | 32px                | 32px             | Compact data tables, tight filters, compact card headers |
+| `md`  | 38px                | 40px             | Standard dialogs, sidebar forms, secondary navigation    |
+| `lg`  | 44px (default)      | 48px             | Primary forms, landing pages, standard page actions      |
+| `xl`  | 50px                | 56px             | Hero callouts, prominent promotional flows               |
+| `2xl` | 56px                | 64px             | High-visibility onboarding steps, kiosk displays         |
 
 ```tsx
 import { Button } from "@hashti/react";
@@ -217,18 +216,18 @@ export function DisabledButtonDemo() {
 
 `Button` extends `RACButtonProps` from `react-aria-components`.
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `variant` | `'primary' \| 'secondary' \| 'tertiary' \| 'ghost' \| 'danger' \| 'danger-tertiary' \| 'danger-ghost'` | `'primary'` | Visual hierarchy styling variant. |
-| `size` | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | `'lg'` | Geometric control size (default 44px in Frame, 48px in high-density themes). |
-| `iconOnly` | `boolean` | `false` | When true, renders a square aspect-ratio target for an icon. |
-| `isPending` | `boolean` | `false` | Renders an inline indeterminate progress spinner. |
-| `pendingLabel` | `string` | `'Pending'` | Accessible label announced by screen readers during pending state. |
-| `isDisabled` | `boolean` | `false` | Whether the button is disabled from user interactions. |
-| `autoFocus` | `boolean` | `false` | Whether the element should receive keyboard focus on initial render. |
-| `onPress` | `(e: PressEvent) => void` | — | Handler called when a press interaction completes (click, tap, Space/Enter). |
-| `children` | `ReactNode \| ((values: ButtonRenderProps) => ReactNode)` | — | Content rendered within the button. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop           | Type                                                                                                   | Default     | Description                                                                  |
+| :------------- | :----------------------------------------------------------------------------------------------------- | :---------- | :--------------------------------------------------------------------------- |
+| `variant`      | `'primary' \| 'secondary' \| 'tertiary' \| 'ghost' \| 'danger' \| 'danger-tertiary' \| 'danger-ghost'` | `'primary'` | Visual hierarchy styling variant.                                            |
+| `size`         | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`                                                                | `'lg'`      | Geometric control size (default 44px in Frame, 48px in high-density themes). |
+| `iconOnly`     | `boolean`                                                                                              | `false`     | When true, renders a square aspect-ratio target for an icon.                 |
+| `isPending`    | `boolean`                                                                                              | `false`     | Renders an inline indeterminate progress spinner.                            |
+| `pendingLabel` | `string`                                                                                               | `'Pending'` | Accessible label announced by screen readers during pending state.           |
+| `isDisabled`   | `boolean`                                                                                              | `false`     | Whether the button is disabled from user interactions.                       |
+| `autoFocus`    | `boolean`                                                                                              | `false`     | Whether the element should receive keyboard focus on initial render.         |
+| `onPress`      | `(e: PressEvent) => void`                                                                              | —           | Handler called when a press interaction completes (click, tap, Space/Enter). |
+| `children`     | `ReactNode \| ((values: ButtonRenderProps) => ReactNode)`                                              | —           | Content rendered within the button.                                          |
+| `className`    | `string`                                                                                               | —           | Additional CSS class names.                                                  |
 
 ---
 

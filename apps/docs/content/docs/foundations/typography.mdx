@@ -11,11 +11,11 @@ Hashti employs a **dual-type typographic architecture** designed to bridge class
 
 ## The Typographic Triad
 
-| Role | Typeface | Creator / Foundry | Characteristics |
-| :--- | :--- | :--- | :--- |
-| **Latin (LTR)** | **Satoshi** | Fontshare / Indian Type Foundry | A modern geometric sans-serif with subtle grotesque warmth, clean curves, and exceptional screen legibility across all weights. |
-| **Persian & Arabic (RTL)** | **Vazirmatn** | Saber Rastikerdar (صابر راستی‌کردار) | The preeminent open-source Persian digital typeface. Balanced counter-forms, optimized Nastaliq baseline dynamics, and native Arabic script support. |
-| **Code & Monospace** | **JetBrains Mono** | JetBrains | A developer-focused monospace typeface featuring tailored coding ligatures, clear punctuation glyphs, and distinct character heights. |
+| Role                       | Typeface           | Creator / Foundry                    | Characteristics                                                                                                                                      |
+| :------------------------- | :----------------- | :----------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Latin (LTR)**            | **Satoshi**        | Fontshare / Indian Type Foundry      | A modern geometric sans-serif with subtle grotesque warmth, clean curves, and exceptional screen legibility across all weights.                      |
+| **Persian & Arabic (RTL)** | **Vazirmatn**      | Saber Rastikerdar (صابر راستی‌کردار) | The preeminent open-source Persian digital typeface. Balanced counter-forms, optimized Nastaliq baseline dynamics, and native Arabic script support. |
+| **Code & Monospace**       | **JetBrains Mono** | JetBrains                            | A developer-focused monospace typeface featuring tailored coding ligatures, clear punctuation glyphs, and distinct character heights.                |
 
 ---
 
@@ -23,14 +23,14 @@ Hashti employs a **dual-type typographic architecture** designed to bridge class
 
 Hashti organizes type styles into a mathematical scale built on consistent line-height ratios:
 
-| Token / Level | Font Size | Line Height | Weight | Letter Spacing | Ideal Usage |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Display** | `48px` (3rem) | `56px` (1.16) | 700 / 800 | `-0.03em` | Hero landing headlines, monumental section numbers. |
-| **Title** | `24px` (1.5rem) | `32px` (1.33) | 600 / 700 | `-0.02em` | Page titles, primary modal headers, drawer headers. |
-| **Heading** | `18px` (1.125rem) | `26px` (1.44) | 600 | `-0.01em` | Card titles, section headers, table group labels. |
-| **Body (Default)** | `14px` (0.875rem) | `22px` (1.57) | 400 / 500 | `0` | Primary application reading text, form field values, descriptions. |
-| **Caption** | `12px` (0.75rem) | `18px` (1.5) | 400 / 500 | `+0.01em` | Helper text, field descriptions, timestamp labels, badge tags. |
-| **Tiny / Micro** | `11px` (0.6875rem) | `16px` (1.45) | 600 | `+0.04em` | All-caps badges, table column headers, status markers. |
+| Token / Level      | Font Size          | Line Height   | Weight    | Letter Spacing | Ideal Usage                                                        |
+| :----------------- | :----------------- | :------------ | :-------- | :------------- | :----------------------------------------------------------------- |
+| **Display**        | `48px` (3rem)      | `56px` (1.16) | 700 / 800 | `-0.03em`      | Hero landing headlines, monumental section numbers.                |
+| **Title**          | `24px` (1.5rem)    | `32px` (1.33) | 600 / 700 | `-0.02em`      | Page titles, primary modal headers, drawer headers.                |
+| **Heading**        | `18px` (1.125rem)  | `26px` (1.44) | 600       | `-0.01em`      | Card titles, section headers, table group labels.                  |
+| **Body (Default)** | `14px` (0.875rem)  | `22px` (1.57) | 400 / 500 | `0`            | Primary application reading text, form field values, descriptions. |
+| **Caption**        | `12px` (0.75rem)   | `18px` (1.5)  | 400 / 500 | `+0.01em`      | Helper text, field descriptions, timestamp labels, badge tags.     |
+| **Tiny / Micro**   | `11px` (0.6875rem) | `16px` (1.45) | 600       | `+0.04em`      | All-caps badges, table column headers, status markers.             |
 
 ---
 
@@ -44,15 +44,21 @@ Add preconnect and font stylesheet tags to your root HTML document:
 
 ```html
 <!-- Preconnect to CDN origins for zero handshake latency -->
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 <!-- Satoshi (Fontshare) -->
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap">
+<link
+  rel="stylesheet"
+  href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap"
+/>
 
 <!-- Vazirmatn & JetBrains Mono (Google Fonts) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+/>
 ```
 
 ### Method B: CSS `@import`
@@ -89,7 +95,10 @@ The typography engine is mapped to the following CSS custom variables:
   font-family: var(--hashti-font-fa);
 }
 
-code, kbd, samp, pre {
+code,
+kbd,
+samp,
+pre {
   font-family: var(--hashti-font-mono);
 }
 ```

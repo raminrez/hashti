@@ -1,27 +1,40 @@
-@import 'tailwindcss';
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
 
 /* Import Hashti tokens & component styles */
-@import '@hashti/tokens/dist/tokens.css';
-@import '@hashti/react/dist/styles.css';
+@import "@hashti/tokens/dist/tokens.css";
+@import "@hashti/react/dist/styles.css";
+
+/* Fumadocs search trigger sits on a muted surface; lift its label to AA contrast. */
+[data-search-full] {
+  color: var(--color-fd-foreground, #000000) !important;
+}
+
+/* Hashti sizes are rem-based on a 16px root; pin it so controls keep 44px. */
+html {
+  font-size: 16px;
+}
 
 :root {
   --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --color-fd-primary: #000000;
   --color-fd-primary-foreground: #ffffff;
-  --color-fd-ring: #08BDBA;
+  --color-fd-ring: #365ccb;
+  /* Fumadocs ships a very light muted grey; use the Frame muted ink instead. */
+  --color-fd-muted-foreground: #606674;
 }
 
 .dark {
   --color-fd-primary: #ffffff;
   --color-fd-primary-foreground: #000000;
-  --color-fd-ring: #08BDBA;
+  --color-fd-ring: #a9bdff;
+  --color-fd-muted-foreground: #b1b6c3;
 }
 
 [dir="rtl"] {
-  font-family: 'Vazirmatn', var(--font-sans);
+  font-family: "Vazirmatn", var(--font-sans);
 }
 
 /* Code block styling & generous padding from card edges */

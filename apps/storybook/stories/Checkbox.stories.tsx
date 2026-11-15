@@ -564,22 +564,30 @@ export const DetachedStatusShowcase: Story = {
     await expect(warnStatus).toBeVisible();
     await expect(warnStatus).toHaveAttribute("data-hashti-status", "warning");
     await expect(warnStatus).toHaveAttribute("data-variant", "detached");
-    await expect(warnStatus).toHaveTextContent("Digest delivery is temporarily experiencing minor delays.");
-    await expect(warnGroup).toHaveAccessibleDescription(/Digest delivery is temporarily experiencing minor delays/);
+    await expect(warnStatus).toHaveTextContent(
+      "Digest delivery is temporarily experiencing minor delays.",
+    );
+    await expect(warnGroup).toHaveAccessibleDescription(
+      /Digest delivery is temporarily experiencing minor delays/,
+    );
 
     const errGroup = canvas.getByRole("group", { name: "Repository access permissions" });
     const errStatus = errGroup.querySelector(".hashti-field__status");
     await expect(errStatus).toBeVisible();
     await expect(errStatus).toHaveAttribute("data-hashti-status", "error");
     await expect(errStatus).toHaveAttribute("data-variant", "detached");
-    await expect(errStatus).toHaveTextContent("At least one production branch must be selected for deployment.");
+    await expect(errStatus).toHaveTextContent(
+      "At least one production branch must be selected for deployment.",
+    );
 
     const successGroup = canvas.getByRole("group", { name: "Compliance verification" });
     const successStatus = successGroup.querySelector(".hashti-field__status");
     await expect(successStatus).toBeVisible();
     await expect(successStatus).toHaveAttribute("data-hashti-status", "success");
     await expect(successStatus).toHaveAttribute("data-variant", "detached");
-    await expect(successStatus).toHaveTextContent("All compliance requirements are verified for this release.");
+    await expect(successStatus).toHaveTextContent(
+      "All compliance requirements are verified for this release.",
+    );
 
     await userEvent.click(canvas.getByRole("checkbox", { name: "SMS notifications" }));
     await expect(canvas.getByRole("checkbox", { name: "SMS notifications" })).toBeChecked();
@@ -590,17 +598,35 @@ export const Colors: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
       <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
-        <Checkbox defaultSelected color="primary">Primary (Default)</Checkbox>
-        <Checkbox defaultSelected color="secondary">Secondary</Checkbox>
-        <Checkbox defaultSelected color="success">Success</Checkbox>
-        <Checkbox defaultSelected color="warning">Warning</Checkbox>
-        <Checkbox defaultSelected color="danger">Danger</Checkbox>
+        <Checkbox defaultSelected color="primary">
+          Primary (Default)
+        </Checkbox>
+        <Checkbox defaultSelected color="secondary">
+          Secondary
+        </Checkbox>
+        <Checkbox defaultSelected color="success">
+          Success
+        </Checkbox>
+        <Checkbox defaultSelected color="warning">
+          Warning
+        </Checkbox>
+        <Checkbox defaultSelected color="danger">
+          Danger
+        </Checkbox>
       </div>
       <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
-        <Checkbox isIndeterminate color="primary">Primary Indeterminate</Checkbox>
-        <Checkbox isIndeterminate color="success">Success Indeterminate</Checkbox>
-        <Checkbox isIndeterminate color="warning">Warning Indeterminate</Checkbox>
-        <Checkbox isIndeterminate color="danger">Danger Indeterminate</Checkbox>
+        <Checkbox isIndeterminate color="primary">
+          Primary Indeterminate
+        </Checkbox>
+        <Checkbox isIndeterminate color="success">
+          Success Indeterminate
+        </Checkbox>
+        <Checkbox isIndeterminate color="warning">
+          Warning Indeterminate
+        </Checkbox>
+        <Checkbox isIndeterminate color="danger">
+          Danger Indeterminate
+        </Checkbox>
       </div>
     </div>
   ),

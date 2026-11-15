@@ -54,7 +54,7 @@ export const Playground: Story = {
     const homeLink = await canvas.findByRole("link", { name: "Home" });
     const currentItem = await canvas.findByText("Components");
 
-    expect(homeLink).toBeVisible();
+    await waitFor(() => expect(homeLink).toBeVisible());
     expect(homeLink).toHaveAttribute("href", "#home");
     expect(currentItem).toHaveAttribute("aria-current", "page");
   },
@@ -161,7 +161,7 @@ export const CollapsibleOrOverflow: Story = {
     const canvas = within(canvasElement);
 
     const menuTrigger = await canvas.findByRole("button", { name: "Show intermediate path" });
-    expect(menuTrigger).toBeVisible();
+    await waitFor(() => expect(menuTrigger).toBeVisible());
 
     await userEvent.click(menuTrigger);
     const popover = await waitFor(() => {
@@ -172,7 +172,7 @@ export const CollapsibleOrOverflow: Story = {
     const engineeringItem = await within(popover).findByRole("menuitem", {
       name: "Engineering Org",
     });
-    expect(engineeringItem).toBeVisible();
+    await waitFor(() => expect(engineeringItem).toBeVisible());
 
     await userEvent.keyboard("{Escape}");
     await waitFor(() => expect(menuTrigger).toHaveFocus());
@@ -262,7 +262,7 @@ export const LongContentAndLocales: Story = {
     const homeLink = await canvas.findByRole("link", { name: "خانه" });
     const currentItem = await canvas.findByText("پیکربندی گره‌ها");
 
-    expect(homeLink).toBeVisible();
+    await waitFor(() => expect(homeLink).toBeVisible());
     expect(currentItem).toHaveAttribute("aria-current", "page");
   },
 };

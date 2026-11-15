@@ -7,12 +7,14 @@ description: Sliding panel originating from any screen edge, ideal for deep filt
 
 The **Drawer** component provides a smooth sliding overlay panel that emerges from any screen boundary (`left`, `right`, `top`, `bottom`, or direction-aware `start` and `end`). It is the optimal pattern for detailed object inspections, extensive multi-step filter forms, auxiliary navigation menus, and mobile bottom sheets.
 
-In classical Persian spatial design, the Drawer mirrors the concept of an arched alcove or side chamber (*shah-neshin*)—providing a rich, deep spatial annex that expands smoothly alongside the main hall without dislodging the user's primary context.
+In classical Persian spatial design, the Drawer mirrors the concept of an arched alcove or side chamber (_shah-neshin_)—providing a rich, deep spatial annex that expands smoothly alongside the main hall without dislodging the user's primary context.
 
-<ComponentPreview title="Drawer" description="Perimeter inspection panel sliding in from screen edge.">
+<ComponentPreview
+  title="Drawer"
+  description="Perimeter inspection panel sliding in from screen edge."
+>
   <DrawerLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -61,13 +63,10 @@ export function RightDrawerDemo() {
       >
         <div className="flex flex-col gap-4 text-sm text-gray-700 dark:text-gray-300">
           <p>
-            Constructed between 1603 and 1619 during the reign of Shah Abbas I, the dome features
-            a delicate transition from an exterior octagonal base to an elevated single-shell vault.
+            Constructed between 1603 and 1619 during the reign of Shah Abbas I, the dome features a
+            delicate transition from an exterior octagonal base to an elevated single-shell vault.
           </p>
-          <TextField
-            label="Restoration Lead Annotations"
-            placeholder="Add field notes..."
-          />
+          <TextField label="Restoration Lead Annotations" placeholder="Add field notes..." />
         </div>
       </Drawer>
     </>
@@ -202,6 +201,7 @@ export function DrawerSizesDemo() {
 ### Bilingual & RTL Direction-Awareness
 
 When using `placement="start"` or `placement="end"`, the drawer automatically adapts to the reading direction:
+
 - In **LTR**, `"end"` slides from the right; `"start"` slides from the left.
 - In **RTL** (Persian/Arabic), `"end"` slides from the left; `"start"` slides from the right.
 
@@ -239,19 +239,19 @@ export function RTLDrawerDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `isOpen` | `boolean` | — | Controlled open visibility state. |
-| `defaultOpen` | `boolean` | `false` | Uncontrolled initial open state. |
-| `onOpenChange` | `(isOpen: boolean) => void` | — | Handler invoked when open/close state transitions. |
-| `placement` | `'left' \| 'right' \| 'top' \| 'bottom' \| 'start' \| 'end'` | `'end'` | Edge of the viewport where the drawer originates. |
-| `size` | `'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'md'` | Width (or height for top/bottom) dimension preset. |
-| `title` | `ReactNode` | — | Header title rendered inside `<Heading slot="title">`. |
-| `description` | `ReactNode` | — | Optional secondary description text beneath the title. |
-| `footer` | `ReactNode` | — | Actions or buttons pinned to the bottom of the drawer. |
-| `isDismissable` | `boolean` | `true` | Allows closing by clicking the backdrop or pressing <kbd>Esc</kbd>. |
-| `dir` | `'ltr' \| 'rtl'` | — | Text direction override for bilingual layouts. |
-| `children` | `ReactNode` | — | Primary scrollable content rendered in the drawer body. |
+| Prop            | Type                                                         | Default | Description                                                         |
+| :-------------- | :----------------------------------------------------------- | :------ | :------------------------------------------------------------------ |
+| `isOpen`        | `boolean`                                                    | —       | Controlled open visibility state.                                   |
+| `defaultOpen`   | `boolean`                                                    | `false` | Uncontrolled initial open state.                                    |
+| `onOpenChange`  | `(isOpen: boolean) => void`                                  | —       | Handler invoked when open/close state transitions.                  |
+| `placement`     | `'left' \| 'right' \| 'top' \| 'bottom' \| 'start' \| 'end'` | `'end'` | Edge of the viewport where the drawer originates.                   |
+| `size`          | `'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`                     | `'md'`  | Width (or height for top/bottom) dimension preset.                  |
+| `title`         | `ReactNode`                                                  | —       | Header title rendered inside `<Heading slot="title">`.              |
+| `description`   | `ReactNode`                                                  | —       | Optional secondary description text beneath the title.              |
+| `footer`        | `ReactNode`                                                  | —       | Actions or buttons pinned to the bottom of the drawer.              |
+| `isDismissable` | `boolean`                                                    | `true`  | Allows closing by clicking the backdrop or pressing <kbd>Esc</kbd>. |
+| `dir`           | `'ltr' \| 'rtl'`                                             | —       | Text direction override for bilingual layouts.                      |
+| `children`      | `ReactNode`                                                  | —       | Primary scrollable content rendered in the drawer body.             |
 
 ---
 
@@ -261,12 +261,13 @@ export function RTLDrawerDemo() {
 - **Escape Key Dismissal**: Pressing <kbd>Esc</kbd> immediately dismisses the drawer and returns focus to the initiating button.
 - **Semantic Dialog Container**: Internally renders `<RACDialog role="dialog">` with automated `aria-labelledby` referencing the drawer's title heading.
 - **Motion Reduction**: Slide transitions and backdrop fades automatically disable or collapse into instantaneous cuts when the user has enabled `prefers-reduced-motion`.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key            | Action                                             |
+| :------------- | :------------------------------------------------- |
 | <kbd>Tab</kbd> | Cycles focus within the drawer slideout container. |
 | <kbd>Esc</kbd> | Closes drawer panel and restores focus to trigger. |
 
@@ -274,7 +275,7 @@ export function RTLDrawerDemo() {
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-entering]` | Drawer Surface | Present during slide-in animation. |
-| `[data-exiting]` | Drawer Surface | Present during slide-out animation. |
+| Attribute         | Target         | Description                         |
+| :---------------- | :------------- | :---------------------------------- |
+| `[data-entering]` | Drawer Surface | Present during slide-in animation.  |
+| `[data-exiting]`  | Drawer Surface | Present during slide-out animation. |

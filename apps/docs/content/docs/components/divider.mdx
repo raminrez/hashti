@@ -11,12 +11,11 @@ Dividers are visual rules that separate distinct groups of content, interface co
   <DividerLiveDemo />
 </ComponentPreview>
 
-
 ---
 
 ## Architectural Context
 
-In classical Persian architectural masonry, subtle course banding (*hazartaf* or frieze borders) marks the transition between structural brick arches and ornamental plaster. Similarly, Hashti's `Divider` introduces structural order without visual clutter:
+In classical Persian architectural masonry, subtle course banding (_hazartaf_ or frieze borders) marks the transition between structural brick arches and ornamental plaster. Similarly, Hashti's `Divider` introduces structural order without visual clutter:
 
 ```
 [Section A]  ─────── Horizontal Divider ───────  [Section B]
@@ -60,7 +59,9 @@ export function HorizontalDividerDemo() {
 
       <div>
         <h4 className="font-medium text-sm">DNS Records</h4>
-        <p className="text-xs text-neutral-500">Manage authoritative nameservers and CNAME mapping.</p>
+        <p className="text-xs text-neutral-500">
+          Manage authoritative nameservers and CNAME mapping.
+        </p>
       </div>
     </div>
   );
@@ -156,13 +157,13 @@ export function DecorativeDividerDemo() {
 
 `Divider` extends `RACSeparatorProps` from `react-aria-components`.
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Axis of the divider rule. |
-| `label` | `ReactNode` | — | Textual label or node displayed centered within a horizontal divider. |
-| `decorative` | `boolean` | `false` | When true, renders with `role="none"` so screen readers ignore it. |
-| `className` | `string` | — | Additional CSS classes for custom width, height, or spacing. |
-| `slot` | `string` | — | React Aria slot name when composed inside menus or popovers. |
+| Prop          | Type                         | Default        | Description                                                           |
+| :------------ | :--------------------------- | :------------- | :-------------------------------------------------------------------- |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Axis of the divider rule.                                             |
+| `label`       | `ReactNode`                  | —              | Textual label or node displayed centered within a horizontal divider. |
+| `decorative`  | `boolean`                    | `false`        | When true, renders with `role="none"` so screen readers ignore it.    |
+| `className`   | `string`                     | —              | Additional CSS classes for custom width, height, or spacing.          |
+| `slot`        | `string`                     | —              | React Aria slot name when composed inside menus or popovers.          |
 
 ---
 
@@ -172,10 +173,11 @@ export function DecorativeDividerDemo() {
 - **Orientation Announcement**: Supplies `aria-orientation="horizontal"` or `aria-orientation="vertical"`.
 - **Labeled Dividers**: When `label` is provided on a horizontal divider, the component renders a semantic separator container around the textual content, ensuring the text remains legible and discoverable by assistive technologies.
 - **Decorative Use**: Whenever a visual line is used strictly for aesthetics and doesn't separate distinct semantic sections, use `decorative={true}` to prevent screen reader clutter.
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute            | Target  | Description                                    |
+| :------------------- | :------ | :--------------------------------------------- |
 | `[data-orientation]` | Divider | Orientation axis (`horizontal` or `vertical`). |

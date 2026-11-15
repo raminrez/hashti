@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, within } from "storybook/test";
+import { expect, waitFor, within } from "storybook/test";
 import { Slider, Theme, useTheme } from "@hashti/react";
 import "./navigation.css";
 
@@ -168,7 +168,7 @@ export const LongContentAndLocales: Story = {
     const canvas = within(canvasElement);
 
     const thumb = canvas.getByRole("slider", { name: "ظرفیت حافظه موقت (مگابایت)" });
-    expect(thumb).toBeVisible();
+    await waitFor(() => expect(thumb).toBeVisible());
     expect(thumb).toHaveValue("60");
 
     thumb.focus();

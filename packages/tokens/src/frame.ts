@@ -24,6 +24,8 @@ const palettes = {
     warningSurface: "#fff0ce",
     success: "#246343",
     successSurface: "#e1f2e8",
+    aiStart: "#5b3fc4",
+    aiEnd: "#8b3fb0",
   },
   "frame-dark": {
     canvas: "#18191d",
@@ -49,12 +51,16 @@ const palettes = {
     warningSurface: "#3e3321",
     success: "#a4d9b8",
     successSurface: "#203a2b",
+    aiStart: "#c4b0ff",
+    aiEnd: "#e6b3e0",
   },
 };
 
 const workingScale = {
   "font-sans":
     'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+  "font-mono":
+    'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
   "size-md": "2.75rem",
   "body-01-font-size": "0.875rem",
   "body-01-font-weight": 400,
@@ -80,6 +86,11 @@ const workingScale = {
   "heading-03-font-weight": 600,
   "heading-03-line-height": 1.4,
   "heading-03-letter-spacing": 0,
+  // DESIGN.md documents a 30px headline above the title step; expose it as a token.
+  "headline-font-size": "1.875rem",
+  "headline-font-weight": 600,
+  "headline-line-height": 36 / 30,
+  "headline-letter-spacing": "-0.03em",
 };
 
 export const frameThemes = Object.fromEntries(
@@ -146,6 +157,8 @@ export const frameThemes = Object.fromEntries(
       "support-warning": p.warning,
       "support-success": p.success,
       "support-info": p.focus,
+      "ai-gradient-start": p.aiStart,
+      "ai-gradient-end": p.aiEnd,
       "support-error-inverse": inverse.error,
       "support-warning-inverse": inverse.warning,
       "support-success-inverse": inverse.success,
@@ -160,7 +173,8 @@ export const frameThemes = Object.fromEntries(
       overlay: "rgb(18 22 32 / 50%)",
       shadow: "rgb(0 0 0 / 14%)",
       "control-radius": "0.625rem",
-      "popover-radius": "0.875rem",
+      "group-radius": "0.875rem",
+      "popover-radius": "1.125rem",
       "overlay-radius": "1.125rem",
       "focus-width": "2px",
       "focus-offset": "2px",

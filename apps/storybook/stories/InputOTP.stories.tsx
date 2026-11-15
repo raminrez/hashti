@@ -9,6 +9,7 @@ const handleComplete = fn();
 const meta = {
   title: "Fields/InputOTP",
   component: InputOTP,
+  tags: ["a11y:gap"],
   parameters: {
     docs: {
       description: {

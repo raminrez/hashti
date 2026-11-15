@@ -13,7 +13,6 @@ In enterprise applications, transparent attribution builds user trust. The AI La
   <AILabelLiveDemo />
 </ComponentPreview>
 
-
 ---
 
 ## Import
@@ -42,7 +41,8 @@ export function DefaultAILabelExample() {
           <AILabel />
         </div>
         <p className="text-sm text-subtle">
-          Cluster load spikes predictably every Thursday at 14:00 UTC. We suggest pre-scaling 2 additional worker nodes.
+          Cluster load spikes predictably every Thursday at 14:00 UTC. We suggest pre-scaling 2
+          additional worker nodes.
         </p>
       </div>
     </div>
@@ -115,14 +115,7 @@ export function RevertExample() {
 Pair `<AILabel>` with `<DialogTrigger>` and `<Popover>` to present transparent metadata including model versions, confidence scores, and feedback mechanisms:
 
 ```tsx
-import {
-  AILabel,
-  DialogTrigger,
-  Button,
-  Popover,
-  Dialog,
-  Icon,
-} from "@hashti/react";
+import { AILabel, DialogTrigger, Button, Popover, Dialog, Icon } from "@hashti/react";
 
 export function AttributionPopoverExample() {
   return (
@@ -144,7 +137,8 @@ export function AttributionPopoverExample() {
             </div>
 
             <p className="text-xs text-subtle">
-              Generated using <strong>Gemini 2.5 Flash</strong> with temperature 0.2 across 4 architecture documents.
+              Generated using <strong>Gemini 2.5 Flash</strong> with temperature 0.2 across 4
+              architecture documents.
             </p>
 
             <div className="text-xs space-y-1 border-t border-subtle pt-2">
@@ -175,14 +169,14 @@ export function AttributionPopoverExample() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `label` | `ReactNode` | `'AI'` | Text rendered adjacent to the icon. |
-| `revertActive` | `boolean` | `false` | When `true`, transitions the component into an interactive button with an undo icon. |
-| `onRevert` | `() => void` | — | Callback fired when the user activates the revert button. |
-| `revertLabel` | `string` | `'Revert to AI suggestion'` | Accessible `aria-label` applied when `revertActive` is `true`. |
-| `className` | `string` | — | Additional CSS class names. |
-| `ref` | `Ref<HTMLElement>` | — | Forwarded React ref to the underlying `<span>` or `<button>`. |
+| Prop           | Type               | Default                     | Description                                                                          |
+| :------------- | :----------------- | :-------------------------- | :----------------------------------------------------------------------------------- |
+| `label`        | `ReactNode`        | `'AI'`                      | Text rendered adjacent to the icon.                                                  |
+| `revertActive` | `boolean`          | `false`                     | When `true`, transitions the component into an interactive button with an undo icon. |
+| `onRevert`     | `() => void`       | —                           | Callback fired when the user activates the revert button.                            |
+| `revertLabel`  | `string`           | `'Revert to AI suggestion'` | Accessible `aria-label` applied when `revertActive` is `true`.                       |
+| `className`    | `string`           | —                           | Additional CSS class names.                                                          |
+| `ref`          | `Ref<HTMLElement>` | —                           | Forwarded React ref to the underlying `<span>` or `<button>`.                        |
 
 ---
 
@@ -192,21 +186,22 @@ export function AttributionPopoverExample() {
 - **Button Semantics in Revert Mode**: When `revertActive={true}`, renders a native `<button type="button">` with `aria-label={revertLabel}`. It is fully accessible via keyboard navigation (<kbd>Tab</kbd>, <kbd>Enter</kbd>, <kbd>Space</kbd>).
 - **Popover Trigger Semantics**: When wrapped inside `<DialogTrigger>`, accessibility attributes such as `aria-haspopup="dialog"`, `aria-expanded`, and keyboard focus trap management are handled automatically by React Aria Components.
 - **High Contrast**: Meets WCAG 2.2 AA standards with distinct foreground token colors and high-contrast icon strokes.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key                                 | Action                                                           |
+| :---------------------------------- | :--------------------------------------------------------------- |
 | <kbd>Space</kbd> / <kbd>Enter</kbd> | Opens generative AI attribution popover when clicked or focused. |
-| <kbd>Esc</kbd> | Dismisses attribution popover card. |
+| <kbd>Esc</kbd>                      | Dismisses attribution popover card.                              |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | AI Label Button | Present on pointer hover. |
+| Attribute        | Target          | Description                |
+| :--------------- | :-------------- | :------------------------- |
+| `[data-hovered]` | AI Label Button | Present on pointer hover.  |
 | `[data-focused]` | AI Label Button | Present on keyboard focus. |
-| `[data-pressed]` | AI Label Button | Active while pressed. |
+| `[data-pressed]` | AI Label Button | Active while pressed.      |

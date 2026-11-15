@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
-import {
-  Toolbar,
-  Button,
-  ToggleButton,
-  Icon,
-} from "@hashti/react";
+import { Toolbar, Button, ToggleButton, Icon } from "@hashti/react";
 import "./actions.css";
 
 const meta = {
@@ -187,11 +182,7 @@ export const Sizes: Story = {
 export const VerticalOrientation: Story = {
   render: () => (
     <div className="action-story-stack">
-      <Toolbar
-        orientation="vertical"
-        variant="floating"
-        aria-label="Canvas sidebar tools"
-      >
+      <Toolbar orientation="vertical" variant="floating" aria-label="Canvas sidebar tools">
         <Toolbar.Group aria-label="Primary tools">
           <Button variant="ghost" aria-label="Select tool">
             <Icon name="chevronRight" />

@@ -9,10 +9,12 @@ The **SearchField** component delivers an intuitive search input engineered for 
 
 In Hashti's visual philosophy, discovery tools must never obstruct the user's view; rather, they serve as luminous focal points allowing immediate navigation across complex data architectures.
 
-<ComponentPreview title="SearchField" description="Keyboard-driven search input with quick clear action.">
+<ComponentPreview
+  title="SearchField"
+  description="Keyboard-driven search input with quick clear action."
+>
   <SearchFieldLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -25,11 +27,7 @@ import { SearchField, Kbd } from "@hashti/react";
 Sub-components for custom layouts:
 
 ```tsx
-import {
-  SearchField,
-  FieldControl,
-  FieldGroupInput,
-} from "@hashti/react";
+import { SearchField, FieldControl, FieldGroupInput } from "@hashti/react";
 ```
 
 ---
@@ -45,10 +43,7 @@ import { SearchField } from "@hashti/react";
 
 export function BasicSearchFieldDemo() {
   return (
-    <SearchField
-      label="Explore Components"
-      placeholder="Search documentation, props, tokens..."
-    />
+    <SearchField label="Explore Components" placeholder="Search documentation, props, tokens..." />
   );
 }
 ```
@@ -79,8 +74,8 @@ export function SearchHandlerDemo() {
         }}
       />
       <div className="text-sm text-gray-600 dark:text-gray-400">
-        Active Query: <code className="font-mono text-xs">{query || "—"}</code> |
-        Submitted: <code className="font-mono text-xs">{submittedQuery || "—"}</code>
+        Active Query: <code className="font-mono text-xs">{query || "—"}</code> | Submitted:{" "}
+        <code className="font-mono text-xs">{submittedQuery || "—"}</code>
       </div>
     </div>
   );
@@ -97,10 +92,7 @@ import { SearchField, Kbd } from "@hashti/react";
 export function ShortcutSearchDemo() {
   return (
     <div className="relative max-w-md">
-      <SearchField
-        label="Global Search"
-        placeholder="Search everywhere..."
-      />
+      <SearchField label="Global Search" placeholder="Search everywhere..." />
       <div className="absolute right-10 top-9 pointer-events-none flex items-center gap-1">
         <Kbd>⌘</Kbd>
         <Kbd>K</Kbd>
@@ -149,22 +141,22 @@ export function DisabledSearchDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `string` | — | The controlled query string. |
-| `defaultValue` | `string` | — | Default query string for uncontrolled instances. |
-| `onChange` | `(value: string) => void` | — | Handler triggered upon every text change. |
-| `onSubmit` | `(value: string) => void` | — | Handler triggered when the user presses <kbd>Enter</kbd>. |
-| `onClear` | `() => void` | — | Handler triggered when the clear button is pressed or <kbd>Esc</kbd> is hit. |
-| `placeholder` | `string` | `"Search"` | Placeholder text when empty. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and typographic scale of the search input. |
-| `label` | `ReactNode` | — | Accessible label for the search input. |
-| `description` | `ReactNode` | — | Helper text underneath or above the field. |
-| `errorMessage` | `ReactNode` | — | Error text when validation fails. |
-| `isInvalid` | `boolean` | `false` | Marks field as having an invalid state. |
-| `isDisabled` | `boolean` | `false` | Disables search interaction and gray out controls. |
-| `isReadOnly` | `boolean` | `false` | Prevents editing while permitting selection. |
-| `inputProps` | `InputProps` | — | Custom props forwarded directly to the RAC `<Input>`. |
+| Prop           | Type                      | Default    | Description                                                                  |
+| :------------- | :------------------------ | :--------- | :--------------------------------------------------------------------------- |
+| `value`        | `string`                  | —          | The controlled query string.                                                 |
+| `defaultValue` | `string`                  | —          | Default query string for uncontrolled instances.                             |
+| `onChange`     | `(value: string) => void` | —          | Handler triggered upon every text change.                                    |
+| `onSubmit`     | `(value: string) => void` | —          | Handler triggered when the user presses <kbd>Enter</kbd>.                    |
+| `onClear`      | `() => void`              | —          | Handler triggered when the clear button is pressed or <kbd>Esc</kbd> is hit. |
+| `placeholder`  | `string`                  | `"Search"` | Placeholder text when empty.                                                 |
+| `size`         | `'sm' \| 'md' \| 'lg'`    | `'md'`     | Height and typographic scale of the search input.                            |
+| `label`        | `ReactNode`               | —          | Accessible label for the search input.                                       |
+| `description`  | `ReactNode`               | —          | Helper text underneath or above the field.                                   |
+| `errorMessage` | `ReactNode`               | —          | Error text when validation fails.                                            |
+| `isInvalid`    | `boolean`                 | `false`    | Marks field as having an invalid state.                                      |
+| `isDisabled`   | `boolean`                 | `false`    | Disables search interaction and gray out controls.                           |
+| `isReadOnly`   | `boolean`                 | `false`    | Prevents editing while permitting selection.                                 |
+| `inputProps`   | `InputProps`              | —          | Custom props forwarded directly to the RAC `<Input>`.                        |
 
 ---
 
@@ -177,22 +169,23 @@ SearchField implements the **WAI-ARIA `searchbox`** pattern:
 - **Clear Button Labeling**: The clear button includes an accessible label (`aria-label="Clear search"`) and is automatically hidden when the input is empty to avoid tab clutter.
 - **Search Landmark Semantics**: Rendered with `type="search"` to trigger native virtual keyboard search actions on iOS and Android devices.
 - **RTL Script Support**: In Persian/Arabic layouts, the magnifying glass icon and clear button gracefully swap positions to match reading direction.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Moves focus into input or clear button. |
-| <kbd>Esc</kbd> | Clears input text if text is present. |
-| <kbd>Enter</kbd> | Commits search query callback. |
+| Key              | Action                                  |
+| :--------------- | :-------------------------------------- |
+| <kbd>Tab</kbd>   | Moves focus into input or clear button. |
+| <kbd>Esc</kbd>   | Clears input text if text is present.   |
+| <kbd>Enter</kbd> | Commits search query callback.          |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Input, Clear Button | Present when pointer hovers over element. |
-| `[data-focused]` | Input, Clear Button | Active when element has focus. |
-| `[data-disabled]` | Input, Clear Button | Set when search field is disabled. |
+| Attribute         | Target              | Description                               |
+| :---------------- | :------------------ | :---------------------------------------- |
+| `[data-hovered]`  | Input, Clear Button | Present when pointer hovers over element. |
+| `[data-focused]`  | Input, Clear Button | Active when element has focus.            |
+| `[data-disabled]` | Input, Clear Button | Set when search field is disabled.        |

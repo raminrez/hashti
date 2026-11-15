@@ -33,7 +33,7 @@ import { Icon, type IconProps } from "../../icons";
 import { Popover } from "../popover";
 import { Dialog } from "../dialog";
 import { Tooltip } from "../tooltip";
-import { classes } from "../../utils";
+import { classes, cx } from "../../utils";
 
 export type FieldStatusPlacement = "attached" | "detached";
 
@@ -76,7 +76,9 @@ export function useFieldPresentation(
       "aria-describedby":
         [description, status ? statusId : undefined].filter(Boolean).join(" ") || description,
     },
-    wrap<T extends { isRequired: boolean }>(
+    // `T` stays unconstrained: TokenField's render props carry no `isRequired`, and requiring it
+    // made the wrapped children unassignable to the RAC root.
+    wrap<T extends object>(
       children: RenderProps<T>["children"],
       inheritedChildren?: RenderProps<T>["children"],
     ) {
@@ -89,7 +91,7 @@ export function useFieldPresentation(
               statusVariant: resolvedVariant,
               statusRef,
               isOptional,
-              isRequired: state.isRequired,
+              isRequired: "isRequired" in state ? Boolean(state.isRequired) : undefined,
             }}
           >
             {content}
@@ -98,6 +100,26 @@ export function useFieldPresentation(
       );
     },
   };
+}
+
+/**
+ * Provides status/requiredness to the parts without a React Aria render prop. Needed when the
+ * anatomy wraps a control that is not itself a React Aria field (a native select, a custom widget).
+ */
+export function FieldPresentationProvider({
+  status,
+  statusVariant,
+  isOptional,
+  isRequired,
+  children,
+}: FieldPresentationProps & { isRequired?: boolean; children: ReactNode }) {
+  // No status ref here: a standalone Field has no single control to describe, so the status
+  // parts render as siblings instead of being wired through aria-describedby.
+  return (
+    <FieldPresentationContext.Provider value={{ status, statusVariant, isOptional, isRequired }}>
+      {children}
+    </FieldPresentationContext.Provider>
+  );
 }
 
 const fieldMessages: Record<
@@ -179,6 +201,7 @@ export function FieldLabel({
   const optional = isOptional ?? presentation.isOptional;
   const label = (
     <Label
+      data-slot="label"
       {...props}
       className={["hashti-field__label react-aria-Label", className].filter(Boolean).join(" ")}
     >
@@ -210,12 +233,7 @@ export interface FieldLabelHelpProps {
   children?: ReactNode;
 }
 
-export function FieldLabelHelp({
-  labelId,
-  content,
-  tooltip,
-  children,
-}: FieldLabelHelpProps) {
+export function FieldLabelHelp({ labelId, content, tooltip, children }: FieldLabelHelpProps) {
   const messages = useFieldMessages();
   const prefixId = useId();
   const fallbackId = useId();
@@ -245,9 +263,7 @@ export function FieldLabelHelp({
             {tooltipContent && <Tooltip>{tooltipContent}</Tooltip>}
           </TooltipTrigger>
           <Popover placement="bottom start" offset={6} className="hashti-field__label-popover">
-            <Dialog aria-labelledby={labelledBy}>
-              {children}
-            </Dialog>
+            <Dialog aria-labelledby={labelledBy}>{children}</Dialog>
           </Popover>
         </DialogTrigger>
       </ButtonContext.Provider>
@@ -316,6 +332,7 @@ export function FieldStatusIcon({ className, ...props }: FieldStatusIconProps) {
     <Icon
       {...props}
       name={type}
+      data-slot="icon"
       data-hashti-status={type}
       aria-hidden="true"
       className={["hashti-field__status-icon", className].filter(Boolean).join(" ")}
@@ -327,6 +344,7 @@ export type FieldDescriptionProps = ComponentProps<typeof Text>;
 export function FieldDescription({ className, ...props }: FieldDescriptionProps) {
   return (
     <Text
+      data-slot="description"
       slot="description"
       {...props}
       className={["hashti-field__description react-aria-Text", className].filter(Boolean).join(" ")}
@@ -335,9 +353,32 @@ export function FieldDescription({ className, ...props }: FieldDescriptionProps)
 }
 
 export type FieldErrorMessageProps = ComponentProps<typeof FieldError>;
-export function FieldErrorMessage({ className, ...props }: FieldErrorMessageProps) {
+export function FieldErrorMessage({ className, style, ...props }: FieldErrorMessageProps) {
+  const validation = useContext(FieldErrorContext);
+  // Standalone use (a custom control, a native select): there is no React Aria field to say
+  // whether it is invalid, so the message is taken at face value instead of rendering nothing.
+  const isStandalone = typeof validation?.isInvalid !== "boolean";
+  if (isStandalone) {
+    const content =
+      typeof props.children === "function" ? undefined : (props.children as ReactNode);
+    // A plain node, not React Aria's Text: outside a field root there is no slot context to
+    // satisfy, and this branch must work anywhere (native select, custom widget).
+    return (
+      <span
+        data-slot="error"
+        role="alert"
+        id={props.id}
+        style={typeof style === "function" ? undefined : style}
+        className={cx("hashti-field__error", typeof className === "string" ? className : undefined)}
+      >
+        {content}
+      </span>
+    );
+  }
   return (
     <FieldError
+      data-slot="error"
+      style={style}
       {...props}
       className={classes("hashti-field__error react-aria-FieldError", className)}
     />
@@ -349,6 +390,7 @@ export function FieldHelp({ className, ...props }: FieldHelpProps) {
   return (
     <div
       {...props}
+      data-slot="help"
       className={["hashti-field__help hashti-field-help", className].filter(Boolean).join(" ")}
     />
   );
@@ -379,7 +421,11 @@ export type FieldControlProps = ComponentProps<typeof Group>;
 export function FieldControl({ className, children, ...props }: FieldControlProps) {
   const context = useSlottedContext(GroupContext, props.slot);
   return (
-    <Group {...props} className={classes("hashti-field__control hashti-input-group", className)}>
+    <Group
+      {...props}
+      data-slot="control"
+      className={classes("hashti-field__control hashti-input-group", className)}
+    >
       {composeRenderProps(children === undefined ? context?.children : children, (content) => (
         <>
           {content}

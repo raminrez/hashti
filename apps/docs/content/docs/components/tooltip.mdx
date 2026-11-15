@@ -13,7 +13,6 @@ Tooltips prevent visual clutter by keeping primary interfaces clean and unclutte
   <TooltipLiveDemo />
 </ComponentPreview>
 
-
 ---
 
 ## Import
@@ -118,15 +117,15 @@ export function TooltipDelayDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `delay` | `number` | `500` | Delay in milliseconds before the tooltip appears on hover/focus (set on `TooltipTrigger`). |
-| `closeDelay` | `number` | `500` | Delay in milliseconds before the tooltip closes when pointer leaves (set on `TooltipTrigger`). |
-| `placement` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Placement of the tooltip relative to its trigger. |
-| `offset` | `number` | `8` | Distance in pixels between the tooltip arrow and trigger element. |
-| `isOpen` | `boolean` | — | Controlled open state (set on `TooltipTrigger`). |
-| `onOpenChange` | `(isOpen: boolean) => void` | — | Callback fired on visibility change (set on `TooltipTrigger`). |
-| `children` | `ReactNode \| ((props) => ReactNode)` | — | The text content or element to render within the tooltip container. |
+| Prop           | Type                                     | Default | Description                                                                                    |
+| :------------- | :--------------------------------------- | :------ | :--------------------------------------------------------------------------------------------- |
+| `delay`        | `number`                                 | `500`   | Delay in milliseconds before the tooltip appears on hover/focus (set on `TooltipTrigger`).     |
+| `closeDelay`   | `number`                                 | `500`   | Delay in milliseconds before the tooltip closes when pointer leaves (set on `TooltipTrigger`). |
+| `placement`    | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Placement of the tooltip relative to its trigger.                                              |
+| `offset`       | `number`                                 | `8`     | Distance in pixels between the tooltip arrow and trigger element.                              |
+| `isOpen`       | `boolean`                                | —       | Controlled open state (set on `TooltipTrigger`).                                               |
+| `onOpenChange` | `(isOpen: boolean) => void`              | —       | Callback fired on visibility change (set on `TooltipTrigger`).                                 |
+| `children`     | `ReactNode \| ((props) => ReactNode)`    | —       | The text content or element to render within the tooltip container.                            |
 
 ---
 
@@ -139,19 +138,20 @@ Tooltip complies strictly with the **WAI-ARIA Tooltip Pattern** and **WCAG 2.1 C
 - **Escape Key Dismissal**: Users can press <kbd>Esc</kbd> to immediately dismiss a visible tooltip without changing pointer position or losing keyboard focus.
 - **Hoverable Content**: The pointer can be moved over the tooltip itself without causing it to disappear, allowing users with screen magnifiers to read its contents.
 - **ARIA Semantics**: Hashti links the trigger button and tooltip using `role="tooltip"` and `aria-describedby`, ensuring assistive technologies read the tooltip text upon focusing the trigger.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key            | Action                                                           |
+| :------------- | :--------------------------------------------------------------- |
 | <kbd>Esc</kbd> | Immediately dismisses the active tooltip without moving pointer. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-entering]` | Tooltip Surface | Active while fading in. |
-| `[data-exiting]` | Tooltip Surface | Active while fading out. |
+| Attribute         | Target          | Description              |
+| :---------------- | :-------------- | :----------------------- |
+| `[data-entering]` | Tooltip Surface | Active while fading in.  |
+| `[data-exiting]`  | Tooltip Surface | Active while fading out. |

@@ -10,7 +10,7 @@ import {
   Label,
   type SliderProps as RACSliderProps,
 } from "react-aria-components";
-import { classes } from "../../utils";
+import { classes, cx } from "../../utils";
 
 export interface SliderProps<T extends number | number[] = number> extends RACSliderProps<T> {
   label?: ReactNode;
@@ -29,11 +29,11 @@ export function Slider<T extends number | number[] = number>({
     <RACSlider<T>
       {...props}
       aria-disabled={props.isDisabled || undefined}
-      className={classes("hashti-slider hashti-slider", className)}
+      className={classes("hashti-slider", className)}
     >
       {children ?? (
         <>
-          <div className="hashti-slider-label hashti-slider-label">
+          <div className="hashti-slider-label">
             <Label>{label}</Label>
             <SliderOutput>
               {({ state }) =>
@@ -41,15 +41,15 @@ export function Slider<T extends number | number[] = number>({
               }
             </SliderOutput>
           </div>
-          <SliderTrack className="hashti-slider-track hashti-slider-track">
+          <SliderTrack className={cx("react-aria-SliderTrack", "hashti-slider-track")}>
             {({ state }) => (
               <>
-                <SliderFill className="hashti-slider-fill hashti-slider-fill" />
+                <SliderFill className={cx("react-aria-SliderFill", "hashti-slider-fill")} />
                 {state.values.map((_, index) => (
                   <SliderThumb
                     key={index}
                     index={index}
-                    className="hashti-slider-thumb hashti-slider-thumb"
+                    className={cx("react-aria-SliderThumb", "hashti-slider-thumb")}
                     aria-label={
                       thumbLabels?.[index] ??
                       (state.values.length > 1 ? (index === 0 ? "Minimum" : "Maximum") : undefined)

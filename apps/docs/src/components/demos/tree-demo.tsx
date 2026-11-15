@@ -1,4 +1,9 @@
-import { NavigationTree, NavigationTreeSection, NavigationTreeHeader, NavigationTreeItem } from "@hashti/react";
+import {
+  NavigationTree,
+  NavigationTreeSection,
+  NavigationTreeHeader,
+  NavigationTreeItem,
+} from "@hashti/react";
 
 export function TreeLiveDemo() {
   return (

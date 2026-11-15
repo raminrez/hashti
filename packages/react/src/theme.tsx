@@ -47,7 +47,13 @@ function ThemeRoot({
   const appearance = appearanceClassName ?? parent?.appearanceClassName;
   const lang = props.lang ?? locale ?? parent?.lang;
   const value = useMemo(
-    () => ({ theme: resolvedTheme, layer: 0 as const, direction, lang, appearanceClassName: appearance }),
+    () => ({
+      theme: resolvedTheme,
+      layer: 0 as const,
+      direction,
+      lang,
+      appearanceClassName: appearance,
+    }),
     [resolvedTheme, direction, lang, appearance],
   );
   return (

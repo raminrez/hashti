@@ -1,11 +1,13 @@
 # Task: Re-architect React Library & Modular Styling System for Hashti Design System
 
 ## Goal
+
 Restructure `packages/react/src/` into a modular, per-component architecture (relicating HeroUI v3's architecture), replace the monolithic 4,890-line `styles.css` with modular per-component CSS, purge ALL Carbon designs and references (no square 0px borders, no `--cds-*` classes, no industrial gray look), and rebrand `@cinder/*` to `@hashti/*`.
 
 ---
 
 ## 1. Package Rebranding (@cinder -> @hashti)
+
 - Update `packages/tokens/package.json`: `"name": "@hashti/tokens"`
 - Update `packages/react/package.json`: `"name": "@hashti/react"` with dependency `"@hashti/tokens": "workspace:*"`
 - Update root `package.json`, `tsconfig.json`, `tsconfig.build.json` in packages
@@ -15,9 +17,11 @@ Restructure `packages/react/src/` into a modular, per-component architecture (re
 ---
 
 ## 2. Component Folder Structure (HeroUI v3 style)
+
 Reorganize `packages/react/src/` so that EVERY component has its own dedicated directory under `packages/react/src/components/<component-name>/`:
 
 Inside each folder:
+
 1. `<component-name>.tsx` - Component logic using RAC 1.22.1 and HeroUI compound composition.
 2. `<component-name>.css` - Modular CSS styles tailored for this component.
 3. `<component-name>.stories.tsx` - Storybook stories with play interaction tests.
@@ -25,6 +29,7 @@ Inside each folder:
 5. `index.ts` - Barrel export exporting all subcomponents, props, and types.
 
 Components list to migrate:
+
 - `button` (Button, ButtonGroup)
 - `select` (Select, SelectTrigger, SelectValue, SelectPopover)
 - `combobox` (ComboBox, ComboBoxInput, ComboBoxPopover)
@@ -77,13 +82,15 @@ Re-export all components cleanly from their component folders:
 ---
 
 ## 3. Modular Styling System (Hashti Modern Aesthetic — ZERO Carbon)
+
 The user explicitly demands: "WTF?! components design in docs project are carbon! ... at the end, in this project, we don't want to have any carbon designs in this project".
+
 - **Purge Carbon Visual Language**:
   - NO 0px sharp rectangular industrial boxes.
   - NO `--cds-*` class names or variables.
   - NO rigid, flat, drab gray industrial layouts.
 - **Hashti Architectural Portal Aesthetics (HeroUI v3 + RAC Modern Design)**:
-  - **Arched Geometries**: Elegant rounded curves (`border-radius: 12px` / `0.75rem` for inputs/buttons, `16px` / `1rem` for cards/dialogs, `9999px` for pills/chips/badges), evoking Iranian vaulted arches (*Tagh* & *Hashti*).
+  - **Arched Geometries**: Elegant rounded curves (`border-radius: 12px` / `0.75rem` for inputs/buttons, `16px` / `1rem` for cards/dialogs, `9999px` for pills/chips/badges), evoking Iranian vaulted arches (_Tagh_ & _Hashti_).
   - **Tactile Micro-Interactions**: Smooth spring transitions (`transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1)`), subtle active press scale (`active:scale-[0.98]`), glowing focus rings (`ring-2 ring-focus ring-offset-2`).
   - **Frosted Glass & Depth**: Subtle backdrops (`backdrop-filter: blur(16px)`), modern layered elevation shadows (`box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3)` for popovers/menus/modals).
   - **Pure Monochrome + Glaze Accents**: Pure `#000000` ink, pure `#FFFFFF` canvas, and Iranian turquoise (`#00B4D8`), amber (`#F59E0B`), and terracotta (`#E76F51`) accents.
@@ -100,6 +107,7 @@ The user explicitly demands: "WTF?! components design in docs project are carbon
 ---
 
 ## 4. Verification Gates
+
 1. `bun run build:tokens`
 2. `bun run build:packages`
 3. `bun test tests/unit` (All tests must pass)

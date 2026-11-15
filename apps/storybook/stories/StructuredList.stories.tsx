@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
-import {
-  StructuredList,
-  StructuredListRow,
-  List,
-  Tag,
-  Theme,
-  useTheme,
-} from "@hashti/react";
+import { StructuredList, StructuredListRow, List, Tag, Theme, useTheme } from "@hashti/react";
 import "./content.css";
 
 const meta = {
@@ -79,7 +72,9 @@ function WithStatusAndBadgesExample() {
             value={
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                 <span>TLS 1.3 Strict</span>
-                <Tag color="green" size="sm">Active</Tag>
+                <Tag color="green" size="sm">
+                  Active
+                </Tag>
               </div>
             }
           />
@@ -88,7 +83,9 @@ function WithStatusAndBadgesExample() {
             value={
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                 <span>Service Mesh SPIFFE/SPIRE</span>
-                <Tag color="blue" size="sm">Enforced</Tag>
+                <Tag color="blue" size="sm">
+                  Enforced
+                </Tag>
               </div>
             }
           />
@@ -97,7 +94,9 @@ function WithStatusAndBadgesExample() {
             value={
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                 <span>Ingress 443 only</span>
-                <Tag color="teal" size="sm">Shielded</Tag>
+                <Tag color="teal" size="sm">
+                  Shielded
+                </Tag>
               </div>
             }
           />
@@ -106,7 +105,9 @@ function WithStatusAndBadgesExample() {
             value={
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                 <span>0 Critical / 0 High</span>
-                <Tag color="green" size="sm">Passed</Tag>
+                <Tag color="green" size="sm">
+                  Passed
+                </Tag>
               </div>
             }
           />
@@ -143,16 +144,15 @@ function LongContentAndLocalesExample() {
             </p>
           </div>
           <StructuredList aria-label="مشخصات درگاه پرداخت">
-            <StructuredListRow
-              label="شناسه درگاه"
-              value="pg-tehran-central-01"
-            />
+            <StructuredListRow label="شناسه درگاه" value="pg-tehran-central-01" />
             <StructuredListRow
               label="پروتکل امنیتی"
               value={
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                   <span>رمزنگاری نامتقارن RSA 4096</span>
-                  <Tag color="green" size="sm">فعال</Tag>
+                  <Tag color="green" size="sm">
+                    فعال
+                  </Tag>
                 </div>
               }
             />
@@ -160,10 +160,7 @@ function LongContentAndLocalesExample() {
               label="پشتیبان داده"
               value="کلاستر توزیع‌شده با پایگاه داده چند منطقه‌ای"
             />
-            <StructuredListRow
-              label="سقف تراکنش روزانه"
-              value="۵,۰۰۰,۰۰۰,۰۰۰ ریال"
-            />
+            <StructuredListRow label="سقف تراکنش روزانه" value="۵,۰۰۰,۰۰۰,۰۰۰ ریال" />
           </StructuredList>
         </div>
       </Theme>
@@ -192,9 +189,17 @@ function ListsExample() {
             Clean typographic lists formatted with consistent line height and spacing tokens.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(18rem, 1fr))", gap: "2rem" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(18rem, 1fr))",
+            gap: "2rem",
+          }}
+        >
           <div>
-            <h4 style={{ margin: "0 0 0.75rem", fontSize: "0.875rem", fontWeight: 600 }}>Deployment Steps (Ordered)</h4>
+            <h4 style={{ margin: "0 0 0.75rem", fontSize: "0.875rem", fontWeight: 600 }}>
+              Deployment Steps (Ordered)
+            </h4>
             <List ordered>
               <li>Pre-flight environment verification</li>
               <li>Provision VPC subnets and NAT gateways</li>
@@ -203,7 +208,9 @@ function ListsExample() {
             </List>
           </div>
           <div>
-            <h4 style={{ margin: "0 0 0.75rem", fontSize: "0.875rem", fontWeight: 600 }}>Cluster Features (Unordered)</h4>
+            <h4 style={{ margin: "0 0 0.75rem", fontSize: "0.875rem", fontWeight: 600 }}>
+              Cluster Features (Unordered)
+            </h4>
             <List>
               <li>Automatic autoscaling with predictive telemetry</li>
               <li>Zero-trust mutual TLS between worker pods</li>

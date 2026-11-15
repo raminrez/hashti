@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Drawer (slide-over sheet) provides edge-anchored overlay surfaces for secondary views, filters, and forms. Supports start/end/top/bottom placement and full RTL mirroring.",
+          "Drawer (slide-over sheet) provides edge-anchored overlay surfaces for secondary views, filters, and forms. Supports start/end/top/bottom placement, a backdrop choice shared with Modal (dim, blur, none), and full RTL mirroring. Corners flush to the viewport edge are square; only the side facing the page is rounded, per placement and in RTL.",
       },
     },
   },
@@ -134,6 +134,58 @@ function DrawerRtlDemo() {
     </Theme>
   );
 }
+
+function DrawerBackdropDemo({ backdrop }: { backdrop: "dim" | "blur" | "none" }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="overlay-story-case">
+      <Button variant="secondary" onPress={() => setIsOpen(true)}>
+        {`Open ${backdrop} drawer`}
+      </Button>
+      <Drawer
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+        placement="end"
+        backdrop={backdrop}
+        title={`Backdrop: ${backdrop}`}
+        description="Drawer takes the same backdrop prop as Modal."
+      >
+        <p>Scrim variant: {backdrop}.</p>
+      </Drawer>
+    </div>
+  );
+}
+
+export const Backdrops: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Drawer takes the same `backdrop` prop as Modal. A drawer flush to the viewport edge keeps square corners on that edge and only rounds the side facing the page.",
+      },
+    },
+  },
+  render: () => (
+    <div className="overlay-story-grid">
+      {(["dim", "blur", "none"] as const).map((backdrop) => (
+        <DrawerBackdropDemo key={backdrop} backdrop={backdrop} />
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("button", { name: "Open blur drawer" }));
+
+    const body = within(document.body);
+    expect(await body.findByText("Backdrop: blur")).toBeInTheDocument();
+    expect(document.querySelector(".hashti-drawer-overlay")?.getAttribute("data-backdrop")).toBe(
+      "blur",
+    );
+
+    await userEvent.click(body.getByRole("button", { name: "Close drawer" }));
+  },
+};
 
 export const Placements: Story = {
   render: () => <DrawerPlacementsDemo />,

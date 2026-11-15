@@ -310,7 +310,7 @@ export const SaveAndRetry: Story = {
     await userEvent.click(saveButton);
 
     const errorAlert = await canvas.findByRole("alert");
-    expect(errorAlert).toBeVisible();
+    await waitFor(() => expect(errorAlert).toBeVisible());
     expect(errorAlert).toHaveTextContent("Changes could not be saved.");
 
     // Entries are preserved
@@ -431,7 +431,7 @@ export const NestedReviewDialog: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    expect(taskModal).toBeVisible();
+    await waitFor(() => expect(taskModal).toBeVisible());
 
     // Click Discard changes to open nested dialog
     const discardTrigger = within(taskModal).getByRole("button", { name: "Discard changes" });
@@ -442,7 +442,7 @@ export const NestedReviewDialog: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    expect(confirmModal).toBeVisible();
+    await waitFor(() => expect(confirmModal).toBeVisible());
 
     // Press Escape to dismiss nested modal first
     await userEvent.keyboard("{Escape}");
@@ -451,7 +451,7 @@ export const NestedReviewDialog: Story = {
     });
 
     // Parent task modal is still open
-    expect(taskModal).toBeVisible();
+    await waitFor(() => expect(taskModal).toBeVisible());
 
     // Close main modal
     const closeBtn = within(taskModal).getByRole("button", { name: "Close task dialog" });
@@ -490,7 +490,7 @@ export const LongContentAndLocales: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const heading = canvas.getByRole("heading", { name: "Workspace details" });
-    expect(heading).toBeVisible();
+    await waitFor(() => expect(heading).toBeVisible());
 
     const nameInput = canvas.getByRole("textbox", { name: /Workspace name/ });
     expect(nameInput).toHaveValue("کارگاه استودیو");

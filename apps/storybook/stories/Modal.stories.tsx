@@ -25,9 +25,11 @@ const meta = {
   args: {
     isDismissable: true,
     size: "md",
+    backdrop: "dim",
   },
   argTypes: {
     size: { control: "select", options: ["xs", "sm", "md", "lg"] },
+    backdrop: { control: "select", options: ["dim", "blur", "none"] },
     isDismissable: { control: "boolean" },
     isKeyboardDismissDisabled: { control: "boolean" },
     children: { control: false },
@@ -36,7 +38,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Modal wraps RAC ModalOverlay and RAC Modal, rendering a portalled backdrop and surface. Dialog supplies heading semantics and reachable dismissal. Modal supports size (xs, sm, md, lg), isDismissable, and independent part access through overlayClassName, overlayRef, and modalStyle. Frame uses an opaque surface with 18px corners (var(--hashti-overlay-radius)), a dark translucent backdrop, and inner-first Escape handling for nested overlays.",
+          "Modal wraps RAC ModalOverlay and RAC Modal, rendering a portalled backdrop and surface. Dialog supplies heading semantics and reachable dismissal. Modal supports size (xs, sm, md, lg), backdrop (dim, blur, none), isDismissable, and independent part access through overlayClassName, overlayRef, and modalStyle. Frame uses an opaque surface with 18px corners (var(--hashti-overlay-radius)), a dark translucent backdrop at rgb(18 22 32 / 50%) (var(--hashti-overlay)), and inner-first Escape handling for nested overlays.",
       },
     },
   },
@@ -81,6 +83,66 @@ export const Playground: Story = {
       </DialogTrigger>
     </div>
   ),
+};
+
+export const Backdrops: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Three backdrop variants. `dim` is the DESIGN scrim (`--hashti-overlay`, rgb(18 22 32 / 50%)) with no blur, `blur` adds a 6px blur on top of it, and `none` leaves the page untouched for surfaces that carry their own scrim.",
+      },
+    },
+  },
+  render: () => (
+    <div className="overlay-story-grid">
+      {(["dim", "blur", "none"] as const).map((backdrop) => (
+        <div key={backdrop} className="overlay-story-case">
+          <h2>{`Backdrop ${backdrop}`}</h2>
+          <DialogTrigger>
+            <Button variant="secondary">{`Open ${backdrop} modal`}</Button>
+            <Modal backdrop={backdrop}>
+              <Dialog>
+                {({ close }) => (
+                  <>
+                    <Heading slot="title">{`Backdrop: ${backdrop}`}</Heading>
+                    <Button
+                      slot="close"
+                      variant="ghost"
+                      size="md"
+                      iconOnly
+                      aria-label={`Close ${backdrop} dialog`}
+                      onPress={close}
+                    >
+                      <Icon name="close" />
+                    </Button>
+                    <p>The overlay carries `data-backdrop="{backdrop}"`.</p>
+                    <div className="hashti-dialog-footer">
+                      <Button variant="primary" onPress={close}>
+                        Close
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </Dialog>
+            </Modal>
+          </DialogTrigger>
+        </div>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("button", { name: "Open blur modal" }));
+    const dialog = await waitFor(() => {
+      const el = document.querySelector<HTMLElement>(".hashti-modal");
+      expect(el).not.toBeNull();
+      return el!;
+    });
+    expect(dialog.closest(".hashti-modal-overlay")?.getAttribute("data-backdrop")).toBe("blur");
+    await userEvent.click(within(dialog).getByRole("button", { name: "Close blur dialog" }));
+    await waitFor(() => expect(document.querySelector(".hashti-modal")).toBeNull());
+  },
 };
 
 export const Sizes: Story = {
@@ -136,7 +198,7 @@ export const Sizes: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    await expect(dialog).toBeVisible();
+    await waitFor(() => expect(dialog).toBeVisible());
 
     const closeBtn = within(dialog).getByRole("button", { name: "Close size dialog" });
     await userEvent.click(closeBtn);
@@ -303,14 +365,14 @@ export const NestedSelect: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    await expect(popover).toBeVisible();
+    await waitFor(() => expect(popover).toBeVisible());
 
     // First Escape: closes nested Select popover, modal remains open!
     await userEvent.keyboard("{Escape}");
     await waitFor(() => {
       expect(document.querySelector(".hashti-select-popover")).toBeNull();
     });
-    await expect(modal).toBeVisible();
+    await waitFor(() => expect(modal).toBeVisible());
     await waitFor(() => expect(selectTrigger).toHaveFocus());
 
     // Second Escape: closes Modal, focus returns to original trigger!
@@ -521,7 +583,9 @@ export const LongContentAndLocales: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    await expect(within(modal).getByRole("heading", { name: "تأیید عملیات حساس" })).toBeVisible();
+    await waitFor(() =>
+      expect(within(modal).getByRole("heading", { name: "تأیید عملیات حساس" })).toBeVisible(),
+    );
 
     const cancelBtn = within(modal).getByRole("button", { name: "انصراف" });
     await userEvent.click(cancelBtn);

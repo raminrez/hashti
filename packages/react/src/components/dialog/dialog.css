@@ -1,6 +1,5 @@
 /* Hashti Modern Aesthetic - Dialog & AlertDialog */
 @layer hashti.components {
-  .hashti-dialog,
   .hashti-dialog {
     display: flex;
     flex-direction: column;
@@ -8,7 +7,6 @@
     outline: none;
   }
 
-  .hashti-alert-dialog,
   .hashti-alert-dialog {
     display: flex;
     flex-direction: column;
@@ -17,7 +15,6 @@
     outline: none;
   }
 
-  .hashti-alert-dialog-header,
   .hashti-alert-dialog-header {
     display: flex;
     align-items: center;
@@ -36,14 +33,12 @@
     color: var(--hashti-text-error, #da1e28);
   }
 
-  .hashti-alert-dialog-body,
   .hashti-alert-dialog-body {
     font-size: 0.875rem;
     color: var(--hashti-text-secondary, #525252);
     line-height: 1.5;
   }
 
-  .hashti-alert-dialog-footer,
   .hashti-alert-dialog-footer {
     display: flex;
     justify-content: flex-end;

@@ -36,7 +36,7 @@ describe("Sheet & PreviewTrigger unit tests", () => {
 
     test("renders SheetHandle with custom className and data attributes", () => {
       const html = ReactDOMServer.renderToString(
-        <SheetHandle className="custom-handle-class" data-testid="grab-handle" />
+        <SheetHandle className="custom-handle-class" data-testid="grab-handle" />,
       );
       expect(html).toContain("hashti-sheet-handle");
       expect(html).toContain("custom-handle-class");
@@ -50,7 +50,7 @@ describe("Sheet & PreviewTrigger unit tests", () => {
           <SheetOverlay>
             <SheetContent>Inside</SheetContent>
           </SheetOverlay>
-        </SheetTrigger>
+        </SheetTrigger>,
       );
       expect(html).toContain("Open Drawer");
       expect(html).toContain("hashti-button");
@@ -62,7 +62,7 @@ describe("Sheet & PreviewTrigger unit tests", () => {
       const html = ReactDOMServer.renderToString(
         <SheetTrigger isOpen>
           <Button>Active Sheet</Button>
-        </SheetTrigger>
+        </SheetTrigger>,
       );
       expect(html).toContain("Active Sheet");
       expect(html).toContain('aria-expanded="true"');
@@ -71,12 +71,7 @@ describe("Sheet & PreviewTrigger unit tests", () => {
     test("SheetContext provides position and preventDismissal to tree", () => {
       function ContextConsumer() {
         const ctx = useContext(SheetContext);
-        return (
-          <div
-            data-position={ctx.position}
-            data-prevent={String(ctx.preventDismissal)}
-          />
-        );
+        return <div data-position={ctx.position} data-prevent={String(ctx.preventDismissal)} />;
       }
 
       const defaultHtml = ReactDOMServer.renderToString(<ContextConsumer />);
@@ -86,7 +81,7 @@ describe("Sheet & PreviewTrigger unit tests", () => {
       const customHtml = ReactDOMServer.renderToString(
         <SheetContext.Provider value={{ position: "top", preventDismissal: true }}>
           <ContextConsumer />
-        </SheetContext.Provider>
+        </SheetContext.Provider>,
       );
       expect(customHtml).toContain('data-position="top"');
       expect(customHtml).toContain('data-prevent="true"');
@@ -105,7 +100,7 @@ describe("Sheet & PreviewTrigger unit tests", () => {
         <PreviewTrigger delay={300} closeDelay={150}>
           <Button variant="ghost">@author</Button>
           <Popover>User Card</Popover>
-        </PreviewTrigger>
+        </PreviewTrigger>,
       );
       expect(html).toContain("@author");
       expect(html).toContain("hashti-button");
@@ -118,7 +113,7 @@ describe("Sheet & PreviewTrigger unit tests", () => {
         <PreviewTrigger isOpen>
           <Button variant="secondary">Preview Link</Button>
           <Popover>Preview</Popover>
-        </PreviewTrigger>
+        </PreviewTrigger>,
       );
       expect(html).toContain("Preview Link");
       expect(html).toContain('aria-expanded="true"');

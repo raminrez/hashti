@@ -9,10 +9,12 @@ The **Dialog** component serves as the semantic and accessible container placed 
 
 In Hashti, Dialog embodies the inner sanctum of an overlay experience—guaranteeing that assistive technologies identify the container's purpose immediately upon entry.
 
-<ComponentPreview title="Dialog" description="Accessible popover and modal dialogs with focus trapping.">
+<ComponentPreview
+  title="Dialog"
+  description="Accessible popover and modal dialogs with focus trapping."
+>
   <DialogLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -103,10 +105,7 @@ export function FormDialogDemo() {
                 autoFocus
               />
 
-              <TextField
-                label="Period / Century"
-                placeholder="e.g. 17th Century Safavid"
-              />
+              <TextField label="Period / Century" placeholder="e.g. 17th Century Safavid" />
 
               <div className="flex justify-end gap-2 pt-2">
                 <Button variant="ghost" onPress={close}>
@@ -172,14 +171,14 @@ export function PopoverDialogDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `role` | `'dialog' \| 'alertdialog'` | `'dialog'` | Accessible role for the dialog container. |
-| `aria-label` | `string` | — | Direct accessible label when no visible heading exists. |
-| `aria-labelledby` | `string` | — | ID of an external heading element labelling the dialog. |
-| `aria-describedby` | `string` | — | ID of an element describing the dialog content. |
-| `children` | `ReactNode \| ((props: { close: () => void }) => ReactNode)` | — | Content or render function exposing the `close` handler. |
-| `className` | `string` | — | Additional CSS classes for the dialog container. |
+| Prop               | Type                                                         | Default    | Description                                              |
+| :----------------- | :----------------------------------------------------------- | :--------- | :------------------------------------------------------- |
+| `role`             | `'dialog' \| 'alertdialog'`                                  | `'dialog'` | Accessible role for the dialog container.                |
+| `aria-label`       | `string`                                                     | —          | Direct accessible label when no visible heading exists.  |
+| `aria-labelledby`  | `string`                                                     | —          | ID of an external heading element labelling the dialog.  |
+| `aria-describedby` | `string`                                                     | —          | ID of an element describing the dialog content.          |
+| `children`         | `ReactNode \| ((props: { close: () => void }) => ReactNode)` | —          | Content or render function exposing the `close` handler. |
+| `className`        | `string`                                                     | —          | Additional CSS classes for the dialog container.         |
 
 ---
 
@@ -189,19 +188,20 @@ export function PopoverDialogDemo() {
 - **Automated Title Linkage**: Any `<Heading slot="title">` child is automatically detected, and its generated ID is linked to the dialog container's `aria-labelledby` property.
 - **Initial Focus**: By default, focus moves to the first focusable element inside the dialog. You can override this by placing `autoFocus` on a specific input or button.
 - **Tab Loop**: Tab and Shift+Tab continuously cycle through interactive elements within the dialog boundary without escaping into other page regions.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key            | Action                                              |
+| :------------- | :-------------------------------------------------- |
 | <kbd>Tab</kbd> | Moves focus through interactive controls in dialog. |
-| <kbd>Esc</kbd> | Closes the dialog if configured as dismissable. |
+| <kbd>Esc</kbd> | Closes the dialog if configured as dismissable.     |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute        | Target | Description                                  |
+| :--------------- | :----- | :------------------------------------------- |
 | `[data-focused]` | Dialog | Set when dialog or inner element is focused. |

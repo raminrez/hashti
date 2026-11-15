@@ -1,12 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
-import {
-  InlineNotification,
-  Button,
-  Theme,
-  useTheme,
-} from "@hashti/react";
+import { InlineNotification, Button, Theme, useTheme } from "@hashti/react";
 import "./feedback.css";
 
 const meta = {
@@ -79,7 +74,9 @@ function AllKindsExample() {
       <div className="feedback-card">
         <div>
           <h4 className="feedback-card-title">Notification Severity Variants</h4>
-          <p className="feedback-card-description">Information, warning, error, and success states.</p>
+          <p className="feedback-card-description">
+            Information, warning, error, and success states.
+          </p>
         </div>
 
         <InlineNotification kind="info" title="Scheduled Maintenance Window">
@@ -87,15 +84,18 @@ function AllKindsExample() {
         </InlineNotification>
 
         <InlineNotification kind="success" title="Backup Created">
-          Database snapshot snapshot-2026-11-09-01 completed and stored in multi-region cold storage.
+          Database snapshot snapshot-2026-11-09-01 completed and stored in multi-region cold
+          storage.
         </InlineNotification>
 
         <InlineNotification kind="warning" title="Memory Utilization Threshold Exceeded">
-          Service ingress-router is running at 88% memory capacity. Consider adding additional replicas.
+          Service ingress-router is running at 88% memory capacity. Consider adding additional
+          replicas.
         </InlineNotification>
 
         <InlineNotification kind="error" title="Certificate Expiration Imminent">
-          TLS wildcard certificate expires in 3 days. Automated renewal webhook failed with status 503.
+          TLS wildcard certificate expires in 3 days. Automated renewal webhook failed with status
+          503.
         </InlineNotification>
       </div>
     </div>
@@ -158,7 +158,9 @@ function LongContentAndLocalesExample() {
         <div dir="rtl" className="feedback-card">
           <div>
             <h4 className="feedback-card-title">اعلان‌های وضعیت سیستم (فارسی)</h4>
-            <p className="feedback-card-description">نمایش انواع پیام‌های سیستمی در قالب راست‌به‌چپ</p>
+            <p className="feedback-card-description">
+              نمایش انواع پیام‌های سیستمی در قالب راست‌به‌چپ
+            </p>
           </div>
 
           <InlineNotification kind="success" title="تراکنش با موفقیت ثبت شد">

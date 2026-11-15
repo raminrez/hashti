@@ -1,32 +1,40 @@
 /* Hashti Modern Aesthetic - DatePicker & Calendar */
 @layer hashti.components {
+  /* Start and end date inputs hug the separator instead of stretching across the group.
+     Overrides the shared `.hashti-input-group .react-aria-DateInput { flex: 1 }` (styles.css)
+     only inside the range control. */
+  .hashti-date-range-picker .hashti-input-group .react-aria-DateInput {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+  .hashti-date-range-picker .hashti-input-group > span[aria-hidden="true"] {
+    margin-inline: var(--hashti-spacing-02);
+  }
+
   .hashti-date-picker,
-  .hashti-date-picker,
-  .hashti-date-range-picker,
   .hashti-date-range-picker {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
 
-  .hashti-date-popover,
   .hashti-date-popover {
     border-radius: var(--hashti-surface-radius, 16px);
     border: 1px solid var(--hashti-border-subtle, #e0e0e0);
     background-color: var(--hashti-layer, #ffffff);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    box-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
     padding: 16px;
   }
 
-  .hashti-calendar,
   .hashti-calendar {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-  .hashti-calendar-header,
   .hashti-calendar-header {
     display: flex;
     align-items: center;
@@ -55,7 +63,11 @@
     border-radius: 8px;
     font-size: 0.875rem;
     cursor: pointer;
-    transition: all 150ms ease;
+    transition:
+      background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hashti-calendar .react-aria-CalendarCell[data-hovered],
@@ -65,7 +77,7 @@
 
   .hashti-calendar .react-aria-CalendarCell[data-selected],
   .hashti-calendar .react-aria-CalendarCell[data-selected] {
-    background-color: var(--hashti-primary, #08BDBA);
+    background-color: var(--hashti-focus);
     color: #ffffff;
     font-weight: 600;
   }

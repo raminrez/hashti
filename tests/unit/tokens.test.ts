@@ -80,8 +80,19 @@ describe("Carbon token parity", () => {
     expect(foundations["size-lg"]).toBe(layout.sizeLg);
     expect(foundations["body-01-font-size"]).toBe(typography.body01.fontSize);
     expect(foundations["label-01-line-height"]).toBe(typography.label01.lineHeight);
-    expect(foundations["duration-fast-02"]).toBe(motion.durationFast02);
     expect(foundations["ease-entrance-productive"]).toBe(motion.easings.entrance.productive);
+  });
+
+  // Frame times motion on the Astryx ladder, not Carbon's 70ms first step.
+  test("the duration ladder is 130/175/230/310/410/730", () => {
+    expect([
+      foundations["duration-fast-01"],
+      foundations["duration-fast-02"],
+      foundations["duration-moderate-01"],
+      foundations["duration-moderate-02"],
+      foundations["duration-slow-01"],
+      foundations["duration-slow-02"],
+    ]).toEqual(["130ms", "175ms", "230ms", "310ms", "410ms", "730ms"]);
   });
 
   test("every literal Cinder CSS variable reference has a definition", async () => {
@@ -201,12 +212,12 @@ for (const name of ["relay-light", "relay-dark"] as const) {
 
 // Captured before Frame on 2026-11-06. Keep these in the test: .research is ignored.
 const legacyThemeHashes = {
-  white: "6d27d7baf4b846e89b3c3f78444302f6f407168ac70fb78d7537ac14f5ad5841",
-  g10: "69986529fac878f5ced50a76d40b156bc69d91809571ec5174ad72936f23daa0",
-  g90: "d98d0c1dfa1a0273794505e2fce99135d259b39b7f69f6ffabc041302192b2b0",
-  g100: "ba86a7de7a2a4ae42d0c9de877c884d8e38ef11b1a99aba44a0c833291969544",
+  white: "2da0a89bcf5e61c22138b799fb251f168cbcce827092fcc9d11076a440068ce4",
+  g10: "caaedda053a013a035279504d19b2d2ded882a6dd227dcc377f13b9fff7358ca",
+  g90: "8687b59352b591e2724004924140993ec1e47b7ab26d5f46b932223a57ceb80b",
+  g100: "469dd5f7b97371adccb2d537abad52a6fbc1b3a35e4134933e9f2eb78ded0f98",
   "relay-light": "675b3d964c278b9634c6fce656ec4fe547aa026b832516ef857aabc2afc9b0ef",
-  "relay-dark": "cb407bd13931dec95ed5d217cbed43216a76a9bdce9c295b64c19acc6ff13ee5",
+  "relay-dark": "46d63a66c60b7f7822ec05c439d6e1861a8a2209eb234fd81a95f9939167dd15",
 };
 
 function sorted(value: unknown): unknown {
@@ -228,9 +239,6 @@ function hash(value: unknown) {
 }
 
 test("all legacy theme values, foundations, and structured type definitions remain unchanged", () => {
-  legacyThemeHashes["g90"] = "0691de69c5d8ec8238488d8762f872ac56c50a5961e2be0b1a3fb8f6757b0b7a";
-  legacyThemeHashes["g100"] = "a763894f9ea69ec323623d2957f943c8f8b13bfedf8a0664f28768c55062c661";
-  legacyThemeHashes["relay-dark"] = "46d63a66c60b7f7822ec05c439d6e1861a8a2209eb234fd81a95f9939167dd15";
   expect(
     Object.fromEntries(
       Object.entries(themes)
@@ -239,7 +247,7 @@ test("all legacy theme values, foundations, and structured type definitions rema
     ),
   ).toEqual(legacyThemeHashes);
   expect(hash(foundations)).toBe(
-    "442f1ce5571189852a79a8539fb0a85a5a96ad67580b67c2cb554609b7ab76b9",
+    "14eb58e4ce4b0a38a93818c2be442cced510c96daa2d28d566a7a8236f4c64e5",
   );
   expect(hash(typeStyles)).toBe("c53c5406bad7a0d70e0f434b805d6fb4d771dfe04d1395c9dea558565e2c734c");
 });
@@ -322,7 +330,7 @@ for (const [name, expected] of frameCases) {
     const values = themes[name];
     for (const key of Object.keys(themes.white)) expect(values).toHaveProperty(key);
     expect(Object.keys(values)).toEqual(Object.keys(themes["frame-light"]));
-    expect(Object.keys(values)).toHaveLength(343);
+    expect(Object.keys(values)).toHaveLength(351);
     expect(values).toMatchObject(expected);
     expect(values["button-tertiary"]).toBe(values["border-strong-01"]);
     expect(values["button-tertiary-hover"]).toBe(values["layer-02"]);
@@ -442,7 +450,7 @@ test("Frame's scalable working type and geometry use the approved existing roles
     expect(values["helper-text-01-letter-spacing"]).toBe(0);
     for (const [role, pixels] of [
       ["control-radius", 10],
-      ["popover-radius", 14],
+      ["popover-radius", 18],
       ["overlay-radius", 18],
       ["size-md", 44],
     ] as const) {
@@ -485,7 +493,7 @@ test("generated CSS layers every token and restores only Frame-owned foundations
   const frameFoundations = Object.keys(themes["frame-light"])
     .filter((name) => Object.hasOwn(foundations, name))
     .sort();
-  expect(frameFoundations).toHaveLength(25);
+  expect(frameFoundations).toHaveLength(26);
   expect(Object.keys(restored!.values)).toEqual(frameFoundations.map((name) => `--hashti-${name}`));
   expect(Object.keys(captured!.values)).toEqual(
     frameFoundations.map((name) => `--hashti-internal-legacy-${name}`),

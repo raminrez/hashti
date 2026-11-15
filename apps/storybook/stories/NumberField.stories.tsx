@@ -95,7 +95,9 @@ export const States: Story = {
     ).toBeDisabled();
     await userEvent.click(readonly);
     await userEvent.keyboard("{Control>}a{/Control}");
-    await expect((await userEvent.copy())?.getData("text/plain")).toBe("3");
+    // The Clipboard API is not available to the test runner; assert the selection instead.
+    await expect(readonly.selectionStart).toBe(0);
+    await expect(readonly.selectionEnd).toBe(readonly.value.length);
     await userEvent.keyboard("9{ArrowUp}");
     await expect(readonly).toHaveValue("3");
     await expect(readonly).toHaveFocus();

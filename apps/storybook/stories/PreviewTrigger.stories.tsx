@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import {
-  Button,
-  Heading,
-  Link,
-  Popover,
-  PreviewTrigger,
-} from "@hashti/react";
+import { Button, Heading, Link, Popover, PreviewTrigger } from "@hashti/react";
 import "./overlays.css";
 
 const meta = {
@@ -34,11 +28,16 @@ export const Playground: Story = {
       <p style={{ margin: 0 }}>
         Collaborators on this document:{" "}
         <PreviewTrigger delay={200} closeDelay={150}>
-          <Link href="#alice" style={{ fontWeight: 600, color: "var(--hashti-link-primary, #0f62fe)" }}>
+          <Link
+            href="#alice"
+            style={{ fontWeight: 600, color: "var(--hashti-link-primary, #0f62fe)" }}
+          >
             @alice_smith
           </Link>
           <Popover>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", width: "260px" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "0.75rem", width: "260px" }}
+            >
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                 <div
                   style={{
@@ -56,8 +55,12 @@ export const Playground: Story = {
                   AS
                 </div>
                 <div>
-                  <Heading slot="title" style={{ fontSize: "1rem", margin: 0 }}>Alice Smith</Heading>
-                  <span style={{ fontSize: "0.75rem", color: "var(--hashti-text-secondary, #525252)" }}>
+                  <Heading slot="title" style={{ fontSize: "1rem", margin: 0 }}>
+                    Alice Smith
+                  </Heading>
+                  <span
+                    style={{ fontSize: "0.75rem", color: "var(--hashti-text-secondary, #525252)" }}
+                  >
                     @alice_smith
                   </span>
                 </div>
@@ -66,8 +69,12 @@ export const Playground: Story = {
                 Staff Systems Engineer working on distributed compilers and reactive primitives.
               </p>
               <div style={{ display: "flex", gap: "1rem", fontSize: "0.75rem" }}>
-                <span><strong>1.4k</strong> Following</span>
-                <span><strong>12.8k</strong> Followers</span>
+                <span>
+                  <strong>1.4k</strong> Following
+                </span>
+                <span>
+                  <strong>12.8k</strong> Followers
+                </span>
               </div>
             </div>
           </Popover>
@@ -87,7 +94,7 @@ export const Playground: Story = {
       () => {
         expect(body.getByText("Alice Smith")).toBeInTheDocument();
       },
-      { timeout: 3000 }
+      { timeout: 3000 },
     );
 
     expect(body.getByText(/Staff Systems Engineer/i)).toBeInTheDocument();
@@ -102,7 +109,9 @@ export const DelayVariants: Story = {
         <Popover>
           <div style={{ padding: "0.5rem" }}>
             <strong>Instant Context</strong>
-            <p style={{ margin: "0.25rem 0 0", fontSize: "0.875rem" }}>Triggered with minimal latency.</p>
+            <p style={{ margin: "0.25rem 0 0", fontSize: "0.875rem" }}>
+              Triggered with minimal latency.
+            </p>
           </div>
         </Popover>
       </PreviewTrigger>
@@ -112,7 +121,9 @@ export const DelayVariants: Story = {
         <Popover>
           <div style={{ padding: "0.5rem" }}>
             <strong>Deliberate Context</strong>
-            <p style={{ margin: "0.25rem 0 0", fontSize: "0.875rem" }}>Triggered only on intentional dwell.</p>
+            <p style={{ margin: "0.25rem 0 0", fontSize: "0.875rem" }}>
+              Triggered only on intentional dwell.
+            </p>
           </div>
         </Popover>
       </PreviewTrigger>
@@ -133,7 +144,7 @@ export const DelayVariants: Story = {
       () => {
         expect(body.getByText("Instant Context")).toBeInTheDocument();
       },
-      { timeout: 3000 }
+      { timeout: 3000 },
     );
   },
 };
@@ -166,7 +177,7 @@ export const CompoundComponents: Story = {
       () => {
         expect(body.getByText("Compound Preview")).toBeInTheDocument();
       },
-      { timeout: 3000 }
+      { timeout: 3000 },
     );
   },
 };

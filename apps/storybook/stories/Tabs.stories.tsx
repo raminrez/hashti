@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, within } from "storybook/test";
+import { expect, waitFor, within } from "storybook/test";
 import {
   Button,
   Icon,
@@ -75,13 +75,13 @@ export const Playground: Story = {
     const settingsTab = canvas.getByRole("tab", { name: "Settings" });
 
     expect(overviewTab).toHaveAttribute("aria-selected", "true");
-    expect(canvas.getByText("Overview summary")).toBeVisible();
+    await waitFor(() => expect(canvas.getByText("Overview summary")).toBeVisible());
 
     // Click to switch tab
     await userEvent.click(deploymentsTab);
     expect(deploymentsTab).toHaveAttribute("aria-selected", "true");
     expect(overviewTab).toHaveAttribute("aria-selected", "false");
-    expect(canvas.getByText("Deployments pipeline")).toBeVisible();
+    await waitFor(() => expect(canvas.getByText("Deployments pipeline")).toBeVisible());
 
     // Keyboard navigation (Arrow keys)
     await userEvent.keyboard("{ArrowRight}");
@@ -90,7 +90,7 @@ export const Playground: Story = {
 
     await userEvent.click(settingsTab);
     expect(settingsTab).toHaveAttribute("aria-selected", "true");
-    expect(canvas.getByText("Project settings")).toBeVisible();
+    await waitFor(() => expect(canvas.getByText("Project settings")).toBeVisible());
   },
 };
 
@@ -132,12 +132,12 @@ export const Variants: Story = {
     const contained = within(containedList);
 
     const weekContained = contained.getByRole("tab", { name: "Week", selected: true });
-    expect(weekContained).toBeVisible();
+    await waitFor(() => expect(weekContained).toBeVisible());
 
     const monthContained = contained.getByRole("tab", { name: "Month", selected: false });
     await userEvent.click(monthContained);
     expect(monthContained).toHaveAttribute("aria-selected", "true");
-    expect(canvas.getByText("Past 30 days contained")).toBeVisible();
+    await waitFor(() => expect(canvas.getByText("Past 30 days contained")).toBeVisible());
   },
 };
 
@@ -184,7 +184,7 @@ export const Orientation: Story = {
     const securityTab = canvas.getByRole("tab", { name: "Security" });
     await userEvent.click(securityTab);
     expect(securityTab).toHaveAttribute("aria-selected", "true");
-    expect(canvas.getByText("Security & Authentication")).toBeVisible();
+    await waitFor(() => expect(canvas.getByText("Security & Authentication")).toBeVisible());
 
     // In vertical orientation, ArrowDown moves to next tab
     await userEvent.keyboard("{ArrowDown}");
@@ -199,7 +199,9 @@ function ControlledTabsExample() {
   return (
     <div className="navigation-story-stack">
       <div className="navigation-story-row">
-        <span>Controlled active key: <strong>{String(selectedKey)}</strong></span>
+        <span>
+          Controlled active key: <strong>{String(selectedKey)}</strong>
+        </span>
         <Button size="sm" variant="secondary" onPress={() => setSelectedKey("deploy")}>
           Jump to Deploy
         </Button>
@@ -237,7 +239,9 @@ export const ControlledAndManual: Story = {
 
     const deployTab = canvas.getByRole("tab", { name: "Deploy" });
     expect(deployTab).toHaveAttribute("aria-selected", "true");
-    expect(canvas.getByText("Cluster canary rollout and traffic switch")).toBeVisible();
+    await waitFor(() =>
+      expect(canvas.getByText("Cluster canary rollout and traffic switch")).toBeVisible(),
+    );
 
     // Manual keyboard activation: ArrowRight moves focus without selecting until Enter/Space
     deployTab.focus();
@@ -353,10 +357,10 @@ export const LongContentAndLocales: Story = {
     const reportsTab = canvas.getByRole("tab", { name: "گزارش‌ها" });
 
     expect(dashboardTab).toHaveAttribute("aria-selected", "true");
-    expect(canvas.getByText("نمای کلی پیشخوان")).toBeVisible();
+    await waitFor(() => expect(canvas.getByText("نمای کلی پیشخوان")).toBeVisible());
 
     await userEvent.click(reportsTab);
     expect(reportsTab).toHaveAttribute("aria-selected", "true");
-    expect(canvas.getByText("گزارش‌های عملکردی")).toBeVisible();
+    await waitFor(() => expect(canvas.getByText("گزارش‌های عملکردی")).toBeVisible());
   },
 };

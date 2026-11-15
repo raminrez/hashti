@@ -57,6 +57,14 @@ const semantic: Record<string, Record<string, string | number>> = Object.fromEnt
   }),
 );
 
+// Carbon's 40% placeholder ink lands at 2.52:1 on its own field surface; reuse its
+// secondary ink so placeholder text clears WCAG AA.
+for (const values of Object.values(semantic)) {
+  const placeholder = values["text-placeholder"];
+  if (typeof placeholder === "string" && placeholder.startsWith("rgba"))
+    values["text-placeholder"] = values["text-secondary"]!;
+}
+
 for (const [name, values] of Object.entries({ ...relayThemes, ...frameThemes })) {
   semantic[name] = {
     ...semantic[name.endsWith("-light") ? "white" : "g100"],
@@ -94,6 +102,16 @@ for (const [key, value] of Object.entries(typeStyles)) {
 for (const [key, value] of Object.entries(motion)) {
   if (key.startsWith("duration") && typeof value === "string") global[kebab(key)] = value;
 }
+// Carbon's 70ms fast step is abrupt next to the hand-timed animations in frame.css
+// and the Astryx timing scale this system follows, so the ladder starts at 130ms.
+Object.assign(global, {
+  "duration-fast-01": "130ms",
+  "duration-fast-02": "175ms",
+  "duration-moderate-01": "230ms",
+  "duration-moderate-02": "310ms",
+  "duration-slow-01": "410ms",
+  "duration-slow-02": "730ms",
+});
 for (const [name, modes] of Object.entries(motion.easings)) {
   for (const [mode, value] of Object.entries(modes)) global[`ease-${name}-${mode}`] = value;
 }

@@ -29,8 +29,12 @@ export const Playground: Story = {
           description="You haven't created any workspaces yet. Create your first project to get started."
           actions={
             <div style={{ display: "flex", gap: "0.5rem" }}>
-              <Button variant="secondary" size="sm">Import Repository</Button>
-              <Button variant="primary" size="sm">Create Project</Button>
+              <Button variant="secondary" size="sm">
+                Import Repository
+              </Button>
+              <Button variant="primary" size="sm">
+                Create Project
+              </Button>
             </div>
           }
         />
@@ -52,7 +56,11 @@ export const SearchMiss: Story = {
           icon={<Icon name="search" size={32} />}
           title="No search results"
           description="We couldn't find any documents matching your query. Try searching for something else."
-          actions={<Button variant="ghost" size="sm">Clear Query</Button>}
+          actions={
+            <Button variant="ghost" size="sm">
+              Clear Query
+            </Button>
+          }
         />
       </div>
     </div>
@@ -71,7 +79,11 @@ export const RTL: Story = {
           icon={<Icon name="inbox" size={32} />}
           title="هیچ پروژه‌ای یافت نشد"
           description="هنوز پروژه‌ای در این حساب ساخته نشده است. برای شروع، نخستین پروژه خود را اضافه کنید."
-          actions={<Button variant="primary" size="sm">ایجاد پروژه جدید</Button>}
+          actions={
+            <Button variant="primary" size="sm">
+              ایجاد پروژه جدید
+            </Button>
+          }
         />
       </div>
     </div>

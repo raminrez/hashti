@@ -9,10 +9,12 @@ Pagination partitions large, dense datasets into manageable index pages. It prov
 
 In Hashti, Pagination renders as an accessible `<nav>` landmark with live region item counting, disabled edge boundaries, and an integrated native select dropdown for page size configuration.
 
-<ComponentPreview title="Pagination" description="Multi-page collection navigation with ellipsis bounds.">
+<ComponentPreview
+  title="Pagination"
+  description="Multi-page collection navigation with ellipsis bounds."
+>
   <PaginationLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -43,12 +45,7 @@ export function BasicPaginationExample() {
         Displaying records for page <strong>{currentPage}</strong>...
       </div>
 
-      <Pagination
-        totalItems={100}
-        page={currentPage}
-        pageSize={10}
-        onPageChange={setCurrentPage}
-      />
+      <Pagination totalItems={100} page={currentPage} pageSize={10} onPageChange={setCurrentPage} />
     </div>
   );
 }
@@ -90,15 +87,7 @@ Combine `<Table>` and `<Pagination>` for a full data browsing experience:
 
 ```tsx
 import { useState } from "react";
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  Column,
-  Row,
-  Cell,
-  Pagination,
-} from "@hashti/react";
+import { Table, TableHeader, TableBody, Column, Row, Cell, Pagination } from "@hashti/react";
 
 const allRecords = Array.from({ length: 47 }, (_, i) => ({
   id: `svc-${i + 1}`,
@@ -184,26 +173,26 @@ export function NativeSelectExample() {
 
 ### Pagination Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `totalItems` | `number` | **Required** | The total number of items across the entire dataset. |
-| `page` | `number` | **Required** | The current active page number (1-indexed). |
-| `pageSize` | `number` | **Required** | The number of records displayed per page. |
-| `onPageChange` | `(page: number) => void` | **Required** | Callback fired when the previous or next navigation button is pressed. |
-| `pageSizes` | `number[]` | `[10, 20, 50]` | Options populated in the items-per-page select dropdown. |
-| `onPageSizeChange` | `(size: number) => void` | — | Callback fired when the user selects a new page size. When omitted, the page size dropdown is hidden. |
-| `aria-label` | `string` | `'Pagination'` | Accessible landmark label for the pagination `<nav>`. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop               | Type                     | Default        | Description                                                                                           |
+| :----------------- | :----------------------- | :------------- | :---------------------------------------------------------------------------------------------------- |
+| `totalItems`       | `number`                 | **Required**   | The total number of items across the entire dataset.                                                  |
+| `page`             | `number`                 | **Required**   | The current active page number (1-indexed).                                                           |
+| `pageSize`         | `number`                 | **Required**   | The number of records displayed per page.                                                             |
+| `onPageChange`     | `(page: number) => void` | **Required**   | Callback fired when the previous or next navigation button is pressed.                                |
+| `pageSizes`        | `number[]`               | `[10, 20, 50]` | Options populated in the items-per-page select dropdown.                                              |
+| `onPageSizeChange` | `(size: number) => void` | —              | Callback fired when the user selects a new page size. When omitted, the page size dropdown is hidden. |
+| `aria-label`       | `string`                 | `'Pagination'` | Accessible landmark label for the pagination `<nav>`.                                                 |
+| `className`        | `string`                 | —              | Additional CSS class names.                                                                           |
 
 ### NativeSelect Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `label` | `ReactNode` | **Required** | Visible label associated with the native `<select>` element. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and padding density of the select input. |
-| `description` | `ReactNode` | — | Supporting helper text rendered beneath the select. |
-| `errorMessage` | `ReactNode` | — | Validation error text. When present, marks the select invalid. |
-| `disabled` | `boolean` | `false` | Whether the select input is disabled. |
+| Prop           | Type                   | Default      | Description                                                    |
+| :------------- | :--------------------- | :----------- | :------------------------------------------------------------- |
+| `label`        | `ReactNode`            | **Required** | Visible label associated with the native `<select>` element.   |
+| `size`         | `'sm' \| 'md' \| 'lg'` | `'md'`       | Height and padding density of the select input.                |
+| `description`  | `ReactNode`            | —            | Supporting helper text rendered beneath the select.            |
+| `errorMessage` | `ReactNode`            | —            | Validation error text. When present, marks the select invalid. |
+| `disabled`     | `boolean`              | `false`      | Whether the select input is disabled.                          |
 
 ---
 
@@ -216,21 +205,22 @@ export function NativeSelectExample() {
   - The "Next page" button is assigned `isDisabled={page >= pages}`.
   - Disabled buttons are announced as disabled and removed from the active keyboard tab cycle.
 - **Keyboard Navigation**: Buttons and the page size selector are fully focusable and activatable via standard <kbd>Tab</kbd>, <kbd>Enter</kbd>, and <kbd>Space</kbd> keys.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Moves focus through pagination buttons and select field. |
-| <kbd>Enter</kbd> / <kbd>Space</kbd> | Activates next, previous, or numbered page. |
+| Key                                 | Action                                                   |
+| :---------------------------------- | :------------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves focus through pagination buttons and select field. |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Activates next, previous, or numbered page.              |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Page Button | Present on pointer hover. |
-| `[data-selected]` | Page Button | Active on current active page button. |
+| Attribute         | Target      | Description                                              |
+| :---------------- | :---------- | :------------------------------------------------------- |
+| `[data-hovered]`  | Page Button | Present on pointer hover.                                |
+| `[data-selected]` | Page Button | Active on current active page button.                    |
 | `[data-disabled]` | Page Button | Applied when button reaches first or last page boundary. |

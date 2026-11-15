@@ -29,7 +29,14 @@ function AILabelDemo() {
   return (
     <div className="content-story-stack">
       <div className="content-card">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "0.5rem",
+          }}
+        >
           <span>Summary Note</span>
           <AILabel
             label="AI Generated"

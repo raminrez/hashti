@@ -25,7 +25,7 @@ const meta = {
   },
   argTypes: {
     variant: { control: "select", options: variants },
-    size: { control: "select", options: [undefined, "sm", "md", "lg", "xl", "2xl"] },
+    size: { control: "select", options: [undefined, "sm", "md", "lg"] },
     children: { control: "text" },
     iconOnly: { control: "boolean" },
     isDisabled: { control: "boolean" },
@@ -98,7 +98,7 @@ export const CompatibilityVariants: Story = {
 export const Sizes: Story = {
   render: (args) => (
     <dl className="action-story-matrix">
-      {([undefined, "sm", "md", "lg", "xl", "2xl"] as const).map((size) => (
+      {([undefined, "sm", "md", "lg"] as const).map((size) => (
         <Fragment key={size ?? "default"}>
           <dt>
             <code>{size ?? "default (omitted)"}</code>
@@ -313,12 +313,10 @@ export const SaveAndRetry: Story = {
 };
 
 function CustomButton(args: ButtonProps) {
-  const ref = useRef<HTMLButtonElement>(null);
   return (
     <div className="action-story-row">
       <Button
         {...args}
-        ref={ref}
         className={({ isPressed }) =>
           `action-story-custom-button${isPressed ? " action-story-custom-button--pressed" : ""}`
         }
@@ -335,7 +333,11 @@ function CustomButton(args: ButtonProps) {
           </>
         )}
       </Button>
-      <Button variant="ghost" onPress={() => ref.current?.focus()}>
+      {/* No JSX ref: Storybook's source serializer reads element.ref, which React 19 deprecates. */}
+      <Button
+        variant="ghost"
+        onPress={() => document.querySelector<HTMLButtonElement>("[data-custom-render]")?.focus()}
+      >
         Focus save action
       </Button>
     </div>

@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  type ReactNode,
-  type Ref,
-} from "react";
+import { type ReactNode, type Ref } from "react";
 import {
   Table as RACTable,
   TableLoadMoreItem as RACTableLoadMoreItem,
@@ -33,17 +30,19 @@ export interface TableProps extends RACTableProps {
 }
 
 function TableDefault({ className, size = "lg", ...props }: TableProps) {
+  // Wide tables cannot shrink below their columns, so the table scrolls inside its own
+  // container instead of being clipped by whatever card wraps it (DESIGN: fit the container).
   return (
-    <RACTable
-      {...props}
-      data-size={size}
-      className={classes("hashti-table hashti-table", className)}
-    />
+    <div className="hashti-table-scroll" data-slot="scroll">
+      <RACTable {...props} data-size={size} className={classes("hashti-table", className)} />
+    </div>
   );
 }
 
-export interface TableLoadMoreProps
-  extends Omit<RACTableLoadMoreItemProps, "className" | "children"> {
+export interface TableLoadMoreProps extends Omit<
+  RACTableLoadMoreItemProps,
+  "className" | "children"
+> {
   id?: string;
   label?: string;
   isError?: boolean;
@@ -71,19 +70,17 @@ export function TableLoadMore({
     <RACTableLoadMoreItem
       {...props}
       isLoading={isVisible}
-      className={cx("hashti-table-load-more hashti-table-load-more", className)}
+      className={cx("hashti-table-load-more", className)}
     >
       {children ?? (
-        <div className="hashti-load-more-content hashti-load-more-content" role="status">
+        <div className="hashti-load-more-content" role="status">
           {isError ? (
-            <div className="hashti-load-more-error hashti-load-more-error">
-              <span className="hashti-load-more-error-message hashti-load-more-error-message">
-                {errorMessage}
-              </span>
+            <div className="hashti-load-more-error">
+              <span className="hashti-load-more-error-message">{errorMessage}</span>
               {onRetry && (
                 <button
                   type="button"
-                  className="hashti-load-more-retry hashti-load-more-retry"
+                  className="hashti-load-more-retry"
                   onClick={(e) => {
                     e.stopPropagation();
                     onRetry();
@@ -94,8 +91,8 @@ export function TableLoadMore({
               )}
             </div>
           ) : (
-            <div className="hashti-load-more-loading hashti-load-more-loading">
-              <span className="hashti-spinner hashti-spinner" aria-hidden="true" />
+            <div className="hashti-load-more-loading">
+              <span className="hashti-spinner" aria-hidden="true" />
               <span>{label}</span>
             </div>
           )}
@@ -112,16 +109,12 @@ export interface ColumnProps extends RACColumnProps {
 export function Column({ className, children, id, ...props }: ColumnProps) {
   const derivedId = id ?? (typeof children === "string" ? children : undefined);
   return (
-    <RACColumn {...props} id={derivedId} className={classes("hashti-column hashti-column", className)}>
+    <RACColumn {...props} id={derivedId} className={classes("hashti-column", className)}>
       {composeRenderProps(children, (content, { allowsSorting, sortDirection }) => (
         <>
           {content}
           {allowsSorting && (
-            <span
-              className="hashti-sort-icon hashti-sort-icon"
-              aria-hidden="true"
-              data-direction={sortDirection}
-            >
+            <span className="hashti-sort-icon" aria-hidden="true" data-direction={sortDirection}>
               {sortDirection === "ascending" ? "↑" : "↓"}
             </span>
           )}
@@ -161,11 +154,11 @@ export function TableBatchActions({
       ref={ref}
       role="toolbar"
       aria-label="Table batch actions"
-      className={cx("hashti-table-batch-actions hashti-table-batch-actions", className)}
+      className={cx("hashti-table-batch-actions", className)}
     >
-      <div className="hashti-table-batch-bar hashti-table-batch-bar">
-        <span className="hashti-table-batch-count hashti-table-batch-count">{countText}</span>
-        <div className="hashti-table-batch-action-list hashti-table-batch-action-list">
+      <div className="hashti-table-batch-bar">
+        <span className="hashti-table-batch-count">{countText}</span>
+        <div className="hashti-table-batch-action-list">
           {children}
           {onCancel && (
             <Button variant="ghost" size="sm" onPress={onCancel}>
@@ -183,18 +176,5 @@ export const Table = Object.assign(TableDefault, {
   BatchActions: TableBatchActions,
 });
 
-export {
-  TableHeader,
-  TableBody,
-  TableFooter,
-  Row,
-  Cell,
-  ColumnResizer,
-  ResizableTableContainer,
-};
-export type {
-  TableHeaderProps,
-  TableBodyProps,
-  RowProps,
-  CellProps,
-};
+export { TableHeader, TableBody, TableFooter, Row, Cell, ColumnResizer, ResizableTableContainer };
+export type { TableHeaderProps, TableBodyProps, RowProps, CellProps };

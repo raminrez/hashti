@@ -45,7 +45,14 @@ function PlaygroundExample() {
             <Link href="#metrics">Metrics</Link>
             <Link href="#settings">Settings</Link>
           </HeaderNav>
-          <div style={{ marginInlineStart: "auto", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div
+            style={{
+              marginInlineStart: "auto",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+            }}
+          >
             <Button variant="ghost" size="md" iconOnly aria-label="Search resources">
               <Icon name="search" />
             </Button>
@@ -95,7 +102,14 @@ function LongContentAndLocalesExample() {
               <Link href="#telemetry-fa">پایش و لاگ‌ها</Link>
               <Link href="#access-fa">مدیریت دسترسی</Link>
             </HeaderNav>
-            <div style={{ marginInlineStart: "auto", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <div
+              style={{
+                marginInlineStart: "auto",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}
+            >
               <Button variant="ghost" size="md" iconOnly aria-label="جستجوی سرویس‌ها">
                 <Icon name="search" />
               </Button>

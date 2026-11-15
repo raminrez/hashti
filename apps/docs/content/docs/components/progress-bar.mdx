@@ -9,10 +9,12 @@ The Progress Bar visualizes the progression of an extended operation—such as f
 
 Built on React Aria Components, it implements comprehensive WAI-ARIA `progressbar` semantics, automatic value formatting, and internationalization.
 
-<ComponentPreview title="Progress Bar" description="Linear meter supporting determinate and indeterminate modes.">
+<ComponentPreview
+  title="Progress Bar"
+  description="Linear meter supporting determinate and indeterminate modes."
+>
   <ProgressBarLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -42,11 +44,7 @@ export function DeterminateProgressExample() {
         helperText="Estimated time remaining: 45 seconds"
       />
 
-      <ProgressBar
-        label="Artifact Upload"
-        value={25}
-        helperText="Uploading chunk 4 of 16"
-      />
+      <ProgressBar label="Artifact Upload" value={25} helperText="Uploading chunk 4 of 16" />
     </div>
   );
 }
@@ -83,10 +81,7 @@ export function FormattingExample() {
   return (
     <div className="space-y-6 max-w-md">
       {/* Default percentage formatting */}
-      <ProgressBar
-        label="Standard Percentage"
-        value={72}
-      />
+      <ProgressBar label="Standard Percentage" value={72} />
 
       {/* Custom min/max range */}
       <ProgressBar
@@ -128,11 +123,7 @@ import { ProgressBar } from "@hashti/react";
 export function StatusVariantsExample() {
   return (
     <div className="space-y-6 max-w-md">
-      <ProgressBar
-        label="Active Sync"
-        value={50}
-        status="active"
-      />
+      <ProgressBar label="Active Sync" value={50} status="active" />
 
       <ProgressBar
         label="Compilation Complete"
@@ -169,12 +160,7 @@ import { Meter } from "@hashti/react";
 export function MeterExample() {
   return (
     <div className="max-w-md">
-      <Meter
-        label="Storage Capacity"
-        value={74}
-        minValue={0}
-        maxValue={100}
-      />
+      <Meter label="Storage Capacity" value={74} minValue={0} maxValue={100} />
     </div>
   );
 }
@@ -184,19 +170,19 @@ export function MeterExample() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `number` | `0` | The current completion value. |
-| `minValue` | `number` | `0` | The minimum possible value of the range. |
-| `maxValue` | `number` | `100` | The maximum possible value of the range. |
-| `isIndeterminate` | `boolean` | `false` | Whether progress is indeterminate (ongoing with unknown duration). |
-| `label` | `ReactNode` | — | Accessible text label displayed above the progress bar. |
-| `helperText` | `ReactNode` | — | Explanatory description rendered beneath the progress track. |
-| `status` | `'active' \| 'success' \| 'warning' \| 'error'` | `'active'` | Semantic status styling applied to the fill indicator. |
-| `formatOptions` | `Intl.NumberFormatOptions` | `{ style: 'percent' }` | Options for formatting the displayed value text using `Intl.NumberFormat`. |
-| `valueLabel` | `ReactNode` | — | Custom string or node to replace the formatted value text. |
-| `aria-label` | `string` | — | Accessible label for the progress bar if `label` is not visually rendered. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop              | Type                                            | Default                | Description                                                                |
+| :---------------- | :---------------------------------------------- | :--------------------- | :------------------------------------------------------------------------- |
+| `value`           | `number`                                        | `0`                    | The current completion value.                                              |
+| `minValue`        | `number`                                        | `0`                    | The minimum possible value of the range.                                   |
+| `maxValue`        | `number`                                        | `100`                  | The maximum possible value of the range.                                   |
+| `isIndeterminate` | `boolean`                                       | `false`                | Whether progress is indeterminate (ongoing with unknown duration).         |
+| `label`           | `ReactNode`                                     | —                      | Accessible text label displayed above the progress bar.                    |
+| `helperText`      | `ReactNode`                                     | —                      | Explanatory description rendered beneath the progress track.               |
+| `status`          | `'active' \| 'success' \| 'warning' \| 'error'` | `'active'`             | Semantic status styling applied to the fill indicator.                     |
+| `formatOptions`   | `Intl.NumberFormatOptions`                      | `{ style: 'percent' }` | Options for formatting the displayed value text using `Intl.NumberFormat`. |
+| `valueLabel`      | `ReactNode`                                     | —                      | Custom string or node to replace the formatted value text.                 |
+| `aria-label`      | `string`                                        | —                      | Accessible label for the progress bar if `label` is not visually rendered. |
+| `className`       | `string`                                        | —                      | Additional CSS class names.                                                |
 
 ---
 
@@ -207,10 +193,11 @@ export function MeterExample() {
 - **Indeterminate Mode**: When `isIndeterminate={true}`, the `aria-valuenow` attribute is omitted in accordance with ARIA specifications, signaling to screen readers that the task is underway with unknown duration.
 - **Accessible Labelling**: When the visual `label` prop is provided, it is linked automatically to the progress bar via an internal `id` reference. If omitting a visual label, you **must** supply an `aria-label` or `aria-labelledby` attribute.
 - **Value Text**: Screen readers read the localized `valueText` (e.g. "65 percent" or "$3,820.00"), ensuring internationalized clarity for non-visual users.
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute              | Target      | Description                                   |
+| :--------------------- | :---------- | :-------------------------------------------- |
 | `[data-indeterminate]` | ProgressBar | Present when progress value is indeterminate. |

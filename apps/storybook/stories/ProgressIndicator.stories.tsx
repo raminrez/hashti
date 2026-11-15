@@ -1,19 +1,34 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
-import {
-  ProgressIndicator,
-  Theme,
-  useTheme,
-  type ProgressStep,
-} from "@hashti/react";
+import { ProgressIndicator, Theme, useTheme, type ProgressStep } from "@hashti/react";
 import "./content.css";
 
 const defaultSteps: ProgressStep[] = [
-  { id: "step-1", label: "Cluster Spec", description: "Select compute tier and region", status: "complete" },
-  { id: "step-2", label: "Networking", description: "Configure VPC and subnet ingress", status: "current" },
-  { id: "step-3", label: "Security & Keys", description: "Upload SSH keys and TLS certs", status: "incomplete" },
-  { id: "step-4", label: "Review & Deploy", description: "Verify plan and launch instances", status: "incomplete" },
+  {
+    id: "step-1",
+    label: "Cluster Spec",
+    description: "Select compute tier and region",
+    status: "complete",
+  },
+  {
+    id: "step-2",
+    label: "Networking",
+    description: "Configure VPC and subnet ingress",
+    status: "current",
+  },
+  {
+    id: "step-3",
+    label: "Security & Keys",
+    description: "Upload SSH keys and TLS certs",
+    status: "incomplete",
+  },
+  {
+    id: "step-4",
+    label: "Review & Deploy",
+    description: "Verify plan and launch instances",
+    status: "incomplete",
+  },
 ];
 
 const meta = {
@@ -45,10 +60,7 @@ function PlaygroundExample() {
             Current provisioning workflow status across infrastructure checkpoints.
           </p>
         </div>
-        <ProgressIndicator
-          aria-label="Infrastructure provisioning pipeline"
-          steps={defaultSteps}
-        />
+        <ProgressIndicator aria-label="Infrastructure provisioning pipeline" steps={defaultSteps} />
       </div>
     </div>
   );
@@ -103,9 +115,13 @@ function InteractiveStepsExample() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
             <h4 className="content-card-title">Interactive Wizard Steps</h4>
-            <p className="content-card-description">Click any step to jump directly to that configuration section.</p>
+            <p className="content-card-description">
+              Click any step to jump directly to that configuration section.
+            </p>
           </div>
-          <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--hashti-interactive)" }}>
+          <span
+            style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--hashti-interactive)" }}
+          >
             Active: {steps.find((s) => s.id === currentStepId)?.label}
           </span>
         </div>
@@ -137,10 +153,30 @@ export const InteractiveSteps: Story = {
 
 function VerticalOrientationExample() {
   const verticalSteps: ProgressStep[] = [
-    { id: "v-1", label: "Source Code Ingestion", description: "Fetched 1,482 files from main branch repository", status: "complete" },
-    { id: "v-2", label: "Security & Secret Audit", description: "Scanned for leaked API tokens and private keys", status: "complete" },
-    { id: "v-3", label: "Container Build", description: "Generating lightweight OCI image layer", status: "current" },
-    { id: "v-4", label: "Cluster Rollout", description: "Rolling restart across 8 production nodes", status: "incomplete" },
+    {
+      id: "v-1",
+      label: "Source Code Ingestion",
+      description: "Fetched 1,482 files from main branch repository",
+      status: "complete",
+    },
+    {
+      id: "v-2",
+      label: "Security & Secret Audit",
+      description: "Scanned for leaked API tokens and private keys",
+      status: "complete",
+    },
+    {
+      id: "v-3",
+      label: "Container Build",
+      description: "Generating lightweight OCI image layer",
+      status: "current",
+    },
+    {
+      id: "v-4",
+      label: "Cluster Rollout",
+      description: "Rolling restart across 8 production nodes",
+      status: "incomplete",
+    },
   ];
 
   return (
@@ -148,7 +184,9 @@ function VerticalOrientationExample() {
       <div className="content-card">
         <div>
           <h4 className="content-card-title">Vertical Build Pipeline</h4>
-          <p className="content-card-description">Hierarchical timeline view of sequential automated tasks.</p>
+          <p className="content-card-description">
+            Hierarchical timeline view of sequential automated tasks.
+          </p>
         </div>
         <ProgressIndicator
           aria-label="Vertical build pipeline"
@@ -178,10 +216,30 @@ function LongContentAndLocalesExample() {
   const { theme } = useTheme();
 
   const persianSteps: ProgressStep[] = [
-    { id: "fa-1", label: "ثبت اطلاعات شرکت", description: "تکمیل مشخصات حقوقی و کد اقتصادی", status: "complete" },
-    { id: "fa-2", label: "احراز هویت مدیران", description: "بررسی مدارک هویتی و ثبت امضای دیجیتال", status: "current" },
-    { id: "fa-3", label: "صدور مجوز دسترسی", description: "تخصیص نقش‌ها و کلیدهای امنیتی سرور", status: "incomplete" },
-    { id: "fa-4", label: "راه‌اندازی نهایی", description: "فعال‌سازی سرویس در کلاستر ابری", status: "incomplete" },
+    {
+      id: "fa-1",
+      label: "ثبت اطلاعات شرکت",
+      description: "تکمیل مشخصات حقوقی و کد اقتصادی",
+      status: "complete",
+    },
+    {
+      id: "fa-2",
+      label: "احراز هویت مدیران",
+      description: "بررسی مدارک هویتی و ثبت امضای دیجیتال",
+      status: "current",
+    },
+    {
+      id: "fa-3",
+      label: "صدور مجوز دسترسی",
+      description: "تخصیص نقش‌ها و کلیدهای امنیتی سرور",
+      status: "incomplete",
+    },
+    {
+      id: "fa-4",
+      label: "راه‌اندازی نهایی",
+      description: "فعال‌سازی سرویس در کلاستر ابری",
+      status: "incomplete",
+    },
   ];
 
   return (
@@ -195,10 +253,7 @@ function LongContentAndLocalesExample() {
               پیگیری پیشرفت مراحل احراز هویت در محیط راست‌به‌چپ
             </p>
           </div>
-          <ProgressIndicator
-            aria-label="مراحل ثبت‌نام سازمانی"
-            steps={persianSteps}
-          />
+          <ProgressIndicator aria-label="مراحل ثبت‌نام سازمانی" steps={persianSteps} />
         </div>
       </Theme>
     </div>

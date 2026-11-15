@@ -1,6 +1,7 @@
 # Task: Storybook Documentation & Brand Overhaul for Hashti Design System
 
 ## Goal
+
 1. Build comprehensive Storybook documentation pages:
    - `apps/storybook/stories/01-Introduction.mdx`
    - `apps/storybook/stories/02-Installation.mdx`
@@ -11,7 +12,9 @@
 ---
 
 ## 1. Documentation MDX Pages in Storybook
+
 Create the following rich documentation pages in `apps/storybook/stories/`:
+
 - `01-Introduction.mdx`:
   - Meta title: `Getting Started/Introduction`
   - Welcome to **هشتی Hashti Design System** (`hashti-storybook.raminrez.dev`).
@@ -32,6 +35,7 @@ Create the following rich documentation pages in `apps/storybook/stories/`:
 ---
 
 ## 2. Storybook Autodocs & Component Descriptions
+
 - In `apps/storybook/.storybook/main.ts`:
   - Enable docs: `docs: { autodocs: 'tag' }`
   - Update stories glob: `stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(ts|tsx)", "../../packages/react/src/components/**/*.stories.@(ts|tsx)"]`
@@ -42,6 +46,7 @@ Create the following rich documentation pages in `apps/storybook/stories/`:
 ---
 
 ## 3. Brand & Config Purge
+
 - In `apps/storybook/package.json`:
   - Rename to `@hashti/storybook`.
   - Replace `@cinder/react` and `@cinder/tokens` with `@hashti/react` and `@hashti/tokens`.
@@ -52,6 +57,7 @@ Create the following rich documentation pages in `apps/storybook/stories/`:
 ---
 
 ## 4. Verification Gates
+
 1. `bun run typecheck:storybook` must pass with 0 errors.
 2. `bun run build:storybook` must build successfully.
 3. Commit with descriptive semantic commit message (`feat(storybook): add Hashti docs pages, autodocs, and brand configuration`).

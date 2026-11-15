@@ -9,7 +9,16 @@ const config: StorybookConfig = {
     "../../packages/react/src/components/**/*.stories.@(ts|tsx)",
   ],
   framework: "@storybook/react-vite",
-  addons: ["@storybook/addon-a11y"],
+  // react-docgen-typescript cannot run here: this repo compiles with TypeScript 7,
+  // which ships no JS compiler API for the plugin to read props from source.
+  // Prop descriptions therefore stay out of the args table until stories declare argTypes.
+  addons: [
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs",
+    "@storybook/addon-themes",
+    "storybook-addon-tag-badges",
+    "msw-storybook-addon",
+  ],
   viteFinal(config) {
     return mergeConfig(config, {
       resolve: { dedupe: ["react", "react-dom"] },

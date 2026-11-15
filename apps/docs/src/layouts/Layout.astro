@@ -20,7 +20,7 @@ const { title, description } = Astro.props;
       (function() {
         function syncHashtiTheme() {
           const isDark = document.documentElement.classList.contains('dark');
-          document.documentElement.setAttribute('data-hashti-theme', isDark ? 'g100' : 'white');
+          document.documentElement.setAttribute('data-hashti-theme', isDark ? 'frame-dark' : 'frame-light');
         }
         syncHashtiTheme();
         const observer = new MutationObserver(syncHashtiTheme);

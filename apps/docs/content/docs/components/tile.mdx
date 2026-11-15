@@ -5,12 +5,11 @@ description: "Flexible container primitives for interactive content blocks: stan
 
 # Tile
 
-Tiles are versatile container building blocks designed to encapsulate modular units of content. Inspired by the ceramic tilework (*kashi-kari*) that creates geometric tapestries in Persian architectural facades, Hashti provides four specialized Tile variants: standard presentational `Tile`, navigational `ClickableTile`, form-integrated `SelectableTile`, and progressive-disclosure `ExpandableTile`.
+Tiles are versatile container building blocks designed to encapsulate modular units of content. Inspired by the ceramic tilework (_kashi-kari_) that creates geometric tapestries in Persian architectural facades, Hashti provides four specialized Tile variants: standard presentational `Tile`, navigational `ClickableTile`, form-integrated `SelectableTile`, and progressive-disclosure `ExpandableTile`.
 
 <ComponentPreview title="Tile" description="Card-like structural surfaces with clickable states.">
   <TileLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -37,12 +36,7 @@ Tiles are versatile container building blocks designed to encapsulate modular un
 ## Import
 
 ```tsx
-import {
-  Tile,
-  ClickableTile,
-  SelectableTile,
-  ExpandableTile,
-} from "@hashti/react";
+import { Tile, ClickableTile, SelectableTile, ExpandableTile } from "@hashti/react";
 import type {
   TileProps,
   ClickableTileProps,
@@ -64,7 +58,10 @@ import { Tile } from "@hashti/react";
 
 export function StandardTileDemo() {
   return (
-    <Tile as="article" className="max-w-md p-5 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+    <Tile
+      as="article"
+      className="max-w-md p-5 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg"
+    >
       <h3 className="font-medium text-base text-neutral-900 dark:text-neutral-100">
         System Overview
       </h3>
@@ -94,8 +91,12 @@ export function ClickableTileDemo() {
       >
         <div className="flex justify-between items-start">
           <div>
-            <h4 className="font-semibold text-neutral-900 dark:text-neutral-100">Button Primitives</h4>
-            <p className="mt-1 text-xs text-neutral-500">Explore interactive button variants and sizes</p>
+            <h4 className="font-semibold text-neutral-900 dark:text-neutral-100">
+              Button Primitives
+            </h4>
+            <p className="mt-1 text-xs text-neutral-500">
+              Explore interactive button variants and sizes
+            </p>
           </div>
           <Icon name="arrowRight" size={16} />
         </div>
@@ -108,7 +109,9 @@ export function ClickableTileDemo() {
         <div className="flex justify-between items-start">
           <div>
             <h4 className="font-semibold text-neutral-900 dark:text-neutral-100">Theme System</h4>
-            <p className="mt-1 text-xs text-neutral-500">Learn how Hashti switches between Frame and Core themes</p>
+            <p className="mt-1 text-xs text-neutral-500">
+              Learn how Hashti switches between Frame and Core themes
+            </p>
           </div>
           <Icon name="arrowRight" size={16} />
         </div>
@@ -133,7 +136,7 @@ export function SelectableTileDemo() {
 
   const toggleAddon = (addon: string, isChecked: boolean) => {
     setSelectedAddons((prev) =>
-      isChecked ? [...prev, addon] : prev.filter((item) => item !== addon)
+      isChecked ? [...prev, addon] : prev.filter((item) => item !== addon),
     );
   };
 
@@ -148,7 +151,9 @@ export function SelectableTileDemo() {
         className="p-4"
       >
         <div className="font-medium text-sm">Cloud WAF Protection</div>
-        <div className="text-xs text-neutral-500 mt-1">Real-time Layer 7 DDoS mitigation and inspection</div>
+        <div className="text-xs text-neutral-500 mt-1">
+          Real-time Layer 7 DDoS mitigation and inspection
+        </div>
       </SelectableTile>
 
       <SelectableTile
@@ -160,7 +165,9 @@ export function SelectableTileDemo() {
         className="p-4"
       >
         <div className="font-medium text-sm">Deep Telemetry</div>
-        <div className="text-xs text-neutral-500 mt-1">Distributed tracing and continuous request logging</div>
+        <div className="text-xs text-neutral-500 mt-1">
+          Distributed tracing and continuous request logging
+        </div>
       </SelectableTile>
     </div>
   );
@@ -205,45 +212,45 @@ export function ExpandableTileDemo() {
 
 ### Standard Tile Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `as` | `'div' \| 'article' \| 'section'` | `'div'` | Rendered semantic HTML wrapper tag. |
-| `children` | `ReactNode` | — | Content rendered within the tile. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop        | Type                              | Default | Description                         |
+| :---------- | :-------------------------------- | :------ | :---------------------------------- |
+| `as`        | `'div' \| 'article' \| 'section'` | `'div'` | Rendered semantic HTML wrapper tag. |
+| `children`  | `ReactNode`                       | —       | Content rendered within the tile.   |
+| `className` | `string`                          | —       | Additional CSS class names.         |
 
 ### ClickableTile Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `href` | `string` | — | Hyperlink destination URL. |
-| `target` | `string` | — | Browsing context target (e.g. `'_blank'`). |
-| `rel` | `string` | — | Link relationship attribute (e.g. `'noopener noreferrer'`). |
-| `disabled` | `boolean` | `false` | When true, disables the tile and sets `aria-disabled="true"`. |
-| `children` | `ReactNode` | — | Interactive card content. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop        | Type        | Default | Description                                                   |
+| :---------- | :---------- | :------ | :------------------------------------------------------------ |
+| `href`      | `string`    | —       | Hyperlink destination URL.                                    |
+| `target`    | `string`    | —       | Browsing context target (e.g. `'_blank'`).                    |
+| `rel`       | `string`    | —       | Link relationship attribute (e.g. `'noopener noreferrer'`).   |
+| `disabled`  | `boolean`   | `false` | When true, disables the tile and sets `aria-disabled="true"`. |
+| `children`  | `ReactNode` | —       | Interactive card content.                                     |
+| `className` | `string`    | —       | Additional CSS class names.                                   |
 
 ### SelectableTile Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `selected` | `boolean` | — | Controlled selection state. |
-| `defaultSelected` | `boolean` | `false` | Initial selection state for uncontrolled usage. |
-| `onChange` | `(selected: boolean) => void` | — | Callback invoked when selection changes. |
-| `disabled` | `boolean` | `false` | Disables interaction on the selectable tile. |
-| `value` | `string` | — | Value submitted if placed in a native form. |
-| `name` | `string` | — | Form field name for grouping. |
-| `id` | `string` | — | Unique DOM identifier for the embedded checkbox input. |
-| `title` | `string` | — | Tooltip or title text for the input element. |
+| Prop              | Type                          | Default | Description                                            |
+| :---------------- | :---------------------------- | :------ | :----------------------------------------------------- |
+| `selected`        | `boolean`                     | —       | Controlled selection state.                            |
+| `defaultSelected` | `boolean`                     | `false` | Initial selection state for uncontrolled usage.        |
+| `onChange`        | `(selected: boolean) => void` | —       | Callback invoked when selection changes.               |
+| `disabled`        | `boolean`                     | `false` | Disables interaction on the selectable tile.           |
+| `value`           | `string`                      | —       | Value submitted if placed in a native form.            |
+| `name`            | `string`                      | —       | Form field name for grouping.                          |
+| `id`              | `string`                      | —       | Unique DOM identifier for the embedded checkbox input. |
+| `title`           | `string`                      | —       | Tooltip or title text for the input element.           |
 
 ### ExpandableTile Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `tileAboveTheFoldContent` | `ReactNode` | — | Summary content permanently visible above the fold. |
-| `tileBelowTheFoldContent` | `ReactNode` | — | Detailed content displayed when expanded. |
-| `expanded` | `boolean` | — | Controlled expansion state. |
-| `defaultExpanded` | `boolean` | `false` | Initial expansion state for uncontrolled usage. |
-| `onToggle` | `(expanded: boolean) => void` | — | Callback triggered when the disclosure button is clicked. |
+| Prop                      | Type                          | Default | Description                                               |
+| :------------------------ | :---------------------------- | :------ | :-------------------------------------------------------- |
+| `tileAboveTheFoldContent` | `ReactNode`                   | —       | Summary content permanently visible above the fold.       |
+| `tileBelowTheFoldContent` | `ReactNode`                   | —       | Detailed content displayed when expanded.                 |
+| `expanded`                | `boolean`                     | —       | Controlled expansion state.                               |
+| `defaultExpanded`         | `boolean`                     | `false` | Initial expansion state for uncontrolled usage.           |
+| `onToggle`                | `(expanded: boolean) => void` | —       | Callback triggered when the disclosure button is clicked. |
 
 ---
 
@@ -260,21 +267,22 @@ export function ExpandableTileDemo() {
 - **ExpandableTile**:
   - Uses an explicit `<button>` control with `aria-expanded={isExpanded}`.
   - The button label alternates between "Show more" and "Show less", ensuring clear affordance for screen readers.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key                                 | Action                                                               |
+| :---------------------------------- | :------------------------------------------------------------------- |
 | <kbd>Space</kbd> / <kbd>Enter</kbd> | Selects or expands tile when configured as selectable or expandable. |
-| <kbd>Tab</kbd> | Navigates through interactive controls inside tile. |
+| <kbd>Tab</kbd>                      | Navigates through interactive controls inside tile.                  |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Tile | Present on pointer hover. |
-| `[data-selected]` | Tile | Active when tile is selected. |
-| `[data-focused]` | Tile | Active on keyboard focus. |
+| Attribute         | Target | Description                   |
+| :---------------- | :----- | :---------------------------- |
+| `[data-hovered]`  | Tile   | Present on pointer hover.     |
+| `[data-selected]` | Tile   | Active when tile is selected. |
+| `[data-focused]`  | Tile   | Active on keyboard focus.     |

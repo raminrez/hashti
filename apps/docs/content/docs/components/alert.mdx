@@ -11,7 +11,6 @@ An Alert communicates important, immediate messages about system states, errors,
   <AlertLiveDemo />
 </ComponentPreview>
 
-
 ---
 
 ## Import
@@ -34,31 +33,19 @@ import { Alert } from "@hashti/react";
 export function AlertSeveritiesExample() {
   return (
     <div className="space-y-4">
-      <Alert
-        kind="info"
-        title="Scheduled Maintenance"
-      >
+      <Alert kind="info" title="Scheduled Maintenance">
         The database cluster will undergo automated indexing on Sunday at 02:00 UTC.
       </Alert>
 
-      <Alert
-        kind="success"
-        title="Deployment Successful"
-      >
+      <Alert kind="success" title="Deployment Successful">
         Version 2.4.0 is now live across all edge zones with zero downtime.
       </Alert>
 
-      <Alert
-        kind="warning"
-        title="Storage Limit Reached"
-      >
+      <Alert kind="warning" title="Storage Limit Reached">
         Your organization has used 88% of provisioned S3 capacity.
       </Alert>
 
-      <Alert
-        kind="error"
-        title="Authentication Gateway Failure"
-      >
+      <Alert kind="error" title="Authentication Gateway Failure">
         Failed to establish mutual TLS connection with the upstream authentication provider.
       </Alert>
     </div>
@@ -135,11 +122,7 @@ import { Alert } from "@hashti/react";
 
 export function HighContrastAlertExample() {
   return (
-    <Alert
-      kind="error"
-      lowContrast={false}
-      title="Critical Cluster Outage"
-    >
+    <Alert kind="error" lowContrast={false} title="Critical Cluster Outage">
       Node 04 stopped responding to health checks. Immediate operator intervention required.
     </Alert>
   );
@@ -150,16 +133,16 @@ export function HighContrastAlertExample() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `title` | `ReactNode` | **Required** | The bold primary heading of the alert message. |
-| `kind` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Semantic severity level determining the icon, color palette, and border treatment. |
-| `children` | `ReactNode` | — | The detailed explanatory description rendered below the title. |
-| `onDismiss` | `() => void` | — | Optional callback fired when the dismiss button is clicked. When omitted, the close button is hidden. |
-| `action` | `ReactNode` | — | Optional action elements (such as secondary buttons or links) rendered at the end of the alert content. |
-| `lowContrast` | `boolean` | `true` | When `true`, uses a subtle background tint. When `false`, renders solid, saturated colors. |
-| `variant` | `'subtle' \| 'solid' \| 'bordered'` | `'subtle'` | Visual styling variant. Automatically derived from `lowContrast` if omitted. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop          | Type                                          | Default      | Description                                                                                             |
+| :------------ | :-------------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------ |
+| `title`       | `ReactNode`                                   | **Required** | The bold primary heading of the alert message.                                                          |
+| `kind`        | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'`     | Semantic severity level determining the icon, color palette, and border treatment.                      |
+| `children`    | `ReactNode`                                   | —            | The detailed explanatory description rendered below the title.                                          |
+| `onDismiss`   | `() => void`                                  | —            | Optional callback fired when the dismiss button is clicked. When omitted, the close button is hidden.   |
+| `action`      | `ReactNode`                                   | —            | Optional action elements (such as secondary buttons or links) rendered at the end of the alert content. |
+| `lowContrast` | `boolean`                                     | `true`       | When `true`, uses a subtle background tint. When `false`, renders solid, saturated colors.              |
+| `variant`     | `'subtle' \| 'solid' \| 'bordered'`           | `'subtle'`   | Visual styling variant. Automatically derived from `lowContrast` if omitted.                            |
+| `className`   | `string`                                      | —            | Additional CSS class names.                                                                             |
 
 ---
 
@@ -169,10 +152,11 @@ export function HighContrastAlertExample() {
 - **Do Not Abuse**: Because `role="alert"` interrupts user flow, use alerts sparingly for critical, time-sensitive system errors. For normal inline form validation or passive status feedback, prefer [`InlineNotification`](./inline-notification) which uses `role="status"`.
 - **Keyboard Dismissal**: The close button rendered when `onDismiss` is provided has a descriptive `aria-label="Dismiss notification"` and is fully focusable and activatable via <kbd>Enter</kbd> or <kbd>Space</kbd>.
 - **High Contrast Ratios**: In both light and dark themes, text and icon colors maintain a minimum 4.5:1 contrast against the background surface.
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-variant]` | Alert | Semantic variant (`info`, `success`, `warning`, `error`). |
+| Attribute        | Target | Description                                               |
+| :--------------- | :----- | :-------------------------------------------------------- |
+| `[data-variant]` | Alert  | Semantic variant (`info`, `success`, `warning`, `error`). |

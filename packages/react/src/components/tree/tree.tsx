@@ -1,21 +1,14 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { createContext, useContext, type Ref } from "react";
 import {
   Tree as RACTree,
   TreeItem as RACTreeItem,
   TreeItemContent as RACTreeItemContent,
   Button as RACButton,
-  Checkbox as RACCheckbox,
   type TreeProps as RACTreeProps,
   type TreeItemProps as RACTreeItemProps,
   type TreeItemContentProps,
-  type TreeItemContentRenderProps,
   type TreeRenderProps,
   type TreeItemRenderProps,
   type ButtonProps as RACButtonProps,
@@ -24,6 +17,7 @@ import {
   type CheckboxRenderProps,
 } from "react-aria-components";
 import { classes, cx } from "../../utils";
+import { Checkbox } from "../checkbox";
 import { Icon } from "../../icons";
 
 export interface TreeContextValue {
@@ -33,8 +27,7 @@ export interface TreeContextValue {
 
 export const TreeContext = createContext<TreeContextValue>({});
 
-export interface TreeRootProps<T extends object>
-  extends Omit<RACTreeProps<T>, "className"> {
+export interface TreeRootProps<T extends object> extends Omit<RACTreeProps<T>, "className"> {
   size?: "sm" | "md";
   showGuideLines?: boolean;
   className?: string | ((values: TreeRenderProps) => string);
@@ -58,11 +51,12 @@ export function TreeRoot<T extends object>({
         data-guide-lines={showGuideLines ? "true" : undefined}
         className={classes(
           cx(
+            "react-aria-Tree",
             "hashti-tree",
             `hashti-tree--${size}`,
-            showGuideLines && "hashti-tree--guidelines"
+            showGuideLines && "hashti-tree--guidelines",
           ),
-          className
+          className,
         )}
       >
         {children}
@@ -71,8 +65,10 @@ export function TreeRoot<T extends object>({
   );
 }
 
-export interface TreeItemProps<T extends object = object>
-  extends Omit<RACTreeItemProps<T>, "className"> {
+export interface TreeItemProps<T extends object = object> extends Omit<
+  RACTreeItemProps<T>,
+  "className"
+> {
   className?: string | ((values: TreeItemRenderProps) => string);
   ref?: Ref<HTMLDivElement>;
 }
@@ -92,11 +88,8 @@ export function TreeItem<T extends object = object>({
       data-size={size}
       data-guide-lines={showGuideLines ? "true" : undefined}
       className={classes(
-        cx(
-          "hashti-tree-item",
-          size && `hashti-tree-item--${size}`
-        ),
-        className
+        cx("react-aria-TreeItem", "hashti-tree-item", size && `hashti-tree-item--${size}`),
+        className,
       )}
     >
       {children}
@@ -136,11 +129,7 @@ export function TreeContent({ className, children, ...props }: TreeContentProps)
     <RACTreeItemContent {...props}>
       {(renderProps) => {
         const content = typeof children === "function" ? children(renderProps) : children;
-        return (
-          <div className={cx("hashti-tree-content", className)}>
-            {content}
-          </div>
-        );
+        return <div className={cx("hashti-tree-content", className)}>{content}</div>;
       }}
     </RACTreeItemContent>
   );
@@ -152,13 +141,9 @@ export interface TreeCheckboxProps extends Omit<RACCheckboxProps, "className"> {
 
 export function TreeCheckbox({ className, children, ...props }: TreeCheckboxProps) {
   return (
-    <RACCheckbox
-      slot="selection"
-      {...props}
-      className={classes("hashti-tree-checkbox", className)}
-    >
+    <Checkbox slot="selection" {...props} className={classes("hashti-tree-checkbox", className)}>
       {children}
-    </RACCheckbox>
+    </Checkbox>
   );
 }
 

@@ -199,7 +199,9 @@ export const Sizes: Story = {
           </div>
           <Table aria-label={`Table size ${size}`} size={size}>
             <TableHeader>
-              <Column id="svc" isRowHeader>Service</Column>
+              <Column id="svc" isRowHeader>
+                Service
+              </Column>
               <Column id="cls">Cluster</Column>
               <Column id="rep">Replicas</Column>
             </TableHeader>
@@ -252,7 +254,9 @@ function SingleSelectionExample() {
           onSelectionChange={setSelectedKey}
         >
           <TableHeader>
-            <Column id="pool" isRowHeader>Instance Pool</Column>
+            <Column id="pool" isRowHeader>
+              Instance Pool
+            </Column>
             <Column id="zone">Zone</Column>
             <Column id="type">Machine Type</Column>
             <Column id="cap">Capacity</Column>
@@ -359,7 +363,9 @@ export const EmptyState: Story = {
       <div className="data-table-card">
         <Table aria-label="Filtered Search Results">
           <TableHeader>
-            <Column id="empty-svc" isRowHeader>Service</Column>
+            <Column id="empty-svc" isRowHeader>
+              Service
+            </Column>
             <Column id="empty-cls">Cluster</Column>
             <Column id="empty-stat">Status</Column>
           </TableHeader>
@@ -395,7 +401,9 @@ function LongContentExample() {
         </div>
         <Table aria-label="Audit Log with Long Descriptions">
           <TableHeader>
-            <Column id="evt-id" isRowHeader>Event ID</Column>
+            <Column id="evt-id" isRowHeader>
+              Event ID
+            </Column>
             <Column id="payload">Resource Payload</Column>
             <Column id="user">Initiator</Column>
           </TableHeader>
@@ -403,14 +411,16 @@ function LongContentExample() {
             <Row id="row-evt-1">
               <Cell>evt-98213749812739</Cell>
               <Cell>
-                ConfigMap update containing cluster credentials, TLS secret rotation policies, and webhook admission controller specifications across multi-region deployment.
+                ConfigMap update containing cluster credentials, TLS secret rotation policies, and
+                webhook admission controller specifications across multi-region deployment.
               </Cell>
               <Cell>automated-ci-bot@infra.internal</Cell>
             </Row>
             <Row id="row-evt-2">
               <Cell>evt-98213749812740</Cell>
               <Cell>
-                Scale-down request for telemetry ingestion pods from 32 instances to 8 instances following completed off-peak batch analysis window.
+                Scale-down request for telemetry ingestion pods from 32 instances to 8 instances
+                following completed off-peak batch analysis window.
               </Cell>
               <Cell>scheduler@infra.internal</Cell>
             </Row>
@@ -424,16 +434,26 @@ function LongContentExample() {
           <div className="data-table-header-bar">
             <div>
               <h4 className="data-table-title">سرویس‌های پردازشی ابر</h4>
-              <p className="data-table-description">مدیریت و نظارت بر کلاسترهای فعال و نمونه‌های پردازشی</p>
+              <p className="data-table-description">
+                مدیریت و نظارت بر کلاسترهای فعال و نمونه‌های پردازشی
+              </p>
             </div>
           </div>
-          <Table aria-label="سرویس‌های پردازشی ابر" selectionMode="multiple" defaultSelectedKeys={["svc-1"]}>
+          <Table
+            aria-label="سرویس‌های پردازشی ابر"
+            selectionMode="multiple"
+            defaultSelectedKeys={["svc-1"]}
+          >
             <TableHeader>
               <Column id="select-all" width={48}>
                 <Checkbox slot="selection" aria-label="انتخاب همه سطرها" />
               </Column>
-              <Column id="fa-name" isRowHeader allowsSorting>نام سرویس</Column>
-              <Column id="fa-region" allowsSorting>منطقه سرور</Column>
+              <Column id="fa-name" isRowHeader allowsSorting>
+                نام سرویس
+              </Column>
+              <Column id="fa-region" allowsSorting>
+                منطقه سرور
+              </Column>
               <Column id="fa-status">وضعیت عملیاتی</Column>
               <Column id="fa-replicas">نمونه‌های فعال</Column>
             </TableHeader>

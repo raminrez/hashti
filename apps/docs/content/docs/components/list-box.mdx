@@ -9,10 +9,12 @@ A **ListBox** displays a list of options and allows a user to select one or more
 
 It is ideal for **dual-list transfer pickers, permission managers, category selectors, command lists, and filter palettes**. Hashti's ListBox features compound subcomponents (`ListBox.Item`, `ListBox.Section`, `ListBox.Header`, `ListBox.DragHandle`, `ListBox.Checkbox`, `ListBox.EmptyState`), density sizing tiers, and keyboard roving navigation.
 
-<ComponentPreview title="ListBox" description="Accessible list collection supporting keyboard roving navigation.">
+<ComponentPreview
+  title="ListBox"
+  description="Accessible list collection supporting keyboard roving navigation."
+>
   <ListBoxLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -167,11 +169,13 @@ export function SectionedListBoxExample() {
 ### Visual Variants & Density Sizes
 
 Hashti supports three surface styling variants:
+
 - `bordered` (default): Crisp 1px border with row dividers.
 - `flat`: Transparent minimal frame with subtle item hover feedback.
 - `card`: Elevated card plinth (`--surface-raised`).
 
 And two density sizes:
+
 - `sm`: Compact rows (32px target) for dense sidebars and modal drawers.
 - `md`: Standard comfortable rows (40px target).
 
@@ -181,25 +185,25 @@ And two density sizes:
 
 ### ListBox (`ListBox.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `selectionMode` | `'none' \| 'single' \| 'multiple'` | `'none'` | Allowed selection behavior. |
-| `selectedKeys` | `'all' \| Iterable<Key>` | — | Controlled set of selected keys. |
-| `defaultSelectedKeys` | `'all' \| Iterable<Key>` | — | Uncontrolled default selected keys. |
-| `onSelectionChange` | `(keys: Selection) => void` | — | Callback fired when selection changes. |
-| `disabledKeys` | `Iterable<Key>` | — | Set of keys that cannot be selected. |
-| `variant` | `'bordered' \| 'flat' \| 'card'` | `'bordered'` | Container background and border treatment. |
-| `size` | `'sm' \| 'md'` | `'md'` | Height density and item padding. |
-| `emptyContent` | `ReactNode` | — | Content rendered when items array is empty. |
-| `aria-label` | `string` | — | Accessible description of the listbox. |
+| Prop                  | Type                               | Default      | Description                                 |
+| :-------------------- | :--------------------------------- | :----------- | :------------------------------------------ |
+| `selectionMode`       | `'none' \| 'single' \| 'multiple'` | `'none'`     | Allowed selection behavior.                 |
+| `selectedKeys`        | `'all' \| Iterable<Key>`           | —            | Controlled set of selected keys.            |
+| `defaultSelectedKeys` | `'all' \| Iterable<Key>`           | —            | Uncontrolled default selected keys.         |
+| `onSelectionChange`   | `(keys: Selection) => void`        | —            | Callback fired when selection changes.      |
+| `disabledKeys`        | `Iterable<Key>`                    | —            | Set of keys that cannot be selected.        |
+| `variant`             | `'bordered' \| 'flat' \| 'card'`   | `'bordered'` | Container background and border treatment.  |
+| `size`                | `'sm' \| 'md'`                     | `'md'`       | Height density and item padding.            |
+| `emptyContent`        | `ReactNode`                        | —            | Content rendered when items array is empty. |
+| `aria-label`          | `string`                           | —            | Accessible description of the listbox.      |
 
 ### ListBox.Item (`ListBoxItem`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `Key` | — | Unique key for the item. |
-| `textValue` | `string` | — | Plain text string used for typeahead letter navigation. |
-| `isDisabled` | `boolean` | `false` | Whether the item is disabled. |
+| Prop         | Type      | Default | Description                                             |
+| :----------- | :-------- | :------ | :------------------------------------------------------ |
+| `id`         | `Key`     | —       | Unique key for the item.                                |
+| `textValue`  | `string`  | —       | Plain text string used for typeahead letter navigation. |
+| `isDisabled` | `boolean` | `false` | Whether the item is disabled.                           |
 
 ---
 
@@ -207,23 +211,23 @@ And two density sizes:
 
 Hashti ListBox adheres strictly to the **WAI-ARIA Listbox Pattern**:
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Navigates focus between items in the list. |
-| <kbd>Home</kbd> / <kbd>End</kbd> | Moves focus directly to the first or last item. |
-| <kbd>Space</kbd> | Toggles selection of the focused item in single and multiple modes. |
-| <kbd>Shift</kbd> + <kbd>↓</kbd> / <kbd>↑</kbd> | Extends contiguous selection across multiple items. |
-| <kbd>⌘</kbd> + <kbd>A</kbd> / <kbd>Ctrl</kbd> + <kbd>A</kbd> | Selects all selectable items in multiple selection mode. |
-| Type-ahead (<kbd>A</kbd>–<kbd>Z</kbd>) | Typing characters immediately jumps focus to the first matching option. |
+| Key                                                          | Action                                                                  |
+| :----------------------------------------------------------- | :---------------------------------------------------------------------- |
+| <kbd>↓</kbd> / <kbd>↑</kbd>                                  | Navigates focus between items in the list.                              |
+| <kbd>Home</kbd> / <kbd>End</kbd>                             | Moves focus directly to the first or last item.                         |
+| <kbd>Space</kbd>                                             | Toggles selection of the focused item in single and multiple modes.     |
+| <kbd>Shift</kbd> + <kbd>↓</kbd> / <kbd>↑</kbd>               | Extends contiguous selection across multiple items.                     |
+| <kbd>⌘</kbd> + <kbd>A</kbd> / <kbd>Ctrl</kbd> + <kbd>A</kbd> | Selects all selectable items in multiple selection mode.                |
+| Type-ahead (<kbd>A</kbd>–<kbd>Z</kbd>)                       | Typing characters immediately jumps focus to the first matching option. |
 
 ---
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied State |
-| :--- | :--- | :--- |
-| Surface Background | `--surface` | Listbox container background |
-| Surface Hover | `--surface-hover` | Hover highlight on option rows |
-| Selected Surface | `--selected` (`#e7edff`) | Active selected item tint |
-| Focus Ring | `--focus` | 2px focus ring on active option |
-| Border Divider | `--divider` | 1px perimeter border and section separator |
+| Token              | CSS Variable             | Applied State                              |
+| :----------------- | :----------------------- | :----------------------------------------- |
+| Surface Background | `--surface`              | Listbox container background               |
+| Surface Hover      | `--surface-hover`        | Hover highlight on option rows             |
+| Selected Surface   | `--selected` (`#e7edff`) | Active selected item tint                  |
+| Focus Ring         | `--focus`                | 2px focus ring on active option            |
+| Border Divider     | `--divider`              | 1px perimeter border and section separator |

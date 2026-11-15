@@ -24,9 +24,9 @@ export function SheetLiveDemo() {
         </Sheet.Header>
         <Sheet.Content className="space-y-4 py-4">
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            The <strong>Hashti</strong> is an octagonal transitional threshold
-            designed to create an intentional sensory pause between the public
-            bazaar and the domestic courtyard sanctuary.
+            The <strong>Hashti</strong> is an octagonal transitional threshold designed to create an
+            intentional sensory pause between the public bazaar and the domestic courtyard
+            sanctuary.
           </p>
           <div className="flex justify-end gap-3 pt-4">
             <Button variant="secondary" onPress={() => setIsOpen(false)}>

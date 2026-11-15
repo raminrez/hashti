@@ -73,7 +73,7 @@ export const Placements: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    await expect(tooltip).toBeVisible();
+    await waitFor(() => expect(tooltip).toBeVisible());
     await expect(tooltip).toHaveTextContent("Tooltip anchored at top");
 
     // Move focus away
@@ -155,7 +155,7 @@ export const FocusAndHover: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    await expect(tooltip).toBeVisible();
+    await waitFor(() => expect(tooltip).toBeVisible());
 
     await userEvent.keyboard("{Escape}");
     await waitFor(() => {
@@ -254,7 +254,7 @@ export const LongContentAndLocales: Story = {
       expect(el).not.toBeNull();
       return el!;
     });
-    await expect(tooltip).toBeVisible();
+    await waitFor(() => expect(tooltip).toBeVisible());
     await expect(tooltip).toHaveTextContent(
       "نشانی اتصال مستقیم به خوشه سرور در حافظه موقت ذخیره خواهد شد.",
     );

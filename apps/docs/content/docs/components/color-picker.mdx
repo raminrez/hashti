@@ -5,7 +5,10 @@ description: Precision color selection suite featuring 2D gradient areas, channe
 
 The **ColorPicker** suite coordinates color selection across multiple visual representations: 2D saturation/brightness areas, circular hue wheels, channel sliders, hex/RGB input fields, and preset swatch grids. Built upon React Aria Components' color primitives, it ensures precision manipulation, full keyboard accessibility, and screen reader announcements.
 
-<ComponentPreview title="Interactive Hashti Color Picker" description="Manipulate the 2D saturation/brightness gradient area and hue channel slider in real-time.">
+<ComponentPreview
+  title="Interactive Hashti Color Picker"
+  description="Manipulate the 2D saturation/brightness gradient area and hue channel slider in real-time."
+>
   <ColorPickerLiveDemo />
 </ComponentPreview>
 
@@ -71,9 +74,7 @@ export function CompositeColorPickerDemo() {
         showHexField
         showSwatch
       />
-      <div className="text-xs text-gray-500">
-        Selected HSB: {color.toString("hsb")}
-      </div>
+      <div className="text-xs text-gray-500">Selected HSB: {color.toString("hsb")}</div>
     </div>
   );
 }
@@ -125,17 +126,9 @@ export function BrandSwatchPickerDemo() {
   return (
     <div className="space-y-3">
       <h4 className="text-sm font-medium">Historic Architectural Accents</h4>
-      <ColorSwatchPicker
-        value={selected}
-        onChange={setSelected}
-        aria-label="Architectural Accents"
-      >
+      <ColorSwatchPicker value={selected} onChange={setSelected} aria-label="Architectural Accents">
         {BRAND_PALETTE.map((swatch) => (
-          <ColorSwatchPickerItem
-            key={swatch.value}
-            color={swatch.value}
-            aria-label={swatch.name}
-          />
+          <ColorSwatchPickerItem key={swatch.value} color={swatch.value} aria-label={swatch.name} />
         ))}
       </ColorSwatchPicker>
     </div>
@@ -170,31 +163,31 @@ export function ChannelSlidersDemo() {
 
 ### ColorPicker (Composite)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `string \| Color` | `undefined` | Controlled color value. Accepts hex strings or `Color` objects from `parseColor`. |
-| `defaultValue` | `string \| Color` | `"#000000"` | Initial color value for uncontrolled usage. |
-| `onChange` | `(color: Color) => void` | `undefined` | Callback fired when color changes during manipulation. |
-| `label` | `ReactNode` | `undefined` | Header label for the picker. |
-| `showAlpha` | `boolean` | `true` | Whether to display the alpha opacity slider. |
-| `showHexField` | `boolean` | `true` | Whether to display the hex/channel input field. |
-| `showSwatch` | `boolean` | `true` | Whether to display the current color preview swatch. |
+| Prop           | Type                     | Default     | Description                                                                       |
+| :------------- | :----------------------- | :---------- | :-------------------------------------------------------------------------------- |
+| `value`        | `string \| Color`        | `undefined` | Controlled color value. Accepts hex strings or `Color` objects from `parseColor`. |
+| `defaultValue` | `string \| Color`        | `"#000000"` | Initial color value for uncontrolled usage.                                       |
+| `onChange`     | `(color: Color) => void` | `undefined` | Callback fired when color changes during manipulation.                            |
+| `label`        | `ReactNode`              | `undefined` | Header label for the picker.                                                      |
+| `showAlpha`    | `boolean`                | `true`      | Whether to display the alpha opacity slider.                                      |
+| `showHexField` | `boolean`                | `true`      | Whether to display the hex/channel input field.                                   |
+| `showSwatch`   | `boolean`                | `true`      | Whether to display the current color preview swatch.                              |
 
 ### ColorArea
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `xChannel` | `ColorChannel` | `"saturation"` | Color channel mapped to horizontal axis. |
-| `yChannel` | `ColorChannel` | `"brightness"` | Color channel mapped to vertical axis. |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Dimension size preset for the gradient box. |
+| Prop       | Type                   | Default        | Description                                 |
+| :--------- | :--------------------- | :------------- | :------------------------------------------ |
+| `xChannel` | `ColorChannel`         | `"saturation"` | Color channel mapped to horizontal axis.    |
+| `yChannel` | `ColorChannel`         | `"brightness"` | Color channel mapped to vertical axis.      |
+| `size`     | `"sm" \| "md" \| "lg"` | `"md"`         | Dimension size preset for the gradient box. |
 
 ### ColorSwatchPicker
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `string \| Color` | `undefined` | Controlled selected swatch color. |
-| `onChange` | `(color: Color) => void` | `undefined` | Selection change handler. |
-| `columns` | `number` | `undefined` | Number of columns in the swatch grid layout. |
+| Prop       | Type                     | Default     | Description                                  |
+| :--------- | :----------------------- | :---------- | :------------------------------------------- |
+| `value`    | `string \| Color`        | `undefined` | Controlled selected swatch color.            |
+| `onChange` | `(color: Color) => void` | `undefined` | Selection change handler.                    |
+| `columns`  | `number`                 | `undefined` | Number of columns in the swatch grid layout. |
 
 ---
 
@@ -204,23 +197,24 @@ export function ChannelSlidersDemo() {
 - **Slider Keyboard Support**: Left/Right arrows decrement and increment slider values. `Home` jumps to min, `End` jumps to max.
 - **Roving Focus Grid**: `<ColorSwatchPicker>` manages a single tab stop with roving arrow navigation among swatches.
 - **Color Format Conversion**: `parseColor` parses hex (`#fff`, `#08bdba`), rgb/rgba, hsl/hsla, and hsb strings with automatic color space conversions.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Space</kbd> / <kbd>Enter</kbd> | Opens the color picker popover dialog. |
-| <kbd>Arrow Keys</kbd> | Nudges 2D saturation/brightness thumb or 1D slider handle. |
-| <kbd>Shift</kbd>+<kbd>Arrow Keys</kbd> | Adjusts color channel value by larger increment. |
-| <kbd>Esc</kbd> | Closes the color picker popover. |
+| Key                                    | Action                                                     |
+| :------------------------------------- | :--------------------------------------------------------- |
+| <kbd>Space</kbd> / <kbd>Enter</kbd>    | Opens the color picker popover dialog.                     |
+| <kbd>Arrow Keys</kbd>                  | Nudges 2D saturation/brightness thumb or 1D slider handle. |
+| <kbd>Shift</kbd>+<kbd>Arrow Keys</kbd> | Adjusts color channel value by larger increment.           |
+| <kbd>Esc</kbd>                         | Closes the color picker popover.                           |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Swatch, Thumb | Active on pointer hover. |
-| `[data-focused]` | Swatch, Thumb | Active on keyboard focus. |
+| Attribute         | Target         | Description                      |
+| :---------------- | :------------- | :------------------------------- |
+| `[data-hovered]`  | Swatch, Thumb  | Active on pointer hover.         |
+| `[data-focused]`  | Swatch, Thumb  | Active on keyboard focus.        |
 | `[data-disabled]` | Picker, Swatch | Present when picker is disabled. |

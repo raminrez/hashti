@@ -11,12 +11,11 @@ Empty States communicate the absence of data, unconfigured resources, or zero-se
   <EmptyStateLiveDemo />
 </ComponentPreview>
 
-
 ---
 
 ## Architectural Purpose
 
-In classical Persian courtyards, an empty basin (*howz*) or open alcove is designed as an inviting, contemplative space awaiting water and life. Similarly, the Hashti `EmptyState` approaches empty data tables and new project views as welcoming beginnings rather than errors:
+In classical Persian courtyards, an empty basin (_howz_) or open alcove is designed as an inviting, contemplative space awaiting water and life. Similarly, the Hashti `EmptyState` approaches empty data tables and new project views as welcoming beginnings rather than errors:
 
 ```
 ┌──────────────────────────────────────────────┐
@@ -127,15 +126,15 @@ export function MultiActionEmptyStateDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `title` | `ReactNode` | — | Primary heading. Strings are automatically wrapped in a semantic `<h3 className="hashti-empty-state-title">`. |
-| `description` | `ReactNode` | — | Descriptive body copy explaining why the screen is empty and what to do next. |
-| `icon` | `ReactNode` | — | Illustrative icon or graphic rendered at the top of the container. |
-| `action` | `ReactNode` | — | Primary call-to-action element (e.g. `<Button>`). |
-| `actions` | `ReactNode` | — | Alternative slot for multiple action buttons (takes precedence if both are passed). |
-| `children` | `ReactNode` | — | Optional custom content rendered at the bottom of the container. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop          | Type        | Default | Description                                                                                                   |
+| :------------ | :---------- | :------ | :------------------------------------------------------------------------------------------------------------ |
+| `title`       | `ReactNode` | —       | Primary heading. Strings are automatically wrapped in a semantic `<h3 className="hashti-empty-state-title">`. |
+| `description` | `ReactNode` | —       | Descriptive body copy explaining why the screen is empty and what to do next.                                 |
+| `icon`        | `ReactNode` | —       | Illustrative icon or graphic rendered at the top of the container.                                            |
+| `action`      | `ReactNode` | —       | Primary call-to-action element (e.g. `<Button>`).                                                             |
+| `actions`     | `ReactNode` | —       | Alternative slot for multiple action buttons (takes precedence if both are passed).                           |
+| `children`    | `ReactNode` | —       | Optional custom content rendered at the bottom of the container.                                              |
+| `className`   | `string`    | —       | Additional CSS class names.                                                                                   |
 
 ---
 
@@ -144,12 +143,13 @@ export function MultiActionEmptyStateDemo() {
 ### Screen Reader Guidance
 
 - **Heading Structure**: The component wraps text titles in an `<h3>` by default. If your page outline requires an `<h2>` or `<h4>`, pass a custom heading element directly to `title` (e.g., `title={<h2>No projects found</h2>}`).
-- **Action Discovery**: Ensure the primary call-to-action button has descriptive text. Use specific phrases like *"Create Database"* instead of generic words like *"Submit"*.
+- **Action Discovery**: Ensure the primary call-to-action button has descriptive text. Use specific phrases like _"Create Database"_ instead of generic words like _"Submit"_.
 - **Live Regions for Search**: If the empty state appears dynamically following an asynchronous search query, consider wrapping the container in an `aria-live="polite"` region so screen reader users are notified that results have updated to zero.
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute       | Target     | Description                                            |
+| :-------------- | :--------- | :----------------------------------------------------- |
 | `[data-layout]` | EmptyState | Orientation alignment mode (`vertical`, `horizontal`). |

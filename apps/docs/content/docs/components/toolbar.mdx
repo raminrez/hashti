@@ -9,10 +9,12 @@ A **Toolbar** is an accessible container that groups a collection of interactive
 
 In accordance with the WAI-ARIA Toolbar pattern, Hashti's Toolbar treats the entire bar as a **single tab stop**. Keyboard users navigate between individual tools using arrow keys, drastically reducing keystroke overhead in productivity applications, text editors, canvas surfaces, and data table action strips.
 
-<ComponentPreview title="Toolbar" description="Accessible command bar with roving arrow navigation.">
+<ComponentPreview
+  title="Toolbar"
+  description="Accessible command bar with roving arrow navigation."
+>
   <ToolbarLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -85,8 +87,12 @@ export function RichTextToolbar() {
       <Toolbar.Separator />
 
       <Toolbar.Group aria-label="History">
-        <Button variant="ghost" size="md">Undo</Button>
-        <Button variant="ghost" size="md">Redo</Button>
+        <Button variant="ghost" size="md">
+          Undo
+        </Button>
+        <Button variant="ghost" size="md">
+          Redo
+        </Button>
       </Toolbar.Group>
     </Toolbar>
   );
@@ -96,6 +102,7 @@ export function RichTextToolbar() {
 ### Visual Variants
 
 Hashti provides three design token surface variants for toolbars:
+
 - `flat` (default): Quiet background seamlessly blending with parent containers.
 - `raised`: Raised elevation surface (`--surface-raised`) with subtle drop shadow for floating canvases and desktop palettes.
 - `floating`: Pill-style rounded elevation anchored above content areas or modals.
@@ -115,7 +122,9 @@ export function FloatingCanvasToolbar() {
         </Button>
       </Toolbar.Group>
       <Toolbar.Separator />
-      <Button variant="secondary" size="sm">Reset Canvas</Button>
+      <Button variant="secondary" size="sm">
+        Reset Canvas
+      </Button>
     </Toolbar>
   );
 }
@@ -166,28 +175,28 @@ Disable an entire toolbar by setting `isDisabled={true}` on the root. All child 
 
 ### Toolbar (`Toolbar.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Axis along which toolbar items are arranged and arrow keys navigate. |
-| `variant` | `'flat' \| 'raised' \| 'floating'` | `'flat'` | Elevation and background surface styling. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and padding density scale applied across child items. |
-| `isDisabled` | `boolean` | `false` | Whether all interactive controls in the toolbar are disabled. |
-| `aria-label` | `string` | — | Accessible landmark description required for screen readers. |
-| `children` | `ReactNode` | — | Toolbar groups, separators, and interactive children. |
-| `className` | `string \| ((values) => string)` | — | Custom CSS class or render function. |
+| Prop          | Type                               | Default        | Description                                                          |
+| :------------ | :--------------------------------- | :------------- | :------------------------------------------------------------------- |
+| `orientation` | `'horizontal' \| 'vertical'`       | `'horizontal'` | Axis along which toolbar items are arranged and arrow keys navigate. |
+| `variant`     | `'flat' \| 'raised' \| 'floating'` | `'flat'`       | Elevation and background surface styling.                            |
+| `size`        | `'sm' \| 'md' \| 'lg'`             | `'md'`         | Height and padding density scale applied across child items.         |
+| `isDisabled`  | `boolean`                          | `false`        | Whether all interactive controls in the toolbar are disabled.        |
+| `aria-label`  | `string`                           | —              | Accessible landmark description required for screen readers.         |
+| `children`    | `ReactNode`                        | —              | Toolbar groups, separators, and interactive children.                |
+| `className`   | `string \| ((values) => string)`   | —              | Custom CSS class or render function.                                 |
 
 ### Toolbar.Group (`ToolbarGroup`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `aria-label` | `string` | — | Label announcing the specific group's purpose (e.g. "Text Alignment"). |
-| `children` | `ReactNode` | — | Interactive controls within this group. |
+| Prop         | Type        | Default | Description                                                            |
+| :----------- | :---------- | :------ | :--------------------------------------------------------------------- |
+| `aria-label` | `string`    | —       | Label announcing the specific group's purpose (e.g. "Text Alignment"). |
+| `children`   | `ReactNode` | —       | Interactive controls within this group.                                |
 
 ### Toolbar.Separator (`ToolbarSeparator`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `orientation` | `'horizontal' \| 'vertical'` | *Automatic* | Orientation of the divider rule. Inherits perpendicular axis from toolbar. |
+| Prop          | Type                         | Default     | Description                                                                |
+| :------------ | :--------------------------- | :---------- | :------------------------------------------------------------------------- |
+| `orientation` | `'horizontal' \| 'vertical'` | _Automatic_ | Orientation of the divider rule. Inherits perpendicular axis from toolbar. |
 
 ---
 
@@ -195,24 +204,24 @@ Disable an entire toolbar by setting `isDisabled={true}` on the root. All child 
 
 Hashti adheres strictly to the **WAI-ARIA 1.2 Toolbar Pattern**:
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Moves focus into the toolbar (focuses the last active item). Pressing <kbd>Tab</kbd> again exits the toolbar to the next page landmark. |
-| <kbd>→</kbd> / <kbd>←</kbd> | Moves focus horizontally between items in a horizontal toolbar with wrap-around. |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Moves focus vertically between items in a vertical toolbar with wrap-around. |
-| <kbd>Home</kbd> | Moves focus to the first interactive item in the toolbar. |
-| <kbd>End</kbd> | Moves focus to the last interactive item in the toolbar. |
-| <kbd>Space</kbd> / <kbd>Enter</kbd> | Activates the focused button or toggles the focused toggle button. |
+| Key                                 | Action                                                                                                                                  |
+| :---------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves focus into the toolbar (focuses the last active item). Pressing <kbd>Tab</kbd> again exits the toolbar to the next page landmark. |
+| <kbd>→</kbd> / <kbd>←</kbd>         | Moves focus horizontally between items in a horizontal toolbar with wrap-around.                                                        |
+| <kbd>↓</kbd> / <kbd>↑</kbd>         | Moves focus vertically between items in a vertical toolbar with wrap-around.                                                            |
+| <kbd>Home</kbd>                     | Moves focus to the first interactive item in the toolbar.                                                                               |
+| <kbd>End</kbd>                      | Moves focus to the last interactive item in the toolbar.                                                                                |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | Activates the focused button or toggles the focused toggle button.                                                                      |
 
 ---
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied Element |
-| :--- | :--- | :--- |
-| Background Flat | `--surface` | Toolbar flat background |
+| Token             | CSS Variable       | Applied Element                     |
+| :---------------- | :----------------- | :---------------------------------- |
+| Background Flat   | `--surface`        | Toolbar flat background             |
 | Background Raised | `--surface-raised` | Toolbar raised & floating container |
-| Border Divider | `--divider` | Separator line and floating borders |
-| Focus Ring | `--focus` | Focused item 2px offset outline |
-| Hover State | `--surface-hover` | Button/tool hover state |
-| Control Radius | `--radius-md` | Container corner radius (6px) |
+| Border Divider    | `--divider`        | Separator line and floating borders |
+| Focus Ring        | `--focus`          | Focused item 2px offset outline     |
+| Hover State       | `--surface-hover`  | Button/tool hover state             |
+| Control Radius    | `--radius-md`      | Container corner radius (6px)       |

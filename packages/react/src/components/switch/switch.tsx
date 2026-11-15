@@ -21,12 +21,12 @@ export function Switch({ className, children, size = "md", color, ...props }: Sw
       {...props}
       data-size={size}
       data-color={color}
-      className={classes("hashti-switch hashti-switch", className)}
+      className={classes("hashti-switch", className)}
     >
       {composeRenderProps(children, (content) => (
         <>
-          <span className="hashti-switch-track hashti-switch-track" aria-hidden="true">
-            <span className="hashti-switch-thumb hashti-switch-thumb" />
+          <span className="hashti-switch-track" aria-hidden="true">
+            <span className="hashti-switch-thumb" />
           </span>
           {content != null && <span>{content}</span>}
         </>

@@ -48,16 +48,19 @@ flowchart TD
 ```
 
 #### 1. Toolbar Suite (`Toolbar`)
+
 - **Motivation:** Replaces raw RAC re-export with an accessible tool ribbon providing roving `tabindex`, horizontal/vertical orientations, button group wrappers, and dividers.
 - **Subcomponents:** `Toolbar.Root`, `Toolbar.Group`, `Toolbar.Item`, `Toolbar.Separator`.
 - **Keyboard Contract:** Single tab stop. Arrow keys move between tools; <kbd>Home</kbd> and <kbd>End</kbd> jump to boundaries.
 
 #### 2. Disclosure & DisclosureGroup (`Disclosure`)
+
 - **Motivation:** Extends the internal logic of `Accordion` into a standalone, single-panel collapsible control (e.g., for "Advanced Settings" sections in cards and forms).
 - **Subcomponents:** `Disclosure.Root`, `Disclosure.Trigger`, `Disclosure.Panel`.
 - **Features:** Hardware-accelerated CSS grid height animations (`grid-template-rows: 0fr -> 1fr`), custom indicator icons, and lazy content mounting.
 
 #### 3. DropZone & FileTrigger
+
 - **Motivation:** Decouples file ingestion from the monolithic `FileUploader` wrapper. Developers can turn any custom card, canvas, or table row into an accessible drop target.
 - **Anatomy:**
   ```tsx
@@ -70,6 +73,7 @@ flowchart TD
   ```
 
 #### 4. Semantic Meter (`Meter`)
+
 - **Motivation:** Elevates the generic progress bar into a true semantic gauge supporting W3C `<meter>` semantics with explicit threshold ranges (`low`, `high`, `optimum`).
 - **Dynamic Color Tone:** Automatically switches tokens from Success (Turquoise/Emerald) to Warning (Amber) or Critical (Terracotta) as values traverse thresholds.
 
@@ -80,6 +84,7 @@ flowchart TD
 Phase 4 delivers mission-critical controls for organizing and navigating complex, deeply nested datasets.
 
 #### 1. GridList (`GridList`)
+
 - **Contained List Elevation:** Elevates enterprise contained lists to RAC’s accessible grid specification.
 - **Key Features:**
   - Roving arrow-key navigation with multi-item selection (<kbd>Shift</kbd>+<kbd>Click</kbd>, <kbd>Cmd</kbd>+<kbd>A</kbd>).
@@ -88,6 +93,7 @@ Phase 4 delivers mission-critical controls for organizing and navigating complex
 - **Row Heights:** `sm: 36px`, `md: 44px (Frame standard)`, `lg: 56px`.
 
 #### 2. Tree & TreeView (`Tree`)
+
 - **Motivation:** Dedicated hierarchical navigator for file systems, organization charts, code AST explorers, and documentation sidebars.
 - **Anatomy:**
   ```tsx
@@ -105,10 +111,12 @@ Phase 4 delivers mission-critical controls for organizing and navigating complex
 - **Accessibility:** Full `treegrid` semantics with guide lines, automated branch expansion, and asynchronous dynamic child loading.
 
 #### 3. Sheet (`Sheet`)
+
 - **Motivation:** Integrates RAC 1.22's native mobile bottom sheet and sliding side panel.
 - **Features:** Smooth velocity gesture dragging, snap points (e.g. `25%`, `50%`, `90%`, `full`), backdrop dimming, and viewport-aware responsive breakpoints.
 
 #### 4. Resizable Table & Infinite Scroll
+
 - **Enhancements:** Introduces `TableLoadMoreItem` for infinite datasets and elevated `ColumnResizer` handles with keyboard nudging (<kbd>Arrow Left/Right</kbd>) and minimum width snapping.
 
 ---
@@ -118,24 +126,27 @@ Phase 4 delivers mission-critical controls for organizing and navigating complex
 Phase 5 equips Hashti for specialized creative tooling, canvas design apps, and massive data scale.
 
 #### 1. Color Suite (`ColorSuite`)
+
 A comprehensive, accessible 8-component suite for parsing, selecting, and manipulating colors in CSS formats (Hex, RGB, HSL, HSB):
 
-| Component | Responsibility |
-| :--- | :--- |
-| `ColorPicker` | Top-level coordinator popover combining swatch trigger and multi-channel editor. |
-| `ColorArea` | 2D saturation/value surface with 2-axis keyboard thumb. |
-| `ColorSlider` | 1D channel slider with dynamic gradient track (Hue, Alpha, Lightness). |
-| `ColorWheel` | 360° circular hue selector with circular drag constraints. |
-| `ColorField` | Format-aware text input with automated validation and unit parsing. |
-| `ColorSwatch` | Color preview tile with transparency checkerboard background. |
-| `ColorSwatchPicker` | Accessible grid of pre-defined palette swatches. |
-| `ColorThumb` | Dual-ring high-contrast drag handle adhering to WCAG focus standards. |
+| Component           | Responsibility                                                                   |
+| :------------------ | :------------------------------------------------------------------------------- |
+| `ColorPicker`       | Top-level coordinator popover combining swatch trigger and multi-channel editor. |
+| `ColorArea`         | 2D saturation/value surface with 2-axis keyboard thumb.                          |
+| `ColorSlider`       | 1D channel slider with dynamic gradient track (Hue, Alpha, Lightness).           |
+| `ColorWheel`        | 360° circular hue selector with circular drag constraints.                       |
+| `ColorField`        | Format-aware text input with automated validation and unit parsing.              |
+| `ColorSwatch`       | Color preview tile with transparency checkerboard background.                    |
+| `ColorSwatchPicker` | Accessible grid of pre-defined palette swatches.                                 |
+| `ColorThumb`        | Dual-ring high-contrast drag handle adhering to WCAG focus standards.            |
 
 #### 2. Virtualizer (`Virtualizer`)
+
 - **Integration:** Powered by `@react-aria/virtualizer` for `Table`, `GridList`, and `ListBox`.
 - **Target Performance:** Renders **100,000+ items** smoothly at 60fps with sub-16ms layout calculations, dynamic row height measurement, and minimal memory footprint.
 
 #### 3. TokenField (`TokenField`)
+
 - **Description:** Multi-token tag input field supporting keyboard deletion, drag sorting, email validation, and async search suggestions.
 
 ---
@@ -145,17 +156,21 @@ A comprehensive, accessible 8-component suite for parsing, selecting, and manipu
 Every elevated component must satisfy Hashti’s four non-negotiable release gates before merging into `@hashti/react`:
 
 ### 1. Automated Accessibility Audit (Axe Core)
+
 - **Zero Violations:** Automated clean sweep across `color-contrast`, `aria-roles`, `aria-allowed-attr`, `aria-required-children`, and `nested-interactive`.
 - **Live Region Announcements:** Status changes and drag reordering must announce cleanly through polite live regions (`aria-live="polite"`).
 
 ### 2. RTL & Internationalization Parity
+
 - **Linguistic Symmetry:** Zero margin/padding inversions using hardcoded `left`/`right`. Components must use CSS logical properties (`margin-inline-start`, `padding-inline-end`).
 - **Typography:** Seamless font switching to **Vazirmatn** under Persian/Arabic locales with verified baseline alignment.
 
 ### 3. Token & Theme Fidelity
+
 - **8-Theme Test Suite:** Visual regression confirmation across all 8 themes (`white`, `g10`, `g90`, `g100`, `relay-light`, `relay-dark`, `frame-light`, `frame-dark`).
 - **3-Layer Depth:** Verification that surfaces, borders, and text maintain required contrast across Layer 0, Layer 1, and Layer 2.
 
 ### 4. Bundle Efficiency
+
 - **Strict Tree-Shaking:** Components must remain independently importable without pulling unneeded dependencies.
 - **Target Footprint:** Zero runtime CSS-in-JS dependencies; prebuilt CSS classes bound directly to CSS variables.

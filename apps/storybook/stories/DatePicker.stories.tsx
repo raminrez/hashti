@@ -111,7 +111,9 @@ export const DateRange: Story = {
     expect(calTrigger).toBeInTheDocument();
     await userEvent.click(calTrigger);
 
-    const dialog = await within(document.body).findByRole("dialog", { name: "Choose a date range" });
+    const dialog = await within(document.body).findByRole("dialog", {
+      name: "Choose a date range",
+    });
     expect(dialog).toBeInTheDocument();
   },
 };
@@ -126,23 +128,31 @@ function StandaloneCalendarExample() {
           <div className="feedback-card-title" style={{ fontWeight: 600 }}>
             Embedded Standalone Calendar
           </div>
-          <p className="feedback-card-description">
-            Directly rendered in-page calendar widget.
-          </p>
+          <p className="feedback-card-description">Directly rendered in-page calendar widget.</p>
         </div>
         <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
           <div>
-            <div style={{ fontWeight: 600, margin: "0 0 0.5rem", fontSize: "0.875rem", color: "var(--hashti-text-secondary)" }}>
+            <div
+              style={{
+                fontWeight: 600,
+                margin: "0 0 0.5rem",
+                fontSize: "0.875rem",
+                color: "var(--hashti-text-secondary)",
+              }}
+            >
               Single Day Selection
             </div>
-            <Calendar
-              aria-label="Target deployment date"
-              value={date}
-              onChange={setDate}
-            />
+            <Calendar aria-label="Target deployment date" value={date} onChange={setDate} />
           </div>
           <div>
-            <div style={{ fontWeight: 600, margin: "0 0 0.5rem", fontSize: "0.875rem", color: "var(--hashti-text-secondary)" }}>
+            <div
+              style={{
+                fontWeight: 600,
+                margin: "0 0 0.5rem",
+                fontSize: "0.875rem",
+                color: "var(--hashti-text-secondary)",
+              }}
+            >
               Range Selection Calendar
             </div>
             <RangeCalendar
@@ -222,7 +232,13 @@ function DateAndFieldsExample() {
             Accessible typed input segments with arrow-key incrementation and numeric typing.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(16rem, 1fr))", gap: "1.5rem" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(16rem, 1fr))",
+            gap: "1.5rem",
+          }}
+        >
           <DateField
             label="Direct Date Field"
             description="Type MM/DD/YYYY or use arrow keys."

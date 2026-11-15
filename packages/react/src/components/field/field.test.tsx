@@ -9,7 +9,7 @@ test("renders FieldLabel and FieldDescription with correct classes", () => {
       <FieldDescription>Choose a unique handle</FieldDescription>
       <FieldInput placeholder="username" />
       <FieldHelp>Need help?</FieldHelp>
-    </div>
+    </div>,
   );
   expect(html).toContain("hashti-field__label");
   expect(html).toContain("Username");

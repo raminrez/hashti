@@ -1,4 +1,0 @@
-@layer theme, base, cinder, components, utilities;
-@import "tailwindcss";
-@import "@hashti/react/styles.css";
-@source "./frame.tsx";

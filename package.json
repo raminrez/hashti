@@ -36,17 +36,15 @@
     "typecheck:storybook": "bun run --cwd apps/storybook typecheck",
     "lint": "bun run --bun oxlint",
     "lint:fix": "bun run lint --fix",
-    "test": "bun test tests/unit ./apps/storybook/.storybook/watch-packages.test.ts",
+    "test": "bun test tests/unit packages/react/src packages/agent/src ./apps/storybook/.storybook/watch-packages.test.ts",
     "test:browser": "bun test --timeout 60000 tests/browser",
     "test:package": "bun scripts/verify-package.ts",
+    "cleanup": "rimraf node_modules apps/*/node_modules packages/*/node_modules dist apps/*/dist packages/*/dist apps/docs/.astro apps/*/storybook-static playwright-report test-results apps/storybook/debug-storybook.log",
     "format": "bun fmt",
     "format:check": "bun fmt --check",
     "check": "bun run format:check && bun run lint && bun run typecheck && bun run test && bun run build && bun run build:storybook && bun run test:browser && bun scripts/pack.ts && bun run test:package"
   },
   "devDependencies": {
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-aria-components": "catalog:",
     "@axe-core/playwright": "4.14.0",
     "@internationalized/date": "catalog:",
     "@types/bun": "1.4.4",
@@ -55,9 +53,18 @@
     "bun": "1.4.4",
     "oxlint": "1.91.0",
     "playwright": "1.65.0",
+    "react": "catalog:",
+    "react-aria-components": "catalog:",
+    "react-dom": "catalog:",
+    "rimraf": "^6.1.4",
     "typescript": "7.0.2"
   },
   "trustedDependencies": [
     "bun"
-  ]
+  ],
+  "msw": {
+    "workerDirectory": [
+      "apps/storybook/public"
+    ]
+  }
 }

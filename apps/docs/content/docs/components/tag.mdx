@@ -57,8 +57,12 @@ import { Tag } from "@hashti/react";
 export function TagSizesExample() {
   return (
     <div className="flex items-center gap-4">
-      <Tag size="sm" color="blue">Small Tag (20px)</Tag>
-      <Tag size="md" color="blue">Medium Tag (24px)</Tag>
+      <Tag size="sm" color="blue">
+        Small Tag (20px)
+      </Tag>
+      <Tag size="md" color="blue">
+        Medium Tag (24px)
+      </Tag>
     </div>
   );
 }
@@ -119,21 +123,11 @@ export function FilterTagGroupExample() {
 
   return (
     <div className="space-y-4">
-      <TagGroup
-        label="Active Filters"
-        items={filters}
-        onRemove={handleRemove}
-      >
-        {(item) => (
-          <FilterTag id={item.id}>
-            {item.name}
-          </FilterTag>
-        )}
+      <TagGroup label="Active Filters" items={filters} onRemove={handleRemove}>
+        {(item) => <FilterTag id={item.id}>{item.name}</FilterTag>}
       </TagGroup>
 
-      {filters.length === 0 && (
-        <p className="text-sm text-subtle">No active filters applied.</p>
-      )}
+      {filters.length === 0 && <p className="text-sm text-subtle">No active filters applied.</p>}
     </div>
   );
 }
@@ -166,11 +160,7 @@ export function SelectableTagsExample() {
       onSelectionChange={setSelected}
       items={topics}
     >
-      {(item) => (
-        <FilterTag id={item.id}>
-          {item.label}
-        </FilterTag>
-      )}
+      {(item) => <FilterTag id={item.id}>{item.label}</FilterTag>}
     </TagGroup>
   );
 }
@@ -182,34 +172,34 @@ export function SelectableTagsExample() {
 
 ### Tag Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `color` | `'gray' \| 'blue' \| 'cyan' \| 'green' \| 'red' \| 'teal' \| 'purple' \| 'magenta' \| 'cool-gray' \| 'warm-gray'` | `'gray'` | Preset color variant using Hashti token CSS variables. |
-| `size` | `'sm' \| 'md'` | `'md'` | Height and padding of the tag. `sm` is 20px, `md` is 24px. |
-| `children` | `ReactNode` | — | Text or elements rendered inside the tag. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop        | Type                                                                                                              | Default  | Description                                                |
+| :---------- | :---------------------------------------------------------------------------------------------------------------- | :------- | :--------------------------------------------------------- |
+| `color`     | `'gray' \| 'blue' \| 'cyan' \| 'green' \| 'red' \| 'teal' \| 'purple' \| 'magenta' \| 'cool-gray' \| 'warm-gray'` | `'gray'` | Preset color variant using Hashti token CSS variables.     |
+| `size`      | `'sm' \| 'md'`                                                                                                    | `'md'`   | Height and padding of the tag. `sm` is 20px, `md` is 24px. |
+| `children`  | `ReactNode`                                                                                                       | —        | Text or elements rendered inside the tag.                  |
+| `className` | `string`                                                                                                          | —        | Additional CSS class names.                                |
 
 ### TagGroup Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `label` | `ReactNode` | — | Accessible label rendered above or associated with the group. |
-| `items` | `Iterable<T>` | — | The collection of tag data items for dynamic rendering. |
-| `children` | `(item: T) => ReactNode` | — | Render function returning `<FilterTag>` elements. |
-| `selectionMode` | `'none' \| 'single' \| 'multiple'` | `'none'` | The selection behavior for tags in the group. |
-| `selectedKeys` | `'all' \| Iterable<Key>` | — | Controlled set of selected keys. |
-| `onSelectionChange` | `(keys: Selection) => void` | — | Callback fired when the selection changes. |
-| `onRemove` | `(keys: Set<Key>) => void` | — | Callback fired when user clicks the remove button or presses Delete/Backspace on a tag. |
-| `disabledKeys` | `Iterable<Key>` | — | Keys of tags that cannot be selected or removed. |
+| Prop                | Type                               | Default  | Description                                                                             |
+| :------------------ | :--------------------------------- | :------- | :-------------------------------------------------------------------------------------- |
+| `label`             | `ReactNode`                        | —        | Accessible label rendered above or associated with the group.                           |
+| `items`             | `Iterable<T>`                      | —        | The collection of tag data items for dynamic rendering.                                 |
+| `children`          | `(item: T) => ReactNode`           | —        | Render function returning `<FilterTag>` elements.                                       |
+| `selectionMode`     | `'none' \| 'single' \| 'multiple'` | `'none'` | The selection behavior for tags in the group.                                           |
+| `selectedKeys`      | `'all' \| Iterable<Key>`           | —        | Controlled set of selected keys.                                                        |
+| `onSelectionChange` | `(keys: Selection) => void`        | —        | Callback fired when the selection changes.                                              |
+| `onRemove`          | `(keys: Set<Key>) => void`         | —        | Callback fired when user clicks the remove button or presses Delete/Backspace on a tag. |
+| `disabledKeys`      | `Iterable<Key>`                    | —        | Keys of tags that cannot be selected or removed.                                        |
 
 ### FilterTag Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | `Key` | — | Unique identifier for the tag within the `TagGroup`. |
-| `textValue` | `string` | — | Accessible string representation used for screen readers and keyboard typeahead. |
-| `children` | `ReactNode \| ((values) => ReactNode)` | — | Content of the tag, or render function with state arguments. |
-| `isDisabled` | `boolean` | `false` | Whether this tag is disabled. |
+| Prop         | Type                                   | Default | Description                                                                      |
+| :----------- | :------------------------------------- | :------ | :------------------------------------------------------------------------------- |
+| `id`         | `Key`                                  | —       | Unique identifier for the tag within the `TagGroup`.                             |
+| `textValue`  | `string`                               | —       | Accessible string representation used for screen readers and keyboard typeahead. |
+| `children`   | `ReactNode \| ((values) => ReactNode)` | —       | Content of the tag, or render function with state arguments.                     |
+| `isDisabled` | `boolean`                              | `false` | Whether this tag is disabled.                                                    |
 
 ---
 
@@ -219,23 +209,24 @@ export function SelectableTagsExample() {
 - **Dismissal Controls**: When `onRemove` is enabled, pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> on a focused tag triggers dismissal. The remove button within `<FilterTag>` is also accessible via keyboard and screen readers with an automatic `slot="remove"` designation.
 - **Selection**: Press <kbd>Space</kbd> or <kbd>Enter</kbd> to toggle the selection of a tag when `selectionMode` is enabled.
 - **Screen Reader Semantics**: `TagGroup` outputs an ARIA `role="grid"` or `role="listbox"` with appropriate group labelling via `<Label>`, and each tag provides `aria-selected` and accessible button states.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>→</kbd> / <kbd>←</kbd> | Moves focus between tags in a tag group. |
-| <kbd>Space</kbd> / <kbd>Enter</kbd> | Selects tag or triggers remove action. |
-| <kbd>Delete</kbd> / <kbd>Backspace</kbd> | Removes focused tag if removable. |
+| Key                                      | Action                                   |
+| :--------------------------------------- | :--------------------------------------- |
+| <kbd>→</kbd> / <kbd>←</kbd>              | Moves focus between tags in a tag group. |
+| <kbd>Space</kbd> / <kbd>Enter</kbd>      | Selects tag or triggers remove action.   |
+| <kbd>Delete</kbd> / <kbd>Backspace</kbd> | Removes focused tag if removable.        |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Tag | Present on hover. |
-| `[data-selected]` | Tag | Present when tag is selected. |
-| `[data-focused]` | Tag | Active on focus. |
-| `[data-disabled]` | Tag | Present when tag is disabled. |
+| Attribute         | Target | Description                   |
+| :---------------- | :----- | :---------------------------- |
+| `[data-hovered]`  | Tag    | Present on hover.             |
+| `[data-selected]` | Tag    | Present when tag is selected. |
+| `[data-focused]`  | Tag    | Active on focus.              |
+| `[data-disabled]` | Tag    | Present when tag is disabled. |

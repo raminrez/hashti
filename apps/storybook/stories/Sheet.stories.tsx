@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import {
-  Button,
-  Heading,
-  Sheet,
-} from "@hashti/react";
+import { Button, Heading, Sheet } from "@hashti/react";
 import "./overlays.css";
 
 const meta = {
@@ -28,11 +24,7 @@ export const Playground: Story = {
     <div className="overlay-story-stack">
       <Sheet.Trigger>
         <Button variant="primary">Open Bottom Sheet</Button>
-        <Sheet
-          position="bottom"
-          snapPoints={["320px", "600px"]}
-          aria-label="Order summary"
-        >
+        <Sheet position="bottom" snapPoints={["320px", "600px"]} aria-label="Order summary">
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <Heading slot="title">Order Summary</Heading>
             <p style={{ color: "var(--hashti-text-secondary, #525252)", margin: 0 }}>
@@ -91,7 +83,15 @@ export const SnapPoints: Story = {
             <p style={{ margin: 0 }}>
               Swipe up to see all available transit lines and stop details across the city.
             </p>
-            <ul style={{ paddingLeft: "1.25rem", margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <ul
+              style={{
+                paddingLeft: "1.25rem",
+                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+              }}
+            >
               <li>Downtown Express - Platform 2 (Departing in 4 min)</li>
               <li>Airport Shuttle - Bay 14 (Departing in 12 min)</li>
               <li>Crosstown Line - Platform 5 (Departing in 18 min)</li>
@@ -171,15 +171,12 @@ export const PreventDismissal: Story = {
     <div className="overlay-story-stack">
       <Sheet.Trigger>
         <Button variant="danger">Critical Action Sheet</Button>
-        <Sheet
-          position="bottom"
-          preventDismissal
-          aria-label="Critical confirmation"
-        >
+        <Sheet position="bottom" preventDismissal aria-label="Critical confirmation">
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <Heading slot="title">Confirm Data Migration</Heading>
             <p style={{ margin: 0 }}>
-              This sheet cannot be dismissed by swiping or clicking outside. You must explicitly choose an action.
+              This sheet cannot be dismissed by swiping or clicking outside. You must explicitly
+              choose an action.
             </p>
             <div style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
               <Button variant="ghost">Cancel</Button>
@@ -218,7 +215,10 @@ export const CompoundComposition: Story = {
             <Sheet.Handle />
             <Sheet.Content>
               <Heading slot="title">Fine-grained Compound Sheet</Heading>
-              <p>Composed using Sheet.Trigger, Sheet.Overlay, Sheet.Backdrop, Sheet.Root, Sheet.Handle, and Sheet.Content.</p>
+              <p>
+                Composed using Sheet.Trigger, Sheet.Overlay, Sheet.Backdrop, Sheet.Root,
+                Sheet.Handle, and Sheet.Content.
+              </p>
             </Sheet.Content>
           </Sheet.Root>
         </Sheet.Overlay>

@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  type ComponentProps,
-  type Ref,
-} from "react";
+import { createContext, useContext, type ComponentProps, type Ref } from "react";
 import {
   Toolbar as RACToolbar,
   Group as RACGroup,
@@ -50,8 +45,7 @@ export function ToolbarRoot({
     isDisabled,
   };
 
-  const separatorOrientation =
-    orientation === "vertical" ? "horizontal" : "vertical";
+  const separatorOrientation = orientation === "vertical" ? "horizontal" : "vertical";
 
   return (
     <ToolbarContext.Provider value={contextValue}>
@@ -65,7 +59,7 @@ export function ToolbarRoot({
             data-size={size}
             data-orientation={orientation}
             data-variant={variant}
-            className={classes("hashti-toolbar", className)}
+            className={classes("react-aria-Toolbar hashti-toolbar", className)}
           >
             {children}
           </RACToolbar>
@@ -103,16 +97,9 @@ export interface ToolbarItemProps extends ComponentProps<"div"> {
   ref?: Ref<HTMLDivElement>;
 }
 
-export function ToolbarItem({
-  className,
-  children,
-  ...props
-}: ToolbarItemProps) {
+export function ToolbarItem({ className, children, ...props }: ToolbarItemProps) {
   return (
-    <div
-      {...props}
-      className={cx("hashti-toolbar-item", className)}
-    >
+    <div {...props} className={cx("hashti-toolbar-item", className)}>
       {children}
     </div>
   );
@@ -122,21 +109,16 @@ export interface ToolbarSeparatorProps extends RACSeparatorProps {
   ref?: Ref<HTMLElement>;
 }
 
-export function ToolbarSeparator({
-  orientation,
-  className,
-  ...props
-}: ToolbarSeparatorProps) {
+export function ToolbarSeparator({ orientation, className, ...props }: ToolbarSeparatorProps) {
   const toolbarContext = useContext(ToolbarContext);
-  const defaultOrientation =
-    toolbarContext.orientation === "vertical" ? "horizontal" : "vertical";
+  const defaultOrientation = toolbarContext.orientation === "vertical" ? "horizontal" : "vertical";
   const resolvedOrientation = orientation ?? defaultOrientation;
 
   return (
     <RACSeparator
       {...props}
       orientation={resolvedOrientation}
-      className={cx("hashti-toolbar-separator", className)}
+      className={cx("react-aria-Separator", "hashti-toolbar-separator", className)}
     />
   );
 }

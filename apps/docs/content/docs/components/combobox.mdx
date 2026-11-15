@@ -9,7 +9,10 @@ The **ComboBox** component merges a single-line text input with a filtered dropd
 
 ComboBox is particularly suited for high-density forms, long dataset lookups (such as geographic regions, currencies, or user directories), and cases where custom values can optionally be typed.
 
-<ComponentPreview title="Live Interactive ComboBox" description="Filter architectural elements or type a new item to create it on the fly.">
+<ComponentPreview
+  title="Live Interactive ComboBox"
+  description="Filter architectural elements or type a new item to create it on the fly."
+>
   <ComboBoxLiveDemo />
 </ComponentPreview>
 
@@ -147,11 +150,7 @@ const MEMBERS: Member[] = [
 export function RichItemComboBoxDemo() {
   return (
     <div className="max-w-sm">
-      <ComboBox
-        label="Assign Team Lead"
-        items={MEMBERS}
-        placeholder="Filter by name or role..."
-      >
+      <ComboBox label="Assign Team Lead" items={MEMBERS} placeholder="Filter by name or role...">
         {(member) => (
           <ListBoxItem id={member.id} textValue={member.name}>
             <div className="flex flex-col py-1">
@@ -171,6 +170,7 @@ export function RichItemComboBoxDemo() {
 ### Multi-Selection with Chips or Badges
 
 When `selectionMode="multiple"` is enabled, users can select several options. The `multipleDisplay` prop governs how selected choices appear:
+
 - `'chips'` (default): Interactive tags with removable <kbd>×</kbd> buttons rendered directly below the input field.
 - `'badge'`: A compact counter badge showing the number of selected items.
 - `'text'`: Plain text description.
@@ -230,27 +230,27 @@ export function InvalidComboBoxDemo() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `selectionMode` | `'single' \| 'multiple'` | `'single'` | Allowed selection mode (single item or multi-select). |
-| `multipleDisplay` | `'chips' \| 'badge' \| 'text'` | `'chips'` | Display format for multi-selected items in the combobox. |
-| `items` | `Iterable<T>` | — | Dynamic list of items for autocomplete. |
-| `selectedKey` | `Key \| null` | — | Currently selected item key (controlled). |
-| `defaultSelectedKey` | `Key` | — | Initially selected item key (uncontrolled). |
-| `onSelectionChange` | `(key: Key \| null) => void` | — | Callback fired when an item is selected. |
-| `inputValue` | `string` | — | Text content within the input field (controlled). |
-| `defaultInputValue` | `string` | — | Default text content for the input field. |
-| `onInputChange` | `(value: string) => void` | — | Callback fired as the user types into the input. |
-| `allowsCustomValue` | `boolean` | `false` | When true, accepts free-form text outside the suggested options. |
-| `placeholder` | `string` | — | Placeholder text when the field is empty. |
-| `label` | `ReactNode` | — | Accessible label for the input. |
-| `description` | `ReactNode` | — | Explanatory text beneath or above the control. |
-| `errorMessage` | `ReactNode` | — | Error text shown when `isInvalid` is true. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and control sizing. |
-| `isDisabled` | `boolean` | `false` | Whether the entire combobox is disabled. |
-| `isInvalid` | `boolean` | `false` | Whether validation has failed. |
-| `isRequired` | `boolean` | `false` | Marks the combobox as mandatory for submission. |
-| `disabledKeys` | `Iterable<Key>` | — | Keys of specific options that should be disabled. |
+| Prop                 | Type                           | Default    | Description                                                      |
+| :------------------- | :----------------------------- | :--------- | :--------------------------------------------------------------- |
+| `selectionMode`      | `'single' \| 'multiple'`       | `'single'` | Allowed selection mode (single item or multi-select).            |
+| `multipleDisplay`    | `'chips' \| 'badge' \| 'text'` | `'chips'`  | Display format for multi-selected items in the combobox.         |
+| `items`              | `Iterable<T>`                  | —          | Dynamic list of items for autocomplete.                          |
+| `selectedKey`        | `Key \| null`                  | —          | Currently selected item key (controlled).                        |
+| `defaultSelectedKey` | `Key`                          | —          | Initially selected item key (uncontrolled).                      |
+| `onSelectionChange`  | `(key: Key \| null) => void`   | —          | Callback fired when an item is selected.                         |
+| `inputValue`         | `string`                       | —          | Text content within the input field (controlled).                |
+| `defaultInputValue`  | `string`                       | —          | Default text content for the input field.                        |
+| `onInputChange`      | `(value: string) => void`      | —          | Callback fired as the user types into the input.                 |
+| `allowsCustomValue`  | `boolean`                      | `false`    | When true, accepts free-form text outside the suggested options. |
+| `placeholder`        | `string`                       | —          | Placeholder text when the field is empty.                        |
+| `label`              | `ReactNode`                    | —          | Accessible label for the input.                                  |
+| `description`        | `ReactNode`                    | —          | Explanatory text beneath or above the control.                   |
+| `errorMessage`       | `ReactNode`                    | —          | Error text shown when `isInvalid` is true.                       |
+| `size`               | `'sm' \| 'md' \| 'lg'`         | `'md'`     | Height and control sizing.                                       |
+| `isDisabled`         | `boolean`                      | `false`    | Whether the entire combobox is disabled.                         |
+| `isInvalid`          | `boolean`                      | `false`    | Whether validation has failed.                                   |
+| `isRequired`         | `boolean`                      | `false`    | Marks the combobox as mandatory for submission.                  |
+| `disabledKeys`       | `Iterable<Key>`                | —          | Keys of specific options that should be disabled.                |
 
 ---
 
@@ -268,25 +268,26 @@ ComboBox complies with the **WAI-ARIA 1.2 Combobox with Listbox Popup** design p
   - The text input has `role="combobox"`, `aria-autocomplete="list"`, `aria-expanded="false|true"`, and `aria-controls` referencing the popup listbox.
   - `aria-activedescendant` communicates the currently focused suggestion to assistive software without moving DOM focus out of the input.
 - **Screen Reader Support**: When options filter as the user types, screen readers announce the number of matching items automatically.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>↓</kbd> | Opens popup listbox or navigates to the next option. |
-| <kbd>↑</kbd> | Navigates to the previous option in the listbox. |
-| <kbd>Enter</kbd> | Selects the active option and closes the dropdown list. |
-| <kbd>Esc</kbd> | Closes the filtered popup listbox and retains input text. |
-| <kbd>Tab</kbd> | Selects active match or moves focus to the next field. |
+| Key              | Action                                                    |
+| :--------------- | :-------------------------------------------------------- |
+| <kbd>↓</kbd>     | Opens popup listbox or navigates to the next option.      |
+| <kbd>↑</kbd>     | Navigates to the previous option in the listbox.          |
+| <kbd>Enter</kbd> | Selects the active option and closes the dropdown list.   |
+| <kbd>Esc</kbd>   | Closes the filtered popup listbox and retains input text. |
+| <kbd>Tab</kbd>   | Selects active match or moves focus to the next field.    |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Input, Item | Applied when pointer hovers over the input or item. |
-| `[data-focused]` | Input, Item | Active when the element holds keyboard focus. |
-| `[data-selected]` | Item | Present when an option is the current selected value. |
-| `[data-disabled]` | Input, Item | Present when interaction is disabled. |
+| Attribute         | Target      | Description                                           |
+| :---------------- | :---------- | :---------------------------------------------------- |
+| `[data-hovered]`  | Input, Item | Applied when pointer hovers over the input or item.   |
+| `[data-focused]`  | Input, Item | Active when the element holds keyboard focus.         |
+| `[data-selected]` | Item        | Present when an option is the current selected value. |
+| `[data-disabled]` | Input, Item | Present when interaction is disabled.                 |

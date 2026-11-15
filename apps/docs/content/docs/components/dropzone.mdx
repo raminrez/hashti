@@ -80,7 +80,9 @@ export function FileUploadExample() {
               }
             }}
           >
-            <Button variant="secondary" size="sm">Browse Files</Button>
+            <Button variant="secondary" size="sm">
+              Browse Files
+            </Button>
           </FileTrigger>
         </div>
       </DropZone>
@@ -88,7 +90,9 @@ export function FileUploadExample() {
       {uploadedFiles.length > 0 && (
         <ul className="text-sm space-y-1 bg-[var(--surface-raised)] p-3 rounded-md">
           {uploadedFiles.map((file, i) => (
-            <li key={i} className="text-xs font-mono text-[var(--text)]">✓ {file}</li>
+            <li key={i} className="text-xs font-mono text-[var(--text)]">
+              ✓ {file}
+            </li>
           ))}
         </ul>
       )}
@@ -100,6 +104,7 @@ export function FileUploadExample() {
 ### Visual Variants
 
 Hashti provides three stylistic variants for drop zones:
+
 - `dashed` (default): Standard tactile dashed border signaling file reception.
 - `solid`: Solid continuous border for high-contrast enterprise forms.
 - `card`: Elevated card plinth (`--surface-raised`) with subtle drop shadow for full-page empty states.
@@ -112,7 +117,9 @@ export function CardDropZoneExample() {
     <DropZone variant="card" className="max-w-md p-6 text-center">
       <p className="text-sm font-medium">Add Attachments</p>
       <p className="text-xs text-[var(--text-muted)] mb-3">Drop files anywhere inside this card</p>
-      <Button variant="ghost" size="sm">Select Local File</Button>
+      <Button variant="ghost" size="sm">
+        Select Local File
+      </Button>
     </DropZone>
   );
 }
@@ -134,24 +141,24 @@ Restrict drops to specific MIME types or extensions by utilizing RAC's native dr
 
 ### DropZone (`DropZone.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `onDropFiles` | `(files: File[]) => void` | — | Convenience callback returning an array of standard Web `File` objects when items are dropped. |
-| `onDrop` | `(e: DropEvent) => void` | — | Raw React Aria drop event handler. |
-| `variant` | `'dashed' \| 'solid' \| 'card'` | `'dashed'` | Border styling and background surface presentation. |
-| `isDisabled` | `boolean` | `false` | Whether dropping files onto the area is prohibited. |
-| `className` | `string \| ((values) => string)` | — | Custom styling class or render prop function. |
-| `children` | `ReactNode \| ((values) => ReactNode)` | — | Children elements or render prop exposing `{ isDropTarget }`. |
+| Prop          | Type                                   | Default    | Description                                                                                    |
+| :------------ | :------------------------------------- | :--------- | :--------------------------------------------------------------------------------------------- |
+| `onDropFiles` | `(files: File[]) => void`              | —          | Convenience callback returning an array of standard Web `File` objects when items are dropped. |
+| `onDrop`      | `(e: DropEvent) => void`               | —          | Raw React Aria drop event handler.                                                             |
+| `variant`     | `'dashed' \| 'solid' \| 'card'`        | `'dashed'` | Border styling and background surface presentation.                                            |
+| `isDisabled`  | `boolean`                              | `false`    | Whether dropping files onto the area is prohibited.                                            |
+| `className`   | `string \| ((values) => string)`       | —          | Custom styling class or render prop function.                                                  |
+| `children`    | `ReactNode \| ((values) => ReactNode)` | —          | Children elements or render prop exposing `{ isDropTarget }`.                                  |
 
 ### FileTrigger
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `onSelect` | `(files: FileList \| null) => void` | — | Callback fired when the user selects files through the native OS dialog. |
-| `acceptedFileTypes` | `string[]` | — | Array of accepted MIME types or file extensions (e.g. `['image/*', '.pdf']`). |
-| `allowsMultiple` | `boolean` | `false` | Whether multiple files can be selected at once. |
-| `defaultCamera` | `'user' \| 'environment'` | — | Default capture camera on mobile devices. |
-| `children` | `ReactNode` | — | Interactive button element triggering the file selector. |
+| Prop                | Type                                | Default | Description                                                                   |
+| :------------------ | :---------------------------------- | :------ | :---------------------------------------------------------------------------- |
+| `onSelect`          | `(files: FileList \| null) => void` | —       | Callback fired when the user selects files through the native OS dialog.      |
+| `acceptedFileTypes` | `string[]`                          | —       | Array of accepted MIME types or file extensions (e.g. `['image/*', '.pdf']`). |
+| `allowsMultiple`    | `boolean`                           | `false` | Whether multiple files can be selected at once.                               |
+| `defaultCamera`     | `'user' \| 'environment'`           | —       | Default capture camera on mobile devices.                                     |
+| `children`          | `ReactNode`                         | —       | Interactive button element triggering the file selector.                      |
 
 ---
 
@@ -165,28 +172,29 @@ Restrict drops to specific MIME types or extensions by utilizing RAC's native dr
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied State |
-| :--- | :--- | :--- |
-| Inactive Border | `--divider` | 2px dashed neutral border |
-| Active Drag Border | `--accent-turquoise` | Highlighted drop target outline |
-| Drag Surface | `--info-surface` | Subtle active wash during hover |
-| Background | `--surface` / `--surface-raised` | Card and default container fills |
-| Corner Radius | `--radius-lg` | 12px rounded corner geometry |
+| Token              | CSS Variable                     | Applied State                    |
+| :----------------- | :------------------------------- | :------------------------------- |
+| Inactive Border    | `--divider`                      | 2px dashed neutral border        |
+| Active Drag Border | `--accent-turquoise`             | Highlighted drop target outline  |
+| Drag Surface       | `--info-surface`                 | Subtle active wash during hover  |
+| Background         | `--surface` / `--surface-raised` | Card and default container fills |
+| Corner Radius      | `--radius-lg`                    | 12px rounded corner geometry     |
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Moves focus to embedded upload trigger button. |
+| Key                                 | Action                                                   |
+| :---------------------------------- | :------------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves focus to embedded upload trigger button.           |
 | <kbd>Enter</kbd> / <kbd>Space</kbd> | Opens system file picker dialog when trigger is focused. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
+| Attribute            | Target   | Description                                          |
+| :------------------- | :------- | :--------------------------------------------------- |
 | `[data-drop-target]` | DropZone | Active when dragged file is hovering over drop zone. |
-| `[data-focused]` | DropZone | Present when dropzone receives focus. |
-| `[data-disabled]` | DropZone | Present when file ingestion is disabled. |
+| `[data-focused]`     | DropZone | Present when dropzone receives focus.                |
+| `[data-disabled]`    | DropZone | Present when file ingestion is disabled.             |

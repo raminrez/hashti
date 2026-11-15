@@ -1,0 +1,298 @@
+---
+title: Form
+description: Native HTML form element wired to React Aria validation, field-level server errors, and your own request lifecycle.
+---
+
+# Form
+
+**Form** is React Aria's `Form`, re-exported unchanged. It renders a real `<form>` and connects the fields inside it to two validation systems:
+
+1. **Native/ARIA client validation** from each field's `isRequired`, `type`, `pattern`, and `validate` props. `validationBehavior="native"` (the default) lets the browser block submission and show its own UI; `validationBehavior="aria"` suppresses that and relies on React Aria's ARIA attributes and messages.
+2. **Server errors** passed back through `validationErrors`, a name → message map. React Aria clears an entry as soon as the user changes that field, and re-runs submission with the corrected values.
+
+`Form` deliberately owns nothing else. There is no request state, no pending flag, no auto-reset: you keep the draft, decide when to send, and choose when to clear. The Hashti patterns for that live in the examples below — `onSubmit` with `preventDefault`, a `readonly`-during-submit treatment, and a `Button` with `isPending`.
+
+<ComponentPreview
+  title="Form"
+  description="Required fields, native validation, and a local submit."
+>
+  <FormLiveDemo />
+</ComponentPreview>
+
+---
+
+## Import
+
+```tsx
+import { Form } from "@hashti/react";
+```
+
+`FormProps` is exported as a type, and `ValidationResult` for `validate` functions.
+
+---
+
+## Anatomy
+
+```tsx
+<Form aria-label="Workspace draft" onSubmit={(event) => event.preventDefault()}>
+  <TextField name="workspace" label="Workspace name" isRequired />
+  <TextArea name="notes" label="Review notes" isOptional />
+  <Button type="submit">Save draft</Button>
+</Form>
+```
+
+- `name` on each field is what `validationErrors` and `FormData` key on.
+- `aria-label` (or `aria-labelledby`) gives the form an accessible name; without it the `<form>` has the generic role and screen-reader landmark lists show an unnamed form.
+- The submit button is a Hashti `Button` with `type="submit"`.
+
+---
+
+## Examples
+
+### Client Validation
+
+Empty required fields block submission, React Aria focuses the first invalid control, and its `errorMessage` is revealed with `aria-describedby` pointing at it. Optional fields are never marked invalid.
+
+```tsx
+import { Button, Form, TextArea, TextField } from "@hashti/react";
+
+export function ClientValidationExample() {
+  return (
+    <Form
+      aria-label="Workspace draft"
+      className="flex flex-col gap-4"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const values = Object.fromEntries(new FormData(event.currentTarget));
+        console.log(values);
+      }}
+    >
+      <TextField
+        name="workspace"
+        label="Workspace name"
+        description="Use the name your team will recognize."
+        isRequired
+        errorMessage={({ validationDetails }) =>
+          validationDetails.valueMissing ? "Enter a workspace name." : undefined
+        }
+      />
+      <TextField
+        name="email"
+        type="email"
+        label="Contact email"
+        isRequired
+        errorMessage={({ validationDetails, validationErrors }) => {
+          if (validationDetails.valueMissing) return "Enter a contact email.";
+          if (validationDetails.typeMismatch) return "Enter a complete email address.";
+          return validationErrors;
+        }}
+      />
+      <TextArea name="notes" label="Review notes" isOptional rows={3} />
+      <Button type="submit">Save draft</Button>
+    </Form>
+  );
+}
+```
+
+The `errorMessage` render function receives `validationDetails`, the native validity flags (`valueMissing`, `typeMismatch`, `patternMismatch`, …), which is how you write recovery text per reason instead of one generic string.
+
+### ARIA-Only Validation
+
+`validationBehavior="aria"` skips the browser's own validation bubbles and blocking. Use it when you want your messages to be the only ones the user sees — for example inside a custom multi-step flow.
+
+```tsx
+import { Button, Form, TextField } from "@hashti/react";
+
+export function AriaValidationExample() {
+  return (
+    <Form
+      aria-label="Profile"
+      validationBehavior="aria"
+      onSubmit={(event) => event.preventDefault()}
+    >
+      <TextField
+        name="handle"
+        label="Handle"
+        isRequired
+        errorMessage="Choose a handle before saving."
+      />
+      <Button type="submit">Save</Button>
+    </Form>
+  );
+}
+```
+
+### Server Field Errors
+
+Return a name → message map from your save function and feed it to `validationErrors`. Each message appears through the matching field's `errorMessage` slot; editing that field clears its entry.
+
+```tsx
+import { useState } from "react";
+import { Button, Form, TextField, type FormProps } from "@hashti/react";
+
+export function ServerErrorsExample() {
+  const [errors, setErrors] = useState<FormProps["validationErrors"]>({});
+  const [saved, setSaved] = useState("");
+
+  return (
+    <Form
+      aria-label="Server field recovery"
+      className="flex flex-col gap-4"
+      validationErrors={errors}
+      onSubmit={(event) => {
+        event.preventDefault();
+        const values = Object.fromEntries(new FormData(event.currentTarget));
+        // Pretend the server rejected an existing workspace name.
+        setErrors(
+          values.workspace === "Weekly review"
+            ? { workspace: "This workspace name is already used." }
+            : {},
+        );
+        setSaved(values.workspace === "Weekly review" ? "" : String(values.workspace));
+      }}
+    >
+      <TextField
+        name="workspace"
+        label="Workspace name"
+        defaultValue="Weekly review"
+        isRequired
+        errorMessage={({ validationDetails, validationErrors }) =>
+          validationDetails.valueMissing ? "Enter a workspace name." : validationErrors
+        }
+      />
+      <Button type="submit">Save draft</Button>
+      <p role="status" className="text-sm text-neutral-500 min-h-5">
+        {saved ? `Saved “${saved}”.` : ""}
+      </p>
+    </Form>
+  );
+}
+```
+
+### Pending and Retry
+
+The pattern the Storybook stories encode: `onSubmit` prevents the default, guards against duplicate in-flight requests, sets a pending phase, and switches the fields to `isReadOnly` rather than `isDisabled` so the draft stays selectable and copyable. `Button` reports the pending state with `isPending` + `pendingLabel`, keeping focus and size stable.
+
+```tsx
+import { useRef, useState } from "react";
+import { Button, Form, TextField } from "@hashti/react";
+
+export function PendingFormExample() {
+  const [phase, setPhase] = useState<"idle" | "pending" | "error" | "saved">("idle");
+  const inFlight = useRef(false);
+  const pending = phase === "pending";
+
+  return (
+    <Form
+      aria-label="Checkout"
+      className="flex flex-col gap-4"
+      onSubmit={async (event) => {
+        event.preventDefault();
+        if (inFlight.current) return;
+        inFlight.current = true;
+        setPhase("pending");
+        try {
+          await new Promise((resolve) => setTimeout(resolve, 800));
+          setPhase("saved");
+        } catch {
+          setPhase("error");
+        } finally {
+          inFlight.current = false;
+        }
+      }}
+    >
+      <TextField name="reference" label="Change reference" isRequired isReadOnly={pending} />
+      <div className="flex items-center gap-3">
+        <Button type="submit" isPending={pending} pendingLabel="Saving change">
+          Save change
+        </Button>
+        {phase === "error" && (
+          <p role="alert">Change was not saved. Your entries are still here.</p>
+        )}
+        <p role="status">{phase === "saved" ? "Change saved." : ""}</p>
+      </div>
+    </Form>
+  );
+}
+```
+
+### Reset
+
+Native `type="reset"` buttons reset uncontrolled fields back to their `defaultValue`. Controlled fields need your own state reset.
+
+```tsx
+import { Button, Form, TextField } from "@hashti/react";
+
+export function ResetExample() {
+  return (
+    <Form aria-label="Filter" className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+      <TextField name="query" label="Search term" defaultValue="" />
+      <div className="flex gap-2">
+        <Button type="submit">Apply</Button>
+        <Button type="reset" variant="secondary">
+          Reset
+        </Button>
+      </div>
+    </Form>
+  );
+}
+```
+
+---
+
+## Props Reference
+
+| Prop                 | Type                                                                           | Default    | Description                                                                |
+| :------------------- | :----------------------------------------------------------------------------- | :--------- | :------------------------------------------------------------------------- |
+| `validationErrors`   | `Record<string, string \| string[]>`                                           | —          | Server-side errors keyed by field `name`. Cleared per field as it changes. |
+| `validationBehavior` | `'native' \| 'aria'`                                                           | `'native'` | Whether the browser's own validation UI is used.                           |
+| `onSubmit`           | `(event: FormEvent<HTMLFormElement>) => void`                                  | —          | Submit handler. Call `preventDefault()` to keep the page in place.         |
+| `onReset`            | `(event: FormEvent<HTMLFormElement>) => void`                                  | —          | Reset handler.                                                             |
+| `onInvalid`          | `(event: FormEvent<HTMLFormElement>) => void`                                  | —          | Fired for each invalid field during a failed submit.                       |
+| `action`             | `string \| FormHTMLAttributes['action']`                                       | —          | Native form action URL.                                                    |
+| `method`             | `'get' \| 'post' \| 'dialog'`                                                  | —          | Native form method.                                                        |
+| `encType`            | `'application/x-www-form-urlencoded' \| 'multipart/form-data' \| 'text/plain'` | —          | Native encoding type.                                                      |
+| `target`             | `'_blank' \| '_self' \| '_parent' \| '_top'`                                   | —          | Native target window.                                                      |
+| `autoComplete`       | `'off' \| 'on'`                                                                | —          | Native autocomplete default for the form.                                  |
+| `role`               | `'search' \| 'presentation'`                                                   | —          | ARIA role override for the `<form>` element.                               |
+| `aria-label`         | `string`                                                                       | —          | Accessible name for the `<form>` landmark.                                 |
+| `children`           | `ReactNode`                                                                    | —          | Fields and the submit control.                                             |
+| `className`          | `string`                                                                       | —          | Extra class names. Default class is `react-aria-Form`.                     |
+
+### What this component does not do
+
+- **No request state.** No `isPending`, no error boundary, no automatic retry or toast.
+- **No draft preservation on success.** `Form` never resets the fields itself; you decide.
+- **No announcement of field errors.** `FieldError` is wired through `aria-describedby`, not a live region. If a server error arrives after submit, add your own `role="alert"` summary (as the examples do) or the change is silent.
+- **No error summary component.** There is no built-in “3 fields need attention” block.
+- **`validationErrors` is name-based.** Fields without a `name` cannot receive server errors.
+
+---
+
+## Accessibility
+
+- Renders a real `<form>`: native submit, reset, implicit submission with <kbd>Enter</kbd> from a text input, and browser autofill all keep working.
+- With `aria-label`/`aria-labelledby` the form is a labelled landmark; without one it is an unnamed form.
+- Invalid controls get `aria-invalid` and reference their message via `aria-describedby`; the description is preserved alongside the error.
+- Focus moves to the first invalid control on a failed submit, and back to the submit button after a successful or failed request in the patterns above.
+- Required wording comes from Hashti's field label, localised for English, Persian, Arabic, and German. Browser-generated validation text (when `validationBehavior="native"`) is **not** localised by the theme — it follows the browser/OS language.
+
+---
+
+## Keyboard Interactions
+
+| Key                                              | Action                                             |
+| :----------------------------------------------- | :------------------------------------------------- |
+| <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd> | Moves focus between fields and the submit control. |
+| <kbd>Enter</kbd> (single-line input)             | Submits the form implicitly.                       |
+| <kbd>Enter</kbd> (in a textarea)                 | Inserts a newline; it does not submit.             |
+| <kbd>Space</kbd> / <kbd>Enter</kbd>              | Activates the focused button.                      |
+
+---
+
+## Related
+
+- [Text Field](/docs/components/text-field) — the standard field inside a form.
+- [Text Area](/docs/components/textarea) — multi-line fields, including per-reason recovery text.
+- [Time Field](/docs/components/time-field) — segmented inputs with their own validation.
+- [Button](/docs/components/button) — `isPending` and `pendingLabel` for the submit control.

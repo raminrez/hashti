@@ -47,7 +47,9 @@ function PlaygroundExample() {
         <div className="data-table-header-bar">
           <div>
             <h3 className="data-table-title">Activity Feed Pagination</h3>
-            <p className="data-table-description">Navigate through historical audit and log entries.</p>
+            <p className="data-table-description">
+              Navigate through historical audit and log entries.
+            </p>
           </div>
           <span className="data-table-status-badge">Total: {totalItems}</span>
         </div>
@@ -185,7 +187,7 @@ const ingestionPods = Array.from({ length: 28 }, (_, i) => ({
   id: `pod-${i + 1}`,
   name: `ingestion-pod-worker-${String(i + 1).padStart(2, "0")}`,
   zone: i % 2 === 0 ? "us-east-1a" : "us-east-1b",
-  memory: `${((i + 1) * 128) % 1024 + 256} MiB`,
+  memory: `${(((i + 1) * 128) % 1024) + 256} MiB`,
   uptime: `${(i % 12) + 1}d ${(i % 24) + 1}h`,
 }));
 
@@ -208,7 +210,9 @@ function WithTableExample() {
         </div>
         <Table aria-label="Cluster Ingestion Pods Table">
           <TableHeader>
-            <Column id="col-pod" isRowHeader>Pod Identifier</Column>
+            <Column id="col-pod" isRowHeader>
+              Pod Identifier
+            </Column>
             <Column id="col-zone">Availability Zone</Column>
             <Column id="col-memory">Memory Usage</Column>
             <Column id="col-uptime">Uptime</Column>

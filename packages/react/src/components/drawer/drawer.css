@@ -1,23 +1,51 @@
-/* Hashti Modern Aesthetic - drawer */
+/* Hashti Modern Aesthetic - drawer
+   Owner of the drawer's corners and backdrop. A drawer flush to an edge has square corners on that
+   edge and rounded corners only on the side facing the page. Logical properties keep it correct in
+   RTL, where inline-start and inline-end swap sides. */
 @layer hashti.components {
-  [data-hashti-theme] .hashti-drawer,
-  [data-hashti-theme] .hashti-drawer,
-  [data-hashti-theme] .hashti-drawer,
-  [data-hashti-theme] .hashti-drawer {
-    border-radius: var(--hashti-surface-radius, 16px);
-    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  .hashti-drawer-overlay {
+    background-color: var(--hashti-overlay);
   }
-  [data-hashti-theme] .hashti-drawer-close[data-pressed],
-  [data-hashti-theme] .hashti-drawer-close[data-pressed],
-  [data-hashti-theme] .hashti-drawer-close[data-pressed],
-  [data-hashti-theme] .hashti-drawer-close[data-pressed] {
-    transform: scale(0.98);
+  .hashti-drawer-overlay[data-backdrop="blur"] {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
-  [data-hashti-theme] .hashti-drawer-close[data-focus-visible],
-  [data-hashti-theme] .hashti-drawer-close[data-focus-visible],
-  [data-hashti-theme] .hashti-drawer-close[data-focus-visible],
-  [data-hashti-theme] .hashti-drawer-close[data-focus-visible] {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--hashti-background, var(--hashti-background, #ffffff)), 0 0 0 4px var(--hashti-focus, #0f62fe), 0 0 12px rgba(15, 98, 254, 0.35);
+  .hashti-drawer-overlay[data-backdrop="none"] {
+    background-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .hashti-drawer {
+    border-start-start-radius: var(--hashti-surface-radius, 16px);
+    border-start-end-radius: var(--hashti-surface-radius, 16px);
+    border-end-start-radius: var(--hashti-surface-radius, 16px);
+    border-end-end-radius: var(--hashti-surface-radius, 16px);
+  }
+
+  /* Flush to the inline-end edge. */
+  .hashti-drawer[data-placement="right"],
+  .hashti-drawer[data-placement="end"] {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  /* Flush to the inline-start edge. */
+  .hashti-drawer[data-placement="left"],
+  .hashti-drawer[data-placement="start"] {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+
+  /* Flush to the block-start edge. */
+  .hashti-drawer[data-placement="top"] {
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+  }
+
+  /* Flush to the block-end edge. */
+  .hashti-drawer[data-placement="bottom"] {
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
   }
 }

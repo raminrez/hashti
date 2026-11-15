@@ -9,10 +9,12 @@ Toasts are transient, floating notifications that appear in the viewport corner 
 
 Built on React Aria Components' toast architecture, Hashti's toast system features automatic queueing, configurable timeouts, polite live region announcements, and full keyboard dismissal.
 
-<ComponentPreview title="Toast" description="Transient notification toast with automated dismissal.">
+<ComponentPreview
+  title="Toast"
+  description="Transient notification toast with automated dismissal."
+>
   <ToastLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -35,9 +37,7 @@ import { Theme, ToastProvider } from "@hashti/react";
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <Theme theme="frame-light">
-      <ToastProvider>
-        {children}
-      </ToastProvider>
+      <ToastProvider>{children}</ToastProvider>
     </Theme>
   );
 }
@@ -157,7 +157,7 @@ export function CustomTimeoutExample() {
         title: "Copied to clipboard!",
         kind: "info",
       },
-      { timeout: 2000 } // Dismisses after 2 seconds
+      { timeout: 2000 }, // Dismisses after 2 seconds
     );
   };
 
@@ -168,7 +168,7 @@ export function CustomTimeoutExample() {
         description: "This background job will take several minutes to complete.",
         kind: "warning",
       },
-      { timeout: 15000 } // Extended to 15 seconds
+      { timeout: 15000 }, // Extended to 15 seconds
     );
   };
 
@@ -204,7 +204,7 @@ export function ProgrammaticDismissExample() {
         description: "Contacting primary replica node.",
         kind: "info",
       },
-      { timeout: 30000 }
+      { timeout: 30000 },
     );
   };
 
@@ -240,26 +240,26 @@ export function ProgrammaticDismissExample() {
 
 The `useToast()` hook returns an object with the following methods:
 
-| Method | Parameters | Returns | Description |
-| :--- | :--- | :--- | :--- |
-| `add` | `(message: ToastMessage, options?: ToastOptions)` | `string` | Adds a new toast to the queue and returns its unique ID key. |
-| `close` | `(key: string)` | `void` | Closes and removes the toast with the specified ID key. |
+| Method  | Parameters                                        | Returns  | Description                                                  |
+| :------ | :------------------------------------------------ | :------- | :----------------------------------------------------------- |
+| `add`   | `(message: ToastMessage, options?: ToastOptions)` | `string` | Adds a new toast to the queue and returns its unique ID key. |
+| `close` | `(key: string)`                                   | `void`   | Closes and removes the toast with the specified ID key.      |
 
 ### `ToastMessage` Object
 
-| Property | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `title` | `string` | **Required** | The bold heading text displayed in the toast notification. |
-| `description` | `string` | — | Additional supporting description text. |
-| `kind` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Semantic kind determining the toast icon and border accent. |
-| `variant` | `'subtle' \| 'solid' \| 'bordered'` | `'subtle'` | Visual style variant for high or low contrast rendering. |
+| Property      | Type                                          | Default      | Description                                                 |
+| :------------ | :-------------------------------------------- | :----------- | :---------------------------------------------------------- |
+| `title`       | `string`                                      | **Required** | The bold heading text displayed in the toast notification.  |
+| `description` | `string`                                      | —            | Additional supporting description text.                     |
+| `kind`        | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'`     | Semantic kind determining the toast icon and border accent. |
+| `variant`     | `'subtle' \| 'solid' \| 'bordered'`           | `'subtle'`   | Visual style variant for high or low contrast rendering.    |
 
 ### `ToastOptions` Object
 
-| Property | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `timeout` | `number` | `5000` | Duration in milliseconds before the toast automatically fades away. |
-| `priority` | `number` | `0` | Queue priority determining order when multiple toasts arrive simultaneously. |
+| Property   | Type     | Default | Description                                                                  |
+| :--------- | :------- | :------ | :--------------------------------------------------------------------------- |
+| `timeout`  | `number` | `5000`  | Duration in milliseconds before the toast automatically fades away.          |
+| `priority` | `number` | `0`     | Queue priority determining order when multiple toasts arrive simultaneously. |
 
 ---
 
@@ -269,11 +269,12 @@ The `useToast()` hook returns an object with the following methods:
 - **Keyboard Dismissal**: Every toast includes a focusable close button equipped with `aria-label="Dismiss notification"`. Users navigating via keyboard can tab to the button and press <kbd>Enter</kbd> or <kbd>Space</kbd> to dismiss.
 - **Timing Guidelines (WCAG 2.2.1)**: Critical error messages or required actions should not rely solely on auto-dismissing toasts. Because users with reading difficulties or screen magnifiers may need more time to comprehend content, provide ample duration or consider using [`Alert`](./alert) or [`InlineNotification`](./inline-notification) for essential recovery instructions.
 - **Maximum Visible Count**: The toast queue limits visible toasts to 3 at a time to prevent overcrowding the screen and overwhelming the user's field of view.
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-entering]` | Toast | Applied during toast slide-in transition. |
-| `[data-exiting]` | Toast | Applied during toast dismissal transition. |
+| Attribute         | Target | Description                                |
+| :---------------- | :----- | :----------------------------------------- |
+| `[data-entering]` | Toast  | Applied during toast slide-in transition.  |
+| `[data-exiting]`  | Toast  | Applied during toast dismissal transition. |

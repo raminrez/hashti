@@ -9,10 +9,12 @@ A **Time Field** allows users to enter and edit time values using segmented, for
 
 Built upon React Aria Components' `TimeField`, Hashti's implementation provides integrated field labels, helper descriptions, error messages, validation badges, granular step controls, boundary enforcement (`minValue`, `maxValue`), and three density sizes (`sm`, `md`, `lg`).
 
-<ComponentPreview title="TimeField" description="Segmented time inputs with localized meridian formatting.">
+<ComponentPreview
+  title="TimeField"
+  description="Segmented time inputs with localized meridian formatting."
+>
   <TimeFieldLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -63,6 +65,7 @@ export function BasicTimeFieldExample() {
 ### Granularity & Seconds
 
 Control the precision of the time input using the `granularity` prop:
+
 - `'hour'`: Displays only hours and day period.
 - `'minute'` (default): Displays hours, minutes, and day period.
 - `'second'`: Displays hours, minutes, seconds, and day period.
@@ -116,6 +119,7 @@ export function BusinessHoursExample() {
 ### Size Variants
 
 Hashti provides three control heights adhering to our golden spatial geometry:
+
 - `sm` (32px): Compact density for dense data tables, toolbars, and inspection sidebars.
 - `md` (40px, default): Standard form control height with optimal touch targets.
 - `lg` (48px): High-contrast prominent form controls.
@@ -184,11 +188,7 @@ export function ControlledTimeExample() {
 
   return (
     <div className="max-w-xs space-y-3">
-      <TimeField
-        label="Meeting Time"
-        value={time}
-        onChange={setTime}
-      />
+      <TimeField label="Meeting Time" value={time} onChange={setTime} />
       <div className="flex gap-2">
         <Button variant="secondary" size="sm" onPress={() => setTime(new Time(9, 0))}>
           Morning (9:00 AM)
@@ -211,24 +211,24 @@ export function ControlledTimeExample() {
 
 ### TimeField (`TimeField.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `TimeValue \| null` | — | Controlled time object (from `@internationalized/date`). |
-| `defaultValue` | `TimeValue` | — | Default uncontrolled initial time. |
-| `onChange` | `(value: TimeValue) => void` | — | Callback fired when any time segment is edited or adjusted. |
-| `granularity` | `'hour' \| 'minute' \| 'second'` | `'minute'` | Precision of time segments displayed. |
-| `minValue` | `TimeValue` | — | Earliest time boundary permitted. |
-| `maxValue` | `TimeValue` | — | Latest time boundary permitted. |
-| `hourCycle` | `12 \| 24` | *Locale default* | Force 12-hour or 24-hour time presentation cycle. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height density of the input control. |
-| `label` | `ReactNode` | — | Accessible label positioned above the field. |
-| `description` | `ReactNode` | — | Supplemental instructional helper text. |
-| `errorMessage` | `ReactNode` | — | Error text displayed when `isInvalid` is true. |
-| `isInvalid` | `boolean` | `false` | Whether the current value fails validation. |
-| `isDisabled` | `boolean` | `false` | Whether the time input is non-interactive. |
-| `isReadOnly` | `boolean` | `false` | Prevents modifications while preserving focusability. |
-| `isRequired` | `boolean` | `false` | Indicates whether the field must be completed before submission. |
-| `status` | `'valid' \| 'warning' \| 'invalid'` | — | Status icon and color indicator attached to the input. |
+| Prop           | Type                                | Default          | Description                                                      |
+| :------------- | :---------------------------------- | :--------------- | :--------------------------------------------------------------- |
+| `value`        | `TimeValue \| null`                 | —                | Controlled time object (from `@internationalized/date`).         |
+| `defaultValue` | `TimeValue`                         | —                | Default uncontrolled initial time.                               |
+| `onChange`     | `(value: TimeValue) => void`        | —                | Callback fired when any time segment is edited or adjusted.      |
+| `granularity`  | `'hour' \| 'minute' \| 'second'`    | `'minute'`       | Precision of time segments displayed.                            |
+| `minValue`     | `TimeValue`                         | —                | Earliest time boundary permitted.                                |
+| `maxValue`     | `TimeValue`                         | —                | Latest time boundary permitted.                                  |
+| `hourCycle`    | `12 \| 24`                          | _Locale default_ | Force 12-hour or 24-hour time presentation cycle.                |
+| `size`         | `'sm' \| 'md' \| 'lg'`              | `'md'`           | Height density of the input control.                             |
+| `label`        | `ReactNode`                         | —                | Accessible label positioned above the field.                     |
+| `description`  | `ReactNode`                         | —                | Supplemental instructional helper text.                          |
+| `errorMessage` | `ReactNode`                         | —                | Error text displayed when `isInvalid` is true.                   |
+| `isInvalid`    | `boolean`                           | `false`          | Whether the current value fails validation.                      |
+| `isDisabled`   | `boolean`                           | `false`          | Whether the time input is non-interactive.                       |
+| `isReadOnly`   | `boolean`                           | `false`          | Prevents modifications while preserving focusability.            |
+| `isRequired`   | `boolean`                           | `false`          | Indicates whether the field must be completed before submission. |
+| `status`       | `'valid' \| 'warning' \| 'invalid'` | —                | Status icon and color indicator attached to the input.           |
 
 ---
 
@@ -236,44 +236,45 @@ export function ControlledTimeExample() {
 
 Each segment within the Time Field acts as an isolated, keyboard-controllable unit:
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>→</kbd> / <kbd>Tab</kbd> | Navigates forward to the next time segment (Hour → Minute → AM/PM). |
-| <kbd>←</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> | Navigates backward to the previous time segment. |
-| <kbd>↑</kbd> | Increments the focused segment value (with automatic roll-over, e.g. 11 → 12 → 1). |
-| <kbd>↓</kbd> | Decrements the focused segment value. |
-| Numbers (<kbd>0</kbd>–<kbd>9</kbd>) | Directly types numerical values into the active segment. Focus automatically advances when the segment is satisfied. |
-| <kbd>A</kbd> / <kbd>P</kbd> | In the dayPeriod segment, switches between AM and PM immediately. |
-| <kbd>Backspace</kbd> / <kbd>Delete</kbd> | Clears the active segment value. |
+| Key                                              | Action                                                                                                               |
+| :----------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| <kbd>→</kbd> / <kbd>Tab</kbd>                    | Navigates forward to the next time segment (Hour → Minute → AM/PM).                                                  |
+| <kbd>←</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> | Navigates backward to the previous time segment.                                                                     |
+| <kbd>↑</kbd>                                     | Increments the focused segment value (with automatic roll-over, e.g. 11 → 12 → 1).                                   |
+| <kbd>↓</kbd>                                     | Decrements the focused segment value.                                                                                |
+| Numbers (<kbd>0</kbd>–<kbd>9</kbd>)              | Directly types numerical values into the active segment. Focus automatically advances when the segment is satisfied. |
+| <kbd>A</kbd> / <kbd>P</kbd>                      | In the dayPeriod segment, switches between AM and PM immediately.                                                    |
+| <kbd>Backspace</kbd> / <kbd>Delete</kbd>         | Clears the active segment value.                                                                                     |
 
 ---
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied Element |
-| :--- | :--- | :--- |
-| Surface Control | `--surface` | Inactive input background |
-| Control Border | `--control-border` | 1px border around field container |
-| Focus Ring | `--focus` | 2px high-contrast outline on active segment / container |
-| Segment Highlight | `--selected` (`#e7edff`) | Active highlighted segment background |
-| Error Status | `--error` (`#DC2626`) | Border and indicator on invalid time |
-| Valid Status | `--success` (`#246343`) | Success badge and confirmed indicator |
-| Geometry Radius | `--radius-md` | 6px rounded input container geometry |
+| Token             | CSS Variable             | Applied Element                                         |
+| :---------------- | :----------------------- | :------------------------------------------------------ |
+| Surface Control   | `--surface`              | Inactive input background                               |
+| Control Border    | `--control-border`       | 1px border around field container                       |
+| Focus Ring        | `--focus`                | 2px high-contrast outline on active segment / container |
+| Segment Highlight | `--selected` (`#e7edff`) | Active highlighted segment background                   |
+| Error Status      | `--error` (`#DC2626`)    | Border and indicator on invalid time                    |
+| Valid Status      | `--success` (`#246343`)  | Success badge and confirmed indicator                   |
+| Geometry Radius   | `--radius-md`            | 6px rounded input container geometry                    |
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
+| Key                         | Action                                                               |
+| :-------------------------- | :------------------------------------------------------------------- |
 | <kbd>→</kbd> / <kbd>←</kbd> | Moves cursor focus between hour, minute, second, and AM/PM segments. |
-| <kbd>↑</kbd> / <kbd>↓</kbd> | Increments or decrements active time segment. |
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Increments or decrements active time segment.                        |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Segment | Present on pointer hover. |
-| `[data-focused]` | Segment | Active on keyboard focus. |
+| Attribute        | Target  | Description                                   |
+| :--------------- | :------ | :-------------------------------------------- |
+| `[data-hovered]` | Segment | Present on pointer hover.                     |
+| `[data-focused]` | Segment | Active on keyboard focus.                     |
 | `[data-invalid]` | Control | Set when entered time is outside valid range. |

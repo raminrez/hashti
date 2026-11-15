@@ -1,0 +1,358 @@
+---
+title: Menu
+description: Actionable choice list in a popover, with sections, single and multiple selection, nested submenus, and an overflow-menu helper.
+---
+
+# Menu
+
+A **Menu** presents a list of actions or options in a lightweight popover attached to a trigger. Use it when the choices are commands that act immediately (view, duplicate, archive) or a small set of options the user picks from, rather than a value bound to a form field.
+
+Hashti re-exports React Aria's menu parts and styles them: `MenuTrigger`, `Menu`, `MenuItem`, `MenuSection`, `SubmenuTrigger`, plus React Aria's `Separator` and `Header as SectionHeader`. A small `OverflowMenu` helper wraps the common "⋯" trigger case in a single component.
+
+Menus are for transient choices. For a form value use [`Select`](/docs/components/select); for navigation with persistent structure use a [`Tree`](/docs/components/tree) or [`Navigation Tree`](/docs/components/navigation-tree).
+
+<ComponentPreview title="Menu" description="Action menu with a separator and a destructive item.">
+  <MenuLiveDemo />
+</ComponentPreview>
+
+---
+
+## Import
+
+```tsx
+import {
+  MenuTrigger,
+  Menu,
+  MenuItem,
+  MenuSection,
+  SectionHeader,
+  Separator,
+  SubmenuTrigger,
+  Popover,
+  OverflowMenu,
+} from "@hashti/react";
+```
+
+---
+
+## Anatomy
+
+```tsx
+<MenuTrigger>
+  <Button>Repository actions</Button>
+  <Popover>
+    <Menu onAction={(key) => console.log(key)}>
+      <MenuItem id="view">View details</MenuItem>
+      <Separator />
+      <MenuItem id="delete" data-danger>
+        Delete repository
+      </MenuItem>
+    </Menu>
+  </Popover>
+</MenuTrigger>
+```
+
+`MenuTrigger` expects exactly two children: the trigger and the popover. `Menu` requires an accessible name — pass `aria-label` or `aria-labelledby` unless a `MenuSection` header already labels the whole list.
+
+---
+
+## Examples
+
+### Action Menu
+
+`onAction` receives the activated item's key. Focus returns to the trigger after activation and after <kbd>Escape</kbd>.
+
+```tsx
+import { useState } from "react";
+import { Button, Menu, MenuItem, MenuTrigger, Popover, Separator } from "@hashti/react";
+
+export function ActionMenuExample() {
+  const [lastAction, setLastAction] = useState("None");
+
+  return (
+    <div className="flex items-center gap-4">
+      <MenuTrigger>
+        <Button variant="secondary">Actions</Button>
+        <Popover>
+          <Menu onAction={(key) => setLastAction(String(key))}>
+            <MenuItem id="view">View details</MenuItem>
+            <MenuItem id="duplicate">Duplicate repository</MenuItem>
+            <MenuItem id="archive">Archive repository</MenuItem>
+            <Separator />
+            <MenuItem id="delete" data-danger>
+              Delete repository
+            </MenuItem>
+          </Menu>
+        </Popover>
+      </MenuTrigger>
+      <span className="text-sm text-neutral-500">Selected: {lastAction}</span>
+    </div>
+  );
+}
+```
+
+`data-danger` is the supported way to mark a destructive item: it is a plain data attribute styled by the menu rules (`--hashti-support-error` text and tinted hover), not a prop.
+
+### Sections and Disabled Items
+
+Wrap groups in `MenuSection` with a `SectionHeader` (the `Header` part, aliased) and separate groups with `Separator`. `disabledKeys` disables items by key while keeping them announced.
+
+```tsx
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuSection,
+  MenuTrigger,
+  Popover,
+  SectionHeader,
+  Separator,
+} from "@hashti/react";
+
+export function SectionedMenuExample() {
+  return (
+    <MenuTrigger>
+      <Button>File menu</Button>
+      <Popover>
+        <Menu aria-label="File" disabledKeys={["paste"]}>
+          <MenuSection>
+            <SectionHeader>Edit options</SectionHeader>
+            <MenuItem id="cut">Cut</MenuItem>
+            <MenuItem id="copy">Copy</MenuItem>
+            <MenuItem id="paste">Paste</MenuItem>
+          </MenuSection>
+          <Separator />
+          <MenuSection>
+            <SectionHeader>Export formats</SectionHeader>
+            <MenuItem id="pdf">Download PDF</MenuItem>
+            <MenuItem id="csv">Export CSV</MenuItem>
+          </MenuSection>
+        </Menu>
+      </Popover>
+    </MenuTrigger>
+  );
+}
+```
+
+### Single and Multiple Selection
+
+`selectionMode="single"` renders items as `menuitemradio`, `selectionMode="multiple"` as `menuitemcheckbox` with `aria-checked`. Selection state is controlled with `selectedKeys` or uncontrolled with `defaultSelectedKeys` (a `RangeValue`/`Iterable<Key>`).
+
+```tsx
+import { useState } from "react";
+import { Button, Menu, MenuItem, MenuTrigger, Popover, type Selection } from "@hashti/react";
+
+export function SelectionMenuExample() {
+  const [sort, setSort] = useState<Selection>(new Set(["date"]));
+  const [columns, setColumns] = useState<Selection>(new Set(["status", "reviewer"]));
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      <MenuTrigger>
+        <Button variant="secondary">Sort by</Button>
+        <Popover>
+          <Menu
+            aria-label="Sort order"
+            selectionMode="single"
+            selectedKeys={sort}
+            onSelectionChange={setSort}
+          >
+            <MenuItem id="name">Sort by name</MenuItem>
+            <MenuItem id="date">Sort by date</MenuItem>
+            <MenuItem id="priority">Sort by priority</MenuItem>
+          </Menu>
+        </Popover>
+      </MenuTrigger>
+
+      <MenuTrigger>
+        <Button variant="secondary">Visible columns</Button>
+        <Popover>
+          <Menu
+            aria-label="Visible columns"
+            selectionMode="multiple"
+            selectedKeys={columns}
+            onSelectionChange={setColumns}
+          >
+            <MenuItem id="status">Status column</MenuItem>
+            <MenuItem id="reviewer">Reviewer column</MenuItem>
+            <MenuItem id="branch">Branch column</MenuItem>
+          </Menu>
+        </Popover>
+      </MenuTrigger>
+    </div>
+  );
+}
+```
+
+### Submenus
+
+Nest a `SubmenuTrigger` around a `MenuItem` plus its own `Popover` + `Menu`. Submenus open on hover after a short delay, on click, and with <kbd>→</kbd>.
+
+```tsx
+import { Button, Menu, MenuItem, MenuTrigger, Popover, SubmenuTrigger } from "@hashti/react";
+
+export function SubmenuExample() {
+  return (
+    <MenuTrigger>
+      <Button>Tools</Button>
+      <Popover>
+        <Menu aria-label="Tools">
+          <MenuItem id="quick">Quick search</MenuItem>
+          <SubmenuTrigger>
+            <MenuItem id="more">More tools</MenuItem>
+            <Popover>
+              <Menu aria-label="More tools">
+                <MenuItem id="profiler">Memory profiler</MenuItem>
+                <MenuItem id="network">Network inspector</MenuItem>
+                <MenuItem id="audit">Lighthouse audit</MenuItem>
+              </Menu>
+            </Popover>
+          </SubmenuTrigger>
+          <MenuItem id="settings">Preferences</MenuItem>
+        </Menu>
+      </Popover>
+    </MenuTrigger>
+  );
+}
+```
+
+### Keyboard Shortcuts in Items
+
+There is no shortcut prop — render a `Keyboard` inside the item. It is presentational; you still have to bind the key handler yourself.
+
+```tsx
+import { Button, Keyboard, Menu, MenuItem, MenuTrigger, Popover } from "@hashti/react";
+
+export function ShortcutMenuExample() {
+  return (
+    <MenuTrigger>
+      <Button>Edit</Button>
+      <Popover>
+        <Menu aria-label="Edit">
+          <MenuItem id="cut">
+            Cut <Keyboard>⌘X</Keyboard>
+          </MenuItem>
+          <MenuItem id="copy">
+            Copy <Keyboard>⌘C</Keyboard>
+          </MenuItem>
+        </Menu>
+      </Popover>
+    </MenuTrigger>
+  );
+}
+```
+
+### Overflow Menu
+
+`OverflowMenu` renders the ghost icon trigger, popover, and `Menu` for you. It requires an `aria-label` for the trigger button.
+
+```tsx
+import { MenuItem, OverflowMenu, Separator } from "@hashti/react";
+
+export function OverflowMenuExample() {
+  return (
+    <OverflowMenu aria-label="Instance actions" onAction={(key) => console.log(key)}>
+      <MenuItem id="restart">Restart instance</MenuItem>
+      <MenuItem id="snapshot">Create snapshot</MenuItem>
+      <Separator />
+      <MenuItem id="terminate" data-danger>
+        Terminate instance
+      </MenuItem>
+    </OverflowMenu>
+  );
+}
+```
+
+---
+
+## Props Reference
+
+### `Menu`
+
+| Prop                  | Type                               | Default                                            | Description                                                          |
+| :-------------------- | :--------------------------------- | :------------------------------------------------- | :------------------------------------------------------------------- |
+| `selectionMode`       | `'none' \| 'single' \| 'multiple'` | `'none'`                                           | Item role and toggle behaviour.                                      |
+| `selectedKeys`        | `'all' \| Iterable<Key>`           | —                                                  | Controlled selection.                                                |
+| `defaultSelectedKeys` | `'all' \| Iterable<Key>`           | —                                                  | Uncontrolled initial selection.                                      |
+| `onSelectionChange`   | `(keys: Selection) => void`        | —                                                  | Fired when selection changes.                                        |
+| `disabledKeys`        | `Iterable<Key>`                    | —                                                  | Keys that cannot be activated or selected.                           |
+| `onAction`            | `(key: Key) => void`               | —                                                  | Fired when an item is activated.                                     |
+| `onClose`             | `() => void`                       | —                                                  | Fired when the menu requests to close.                               |
+| `shouldCloseOnSelect` | `boolean`                          | `true` for `none`/`single`, `false` for `multiple` | Whether activation closes the menu.                                  |
+| `aria-label`          | `string`                           | —                                                  | Accessible name for the menu (use when no section header labels it). |
+
+### `MenuItem`
+
+| Prop          | Type      | Default | Description                                                            |
+| :------------ | :-------- | :------ | :--------------------------------------------------------------------- |
+| `id`          | `Key`     | —       | Identity used by `onAction`, `disabledKeys`, and selection.            |
+| `textValue`   | `string`  | —       | Overrides the string used for typeahead and screen readers.            |
+| `isDisabled`  | `boolean` | `false` | Disables this item.                                                    |
+| `href`        | `string`  | —       | Renders the item as a link.                                            |
+| `data-danger` | `boolean` | —       | Data attribute, not a prop: use `data-danger` for destructive styling. |
+
+### `OverflowMenu`
+
+| Prop               | Type                   | Default | Description                                          |
+| :----------------- | :--------------------- | :------ | :--------------------------------------------------- |
+| `aria-label`       | `string`               | —       | **Required.** Accessible name for the trigger.       |
+| `children`         | `ReactNode`            | —       | `MenuItem`, `MenuSection`, and `Separator` children. |
+| `onAction`         | `(key: Key) => void`   | —       | Forwarded to the inner `Menu`.                       |
+| `disabledKeys`     | `Iterable<Key>`        | —       | Forwarded to the inner `Menu`.                       |
+| `size`             | `'sm' \| 'md' \| 'lg'` | `'md'`  | Trigger button size.                                 |
+| `className`        | `string`               | —       | Class names for the trigger button.                  |
+| `popoverClassName` | `string`               | —       | Class names for the popover.                         |
+
+### What this component does not do
+
+- **No menu-level accessible name by default.** `Menu` renders whatever `aria-label` you give it; only `MenuSection` headers label groups.
+- **No automatic positioning tuning.** The popover uses React Aria's collision handling with Hashti surface styling; you do not get per-item placement options beyond `Popover`'s own props.
+- **No shortcut binding.** `Keyboard` inside an item is a visual hint only.
+- **No custom item rendering.** `MenuItem` renders text plus whatever children you put inside; there is no slot system for leading icons beyond inserting your own element.
+
+---
+
+## Accessibility
+
+- The popover contains a `role="menu"`; items are `menuitem`, `menuitemradio` (`selectionMode="single"`), or `menuitemcheckbox` (`selectionMode="multiple"`) with `aria-checked`.
+- Sections render as `role="group"` labelled by their `SectionHeader`; `Separator` renders `role="separator"`.
+- Opening the menu moves focus to the first (or selected) item. Closing with <kbd>Escape</kbd> or by activating an item returns focus to the trigger; <kbd>Tab</kbd> moves focus out of the menu, which closes it.
+- Focus is contained inside the open menu until it closes; disabled items stay in the list but are announced as unavailable (`aria-disabled`) and skipped by arrow navigation.
+- Submenus are labelled by their parent item and get their own focus management; <kbd>←</kbd> returns focus to the parent item.
+- The trigger must have a name. With a text `Button` this is automatic; with `OverflowMenu` you must pass `aria-label`.
+
+---
+
+## Keyboard Interactions
+
+| Key                                 | Action                                                    |
+| :---------------------------------- | :-------------------------------------------------------- |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | On the trigger, opens the menu; on an item, activates it. |
+| <kbd>↓</kbd> / <kbd>↑</kbd>         | Moves focus to the next or previous item.                 |
+| <kbd>Home</kbd> / <kbd>End</kbd>    | Moves focus to the first or last item.                    |
+| Letter keys                         | Typeahead to the next item matching the typed text.       |
+| <kbd>→</kbd>                        | Opens the focused item's submenu.                         |
+| <kbd>←</kbd>                        | Closes the submenu and returns focus to its parent item.  |
+| <kbd>Escape</kbd>                   | Closes the menu and returns focus to the trigger.         |
+| <kbd>Space</kbd> (selection mode)   | Toggles a `menuitemcheckbox`; selects a `menuitemradio`.  |
+
+---
+
+## WAI-ARIA & Data Attributes
+
+| Attribute            | Target   | Description                              |
+| :------------------- | :------- | :--------------------------------------- |
+| `[data-selected]`    | MenuItem | Present when the item is selected.       |
+| `[data-focused]`     | MenuItem | Present when the item has focus.         |
+| `[data-hovered]`     | MenuItem | Present on pointer hover.                |
+| `[data-disabled]`    | MenuItem | Present when the item is disabled.       |
+| `[data-danger]`      | MenuItem | Destructive styling; add it yourself.    |
+| `[data-has-submenu]` | MenuItem | Present on an item that opens a submenu. |
+
+---
+
+## Related
+
+- [Select](/docs/components/select) — menu-like list bound to a value.
+- [Popover](/docs/components/popover) — the surface a menu is rendered into.
+- [Command Palette](/docs/components/command-palette) — searchable command list.

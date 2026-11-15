@@ -1,11 +1,10 @@
 "use client";
 
-import type { Ref } from "react";
+import type { ReactNode, Ref } from "react";
 import {
   SearchField as RACSearchField,
   SearchFieldContext,
   Input,
-  useSlottedContext,
   type SearchFieldProps as RACSearchFieldProps,
   type InputProps,
 } from "react-aria-components";
@@ -15,7 +14,8 @@ import {
   FieldGroupInput,
   FieldButton,
   FieldControl,
-  useFieldPresentation,
+  useFieldAnatomy,
+  fieldClassName,
   fieldParts,
   type FieldContentProps,
   type FieldPresentationProps,
@@ -36,20 +36,18 @@ function SearchFieldRoot({
   isOptional,
   ...props
 }: SearchFieldRootProps) {
-  const context = useSlottedContext(SearchFieldContext, props.slot);
-  const presentation = useFieldPresentation(
+  const anatomy = useFieldAnatomy(
     { ...props, status, statusVariant, isOptional },
-    context?.["aria-describedby"],
-    "attached",
+    SearchFieldContext as Parameters<typeof useFieldAnatomy>[1],
   );
   return (
     <RACSearchField
       {...props}
-      {...presentation.props}
+      {...anatomy.props}
       data-size={size}
-      className={classes("hashti-field hashti-search-field hashti-field hashti-search-field", className)}
+      className={classes(fieldClassName("search-field"), className)}
     >
-      {presentation.wrap(children, context?.children)}
+      {anatomy.wrap(children, anatomy.slotted?.children as ReactNode)}
     </RACSearchField>
   );
 }

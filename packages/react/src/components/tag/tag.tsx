@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  type CSSProperties,
-  type ComponentPropsWithRef,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { type CSSProperties, type ComponentPropsWithRef, type ReactNode, type Ref } from "react";
 import {
   TagGroup as RACTagGroup,
   TagList,
@@ -41,8 +36,9 @@ export function Tag({ color = "gray", size = "md", className, style, ...props }:
   return (
     <span
       {...props}
+      data-slot="tag"
       data-size={size}
-      className={["hashti-tag hashti-tag", className].filter(Boolean).join(" ")}
+      className={["hashti-tag", className].filter(Boolean).join(" ")}
       style={
         {
           "--tag-background": `var(--hashti-tag-background-${color}, var(--hashti-tag-background-${color}))`,
@@ -63,10 +59,7 @@ export interface TagGroupProps<T> extends Omit<RACTagGroupProps, "children"> {
 
 export function TagGroup<T>({ label, items, children, className, ...props }: TagGroupProps<T>) {
   return (
-    <RACTagGroup
-      {...props}
-      className={["hashti-tag-group hashti-tag-group", className].filter(Boolean).join(" ")}
-    >
+    <RACTagGroup {...props} className={["hashti-tag-group", className].filter(Boolean).join(" ")}>
       {label && <Label>{label}</Label>}
       <TagList items={items}>{children}</TagList>
     </RACTagGroup>
@@ -79,7 +72,7 @@ export interface FilterTagProps extends RACTagProps {
 
 export function FilterTag({ className, children, ...props }: FilterTagProps) {
   return (
-    <RACTag {...props} className={classes("hashti-filter-tag hashti-filter-tag", className)}>
+    <RACTag {...props} className={classes("hashti-filter-tag", className)}>
       {composeRenderProps(children, (content, { allowsRemoving }) => (
         <>
           {content}

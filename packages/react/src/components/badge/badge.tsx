@@ -1,13 +1,10 @@
 "use client";
 
-import {
-  type ComponentPropsWithRef,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { type ComponentPropsWithRef, type ReactNode, type Ref } from "react";
 import { cx } from "../../utils";
 
-export type BadgeKind = "danger" | "success" | "warning" | "info" | "primary" | "neutral" | "secondary";
+export type BadgeKind =
+  "danger" | "success" | "warning" | "info" | "primary" | "neutral" | "secondary";
 export type BadgePlacement =
   | "top-end"
   | "top-start"
@@ -70,11 +67,7 @@ export function Badge({
       role="status"
       data-kind={kind}
       data-placement={normalizedPlacement}
-      className={cx(
-        "hashti-badge",
-        isDotMode ? "hashti-badge--dot" : undefined,
-        className,
-      )}
+      className={cx("hashti-badge", isDotMode ? "hashti-badge--dot" : undefined, className)}
     >
       {!isDot && displayContent}
     </span>
@@ -117,9 +110,11 @@ export function AILabel({
         aria-label={revertLabel}
         data-revert-active="true"
         onClick={onRevert}
-        className={cx("hashti-ai-label hashti-ai-label", className)}
+        className={cx("hashti-ai-label", className)}
       >
-        <span className="hashti-ai-icon" aria-hidden="true">↺</span>
+        <span className="hashti-ai-icon" aria-hidden="true">
+          ↺
+        </span>
         <span>{label}</span>
       </button>
     );
@@ -129,11 +124,12 @@ export function AILabel({
     <span
       ref={ref as Ref<HTMLSpanElement>}
       role="status"
-      className={cx("hashti-ai-label hashti-ai-label", className)}
+      className={cx("hashti-ai-label", className)}
     >
-      <span className="hashti-ai-icon" aria-hidden="true">✦</span>
+      <span className="hashti-ai-icon" aria-hidden="true">
+        ✦
+      </span>
       <span>{label}</span>
     </span>
   );
 }
-

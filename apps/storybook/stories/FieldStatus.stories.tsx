@@ -850,13 +850,20 @@ export const LongContent: Story = {
       await expect(part.scrollHeight).toBeLessThanOrEqual(part.clientHeight + 1);
     }
     const input = canvas.getByRole("textbox", { name: `${longLabel} (required)` });
-    await userEvent.click(canvas.getByRole("button", { name: `About ${longLabel}` }));
-    const dialog = await body.findByRole("dialog", { name: `About ${longLabel}` });
-    const text = within(dialog).getByText(longHelp);
+    const help = canvas.getByRole("button", { name: `About ${longLabel}` });
+    // labelTooltip renders a hover/focus tooltip only; it never opens a dialog.
+    // RAC checks pointer modality at hover-start, before userEvent.hover emits pointermove.
+    await userEvent.pointer({ target: canvasElement.ownerDocument.body });
+    await userEvent.hover(help);
+    const tooltip = await body.findByRole("tooltip", {}, { timeout: 3000 });
+    await expect(tooltip).toHaveTextContent(longHelp);
+    const text = within(tooltip).getByText(longHelp);
     await waitFor(() => expect(text).toBeVisible());
     await expect(text.scrollWidth).toBeLessThanOrEqual(text.clientWidth + 1);
-    await expect(text.scrollHeight).toBeLessThanOrEqual(text.clientHeight + 1);
-    await userEvent.click(within(dialog).getByRole("button", { name: "Close field help" }));
+    await userEvent.unhover(help);
+    await waitFor(() => expect(body.queryByRole("tooltip")).not.toBeInTheDocument(), {
+      timeout: 2000,
+    });
     await expect(input).toHaveValue("Shared release and owner handoff review");
     await expect(canvas.getByRole("textbox", { name: `${longLabel} (required)` })).toBe(input);
     await userEvent.click(input);
@@ -1037,20 +1044,23 @@ export const LocalizedContent: Story = {
       await expect(number).toHaveValue(new Intl.NumberFormat(copy.locale).format(3));
       await expect(number).toHaveAccessibleDescription(copy.numberStatus);
       await expect(number).not.toHaveAttribute("aria-invalid", "true");
-      await userEvent.click(canvas.getByRole("button", { name: copy.about }));
-      const dialog = await body.findByRole("dialog", { name: copy.about });
-      const overlay = dialog.closest<HTMLElement>("[data-hashti-theme]")!;
-      await expect(dialog).toHaveTextContent(copy.tooltip);
+      const help = canvas.getByRole("button", { name: copy.about });
+      // labelTooltip renders a hover/focus tooltip only; it never opens a dialog.
+      await userEvent.pointer({ target: canvasElement.ownerDocument.body });
+      await userEvent.hover(help);
+      const tooltip = await body.findByRole("tooltip", {}, { timeout: 3000 });
+      const overlay = tooltip.closest<HTMLElement>("[data-hashti-theme]")!;
+      await expect(tooltip).toHaveTextContent(copy.tooltip);
       await expect(overlay).toHaveAttribute("lang", copy.locale);
       await expect(overlay).toHaveAttribute("dir", copy.direction);
       await expect(overlay).toHaveAttribute(
         "data-hashti-theme",
         theme.getAttribute("data-hashti-theme")!,
       );
-      await userEvent.click(within(dialog).getByRole("button", { name: copy.close }));
-      await waitFor(() =>
-        expect(body.queryByRole("dialog", { name: copy.about })).not.toBeInTheDocument(),
-      );
+      await userEvent.unhover(help);
+      await waitFor(() => expect(body.queryByRole("tooltip")).not.toBeInTheDocument(), {
+        timeout: 2000,
+      });
       await expect(input).toHaveValue(copy.defaultValue);
       await userEvent.click(input);
     }

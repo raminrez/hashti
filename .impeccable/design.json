@@ -539,18 +539,28 @@
     "motion": [
       {
         "name": "duration-fast-01",
-        "value": "70ms",
-        "purpose": "Inherited productive popover exit."
+        "value": "130ms",
+        "purpose": "Hover, colour, and release feedback."
       },
       {
         "name": "duration-fast-02",
-        "value": "110ms",
-        "purpose": "Inherited control feedback, switch movement, and popover entrance."
+        "value": "175ms",
+        "purpose": "Popover, menu, and tooltip entrance."
+      },
+      {
+        "name": "duration-moderate-01",
+        "value": "230ms",
+        "purpose": "Tab, panel, and disclosure changes."
       },
       {
         "name": "duration-moderate-02",
-        "value": "240ms",
-        "purpose": "Inherited modal and backdrop entrance."
+        "value": "310ms",
+        "purpose": "Modal and backdrop entrance."
+      },
+      {
+        "name": "duration-slow-01",
+        "value": "410ms",
+        "purpose": "Large surface entrance."
       },
       {
         "name": "ease-standard-productive",

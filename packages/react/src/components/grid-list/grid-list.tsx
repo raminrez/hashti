@@ -1,19 +1,17 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { createContext, useContext, type ReactNode, type Ref } from "react";
 import {
   GridList as RACGridList,
   GridListItem as RACGridListItem,
+  GridListSection as RACGridListSection,
+  GridListHeader as RACGridListHeader,
   GridListLoadMoreItem as RACGridListLoadMoreItem,
   Button as RACButton,
-  Checkbox as RACCheckbox,
   type GridListProps as RACGridListProps,
   type GridListItemProps as RACGridListItemProps,
+  type GridListSectionProps as RACGridListSectionProps,
+  type GridListHeaderProps as RACGridListHeaderProps,
   type GridListLoadMoreItemProps as RACGridListLoadMoreItemProps,
   type GridListRenderProps,
   type GridListItemRenderProps,
@@ -23,6 +21,7 @@ import {
   type CheckboxRenderProps,
 } from "react-aria-components";
 import { classes, cx, type ControlSize } from "../../utils";
+import { Checkbox } from "../checkbox";
 import { Icon } from "../../icons";
 
 export interface GridListContextValue {
@@ -32,8 +31,10 @@ export interface GridListContextValue {
 
 export const GridListContext = createContext<GridListContextValue>({});
 
-export interface GridListRootProps<T extends object>
-  extends Omit<RACGridListProps<T>, "className"> {
+export interface GridListRootProps<T extends object> extends Omit<
+  RACGridListProps<T>,
+  "className"
+> {
   size?: ControlSize;
   variant?: "flat" | "bordered" | "card";
   className?: string | ((values: GridListRenderProps) => string);
@@ -51,9 +52,11 @@ export function GridListRoot<T extends object>({
   ref,
   ...props
 }: GridListRootProps<T>) {
-  const resolvedEmptyState = renderEmptyState ?? (emptyContent ? () => (
-    <div className="hashti-grid-list-empty-content">{emptyContent}</div>
-  ) : undefined);
+  const resolvedEmptyState =
+    renderEmptyState ??
+    (emptyContent
+      ? () => <div className="hashti-grid-list-empty-content">{emptyContent}</div>
+      : undefined);
 
   return (
     <GridListContext.Provider value={{ size, variant }}>
@@ -65,11 +68,12 @@ export function GridListRoot<T extends object>({
         data-variant={variant}
         className={classes(
           cx(
+            "react-aria-GridList",
             "hashti-grid-list",
             `hashti-grid-list--${size}`,
-            `hashti-grid-list--${variant}`
+            `hashti-grid-list--${variant}`,
           ),
-          className
+          className,
         )}
       >
         {children}
@@ -78,8 +82,10 @@ export function GridListRoot<T extends object>({
   );
 }
 
-export interface GridListItemProps<T extends object = object>
-  extends Omit<RACGridListItemProps<T>, "className"> {
+export interface GridListItemProps<T extends object = object> extends Omit<
+  RACGridListItemProps<T>,
+  "className"
+> {
   className?: string | ((values: GridListItemRenderProps) => string);
   ref?: Ref<HTMLDivElement>;
 }
@@ -100,14 +106,51 @@ export function GridListItem<T extends object = object>({
       data-variant={variant}
       className={classes(
         cx(
+          "react-aria-GridListItem",
           "hashti-grid-list-item",
-          size && `hashti-grid-list-item--${size}`
+          size && `hashti-grid-list-item--${size}`,
         ),
-        className
+        className,
       )}
     >
       {children}
     </RACGridListItem>
+  );
+}
+
+export interface GridListSectionProps<
+  T extends object = object,
+> extends RACGridListSectionProps<T> {
+  title?: ReactNode;
+  className?: string;
+}
+
+export function GridListSection<T extends object = object>({
+  className,
+  title,
+  children,
+  ...props
+}: GridListSectionProps<T>) {
+  return (
+    <RACGridListSection
+      {...props}
+      className={cx("react-aria-GridListSection", "hashti-grid-list-section", className)}
+    >
+      {title && <RACGridListHeader className="hashti-grid-list-header">{title}</RACGridListHeader>}
+      {children as any}
+    </RACGridListSection>
+  );
+}
+
+export interface GridListHeaderProps extends RACGridListHeaderProps {
+  className?: string;
+}
+
+export function GridListHeader({ className, children, ...props }: GridListHeaderProps) {
+  return (
+    <RACGridListHeader className={cx("hashti-grid-list-header", className)} {...props}>
+      {children as any}
+    </RACGridListHeader>
   );
 }
 
@@ -140,13 +183,13 @@ export interface GridListCheckboxProps extends Omit<RACCheckboxProps, "className
 
 export function GridListCheckbox({ className, children, ...props }: GridListCheckboxProps) {
   return (
-    <RACCheckbox
+    <Checkbox
       slot="selection"
       {...props}
       className={classes("hashti-grid-list-checkbox", className)}
     >
       {children}
-    </RACCheckbox>
+    </Checkbox>
   );
 }
 
@@ -155,19 +198,14 @@ export interface GridListEmptyStateProps {
   className?: string;
 }
 
-export function GridListEmptyState({
-  children,
-  className,
-}: GridListEmptyStateProps) {
-  return (
-    <div className={cx("hashti-grid-list-empty-state", className)}>
-      {children}
-    </div>
-  );
+export function GridListEmptyState({ children, className }: GridListEmptyStateProps) {
+  return <div className={cx("hashti-grid-list-empty-state", className)}>{children}</div>;
 }
 
-export interface GridListLoadMoreProps
-  extends Omit<RACGridListLoadMoreItemProps, "className" | "children"> {
+export interface GridListLoadMoreProps extends Omit<
+  RACGridListLoadMoreItemProps,
+  "className" | "children"
+> {
   id?: string;
   label?: string;
   isError?: boolean;
@@ -236,6 +274,8 @@ function GridListDefault<T extends object>(props: GridListProps<T>) {
 export const GridList = Object.assign(GridListDefault, {
   Root: GridListRoot,
   Item: GridListItem,
+  Section: GridListSection,
+  Header: GridListHeader,
   DragHandle: GridListDragHandle,
   Checkbox: GridListCheckbox,
   EmptyState: GridListEmptyState,

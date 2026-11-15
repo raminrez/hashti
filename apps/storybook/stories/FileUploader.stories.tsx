@@ -1,11 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
-import {
-  FileUploader,
-  Theme,
-  useTheme,
-} from "@hashti/react";
+import { FileUploader, Theme, useTheme } from "@hashti/react";
 import "./feedback.css";
 
 const meta = {
@@ -29,7 +25,10 @@ type Story = StoryObj<typeof meta>;
 
 function PlaygroundExample() {
   const [files, setFiles] = useState<File[]>([
-    new File(["cert-content"], "tls-bundle-production.crt", { type: "application/x-x509-ca-cert", lastModified: 1731100000000 }),
+    new File(["cert-content"], "tls-bundle-production.crt", {
+      type: "application/x-x509-ca-cert",
+      lastModified: 1731100000000,
+    }),
   ]);
 
   return (
@@ -69,8 +68,14 @@ export const Playground: Story = {
 
 function MultiFileWithLimitsExample() {
   const [files, setFiles] = useState<File[]>([
-    new File(["doc-1"], "architecture-diagram.png", { type: "image/png", lastModified: 1731100000000 }),
-    new File(["doc-2"], "compliance-audit-2026.pdf", { type: "application/pdf", lastModified: 1731100000000 }),
+    new File(["doc-1"], "architecture-diagram.png", {
+      type: "image/png",
+      lastModified: 1731100000000,
+    }),
+    new File(["doc-2"], "compliance-audit-2026.pdf", {
+      type: "application/pdf",
+      lastModified: 1731100000000,
+    }),
   ]);
 
   return (
@@ -84,9 +89,10 @@ function MultiFileWithLimitsExample() {
         </div>
         <FileUploader
           label="Verification documents"
-          description="Attach up to 10 files (PDF, PNG, JPG). Maximum 25 MB per file."
+          description="Attach PDF, PNG, or JPG files. Maximum 25 MB per file."
           acceptedFileTypes={[".pdf", ".png", ".jpg", ".jpeg"]}
           allowsMultiple
+          maxSize={25 * 1024 * 1024}
           files={files}
           onFilesChange={setFiles}
         />
@@ -109,7 +115,10 @@ export const MultiFileWithLimits: Story = {
 
 function DisabledStateExample() {
   const sampleFiles = [
-    new File(["read-only"], "immutable-system-manifest.json", { type: "application/json", lastModified: 1731100000000 }),
+    new File(["read-only"], "immutable-system-manifest.json", {
+      type: "application/json",
+      lastModified: 1731100000000,
+    }),
   ];
 
   return (
@@ -146,7 +155,10 @@ export const DisabledState: Story = {
 function LongContentAndLocalesExample() {
   const { theme } = useTheme();
   const [faFiles, setFaFiles] = useState<File[]>([
-    new File(["contract"], "قرارداد-سرویس-ابری-۱۴۰۵.pdf", { type: "application/pdf", lastModified: 1731100000000 }),
+    new File(["contract"], "قرارداد-سرویس-ابری-۱۴۰۵.pdf", {
+      type: "application/pdf",
+      lastModified: 1731100000000,
+    }),
   ]);
 
   return (
@@ -155,9 +167,7 @@ function LongContentAndLocalesExample() {
         <div dir="rtl" className="feedback-card">
           <div>
             <h4 className="feedback-card-title">بارگذاری مدارک و مستندات سازمانی</h4>
-            <p className="feedback-card-description">
-              ارسال مدارک حقوقی و فنی در محیط راست‌به‌چپ
-            </p>
+            <p className="feedback-card-description">ارسال مدارک حقوقی و فنی در محیط راست‌به‌چپ</p>
           </div>
           <FileUploader
             label="فایل قرارداد همکاری"

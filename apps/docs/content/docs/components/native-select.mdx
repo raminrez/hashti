@@ -1,0 +1,249 @@
+---
+title: Native Select
+description: Styled native browser select for lightweight option pickers, page-size controls, and mobile sheets.
+---
+
+# Native Select
+
+**NativeSelect** renders a real `<select>` element styled to match the design system. It is the right choice when you want zero client-side JavaScript for the picker itself: the browser, the operating system, and the mobile wheel all handle the interaction, so it works before hydration and inside native sheets.
+
+Use it for short, static option lists — page sizes, currencies, regions, simple enum settings. When options need filtering, sections with descriptions, or custom item rendering, use [`Select`](/docs/components/select) or [`ComboBox`](/docs/components/combobox) instead.
+
+<ComponentPreview title="NativeSelect" description="Page-size picker with a description.">
+  <NativeSelectLiveDemo />
+</ComponentPreview>
+
+---
+
+## Import
+
+```tsx
+import { NativeSelect } from "@hashti/react";
+```
+
+---
+
+## Anatomy
+
+```tsx
+<NativeSelect label="Items per page" description="Choose how many records are shown on each page.">
+  <option value="10">10 items</option>
+</NativeSelect>
+```
+
+```
+<div class="hashti-field hashti-native-select">   root
+  <label for="…">Items per page</label>
+  <div class="hashti-native-select-control">
+    <select aria-describedby="…-description">    native control
+    <svg aria-hidden="true">                     chevron
+  </div>
+  <span class="hashti-description">              description
+  <span class="hashti-error-message">            error message
+```
+
+The chevron is decorative (`aria-hidden`, not focusable) because the native control already has `appearance: none` styling on top of it.
+
+---
+
+## Examples
+
+### Basic
+
+Options are plain `<option>` children, exactly as with a native select. Values arrive as strings from `onChange`.
+
+```tsx
+import { useState } from "react";
+import { NativeSelect } from "@hashti/react";
+
+export function BasicNativeSelectExample() {
+  const [currency, setCurrency] = useState("iranian-rial");
+
+  return (
+    <NativeSelect
+      label="Billing currency"
+      description="Used for all invoices on this workspace."
+      value={currency}
+      onChange={(event) => setCurrency(event.target.value)}
+    >
+      <option value="iranian-rial">Iranian Rial (IRR)</option>
+      <option value="euro">Euro (EUR)</option>
+      <option value="usd">US Dollar (USD)</option>
+    </NativeSelect>
+  );
+}
+```
+
+### Sizes
+
+Three heights: `sm` (32px), `md` (40px, default), `lg` (48px).
+
+```tsx
+import { NativeSelect } from "@hashti/react";
+
+export function NativeSelectSizesExample() {
+  return (
+    <div className="flex flex-col gap-4">
+      <NativeSelect size="sm" label="Small (32px)" defaultValue="a">
+        <option value="a">Compact density</option>
+      </NativeSelect>
+      <NativeSelect size="md" label="Medium (40px, default)" defaultValue="a">
+        <option value="a">Default density</option>
+      </NativeSelect>
+      <NativeSelect size="lg" label="Large (48px)" defaultValue="a">
+        <option value="a">Spacious density</option>
+      </NativeSelect>
+    </div>
+  );
+}
+```
+
+### Description and Error Together
+
+Unlike most Hashti fields, the description stays visible while the error is shown, so guidance and recovery are readable at the same time. The error text is what flips the control to `aria-invalid` and applies the invalid border.
+
+```tsx
+import { useState } from "react";
+import { NativeSelect } from "@hashti/react";
+
+export function ErrorStateExample() {
+  const [cluster, setCluster] = useState("");
+
+  return (
+    <NativeSelect
+      label="Deployment target"
+      description="Only clusters with an active release train are listed."
+      errorMessage={cluster ? undefined : "Select a cluster before deploying."}
+      value={cluster}
+      onChange={(event) => setCluster(event.target.value)}
+    >
+      <option value="" disabled>
+        Select a cluster…
+      </option>
+      <option value="prod">Production</option>
+      <option value="stage">Staging</option>
+    </NativeSelect>
+  );
+}
+```
+
+### Disabled
+
+`disabled` is the native attribute; it is forwarded to the `<select>` and mirrored as `[data-disabled]` on the root for styling.
+
+```tsx
+import { NativeSelect } from "@hashti/react";
+
+export function DisabledNativeSelectExample() {
+  return (
+    <NativeSelect label="Locked datacenter" disabled defaultValue="locked">
+      <option value="locked">Government isolated region (classified)</option>
+    </NativeSelect>
+  );
+}
+```
+
+### Grouped Options
+
+`<optgroup>` works as it does natively. The group label is part of the accessible option group name in browsers that support it.
+
+```tsx
+import { NativeSelect } from "@hashti/react";
+
+export function OptGroupExample() {
+  return (
+    <NativeSelect label="Region and zone" defaultValue="us-east-1a">
+      <optgroup label="United States">
+        <option value="us-east-1a">US East (N. Virginia)</option>
+        <option value="us-west-2b">US West (Oregon)</option>
+      </optgroup>
+      <optgroup label="Europe">
+        <option value="eu-west-1c">Europe (Ireland)</option>
+        <option value="eu-central-1a">Europe (Frankfurt)</option>
+      </optgroup>
+    </NativeSelect>
+  );
+}
+```
+
+### Inside Pagination
+
+`Pagination` uses `NativeSelect` at `size="sm"` for its page-size control — a good reference for the intended density and copy.
+
+```tsx
+import { Pagination } from "@hashti/react";
+
+export function PaginationExample() {
+  return <Pagination totalItems={240} page={2} pageSize={10} onPageChange={() => {}} />;
+}
+```
+
+---
+
+## Props Reference
+
+`NativeSelect` forwards every native `<select>` prop (`name`, `required`, `disabled`, `multiple`, `autoFocus`, `form`, `aria-*`, `data-*`) plus the following:
+
+| Prop           | Type                   | Default | Description                                                             |
+| :------------- | :--------------------- | :------ | :---------------------------------------------------------------------- |
+| `label`        | `ReactNode`            | —       | **Required.** Rendered as a real `<label for>` for the select.          |
+| `size`         | `'sm' \| 'md' \| 'lg'` | `'md'`  | Control height. Sets `[data-size]` on the root.                         |
+| `description`  | `ReactNode`            | —       | Helper text, linked via `aria-describedby`.                             |
+| `errorMessage` | `ReactNode`            | —       | Error text, linked via `aria-describedby`; also implies `aria-invalid`. |
+| `value`        | `string`               | —       | Controlled value (native strings).                                      |
+| `defaultValue` | `string`               | —       | Uncontrolled initial value.                                             |
+| `onChange`     | `(event) => void`      | —       | Native change handler; read `event.target.value`.                       |
+| `disabled`     | `boolean`              | `false` | Native `disabled`, mirrored as `[data-disabled]`.                       |
+| `className`    | `string`               | —       | Extra class names on the root wrapper.                                  |
+
+### What this component does not do
+
+- **No required/optional wording.** There is no `isRequired` or `isOptional`; use the native `required` attribute and say “required” in the label or description yourself.
+- **No controlled validation state.** `isInvalid` does not exist: the invalid look comes from `errorMessage`, and `aria-invalid` defaults to `Boolean(errorMessage)` unless you pass your own.
+- **No live region on the error.** The error `<span>` has no `role="alert"`; if the message appears after an async check, announce it yourself.
+- **`[data-invalid]` is keyed off `errorMessage` only.** If you pass `aria-invalid` without `errorMessage`, screen readers get the invalid state but the border styling does not change.
+- **Options are native only.** No custom item rendering, icons, or descriptions inside options.
+
+---
+
+## Accessibility
+
+- Native form semantics throughout: `role="combobox"` comes from the browser's `<select>`, keyboard interaction is the platform's own (typeahead, arrow keys, <kbd>Alt</kbd>+<kbd>↓</kbd> to open on some platforms), and mobile gets the OS picker.
+- The label is a genuine `<label for>`; today the component always renders one (`label` is required, no `aria-label`-only mode).
+- `description` and `errorMessage` ids are appended to any `aria-describedby` you pass, so caller-provided descriptions are preserved.
+- The chevron icon is `aria-hidden` and `pointer-events: none`, so it never becomes a stray focus stop.
+- There is no custom focus trapping or overlay: nothing is trapped, because nothing is rendered outside the select.
+
+---
+
+## Keyboard Interactions
+
+Handled by the browser and operating system. Typical desktop behaviour:
+
+| Key                                 | Action                                  |
+| :---------------------------------- | :-------------------------------------- |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | Opens the option list.                  |
+| <kbd>↑</kbd> / <kbd>↓</kbd>         | Moves between options when open.        |
+| <kbd>Home</kbd> / <kbd>End</kbd>    | Jumps to the first or last option.      |
+| <kbd>Tab</kbd>                      | Closes the list and moves focus onward. |
+| Typing letters                      | Typeahead to the next matching option.  |
+
+---
+
+## WAI-ARIA & Data Attributes
+
+| Attribute          | Target | Description                                             |
+| :----------------- | :----- | :------------------------------------------------------ |
+| `[data-size]`      | Root   | `sm`, `md`, or `lg`.                                    |
+| `[data-disabled]`  | Root   | Present when `disabled` is set.                         |
+| `[data-invalid]`   | Root   | Present when `errorMessage` is set.                     |
+| `aria-invalid`     | Select | Defaults to `Boolean(errorMessage)`, overridable.       |
+| `aria-describedby` | Select | Joins your value, the description id, and the error id. |
+
+---
+
+## Related
+
+- [Select](/docs/components/select) — custom-rendered listbox with sections, icons, and multi-select.
+- [ComboBox](/docs/components/combobox) — filterable option list.
+- [Pagination](/docs/components/pagination) — page navigation that uses NativeSelect for page size.

@@ -9,10 +9,12 @@ An **Autocomplete** component manages real-time query filtering across a collect
 
 It is ideal for **global search bars, command palettes, URL address bars, live tag suggestions, and lookup forms**.
 
-<ComponentPreview title="Autocomplete" description="Typeahead filtering with accessible popover collection.">
+<ComponentPreview
+  title="Autocomplete"
+  description="Typeahead filtering with accessible popover collection."
+>
   <AutocompleteLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -29,9 +31,7 @@ import { Autocomplete, SearchField, ListBox } from "@hashti/react";
 ```tsx
 <Autocomplete filter={myFilterFunction}>
   <SearchField label="Search Documentation" />
-  <ListBox items={matchingResults}>
-    {(item) => <ListBox.Item>{item.title}</ListBox.Item>}
-  </ListBox>
+  <ListBox items={matchingResults}>{(item) => <ListBox.Item>{item.title}</ListBox.Item>}</ListBox>
 </Autocomplete>
 ```
 
@@ -114,11 +114,11 @@ export function CustomFilterExample() {
 
 ### Autocomplete
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `filter` | `(itemText: string, inputValue: string) => boolean` | *Prefix match* | Custom filtering callback evaluated for each suggestion item. |
-| `children` | `ReactNode` | — | The input field (TextField, SearchField) and suggestion target (ListBox). |
-| `className` | `string` | — | Custom CSS class applied to the autocomplete container. |
+| Prop        | Type                                                | Default        | Description                                                               |
+| :---------- | :-------------------------------------------------- | :------------- | :------------------------------------------------------------------------ |
+| `filter`    | `(itemText: string, inputValue: string) => boolean` | _Prefix match_ | Custom filtering callback evaluated for each suggestion item.             |
+| `children`  | `ReactNode`                                         | —              | The input field (TextField, SearchField) and suggestion target (ListBox). |
+| `className` | `string`                                            | —              | Custom CSS class applied to the autocomplete container.                   |
 
 ---
 
@@ -128,21 +128,22 @@ export function CustomFilterExample() {
 - **Arrow Key Delegation**: Pressing <kbd>↓</kbd> or <kbd>↑</kbd> inside the search input immediately shifts active focus down into the suggestions list.
 - **Escape Key Handling**: Pressing <kbd>Esc</kbd> clears the filter query or closes the suggestions list while restoring focus to the input.
 - **Screen Reader Announcements**: Live region announces the number of matching search results when query updates.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Navigates through suggested matching items. |
-| <kbd>Enter</kbd> | Selects highlighted suggestion and populates input. |
-| <kbd>Esc</kbd> | Closes suggestion list. |
+| Key                         | Action                                              |
+| :-------------------------- | :-------------------------------------------------- |
+| <kbd>↓</kbd> / <kbd>↑</kbd> | Navigates through suggested matching items.         |
+| <kbd>Enter</kbd>            | Selects highlighted suggestion and populates input. |
+| <kbd>Esc</kbd>              | Closes suggestion list.                             |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Suggestion Item | Present on pointer hover. |
+| Attribute         | Target          | Description                           |
+| :---------------- | :-------------- | :------------------------------------ |
+| `[data-hovered]`  | Suggestion Item | Present on pointer hover.             |
 | `[data-selected]` | Suggestion Item | Set on currently selected suggestion. |

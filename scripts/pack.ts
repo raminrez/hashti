@@ -6,7 +6,7 @@ const destination = resolve(root, "dist/packages");
 await mkdir(destination, { recursive: true });
 const packages = [];
 
-for (const name of ["tokens", "react"]) {
+for (const name of ["tokens", "react", "agent"]) {
   const folder = resolve(root, `packages/${name}`);
   if (!(await Bun.file(`${folder}/dist/index.d.ts`).exists()))
     throw new Error("Run bun run build before packing the libraries.");

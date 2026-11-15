@@ -17,15 +17,39 @@ import {
 } from "@hashti/react";
 
 const ARCH_ITEMS = [
-  { id: "1", element: "Darvazeh", role: "Portal Threshold", material: "Baked Brick & Stucco", status: "Active" },
-  { id: "2", element: "Hashti", role: "Octagonal Vestibule", material: "Masonry & Zenithal Dome", status: "Active" },
-  { id: "3", element: "Dalan", role: "Indirect Corridor", material: "Clay Plaster", status: "Active" },
-  { id: "4", element: "Hayati", role: "Courtyard Garden", material: "Turquoise Basin", status: "Operational" },
+  {
+    id: "1",
+    element: "Darvazeh",
+    role: "Portal Threshold",
+    material: "Baked Brick & Stucco",
+    status: "Active",
+  },
+  {
+    id: "2",
+    element: "Hashti",
+    role: "Octagonal Vestibule",
+    material: "Masonry & Zenithal Dome",
+    status: "Active",
+  },
+  {
+    id: "3",
+    element: "Dalan",
+    role: "Indirect Corridor",
+    material: "Clay Plaster",
+    status: "Active",
+  },
+  {
+    id: "4",
+    element: "Hayati",
+    role: "Courtyard Garden",
+    material: "Turquoise Basin",
+    status: "Operational",
+  },
 ];
 
 export function TableLiveDemo() {
   return (
-    <div className="w-full max-w-xl overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800">
+    <div className="w-full max-w-xl overflow-x-auto rounded-xl border border-neutral-200 dark:border-neutral-800">
       <Table aria-label="Architectural Components Table" selectionMode="multiple">
         <TableHeader>
           <Column isRowHeader>Element</Column>
@@ -57,7 +81,12 @@ export function TableBatchActionsLiveDemo() {
         onClearSelection={() => setSelectedCount(0)}
         actions={[
           { key: "export", label: "Export Telemetry", onAction: () => alert("Exported") },
-          { key: "lock", label: "Lock Thresholds", onAction: () => alert("Locked"), tone: "danger" },
+          {
+            key: "lock",
+            label: "Lock Thresholds",
+            onAction: () => alert("Locked"),
+            tone: "danger",
+          },
         ]}
       />
       <div className="p-4 text-xs text-neutral-500 text-center border border-dashed border-neutral-300 dark:border-neutral-700 rounded-xl mt-2">
@@ -71,11 +100,7 @@ export function PaginationLiveDemo() {
   const [page, setPage] = useState(2);
   return (
     <div className="flex flex-col items-center gap-3">
-      <Pagination
-        currentPage={page}
-        totalPages={8}
-        onPageChange={setPage}
-      />
+      <Pagination currentPage={page} totalPages={8} onPageChange={setPage} />
       <span className="text-xs text-neutral-500 font-mono">Viewing page {page} of 8</span>
     </div>
   );
@@ -131,7 +156,7 @@ export function StructuredListLiveDemo() {
         </StructuredListRow>
         <StructuredListRow>
           <span className="font-medium text-neutral-900 dark:text-white">Accent Glaze</span>
-          <span className="font-mono text-xs text-[#08BDBA]">#08BDBA (Turquoise)</span>
+          <span className="font-mono text-xs text-[var(--hashti-focus)]">#365CCB (Focus blue)</span>
         </StructuredListRow>
       </StructuredList>
     </div>

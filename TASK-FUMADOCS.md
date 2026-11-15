@@ -1,11 +1,13 @@
 # Hashti Design System — Fumadocs Astro Documentation Website
 
 ## Objective
+
 Build a complete, high-performance documentation website for **Hashti Design System** (`hashti.raminrez.dev`) using **Fumadocs**, **Astro**, and **React**.
 
 ---
 
 ## 1. Official Documentation Reference & Prerequisites
+
 - **Framework**: Astro (latest) + React (`@astrojs/react`, `react`, `react-dom`)
 - **Fumadocs Packages**:
   ```sh
@@ -19,17 +21,15 @@ Build a complete, high-performance documentation website for **Hashti Design Sys
 ## 2. Configuration & Setup Architecture
 
 ### `astro.config.mjs`
+
 ```js
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-import fumadocs from '@fumadocs/astro';
-import react from '@astrojs/react';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+import fumadocs from "@fumadocs/astro";
+import react from "@astrojs/react";
 
 export default defineConfig({
-  integrations: [
-    react(),
-    fumadocs({ components: './src/components/mdx.tsx' }),
-  ],
+  integrations: [react(), fumadocs({ components: "./src/components/mdx.tsx" })],
   vite: {
     plugins: [tailwindcss()],
   },
@@ -37,20 +37,22 @@ export default defineConfig({
 ```
 
 ### `src/styles/global.css`
+
 ```css
-@import 'tailwindcss';
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
 
 /* Import Hashti tokens & component styles */
-@import '@cinder/tokens/dist/tokens.css';
-@import '@cinder/react/dist/styles.css';
+@import "@cinder/tokens/dist/tokens.css";
+@import "@cinder/react/dist/styles.css";
 ```
 
 ### Content Collections (`src/content.config.ts`)
+
 ```ts
-import { defineCollection } from 'astro:content';
-import { metaLoader, pageLoader } from '@fumadocs/astro/loaders';
+import { defineCollection } from "astro:content";
+import { metaLoader, pageLoader } from "@fumadocs/astro/loaders";
 
 export const collections = {
   docs: defineCollection({ loader: pageLoader() }),
@@ -59,23 +61,25 @@ export const collections = {
 ```
 
 ### Source Loader (`src/lib/source.ts`)
+
 ```ts
-import { getCollection } from 'astro:content';
-import { loader } from 'fumadocs-core/source';
-import { toFumadocsSource } from '@fumadocs/astro/source';
+import { getCollection } from "astro:content";
+import { loader } from "fumadocs-core/source";
+import { toFumadocsSource } from "@fumadocs/astro/source";
 
 export const source = loader({
-  source: toFumadocsSource(await getCollection('docs'), await getCollection('meta')),
-  baseUrl: '/docs',
+  source: toFumadocsSource(await getCollection("docs"), await getCollection("meta")),
+  baseUrl: "/docs",
 });
 ```
 
 ### MDX Wrapper & React Islands
+
 - `src/components/mdx.tsx`:
   ```tsx
-  import defaultMdxComponents from 'fumadocs-ui/mdx';
-  import { DocsBody } from 'fumadocs-ui/layouts/docs/page';
-  import type { MDXComponents } from 'mdx/types';
+  import defaultMdxComponents from "fumadocs-ui/mdx";
+  import { DocsBody } from "fumadocs-ui/layouts/docs/page";
+  import type { MDXComponents } from "mdx/types";
 
   export function getMDXComponents(components?: MDXComponents) {
     return {
@@ -88,14 +92,19 @@ export const source = loader({
   ```
 - `src/components/provider.tsx`:
   ```tsx
-  import { navigate } from 'astro:transitions/client';
-  import type { ReactNode } from 'react';
-  import { RootProvider } from 'fumadocs-ui/provider/astro';
-  import SearchDialog from '@/components/search';
+  import { navigate } from "astro:transitions/client";
+  import type { ReactNode } from "react";
+  import { RootProvider } from "fumadocs-ui/provider/astro";
+  import SearchDialog from "@/components/search";
 
   export function Provider({ pathname, params, children }: any) {
     return (
-      <RootProvider pathname={pathname} params={params} navigate={navigate} search={{ SearchDialog }}>
+      <RootProvider
+        pathname={pathname}
+        params={params}
+        navigate={navigate}
+        search={{ SearchDialog }}
+      >
         {children}
       </RootProvider>
     );
@@ -112,8 +121,8 @@ export const source = loader({
     SearchDialogInput,
     SearchDialogList,
     SearchDialogOverlay,
-  } from 'fumadocs-ui/components/dialog/search';
-  import { useStaticSearch } from 'fumadocs-core/search/client';
+  } from "fumadocs-ui/components/dialog/search";
+  import { useStaticSearch } from "fumadocs-core/search/client";
 
   export default function DefaultSearchDialog(props: any) {
     const search = useStaticSearch();
@@ -134,11 +143,11 @@ export const source = loader({
   ```
 - `src/components/docs.tsx`:
   ```tsx
-  import { useFumadocsLoader } from 'fumadocs-core/source/client';
-  import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-  import { DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/docs/page';
-  import { Provider } from '@/components/provider';
-  import { baseOptions } from '@/lib/layout.shared';
+  import { useFumadocsLoader } from "fumadocs-core/source/client";
+  import { DocsLayout } from "fumadocs-ui/layouts/docs";
+  import { DocsDescription, DocsPage, DocsTitle } from "fumadocs-ui/layouts/docs/page";
+  import { Provider } from "@/components/provider";
+  import { baseOptions } from "@/lib/layout.shared";
 
   export function Docs({ tree, title, description, toc, children, ...props }: any) {
     const data = useFumadocsLoader({ tree });
@@ -157,18 +166,18 @@ export const source = loader({
   ```
 - `src/lib/layout.shared.tsx`:
   ```tsx
-  import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+  import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
   export function baseOptions(): BaseLayoutProps {
     return {
       nav: {
-        title: 'Hashti Design System',
+        title: "Hashti Design System",
       },
       links: [
-        { text: 'Documentation', url: '/docs' },
-        { text: 'Components', url: '/docs/components' },
-        { text: 'Brandbook', url: 'https://hashti.raminrez.dev/hashti-brandbook.html' },
-        { text: 'GitHub', url: 'https://github.com/raminrez/hashti' },
+        { text: "Documentation", url: "/docs" },
+        { text: "Components", url: "/docs/components" },
+        { text: "Brandbook", url: "https://hashti.raminrez.dev/hashti-brandbook.html" },
+        { text: "GitHub", url: "https://github.com/raminrez/hashti" },
       ],
     };
   }
@@ -232,11 +241,11 @@ export const source = loader({
   ```
 - `src/pages/api/search.ts`:
   ```ts
-  import type { APIRoute } from 'astro';
-  import { createFromSource } from 'fumadocs-core/search/server';
-  import { source } from '@/lib/source';
+  import type { APIRoute } from "astro";
+  import { createFromSource } from "fumadocs-core/search/server";
+  import { source } from "@/lib/source";
 
-  const server = createFromSource(source, { language: 'english' });
+  const server = createFromSource(source, { language: "english" });
   export const GET: APIRoute = () => server.staticGET();
   ```
 
@@ -270,6 +279,7 @@ export const source = loader({
 ---
 
 ## 4. Execution Workflow
+
 1. Initialize the Astro app in `apps/docs-astro/` (or root as desired).
 2. Configure Astro, Fumadocs, Tailwind 4, and content collections.
 3. Launch parallel subagents to generate all MDX documentation content across foundations and component categories.

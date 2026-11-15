@@ -14,16 +14,17 @@ Universal access and international equity are core foundations of Hashti Design 
 Hashti is engineered to satisfy the rigorous criteria of **WCAG 2.2 Level AAA**:
 
 ### Enhanced Contrast Ratios (7:1 Minimum)
+
 - **Body Text:** Standard WCAG AA requires a 4.5:1 contrast ratio. Hashti enforces a minimum **7:1 contrast ratio** for all body text, labels, and critical indicators against their respective canvas and layer backgrounds.
 - **Large Text & Headings:** Contrast exceeds **4.5:1** across all 8 themes.
 - **Interactive UI Components & Focus Indicators:** Exceed **3:1** against adjacent backgrounds to ensure buttons, toggles, borders, and input rings are unmistakable.
 
-| Element | WCAG AA Requirement | Hashti AAA Standard | Light Theme Value | Dark Theme Value |
-| :--- | :--- | :--- | :--- | :--- |
-| **Body & Text** | 4.5:1 | **≥ 7.0:1** | Obsidian on Chalk (21:1) | Chalk on Ink (19.8:1) |
-| **Secondary / Muted** | 3.0:1 | **≥ 4.8:1** | `#606674` on `#FFFFFF` (5.1:1) | `#B1B6C3` on `#18191D` (7.2:1) |
-| **Focus Rings** | 3.0:1 | **≥ 4.5:1** | Cobalt `#365CCB` (6.2:1) | Azure `#A9BDFF` (7.8:1) |
-| **Error Status** | 3.0:1 | **≥ 7.0:1** | Ruby `#AA2735` (7.3:1) | Coral `#FFACB3` (8.1:1) |
+| Element               | WCAG AA Requirement | Hashti AAA Standard | Light Theme Value              | Dark Theme Value               |
+| :-------------------- | :------------------ | :------------------ | :----------------------------- | :----------------------------- |
+| **Body & Text**       | 4.5:1               | **≥ 7.0:1**         | Obsidian on Chalk (21:1)       | Chalk on Ink (19.8:1)          |
+| **Secondary / Muted** | 3.0:1               | **≥ 4.8:1**         | `#606674` on `#FFFFFF` (5.1:1) | `#B1B6C3` on `#18191D` (7.2:1) |
+| **Focus Rings**       | 3.0:1               | **≥ 4.5:1**         | Cobalt `#365CCB` (6.2:1)       | Azure `#A9BDFF` (7.8:1)        |
+| **Error Status**      | 3.0:1               | **≥ 7.0:1**         | Ruby `#AA2735` (7.3:1)         | Coral `#FFACB3` (8.1:1)        |
 
 ---
 
@@ -32,7 +33,9 @@ Hashti is engineered to satisfy the rigorous criteria of **WCAG 2.2 Level AAA**:
 Built on **React Aria Components**, every interactive primitive follows W3C WAI-ARIA authoring practices with zero gaps:
 
 ### Focus Rings (`:focus-visible`)
+
 Hashti provides high-contrast, dual-offset focus rings that only appear during keyboard navigation:
+
 ```css
 /* Authentic Hashti focus ring signature */
 :focus-visible {
@@ -42,10 +45,15 @@ Hashti provides high-contrast, dual-offset focus rings that only appear during k
 ```
 
 ### Keyboard Navigation Contracts
-- <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd>: Linear focus movement across interactive tab stops.
-- <kbd>Arrow Keys</kbd>: Roving `tabindex` inside composite widgets (Tabs, Radio Groups, Menus, Toolbars, and GridLists).
-- <kbd>Space</kbd> / <kbd>Enter</kbd>: Activates buttons, toggles checkboxes, and opens dropdown menus.
-- <kbd>Escape</kbd>: Universally dismisses open dialogs, menus, tooltips, and popovers, gracefully returning focus to the trigger element without scrolling the page.
+
+- <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd>: Linear focus movement across interactive tab
+  stops.
+- <kbd>Arrow Keys</kbd>: Roving `tabindex` inside composite widgets (Tabs, Radio Groups, Menus,
+  Toolbars, and GridLists).
+- <kbd>Space</kbd> / <kbd>Enter</kbd>: Activates buttons, toggles checkboxes, and opens dropdown
+  menus.
+- <kbd>Escape</kbd>: Universally dismisses open dialogs, menus, tooltips, and popovers, gracefully
+  returning focus to the trigger element without scrolling the page.
 
 ---
 
@@ -88,6 +96,7 @@ export function PersianForm() {
 ```
 
 ### What Happens Automatically in RTL Mode:
+
 1. **Layout Direction:** Layout flows right-to-left naturally using CSS logical properties (`margin-inline-start`, `padding-inline-end`, `inset-inline`).
 2. **Bidirectional Typography:** Switches automatically to **Vazirmatn**, an open-source Persian typeface optimized for on-screen legibility and balanced Nastaliq proportions.
 3. **Control Mirroring:** Checkbox checkmarks, disclosure chevrons, form action button alignments, and slider thumbs mirror their spatial axes.

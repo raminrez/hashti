@@ -12,11 +12,7 @@ The **TokenField** component provides an editable text area where inline items c
 ## Import
 
 ```tsx
-import {
-  TokenField,
-  TokenFieldInput,
-  TokenFieldToken,
-} from "@hashti/react";
+import { TokenField, TokenFieldInput, TokenFieldToken } from "@hashti/react";
 ```
 
 ## Anatomy & Compound Composition
@@ -117,17 +113,17 @@ export function ValidatedTokenFieldDemo() {
 
 ### TokenField (Convenience)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `label` | `ReactNode` | `undefined` | Field label displayed above input. |
-| `placeholder` | `string` | `undefined` | Input placeholder text when empty. |
-| `description` | `ReactNode` | `undefined` | Helpful caption text rendered beneath field. |
-| `errorMessage` | `ReactNode` | `undefined` | Validation error message displayed when `isInvalid` is true. |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Field size preset. |
-| `multiline` | `boolean` | `false` | Whether the input allows multiple lines of text with expanding height. |
-| `allowsNewlines` | `boolean` | `true` | When multiline is true, whether Shift+Enter or Enter inserts a newline. |
-| `isReadOnly` | `boolean` | `false` | Whether text and tokens are read-only. |
-| `isDisabled` | `boolean` | `false` | Whether input is completely disabled. |
+| Prop             | Type                   | Default     | Description                                                             |
+| :--------------- | :--------------------- | :---------- | :---------------------------------------------------------------------- |
+| `label`          | `ReactNode`            | `undefined` | Field label displayed above input.                                      |
+| `placeholder`    | `string`               | `undefined` | Input placeholder text when empty.                                      |
+| `description`    | `ReactNode`            | `undefined` | Helpful caption text rendered beneath field.                            |
+| `errorMessage`   | `ReactNode`            | `undefined` | Validation error message displayed when `isInvalid` is true.            |
+| `size`           | `"sm" \| "md" \| "lg"` | `"md"`      | Field size preset.                                                      |
+| `multiline`      | `boolean`              | `false`     | Whether the input allows multiple lines of text with expanding height.  |
+| `allowsNewlines` | `boolean`              | `true`      | When multiline is true, whether Shift+Enter or Enter inserts a newline. |
+| `isReadOnly`     | `boolean`              | `false`     | Whether text and tokens are read-only.                                  |
+| `isDisabled`     | `boolean`              | `false`     | Whether input is completely disabled.                                   |
 
 ---
 
@@ -136,22 +132,23 @@ export function ValidatedTokenFieldDemo() {
 - **Token Deletion**: When cursor is placed immediately after a token, pressing `Backspace` selects the token; pressing `Backspace` again removes it.
 - **Arrow Navigation**: Left and Right arrows skip smoothly past token boundaries as atomic units.
 - **Copy & Paste**: Selecting a range of text containing tokens copies both raw text and token identifiers cleanly to the system clipboard.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Backspace</kbd> | Deletes character or removes preceding token chip. |
+| Key                                            | Action                                             |
+| :--------------------------------------------- | :------------------------------------------------- |
+| <kbd>Backspace</kbd>                           | Deletes character or removes preceding token chip. |
 | <kbd>Arrow Left</kbd> / <kbd>Arrow Right</kbd> | Traverses cursor across text and token boundaries. |
-| <kbd>Enter</kbd> | Commits token creation from input suggestion. |
+| <kbd>Enter</kbd>                               | Commits token creation from input suggestion.      |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Token Chip | Present on pointer hover over chip. |
-| `[data-focused]` | Token Chip, Input | Present when receiving focus. |
-| `[data-selected]` | Token Chip | Set when token chip is highlighted for deletion. |
+| Attribute         | Target            | Description                                      |
+| :---------------- | :---------------- | :----------------------------------------------- |
+| `[data-hovered]`  | Token Chip        | Present on pointer hover over chip.              |
+| `[data-focused]`  | Token Chip, Input | Present when receiving focus.                    |
+| `[data-selected]` | Token Chip        | Set when token chip is highlighted for deletion. |

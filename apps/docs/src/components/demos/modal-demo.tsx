@@ -18,9 +18,8 @@ export function ModalLiveDemo() {
                 Architectural Threshold Confirmation
               </h3>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                You are transitioning from the exterior street into the octagonal
-                vestibule. The interior environment provides acoustic damping and
-                diffused natural light.
+                You are transitioning from the exterior street into the octagonal vestibule. The
+                interior environment provides acoustic damping and diffused natural light.
               </p>
               <div className="flex justify-end gap-3 pt-3">
                 <Button variant="secondary" onPress={close}>

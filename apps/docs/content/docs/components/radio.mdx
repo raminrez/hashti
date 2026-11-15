@@ -149,10 +149,7 @@ import { RadioGroup, Radio } from "@hashti/react";
 
 export function DisabledRadioDemo() {
   return (
-    <RadioGroup
-      label="Network Protocols"
-      defaultValue="https"
-    >
+    <RadioGroup label="Network Protocols" defaultValue="https">
       <Radio value="https">HTTPS / TLS 1.3 (Enforced)</Radio>
       <Radio value="http" isDisabled>
         HTTP (Plaintext — Deprecated)
@@ -171,31 +168,31 @@ export function DisabledRadioDemo() {
 
 `RadioGroup` extends `RACRadioGroupProps` from `react-aria-components`.
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `label` | `ReactNode` | — | Accessible label for the radio group. |
-| `description` | `ReactNode` | — | Supporting description text displayed under the label. |
-| `errorMessage` | `ReactNode` | — | Error text rendered when `isInvalid` is true. |
-| `value` | `string` | — | Controlled value of the currently selected radio option. |
-| `defaultValue` | `string` | — | Initial selected value for uncontrolled usage. |
-| `onChange` | `(value: string) => void` | — | Callback invoked when the selected option changes. |
-| `orientation` | `'horizontal' \| 'vertical'` | `'vertical'` | Layout direction of the radio options. |
-| `isInvalid` | `boolean` | `false` | Whether the radio group fails validation. |
-| `isDisabled` | `boolean` | `false` | Disables user interaction across the entire group. |
-| `isOptional` | `boolean` | `false` | Displays an optional badge next to the group label. |
-| `color` | `SelectionColor` | `'primary'` | Semantic accent color applied to the checked state. |
+| Prop           | Type                         | Default      | Description                                              |
+| :------------- | :--------------------------- | :----------- | :------------------------------------------------------- |
+| `label`        | `ReactNode`                  | —            | Accessible label for the radio group.                    |
+| `description`  | `ReactNode`                  | —            | Supporting description text displayed under the label.   |
+| `errorMessage` | `ReactNode`                  | —            | Error text rendered when `isInvalid` is true.            |
+| `value`        | `string`                     | —            | Controlled value of the currently selected radio option. |
+| `defaultValue` | `string`                     | —            | Initial selected value for uncontrolled usage.           |
+| `onChange`     | `(value: string) => void`    | —            | Callback invoked when the selected option changes.       |
+| `orientation`  | `'horizontal' \| 'vertical'` | `'vertical'` | Layout direction of the radio options.                   |
+| `isInvalid`    | `boolean`                    | `false`      | Whether the radio group fails validation.                |
+| `isDisabled`   | `boolean`                    | `false`      | Disables user interaction across the entire group.       |
+| `isOptional`   | `boolean`                    | `false`      | Displays an optional badge next to the group label.      |
+| `color`        | `SelectionColor`             | `'primary'`  | Semantic accent color applied to the checked state.      |
 
 ### Radio Props
 
 `Radio` extends `RACRadioProps` from `react-aria-components`.
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `value` | `string` | — | Unique value represented by this radio option. |
-| `isDisabled` | `boolean` | `false` | Disables interaction for this individual option. |
-| `color` | `SelectionColor` | `'primary'` | Semantic color token for the active radio dot. |
-| `children` | `ReactNode` | — | Label or description content rendered alongside the radio circle. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop         | Type             | Default     | Description                                                       |
+| :----------- | :--------------- | :---------- | :---------------------------------------------------------------- |
+| `value`      | `string`         | —           | Unique value represented by this radio option.                    |
+| `isDisabled` | `boolean`        | `false`     | Disables interaction for this individual option.                  |
+| `color`      | `SelectionColor` | `'primary'` | Semantic color token for the active radio dot.                    |
+| `children`   | `ReactNode`      | —           | Label or description content rendered alongside the radio circle. |
+| `className`  | `string`         | —           | Additional CSS class names.                                       |
 
 ---
 
@@ -205,9 +202,12 @@ Hashti's `RadioGroup` strictly complies with the [W3C WAI-ARIA Radio Group Patte
 
 ### Keyboard Navigation & Roving Focus
 
-- <kbd>Tab</kbd>: Moves focus into the radio group to the currently selected option. If none is selected, focus lands on the first enabled option.
-- <kbd>Down Arrow</kbd> / <kbd>Right Arrow</kbd>: Moves focus and selection to the next enabled radio option in the group, wrapping from the last option back to the first.
-- <kbd>Up Arrow</kbd> / <kbd>Left Arrow</kbd>: Moves focus and selection to the previous enabled radio option in the group, wrapping from the first option to the last.
+- <kbd>Tab</kbd>: Moves focus into the radio group to the currently selected option. If none is
+  selected, focus lands on the first enabled option.
+- <kbd>Down Arrow</kbd> / <kbd>Right Arrow</kbd>: Moves focus and selection to the next enabled
+  radio option in the group, wrapping from the last option back to the first.
+- <kbd>Up Arrow</kbd> / <kbd>Left Arrow</kbd>: Moves focus and selection to the previous enabled
+  radio option in the group, wrapping from the first option to the last.
 - <kbd>Space</kbd>: Selects the focused radio button if it was not already selected.
 
 ### ARIA Attributes
@@ -215,24 +215,25 @@ Hashti's `RadioGroup` strictly complies with the [W3C WAI-ARIA Radio Group Patte
 - The container receives `role="radiogroup"` linked via `aria-labelledby` to its `<Label>`.
 - Each option renders `role="radio"` with `aria-checked="true"` or `"false"`.
 - The helper description and error message are programmatically linked via `aria-describedby`, ensuring screen readers announce context when entering the group.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>↓</kbd> / <kbd>→</kbd> | Moves focus and selection to the next radio in the group. |
+| Key                         | Action                                                        |
+| :-------------------------- | :------------------------------------------------------------ |
+| <kbd>↓</kbd> / <kbd>→</kbd> | Moves focus and selection to the next radio in the group.     |
 | <kbd>↑</kbd> / <kbd>←</kbd> | Moves focus and selection to the previous radio in the group. |
-| <kbd>Tab</kbd> | Enters or exits the radio group (single tab stop). |
+| <kbd>Tab</kbd>              | Enters or exits the radio group (single tab stop).            |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Radio | Present on pointer hover. |
-| `[data-focused]` | Radio | Present when receiving focus. |
-| `[data-pressed]` | Radio | Active while pressed. |
-| `[data-selected]` | Radio | Set on the active selected radio option. |
-| `[data-disabled]` | Radio | Present when radio option is disabled. |
+| Attribute         | Target | Description                              |
+| :---------------- | :----- | :--------------------------------------- |
+| `[data-hovered]`  | Radio  | Present on pointer hover.                |
+| `[data-focused]`  | Radio  | Present when receiving focus.            |
+| `[data-pressed]`  | Radio  | Active while pressed.                    |
+| `[data-selected]` | Radio  | Set on the active selected radio option. |
+| `[data-disabled]` | Radio  | Present when radio option is disabled.   |

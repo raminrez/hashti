@@ -77,17 +77,11 @@ export const metadata: Metadata = {
   description: "Built with Hashti Design System",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <body>
-        <Theme theme="frame-light">
-          {children}
-        </Theme>
+        <Theme theme="frame-light">{children}</Theme>
       </body>
     </html>
   );
@@ -145,7 +139,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Theme theme="frame-light">
       <App />
     </Theme>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 

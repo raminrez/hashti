@@ -43,12 +43,7 @@ function PlaygroundExample() {
             Inspect and copy the foundational form integration snippet.
           </p>
         </div>
-        <CodeSnippet
-          label="React login snippet"
-          language="tsx"
-          type="multi"
-          copyable
-        >
+        <CodeSnippet label="React login snippet" language="tsx" type="multi" copyable>
           {sampleTypeScript}
         </CodeSnippet>
       </div>
@@ -62,7 +57,7 @@ export const Playground: Story = {
     const canvas = within(canvasElement);
     const pre = canvas.getByRole("generic", { name: "React login snippet" });
     expect(pre).toBeInTheDocument();
-    expect(pre).toHaveTextContent("import { Button, TextField } from \"@hashti/react\";");
+    expect(pre).toHaveTextContent('import { Button, TextField } from "@hashti/react";');
 
     const copyBtn = canvas.getByRole("button", { name: "Copy react login snippet" });
     expect(copyBtn).toBeInTheDocument();
@@ -80,12 +75,7 @@ function SnippetTypesExample() {
           <h4 className="content-card-title">Single-line Terminal Command</h4>
           <p className="content-card-description">Quick command line invocation.</p>
         </div>
-        <CodeSnippet
-          label="Install package command"
-          language="bash"
-          type="single"
-          copyable
-        >
+        <CodeSnippet label="Install package command" language="bash" type="single" copyable>
           bun add @hashti/react @hashti/tokens
         </CodeSnippet>
       </div>
@@ -153,13 +143,7 @@ function LongContentAndLocalesExample() {
           <h4 className="content-card-title">Long SQL Analytical Query</h4>
           <p className="content-card-description">Complex query demonstrating scroll behavior.</p>
         </div>
-        <CodeSnippet
-          label="Telemetry query"
-          language="sql"
-          type="multi"
-          maxHeight="6rem"
-          copyable
-        >
+        <CodeSnippet label="Telemetry query" language="sql" type="multi" maxHeight="6rem" copyable>
           {`SELECT service_id, cluster_zone, percentile_cont(0.99) WITHIN GROUP (ORDER BY latency_ms) AS p99_latency, count(*) AS total_requests FROM cluster_telemetry_events WHERE timestamp >= NOW() - INTERVAL '24 hours' AND status_code >= 400 GROUP BY service_id, cluster_zone HAVING count(*) > 100 ORDER BY p99_latency DESC;`}
         </CodeSnippet>
       </div>
@@ -173,12 +157,7 @@ function LongContentAndLocalesExample() {
               نمایش دستورات نصب و راه‌اندازی در محیط راست‌به‌چپ
             </p>
           </div>
-          <CodeSnippet
-            label="دستور راه‌اندازی پروژه"
-            language="bash"
-            type="single"
-            copyable
-          >
+          <CodeSnippet label="دستور راه‌اندازی پروژه" language="bash" type="single" copyable>
             git clone https://github.com/cinder/cinder-design-system.git && cd cinder
           </CodeSnippet>
         </div>

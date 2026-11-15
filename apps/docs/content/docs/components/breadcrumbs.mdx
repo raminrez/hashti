@@ -9,10 +9,12 @@ Breadcrumbs provide a secondary, linear navigational hierarchy that shows users 
 
 In Hashti, Breadcrumbs are constructed using semantic ordered lists wrapped in accessible `<nav>` landmarks, automatically marking the terminal page with `aria-current="page"` and handling responsive truncation.
 
-<ComponentPreview title="Breadcrumbs" description="Navigational pathway landmarks with keyboard accessibility.">
+<ComponentPreview
+  title="Breadcrumbs"
+  description="Navigational pathway landmarks with keyboard accessibility."
+>
   <BreadcrumbsLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -70,11 +72,7 @@ export function DynamicBreadcrumbsExample() {
   return (
     <Breadcrumbs>
       {trail.map((item) => (
-        <BreadcrumbItem
-          key={item.id}
-          href={item.href}
-          isCurrent={item.isCurrent}
-        >
+        <BreadcrumbItem key={item.id} href={item.href} isCurrent={item.isCurrent}>
           {item.label}
         </BreadcrumbItem>
       ))}
@@ -93,9 +91,15 @@ import { Breadcrumbs, BreadcrumbItem } from "@hashti/react";
 export function ActionBreadcrumbsExample() {
   return (
     <Breadcrumbs onAction={(key) => console.log("Navigating to step:", key)}>
-      <BreadcrumbItem id="cart" href="#cart">Shopping Cart</BreadcrumbItem>
-      <BreadcrumbItem id="shipping" href="#shipping">Shipping Address</BreadcrumbItem>
-      <BreadcrumbItem id="payment" isCurrent>Payment Method</BreadcrumbItem>
+      <BreadcrumbItem id="cart" href="#cart">
+        Shopping Cart
+      </BreadcrumbItem>
+      <BreadcrumbItem id="shipping" href="#shipping">
+        Shipping Address
+      </BreadcrumbItem>
+      <BreadcrumbItem id="payment" isCurrent>
+        Payment Method
+      </BreadcrumbItem>
     </Breadcrumbs>
   );
 }
@@ -128,21 +132,21 @@ export function TruncatedBreadcrumbsExample() {
 
 ### Breadcrumbs Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `children` | `ReactNode` | **Required** | Nested `<BreadcrumbItem>` elements or render function. |
-| `onAction` | `(key: Key) => void` | — | Callback fired when a breadcrumb item is activated. |
-| `isDisabled` | `boolean` | `false` | Whether the entire breadcrumb trail is disabled. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop         | Type                 | Default      | Description                                            |
+| :----------- | :------------------- | :----------- | :----------------------------------------------------- |
+| `children`   | `ReactNode`          | **Required** | Nested `<BreadcrumbItem>` elements or render function. |
+| `onAction`   | `(key: Key) => void` | —            | Callback fired when a breadcrumb item is activated.    |
+| `isDisabled` | `boolean`            | `false`      | Whether the entire breadcrumb trail is disabled.       |
+| `className`  | `string`             | —            | Additional CSS class names.                            |
 
 ### BreadcrumbItem Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `children` | `ReactNode` | **Required** | The text label or node rendered for this breadcrumb. |
-| `href` | `string` | — | Hyperlink destination. When provided, renders as an interactive link. |
-| `isCurrent` | `boolean` | `false` | Whether this item represents the current page. When `true`, automatically assigns `aria-current="page"` and disables link navigation. |
-| `id` | `Key` | — | Unique identifier for action callbacks. |
+| Prop        | Type        | Default      | Description                                                                                                                           |
+| :---------- | :---------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| `children`  | `ReactNode` | **Required** | The text label or node rendered for this breadcrumb.                                                                                  |
+| `href`      | `string`    | —            | Hyperlink destination. When provided, renders as an interactive link.                                                                 |
+| `isCurrent` | `boolean`   | `false`      | Whether this item represents the current page. When `true`, automatically assigns `aria-current="page"` and disables link navigation. |
+| `id`        | `Key`       | —            | Unique identifier for action callbacks.                                                                                               |
 
 ---
 

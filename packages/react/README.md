@@ -285,7 +285,7 @@ compositions, and customization examples. `docs/relay.md` records the specificat
   `Heading slot="title"` or `aria-label`; Escape restores trigger focus.
 
 The exports include controls, text/number/date fields, selection, tables and other
-collections, tabs, accordion, breadcrumbs, overlays, notifications, files,
+collections, tabs, disclosures, breadcrumbs, overlays, notifications, files,
 pagination, content, layout, and shell primitives. Run the docs for all 45 families.
 
 ### Default and custom field anatomy

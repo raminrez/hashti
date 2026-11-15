@@ -28,10 +28,13 @@ export function CardLiveDemo() {
         </div>
       </div>
       <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Featuring an octagonal transitional vestibule and a central reflecting pool with mineral turquoise tiles.
+        Featuring an octagonal transitional vestibule and a central reflecting pool with mineral
+        turquoise tiles.
       </p>
       <div className="pt-2 flex justify-end">
-        <Button size="sm" variant="secondary">View Details</Button>
+        <Button size="sm" variant="secondary">
+          View Details
+        </Button>
       </div>
     </Card>
   );
@@ -49,7 +52,7 @@ export function TileLiveDemo() {
         </span>
       </Tile>
       <ClickableTile href="#portal" className="p-4">
-        <span className="text-xs font-semibold text-[#08BDBA] uppercase tracking-wider block mb-1">
+        <span className="text-xs font-semibold text-[var(--hashti-focus)] uppercase tracking-wider block mb-1">
           Clickable Tile
         </span>
         <span className="text-sm font-medium text-neutral-900 dark:text-white">
@@ -83,10 +86,7 @@ export function BreadcrumbsLiveDemo() {
 export function CodeSnippetLiveDemo() {
   return (
     <div className="w-full max-w-md">
-      <CodeSnippet
-        type="inline"
-        code="bun add @hashti/react @hashti/tokens"
-      />
+      <CodeSnippet type="inline" code="bun add @hashti/react @hashti/tokens" />
     </div>
   );
 }
@@ -128,9 +128,7 @@ export function KbdLiveDemo() {
 export function LinkLiveDemo() {
   return (
     <div className="flex items-center gap-4 text-sm">
-      <Link href="/docs/getting-started/installation">
-        Installation Guide
-      </Link>
+      <Link href="/docs/getting-started/installation">Installation Guide</Link>
       <Link href="https://github.com/raminrez/hashti" target="_blank">
         GitHub Source &rarr;
       </Link>
@@ -140,12 +138,23 @@ export function LinkLiveDemo() {
 
 export function ToolbarLiveDemo() {
   return (
-    <Toolbar aria-label="Editor Actions" className="p-1.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
-      <Button size="sm" variant="ghost">Bold</Button>
-      <Button size="sm" variant="ghost">Italic</Button>
-      <Button size="sm" variant="ghost">Underline</Button>
+    <Toolbar
+      aria-label="Editor Actions"
+      className="p-1.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900"
+    >
+      <Button size="sm" variant="ghost">
+        Bold
+      </Button>
+      <Button size="sm" variant="ghost">
+        Italic
+      </Button>
+      <Button size="sm" variant="ghost">
+        Underline
+      </Button>
       <Divider orientation="vertical" className="h-5 my-auto mx-1" />
-      <Button size="sm" variant="secondary">Publish</Button>
+      <Button size="sm" variant="secondary">
+        Publish
+      </Button>
     </Toolbar>
   );
 }

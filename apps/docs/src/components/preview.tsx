@@ -36,18 +36,18 @@ export function ComponentPreview({
 
   return (
     <div
-      className={`my-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 overflow-hidden shadow-xs not-prose ${className}`}
+      className={`not-prose my-6 overflow-hidden rounded-[var(--hashti-group-radius)] border border-[var(--hashti-border-subtle)] bg-[var(--hashti-layer-01)] ${className}`}
     >
       {/* Card Header with Title, Description, and Code Actions */}
-      <div className="px-5 py-3.5 border-b border-neutral-200 dark:border-neutral-800 flex flex-wrap items-center justify-between gap-3 bg-neutral-50/70 dark:bg-neutral-900/50">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--hashti-border-subtle)] bg-[var(--hashti-background)] px-5 py-3">
         <div className="flex flex-col gap-0.5 min-w-[200px]">
           {title && (
-            <span className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 font-sans tracking-tight">
+            <span className="text-[var(--hashti-label-01-font-size)] font-semibold text-[var(--hashti-text-primary)]">
               {title}
             </span>
           )}
           {description && (
-            <span className="text-xs text-neutral-500 dark:text-neutral-400">
+            <span className="text-[var(--hashti-helper-text-01-font-size)] text-[var(--hashti-text-secondary)]">
               {description}
             </span>
           )}
@@ -59,10 +59,10 @@ export function ComponentPreview({
             <button
               type="button"
               onClick={() => setShowCode(!showCode)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`inline-flex items-center gap-1.5 rounded-[var(--hashti-control-radius)] border border-[var(--hashti-border-subtle)] px-3 py-1.5 text-xs font-medium text-[var(--hashti-text-secondary)] transition-colors motion-reduce:transition-none ${
                 showCode
-                  ? "bg-[#08BDBA]/15 text-[#08BDBA] border border-[#08BDBA]/30"
-                  : "bg-white dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                  ? "bg-[var(--hashti-layer-selected)] text-[var(--hashti-text-primary)]"
+                  : "bg-[var(--hashti-layer-01)]"
               }`}
               aria-expanded={showCode}
               aria-label={showCode ? "Hide source code" : "Show source code"}
@@ -92,9 +92,7 @@ export function ComponentPreview({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`transition-transform duration-200 ${
-                  showCode ? "rotate-180" : ""
-                }`}
+                className={`transition-transform duration-200 ${showCode ? "rotate-180" : ""}`}
               >
                 <polyline points="6 9 12 15 18 9" />
               </svg>
@@ -104,7 +102,7 @@ export function ComponentPreview({
               <button
                 type="button"
                 onClick={handleCopy}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors shadow-xs active:scale-95"
+                className="inline-flex items-center gap-1.5 rounded-[var(--hashti-control-radius)] bg-[var(--hashti-button-primary)] px-3 py-1.5 text-xs font-medium text-[var(--hashti-text-on-color)] transition-colors motion-reduce:transition-none active:scale-[0.97]"
                 aria-label="Copy source code to clipboard"
               >
                 {copied ? (
@@ -115,14 +113,14 @@ export function ComponentPreview({
                       height="13"
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="#08BDBA"
+                      stroke="currentColor"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    <span className="text-[#08BDBA]">Copied!</span>
+                    <span className="text-[var(--hashti-focus)]">Copied!</span>
                   </>
                 ) : (
                   <>
@@ -150,18 +148,16 @@ export function ComponentPreview({
       </div>
 
       {/* Live Component Preview Arena */}
-      <div className="relative p-8 md:p-10 flex items-center justify-center min-h-[180px] bg-neutral-50/40 dark:bg-neutral-900/20 [background-image:radial-gradient(rgba(8,189,186,0.2)_1px,transparent_1px)] [background-size:16px_16px]">
-        <div className="relative z-10 w-full flex items-center justify-center">
-          {children}
-        </div>
+      <div className="relative p-5 sm:p-8 md:p-10 flex items-center justify-center min-h-[180px] bg-[var(--hashti-background)] [background-image:radial-gradient(var(--hashti-border-subtle)_1px,transparent_1px)] [background-size:16px_16px]">
+        <div className="relative z-10 w-full flex items-center justify-center">{children}</div>
       </div>
 
       {/* Expandable Code Section with comfortable padding */}
       {showCode && effectiveCode && (
-        <div className="border-t border-neutral-200 dark:border-neutral-800 bg-[#0c0c0e] text-neutral-200">
+        <div className="border-t border-[var(--hashti-border-subtle)] bg-[#14161b] text-neutral-200">
           <div className="flex items-center justify-between px-5 py-2.5 border-b border-neutral-800/80 bg-black/40 text-[11px] font-mono text-neutral-400">
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#08BDBA]"></span>
+              <span className="w-2 h-2 rounded-full bg-[var(--hashti-focus)]"></span>
               <span>React JSX</span>
             </span>
             <span>TypeScript</span>

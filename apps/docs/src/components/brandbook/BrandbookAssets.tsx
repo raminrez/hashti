@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Button } from "@hashti/react";
+import { Icon } from "@hashti/react";
 
 interface AssetCard {
   name: string;
@@ -55,80 +57,60 @@ const ASSETS: AssetCard[] = [
 ];
 
 export function BrandbookAssets() {
-  const [downloading, setDownloading] = useState<string | null>(null);
+  const [downloaded, setDownloaded] = useState<string | null>(null);
 
   const handleDownload = (path: string, filename: string) => {
-    setDownloading(filename);
     const link = document.createElement("a");
     link.href = path;
     link.download = filename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    setTimeout(() => setDownloading(null), 1200);
+    setDownloaded(filename);
+    setTimeout(() => setDownloaded(null), 1200);
   };
 
   return (
-    <div className="my-8 not-prose grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="not-prose my-8 grid grid-cols-1 gap-5 md:grid-cols-2">
       {ASSETS.map((asset) => (
         <div
           key={asset.filename}
-          className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+          className="flex flex-col rounded-[var(--hashti-group-radius)] border border-[var(--hashti-border-subtle)] bg-[var(--hashti-layer-01)]"
         >
-          {/* Preview Container */}
-          <div className="relative p-8 min-h-[180px] flex items-center justify-center bg-neutral-50/60 dark:bg-neutral-950/60 border-b border-neutral-200 dark:border-neutral-800 [background-image:radial-gradient(rgba(8,189,186,0.2)_1px,transparent_1px)] [background-size:16px_16px]">
-            <img
-              src={asset.path}
-              alt={asset.name}
-              className="max-h-24 max-w-full object-contain filter drop-shadow-xs transition-transform hover:scale-105"
-            />
-            <span className="absolute top-3 right-3 text-[11px] font-mono px-2 py-0.5 rounded-full bg-neutral-200/70 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">
+          <div className="relative flex min-h-[180px] items-center justify-center border-b border-[var(--hashti-border-subtle)] bg-[var(--hashti-background)] p-6 [background-image:radial-gradient(var(--hashti-border-subtle)_1px,transparent_1px)] [background-size:16px_16px]">
+            <img src={asset.path} alt={asset.name} className="max-h-24 max-w-full object-contain" />
+            <span className="absolute end-3 top-3 rounded-full border border-[var(--hashti-border-subtle)] bg-[var(--hashti-layer-01)] px-2 py-0.5 text-[11px] text-[var(--hashti-text-secondary)]">
               {asset.aspectRatio}
             </span>
           </div>
 
-          {/* Details & Download Bar */}
-          <div className="p-5 flex flex-col gap-3">
-            <div>
-              <div className="flex items-center justify-between">
-                <h4 className="text-base font-bold text-neutral-900 dark:text-white">
+          <div className="flex flex-1 flex-col gap-3 p-5">
+            <div className="flex flex-col gap-1">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h4 className="m-0 text-[var(--hashti-label-01-font-size)] font-semibold text-[var(--hashti-text-primary)]">
                   {asset.name}
                 </h4>
-                <code className="text-xs font-mono text-neutral-500">
+                <span className="text-[var(--hashti-helper-text-01-font-size)] text-[var(--hashti-text-secondary)]">
                   {asset.width}×{asset.height}
-                </code>
+                </span>
               </div>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+              <p className="m-0 text-[var(--hashti-helper-text-01-font-size)] text-[var(--hashti-text-secondary)]">
                 {asset.description}
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-2 border-t border-neutral-100 dark:border-neutral-800">
-              <span className="text-xs font-mono text-neutral-400">
+            <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-[var(--hashti-border-subtle)] pt-3">
+              <span className="text-[var(--hashti-helper-text-01-font-size)] text-[var(--hashti-text-secondary)]">
                 {asset.filename}
               </span>
-              <button
-                type="button"
-                onClick={() => handleDownload(asset.path, asset.filename)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors shadow-xs active:scale-95"
+              <Button
+                variant="secondary"
+                size="md"
+                onPress={() => handleDownload(asset.path, asset.filename)}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                {downloading === asset.filename ? "Downloaded!" : "Download SVG"}
-              </button>
+                <Icon name={downloaded === asset.filename ? "check" : "download"} />
+                {downloaded === asset.filename ? "Downloaded" : "Download SVG"}
+              </Button>
             </div>
           </div>
         </div>

@@ -1,11 +1,6 @@
 import { expect, test, describe } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
-import {
-  GridList,
-  Tree,
-  Collection,
-  Tag,
-} from "@hashti/react";
+import { GridList, Tree, Collection } from "@hashti/react";
 
 describe("Phase 4 Collection Components unit tests", () => {
   describe("GridList suite", () => {
@@ -18,7 +13,7 @@ describe("Phase 4 Collection Components unit tests", () => {
           <GridList.Item id="engineering" textValue="Engineering">
             <span>Engineering Team</span>
           </GridList.Item>
-        </GridList>
+        </GridList>,
       );
       expect(html).toContain("hashti-grid-list");
       expect(html).toContain("hashti-grid-list--bordered");
@@ -34,7 +29,7 @@ describe("Phase 4 Collection Components unit tests", () => {
           <GridList.Item id="1" textValue="Project 1">
             <span>Project 1</span>
           </GridList.Item>
-        </GridList>
+        </GridList>,
       );
       expect(cardHtml).toContain("hashti-grid-list--card");
       expect(cardHtml).toContain("hashti-grid-list--lg");
@@ -45,7 +40,7 @@ describe("Phase 4 Collection Components unit tests", () => {
           <GridList.Item id="1" textValue="Project 1">
             <span>Project 1</span>
           </GridList.Item>
-        </GridList>
+        </GridList>,
       );
       expect(flatHtml).toContain("hashti-grid-list--flat");
       expect(flatHtml).toContain("hashti-grid-list--sm");
@@ -60,7 +55,7 @@ describe("Phase 4 Collection Components unit tests", () => {
             <GridList.Checkbox aria-label="Select Item 1" />
             <span>Item 1 Content</span>
           </GridList.Item>
-        </GridList>
+        </GridList>,
       );
       expect(html).toContain("hashti-grid-list-drag-handle");
       expect(html).toContain("hashti-grid-list-checkbox");
@@ -76,7 +71,7 @@ describe("Phase 4 Collection Components unit tests", () => {
           renderEmptyState={() => <GridList.EmptyState>No items available</GridList.EmptyState>}
         >
           {[]}
-        </GridList>
+        </GridList>,
       );
       expect(html).toContain("hashti-grid-list-empty-state");
       expect(html).toContain("No items available");
@@ -93,7 +88,7 @@ describe("Phase 4 Collection Components unit tests", () => {
               <span>src</span>
             </Tree.Content>
           </Tree.Item>
-        </Tree>
+        </Tree>,
       );
       expect(html).toContain("hashti-tree");
       expect(html).toContain("hashti-tree--guidelines");
@@ -115,7 +110,7 @@ describe("Phase 4 Collection Components unit tests", () => {
               <span>settings</span>
             </Tree.Content>
           </Tree.Item>
-        </Tree>
+        </Tree>,
       );
       expect(html).toContain("hashti-tree--sm");
       expect(html).toContain("hashti-tree-item--sm");
@@ -154,7 +149,7 @@ describe("Phase 4 Collection Components unit tests", () => {
               )}
             </Tree.Item>
           )}
-        </Tree>
+        </Tree>,
       );
       expect(html).toContain("Documents");
       expect(html).toContain("Report.pdf");

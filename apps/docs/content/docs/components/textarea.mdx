@@ -1,0 +1,344 @@
+---
+title: TextArea
+description: Multi-line text input with integrated label, description, status, and error messaging for longer free-form content.
+---
+
+# TextArea
+
+A **TextArea** is a multi-line text field for content that does not fit on one line: review notes, descriptions, reasons, or anything a user needs to compose rather than fill in. It is React Aria's `TextField` root rendering a native `<textarea>`, so editing, selection, undo, and copy/paste behave exactly as the platform does.
+
+Hashti's `TextArea` adds the shared field layout: a label with localised required/optional wording, an optional label help affordance, a description, an error message slot, and a presentation status line. The default export is the convenience API; `TextArea.Root` plus the field parts is the compositional API when you need to rearrange the pieces.
+
+<ComponentPreview title="TextArea" description="Controlled multi-line notes with a description.">
+  <TextAreaLiveDemo />
+</ComponentPreview>
+
+---
+
+## Import
+
+```tsx
+import { TextArea } from "@hashti/react";
+
+// Or the compound parts:
+// TextArea.Root, TextArea.Label, TextArea.Description, TextArea.Input,
+// TextArea.Help, TextArea.ErrorMessage, TextArea.Status, TextArea.StatusIcon
+```
+
+---
+
+## Anatomy
+
+```tsx
+<TextArea label="Review notes" description="Keep the handoff details with this draft." rows={3} />
+```
+
+Which renders as:
+
+```
+<div class="hashti-field hashti-text-area">   <TextArea.Root>
+  <label class="hashti-field__label">        <TextArea.Label>
+  <p class="hashti-field__description">      <TextArea.Description>
+  <textarea class="hashti-field__control">   <TextArea.Input>
+  <div class="hashti-field__help">           <TextArea.Help>
+    <span class="hashti-field__error">       <TextArea.ErrorMessage>
+    <span class="hashti-field__status">      <TextArea.Status>
+```
+
+The same tree composed by hand:
+
+```tsx
+<TextArea.Root name="notes" isRequired>
+  <TextArea.Label>Handoff notes</TextArea.Label>
+  <TextArea.Description>Keep the next review task with this draft.</TextArea.Description>
+  <TextArea.Input rows={3} />
+  <TextArea.Help>
+    <TextArea.ErrorMessage>Add the next review task.</TextArea.ErrorMessage>
+  </TextArea.Help>
+</TextArea.Root>
+```
+
+---
+
+## Examples
+
+### Basic
+
+```tsx
+import { TextArea } from "@hashti/react";
+
+export function BasicTextAreaExample() {
+  return (
+    <TextArea
+      label="Why was this release blocked?"
+      description="Two or three sentences are enough."
+      placeholder="Describe the blocker…"
+      rows={4}
+    />
+  );
+}
+```
+
+`rows` defaults to `4`. The textarea is vertically resizable (`resize: vertical`); horizontal resizing is disabled.
+
+### Controlled and Uncontrolled
+
+`onChange` receives the string value. Use `value` + `onChange` to own the draft, or `defaultValue` to let React Aria hold it until the form submits.
+
+```tsx
+import { useState } from "react";
+import { TextArea } from "@hashti/react";
+
+export function ControlledTextAreaExample() {
+  const [notes, setNotes] = useState("Check the release checklist.");
+
+  return (
+    <div className="flex flex-col gap-2">
+      <TextArea
+        label="Review notes"
+        description="The page owns this draft."
+        value={notes}
+        onChange={setNotes}
+        rows={3}
+      />
+      <p className="text-sm text-neutral-500">{notes.length} characters</p>
+    </div>
+  );
+}
+```
+
+### Required and Optional
+
+`isRequired` adds native required semantics and a localised `(required)` suffix to the label; `isOptional` adds `(optional)`. The wording comes from the active theme locale (English, Persian, Arabic, German), so it is not hardcoded per usage.
+
+```tsx
+import { TextArea } from "@hashti/react";
+
+export function NecessityExample() {
+  return (
+    <div className="flex flex-col gap-4">
+      <TextArea label="Reason for escalation" isRequired rows={2} />
+      <TextArea label="Internal notes" isOptional rows={2} />
+    </div>
+  );
+}
+```
+
+### Read-Only and Disabled
+
+`isReadOnly` keeps the text selectable and copyable while blocking edits. `isDisabled` removes interaction entirely.
+
+```tsx
+import { TextArea } from "@hashti/react";
+
+export function ReadOnlyDisabledExample() {
+  return (
+    <div className="flex flex-col gap-4">
+      <TextArea
+        label="Read-only notes"
+        description="You can select and copy these notes."
+        defaultValue="Keep the handoff checklist."
+        isReadOnly
+        rows={3}
+      />
+      <TextArea
+        label="Unavailable notes"
+        description="These archived notes cannot be edited."
+        defaultValue="The review is archived."
+        isDisabled
+        rows={3}
+      />
+    </div>
+  );
+}
+```
+
+### Validation Errors
+
+`isInvalid` plus `errorMessage` shows the recovery text, wires `aria-describedby` to it, and marks the control `aria-invalid`. `errorMessage` also accepts a render function receiving `validationDetails` and `validationErrors`, which is how you author per-reason recovery text.
+
+```tsx
+import { TextArea } from "@hashti/react";
+
+export function ValidationTextAreaExample() {
+  return (
+    <TextArea
+      label="Correction requested"
+      description="Explain what the next reviewer needs to do."
+      isInvalid
+      errorMessage={({ validationDetails }) =>
+        validationDetails.valueMissing ? "Add the next review task." : "Check the wording."
+      }
+      rows={3}
+    />
+  );
+}
+```
+
+### Presentation Status
+
+`status` is presentation only — it does not participate in validation. It renders an icon and a message line, and is suppressed whenever the field is actually invalid so recovery text wins.
+
+```tsx
+import { TextArea } from "@hashti/react";
+
+export function StatusTextAreaExample() {
+  return (
+    <div className="flex flex-col gap-4">
+      <TextArea
+        label="Deployment notes"
+        defaultValue="Roll out to teh-1 first."
+        status={{ type: "success", message: "Notes saved with the change request." }}
+        rows={2}
+      />
+      <TextArea
+        label="Migration notes"
+        defaultValue="Recreate the trailing index."
+        status={{ type: "warning", message: "This step causes a short read outage." }}
+        rows={2}
+      />
+    </div>
+  );
+}
+```
+
+`statusVariant` moves the message between `"attached"` (below the control, default) and `"detached"`.
+
+### Composition in a Form
+
+Native textarea props (`rows`, `maxLength`, `minLength`, `required`, `autofocus`) belong on `TextArea.Input`. Submitting a `Form` reads the value through `name`.
+
+```tsx
+import { Button, Form, TextArea } from "@hashti/react";
+
+export function ComposedTextAreaExample() {
+  return (
+    <Form aria-label="Handoff" onSubmit={(event) => event.preventDefault()}>
+      <TextArea.Root name="notes" isRequired>
+        <TextArea.Label>Handoff notes</TextArea.Label>
+        <TextArea.Description>Keep the next review task with this draft.</TextArea.Description>
+        <TextArea.Input rows={3} maxLength={500} />
+        <TextArea.Help>
+          <TextArea.ErrorMessage>Add the next review task.</TextArea.ErrorMessage>
+        </TextArea.Help>
+      </TextArea.Root>
+      <Button type="submit">Save notes</Button>
+    </Form>
+  );
+}
+```
+
+### RTL
+
+Wrap the field in a `Theme` with a locale, or set `dir="rtl"`. Text direction, padding, and the label/description order mirror automatically.
+
+```tsx
+import { TextArea, Theme, useTheme } from "@hashti/react";
+
+export function RtlTextAreaExample() {
+  const { theme } = useTheme();
+  return (
+    <Theme theme={theme} locale="fa-IR">
+      <TextArea
+        label="یادداشت‌های مرور"
+        description="یادداشت‌های جلسه را برای مرور بعدی نگه دارید."
+        defaultValue="یادداشت جلسه برای مرور هفتگی تیم تهران."
+        rows={3}
+      />
+    </Theme>
+  );
+}
+```
+
+---
+
+## Props Reference
+
+### `TextArea` (default export)
+
+| Prop            | Type                                                                                                   | Default      | Description                                                                    |
+| :-------------- | :----------------------------------------------------------------------------------------------------- | :----------- | :----------------------------------------------------------------------------- |
+| `label`         | `ReactNode`                                                                                            | —            | Accessible label above the control.                                            |
+| `labelTooltip`  | `ReactNode`                                                                                            | —            | Help content shown next to the label; the info button gets an accessible name. |
+| `description`   | `ReactNode`                                                                                            | —            | Helper text. Placement depends on the active theme (above in Frame themes).    |
+| `errorMessage`  | `ReactNode \| ((state) => ReactNode)`                                                                  | —            | Recovery text, shown when the field is invalid.                                |
+| `placeholder`   | `string`                                                                                               | —            | Placeholder text for the textarea.                                             |
+| `rows`          | `number`                                                                                               | `4`          | Initial visible line count.                                                    |
+| `inputRef`      | `Ref<HTMLTextAreaElement>`                                                                             | —            | Ref to the underlying `<textarea>`.                                            |
+| `status`        | `{ type: 'warning' \| 'error' \| 'success', message?: ReactNode, variant?: 'attached' \| 'detached' }` | —            | Presentation-only status line.                                                 |
+| `statusVariant` | `'attached' \| 'detached'`                                                                             | `'attached'` | Where the status line sits.                                                    |
+| `isOptional`    | `boolean`                                                                                              | `false`      | Renders localised `(optional)` wording next to the label.                      |
+| `value`         | `string`                                                                                               | —            | Controlled value.                                                              |
+| `defaultValue`  | `string`                                                                                               | —            | Uncontrolled initial value.                                                    |
+| `onChange`      | `(value: string) => void`                                                                              | —            | Fires on every keystroke.                                                      |
+| `isRequired`    | `boolean`                                                                                              | `false`      | Native required semantics plus `(required)` wording.                           |
+| `isInvalid`     | `boolean`                                                                                              | `false`      | Invalid state; reveals `errorMessage` and sets `aria-invalid`.                 |
+| `isDisabled`    | `boolean`                                                                                              | `false`      | Removes interaction.                                                           |
+| `isReadOnly`    | `boolean`                                                                                              | `false`      | Keeps text selectable, blocks edits.                                           |
+| `name`          | `string`                                                                                               | —            | Field name used in form submission.                                            |
+| `children`      | `ReactNode`                                                                                            | —            | Replaces the default field layout with your own parts.                         |
+| `className`     | `string`                                                                                               | —            | Extra class names on the root.                                                 |
+
+### Field parts
+
+| Part                    | Renders                   | Notes                                                         |
+| :---------------------- | :------------------------ | :------------------------------------------------------------ |
+| `TextArea.Root`         | field root (`div`)        | Takes all `TextFieldProps` plus the status props.             |
+| `TextArea.Label`        | `<label>`                 | Accepts `labelTooltip`, `isOptional`.                         |
+| `TextArea.Description`  | text                      | Wired to `aria-describedby`.                                  |
+| `TextArea.Input`        | `<textarea>`              | All native and React Aria TextArea props, including `render`. |
+| `TextArea.Help`         | `div`                     | Wrapper around error and status lines.                        |
+| `TextArea.ErrorMessage` | React Aria `FieldError`   | Accepts a render function and `elementType`.                  |
+| `TextArea.Status`       | text                      | Renders the current `status` message.                         |
+| `TextArea.StatusIcon`   | icon                      | Renders the status icon; `aria-hidden`.                       |
+| `TextArea.Control`      | grouped control container | Use with an icon or button next to the input.                 |
+
+### What this component does not do
+
+- **No size variants.** Unlike `TextField`, `TextArea` has no `size` prop — the textarea has one padding and font size. (`text-field.mdx`'s claim that TextArea shares TextField's API including sizes is out of date.)
+- **No auto-grow.** Height changes only through `rows` or the user's vertical resize; there is no content-driven growth.
+- **No character counter.** `maxLength` is enforced by the browser but nothing renders a count.
+
+---
+
+## Accessibility
+
+- **Role**: the control is a native `<textarea>`, exposed as `role="textbox"` with `aria-multiline="true"`.
+- **Labelling**: `label` renders a real `<label for>`; the required/optional suffix is inside the label text, so the accessible name reads e.g. “Handoff notes (required)”.
+- **Descriptions and errors**: `description` and `errorMessage` ids are joined into `aria-describedby`, and the invalid state sets `aria-invalid="true"`.
+- **Label help**: the info button has an accessible name built from a visually hidden “About” prefix plus the label text, translated for English, Persian, Arabic, and German. It opens a tooltip, or a dialog when rich content is provided.
+- **Read-only**: focusable and copyable, matching native behaviour — this is intentional, not an oversight.
+- **Not provided**: no live-region announcement of the character count or status text changes, and no `aria-errormessage` — recovery text is announced via `aria-describedby`.
+
+---
+
+## Keyboard Interactions
+
+| Key                                | Action                                             |
+| :--------------------------------- | :------------------------------------------------- |
+| <kbd>Enter</kbd>                   | Inserts a newline.                                 |
+| <kbd>Tab</kbd>                     | Moves focus to the next control (does not insert). |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd>  | Moves focus backwards.                             |
+| <kbd>Cmd/Ctrl</kbd> + <kbd>A</kbd> | Selects all text.                                  |
+
+---
+
+## WAI-ARIA & Data Attributes
+
+| Attribute                      | Target   | Description                                     |
+| :----------------------------- | :------- | :---------------------------------------------- |
+| `[data-invalid]`               | Root     | Present when the field is invalid.              |
+| `[data-disabled]`              | Root     | Present when `isDisabled` is set.               |
+| `[data-readonly]`              | Root     | Present when `isReadOnly` is set.               |
+| `[data-hashti-status]`         | Root     | `warning`, `error`, or `success` from `status`. |
+| `[data-hashti-status-variant]` | Root     | `attached` or `detached`.                       |
+| `[data-focused]`               | Textarea | Present while focused.                          |
+| `[data-hovered]`               | Textarea | Present on pointer hover.                       |
+
+---
+
+## Related
+
+- [Text Field](/docs/components/text-field) — single-line input.
+- [Form](/docs/components/form) — validation, submission, and field-level errors.
+- [DropZone](/docs/components/dropzone) — file input rather than text.

@@ -5,11 +5,14 @@ description: Small visual counter or status indicator anchored to avatar or icon
 
 # Badge
 
-A compact indicator designed to draw attention to status changes, unread notifications, item quantities, or active states. In Hashti's architectural philosophy, badges function like subtle brass studs (*gol-mikh*) on Persian entrance doors—understated signifiers that communicate status without disrupting structural serenity.
+A compact indicator designed to draw attention to status changes, unread notifications, item quantities, or active states. In Hashti's architectural philosophy, badges function like subtle brass studs (_gol-mikh_) on Persian entrance doors—understated signifiers that communicate status without disrupting structural serenity.
 
 Badges can wrap target elements (such as avatars, buttons, or navigation icons) using anchor placements, or stand alone as autonomous inline status counters.
 
-<ComponentPreview title="Live Interactive Feedback Badges & Tags" description="Explore Hashti badge variants, dismissible tags, and live reactive meter.">
+<ComponentPreview
+  title="Live Interactive Feedback Badges & Tags"
+  description="Explore Hashti badge variants, dismissible tags, and live reactive meter."
+>
   <FeedbackLiveDemo />
 </ComponentPreview>
 
@@ -108,13 +111,27 @@ import { Badge } from "@hashti/react";
 export function BadgeKindsExample() {
   return (
     <div className="flex flex-wrap items-center gap-4">
-      <Badge count={3} kind="danger">Danger</Badge>
-      <Badge count={12} kind="warning">Warning</Badge>
-      <Badge count={8} kind="success">Success</Badge>
-      <Badge count={24} kind="info">Info</Badge>
-      <Badge count={5} kind="primary">Primary</Badge>
-      <Badge count={17} kind="neutral">Neutral</Badge>
-      <Badge count={9} kind="secondary">Secondary</Badge>
+      <Badge count={3} kind="danger">
+        Danger
+      </Badge>
+      <Badge count={12} kind="warning">
+        Warning
+      </Badge>
+      <Badge count={8} kind="success">
+        Success
+      </Badge>
+      <Badge count={24} kind="info">
+        Info
+      </Badge>
+      <Badge count={5} kind="primary">
+        Primary
+      </Badge>
+      <Badge count={17} kind="neutral">
+        Neutral
+      </Badge>
+      <Badge count={9} kind="secondary">
+        Secondary
+      </Badge>
     </div>
   );
 }
@@ -154,17 +171,17 @@ export function PlacementExample() {
 
 ## Props Reference
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `count` | `ReactNode` | — | Numeric value or text displayed inside the badge. When combined with `maxCount`, numeric values exceeding the maximum are capped with a `+` suffix. |
-| `content` | `ReactNode` | — | Alternative alias for `count`. |
-| `maxCount` | `number` | `99` | Maximum threshold before displaying `${maxCount}+`. |
-| `max` | `number` | — | Alias for `maxCount`. |
-| `isDot` | `boolean` | `false` | When `true`, displays a compact dot indicator with no numeric text. Defaults to `true` if no count or content is supplied. |
-| `kind` | `'danger' \| 'success' \| 'warning' \| 'info' \| 'primary' \| 'neutral' \| 'secondary'` | `'danger'` | Semantic color tone applied to the badge background and text. |
-| `placement` | `'top-end' \| 'top-start' \| 'bottom-end' \| 'bottom-start' \| 'top-right' \| 'top-left' \| 'bottom-right' \| 'bottom-left'` | `'top-end'` | Corner anchor placement when wrapping a child element. Directional placements (`*-start`, `*-end`) automatically mirror in RTL environments. |
-| `children` | `ReactNode` | — | The target component (e.g., `Avatar`, `Button`, or `Icon`) anchored by the badge. When omitted, the badge renders as an inline element. |
-| `className` | `string` | — | Optional custom CSS class name applied to the badge element. |
+| Prop        | Type                                                                                                                         | Default     | Description                                                                                                                                         |
+| :---------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `count`     | `ReactNode`                                                                                                                  | —           | Numeric value or text displayed inside the badge. When combined with `maxCount`, numeric values exceeding the maximum are capped with a `+` suffix. |
+| `content`   | `ReactNode`                                                                                                                  | —           | Alternative alias for `count`.                                                                                                                      |
+| `maxCount`  | `number`                                                                                                                     | `99`        | Maximum threshold before displaying `${maxCount}+`.                                                                                                 |
+| `max`       | `number`                                                                                                                     | —           | Alias for `maxCount`.                                                                                                                               |
+| `isDot`     | `boolean`                                                                                                                    | `false`     | When `true`, displays a compact dot indicator with no numeric text. Defaults to `true` if no count or content is supplied.                          |
+| `kind`      | `'danger' \| 'success' \| 'warning' \| 'info' \| 'primary' \| 'neutral' \| 'secondary'`                                      | `'danger'`  | Semantic color tone applied to the badge background and text.                                                                                       |
+| `placement` | `'top-end' \| 'top-start' \| 'bottom-end' \| 'bottom-start' \| 'top-right' \| 'top-left' \| 'bottom-right' \| 'bottom-left'` | `'top-end'` | Corner anchor placement when wrapping a child element. Directional placements (`*-start`, `*-end`) automatically mirror in RTL environments.        |
+| `children`  | `ReactNode`                                                                                                                  | —           | The target component (e.g., `Avatar`, `Button`, or `Icon`) anchored by the badge. When omitted, the badge renders as an inline element.             |
+| `className` | `string`                                                                                                                     | —           | Optional custom CSS class name applied to the badge element.                                                                                        |
 
 ---
 
@@ -174,11 +191,12 @@ export function PlacementExample() {
 - **Screen Reader Announcements**: For standalone dot badges or unlabelled icon wrappers, always supply an `aria-label` on the wrapper or include hidden text (such as `<span className="hashti-visually-hidden">5 unread messages</span>`) so that non-sighted users receive the same contextual information.
 - **High Contrast**: Badge foreground text and background colors meet WCAG 2.2 AA contrast requirements (minimum 4.5:1) in both light and dark themes.
 - **RTL Support**: Using logical placements (`top-end`, `bottom-start`) ensures that badge positions flip correctly when switching between LTR (English) and RTL (Persian, Arabic) locales.
+
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-variant]` | Badge | Visual variant token indicator. |
-| `[data-size]` | Badge | Size token indicator (`sm`, `md`, `lg`). |
+| Attribute        | Target | Description                              |
+| :--------------- | :----- | :--------------------------------------- |
+| `[data-variant]` | Badge  | Visual variant token indicator.          |
+| `[data-size]`    | Badge  | Size token indicator (`sm`, `md`, `lg`). |

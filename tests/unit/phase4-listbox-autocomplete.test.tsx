@@ -19,7 +19,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
           <ListBox.Item id="macos">macOS</ListBox.Item>
           <ListBox.Item id="linux">Linux</ListBox.Item>
           <ListBox.Item id="windows">Windows</ListBox.Item>
-        </ListBox>
+        </ListBox>,
       );
       expect(html).toContain("hashti-listbox");
       expect(html).toContain("hashti-listbox--bordered");
@@ -34,7 +34,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
       const cardHtml = renderToStaticMarkup(
         <ListBox aria-label="Languages" variant="card" size="lg">
           <ListBox.Item id="ts">TypeScript</ListBox.Item>
-        </ListBox>
+        </ListBox>,
       );
       expect(cardHtml).toContain("hashti-listbox--card");
       expect(cardHtml).toContain("hashti-listbox--lg");
@@ -43,7 +43,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
       const flatHtml = renderToStaticMarkup(
         <ListBox aria-label="Languages" variant="flat" size="sm">
           <ListBox.Item id="rs">Rust</ListBox.Item>
-        </ListBox>
+        </ListBox>,
       );
       expect(flatHtml).toContain("hashti-listbox--flat");
       expect(flatHtml).toContain("hashti-listbox--sm");
@@ -60,7 +60,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
           <ListBox.Section title="Vegetables">
             <ListBox.Item id="carrot">Carrot</ListBox.Item>
           </ListBox.Section>
-        </ListBox>
+        </ListBox>,
       );
       expect(html).toContain("hashti-listbox-section");
       expect(html).toContain("hashti-listbox-header");
@@ -78,7 +78,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
             <ListBox.Checkbox aria-label="Select item 1" />
             <span>Item 1</span>
           </ListBox.Item>
-        </ListBox>
+        </ListBox>,
       );
       expect(html).toContain("hashti-listbox-drag-handle");
       expect(html).toContain("hashti-listbox-checkbox");
@@ -94,7 +94,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
           renderEmptyState={() => <ListBox.EmptyState>No options found</ListBox.EmptyState>}
         >
           {[]}
-        </ListBox>
+        </ListBox>,
       );
       expect(html).toContain("hashti-listbox-empty-state");
       expect(html).toContain("No options found");
@@ -104,7 +104,9 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
   describe("Autocomplete primitive", () => {
     test("renders Autocomplete wrapper around search field and menu", () => {
       const html = renderToStaticMarkup(
-        <Autocomplete filter={(itemText, inputVal) => itemText.toLowerCase().includes(inputVal.toLowerCase())}>
+        <Autocomplete
+          filter={(itemText, inputVal) => itemText.toLowerCase().includes(inputVal.toLowerCase())}
+        >
           <SearchField aria-label="Search actions">
             <Input />
           </SearchField>
@@ -113,7 +115,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
             <MenuItem id="copy">Copy</MenuItem>
             <MenuItem id="paste">Paste</MenuItem>
           </Menu>
-        </Autocomplete>
+        </Autocomplete>,
       );
       expect(html).toContain("hashti-search-field");
       expect(html).toContain("react-aria-Menu");
@@ -133,7 +135,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
         >
           <ListBox.Item id="design">Design</ListBox.Item>
           <ListBox.Item id="engineering">Engineering</ListBox.Item>
-        </Select>
+        </Select>,
       );
       expect(html).toContain("hashti-select");
       expect(html).toContain("hashti-select-trigger");
@@ -150,7 +152,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
         >
           <ListBox.Item id="cat-1">Category 1</ListBox.Item>
           <ListBox.Item id="cat-2">Category 2</ListBox.Item>
-        </Select>
+        </Select>,
       );
       expect(html).toContain("hashti-select");
       expect(html).toContain("hashti-select-trigger");
@@ -166,7 +168,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
         >
           <ListBox.Item id="react">React</ListBox.Item>
           <ListBox.Item id="vue">Vue</ListBox.Item>
-        </ComboBox>
+        </ComboBox>,
       );
       expect(html).toContain("hashti-combobox");
       expect(html).toContain('role="combobox"');

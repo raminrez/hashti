@@ -52,7 +52,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
   describe("ColorSwatch suite", () => {
     test("renders ColorSwatch with color preview and accessible role", () => {
       const html = ReactDOMServer.renderToString(
-        <ColorSwatch color="#ff0000" aria-label="Crimson Red" />
+        <ColorSwatch color="#ff0000" aria-label="Crimson Red" />,
       );
 
       expect(html).toContain('role="img"');
@@ -65,7 +65,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
 
     test("supports size variants and circular shape", () => {
       const smHtml = ReactDOMServer.renderToString(
-        <ColorSwatch color="#00ff00" size="sm" shape="circle" aria-label="Green Circle" />
+        <ColorSwatch color="#00ff00" size="sm" shape="circle" aria-label="Green Circle" />,
       );
       expect(smHtml).toContain("hashti-color-swatch--sm");
       expect(smHtml).toContain("hashti-color-swatch--circle");
@@ -73,7 +73,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
       expect(smHtml).toContain('data-shape="circle"');
 
       const lgHtml = ReactDOMServer.renderToString(
-        <ColorSwatch color="#0000ff" size="lg" aria-label="Blue Square" />
+        <ColorSwatch color="#0000ff" size="lg" aria-label="Blue Square" />,
       );
       expect(lgHtml).toContain("hashti-color-swatch--lg");
       expect(lgHtml).toContain('data-size="lg"');
@@ -83,7 +83,11 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
   describe("ColorArea suite", () => {
     test("renders ColorArea with 2D gradient channels and default ColorThumb", () => {
       const html = ReactDOMServer.renderToString(
-        <ColorArea defaultValue="hsb(210, 100%, 100%)" xChannel="saturation" yChannel="brightness" />
+        <ColorArea
+          defaultValue="hsb(210, 100%, 100%)"
+          xChannel="saturation"
+          yChannel="brightness"
+        />,
       );
 
       expect(html).toContain("hashti-color-area");
@@ -95,7 +99,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
 
     test("supports disabled state on ColorArea", () => {
       const html = ReactDOMServer.renderToString(
-        <ColorArea defaultValue="hsl(0, 100%, 50%)" isDisabled />
+        <ColorArea defaultValue="hsl(0, 100%, 50%)" isDisabled />,
       );
 
       expect(html).toContain("hashti-color-area");
@@ -111,7 +115,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
           defaultValue="hsl(180, 100%, 50%)"
           label="Hue Channel"
           showOutput
-        />
+        />,
       );
 
       expect(html).toContain("hashti-color-slider");
@@ -129,7 +133,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
           defaultValue="hsla(180, 100%, 50%, 0.8)"
           orientation="vertical"
           aria-label="Opacity"
-        />
+        />,
       );
 
       expect(html).toContain("hashti-color-slider");
@@ -140,7 +144,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
   describe("ColorWheel suite", () => {
     test("renders circular ColorWheel with track and thumb", () => {
       const html = ReactDOMServer.renderToString(
-        <ColorWheel defaultValue="hsl(120, 100%, 50%)" aria-label="Hue Wheel" />
+        <ColorWheel defaultValue="hsl(120, 100%, 50%)" aria-label="Hue Wheel" />,
       );
 
       expect(html).toContain("hashti-color-wheel");
@@ -153,7 +157,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
   describe("ColorField suite", () => {
     test("renders ColorField with label and text input", () => {
       const html = ReactDOMServer.renderToString(
-        <ColorField defaultValue="#4a90e2" label="Hex Code" />
+        <ColorField defaultValue="#4a90e2" label="Hex Code" />,
       );
 
       expect(html).toContain("hashti-color-field");
@@ -171,7 +175,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
           <ColorSwatchPickerItem color="#ff0000" aria-label="Red" />
           <ColorSwatchPickerItem color="#00ff00" aria-label="Green" />
           <ColorSwatchPickerItem color="#0000ff" aria-label="Blue" />
-        </ColorSwatchPicker>
+        </ColorSwatchPicker>,
       );
 
       expect(html).toContain("hashti-color-swatch-picker");
@@ -192,7 +196,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
           aria-label="Stacked swatches"
         >
           <ColorSwatchPickerItem color="#ffffff" aria-label="White" />
-        </ColorSwatchPicker>
+        </ColorSwatchPicker>,
       );
 
       expect(html).toContain("hashti-color-swatch-picker--stack");
@@ -203,11 +207,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
   describe("ColorPicker convenience composite suite", () => {
     test("renders default composite ColorPicker with area, hue slider, swatch, and hex field", () => {
       const html = ReactDOMServer.renderToString(
-        <ColorPicker
-          defaultValue="#3b82f6"
-          label="Accent Color"
-          showAlpha
-        />
+        <ColorPicker defaultValue="#3b82f6" label="Accent Color" showAlpha />,
       );
 
       expect(html).toContain("hashti-color-picker");
@@ -227,7 +227,7 @@ describe("Phase 5: Color Primitives Suite unit tests", () => {
         <ColorPicker defaultValue="hsl(300, 100%, 50%)">
           <ColorWheel aria-label="Wheel" />
           <ColorSwatch aria-label="Preview" />
-        </ColorPicker>
+        </ColorPicker>,
       );
 
       expect(html).toContain("hashti-color-picker");

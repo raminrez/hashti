@@ -1,10 +1,4 @@
 {
   "title": "Foundations",
-  "pages": [
-    "philosophy",
-    "colors",
-    "typography",
-    "spacing-geometry",
-    "brandbook"
-  ]
+  "pages": ["philosophy", "colors", "typography", "spacing-geometry", "brandbook"]
 }

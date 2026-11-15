@@ -122,10 +122,18 @@ import { Switch } from "@hashti/react";
 export function SwitchColorsDemo() {
   return (
     <div className="flex flex-col gap-3">
-      <Switch defaultSelected color="primary">Primary (Default)</Switch>
-      <Switch defaultSelected color="success">System Online (Success)</Switch>
-      <Switch defaultSelected color="warning">Maintenance Mode (Warning)</Switch>
-      <Switch defaultSelected color="danger">Debug Interceptor (Danger)</Switch>
+      <Switch defaultSelected color="primary">
+        Primary (Default)
+      </Switch>
+      <Switch defaultSelected color="success">
+        System Online (Success)
+      </Switch>
+      <Switch defaultSelected color="warning">
+        Maintenance Mode (Warning)
+      </Switch>
+      <Switch defaultSelected color="danger">
+        Debug Interceptor (Danger)
+      </Switch>
     </div>
   );
 }
@@ -172,9 +180,7 @@ export function DisabledSwitchDemo() {
       <Switch defaultSelected isDisabled>
         Automatic Daily Backups (Mandatory for Enterprise)
       </Switch>
-      <Switch isDisabled>
-        Experimental LLM Acceleration (Hardware Unsupported)
-      </Switch>
+      <Switch isDisabled>Experimental LLM Acceleration (Hardware Unsupported)</Switch>
     </div>
   );
 }
@@ -186,19 +192,19 @@ export function DisabledSwitchDemo() {
 
 `Switch` extends `RACSwitchProps` from `react-aria-components`.
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `isSelected` | `boolean` | — | Controlled active state of the switch. |
-| `defaultSelected` | `boolean` | `false` | Uncontrolled initial state. |
-| `onChange` | `(isSelected: boolean) => void` | — | Callback invoked when the switch is toggled. |
-| `size` | `'sm' \| 'md'` | `'md'` | Control dimensions (`sm` for tight tables, `md` standard). |
-| `color` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger'` | `'primary'` | Semantic color token for the activated track. |
-| `isDisabled` | `boolean` | `false` | Whether the switch is disabled and non-interactive. |
-| `isReadOnly` | `boolean` | `false` | Prevents value changes while retaining keyboard focusability. |
-| `name` | `string` | — | Input name attribute submitted when placed within standard HTML forms. |
-| `value` | `string` | — | The value attribute submitted when the switch is on. |
-| `children` | `ReactNode` | — | Text label or content rendered alongside the switch control. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop              | Type                                                             | Default     | Description                                                            |
+| :---------------- | :--------------------------------------------------------------- | :---------- | :--------------------------------------------------------------------- |
+| `isSelected`      | `boolean`                                                        | —           | Controlled active state of the switch.                                 |
+| `defaultSelected` | `boolean`                                                        | `false`     | Uncontrolled initial state.                                            |
+| `onChange`        | `(isSelected: boolean) => void`                                  | —           | Callback invoked when the switch is toggled.                           |
+| `size`            | `'sm' \| 'md'`                                                   | `'md'`      | Control dimensions (`sm` for tight tables, `md` standard).             |
+| `color`           | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger'` | `'primary'` | Semantic color token for the activated track.                          |
+| `isDisabled`      | `boolean`                                                        | `false`     | Whether the switch is disabled and non-interactive.                    |
+| `isReadOnly`      | `boolean`                                                        | `false`     | Prevents value changes while retaining keyboard focusability.          |
+| `name`            | `string`                                                         | —           | Input name attribute submitted when placed within standard HTML forms. |
+| `value`           | `string`                                                         | —           | The value attribute submitted when the switch is on.                   |
+| `children`        | `ReactNode`                                                      | —           | Text label or content rendered alongside the switch control.           |
+| `className`       | `string`                                                         | —           | Additional CSS class names.                                            |
 
 ---
 
@@ -209,7 +215,8 @@ Hashti switches conform to the [W3C WAI-ARIA Switch Pattern](https://www.w3.org/
 ### Keyboard Interaction
 
 - <kbd>Space</kbd>: Toggles the switch between on and off states.
-- <kbd>Enter</kbd>: In forms, <kbd>Enter</kbd> submits the form rather than toggling the switch (standard browser behavior).
+- <kbd>Enter</kbd>: In forms, <kbd>Enter</kbd> submits the form rather than toggling the switch
+  (standard browser behavior).
 - <kbd>Tab</kbd>: Moves focus to and from the switch.
 
 ### Assistive Technology Notes
@@ -217,22 +224,23 @@ Hashti switches conform to the [W3C WAI-ARIA Switch Pattern](https://www.w3.org/
 - **ARIA Role**: Renders a semantic element with `role="switch"` and `aria-checked="true"` or `"false"`.
 - **Contrast**: The track and thumb maintain WCAG 2.2 AAA minimum contrast ratios in both resting off and active on states.
 - **Switch vs. Checkbox**: Use a `Switch` when an action toggles on or off with immediate effect (e.g. Wifi, Dark Mode, Notification Sound). Use a `Checkbox` when the choice is part of a larger form requiring submission.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Space</kbd> | Toggles switch on or off. |
-| <kbd>Tab</kbd> | Moves focus onto or away from the switch. |
+| Key              | Action                                    |
+| :--------------- | :---------------------------------------- |
+| <kbd>Space</kbd> | Toggles switch on or off.                 |
+| <kbd>Tab</kbd>   | Moves focus onto or away from the switch. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Switch | Present on pointer hover. |
-| `[data-focused]` | Switch | Active on keyboard focus. |
+| Attribute         | Target | Description                                  |
+| :---------------- | :----- | :------------------------------------------- |
+| `[data-hovered]`  | Switch | Present on pointer hover.                    |
+| `[data-focused]`  | Switch | Active on keyboard focus.                    |
 | `[data-selected]` | Switch | Set when switch is in the active (ON) state. |
-| `[data-disabled]` | Switch | Applied when switch is disabled. |
+| `[data-disabled]` | Switch | Applied when switch is disabled.             |

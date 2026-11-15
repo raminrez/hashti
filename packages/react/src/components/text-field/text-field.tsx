@@ -1,10 +1,10 @@
 "use client";
 
-import type { Ref } from "react";
+import { useState, type ReactNode, type Ref } from "react";
+import { useAgentSurface, type ChangeDetails, type ChangeSource } from "@hashti/agent";
 import {
   TextField as RACTextField,
   TextFieldContext,
-  useSlottedContext,
   type TextFieldProps as RACTextFieldProps,
 } from "react-aria-components";
 import {
@@ -12,7 +12,8 @@ import {
   FieldInput,
   FieldTextArea,
   FieldControl,
-  useFieldPresentation,
+  useFieldAnatomy,
+  fieldClassName,
   fieldParts,
   type FieldContentProps,
   type FieldPresentationProps,
@@ -33,27 +34,29 @@ function TextFieldRoot({
   isOptional,
   ...props
 }: TextFieldRootProps) {
-  const context = useSlottedContext(TextFieldContext, props.slot);
-  const presentation = useFieldPresentation(
+  const anatomy = useFieldAnatomy(
     { ...props, status, statusVariant, isOptional },
-    context?.["aria-describedby"],
-    "attached",
+    TextFieldContext as Parameters<typeof useFieldAnatomy>[1],
   );
   return (
     <RACTextField
       {...props}
-      {...presentation.props}
+      {...anatomy.props}
       data-size={size}
-      className={classes("hashti-field hashti-text-field hashti-field hashti-text-field", className)}
+      className={classes(fieldClassName("text-field"), className)}
     >
-      {presentation.wrap(children, context?.children)}
+      {anatomy.wrap(children, anatomy.slotted?.children as ReactNode)}
     </RACTextField>
   );
 }
 
-export interface TextFieldProps extends TextFieldRootProps, FieldContentProps {
+export interface TextFieldProps extends Omit<TextFieldRootProps, "onChange">, FieldContentProps {
   placeholder?: string;
   inputRef?: Ref<HTMLInputElement>;
+  /** Keeps the value out of the agent's snapshot; set it on password and code fields. */
+  agentSecret?: boolean;
+  /** `details.source` tells an agent's change from a person's; `details.cancel()` refuses it. */
+  onChange?: (value: string, details: ChangeDetails) => void;
 }
 
 function TextFieldDefault({
@@ -66,11 +69,50 @@ function TextFieldDefault({
   inputRef,
   className,
   children,
+  agentSecret,
   ...props
 }: TextFieldProps) {
+  const [mirror, setMirror] = useState<string>(
+    props.value ?? props.defaultValue ?? "",
+  );
+  const handleChange = (
+    value: string,
+    source: ChangeSource = "user",
+    reason?: string,
+  ) => {
+    let cancelled = false;
+    props.onChange?.(value, {
+      source,
+      reason,
+      cancel: () => {
+        cancelled = true;
+      },
+    });
+    if (!cancelled) setMirror(value);
+  };
+
+  // The component owns the value when the consumer does not, so an agent's write repaints the
+  // control instead of only the snapshot. See the ADR's "one owner of the value" consequence.
+  const value = props.value ?? mirror;
+
+  useAgentSurface({
+    component: "text-field",
+    label: typeof label === "string" ? label : props["aria-label"],
+    value,
+    actions: {
+      setValue: ([value]) => handleChange(String(value), "agent", "setValue"),
+      clear: () => handleChange("", "agent", "clear"),
+    },
+    mark: { secret: agentSecret ?? props.type === "password" },
+  });
+
   return (
     <TextFieldRoot
       {...props}
+      value={value}
+      // RAC warns when a field is both controlled and given a default; the mirror already seeded from it.
+      defaultValue={undefined}
+      onChange={handleChange}
       size={size}
       className={className}
       data-hashti-input-icon={children == null ? "" : undefined}
@@ -99,10 +141,12 @@ export const TextField = Object.assign(TextFieldDefault, {
 });
 
 export interface TextAreaRootProps extends RACTextFieldProps, FieldPresentationProps {
+  size?: ControlSize;
   ref?: Ref<HTMLDivElement>;
 }
 
 function TextAreaRoot({
+  size = "md",
   className,
   children,
   status,
@@ -110,19 +154,18 @@ function TextAreaRoot({
   isOptional,
   ...props
 }: TextAreaRootProps) {
-  const context = useSlottedContext(TextFieldContext, props.slot);
-  const presentation = useFieldPresentation(
+  const anatomy = useFieldAnatomy(
     { ...props, status, statusVariant, isOptional },
-    context?.["aria-describedby"],
-    "attached",
+    TextFieldContext as Parameters<typeof useFieldAnatomy>[1],
   );
   return (
     <RACTextField
       {...props}
-      {...presentation.props}
-      className={classes("hashti-field hashti-text-area hashti-field hashti-text-area", className)}
+      {...anatomy.props}
+      data-size={size}
+      className={classes(fieldClassName("text-area"), className)}
     >
-      {presentation.wrap(children, context?.children)}
+      {anatomy.wrap(children, anatomy.slotted?.children as ReactNode)}
     </RACTextField>
   );
 }
@@ -140,6 +183,7 @@ function TextAreaDefault({
   errorMessage,
   placeholder,
   rows = 4,
+  size = "md",
   inputRef,
   className,
   children,
@@ -148,6 +192,7 @@ function TextAreaDefault({
   return (
     <TextAreaRoot
       {...props}
+      size={size}
       className={className}
       data-hashti-input-icon={children == null ? "" : undefined}
     >

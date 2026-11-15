@@ -46,7 +46,13 @@ import {
 `<NavigationTree>` automatically manages selection and handles navigation clicks with keyboard roving arrow support:
 
 ```tsx
-import { NavigationTree, NavigationTreeSection, NavigationTreeHeader, NavigationTreeItem, Icon } from "@hashti/react";
+import {
+  NavigationTree,
+  NavigationTreeSection,
+  NavigationTreeHeader,
+  NavigationTreeItem,
+  Icon,
+} from "@hashti/react";
 
 export function AppNavigationTreeDemo() {
   return (
@@ -124,21 +130,21 @@ export function NestedTreeDemo() {
 
 ### NavigationTree (Root)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `size` | `"sm" \| "md"` | `"md"` | Density size preset governing item padding and typography scale. |
-| `selectedKeys` | `Selection` | `undefined` | Controlled active route keys. |
-| `defaultSelectedKeys` | `Selection` | `undefined` | Default active route keys. |
-| `onSelectionChange` | `(keys: Selection) => void` | `undefined` | Selection handler. |
+| Prop                  | Type                        | Default     | Description                                                      |
+| :-------------------- | :-------------------------- | :---------- | :--------------------------------------------------------------- |
+| `size`                | `"sm" \| "md"`              | `"md"`      | Density size preset governing item padding and typography scale. |
+| `selectedKeys`        | `Selection`                 | `undefined` | Controlled active route keys.                                    |
+| `defaultSelectedKeys` | `Selection`                 | `undefined` | Default active route keys.                                       |
+| `onSelectionChange`   | `(keys: Selection) => void` | `undefined` | Selection handler.                                               |
 
 ### NavigationTreeItem
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `href` | `string` | `undefined` | Link URL for navigation. When provided, renders a semantic anchor tag. |
-| `target` | `string` | `undefined` | Anchor target attribute (e.g. `"_blank"`). |
-| `textValue` | `string` | `undefined` | String representation used for typeahead search. |
-| `isDisabled` | `boolean` | `false` | Whether the item is disabled and non-interactive. |
+| Prop         | Type      | Default     | Description                                                            |
+| :----------- | :-------- | :---------- | :--------------------------------------------------------------------- |
+| `href`       | `string`  | `undefined` | Link URL for navigation. When provided, renders a semantic anchor tag. |
+| `target`     | `string`  | `undefined` | Anchor target attribute (e.g. `"_blank"`).                             |
+| `textValue`  | `string`  | `undefined` | String representation used for typeahead search.                       |
+| `isDisabled` | `boolean` | `false`     | Whether the item is disabled and non-interactive.                      |
 
 ---
 
@@ -148,22 +154,23 @@ export function NestedTreeDemo() {
 - **Expand/Collapse**: `Right` arrow expands a collapsed branch; `Left` arrow collapses an open branch or moves to its parent.
 - **Link Activation**: Pressing `Enter` follows the `href` link.
 - **Typeahead Search**: Typing character keys jumps directly to matching items in the hierarchy.
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>↓</kbd> / <kbd>↑</kbd> | Navigates through navigation items. |
+| Key                         | Action                                 |
+| :-------------------------- | :------------------------------------- |
+| <kbd>↓</kbd> / <kbd>↑</kbd> | Navigates through navigation items.    |
 | <kbd>→</kbd> / <kbd>←</kbd> | Expands or collapses navigation group. |
-| <kbd>Enter</kbd> | Activates link or toggles group. |
+| <kbd>Enter</kbd>            | Activates link or toggles group.       |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Item | Present on pointer hover. |
-| `[data-selected]` | Item | Set on the active route item. |
-| `[data-focused]` | Item | Present on keyboard focus. |
+| Attribute         | Target | Description                   |
+| :---------------- | :----- | :---------------------------- |
+| `[data-hovered]`  | Item   | Present on pointer hover.     |
+| `[data-selected]` | Item   | Set on the active route item. |
+| `[data-focused]`  | Item   | Present on keyboard focus.    |

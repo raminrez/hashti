@@ -9,10 +9,12 @@ Inline Notifications display contextual, non-disruptive feedback directly embedd
 
 Unlike floating toasts or assertive alerts, inline notifications stay in place alongside the content they describe, allowing users to reference guidance or error messages without losing their spatial context.
 
-<ComponentPreview title="Inline Notification" description="Localized feedback banners with semantic color accents.">
+<ComponentPreview
+  title="Inline Notification"
+  description="Localized feedback banners with semantic color accents."
+>
   <InlineNotificationLiveDemo />
 </ComponentPreview>
-
 
 ---
 
@@ -36,31 +38,19 @@ import { InlineNotification } from "@hashti/react";
 export function BasicInlineExample() {
   return (
     <div className="space-y-4">
-      <InlineNotification
-        kind="info"
-        title="Form auto-save is enabled."
-      >
+      <InlineNotification kind="info" title="Form auto-save is enabled.">
         Drafts are securely persisted to local storage every 30 seconds.
       </InlineNotification>
 
-      <InlineNotification
-        kind="success"
-        title="API key generated successfully."
-      >
+      <InlineNotification kind="success" title="API key generated successfully.">
         Store this key safely; it cannot be retrieved again after leaving this page.
       </InlineNotification>
 
-      <InlineNotification
-        kind="warning"
-        title="Deprecated API version detected."
-      >
+      <InlineNotification kind="warning" title="Deprecated API version detected.">
         GraphQL v1 schemas will reach end-of-life on December 31st.
       </InlineNotification>
 
-      <InlineNotification
-        kind="error"
-        title="Invalid IP Range."
-      >
+      <InlineNotification kind="error" title="Invalid IP Range.">
         The CIDR block provided overlaps with an existing subnet in this VPC.
       </InlineNotification>
     </div>
@@ -110,20 +100,12 @@ export function ContrastComparisonExample() {
   return (
     <div className="space-y-4">
       {/* Low contrast (default subtle styling) */}
-      <InlineNotification
-        kind="warning"
-        lowContrast={true}
-        title="Low Contrast (Subtle)"
-      >
+      <InlineNotification kind="warning" lowContrast={true} title="Low Contrast (Subtle)">
         Recommended for routine status updates and secondary warnings.
       </InlineNotification>
 
       {/* High contrast (solid vibrant styling) */}
-      <InlineNotification
-        kind="warning"
-        lowContrast={false}
-        title="High Contrast (Solid)"
-      >
+      <InlineNotification kind="warning" lowContrast={false} title="High Contrast (Solid)">
         Recommended for persistent blockers or required administrative actions.
       </InlineNotification>
     </div>
@@ -162,29 +144,29 @@ export function ActionableNotificationExample() {
 
 ### InlineNotification Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `title` | `ReactNode` | **Required** | The primary headline of the message. |
-| `children` | `ReactNode` | — | Explanatory description text or rich elements rendered below the title. |
-| `kind` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Semantic message kind dictating the icon and color palette. |
-| `onDismiss` | `() => void` | — | Callback fired when the user clicks the close button. If omitted, no close button is rendered. |
-| `lowContrast` | `boolean` | `true` | Whether to display the notification with soft subtle background tints. |
-| `variant` | `'subtle' \| 'solid' \| 'bordered'` | `'subtle'` | Visual styling variant. |
-| `action` | `ReactNode` | — | Optional secondary buttons or interactive elements rendered inline. |
-| `role` | `string` | `'status'` | ARIA role applied to the container. Defaults to `'status'` for polite screen reader announcements. |
-| `className` | `string` | — | Additional CSS class names. |
+| Prop          | Type                                          | Default      | Description                                                                                        |
+| :------------ | :-------------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------- |
+| `title`       | `ReactNode`                                   | **Required** | The primary headline of the message.                                                               |
+| `children`    | `ReactNode`                                   | —            | Explanatory description text or rich elements rendered below the title.                            |
+| `kind`        | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'`     | Semantic message kind dictating the icon and color palette.                                        |
+| `onDismiss`   | `() => void`                                  | —            | Callback fired when the user clicks the close button. If omitted, no close button is rendered.     |
+| `lowContrast` | `boolean`                                     | `true`       | Whether to display the notification with soft subtle background tints.                             |
+| `variant`     | `'subtle' \| 'solid' \| 'bordered'`           | `'subtle'`   | Visual styling variant.                                                                            |
+| `action`      | `ReactNode`                                   | —            | Optional secondary buttons or interactive elements rendered inline.                                |
+| `role`        | `string`                                      | `'status'`   | ARIA role applied to the container. Defaults to `'status'` for polite screen reader announcements. |
+| `className`   | `string`                                      | —            | Additional CSS class names.                                                                        |
 
 ### ActionableNotification Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `title` | `ReactNode` | **Required** | The bold heading describing the required action. |
-| `action` | `ReactNode` | **Required** | The primary action button or interactive element. |
-| `children` | `ReactNode` | — | Contextual details or consequences of the action. |
-| `kind` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Semantic severity of the actionable prompt. |
-| `onDismiss` | `() => void` | — | Callback fired when the notification is dismissed. |
-| `autoFocusAction` | `boolean` | `true` | Whether to automatically move focus to the first button inside `action` on mount. |
-| `closeButtonLabel` | `string` | `'Dismiss notification'` | Accessible label for the close button. |
+| Prop               | Type                                          | Default                  | Description                                                                       |
+| :----------------- | :-------------------------------------------- | :----------------------- | :-------------------------------------------------------------------------------- |
+| `title`            | `ReactNode`                                   | **Required**             | The bold heading describing the required action.                                  |
+| `action`           | `ReactNode`                                   | **Required**             | The primary action button or interactive element.                                 |
+| `children`         | `ReactNode`                                   | —                        | Contextual details or consequences of the action.                                 |
+| `kind`             | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'`                 | Semantic severity of the actionable prompt.                                       |
+| `onDismiss`        | `() => void`                                  | —                        | Callback fired when the notification is dismissed.                                |
+| `autoFocusAction`  | `boolean`                                     | `true`                   | Whether to automatically move focus to the first button inside `action` on mount. |
+| `closeButtonLabel` | `string`                                      | `'Dismiss notification'` | Accessible label for the close button.                                            |
 
 ---
 
@@ -194,20 +176,21 @@ export function ActionableNotificationExample() {
 - **Focus Management**: For routine inline notifications, user focus is **not** abruptly shifted to the message, avoiding disorienting keyboard users while they type in adjacent fields.
 - **Actionable Notification Alertdialog**: When using `<ActionableNotification>`, the container uses `role="alertdialog"` with `aria-labelledby` and `aria-describedby` automatically pointing to the title and description IDs. Focus is safely delegated to the action button when `autoFocusAction` is enabled.
 - **Icon Hiding**: Informational icons are accompanied by the strong headline and appropriate ARIA roles so that meaning is never conveyed by color alone (WCAG 1.4.1).
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Tab</kbd> | Focuses action or close button inside notification. |
-| <kbd>Enter</kbd> / <kbd>Space</kbd> | Activates action or dismisses notification. |
+| Key                                 | Action                                              |
+| :---------------------------------- | :-------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Focuses action or close button inside notification. |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Activates action or dismisses notification.         |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Close Button | Present on pointer hover. |
+| Attribute        | Target       | Description                |
+| :--------------- | :----------- | :------------------------- |
+| `[data-hovered]` | Close Button | Present on pointer hover.  |
 | `[data-focused]` | Close Button | Present on keyboard focus. |

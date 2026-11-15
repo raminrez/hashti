@@ -5,7 +5,7 @@ description: Standalone collapsible section or multi-panel group for revealing a
 
 # Disclosure
 
-A **Disclosure** is an expandable container component that allows users to toggle the visibility of auxiliary content. While Hashti's `<Accordion>` provides an opinionated list of stacked question-and-answer panels, `<Disclosure>` is designed for both **standalone folding sections** and grouped disclosures across settings, filters, card interiors, and code inspectors.
+A **Disclosure** is an expandable container component that allows users to toggle the visibility of auxiliary content. `<Disclosure>` is designed for both **standalone folding sections** and grouped disclosures across settings, filters, card interiors, and code inspectors.
 
 Built upon React Aria Components' `Disclosure` and `DisclosureGroup`, Hashti's implementation provides animated chevron indicators, accessible `<Heading>` level integration, smooth layout collapse, and complete keyboard control.
 
@@ -76,6 +76,7 @@ export function StandaloneDisclosureExample() {
 ### Visual Variants
 
 Hashti supports three distinct disclosure visual variants:
+
 - `default`: Clean divider rule below trigger with gentle padding.
 - `card`: Contained surface box (`--surface-raised`) with subtle border, ideal for dashboard widgets.
 - `flush`: Borderless minimal trigger suited for dense sidebars or inline trees.
@@ -117,7 +118,8 @@ export function FAQGroupExample() {
         </Disclosure.Trigger>
         <Disclosure.Panel>
           <p className="text-sm text-[var(--text-muted)]">
-            Hashti ships with 8 full semantic themes (Core 4, Relay 2, and Frame 2) with 191 foundational tokens for color, typography, elevation, and density.
+            Hashti ships with 8 full semantic themes (Core 4, Relay 2, and Frame 2) with 191
+            foundational tokens for color, typography, elevation, and density.
           </p>
         </Disclosure.Panel>
       </Disclosure>
@@ -129,7 +131,8 @@ export function FAQGroupExample() {
         </Disclosure.Trigger>
         <Disclosure.Panel>
           <p className="text-sm text-[var(--text-muted)]">
-            Yes! Hashti has first-class Persian (Vazirmatn) and Arabic dual-engine support with automatic chevron rotation and directional margin mirroring.
+            Yes! Hashti has first-class Persian (Vazirmatn) and Arabic dual-engine support with
+            automatic chevron rotation and directional margin mirroring.
           </p>
         </Disclosure.Panel>
       </Disclosure>
@@ -144,72 +147,73 @@ export function FAQGroupExample() {
 
 ### Disclosure (`Disclosure.Root`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `isExpanded` | `boolean` | — | Controlled expansion state. |
-| `defaultExpanded` | `boolean` | `false` | Uncontrolled default initial expanded state. |
-| `onExpandedChange` | `(isExpanded: boolean) => void` | — | Callback fired when the disclosure toggles. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Density and padding sizing tier. |
-| `variant` | `'default' \| 'card' \| 'flush'` | `'default'` | Surface rendering style. |
-| `isDisabled` | `boolean` | `false` | Whether the disclosure trigger is disabled. |
-| `children` | `ReactNode` | — | Trigger and Panel components. |
+| Prop               | Type                             | Default     | Description                                  |
+| :----------------- | :------------------------------- | :---------- | :------------------------------------------- |
+| `isExpanded`       | `boolean`                        | —           | Controlled expansion state.                  |
+| `defaultExpanded`  | `boolean`                        | `false`     | Uncontrolled default initial expanded state. |
+| `onExpandedChange` | `(isExpanded: boolean) => void`  | —           | Callback fired when the disclosure toggles.  |
+| `size`             | `'sm' \| 'md' \| 'lg'`           | `'md'`      | Density and padding sizing tier.             |
+| `variant`          | `'default' \| 'card' \| 'flush'` | `'default'` | Surface rendering style.                     |
+| `isDisabled`       | `boolean`                        | `false`     | Whether the disclosure trigger is disabled.  |
+| `children`         | `ReactNode`                      | —           | Trigger and Panel components.                |
 
 ### Disclosure.Trigger (`DisclosureTrigger`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `headingLevel` | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | — | Automatically wraps the trigger button in a semantic `<Heading level={N}>` for document landmark compliance. |
-| `variant` | `'ghost' \| 'tertiary' \| ...` | `'ghost'` | Button style for the trigger header. |
-| `children` | `ReactNode` | — | Trigger label and optional indicator. |
+| Prop           | Type                           | Default   | Description                                                                                                  |
+| :------------- | :----------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------- |
+| `headingLevel` | `1 \| 2 \| 3 \| 4 \| 5 \| 6`   | —         | Automatically wraps the trigger button in a semantic `<Heading level={N}>` for document landmark compliance. |
+| `variant`      | `'ghost' \| 'tertiary' \| ...` | `'ghost'` | Button style for the trigger header.                                                                         |
+| `children`     | `ReactNode`                    | —         | Trigger label and optional indicator.                                                                        |
 
 ### Disclosure.Indicator (`DisclosureIndicator`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
+| Prop       | Type        | Default                        | Description                                                                       |
+| :--------- | :---------- | :----------------------------- | :-------------------------------------------------------------------------------- |
 | `children` | `ReactNode` | `<Icon name="chevronRight" />` | Custom rotation icon. Defaults to Hashti chevron which rotates 90° when expanded. |
 
 ### Disclosure.Panel (`DisclosurePanel`)
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `children` | `ReactNode` | — | Collapsible contents revealed when expanded. |
+| Prop       | Type        | Default | Description                                  |
+| :--------- | :---------- | :------ | :------------------------------------------- |
+| `children` | `ReactNode` | —       | Collapsible contents revealed when expanded. |
 
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Enter</kbd> / <kbd>Space</kbd> | When focus is on `<Disclosure.Trigger>`, toggles panel expansion. |
-| <kbd>Tab</kbd> | Navigates focus between disclosure triggers and any interactive elements within open panels. |
+| Key                                 | Action                                                                                       |
+| :---------------------------------- | :------------------------------------------------------------------------------------------- |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | When focus is on `<Disclosure.Trigger>`, toggles panel expansion.                            |
+| <kbd>Tab</kbd>                      | Navigates focus between disclosure triggers and any interactive elements within open panels. |
 
 ---
 
 ## Hashti Token Bindings
 
-| Token | CSS Variable | Applied Element |
-| :--- | :--- | :--- |
-| Surface Raised | `--surface-raised` | Card variant background |
-| Divider Border | `--divider` | Default bottom rule and card border |
-| Focus Ring | `--focus` | 2px focus outline on trigger |
-| Chevron Fill | `--text-muted` | Indicator icon color |
-| Transition Duration | `--motion-duration-moderate-01` | 150ms cubic-bezier panel collapse |
+| Token               | CSS Variable                    | Applied Element                     |
+| :------------------ | :------------------------------ | :---------------------------------- |
+| Surface Raised      | `--surface-raised`              | Card variant background             |
+| Divider Border      | `--divider`                     | Default bottom rule and card border |
+| Focus Ring          | `--focus`                       | 2px focus outline on trigger        |
+| Chevron Fill        | `--text-muted`                  | Indicator icon color                |
+| Transition Duration | `--motion-duration-moderate-01` | 150ms cubic-bezier panel collapse   |
+
 ---
 
 ## Keyboard Interactions
 
-| Key | Action |
-| :--- | :--- |
-| <kbd>Space</kbd> / <kbd>Enter</kbd> | Toggles disclosure panel visibility. |
-| <kbd>Tab</kbd> | Moves focus through trigger button and panel contents. |
+| Key                                 | Action                                                 |
+| :---------------------------------- | :----------------------------------------------------- |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | Toggles disclosure panel visibility.                   |
+| <kbd>Tab</kbd>                      | Moves focus through trigger button and panel contents. |
 
 ---
 
 ## WAI-ARIA & Data Attributes
 
-| Attribute | Target | Description |
-| :--- | :--- | :--- |
-| `[data-hovered]` | Trigger | Present on pointer hover. |
-| `[data-expanded]` | Trigger, Panel | Set when panel is open. |
-| `[data-focused]` | Trigger | Active on keyboard focus. |
-| `[data-disabled]` | Trigger | Present when disclosure is disabled. |
+| Attribute         | Target         | Description                          |
+| :---------------- | :------------- | :----------------------------------- |
+| `[data-hovered]`  | Trigger        | Present on pointer hover.            |
+| `[data-expanded]` | Trigger, Panel | Set when panel is open.              |
+| `[data-focused]`  | Trigger        | Active on keyboard focus.            |
+| `[data-disabled]` | Trigger        | Present when disclosure is disabled. |
