@@ -90,27 +90,26 @@
     },
     "packages/agent": {
       "name": "@hashti/agent",
-      "version": "0.1.0",
+      "version": "0.1.0-alpha.0",
       "peerDependencies": {
         "react": ">=19.0.0 <20",
       },
     },
     "packages/react": {
       "name": "@hashti/react",
-      "version": "0.1.0",
+      "version": "0.1.0-alpha.0",
       "dependencies": {
-        "@hashti/agent": "0.1.0",
+        "@hashti/agent": "workspace:*",
         "@internationalized/date": "catalog:",
       },
       "devDependencies": {
-        "@hashti/tokens": "workspace:*",
         "@types/react": "catalog:",
         "react": "catalog:",
         "react-aria-components": "catalog:",
         "react-dom": "catalog:",
       },
       "peerDependencies": {
-        "@hashti/tokens": "0.1.0",
+        "@hashti/tokens": "workspace:*",
         "react": ">=19.0.0 <20",
         "react-aria-components": ">=1.22.0 <2",
         "react-dom": ">=19.0.0 <20",
@@ -118,7 +117,7 @@
     },
     "packages/tokens": {
       "name": "@hashti/tokens",
-      "version": "0.1.0",
+      "version": "0.1.0-alpha.0",
       "devDependencies": {
         "@carbon/colors": "11.62.0",
         "@carbon/layout": "11.63.0",

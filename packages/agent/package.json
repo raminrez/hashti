@@ -1,9 +1,22 @@
 {
   "name": "@hashti/agent",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.0",
   "description": "Agent surface for Hashti components: snapshot, act and query over a page.",
   "type": "module",
   "license": "Apache-2.0",
+  "author": "Ramin Rezaei <raminxrez@gmail.com>",
+  "homepage": "https://hashti.raminrez.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raminrez/hashti.git",
+    "directory": "packages/agent"
+  },
+  "bugs": {
+    "url": "https://github.com/raminrez/hashti/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist",
     "README.md",
