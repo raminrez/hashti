@@ -1,5 +1,4 @@
 import { createContext, isValidElement, useContext, type ReactNode, type Ref } from "react";
-import { useAgentSurface } from "@hashti/agent";
 import {
   Button as RACButton,
   Link as RACLink,
@@ -43,29 +42,6 @@ export function Button({
 }: ButtonProps) {
   const size = requestedSize === undefined ? "lg" : requestedSize;
   const toolbar = useContext(ToolbarContext);
-  // Whitespace text is not a name: the Select trigger and icon-only slotted buttons render some.
-  const label =
-    (
-      props["aria-label"] ??
-      (typeof children === "function" ? undefined : textOf(children)) ??
-      ""
-    ).trim() || undefined;
-
-  useAgentSurface({
-    component: "button",
-    label,
-    actions:
-      props.isDisabled || props.isPending
-        ? {}
-        : {
-            press: () => {
-              (props.onPress as (() => void) | undefined)?.();
-              (props.onClick as (() => void) | undefined)?.();
-            },
-          },
-    // An unnamed button is internal, like a Select's trigger: the Select surface owns it.
-    mark: { confirm: agentConfirm, hidden: !label },
-  });
 
   return (
     <RACButton

@@ -1,4 +1,6 @@
 @import "./layers.css";
+@import "./tokens.css";
+@import "./frame.css";
 @import "./components/button/button.css";
 @import "./components/select/select.css";
 @import "./components/combobox/combobox.css";
@@ -35,9 +37,6 @@
 @import "./components/avatar/avatar.css";
 @import "./components/theme/theme.css";
 
-@import "../../tokens/src/tokens.css";
-@import "./relay.css";
-@import "./frame.css";
 
 /* Cinder owns appearance; RAC owns interaction and accessible semantics. */
 @layer hashti.reset {

@@ -1,6 +1,6 @@
 ---
-name: Cinder — Frame
-description: Clear fields, quiet surfaces, and dependable interaction.
+name: Hashti — Frame
+description: Frame-inspired visual direction with Light and Dark modes and CSS variable customization.
 colors:
   action-light: "#272a32"
   action-hover-light: "#434754"
@@ -143,7 +143,7 @@ components:
     rounded: "{rounded.group}"
 ---
 
-# Design System: Cinder — Frame
+# Design System: Hashti — Frame
 
 ## Overview
 
@@ -165,35 +165,7 @@ consistent relationships between type, borders, spacing, and corners.
 - Comfortable controls and content that can grow.
 - The same visual language in light and dark themes.
 
-**Authority and scope · 6 November 2026.** Frame is the selected direction in
-[PRODUCT.md](PRODUCT.md). Phase 1 promotes the measured colors, scalar type roles,
-control geometry, and representative field/action/overlay styling into
-`frame-light` and `frame-dark`. The authored values live in
-[`packages/tokens/src/frame.ts`](packages/tokens/src/frame.ts), with their
-[public mapping](packages/tokens/README.md); the reusable appearance lives in
-[`packages/react/src/frame.css`](packages/react/src/frame.css). Existing Carbon
-and Relay surfaces retain their defaults.
-
-The frontmatter remains the visual authority at the default font scale. Guidance
-before the control, attached recovery, and the complete fourteen-entry component
-slice are Phase 2 work. The [Phase 1 evidence](docs/verification.md#frame-phase-1)
-records the foundation proof. The [system specification](docs/design-system.md)
-covers behavior, accessibility, internationalization, and customization, and the
-[library plan](docs/component-library-plan.md) orders the remaining implementation.
-
-The [prototype styles](apps/docs/src/prototypes/frame.css) and
-[shared prototype styles](apps/docs/src/prototypes/styles.css) remain dated visual
-references. Page composition belongs in the
-[Frame brief](apps/docs/.impeccable/surfaces/apps-docs-src-prototypes-main-tsx.md).
-Figma is the final handoff from the completed code-based system.
-
-The [Impeccable sidecar](.impeccable/design.json) adds inherited motion, depth,
-recipe breakpoints, narrative, and eight self-contained visual previews. Its
-eight-step OKLCH ramps are synthesized panel aids, not additional runtime tokens
-or validated foreground/background pairings. Preview controls demonstrate
-appearance; the React Aria components remain the behavior implementation.
-
-## Colors
+**Authority and scope.** Hashti features a single Frame-inspired visual direction with Light and Dark modes and CSS variable customization. Styles are hosted in `@hashti/styles`.
 
 The palette is a cool neutral foundation with small, purposeful areas of color.
 Frontmatter names describe this visual specification; they are not new exported

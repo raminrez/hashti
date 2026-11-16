@@ -90,14 +90,14 @@
     },
     "packages/agent": {
       "name": "@hashti/agent",
-      "version": "0.1.0-alpha.0",
+      "version": "0.1.0-alpha.1",
       "peerDependencies": {
         "react": ">=19.0.0 <20",
       },
     },
     "packages/react": {
       "name": "@hashti/react",
-      "version": "0.1.0-alpha.0",
+      "version": "0.1.0-alpha.1",
       "dependencies": {
         "@hashti/agent": "workspace:*",
         "@internationalized/date": "catalog:",
@@ -109,15 +109,27 @@
         "react-dom": "catalog:",
       },
       "peerDependencies": {
+        "@hashti/styles": "workspace:*",
         "@hashti/tokens": "workspace:*",
         "react": ">=19.0.0 <20",
         "react-aria-components": ">=1.22.0 <2",
         "react-dom": ">=19.0.0 <20",
       },
     },
+    "packages/styles": {
+      "name": "@hashti/styles",
+      "version": "0.0.1",
+      "devDependencies": {
+        "@carbon/colors": "11.62.0",
+        "@carbon/layout": "11.63.0",
+        "@carbon/motion": "11.56.0",
+        "@carbon/themes": "11.85.0",
+        "@carbon/type": "11.71.0",
+      },
+    },
     "packages/tokens": {
       "name": "@hashti/tokens",
-      "version": "0.1.0-alpha.0",
+      "version": "0.1.0-alpha.1",
       "devDependencies": {
         "@carbon/colors": "11.62.0",
         "@carbon/layout": "11.63.0",
@@ -344,6 +356,8 @@
     "@hashti/react": ["@hashti/react@workspace:packages/react"],
 
     "@hashti/storybook": ["@hashti/storybook@workspace:apps/storybook"],
+
+    "@hashti/styles": ["@hashti/styles@workspace:packages/styles"],
 
     "@hashti/tokens": ["@hashti/tokens@workspace:packages/tokens"],
 

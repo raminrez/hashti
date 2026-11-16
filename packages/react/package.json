@@ -49,7 +49,6 @@
     "react-aria-components": ">=1.22.0 <2"
   },
   "dependencies": {
-    "@hashti/agent": "workspace:*",
     "@internationalized/date": "catalog:"
   },
   "devDependencies": {
