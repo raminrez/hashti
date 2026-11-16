@@ -49,7 +49,9 @@
     "react-aria-components": ">=1.22.0 <2"
   },
   "dependencies": {
-    "@internationalized/date": "catalog:"
+    "@internationalized/date": "catalog:",
+    "@ui-sdk/core": "catalog:",
+    "@ui-sdk/react": "catalog:"
   },
   "devDependencies": {
     "react": "catalog:",
