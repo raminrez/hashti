@@ -1,4 +1,4 @@
-# Cinder
+# Hashti
 
 <!-- impeccable:product-schema 1 -->
 
@@ -8,75 +8,70 @@ web
 
 ## Users
 
-Developers and designers building reusable product interfaces. People using those
-interfaces need clear controls, useful feedback, and predictable interaction.
+Developers and designers building accessible, high-craft, and agent-operable product
+interfaces across modern web frameworks (React, Vue, Svelte, Solid, and Web Components).
+End users interacting with these interfaces experience clear controls, predictable interactions,
+and full keyboard/screen-reader accessibility.
 
 ## Product Purpose
 
-An original, broadly reusable design system with a good developer experience.
-Working examples let the team evaluate a design before adopting it in the library.
+Hashti is an original, multi-framework design system and component library built on high-craft
+visual foundations and robust headless primitives. Powered by `@ui-sdk/core` and framework
+adapters (starting with `@ui-sdk/react`), Hashti unifies component ergonomics, native agent
+operability (via WebMCP and agent bridge tools), and world-class Persian/Arabic RTL support.
 
 ## Capabilities and Constraints
 
-- The current implementation uses React Aria Components, semantic tokens, and
-  prebuilt CSS in a Bun workspace.
-- `/prototypes` compares designs using shared, fictional review data. Edits last
-  only for the current demo session.
-- `/relay` demonstrates the first reusable Relay component slice.
-- Build the packaged components and their Storybook stories first. Develop the
-  documentation website after the component work; editable Figma assets are the
-  final handoff, derived from the completed library and documentation.
+- **Multi-framework architecture:** Built with `@ui-sdk/core` headless state machines and
+  render engines supporting React (19+), Vue, Svelte, Solid, and Web Components.
+- **Migration Roadmap:** Phased transition from React Aria Components (RAC) to `ui-sdk`.
+  Phase 1 focuses on the React implementation (`@hashti/react`), followed by framework
+  expansion packages.
+- **Agent Operability:** First-class agent affordances (`snapshot`, `act`, `query`, WebMCP)
+  integrated natively into component lifecycles via `@hashti/agent` and ui-sdk primitives.
+- **Design Foundations:** Frame visual direction, native prebuilt CSS, semantic design tokens
+  (`@hashti/tokens`), and `hashti-*` BEM/custom styling hooks.
+- **Workspace:** Monorepo managed with Bun workspaces. Includes `@hashti/tokens`, `@hashti/react`,
+  `@hashti/agent`, documentation (`apps/docs`), interactive playground (`apps/playground`),
+  and Storybook (`apps/storybook`).
 
 ## Brand Commitments
 
-- Frame is the preferred visual direction, selected after the fourth prototype
-  comparison on 6 November 2026. Its working field treatment is the visual baseline
-  for the next Cinder design work.
-- Astryx is the leading visual reference, especially field anatomy and validation.
-- HeroUI v3 remains a visual and developer-experience reference.
-- Carbon informs UX reasoning, accessibility, layout, coverage, and AI-related
-  guidance. Its visual identity is not a constraint on the new Cinder proposals.
-- Use plain language. Keep Cinder original, maintainable, and easy to customize.
+- **Name:** Hashti (formerly referred to as Cinder in early prototypes; rebranded comprehensively).
+- **Aesthetic Direction:** Frame visual direction is the baseline standard—clean, intentional,
+  and tactile.
+- **Voice:** Direct, precise, unpretentious, and technically grounded.
+- **Reference Influences:**
+  - *Astryx:* Field anatomy, state feedback, and validation clarity.
+  - *HeroUI v3:* Component ergonomics and developer experience.
+  - *Carbon:* UX reasoning, accessible interaction models, and systematic coverage.
 
 ## Accessibility & Inclusion
 
-Accessibility and internationalization are core requirements. Preserve meaningful
-labels, instructions, keyboard behavior, focus, error recovery, and adaptable
-layouts. A visual resemblance or automated scan alone does not prove accessibility.
-
-Use Persian and Arabic for authored right-to-left examples, with real locale
-providers and isolated left-to-right identifiers. This is the user's preferred
-example content throughout the library and its documentation.
+- Accessibility (WCAG 2.1 AA) and internationalization are non-negotiable core requirements.
+- Full RTL (Right-to-Left) first-class support: Persian and Arabic authored examples with
+  authentic typography, appropriate numeral systems, and directional layouts.
+- Keyboard navigation, visible focus rings, ARIA semantics, and screen-reader announcements
+  across all headless primitive integrations.
 
 ## Evidence on Hand
 
-Research reports live in `docs/`. The comparison at `/prototypes` includes working
-forms, review data, and nested overlays. Reference captures identify their sources
-and versions in `apps/docs/src/prototypes/references/README.md`.
+- Research reports, ADRs (e.g. `docs/adr/0001-ui-sdk-and-hashti-agent-bridge.md`), and design
+  specifications in `docs/`.
+- Prototype comparisons, interactive forms, and review states in `apps/playground` and `apps/docs`.
+- Verified test suites for tokens, React package builds, and agent integration.
 
-## Implementation Decisions
+## Roadmap & Implementation Decisions
 
-Frame's visual direction is selected. The specification is in `docs/design-system.md`;
-`docs/component-library-plan.md` orders the reusable library work.
-
-The user approved the Phase 1 contract bundle on 6 November 2026: native prebuilt
-CSS with one stylesheet import, semantic variables and stable BEM-style hooks;
-additive `frame-light` / `frame-dark` themes; Frame controls at 44px by default and
-32/44/48px for explicit `sm` / `md` / `lg`; and `Theme appearanceClassName` for
-portable appearance on ordinary and detached roots. Preserve existing theme
-defaults and APIs. Phase 1 foundations and representative consumer proof are
-complete; see [verification](docs/verification.md#frame-phase-1).
-
-The user clarified the delivery order on 6 November 2026: components and Storybook,
-then the documentation website, then Figma. Phase 2 starts with a Storybook
-workspace and finished Button/Link coverage, followed by the shared Frame field
-anatomy and the rest of the fourteen-entry slice. README/API contracts accompany
-the components throughout.
-
-Button's recommended Frame variants are `primary`, `secondary`, `ghost`, and
-`danger`: a compact emphasis hierarchy informed by Base, HeroUI, and Astryx.
-The user reaffirmed this smaller set after reviewing the expanded reference.
-Keep Frame's palette and corners. Existing `tertiary`, `danger-tertiary`, and
-`danger-ghost` remain supported with their original treatments.
-
-Figma follows the completed web system as the final step.
+1. **Phased UI-SDK Migration:**
+   - Migrate component behavior and state machines from React Aria Components to `@ui-sdk/core`
+     and `@ui-sdk/react`.
+   - Maintain Frame styling contracts, token bindings, and public API stability for consumer code.
+   - Expand framework package targets (Vue, Svelte, Solid, Web Components) as `@ui-sdk/core`
+     bindings are stabilized.
+2. **Storybook & Package Verification:**
+   - Keep Storybook stories up to date as the source of visual and interaction truth.
+   - Comprehensive automated unit, a11y (axe), and browser verification for every migrated component.
+3. **Documentation & Handoff:**
+   - Update documentation site (`apps/docs`) reflecting multi-framework guides and agent APIs.
+   - Final deliverables include synchronized Figma design system tokens and component mappings.
