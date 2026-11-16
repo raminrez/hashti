@@ -1,0 +1,44 @@
+# TICK-001: Standardize Kbd, Badge, Divider (Display Components)
+
+**Phase:** 1 — Pure Content & Display Components (Lowest Risk)
+**Priority:** High (unblocks all other tickets)
+**Effort:** Low
+
+## Goal
+Standardize the three simplest display-only components (`Kbd`, `Badge`, `Divider`) to the Hashti DOM
+contract and `@hashti/styles`. These components have no interactive state so they're ideal first targets.
+
+## Files to Touch
+- `packages/react/src/components/kbd/kbd.tsx`
+- `packages/react/src/components/badge/badge.tsx`
+- `packages/react/src/components/divider/divider.tsx` (may not exist — create if missing)
+
+## Acceptance Criteria
+- [ ] Each component renders with `.hashti-<name>` class (`.hashti-kbd`, `.hashti-badge`, `.hashti-divider`)
+- [ ] `data-variant` attribute applied for Badge variants
+- [ ] `data-size` attribute for components that support sizing
+- [ ] No `react-aria-components` imports in these files
+- [ ] No `@hashti/agent` imports
+- [ ] Logical CSS properties used in component CSS (`packages/styles/src/components/`)
+- [ ] `bun test tests/unit` → 183 pass, 0 fail (do not break)
+- [ ] `bun run build:packages` succeeds
+
+## DOM Contract
+```tsx
+// Badge
+<span class="hashti-badge" data-variant="success" data-size="md">...</span>
+
+// Kbd
+<kbd class="hashti-kbd">...</kbd>
+
+// Divider
+<hr class="hashti-divider" data-orientation="horizontal" />
+// or
+<div class="hashti-divider" data-orientation="vertical" role="separator" />
+```
+
+## Notes
+- These are wrapper-only components. They should use plain HTML elements + CSS classes.
+- If divider doesn't exist in the react package, create a minimal one.
+- CSS should live in `packages/styles/src/components/` (already seeded — update if needed).
+- RTL: use `border-inline-start` not `border-left` in CSS.
