@@ -1,0 +1,51 @@
+/* Hashti Modern Aesthetic - drawer
+   Owner of the drawer's corners and backdrop. A drawer flush to an edge has square corners on that
+   edge and rounded corners only on the side facing the page. Logical properties keep it correct in
+   RTL, where inline-start and inline-end swap sides. */
+@layer hashti.components {
+  .hashti-drawer-overlay {
+    background-color: var(--hashti-overlay);
+  }
+  .hashti-drawer-overlay[data-backdrop="blur"] {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+  .hashti-drawer-overlay[data-backdrop="none"] {
+    background-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .hashti-drawer {
+    border-start-start-radius: var(--hashti-surface-radius, 16px);
+    border-start-end-radius: var(--hashti-surface-radius, 16px);
+    border-end-start-radius: var(--hashti-surface-radius, 16px);
+    border-end-end-radius: var(--hashti-surface-radius, 16px);
+  }
+
+  /* Flush to the inline-end edge. */
+  .hashti-drawer[data-placement="right"],
+  .hashti-drawer[data-placement="end"] {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  /* Flush to the inline-start edge. */
+  .hashti-drawer[data-placement="left"],
+  .hashti-drawer[data-placement="start"] {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+
+  /* Flush to the block-start edge. */
+  .hashti-drawer[data-placement="top"] {
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+  }
+
+  /* Flush to the block-end edge. */
+  .hashti-drawer[data-placement="bottom"] {
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+  }
+}

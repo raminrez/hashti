@@ -1,0 +1,59 @@
+/* Hashti Modern Aesthetic - TokenField */
+@layer hashti.components {
+  [data-hashti-theme] .hashti-token-field,
+  [data-hashti-theme] .hashti-token-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  [data-hashti-theme] .hashti-token-input,
+  [data-hashti-theme] .hashti-token-input {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--hashti-spacing-02, 6px);
+    min-height: 44px;
+    padding: var(--hashti-spacing-02, 6px) var(--hashti-spacing-04, 12px);
+    border-radius: var(--hashti-control-radius, 12px);
+    border: 1px solid var(--hashti-border-strong, #8d8d8d);
+    background-color: var(--hashti-field, #ffffff);
+    color: var(--hashti-text-primary, #161616);
+    transition:
+      background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+  }
+
+  [data-hashti-theme] .hashti-token,
+  [data-hashti-theme] .hashti-token {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+    padding: 0 8px;
+    border-radius: var(--hashti-pill-radius, 9999px);
+    background-color: var(--hashti-layer-accent-01, #f4f4f4);
+    border: 1px solid var(--hashti-border-subtle, #e0e0e0);
+    font-size: var(--hashti-caption-01-font-size, 0.75rem);
+    font-weight: 500;
+    transition:
+      background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-hashti-theme] .hashti-token[data-pressed],
+  [data-hashti-theme] .hashti-token[data-pressed] {
+    transform: scale(0.98);
+  }
+
+  [data-hashti-theme] .hashti-token__remove {
+    cursor: pointer;
+    border-radius: 9999px;
+    padding: 2px;
+  }
+}

@@ -1,0 +1,385 @@
+/* A nested Theme is a styling boundary, including when its root is a portal. */
+@layer hashti.themes {
+  @scope ([data-hashti-theme="relay-light"], [data-hashti-theme="relay-dark"]) to ([data-hashti-theme]) {
+    .hashti-button {
+      --relay-button-ink: var(--hashti-text-on-color);
+      justify-content: center;
+      gap: var(--hashti-spacing-03);
+      padding: 0 calc(var(--hashti-spacing-05) - 1px);
+      border-radius: var(--hashti-control-radius);
+      color: var(--relay-button-ink);
+      font-weight: 500;
+      line-height: var(--hashti-body-01-line-height);
+      letter-spacing: 0;
+      transition:
+        background-color var(--hashti-duration-fast-02) var(--hashti-ease-standard-productive),
+        border-color var(--hashti-duration-fast-02) var(--hashti-ease-standard-productive);
+    }
+    .hashti-button > svg:last-child {
+      margin-inline-end: 0;
+    }
+    .hashti-button[data-size="xl"],
+    .hashti-button[data-size="2xl"] {
+      align-items: center;
+      padding-block: var(--hashti-spacing-04);
+    }
+    .hashti-button[data-icon-only] {
+      padding: 0;
+    }
+    .hashti-button:is(
+      [data-variant="secondary"],
+      [data-variant="tertiary"],
+      [data-variant="ghost"]
+    ) {
+      --relay-button-ink: var(--hashti-text-primary);
+      color: var(--relay-button-ink);
+    }
+    .hashti-button[data-variant="tertiary"] {
+      background: transparent;
+      border-color: var(--hashti-button-tertiary);
+    }
+    .hashti-button[data-variant="tertiary"][data-hovered] {
+      background: var(--hashti-button-tertiary-hover);
+    }
+    .hashti-button[data-variant="tertiary"][data-pressed] {
+      background: var(--hashti-button-tertiary-active);
+    }
+    .hashti-button:is([data-variant="danger-tertiary"], [data-variant="danger-ghost"]) {
+      --relay-button-ink: var(--hashti-button-danger-secondary);
+      color: var(--relay-button-ink);
+      background: transparent;
+    }
+    .hashti-button:is([data-variant="danger-tertiary"], [data-variant="danger-ghost"]):is(
+        [data-hovered],
+        [data-pressed]
+      ) {
+      --relay-button-ink: var(--hashti-text-on-color);
+      background: var(--button-hover);
+    }
+    .hashti-button:is(
+        [data-variant="danger-tertiary"],
+        [data-variant="danger-ghost"]
+      )[data-pressed] {
+      background: var(--button-active);
+    }
+    .hashti-button[data-focus-visible] {
+      outline: var(--hashti-focus-width) solid var(--hashti-focus);
+      outline-offset: var(--hashti-focus-offset);
+      box-shadow: none;
+      border-color: transparent;
+    }
+    .hashti-button[data-variant="tertiary"][data-focus-visible] {
+      border-color: var(--hashti-button-tertiary);
+    }
+    .hashti-button[data-variant="danger-tertiary"][data-focus-visible] {
+      border-color: var(--hashti-button-danger-secondary);
+    }
+    .hashti-button[data-disabled] {
+      --relay-button-ink: var(--hashti-text-disabled);
+      color: var(--relay-button-ink);
+      background: var(--hashti-button-disabled);
+      border-color: transparent;
+    }
+    .hashti-button[data-disabled][data-variant*="tertiary"] {
+      background: transparent;
+      border-color: var(--hashti-border-disabled);
+    }
+    .hashti-button[data-disabled][data-variant*="ghost"] {
+      background: transparent;
+    }
+    /* Keep the label's width and accessible name while the progress mark replaces it. */
+    .hashti-button[data-pending] {
+      color: transparent;
+    }
+    .hashti-button[data-pending] > svg {
+      visibility: hidden;
+    }
+    .hashti-button > .hashti-spinner {
+      position: absolute;
+      color: var(--relay-button-ink);
+      margin: 0;
+    }
+
+    .hashti-field > .react-aria-Label,
+    .hashti-field__label-row > .hashti-field__label {
+      font-size: var(--hashti-body-01-font-size);
+      line-height: var(--hashti-body-01-line-height);
+      font-weight: 500;
+      letter-spacing: 0;
+      color: var(--hashti-text-primary);
+    }
+    .hashti-field :is(.react-aria-Input, .react-aria-TextArea),
+    .hashti-input-group,
+    .hashti-select-trigger {
+      border: 1px solid var(--hashti-border-strong);
+      border-radius: var(--hashti-control-radius);
+      background: var(--hashti-field);
+      color: var(--hashti-text-primary);
+      caret-color: var(--hashti-text-primary);
+    }
+    .hashti-field :is(.react-aria-Input, .react-aria-TextArea) {
+      padding-inline: calc(var(--hashti-spacing-05) - 1px);
+      padding-inline-end: var(--hashti-input-padding-end, calc(var(--hashti-spacing-05) - 1px));
+      line-height: var(--hashti-body-01-line-height);
+      transition:
+        background-color var(--hashti-duration-fast-02) var(--hashti-ease-standard-productive),
+        border-color var(--hashti-duration-fast-02) var(--hashti-ease-standard-productive);
+    }
+    .hashti-field :is(.react-aria-Input, .react-aria-TextArea):is(:hover, [data-hovered]),
+    .hashti-input-group[data-hovered],
+    .hashti-select-trigger[data-hovered] {
+      background: var(--hashti-field-hover);
+      border-color: var(--hashti-text-primary);
+    }
+    .hashti-select-trigger {
+      justify-content: space-between;
+      text-align: start;
+      font-weight: 400;
+    }
+    .hashti-field :is(.react-aria-Input, .react-aria-TextArea):is(:focus, [data-focused]),
+    .hashti-input-group[data-focus-within],
+    .hashti-select-trigger[data-focus-visible] {
+      outline: var(--hashti-focus-width) solid var(--hashti-focus);
+      outline-offset: var(--hashti-focus-offset);
+      box-shadow: none;
+    }
+    .hashti-field[data-invalid] > :is(.react-aria-Input, .react-aria-TextArea, .hashti-input-group),
+    .hashti-field[data-invalid] .hashti-select-trigger {
+      border-color: var(--hashti-support-error);
+      outline: none;
+    }
+    .hashti-field[data-invalid]
+      :is(.react-aria-Input, .react-aria-TextArea):is(:focus, [data-focused]),
+    .hashti-field[data-invalid] > .hashti-input-group[data-focus-within],
+    .hashti-field[data-invalid] .hashti-select-trigger[data-focus-visible] {
+      outline: var(--hashti-focus-width) solid var(--hashti-focus);
+      outline-offset: var(--hashti-focus-offset);
+    }
+    .hashti-field[data-readonly] :is(.react-aria-Input, .react-aria-TextArea, .hashti-input-group) {
+      background: transparent;
+      border-color: var(--hashti-border-subtle);
+    }
+    .hashti-field[data-disabled] > .react-aria-Label,
+    .hashti-field[data-disabled] > .hashti-field__label-row > .hashti-field__label {
+      color: var(--hashti-text-disabled);
+    }
+    .hashti-field[data-disabled]
+      :is(.react-aria-Input, .react-aria-TextArea, .hashti-input-group, .hashti-select-trigger) {
+      background: var(--hashti-button-disabled);
+      border-color: var(--hashti-border-disabled);
+      color: var(--hashti-text-disabled);
+    }
+    .hashti-field[data-disabled] .react-aria-SelectValue {
+      color: var(--hashti-text-disabled);
+    }
+    .hashti-input-group > .react-aria-Input {
+      border: 0;
+      background: transparent;
+    }
+    .hashti-input-group > .hashti-button {
+      min-height: calc(var(--control-height, 2.5rem) - 2px);
+      align-self: stretch;
+    }
+
+    .hashti-checkbox,
+    .hashti-radio,
+    .hashti-switch {
+      min-height: var(--hashti-size-md);
+      gap: var(--hashti-spacing-03);
+      font-size: var(--hashti-body-01-font-size);
+      line-height: var(--hashti-body-01-line-height);
+    }
+    .hashti-checkbox,
+    .hashti-radio {
+      padding-block: 0.625rem;
+    }
+    .hashti-checkbox[data-readonly] {
+      cursor: default;
+    }
+    .hashti-checkbox-control,
+    .hashti-radio-control {
+      width: 1.125rem;
+      height: 1.125rem;
+      margin-top: 1px;
+      border-color: var(--hashti-border-strong);
+    }
+    .hashti-checkbox-control {
+      border-radius: 4px;
+    }
+    .hashti-checkbox:is([data-selected], [data-indeterminate]) .hashti-checkbox-control {
+      background: var(--hashti-button-primary);
+      border-color: var(--hashti-button-primary);
+      color: var(--hashti-text-on-color);
+    }
+    .hashti-radio[data-selected] .hashti-radio-control {
+      border-color: var(--hashti-button-primary);
+    }
+    .hashti-checkbox[data-hovered] .hashti-checkbox-control,
+    .hashti-radio[data-hovered] .hashti-radio-control {
+      border-color: var(--hashti-text-primary);
+    }
+    .hashti-checkbox:not([data-selected], [data-indeterminate])[data-pressed]
+      .hashti-checkbox-control,
+    .hashti-radio:not([data-selected])[data-pressed] .hashti-radio-control {
+      background: var(--hashti-layer-active);
+    }
+    .hashti-checkbox:is([data-selected], [data-indeterminate])[data-pressed]
+      .hashti-checkbox-control {
+      background: var(--hashti-button-primary-active);
+    }
+    .hashti-checkbox[data-invalid] .hashti-checkbox-control,
+    .hashti-radio[data-invalid] .hashti-radio-control {
+      border-color: var(--hashti-support-error);
+    }
+    .hashti-checkbox[data-focus-visible] .hashti-checkbox-control,
+    .hashti-radio[data-focus-visible] .hashti-radio-control,
+    .hashti-switch[data-focus-visible] .hashti-switch-track {
+      outline: var(--hashti-focus-width) solid var(--hashti-focus);
+      outline-offset: var(--hashti-focus-offset);
+    }
+    .hashti-checkbox[data-disabled] .hashti-checkbox-control,
+    .hashti-radio[data-disabled] .hashti-radio-control {
+      border-color: var(--hashti-icon-disabled);
+    }
+    .hashti-checkbox[data-disabled]:is([data-selected], [data-indeterminate])
+      .hashti-checkbox-control {
+      background: var(--hashti-icon-disabled);
+      color: var(--hashti-field);
+    }
+    .hashti-switch[data-selected] .hashti-switch-track {
+      background: var(--hashti-button-primary);
+    }
+    .hashti-switch-thumb {
+      background: var(--hashti-field);
+    }
+    .hashti-switch[data-disabled] .hashti-switch-track {
+      background: var(--hashti-border-disabled);
+    }
+    .hashti-content-switcher {
+      border-radius: var(--hashti-control-radius);
+      outline-color: var(--hashti-border-strong);
+    }
+    .hashti-content-switcher > .hashti-toggle-button {
+      border-color: transparent;
+    }
+    .hashti-content-switcher > .hashti-toggle-button:first-child {
+      border-start-start-radius: var(--hashti-control-radius);
+      border-end-start-radius: var(--hashti-control-radius);
+    }
+    .hashti-content-switcher > .hashti-toggle-button:last-child {
+      border-start-end-radius: var(--hashti-control-radius);
+      border-end-end-radius: var(--hashti-control-radius);
+    }
+
+    :scope.hashti-popover {
+      border: 1px solid var(--hashti-border-subtle);
+      border-radius: var(--hashti-popover-radius);
+      box-shadow: 0 8px 24px var(--hashti-shadow);
+    }
+    .react-aria-ListBox,
+    .react-aria-Menu {
+      padding: var(--hashti-spacing-02);
+    }
+    .react-aria-ListBoxItem,
+    .react-aria-MenuItem {
+      border-radius: var(--hashti-control-radius);
+    }
+    .hashti-modal {
+      border: 1px solid var(--hashti-border-subtle);
+      border-radius: var(--hashti-overlay-radius);
+      box-shadow: 0 16px 48px var(--hashti-shadow);
+    }
+    .hashti-dialog {
+      padding: var(--hashti-spacing-06);
+    }
+    .hashti-dialog .react-aria-Heading[slot="title"] {
+      font-weight: 500;
+      margin-inline-end: 2.5rem;
+      margin-block-end: var(--hashti-spacing-03);
+    }
+    .hashti-dialog > .hashti-button[slot="close"] {
+      top: var(--hashti-spacing-04);
+      inset-inline-end: var(--hashti-spacing-04);
+    }
+    .hashti-dialog-footer {
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: var(--hashti-spacing-03);
+      margin: var(--hashti-spacing-06) 0 0;
+    }
+    .hashti-dialog-footer .hashti-button {
+      width: auto;
+      min-height: var(--control-height, 3rem);
+      align-items: center;
+      padding-block: 0;
+    }
+  }
+}
+
+/* System colors must outrank variant and interaction-state colors. */
+@layer hashti.accessibility {
+  @media (forced-colors: active) {
+    @scope ([data-hashti-theme="relay-light"], [data-hashti-theme="relay-dark"]) to ([data-hashti-theme]) {
+      .hashti-button,
+      .hashti-toggle-button {
+        --relay-button-ink: ButtonText;
+        --button-icon: currentColor;
+        background: ButtonFace;
+        color: ButtonText;
+        border-color: ButtonText;
+      }
+      .hashti-toggle-button[data-selected] {
+        background: Highlight;
+        color: HighlightText;
+      }
+      .hashti-button[data-disabled],
+      .hashti-toggle-button[data-disabled] {
+        --relay-button-ink: GrayText;
+        background: ButtonFace;
+        color: GrayText;
+        border-color: GrayText;
+      }
+      .hashti-select-trigger .react-aria-SelectValue[data-placeholder],
+      .hashti-field[data-disabled] .react-aria-SelectValue {
+        color: GrayText;
+      }
+      .hashti-button[data-pending] {
+        color: transparent;
+      }
+      .hashti-button[data-focus-visible],
+      .hashti-toggle-button[data-focus-visible],
+      .hashti-checkbox[data-focus-visible] .hashti-checkbox-control,
+      .hashti-radio[data-focus-visible] .hashti-radio-control,
+      .hashti-switch[data-focus-visible] .hashti-switch-track {
+        outline-color: Highlight;
+      }
+      .hashti-checkbox-control,
+      .hashti-radio-control,
+      .hashti-switch-track {
+        border-color: ButtonText;
+      }
+      .hashti-checkbox:is([data-selected], [data-indeterminate]) .hashti-checkbox-control,
+      .hashti-switch[data-selected] .hashti-switch-track {
+        background: Highlight;
+        color: HighlightText;
+      }
+      .hashti-switch-thumb {
+        background: ButtonText;
+      }
+      .hashti-switch[data-selected] .hashti-switch-thumb {
+        background: HighlightText;
+      }
+      .hashti-checkbox[data-disabled] .hashti-checkbox-control,
+      .hashti-radio[data-disabled] .hashti-radio-control,
+      .hashti-switch[data-disabled] .hashti-switch-track {
+        background: ButtonFace;
+        border-color: GrayText;
+        color: GrayText;
+      }
+      .hashti-radio[data-disabled] .hashti-radio-control::after,
+      .hashti-switch[data-disabled] .hashti-switch-thumb {
+        background: GrayText;
+      }
+    }
+  }
+}

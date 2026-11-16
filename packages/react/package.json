@@ -43,6 +43,7 @@
   },
   "peerDependencies": {
     "@hashti/tokens": "workspace:*",
+    "@hashti/styles": "workspace:*",
     "react": ">=19.0.0 <20",
     "react-dom": ">=19.0.0 <20",
     "react-aria-components": ">=1.22.0 <2"

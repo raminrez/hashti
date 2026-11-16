@@ -1,0 +1,69 @@
+/* Hashti Modern Aesthetic - Switch */
+@layer hashti.components {
+  .hashti-switch {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    gap: var(--hashti-spacing-03, 8px);
+    cursor: pointer;
+    font-size: var(--hashti-body-compact-01-font-size, 0.875rem);
+    user-select: none;
+  }
+
+  .hashti-switch-track {
+    display: inline-flex;
+    align-items: center;
+    width: 44px;
+    height: 24px;
+    border-radius: 9999px;
+    background-color: var(--hashti-border-subtle, #e0e0e0);
+    padding: 2px;
+    transition: background-color var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+  }
+
+  .hashti-switch[data-size="sm"] .hashti-switch-track,
+  .hashti-switch[data-size="sm"] .hashti-switch-track {
+    width: 34px;
+    height: 18px;
+  }
+
+  .hashti-switch-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hashti-switch[data-size="sm"] .hashti-switch-thumb,
+  .hashti-switch[data-size="sm"] .hashti-switch-thumb {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hashti-switch[data-selected] .hashti-switch-track,
+  .hashti-switch[data-selected] .hashti-switch-track {
+    background-color: var(--hashti-focus);
+  }
+
+  .hashti-switch[data-selected] .hashti-switch-thumb,
+  .hashti-switch[data-selected] .hashti-switch-thumb {
+    transform: translateX(20px);
+  }
+
+  .hashti-switch[data-size="sm"][data-selected] .hashti-switch-thumb,
+  .hashti-switch[data-size="sm"][data-selected] .hashti-switch-thumb {
+    transform: translateX(16px);
+  }
+
+  .hashti-switch[data-focus-visible] .hashti-switch-track,
+  .hashti-switch[data-focus-visible] .hashti-switch-track {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--hashti-background, #ffffff),
+      0 0 0 4px var(--hashti-focus, #0f62fe),
+      0 0 8px rgba(15, 98, 254, 0.35);
+  }
+}

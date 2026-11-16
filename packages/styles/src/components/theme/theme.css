@@ -1,0 +1,7 @@
+/* Hashti Modern Aesthetic - theme */
+@layer hashti.components {
+  [data-hashti-theme],
+  [data-hashti-theme] {
+    box-sizing: border-box;
+  }
+}

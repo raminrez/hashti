@@ -1,0 +1,169 @@
+/* Hashti Modern Aesthetic - sheet
+   Owner of every sheet rule: surface, handle, backdrop and content.
+   Positions and swipe direction come from React Aria as data attributes. */
+@layer hashti.components {
+  .react-aria-Sheet,
+  .hashti-sheet {
+    background: var(--hashti-layer-01);
+    color: var(--hashti-text-primary);
+    border: 1px solid var(--hashti-border-subtle);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+    font-family: inherit;
+    font-size: var(--hashti-body-01-font-size, 0.875rem);
+    height: auto;
+    max-height: calc(100% - 2rem);
+    width: calc(100% - 1rem);
+    max-width: 800px;
+    margin: 0.5rem auto;
+    border-radius: var(--hashti-border-radius-16, 16px);
+    overflow: clip;
+    z-index: 1;
+    transform: perspective(1000px);
+    will-change: transform;
+    box-sizing: border-box;
+  }
+
+  /* React Aria's overscroll padding sits inside the sheet's own box, so the clamp above
+     has to grow by the padded axis or the content collapses to zero height. */
+  .hashti-sheet[data-overscroll-padding][data-position="bottom"],
+  .hashti-sheet[data-overscroll-padding][data-position="top"],
+  .hashti-sheet[data-overscroll-padding][data-position="center"] {
+    max-height: calc(100% - 2rem + 100vh);
+  }
+  .hashti-sheet[data-overscroll-padding][data-position="left"],
+  .hashti-sheet[data-overscroll-padding][data-position="right"],
+  .hashti-sheet[data-overscroll-padding][data-position="start"],
+  .hashti-sheet[data-overscroll-padding][data-position="end"] {
+    width: calc(360px + 100vw);
+  }
+
+  .react-aria-Sheet[data-position="left"],
+  .react-aria-Sheet[data-position="right"],
+  .react-aria-Sheet[data-position="start"],
+  .react-aria-Sheet[data-position="end"],
+  .hashti-sheet[data-position="left"],
+  .hashti-sheet[data-position="right"],
+  .hashti-sheet[data-position="start"],
+  .hashti-sheet[data-position="end"] {
+    width: 360px;
+    height: calc(100% - 1rem);
+    max-height: unset;
+    margin: 0.5rem;
+  }
+
+  .hashti-sheet[data-position="bottom"],
+  .hashti-sheet[data-position="center"] {
+    transform-origin: center -150px;
+  }
+  .hashti-sheet[data-position="top"] {
+    transform-origin: center 150px;
+  }
+  .hashti-sheet[data-position="left"],
+  .hashti-sheet[data-position="start"] {
+    transform-origin: 150px center;
+  }
+  .hashti-sheet[data-position="right"],
+  .hashti-sheet[data-position="end"] {
+    transform-origin: -150px center;
+  }
+
+  .hashti-sheet-handle,
+  .sheet-handle {
+    border-radius: 9999px;
+    background: var(--hashti-border-strong-01, rgba(0, 0, 0, 0.2));
+    position: absolute;
+    z-index: 2;
+    transition: opacity var(--hashti-duration-fast-02, var(--hashti-duration-fast-01));
+  }
+
+  .hashti-sheet[data-swipe-direction="bottom"] .hashti-sheet-handle,
+  .hashti-sheet[data-swipe-direction="vertical"] .hashti-sheet-handle,
+  .hashti-sheet[data-swipe-direction="bottom"] .sheet-handle,
+  .hashti-sheet[data-swipe-direction="vertical"] .sheet-handle {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 4px;
+  }
+  .hashti-sheet[data-swipe-direction="top"] .hashti-sheet-handle,
+  .hashti-sheet[data-swipe-direction="top"] .sheet-handle {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 4px;
+  }
+  .hashti-sheet[data-swipe-direction="left"] .hashti-sheet-handle,
+  .hashti-sheet[data-swipe-direction="horizontal"] .hashti-sheet-handle,
+  .hashti-sheet[data-swipe-direction="start"] .hashti-sheet-handle,
+  .hashti-sheet[data-swipe-direction="left"] .sheet-handle,
+  .hashti-sheet[data-swipe-direction="horizontal"] .sheet-handle {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 48px;
+    width: 4px;
+  }
+  .hashti-sheet[data-swipe-direction="right"] .hashti-sheet-handle,
+  .hashti-sheet[data-swipe-direction="end"] .hashti-sheet-handle,
+  .hashti-sheet[data-swipe-direction="right"] .sheet-handle {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 48px;
+    width: 4px;
+  }
+
+  .hashti-sheet[data-has-descendants] .hashti-sheet-handle,
+  .hashti-sheet[data-has-descendants] .sheet-handle {
+    opacity: 0;
+  }
+
+  /* Only the bottom-most sheet in a stack dims the page behind it. */
+  .react-aria-SheetBackdrop[data-stack-index="0"],
+  .hashti-sheet-backdrop[data-stack-index="0"] {
+    background: var(--hashti-overlay);
+  }
+
+  .react-aria-SheetContent,
+  .hashti-sheet-content {
+    padding: var(--hashti-spacing-06, 1.5rem);
+    padding-bottom: calc(var(--hashti-spacing-06, 1.5rem) + var(--sheet-scroll-padding-y, 0px));
+    box-sizing: border-box;
+    height: 100%;
+    outline: none;
+    overflow: hidden;
+    overscroll-behavior: auto;
+    scrollbar-gutter: stable;
+  }
+
+  .react-aria-SheetContent .react-aria-Heading[slot="title"],
+  .hashti-sheet-content .react-aria-Heading[slot="title"] {
+    margin-top: 0;
+    margin-bottom: var(--hashti-spacing-02, 0.25rem);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  /* Scroll the inner content only once the sheet is fully expanded, so a partial detent
+     expands the sheet instead of scrolling its content (iOS behaviour). */
+  .hashti-sheet-overlay[data-expanded] .hashti-sheet-content {
+    overflow: auto;
+  }
+
+  @keyframes sheet-backdrop {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes sheet-scale-back {
+    to {
+      transform: translateZ(-120px);
+    }
+  }
+}

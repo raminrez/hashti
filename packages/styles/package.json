@@ -1,0 +1,21 @@
+{
+  "name": "@hashti/styles",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Universal, framework-agnostic CSS styles and component themes for Hashti",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": "./src/index.css",
+    "./*": "./src/*",
+    "./layers.css": "./src/layers.css",
+    "./frame.css": "./src/frame.css",
+    "./relay.css": "./src/relay.css",
+    "./styles.css": "./src/index.css",
+    "./dist/*": "./dist/*"
+  },
+  "dependencies": {
+    "@hashti/tokens": "workspace:*"
+  }
+}

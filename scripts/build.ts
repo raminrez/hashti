@@ -16,10 +16,26 @@ const run = async (...command: string[]) => {
 };
 
 await run("bun", "run", "build:tokens");
-for (const name of ["tokens", "agent", "react"]) {
+for (const name of ["tokens", "styles", "agent", "react"]) {
   const folder = `${root}/packages/${name}`;
   if (!process.argv.includes("--no-clean")) {
     await rm(`${folder}/dist`, { recursive: true, force: true });
+  }
+  if (name === "styles") {
+    await mkdir(`${folder}/dist`, { recursive: true });
+    const css = await Bun.build({
+      entrypoints: [`${folder}/src/index.css`],
+      outdir: `${folder}/dist`,
+      naming: "[name].[ext]",
+      minify: true,
+    });
+    if (!css.success) throw new AggregateError(css.logs, "Could not build @hashti/styles");
+    await copyFile(`${folder}/dist/index.css`, `${folder}/dist/styles.css`);
+    await Promise.all(
+      ["LICENSE", "NOTICE"].map((file) => copyFile(`${root}/${file}`, `${folder}/${file}`)),
+    );
+    console.log(`Built @hashti/${name}`);
+    continue;
   }
   const result = await Bun.build({
     entrypoints: [`${folder}/src/index.ts`],
@@ -28,7 +44,7 @@ for (const name of ["tokens", "agent", "react"]) {
     format: "esm",
     jsx: { runtime: "automatic", development: false },
     packages: "external",
-    external: ["@hashti/tokens", "@hashti/agent"],
+    external: ["@hashti/tokens", "@hashti/styles", "@hashti/agent"],
     plugins: [workspaceExternal],
     sourcemap: "linked",
     minify: false,

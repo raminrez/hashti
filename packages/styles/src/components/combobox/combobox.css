@@ -1,0 +1,58 @@
+/* Hashti Modern Aesthetic - ComboBox */
+@layer hashti.components {
+  .hashti-combobox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hashti-combobox-popover {
+    border-radius: var(--hashti-surface-radius, 16px);
+    border: 1px solid var(--hashti-border-subtle, #e0e0e0);
+    background-color: var(--hashti-layer, #ffffff);
+    box-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    min-width: var(--trigger-width);
+  }
+
+  .hashti-combobox-create-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--hashti-border-subtle, #e0e0e0);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: var(--hashti-body-compact-01-font-size, 0.875rem);
+    color: var(--hashti-focus);
+    font-weight: 500;
+    transition: background-color var(--hashti-duration-fast-01) ease;
+  }
+
+  .hashti-combobox-create-item:hover,
+  .hashti-combobox-create-item:hover {
+    background-color: var(--hashti-layer-accent-01, #e6f7f7);
+  }
+
+  .hashti-combobox-chips-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .hashti-combobox-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    background-color: var(--hashti-layer-accent-01, #e6f7f7);
+    color: var(--hashti-text-primary, #005f60);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+}
