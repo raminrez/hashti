@@ -1,6 +1,6 @@
 # Use ui-sdk for net-new components, and a hashti-owned agent bridge for React Aria components
 
-Status: accepted, 14 November 2026
+Status: superseded by ADR-0002, 18 November 2026
 
 Cinder's 49 components are built on React Aria Components and rely on the approved Frame contract
 (semantic tokens, one stylesheet import, `hashti-*` hooks, 44px controls). Rebuilding them on ui-sdk
