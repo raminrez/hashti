@@ -1,12 +1,14 @@
-# TICK-001: Standardize Kbd, Badge, Divider (Display Components)
+# TICK-001: Standardize Kbd, Badge, Separator (Display Components)
 
 **Phase:** 1 — Pure Content & Display Components (Lowest Risk)
 **Priority:** High (unblocks all other tickets)
 **Effort:** Low
 
 ## Goal
-Standardize the three simplest display-only components (`Kbd`, `Badge`, `Divider`) to the Hashti DOM
+Standardize the three simplest display-only components (`Kbd`, `Badge`, `Separator`) to the Hashti DOM
 contract and `@hashti/styles`. These components have no interactive state so they're ideal first targets.
+Names follow the TICK-000 inventory (Divider likely becomes `Separator`, re-exported from
+`@ui-sdk/react/separator`).
 
 ## Files to Touch
 - `packages/react/src/components/kbd/kbd.tsx`
