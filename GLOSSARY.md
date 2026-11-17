@@ -1,13 +1,13 @@
 # Hashti
 
-A design system built on React Aria Components, published as packages and demonstrated in a
+A design system built on ui-sdk, published as packages and demonstrated in a
 documentation site, Storybook, and design comparisons.
 
 ## Product
 
-**Cinder**:
+**Hashti**:
 The design system as a whole: its language, components, tokens and documentation.
-_Avoid_: library, kit, UI framework
+_Avoid_: library, kit, UI framework, Cinder
 
 **Frame**:
 The selected visual direction of Cinder, chosen on 6 November 2026 after the fourth prototype comparison.
@@ -33,6 +33,29 @@ _Avoid_: batch, milestone, phase
 A working comparison of a candidate design, shown at `/prototypes` on fictional review data.
 _Avoid_: mockup, demo, experiment
 
+**Framework package**:
+One thin per-framework binding of Hashti (`@hashti/react`, later vue, svelte, solid, web
+components). Each binds ui-sdk's framework package to Hashti styles; none owns appearance.
+_Avoid_: wrapper library, port
+
+**Wrap**:
+A Hashti component that binds a ui-sdk component and adds API: variants, sizes, compound
+parts, icons. The alternative to re-export, chosen only when Hashti adds surface.
+_Avoid_: adapter, HOC, shim
+
+**Re-export**:
+A ui-sdk component exported from `@hashti/react` unchanged; Hashti styles target its parts
+and state attributes. The default disposition when Hashti adds no API.
+
+**CSS-only**:
+A Hashti component with no behavior: a presentational element carrying only a hook and
+variant attributes, such as Kbd, Badge, Card, Tag, Table.
+_Avoid_: static component, dumb component
+
+**Attribute map**:
+The canonical table translating RAC state attributes to ui-sdk state attributes
+(`docs/attribute-map.md`), applied to every stylesheet once, in TICK-000b.
+
 ## Interaction
 
 **Behavior**:
@@ -55,24 +78,3 @@ _Avoid_: role, key, part name
 The reusable behaviors a component is assembled from, such as roving focus or a popup.
 _Avoid_: utility, helper, mixin
 
-## Agents
-
-**Agent surface**:
-What one component offers an agent: the values it exposes and the actions it accepts.
-_Avoid_: API, interface, contract
-
-**Bridge**:
-The object that finds components on a page, reports them, and performs the actions an agent asks for.
-_Avoid_: connector, driver, adapter
-
-**Action**:
-A named operation an agent may ask a component to perform, such as `setValue` or `press`.
-_Avoid_: command, method, operation
-
-**Mark**:
-An attribute that changes what an agent sees or may do: confirm, secret, hidden.
-_Avoid_: flag, tag, annotation
-
-**Ref**:
-The short identifier a bridge assigns to one component instance in its snapshot.
-_Avoid_: id, handle, pointer
