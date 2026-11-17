@@ -58,15 +58,15 @@ export const Installation: StoryObj = {
         >
           # With Bun
           <br />
-          bun add @hashti/react @hashti/tokens react-aria-components
+          bun add @hashti/react @hashti/styles react-aria-components
           <br />
           <br /># With pnpm
           <br />
-          pnpm add @hashti/react @hashti/tokens react-aria-components
+          pnpm add @hashti/react @hashti/styles react-aria-components
           <br />
           <br /># With npm
           <br />
-          npm install @hashti/react @hashti/tokens react-aria-components
+          npm install @hashti/react @hashti/styles react-aria-components
         </div>
       </div>
 
@@ -95,7 +95,7 @@ export const Installation: StoryObj = {
           <br />
           <span style={{ color: "var(--hashti-support-info-inverse)" }}>import</span>{" "}
           <span style={{ color: "var(--hashti-support-success-inverse)" }}>
-            "@hashti/tokens/tokens.css"
+            "@hashti/styles/tokens.css"
           </span>
           ;<br />
           <br />

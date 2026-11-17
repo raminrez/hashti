@@ -53,7 +53,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Form is Cinder's unchanged React Aria export. These local-only examples use default TextField/TextArea composition, native submit validation, persistent guidance, application-owned request state, and Form validationErrors. onSubmit preserves the draft instead of using an auto-resetting React action. Required wording and recovery are authored alongside the locale; isRequired supplies native behavior.",
+          "Form is Hashti's unchanged React Aria export. These local-only examples use default TextField/TextArea composition, native submit validation, persistent guidance, application-owned request state, and Form validationErrors. onSubmit preserves the draft instead of using an auto-resetting React action. Required wording and recovery are authored alongside the locale; isRequired supplies native behavior.",
       },
     },
   },
@@ -743,7 +743,7 @@ export const RightToLeft: Story = {
     docs: {
       description: {
         story:
-          "Persian and Arabic use real Theme locale providers, Cinder's localized necessity wording, authored recovery/pending text, native required inputs, and isolated Latin email values and identifiers. Both local forms retain drafts through failure and retry without focus changes or duplicate live feedback. Browser-generated validation wording is not assumed to follow the Theme locale.",
+          "Persian and Arabic use real Theme locale providers, Hashti's localized necessity wording, authored recovery/pending text, native required inputs, and isolated Latin email values and identifiers. Both local forms retain drafts through failure and retry without focus changes or duplicate live feedback. Browser-generated validation wording is not assumed to follow the Theme locale.",
       },
     },
   },

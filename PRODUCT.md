@@ -30,21 +30,20 @@ operability (via WebMCP and agent bridge tools), and world-class Persian/Arabic 
 - **Agent Operability:** First-class agent affordances (`snapshot`, `act`, `query`, WebMCP)
   integrated natively into component lifecycles via `@hashti/agent` and ui-sdk primitives.
 - **Design Foundations:** Frame visual direction, native prebuilt CSS, semantic design tokens
-  (`@hashti/tokens`), and `hashti-*` BEM/custom styling hooks.
-- **Workspace:** Monorepo managed with Bun workspaces. Includes `@hashti/tokens`, `@hashti/react`,
+  (`@hashti/styles`), and `hashti-*` BEM/custom styling hooks.
+- **Workspace:** Monorepo managed with Bun workspaces. Includes `@hashti/styles`, `@hashti/react`,
   `@hashti/agent`, documentation (`apps/docs`), interactive playground (`apps/playground`),
   and Storybook (`apps/storybook`).
 
 ## Brand Commitments
 
-- **Name:** Hashti (formerly referred to as Cinder in early prototypes; rebranded comprehensively).
+- **Name:** Hashti.
 - **Aesthetic Direction:** Frame visual direction is the baseline standard—clean, intentional,
   and tactile.
 - **Voice:** Direct, precise, unpretentious, and technically grounded.
 - **Reference Influences:**
   - *Astryx:* Field anatomy, state feedback, and validation clarity.
   - *HeroUI v3:* Component ergonomics and developer experience.
-  - *Carbon:* UX reasoning, accessible interaction models, and systematic coverage.
 
 ## Accessibility & Inclusion
 

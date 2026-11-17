@@ -40,7 +40,7 @@ export const Playground: Story = {
           <Link href="#projects">Projects</Link>
         </Breadcrumb>
         <Breadcrumb>
-          <Link href="#cinder">Cinder</Link>
+          <Link href="#hashti">Hashti</Link>
         </Breadcrumb>
         <Breadcrumb>
           <Link>Components</Link>
@@ -149,7 +149,7 @@ export const CollapsibleOrOverflow: Story = {
           </OverflowMenu>
         </Breadcrumb>
         <Breadcrumb>
-          <Link href="#cinder">Cinder</Link>
+          <Link href="#hashti">Hashti</Link>
         </Breadcrumb>
         <Breadcrumb>
           <Link>Breadcrumbs</Link>

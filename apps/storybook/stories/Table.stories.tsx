@@ -324,7 +324,7 @@ export const ResizableColumns: Story = {
           </TableHeader>
           <TableBody>
             <Row id="repo-1">
-              <Cell>cinder-design-system</Cell>
+              <Cell>hashti-design-system</Cell>
               <Cell>main</Cell>
               <Cell>a4f89d1</Cell>
               <Cell>Sarah Chen</Cell>

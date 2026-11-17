@@ -24,7 +24,7 @@ type Story = StoryObj<typeof meta>;
 
 function AILabelDemo() {
   const [reverted, setReverted] = useState(false);
-  const [val, setVal] = useState("Generated description: Cinder design system components");
+  const [val, setVal] = useState("Generated description: Hashti design system components");
 
   return (
     <div className="content-story-stack">
@@ -43,7 +43,7 @@ function AILabelDemo() {
             revertActive={reverted}
             revertLabel="Revert description"
             onRevert={() => {
-              setVal("Generated description: Cinder design system components");
+              setVal("Generated description: Hashti design system components");
               setReverted(false);
               handleRevert();
             }}

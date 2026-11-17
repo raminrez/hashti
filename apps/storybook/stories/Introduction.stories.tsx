@@ -134,7 +134,7 @@ export const Introduction: StoryObj = {
               color: "var(--hashti-support-warning)",
             }}
           >
-            2. Zero Carbon Squareness
+            2. Rounded, Tactile Geometry
           </h3>
           <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--hashti-text-secondary)" }}>
             Pure monochrome #000000/#FFFFFF canvas, arched curves, tactile spring

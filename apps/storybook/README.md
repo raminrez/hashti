@@ -1,4 +1,4 @@
-# Cinder Storybook
+# Hashti Storybook
 
 Private React/Vite component workbench. Run from the repository root:
 
@@ -8,7 +8,7 @@ bun run build:storybook       # dist/storybook
 bun run typecheck:storybook   # config, stories, and public declarations
 ```
 
-Each command first builds `@hashti/tokens` and `@hashti/react` with the existing
+Each command first builds `@hashti/styles` and `@hashti/react` with the existing
 package builder. `bun run typecheck` includes the Storybook check. Its TypeScript
 configuration clears source aliases, so stories consume the same public `dist`
 exports as applications. Config and stories use the repository's strict settings
@@ -41,9 +41,7 @@ The first action batch contains 12 Button and 9 Link stories. Button recommends
 four core choices (`primary`, `secondary`, `ghost`, `danger`); all seven variants
 remain supported, with `tertiary`, `danger-tertiary`, and `danger-ghost` in the
 compatibility story. Both families include Persian and Arabic examples through
-real `Theme locale` scopes. Existing action evidence remains in the
-[verification record](../../docs/verification.md), separate from this batch's
-authored field/form coverage.
+real `Theme locale` scopes.
 
 ## Field/form batch
 
@@ -75,8 +73,7 @@ exports keep upstream validation ownership.
 
 At its acceptance, the status extension added eight stories to the preserved 54,
 for **62 stories**.
-Its [8 November bounded acceptance](../../docs/verification.md#frame-field-status--phase-2-extension)
-records **132 passing story/theme/motion cases**. `status` is appearance
+Its 8 November bounded acceptance covered **132 passing story/theme/motion cases**. `status` is appearance
 only; actual validation remains authoritative. Compound roots do not insert a
 status message automatically: mount `.Status` explicitly in `.Help`. Frame's
 bordered controls use attached feedback; checkbox/radio groups keep it detached.
@@ -108,8 +105,7 @@ a preference committed by Save; these examples do not add persistence to the pac
 Code, static Storybook, and both installed-package gates have passed. All **62
 final PNGs** have zero recorded geometry/contrast failures or axe violations;
 visual review and per-capture incomplete dispositions are being closed separately.
-The [dated choice evidence](../../docs/verification.md#frame-choices--phase-2-third-batch)
-records the exact executed scope. Select/Modal/Popover/Tooltip and settings/nested
+The dated choice evidence covers the exact executed scope. Select/Modal/Popover/Tooltip and settings/nested
 editing are the next bounded batch; the documentation website and Figma remain later.
 
 ## Select and overlays batch
@@ -135,8 +131,8 @@ Popover uses 14px corners (`--hashti-popover-radius`) with `0 8px 24px` elevatio
 Run `bun test --timeout 60000 tests/browser/storybook.test.ts` after the static build
 to execute the indexed stories in both Frame themes and require successful play
 and a11y reporting. Coverage above describes the authored stories; dated rendered,
-package, browser, and manual evidence is recorded separately in the verification
-record rather than inferred from a successful static build.
+package, browser, and manual evidence is recorded separately from a successful
+static build.
 
 Development dependencies are pinned to Storybook/React-Vite/a11y **10.6.6** and
 Vite **8.3.6**, checked against the npm registry and the

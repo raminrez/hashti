@@ -286,7 +286,7 @@ export const FormDialog: Story = {
     });
 
     const emailInput = within(modal).getByRole("textbox", { name: /Teammate email/ });
-    await userEvent.type(emailInput, "alex@cinder.dev");
+    await userEvent.type(emailInput, "alex@hashti.dev");
 
     const submitBtn = within(modal).getByRole("button", { name: "Send invitation" });
     await userEvent.click(submitBtn);
@@ -294,7 +294,7 @@ export const FormDialog: Story = {
     await waitFor(() => {
       expect(document.querySelector(".hashti-modal")).toBeNull();
     });
-    await expect(output).toHaveTextContent("Invited: alex@cinder.dev (notify=yes)");
+    await expect(output).toHaveTextContent("Invited: alex@hashti.dev (notify=yes)");
     await waitFor(() => expect(trigger).toHaveFocus());
   },
 };

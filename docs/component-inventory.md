@@ -23,7 +23,7 @@ theme files or have none yet. Ticket references were renumbered after the decisi
 | Canonical Hashti name | Disposition | ui-sdk entry | Owning ticket | Notes |
 |---|---|---|---|---|
 | Accordion (was Disclosure) | wrap | `@ui-sdk/react/accordion` | TICK-009 | Adds size, variant (`default`/`card`/`flush`), chevron icon. ui-sdk Accordion covers RAC Disclosure + DisclosureGroup (incl. single-expand groups). |
-| Alert (in toast/ dir) | wrap | `@ui-sdk/react/alert-dialog` | TICK-007 | Split out of toast.tsx: `Alert`/`InlineNotification`/`ActionableNotification` are Carbon notification variants. AlertDialog is ui-sdk's modal-confirm; the inline variants are css-only. Decide split: AlertDialog wrapper → TICK-007; InlineNotification css-only → TICK-001 or a notification ticket. |
+| Alert (in toast/ dir) | wrap | `@ui-sdk/react/alert-dialog` | TICK-007 | Split out of toast.tsx: `Alert`/`InlineNotification`/`ActionableNotification` are notification variants inherited from the original catalog. AlertDialog is ui-sdk's modal-confirm; the inline variants are css-only. Decide split: AlertDialog wrapper → TICK-007; InlineNotification css-only → TICK-001 or a notification ticket. |
 | Autocomplete | re-export | `@ui-sdk/react/autocomplete` | TICK-006 | Current Hashti wrapper adds only a filter default. Re-export; used by Combobox/CommandPalette composition. |
 | Avatar | wrap | `@ui-sdk/react/avatar` | TICK-012 | Hashti adds size scale, initials (`getInitials` with locale), `AvatarGroup` with overlap. Wrap for those; ui-sdk avatar handles image/fallback. Owned by the presentational batch. |
 | Badge | css-only | — | TICK-001 | `<span>` with `content`/count + `AILabel` variant. No behavior. |
@@ -67,7 +67,7 @@ theme files or have none yet. Ticket references were renumbered after the decisi
 | TextField → Input / Textarea | wrap | `@ui-sdk/react/input`, `@ui-sdk/react/textarea` | TICK-005 | Split Hashti's TextField/TextArea roots onto ui-sdk `Input` and `Textarea` inside Field anatomy. Rename to match ui-sdk entries. |
 | Theme | css-only (provider) | — | TICK-012 | Hashti-only: theme/layer context + sets `dir`/`lang` on the DOM root (ui-sdk reads direction from the DOM). RAC `I18nProvider` is deleted — the last RAC dependency in the providers layer. |
 | TimeField → TimeInput | wrap | `@ui-sdk/react/time-input` | TICK-005 | Rename. Also re-export ui-sdk `date-input` for the DateField half. |
-| Toast | wrap | `@ui-sdk/react/toast` | TICK-008 | `ToastProvider` + toast queue → ui-sdk toast. Carbon-style `InlineNotification`/`ActionableNotification` split out (see Alert row). |
+| Toast | wrap | `@ui-sdk/react/toast` | TICK-008 | `ToastProvider` + toast queue → ui-sdk toast. Inline/actionable notification variants split out (see Alert row). |
 | TokenField → TokenInput | wrap | `@ui-sdk/react/token-input` | TICK-006* | Rename. Hashti's custom token field maps to ui-sdk token-input (tokens + input).  |
 | Toolbar | wrap | `@ui-sdk/react/toolbar` | TICK-003 | Adds size/orientation/variant (`flat`/`raised`/`floating`) + disabled context. |
 | Tooltip | wrap | `@ui-sdk/react/tooltip` | TICK-008 | Thin wrap (delay, placement). |

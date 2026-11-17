@@ -29,7 +29,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Composite multi-control task flows using Cinder's Frame-styled components. Demonstrates settings layouts, form validation and draft recovery, dependent field controls (Switch enabling Checkbox), nested review modals, and RTL localization.",
+          "Composite multi-control task flows using Hashti's Frame-styled components. Demonstrates settings layouts, form validation and draft recovery, dependent field controls (Switch enabling Checkbox), nested review modals, and RTL localization.",
       },
     },
   },
@@ -48,8 +48,8 @@ interface WorkspaceSettingsData {
 }
 
 const initialSettings: WorkspaceSettingsData = {
-  name: "Cinder Studio",
-  email: "team@cinder.example",
+  name: "Hashti Studio",
+  email: "team@hashti.example",
   reviewer: "elena",
   limit: 8,
   digest: true,
@@ -273,8 +273,8 @@ export const WorkspaceSettings: Story = {
 
     const nameInput = canvas.getByRole("textbox", { name: /Workspace name/ });
     await userEvent.clear(nameInput);
-    await userEvent.type(nameInput, "Cinder Production");
-    expect(nameInput).toHaveValue("Cinder Production");
+    await userEvent.type(nameInput, "Hashti Production");
+    expect(nameInput).toHaveValue("Hashti Production");
 
     const digestSwitch = canvas.getByRole("switch", { name: "Send a daily review summary" });
     const completedBox = canvas.getByRole("checkbox", {
@@ -315,7 +315,7 @@ export const SaveAndRetry: Story = {
 
     // Entries are preserved
     const nameInput = canvas.getByRole("textbox", { name: /Workspace name/ });
-    expect(nameInput).toHaveValue("Cinder Studio");
+    expect(nameInput).toHaveValue("Hashti Studio");
 
     // Retry save
     await userEvent.click(saveButton);
@@ -472,7 +472,7 @@ function LocalizedSettings() {
           <SettingsForm
             initialData={{
               name: "کارگاه استودیو",
-              email: "contact@cinder.ir",
+              email: "contact@hashti.ir",
               reviewer: "elena",
               limit: 5,
               digest: true,

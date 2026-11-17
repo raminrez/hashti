@@ -34,7 +34,7 @@ Written 2026-11-13. Branch `feat/landing-brandbook` (head `e8bfe17`) continues f
    copy example. Add figures and one concrete copy example; do not invent new brand claims.
 4. **Foundations pages generally** (`apps/docs/content/docs/foundations/*`): check each for the same
    failure the brandbook had — a documented token, colour or typeface that the code does not ship.
-   `grep` the hex values and font names in a page against `packages/tokens/src/frame.ts`.
+   `grep` the hex values and font names in a page against `packages/styles/src/tokens/frame.ts`.
 
 ## How to verify (this repo's recipes)
 

@@ -10,7 +10,7 @@ The design system as a whole: its language, components, tokens and documentation
 _Avoid_: library, kit, UI framework, Cinder
 
 **Frame**:
-The selected visual direction of Cinder, chosen on 6 November 2026 after the fourth prototype comparison.
+The selected visual direction of Hashti, chosen on 6 November 2026 after the fourth prototype comparison.
 _Avoid_: theme, skin, style guide
 
 **Theme**:

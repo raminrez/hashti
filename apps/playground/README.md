@@ -1,6 +1,6 @@
 # Playground
 
-Where Cinder's agent surface is prototyped, and where ui-sdk is evaluated on components Cinder
+Where Hashti's agent surface is prototyped, and where ui-sdk is evaluated on components Hashti
 does not ship.
 
 The field slice registers itself through `@hashti/agent`, the contract described in

@@ -274,7 +274,7 @@ export const CompositionAndFormData: Story = {
     docs: {
       description: {
         story:
-          "The composed required group uses actual native submit/reset validation and Form validationErrors keyed by its name. Applying a returned error does not simulate a server or save retry; RAC clears that error when the selected value changes. The focus action inspects div/label/input refs and focuses only the native input. Render-prop children keep a stable accessible name, class/style callbacks retain Cinder hooks, and submission displays the real FormData entry list.",
+          "The composed required group uses actual native submit/reset validation and Form validationErrors keyed by its name. Applying a returned error does not simulate a server or save retry; RAC clears that error when the selected value changes. The focus action inspects div/label/input refs and focuses only the native input. Render-prop children keep a stable accessible name, class/style callbacks retain Hashti hooks, and submission displays the real FormData entry list.",
       },
     },
   },

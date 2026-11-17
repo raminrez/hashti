@@ -28,7 +28,7 @@ export const Playground: Story = {
       <Card elevation="flat" style={{ maxWidth: 420 }}>
         <CardHeader
           title="Project Blueprint"
-          description="Architecture specification for Cinder 2.0"
+          description="Architecture specification for Hashti 2.0"
         />
         <CardBody>
           <p style={{ margin: 0 }}>

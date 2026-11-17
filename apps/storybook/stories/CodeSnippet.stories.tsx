@@ -76,7 +76,7 @@ function SnippetTypesExample() {
           <p className="content-card-description">Quick command line invocation.</p>
         </div>
         <CodeSnippet label="Install package command" language="bash" type="single" copyable>
-          bun add @hashti/react @hashti/tokens
+          bun add @hashti/react @hashti/styles
         </CodeSnippet>
       </div>
 
@@ -122,7 +122,7 @@ export const SnippetTypes: Story = {
     const canvas = within(canvasElement);
     const terminalSnippet = canvas.getByRole("generic", { name: "Install package command" });
     expect(terminalSnippet).toBeInTheDocument();
-    expect(terminalSnippet).toHaveTextContent("bun add @hashti/react @hashti/tokens");
+    expect(terminalSnippet).toHaveTextContent("bun add @hashti/react @hashti/styles");
 
     const jsonSnippet = canvas.getByRole("generic", { name: "JSON cluster config" });
     expect(jsonSnippet).toBeInTheDocument();
@@ -158,7 +158,7 @@ function LongContentAndLocalesExample() {
             </p>
           </div>
           <CodeSnippet label="دستور راه‌اندازی پروژه" language="bash" type="single" copyable>
-            git clone https://github.com/cinder/cinder-design-system.git && cd cinder
+            git clone https://github.com/hashti/hashti-design-system.git && cd hashti
           </CodeSnippet>
         </div>
       </Theme>

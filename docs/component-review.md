@@ -147,7 +147,7 @@ logged here and deferred with a reason.
    `select.tsx`.
 3. **Slider thumb hit target is 18px** (DESIGN defers checkbox/switch/embedded targets to their own
    slice; the thumb belongs to that slice). The track itself is fine.
-4. **The easing tokens still carry Carbon's curves** (`cubic-bezier(0.2, 0, 0.38, 0.9)` and
+4. **The easing tokens still carry the upstream reference curves** (`cubic-bezier(0.2, 0, 0.38, 0.9)` and
    friends) while DESIGN specifies an expo-style ease-out `(0.16, 1, 0.3, 1)` for entrances and
    shorter accelerating exits. Durations now follow the ladder; changing the curves changes the
    feel of every component at once, so it needs its own visual pass.

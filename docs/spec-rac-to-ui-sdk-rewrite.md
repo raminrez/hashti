@@ -128,7 +128,7 @@ operability comes from `@ui-sdk/react/agent`; `@hashti/agent` is deleted.
   beta.7's shipped docs.
 - **Playground frozen** during the rewrite; docs and Storybook are the verification
   surfaces and stay green.
-- **Naming purge**: no Cinder, no Carbon lineage anywhere; the design system is Hashti.
+- **Naming purge**: no legacy naming or lineage references anywhere; the design system is Hashti.
 
 ## Testing Decisions
 

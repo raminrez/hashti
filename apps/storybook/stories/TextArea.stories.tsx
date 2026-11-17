@@ -28,7 +28,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "TextArea.Root is RAC's TextField root with Cinder textarea appearance. TextArea.Input is the native RAC TextArea with its original props, events, render callback, and ref. The default convenience API and compound composition use the same shared Label, Description, Help, and ErrorMessage parts. Values remain editable, selectable, and vertically resizable using native semantics.",
+          "TextArea.Root is RAC's TextField root with Hashti textarea appearance. TextArea.Input is the native RAC TextArea with its original props, events, render callback, and ref. The default convenience API and compound composition use the same shared Label, Description, Help, and ErrorMessage parts. Values remain editable, selectable, and vertically resizable using native semantics.",
       },
     },
   },

@@ -35,7 +35,7 @@ function PlaygroundExample() {
         <Header aria-label="Global application header">
           <HeaderName href="#home">
             <Icon name="code" size={20} />
-            <span>Cinder Cloud</span>
+            <span>Hashti Cloud</span>
           </HeaderName>
           <HeaderNav aria-label="Platform areas">
             <Link href="#dashboard" aria-current="page">
@@ -70,7 +70,7 @@ export const Playground: Story = {
   render: () => <PlaygroundExample />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText("Cinder Cloud")).toBeInTheDocument();
+    expect(canvas.getByText("Hashti Cloud")).toBeInTheDocument();
     expect(canvas.getByRole("link", { name: "Dashboard" })).toHaveAttribute("aria-current", "page");
     expect(canvas.getByRole("link", { name: "Deployments" })).toBeInTheDocument();
   },
