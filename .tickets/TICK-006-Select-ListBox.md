@@ -2,6 +2,7 @@
 
 **Phase:** 3 — Form Controls & Inputs
 **Priority:** High
+**Blocked by:** TICK-013; TICK-004 and TICK-005 recommended (Select composes field anatomy and selection states).
 **Effort:** High
 **Depends on:** TICK-005
 

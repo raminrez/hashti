@@ -2,6 +2,7 @@
 
 **Phase:** 0 — Foundation (blocks all other tickets)
 **Priority:** Critical
+**Blocked by:** None — done (inventory approved, committed).
 **Effort:** Medium
 
 ## Goal

@@ -25,6 +25,11 @@ This roadmap tracks the full rewrite of Hashti components onto `@ui-sdk/core` an
 
 ## Ticket Sequence
 
+Work the frontier: any ticket whose blockers are all done. Initial frontier:
+**TICK-000b** (blocks everything), **TICK-014** (independent). TICK-015 joins on
+2026-11-20 and must land before TICK-002. Blocking edges are declared at the top of
+each ticket file.
+
 ### Phase 0: Foundation (blocks everything)
 - [x] **TICK-000**: [TICK-000-Component-Inventory.md](TICK-000-Component-Inventory.md) — Component
   inventory: canonical names, wrap / re-export / css-only / remove / add. **Done:**

@@ -2,6 +2,7 @@
 
 **Phase:** 4 — Overlays & Floating Panels
 **Priority:** Medium
+**Blocked by:** TICK-013.
 **Effort:** Medium
 **Depends on:** TICK-007
 

@@ -2,6 +2,7 @@
 
 **Phase:** 1 — Pure Content & Display Components (Lowest Risk)
 **Priority:** High (unblocks all other tickets)
+**Blocked by:** TICK-000b (attribute map governs stylesheet selectors). Substantially done on RAC contracts; verify-only after 000b.
 **Effort:** Low
 
 ## Goal

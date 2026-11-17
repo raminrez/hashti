@@ -2,6 +2,7 @@
 
 **Phase:** 0 — Foundation (blocks all component tickets)
 **Priority:** Critical
+**Blocked by:** None (can start immediately). Blocks every component ticket.
 **Effort:** Medium
 
 ## Goal

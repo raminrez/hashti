@@ -2,6 +2,7 @@
 
 **Phase:** 2 — After TICK-002 (Button) lands, before remaining component tickets
 **Priority:** High
+**Blocked by:** TICK-002 (needs the styled Button). Blocks Phase 3+ if the contract cracks.
 **Effort:** Low
 
 ## Goal

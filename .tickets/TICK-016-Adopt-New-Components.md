@@ -2,6 +2,7 @@
 
 **Phase:** 5 — After the migration tickets (uses patterns proven there)
 **Priority:** Medium
+**Blocked by:** TICK-013; after the Phase 3–5 tickets (reuses their proven patterns).
 **Effort:** Medium
 
 ## Goal

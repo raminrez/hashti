@@ -2,6 +2,7 @@
 
 **Phase:** 5 — Complex Collections & Data
 **Priority:** Low
+**Blocked by:** TICK-013; TICK-012 recommended (css-only Table borrows the presentational batch's patterns).
 **Effort:** High
 **Depends on:** TICK-009
 

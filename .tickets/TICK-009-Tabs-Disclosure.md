@@ -2,6 +2,7 @@
 
 **Phase:** 5 — Complex Collections & Data
 **Priority:** Medium
+**Blocked by:** TICK-013.
 **Effort:** Medium
 **Depends on:** TICK-003
 

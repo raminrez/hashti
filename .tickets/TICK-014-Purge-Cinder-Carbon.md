@@ -2,6 +2,7 @@
 
 **Phase:** Any time after TICK-000; must complete before any release
 **Priority:** Medium
+**Blocked by:** TICK-000. Independent of all component work; any time.
 **Effort:** Low
 
 ## Goal

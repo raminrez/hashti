@@ -2,6 +2,7 @@
 
 **Phase:** 3 — Form Controls & Inputs
 **Priority:** High
+**Blocked by:** TICK-013.
 **Effort:** Medium
 **Depends on:** TICK-004
 

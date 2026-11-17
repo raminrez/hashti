@@ -2,6 +2,7 @@
 
 **Phase:** 0 — Foundation
 **Priority:** Medium
+**Blocked by:** None technically; time-gated to 2026-11-20 by the release-age policy. Must land before or alongside TICK-002 so component tickets build on beta.7.
 **Effort:** Low
 
 ## Blocked until 2026-11-20

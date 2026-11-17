@@ -2,6 +2,7 @@
 
 **Phase:** 2 — Fundamental Interactive Actions
 **Priority:** Medium
+**Blocked by:** TICK-013 (contract proven).
 **Effort:** Medium
 **Depends on:** TICK-002 (Button)
 
