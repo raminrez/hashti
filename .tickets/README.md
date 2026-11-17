@@ -34,7 +34,7 @@ each ticket file.
 - [x] **TICK-000**: [TICK-000-Component-Inventory.md](TICK-000-Component-Inventory.md) — Component
   inventory: canonical names, wrap / re-export / css-only / remove / add. **Done:**
   [docs/component-inventory.md](../docs/component-inventory.md).
-- [ ] **TICK-000b**: [TICK-000b-Attribute-Map.md](TICK-000b-Attribute-Map.md) — RAC→ui-sdk
+- [x] **TICK-000b**: [TICK-000b-Attribute-Map.md](TICK-000b-Attribute-Map.md) — RAC→ui-sdk
   attribute map + stylesheet sweep; token pipeline moves from `packages/tokens` into
   `packages/styles` (pruned to used tokens); `packages/tokens` deleted.
 - [ ] **TICK-015**: [TICK-015-Upgrade-UISDK-Beta7.md](TICK-015-Upgrade-UISDK-Beta7.md) — Upgrade
@@ -83,7 +83,7 @@ each ticket file.
   `Menu`; resolve ColorPicker coverage + OverflowMenu rebuild target.
 
 ### Phase 6: Cleanup
-- [ ] **TICK-014**: [TICK-014-Purge-Cinder-Carbon.md](TICK-014-Purge-Cinder-Carbon.md) — Purge
+- [x] **TICK-014**: [TICK-014-Purge-Cinder-Carbon.md](TICK-014-Purge-Cinder-Carbon.md) — Purge
   Cinder/Carbon lineage repo-wide (may run any time).
 - [ ] Final: remove `react-aria-components` and `@internationalized/date` from the catalog,
   delete `packages/agent`, delete remaining RAC-only code, `bun run check` green.

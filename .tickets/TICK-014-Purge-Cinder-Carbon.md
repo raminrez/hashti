@@ -1,6 +1,7 @@
 # TICK-014: Purge Cinder & Carbon Lineage
 
 **Phase:** Any time after TICK-000; must complete before any release
+**Status:** DONE (18 Nov 2026)
 **Priority:** Medium
 **Blocked by:** TICK-000. Independent of all component work; any time.
 **Effort:** Low

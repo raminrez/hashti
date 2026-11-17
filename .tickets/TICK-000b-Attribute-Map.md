@@ -1,6 +1,7 @@
 # TICK-000b: Attribute Map & Stylesheet Sweep
 
 **Phase:** 0 — Foundation (blocks all component tickets)
+**Status:** DONE (18 Nov 2026)
 **Priority:** Critical
 **Blocked by:** None (can start immediately). Blocks every component ticket.
 **Effort:** Medium
