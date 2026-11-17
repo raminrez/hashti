@@ -17,3 +17,5 @@ playwright-report/
 # Copied from the root by the package build.
 packages/*/LICENSE
 packages/*/NOTICE
+
+.worktrees/
