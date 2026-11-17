@@ -62,6 +62,21 @@ Hashti styling lives exclusively in `@hashti/styles`.
 
 ## Documentation Authority
 Before writing any component:
-1. Read `node_modules/@ui-sdk/react/docs/llms.txt`
-2. Read the specific component doc: `node_modules/@ui-sdk/react/docs/components/<component>.md`
-3. Check exports: `node_modules/@ui-sdk/react/package.json`
+1. Follow the `ui-sdk` skill if it's installed (it is, in `.agents/skills/ui-sdk`)
+2. Read `node_modules/@ui-sdk/react/docs/llms.txt`
+3. Read the specific component doc: `node_modules/@ui-sdk/react/docs/components/<component>.md`
+4. Check exports: `node_modules/@ui-sdk/react/package.json`
+5. When building a component ui-sdk doesn't ship, also search `node_modules/@ui-sdk/react/docs/core.md` by heading, and read `docs/rendering.md` next to it
+
+## Stylesheet Entry
+Import the default styles once at each app's entry: `import "@ui-sdk/core/web.css"`. If the app
+uses Tailwind CSS, start its global stylesheet with these lines instead, in place of its own
+`@import "tailwindcss"`, so Tailwind's base styles don't reset them:
+
+```css
+@layer ui-sdk;
+@import "tailwindcss";
+@import "@ui-sdk/core/web.css" layer(components);
+```
+
+`web.css` is a docs/storybook base layer only — it never ships inside `@hashti/styles`.
