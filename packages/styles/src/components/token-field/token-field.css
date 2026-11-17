@@ -46,8 +46,8 @@
       box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  [data-hashti-theme] .hashti-token[data-pressed],
-  [data-hashti-theme] .hashti-token[data-pressed] {
+  [data-hashti-theme] .hashti-token:active,
+  [data-hashti-theme] .hashti-token:active {
     transform: scale(0.98);
   }
 

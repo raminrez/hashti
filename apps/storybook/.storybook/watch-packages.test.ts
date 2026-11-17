@@ -34,8 +34,8 @@ test("package refresh queues edits, retries failures, and stops with Vite", asyn
       {} as ThisParameterType<typeof plugin.configureServer>,
       server as unknown as ViteDevServer,
     );
-    change("../../../packages/tokens/src/tokens.css");
-    change("../../../packages/tokens/src/tokens.json");
+    change("../../../packages/styles/src/tokens/tokens.css");
+    change("../../../packages/styles/src/tokens/tokens.json");
     change("../../../packages/react/dist/index.js");
     expect(spawn).not.toHaveBeenCalled();
 
@@ -52,13 +52,13 @@ test("package refresh queues edits, retries failures, and stops with Vite", asyn
     expect(errors).toHaveLength(1);
     expect(messages).toEqual([]);
 
-    change("../../../packages/tokens/src/frame.ts");
+    change("../../../packages/styles/src/tokens/frame.ts");
     children[2]!.emit("close", 0);
     await Promise.resolve();
     expect(invalidations).toBe(1);
     expect(messages).toEqual([{ type: "full-reload" }]);
 
-    change("../../../packages/tokens/scripts/generate.ts");
+    change("../../../packages/styles/scripts/generate.ts");
     const kill = spyOn(children[3]!, "kill").mockReturnValue(true);
     plugin.closeBundle();
     expect(kill).toHaveBeenCalledTimes(1);
@@ -85,7 +85,7 @@ test("package outputs defer HMR while story edits retain normal updates", () => 
     );
 
   expect(update("../../../packages/react/dist/styles.css")).toEqual([]);
-  expect(update("../../../packages/tokens/dist/index.js")).toEqual([]);
+  expect(update("../../../packages/styles/dist/index.css")).toEqual([]);
   expect(update("../stories/actions.css")).toBeUndefined();
 });
 
@@ -100,14 +100,14 @@ test("Vite resolves public CSS after a missing build output is restored", async 
   let server: ViteDevServer | undefined;
 
   try {
-    await mkdir(join(app, "node_modules/@cinder"), { recursive: true });
+    await mkdir(join(app, "node_modules/@hashti"), { recursive: true });
     await mkdir(dirname(stylesheet), { recursive: true });
-    await symlink(pkg, join(app, "node_modules/@cinder/react"), "dir");
+    await symlink(pkg, join(app, "node_modules/@hashti/react"), "dir");
     await writeFile(
       join(pkg, "package.json"),
-      JSON.stringify({ name: "@cinder/react", exports: { "./styles.css": "./dist/styles.css" } }),
+      JSON.stringify({ name: "@hashti/react", exports: { "./styles.css": "./dist/styles.css" } }),
     );
-    await writeFile(join(app, "preview.js"), 'import "@cinder/react/styles.css";');
+    await writeFile(join(app, "preview.js"), 'import "@hashti/react/styles.css";');
     const vite = await config.viteFinal!(
       {
         configFile: false,
@@ -140,7 +140,7 @@ test("Vite resolves public CSS after a missing build output is restored", async 
     });
     await watching;
     await expect(server.transformRequest("/preview.js")).rejects.toThrow(
-      'Failed to resolve import "@cinder/react/styles.css"',
+      'Failed to resolve import "@hashti/react/styles.css"',
     );
 
     const restored = once(events, "restored", { signal: AbortSignal.timeout(3000) });

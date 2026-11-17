@@ -4,12 +4,12 @@
   [data-hashti-theme] .hashti-toolbar {
     border-radius: var(--hashti-control-radius, 12px);
   }
-  [data-hashti-theme] .hashti-toolbar-item[data-pressed],
-  [data-hashti-theme] .hashti-toolbar-item[data-pressed] {
+  [data-hashti-theme] .hashti-toolbar-item:active,
+  [data-hashti-theme] .hashti-toolbar-item:active {
     transform: scale(0.98);
   }
-  [data-hashti-theme] .hashti-toolbar-item[data-focus-visible],
-  [data-hashti-theme] .hashti-toolbar-item[data-focus-visible] {
+  [data-hashti-theme] .hashti-toolbar-item:focus-visible,
+  [data-hashti-theme] .hashti-toolbar-item:focus-visible {
     outline: var(--hashti-focus-width, 2px) solid var(--hashti-focus);
     outline-offset: 2px;
   }

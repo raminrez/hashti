@@ -9,8 +9,8 @@
       color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
       box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
-  [data-hashti-theme] .hashti-toast[data-focus-visible],
-  [data-hashti-theme] .hashti-toast[data-focus-visible] {
+  [data-hashti-theme] .hashti-toast:focus-visible,
+  [data-hashti-theme] .hashti-toast:focus-visible {
     outline: var(--hashti-focus-width, 2px) solid var(--hashti-focus);
     outline-offset: 2px;
   }

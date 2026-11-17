@@ -17,7 +17,7 @@
     "paths": {
       "@hashti/react": ["./packages/react/src/index.ts"],
       "@hashti/agent": ["./packages/agent/src/index.ts"],
-      "@hashti/tokens": ["./packages/tokens/src/index.ts"]
+      "@hashti/styles/tokens": ["./packages/styles/src/tokens/index.ts"]
     }
   },
   "include": ["packages", "scripts", "tests", "apps/storybook"],

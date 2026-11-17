@@ -45,11 +45,11 @@
       color: var(--frame-button-ink);
       background: var(--button-bg);
     }
-    .hashti-button[data-variant="secondary"]:is([data-hovered], :hover):not([data-disabled]) {
+    .hashti-button[data-variant="secondary"]:hover:not([data-disabled]) {
       background: var(--button-hover);
       color: var(--frame-button-ink);
     }
-    .hashti-button[data-variant="secondary"]:is([data-pressed], :active) {
+    .hashti-button[data-variant="secondary"]:active {
       background: var(--button-active);
       color: var(--frame-button-ink);
     }
@@ -57,10 +57,10 @@
       background: transparent;
       border-color: var(--hashti-border-strong);
     }
-    .hashti-button[data-variant="tertiary"][data-hovered] {
+    .hashti-button[data-variant="tertiary"]:hover {
       background: var(--hashti-button-tertiary-hover);
     }
-    .hashti-button[data-variant="tertiary"][data-pressed] {
+    .hashti-button[data-variant="tertiary"]:active {
       background: var(--hashti-button-tertiary-active);
     }
     .hashti-button[data-variant="ghost"]:not([data-icon-only]) {
@@ -72,8 +72,8 @@
       background: transparent;
     }
     .hashti-button:is([data-variant="danger-tertiary"], [data-variant="danger-ghost"]):is(
-        [data-hovered],
-        [data-pressed]
+        :hover,
+        :active
       ) {
       --frame-button-ink: var(--hashti-text-on-color);
       background: var(--button-hover);
@@ -81,24 +81,24 @@
     .hashti-button:is(
         [data-variant="danger-tertiary"],
         [data-variant="danger-ghost"]
-      )[data-pressed] {
+      ):active {
       background: var(--button-active);
     }
     /* Focus is a state, not an animation: never slide or fade the ring in. */
     :focus-visible,
-    [data-focus-visible] {
+    :focus-visible {
       transition-property: none !important;
     }
-    .hashti-button[data-focus-visible] {
+    .hashti-button:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: calc(var(--hashti-focus-offset) + 1px);
       box-shadow: none;
       border-color: transparent;
     }
-    .hashti-button[data-variant="tertiary"][data-focus-visible] {
+    .hashti-button[data-variant="tertiary"]:focus-visible {
       border-color: var(--hashti-border-strong);
     }
-    .hashti-button[data-variant="danger-tertiary"][data-focus-visible] {
+    .hashti-button[data-variant="danger-tertiary"]:focus-visible {
       border-color: var(--hashti-button-danger-secondary);
     }
     .hashti-button[data-disabled] {
@@ -130,11 +130,11 @@
       overflow-wrap: anywhere;
       text-underline-offset: 0.15em;
     }
-    .hashti-link:is([data-hovered], [data-pressed]) {
+    .hashti-link:is(:hover, :active) {
       text-decoration: underline;
       text-decoration-thickness: 0.125em;
     }
-    .hashti-link[data-focus-visible] {
+    .hashti-link:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: calc(var(--hashti-focus-offset) + 1px);
     }
@@ -187,8 +187,8 @@
     }
     .hashti-field
       > :is(.react-aria-Input, .react-aria-TextArea):hover:not(:disabled):not(:read-only),
-    .hashti-input-group[data-hovered]:not([data-disabled], [data-readonly]),
-    .hashti-select-trigger[data-hovered]:not([data-disabled]) {
+    .hashti-input-group:hover:not([data-disabled], [data-readonly]),
+    .hashti-select-trigger:hover:not([data-disabled]) {
       border-color: var(--hashti-text-primary);
       background: var(--hashti-field-hover);
     }
@@ -217,26 +217,26 @@
         .hashti-input-group,
         .hashti-select-trigger
       ):focus,
-    .hashti-date-field > .react-aria-DateInput[data-focus-within] {
+    .hashti-date-field > .react-aria-DateInput:focus-within {
       outline: none;
       box-shadow: none;
     }
     /* Keyboard focus only: a click into a field must not paint the ring. */
-    .hashti-field > :is(.react-aria-Input, .react-aria-TextArea)[data-focus-visible],
-    .hashti-field > .hashti-field__control:is([data-focus-visible], :has([data-focus-visible])),
-    .hashti-input-group:has([data-focus-visible]),
-    .hashti-select-trigger[data-focus-visible] {
+    .hashti-field > :is(.react-aria-Input, .react-aria-TextArea):focus-visible,
+    .hashti-field > .hashti-field__control:is(:focus-visible, :has(:focus-visible)),
+    .hashti-input-group:has(:focus-visible),
+    .hashti-select-trigger:focus-visible {
       outline: var(--hashti-focus-width, 2px) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset, 2px);
       box-shadow: none;
       position: relative;
       z-index: 3;
     }
-    .hashti-field[data-invalid] > :is(.react-aria-Input, .react-aria-TextArea)[data-focus-visible],
+    .hashti-field[data-invalid] > :is(.react-aria-Input, .react-aria-TextArea):focus-visible,
     .hashti-field[data-invalid]
-      > .hashti-field__control:is([data-focus-visible], :has([data-focus-visible])),
-    .hashti-field[data-invalid] > .hashti-input-group:has([data-focus-visible]),
-    .hashti-field[data-invalid] > .hashti-select-trigger[data-focus-visible] {
+      > .hashti-field__control:is(:focus-visible, :has(:focus-visible)),
+    .hashti-field[data-invalid] > .hashti-input-group:has(:focus-visible),
+    .hashti-field[data-invalid] > .hashti-select-trigger:focus-visible {
       outline: var(--hashti-focus-width, 2px) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset, 2px);
       position: relative;
@@ -289,7 +289,7 @@
     }
     /* A field is a surface, not a button: it answers a press with ink, not travel. */
     .hashti-select-trigger:active,
-    .hashti-select-trigger[data-pressed] {
+    .hashti-select-trigger:active {
       transform: none !important;
       background: var(--hashti-field-hover);
     }
@@ -477,36 +477,36 @@
     .hashti-radio-control {
       transition: transform var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .hashti-checkbox[data-pressed]:not([data-disabled], [data-readonly]) .hashti-checkbox-control,
-    .hashti-radio[data-pressed]:not([data-disabled], [data-readonly]) .hashti-radio-control {
+    .hashti-checkbox:active:not([data-disabled], [data-readonly]) .hashti-checkbox-control,
+    .hashti-radio:active:not([data-disabled], [data-readonly]) .hashti-radio-control {
       transform: scale(0.9);
       transition: transform var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .hashti-checkbox:is([data-selected], [data-indeterminate]) .hashti-checkbox-control {
+    .hashti-checkbox:is([data-checked], [data-indeterminate]) .hashti-checkbox-control {
       background: var(--hashti-focus);
       border-color: var(--hashti-focus);
       color: var(--hashti-icon-on-color);
     }
-    .hashti-radio[data-selected] .hashti-radio-control {
+    .hashti-radio[data-checked] .hashti-radio-control {
       border-color: var(--hashti-focus);
     }
-    .hashti-radio[data-selected] .hashti-radio-control::after {
+    .hashti-radio[data-checked] .hashti-radio-control::after {
       background: var(--hashti-focus);
     }
-    .hashti-checkbox[data-hovered]:where(:not([data-disabled], [data-readonly]))
+    .hashti-checkbox:hover:where(:not([data-disabled], [data-readonly]))
       .hashti-checkbox-control,
-    .hashti-radio[data-hovered]:where(:not([data-disabled], [data-readonly]))
+    .hashti-radio:hover:where(:not([data-disabled], [data-readonly]))
       .hashti-radio-control {
       border-color: var(--hashti-text-primary);
     }
-    .hashti-checkbox[data-pressed]:not(
-        [data-selected],
+    .hashti-checkbox:active:not(
+        [data-checked],
         [data-indeterminate],
         [data-disabled],
         [data-readonly]
       )
       .hashti-checkbox-control,
-    .hashti-radio[data-pressed]:not([data-selected], [data-disabled], [data-readonly])
+    .hashti-radio:active:not([data-checked], [data-disabled], [data-readonly])
       .hashti-radio-control {
       background: var(--hashti-layer-active);
     }
@@ -514,9 +514,9 @@
     .hashti-radio[data-invalid] .hashti-radio-control {
       border-color: var(--hashti-support-error);
     }
-    .hashti-checkbox[data-focus-visible] .hashti-checkbox-control,
-    .hashti-radio[data-focus-visible] .hashti-radio-control,
-    .hashti-switch[data-focus-visible] .hashti-switch-track {
+    .hashti-checkbox:focus-visible .hashti-checkbox-control,
+    .hashti-radio:focus-visible .hashti-radio-control,
+    .hashti-switch:focus-visible .hashti-switch-track {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset);
     }
@@ -524,14 +524,14 @@
     .hashti-radio[data-disabled] .hashti-radio-control {
       border-color: var(--hashti-icon-disabled);
     }
-    .hashti-checkbox[data-disabled]:is([data-selected], [data-indeterminate])
+    .hashti-checkbox[data-disabled]:is([data-checked], [data-indeterminate])
       .hashti-checkbox-control {
       background: var(--hashti-icon-disabled);
     }
     .hashti-radio[data-disabled] .hashti-radio-control::after {
       background: var(--hashti-icon-disabled);
     }
-    .hashti-switch[data-selected] .hashti-switch-track {
+    .hashti-switch[data-checked] .hashti-switch-track {
       background: var(--hashti-focus);
     }
     .hashti-switch[data-disabled] .hashti-switch-track {
@@ -571,7 +571,7 @@
     :is(
         .hashti-checkbox[data-color="success"],
         .hashti-checkbox-group[data-color="success"] .hashti-checkbox
-      )[data-selected]
+      )[data-checked]
       .hashti-checkbox-control,
     :is(
         .hashti-checkbox[data-color="success"],
@@ -584,25 +584,25 @@
     :is(
         .hashti-radio[data-color="success"],
         .hashti-radio-group[data-color="success"] .hashti-radio
-      )[data-selected]
+      )[data-checked]
       .hashti-radio-control {
       border-color: var(--hashti-support-success);
     }
     :is(
         .hashti-radio[data-color="success"],
         .hashti-radio-group[data-color="success"] .hashti-radio
-      )[data-selected]
+      )[data-checked]
       .hashti-radio-control::after {
       background: var(--hashti-support-success);
     }
-    .hashti-switch[data-color="success"][data-selected] .hashti-switch-track {
+    .hashti-switch[data-color="success"][data-checked] .hashti-switch-track {
       background: var(--hashti-support-success);
     }
 
     :is(
         .hashti-checkbox[data-color="warning"],
         .hashti-checkbox-group[data-color="warning"] .hashti-checkbox
-      )[data-selected]
+      )[data-checked]
       .hashti-checkbox-control,
     :is(
         .hashti-checkbox[data-color="warning"],
@@ -616,25 +616,25 @@
     :is(
         .hashti-radio[data-color="warning"],
         .hashti-radio-group[data-color="warning"] .hashti-radio
-      )[data-selected]
+      )[data-checked]
       .hashti-radio-control {
       border-color: var(--hashti-support-warning);
     }
     :is(
         .hashti-radio[data-color="warning"],
         .hashti-radio-group[data-color="warning"] .hashti-radio
-      )[data-selected]
+      )[data-checked]
       .hashti-radio-control::after {
       background: var(--hashti-support-warning);
     }
-    .hashti-switch[data-color="warning"][data-selected] .hashti-switch-track {
+    .hashti-switch[data-color="warning"][data-checked] .hashti-switch-track {
       background: var(--hashti-support-warning);
     }
 
     :is(
         .hashti-checkbox[data-color="danger"],
         .hashti-checkbox-group[data-color="danger"] .hashti-checkbox
-      )[data-selected]
+      )[data-checked]
       .hashti-checkbox-control,
     :is(
         .hashti-checkbox[data-color="danger"],
@@ -647,25 +647,25 @@
     :is(
         .hashti-radio[data-color="danger"],
         .hashti-radio-group[data-color="danger"] .hashti-radio
-      )[data-selected]
+      )[data-checked]
       .hashti-radio-control {
       border-color: var(--hashti-support-error);
     }
     :is(
         .hashti-radio[data-color="danger"],
         .hashti-radio-group[data-color="danger"] .hashti-radio
-      )[data-selected]
+      )[data-checked]
       .hashti-radio-control::after {
       background: var(--hashti-support-error);
     }
-    .hashti-switch[data-color="danger"][data-selected] .hashti-switch-track {
+    .hashti-switch[data-color="danger"][data-checked] .hashti-switch-track {
       background: var(--hashti-support-error);
     }
 
     :is(
         .hashti-checkbox[data-color="secondary"],
         .hashti-checkbox-group[data-color="secondary"] .hashti-checkbox
-      )[data-selected]
+      )[data-checked]
       .hashti-checkbox-control,
     :is(
         .hashti-checkbox[data-color="secondary"],
@@ -679,21 +679,21 @@
     :is(
         .hashti-radio[data-color="secondary"],
         .hashti-radio-group[data-color="secondary"] .hashti-radio
-      )[data-selected]
+      )[data-checked]
       .hashti-radio-control {
       border-color: var(--hashti-icon-secondary);
     }
     :is(
         .hashti-radio[data-color="secondary"],
         .hashti-radio-group[data-color="secondary"] .hashti-radio
-      )[data-selected]
+      )[data-checked]
       .hashti-radio-control::after {
       background: var(--hashti-icon-secondary);
     }
-    .hashti-switch[data-color="secondary"][data-selected] .hashti-switch-track {
+    .hashti-switch[data-color="secondary"][data-checked] .hashti-switch-track {
       background: var(--hashti-icon-secondary);
     }
-    .hashti-switch[data-color="secondary"][data-selected] .hashti-switch-thumb {
+    .hashti-switch[data-color="secondary"][data-checked] .hashti-switch-thumb {
       background: var(--hashti-text-on-color, #ffffff);
     }
 
@@ -701,7 +701,7 @@
       :is(
         .hashti-checkbox[data-color="secondary"],
         .hashti-checkbox-group[data-color="secondary"] .hashti-checkbox
-      )[data-selected]
+      )[data-checked]
       .hashti-checkbox-control,
     :scope[data-hashti-theme="frame-dark"]
       :is(
@@ -713,7 +713,7 @@
       :is(
         .hashti-checkbox[data-color="secondary"],
         .hashti-checkbox-group[data-color="secondary"] .hashti-checkbox
-      )[data-selected]
+      )[data-checked]
       .hashti-checkbox-control,
     [data-hashti-theme="frame-dark"]
       :is(
@@ -724,27 +724,27 @@
       color: var(--hashti-background);
     }
     :scope[data-hashti-theme="frame-dark"]
-      .hashti-switch[data-color="secondary"][data-selected]
+      .hashti-switch[data-color="secondary"][data-checked]
       .hashti-switch-thumb,
     [data-hashti-theme="frame-dark"]
-      .hashti-switch[data-color="secondary"][data-selected]
+      .hashti-switch[data-color="secondary"][data-checked]
       .hashti-switch-thumb {
       background: var(--hashti-background);
     }
 
     /* Invalid state always takes precedence */
-    .hashti-checkbox[data-invalid][data-selected] .hashti-checkbox-control,
+    .hashti-checkbox[data-invalid][data-checked] .hashti-checkbox-control,
     .hashti-checkbox[data-invalid][data-indeterminate] .hashti-checkbox-control {
       background: var(--hashti-support-error) !important;
       border-color: var(--hashti-support-error) !important;
     }
-    .hashti-radio[data-invalid][data-selected] .hashti-radio-control {
+    .hashti-radio[data-invalid][data-checked] .hashti-radio-control {
       border-color: var(--hashti-support-error) !important;
     }
-    .hashti-radio[data-invalid][data-selected] .hashti-radio-control::after {
+    .hashti-radio[data-invalid][data-checked] .hashti-radio-control::after {
       background: var(--hashti-support-error) !important;
     }
-    .hashti-switch[data-invalid][data-selected] .hashti-switch-track {
+    .hashti-switch[data-invalid][data-checked] .hashti-switch-track {
       background: var(--hashti-support-error) !important;
     }
     /* Table selection keeps its existing compact target and mark geometry. */
@@ -771,10 +771,10 @@
       border-color: var(--hashti-border-strong);
     }
     .hashti-checkbox-group[data-invalid]
-      .hashti-checkbox:is([data-selected], [data-indeterminate]):not([data-disabled])
+      .hashti-checkbox:is([data-checked], [data-indeterminate]):not([data-disabled])
       .hashti-checkbox-control,
     .hashti-radio-group[data-invalid]
-      .hashti-radio[data-selected]:not([data-disabled])
+      .hashti-radio[data-checked]:not([data-disabled])
       .hashti-radio-control {
       border-color: var(--hashti-focus);
     }
@@ -895,13 +895,13 @@
       justify-content: stretch;
       gap: var(--hashti-spacing-01);
     }
-    .react-aria-ListBoxItem[data-focus-visible],
-    .react-aria-MenuItem[data-focus-visible] {
+    .react-aria-ListBoxItem:focus-visible,
+    .react-aria-MenuItem:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset, 2px);
     }
-    .react-aria-ListBoxItem:is([data-hovered], [data-focused]),
-    .react-aria-MenuItem:is([data-hovered], [data-focused]) {
+    .react-aria-ListBoxItem[data-highlighted],
+    .react-aria-MenuItem[data-highlighted] {
       background: var(--hashti-layer-hover);
     }
     .react-aria-ListBoxItem[data-selected],
@@ -912,8 +912,8 @@
     .react-aria-MenuItem[data-danger] {
       color: var(--hashti-support-error);
     }
-    .react-aria-MenuItem[data-danger][data-hovered],
-    .react-aria-MenuItem[data-danger][data-focused] {
+    .react-aria-MenuItem[data-danger][data-highlighted],
+    .react-aria-MenuItem[data-danger][data-highlighted] {
       background: var(--hashti-support-error-inverse, rgba(218, 30, 40, 0.08));
     }
     .react-aria-MenuItem[data-disabled] {
@@ -930,26 +930,7 @@
     :is(:scope.hashti-popover, .hashti-popover) :is(.react-aria-ListBoxItem, .react-aria-MenuItem) {
       border-radius: 0;
     }
-    /* Drag and drop: the row itself is the drag affordance, so no nested button is needed. */
-    .react-aria-ListBoxItem[data-dragging],
-    .react-aria-GridListItem[data-dragging],
-    .react-aria-TreeItem[data-dragging] {
-      opacity: 0.6;
-    }
-    .react-aria-ListBoxItem[data-drop-target],
-    .react-aria-GridListItem[data-drop-target],
-    .react-aria-TreeItem[data-drop-target] {
-      background: var(--hashti-layer-selected);
-      outline: var(--hashti-focus-width) solid var(--hashti-focus);
-      outline-offset: -2px;
-    }
-    .react-aria-DropIndicator[data-drop-target] {
-      position: relative;
-      z-index: 3;
-      outline: var(--hashti-focus-width) solid var(--hashti-focus);
-      outline-offset: -1px;
-      border-radius: 1px;
-    }
+
     /* GridList sections */
     .hashti-grid-list-section {
       display: flex;
@@ -1003,7 +984,7 @@
         color var(--hashti-duration-fast-01) ease,
         border-color var(--hashti-duration-fast-01) ease;
     }
-    .hashti-tabs .react-aria-Tab[data-hovered] {
+    .hashti-tabs .react-aria-Tab:hover {
       color: var(--hashti-text-primary);
     }
     .hashti-tabs .react-aria-Tab[data-selected] {
@@ -1011,7 +992,7 @@
       border-block-end-color: var(--hashti-border-interactive);
       font-weight: 600;
     }
-    .hashti-tabs .react-aria-Tab[data-focus-visible] {
+    .hashti-tabs .react-aria-Tab:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset, 2px);
       border-radius: var(--hashti-control-radius);
@@ -1024,7 +1005,7 @@
       padding: var(--hashti-spacing-05) 0;
       outline: none;
     }
-    .hashti-tabs .react-aria-TabPanel[data-focus-visible] {
+    .hashti-tabs .react-aria-TabPanel:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: 2px;
       border-radius: var(--hashti-control-radius);
@@ -1055,7 +1036,7 @@
         background var(--hashti-duration-fast-01) ease,
         color var(--hashti-duration-fast-01) ease;
     }
-    .hashti-tabs[data-variant="contained"] .react-aria-Tab[data-hovered]:not([data-selected]) {
+    .hashti-tabs[data-variant="contained"] .react-aria-Tab:hover:not([data-selected]) {
       color: var(--hashti-text-primary);
       background: var(--hashti-layer-hover, rgba(0, 0, 0, 0.04));
     }
@@ -1203,7 +1184,7 @@
       border-block-end: 1px solid var(--hashti-border-subtle);
       border-radius: var(--hashti-control-radius);
     }
-    .hashti-disclosure[data-expanded]:not([data-variant="card"]) {
+    .hashti-disclosure[data-open]:not([data-variant="card"]) {
       background: var(--hashti-layer-accent);
     }
     .hashti-disclosure[data-variant="card"] {
@@ -1230,12 +1211,12 @@
       border-radius: 0;
       transform: none !important;
     }
-    .hashti-disclosure[data-expanded] .hashti-disclosure-trigger {
+    .hashti-disclosure[data-open] .hashti-disclosure-trigger {
       background: transparent;
     }
-    .hashti-disclosure-trigger[data-hovered],
+    .hashti-disclosure-trigger:hover,
     .hashti-disclosure-trigger:active,
-    .hashti-disclosure-trigger[data-pressed] {
+    .hashti-disclosure-trigger:active {
       transform: none !important;
       background: var(--hashti-layer-hover);
     }
@@ -1252,28 +1233,28 @@
         color var(--hashti-duration-fast-01) ease;
       color: var(--hashti-text-secondary);
     }
-    .hashti-disclosure[data-expanded] .hashti-disclosure-indicator > svg,
-    .hashti-disclosure[data-expanded] .hashti-disclosure-trigger > svg {
+    .hashti-disclosure[data-open] .hashti-disclosure-indicator > svg,
+    .hashti-disclosure[data-open] .hashti-disclosure-trigger > svg {
       color: var(--hashti-text-primary);
     }
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl))
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
       .hashti-disclosure-indicator
       > svg,
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl))
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
       .hashti-disclosure-trigger
       > svg {
       transform: rotate(180deg);
     }
-    .hashti-disclosure[data-expanded] .hashti-disclosure-indicator > svg,
-    .hashti-disclosure[data-expanded] .hashti-disclosure-trigger > svg {
+    .hashti-disclosure[data-open] .hashti-disclosure-indicator > svg,
+    .hashti-disclosure[data-open] .hashti-disclosure-trigger > svg {
       transform: rotate(90deg);
     }
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl))
-      .hashti-disclosure[data-expanded]
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
+      .hashti-disclosure[data-open]
       .hashti-disclosure-indicator
       > svg,
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl))
-      .hashti-disclosure[data-expanded]
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
+      .hashti-disclosure[data-open]
       .hashti-disclosure-trigger
       > svg {
       transform: rotate(90deg);
@@ -1388,7 +1369,7 @@
         transform var(--hashti-duration-fast-01),
         box-shadow var(--hashti-duration-fast-01);
     }
-    :is([dir="rtl"], [data-direction="rtl"]) .hashti-slider .react-aria-SliderThumb {
+    :dir(rtl) .hashti-slider .react-aria-SliderThumb {
       transform: translate(50%, -50%);
     }
     .hashti-slider .react-aria-SliderThumb[data-dragging] {
@@ -1396,10 +1377,10 @@
       transform: translate(-50%, -50%) scale(1.15);
       background: var(--hashti-interactive);
     }
-    :is([dir="rtl"], [data-direction="rtl"]) .hashti-slider .react-aria-SliderThumb[data-dragging] {
+    :dir(rtl) .hashti-slider .react-aria-SliderThumb[data-dragging] {
       transform: translate(50%, -50%) scale(1.15);
     }
-    .hashti-slider .react-aria-SliderThumb[data-focus-visible] {
+    .hashti-slider .react-aria-SliderThumb:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: 2px;
     }
@@ -1457,17 +1438,17 @@
       min-height: var(--hashti-size-sm);
     }
     .hashti-content-switcher
-      > .hashti-toggle-button[data-hovered]:not([data-selected], [data-disabled]) {
+      > .hashti-toggle-button:hover:not([data-pressed], [data-disabled]) {
       color: var(--hashti-text-primary);
       background: var(--hashti-layer-hover);
     }
-    .hashti-content-switcher > .hashti-toggle-button[data-selected] {
+    .hashti-content-switcher > .hashti-toggle-button[data-pressed] {
       background: var(--hashti-layer-selected);
       color: var(--hashti-text-primary);
       font-weight: 600;
       box-shadow: none;
     }
-    .hashti-content-switcher > .hashti-toggle-button[data-focus-visible] {
+    .hashti-content-switcher > .hashti-toggle-button:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset, 2px);
     }
@@ -1558,7 +1539,7 @@
       border-block-end: 1px solid var(--hashti-border-subtle);
       transition: background var(--hashti-duration-fast-01);
     }
-    .hashti-column[data-hovered] {
+    .hashti-column:hover {
       background: var(--hashti-layer-accent-hover);
     }
     .hashti-column[data-allows-sorting] {
@@ -1576,13 +1557,13 @@
     .hashti-table .react-aria-Row {
       transition: background var(--hashti-duration-fast-01);
     }
-    .hashti-table .react-aria-Row[data-hovered] {
+    .hashti-table .react-aria-Row:hover {
       background: var(--hashti-layer-hover);
     }
     .hashti-table .react-aria-Row[data-selected] {
       background: var(--hashti-layer-selected);
     }
-    .hashti-table :is(.react-aria-Cell, .react-aria-Row, .hashti-column)[data-focus-visible] {
+    .hashti-table :is(.react-aria-Cell, .react-aria-Row, .hashti-column):focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: -2px;
     }
@@ -1608,7 +1589,7 @@
       transition: background var(--hashti-duration-fast-01);
     }
     .react-aria-ColumnResizer[data-resizing],
-    .react-aria-ColumnResizer[data-focus-visible],
+    .react-aria-ColumnResizer:focus-visible,
     .react-aria-ColumnResizer:hover {
       background: var(--hashti-interactive);
     }
@@ -1669,7 +1650,7 @@
       min-height: var(--hashti-size-md);
       padding: 0;
     }
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl))
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
       :is(.hashti-pagination-actions, .hashti-calendar-header)
       svg {
       transform: scaleX(-1);
@@ -1708,7 +1689,7 @@
       color: var(--hashti-icon-primary);
       padding: 0;
     }
-    .hashti-code-snippet > .hashti-button[data-hovered] {
+    .hashti-code-snippet > .hashti-button:hover {
       background: var(--hashti-layer-hover);
     }
     .hashti-code-snippet--inline {
@@ -1998,11 +1979,11 @@
         color var(--hashti-duration-fast-01);
       color: var(--hashti-text-primary);
     }
-    .hashti-calendar .react-aria-CalendarCell[data-hovered] {
+    .hashti-calendar .react-aria-CalendarCell:hover {
       background: var(--hashti-layer-hover);
     }
-    .hashti-calendar .react-aria-CalendarCell[data-pressed],
-    .hashti-range-calendar .react-aria-CalendarCell[data-pressed] {
+    .hashti-calendar .react-aria-CalendarCell:active,
+    .hashti-range-calendar .react-aria-CalendarCell:active {
       transform: scale(0.94);
     }
     .hashti-calendar .react-aria-CalendarCell[data-selected] {
@@ -2015,7 +1996,7 @@
       border-radius: 0;
     }
     .hashti-range-calendar
-      .react-aria-CalendarCell:is([data-selection-start], [data-selection-end]) {
+      .react-aria-CalendarCell:is([data-range-start], [data-range-end]) {
       background: var(--hashti-interactive);
       color: var(--hashti-text-on-color);
       border-radius: calc(var(--hashti-control-radius) / 2);
@@ -2099,8 +2080,8 @@
       background: var(--hashti-layer);
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
     }
-    .hashti-dropzone[data-drop-target],
-    .hashti-file-uploader .react-aria-DropZone[data-drop-target] {
+    .hashti-dropzone[data-dragging],
+    .hashti-file-uploader .react-aria-DropZone[data-dragging] {
       border-color: var(--hashti-interactive);
       background: var(--hashti-layer-hover);
     }
@@ -2111,8 +2092,8 @@
         background: var(--hashti-layer-hover);
       }
     }
-    .hashti-dropzone[data-focus-visible],
-    .hashti-file-uploader .react-aria-DropZone[data-focus-visible] {
+    .hashti-dropzone:focus-visible,
+    .hashti-file-uploader .react-aria-DropZone:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: 2px;
     }
@@ -2510,34 +2491,34 @@
     /*  Craftments: Micro-Interactions & Polish                            */
     /* ------------------------------------------------------------------ */
 
-    /* Size-compensated active press scaling.
-       Toggle buttons keep data-pressed while selected, so their press tracks :active. */
-    .hashti-button:is([data-pressed], :active):not([data-disabled], [data-pending]),
+    /* Size-compensated active press scaling. Toggle buttons latch data-pressed, so
+       their momentary press tracks :active. */
+    .hashti-button:active:not([data-disabled], [data-pending]),
     .hashti-toggle-button:active:not([data-disabled]),
     .hashti-tile--clickable:active,
     .hashti-tile--selectable:active,
-    .hashti-filter-tag[data-pressed]:not([data-disabled]) {
+    .hashti-filter-tag:active:not([data-disabled]) {
       transform: scale(0.97);
       transition:
         transform var(--hashti-duration-fast-01) cubic-bezier(0.32, 0.72, 0, 1),
         background-color var(--hashti-duration-fast-01) var(--hashti-ease-standard-productive, ease),
         color var(--hashti-duration-fast-01) var(--hashti-ease-standard-productive, ease);
     }
-    .hashti-button[data-size="sm"]:is([data-pressed], :active):not([data-disabled], [data-pending]),
+    .hashti-button[data-size="sm"]:active:not([data-disabled], [data-pending]),
     .hashti-toggle-button[data-size="sm"]:active:not([data-disabled]),
-    .hashti-filter-tag[data-size="sm"][data-pressed]:not([data-disabled]) {
+    .hashti-filter-tag[data-size="sm"]:active:not([data-disabled]) {
       transform: scale(0.98);
     }
-    .hashti-button[data-size="lg"]:is([data-pressed], :active):not([data-disabled], [data-pending]),
+    .hashti-button[data-size="lg"]:active:not([data-disabled], [data-pending]),
     .hashti-toggle-button[data-size="lg"]:active:not([data-disabled]) {
       transform: scale(0.96);
     }
     /* Release spring-back */
-    .hashti-button:not([data-pressed], :active, [data-disabled], [data-pending]),
+    .hashti-button:not(:active, [data-disabled], [data-pending]),
     .hashti-toggle-button:not(:active, [data-disabled]),
     .hashti-tile--clickable:not(:active),
     .hashti-tile--selectable:not(:active),
-    .hashti-filter-tag:not([data-pressed], [data-disabled]) {
+    .hashti-filter-tag:not(:active, [data-disabled]) {
       transition:
         transform var(--hashti-duration-moderate-02) cubic-bezier(0.32, 0.72, 0, 1),
         background-color var(--hashti-duration-fast-01) var(--hashti-ease-standard-productive, ease),
@@ -2548,20 +2529,20 @@
     :scope.hashti-popover,
     .hashti-select-popover,
     .hashti-date-popover {
-      &[data-entering] {
+      &[data-starting-style] {
         animation: hashti-frame-overlay-in var(--hashti-duration-moderate-01)
           cubic-bezier(0.16, 1, 0.3, 1);
       }
-      &[data-exiting] {
+      &[data-ending-style] {
         animation: hashti-frame-overlay-out var(--hashti-duration-fast-01) ease-in;
       }
     }
     :scope.hashti-tooltip {
-      &[data-entering] {
+      &[data-starting-style] {
         animation: hashti-frame-overlay-in var(--hashti-duration-fast-01)
           cubic-bezier(0.16, 1, 0.3, 1);
       }
-      &[data-exiting] {
+      &[data-ending-style] {
         animation: hashti-frame-overlay-out var(--hashti-duration-fast-01) ease-in;
       }
     }
@@ -2588,19 +2569,19 @@
     /* Modal backdrop blur + centered zoom-in physics */
     /* Modal motion only; the backdrop's colour and blur belong to modal.css. */
     .hashti-modal-overlay {
-      &[data-entering] {
+      &[data-starting-style] {
         animation: hashti-frame-backdrop-in var(--hashti-duration-moderate-01) ease-out;
       }
-      &[data-exiting] {
+      &[data-ending-style] {
         animation: hashti-frame-backdrop-out var(--hashti-duration-fast-01) ease-in forwards;
       }
     }
     .hashti-modal {
-      &[data-entering] {
+      &[data-starting-style] {
         animation: hashti-frame-modal-in var(--hashti-duration-moderate-02)
           cubic-bezier(0.16, 1, 0.3, 1);
       }
-      &[data-exiting] {
+      &[data-ending-style] {
         animation: hashti-frame-modal-out var(--hashti-duration-fast-01) ease-in forwards;
       }
     }
@@ -2747,7 +2728,7 @@
       pointer-events: none;
       z-index: 1;
     }
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl))
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
       .hashti-badge-wrapper
       > .hashti-badge[data-placement="top-end"] {
       transform: translate(-50%, -50%);
@@ -2763,7 +2744,7 @@
       pointer-events: none;
       z-index: 1;
     }
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl))
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
       .hashti-badge-wrapper
       > .hashti-badge[data-placement="top-start"] {
       transform: translate(50%, -50%);
@@ -2779,7 +2760,7 @@
       pointer-events: none;
       z-index: 1;
     }
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl))
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
       .hashti-badge-wrapper
       > .hashti-badge[data-placement="bottom-end"] {
       transform: translate(-50%, 50%);
@@ -2795,31 +2776,31 @@
       pointer-events: none;
       z-index: 1;
     }
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl))
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
       .hashti-badge-wrapper
       > .hashti-badge[data-placement="bottom-start"] {
       transform: translate(50%, 50%);
     }
-    .hashti-badge[data-kind="success"] {
+    .hashti-badge[data-variant="success"] {
       background: var(--hashti-support-success);
     }
-    .hashti-badge[data-kind="warning"] {
+    .hashti-badge[data-variant="warning"] {
       background: var(--hashti-support-warning, #f1c21b);
       color: var(--hashti-text-on-color);
     }
-    .hashti-badge[data-kind="info"] {
+    .hashti-badge[data-variant="info"] {
       background: var(--hashti-support-info, var(--hashti-interactive));
     }
-    .hashti-badge[data-kind="primary"] {
+    .hashti-badge[data-variant="primary"] {
       background: var(--hashti-interactive);
       color: var(--hashti-text-on-color);
     }
-    .hashti-badge[data-kind="neutral"] {
+    .hashti-badge[data-variant="neutral"] {
       background: var(--hashti-layer-accent);
       color: var(--hashti-text-primary);
       border: 1px solid var(--hashti-border-subtle);
     }
-    .hashti-badge[data-kind="secondary"] {
+    .hashti-badge[data-variant="secondary"] {
       background: var(--hashti-layer-accent-01, var(--hashti-layer-accent));
       color: var(--hashti-text-primary);
       border: 1px solid var(--hashti-border-subtle);
@@ -3012,7 +2993,7 @@
       padding: var(--hashti-spacing-06);
       text-align: start;
     }
-    :is(:scope[dir="rtl"], [dir="rtl"], [data-direction="rtl"], :dir(rtl)) .hashti-alert-dialog {
+    :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl)) .hashti-alert-dialog {
       text-align: right;
     }
     .hashti-alert-dialog-header {
@@ -3025,13 +3006,13 @@
       flex-shrink: 0;
       margin-block-start: 2px;
     }
-    .hashti-alert-dialog-header[data-kind="danger"] > svg {
+    .hashti-alert-dialog-header[data-variant="danger"] > svg {
       color: var(--hashti-support-error);
     }
-    .hashti-alert-dialog-header[data-kind="warning"] > svg {
+    .hashti-alert-dialog-header[data-variant="warning"] > svg {
       color: var(--hashti-support-warning, #f1c21b);
     }
-    .hashti-alert-dialog-header[data-kind="info"] > svg {
+    .hashti-alert-dialog-header[data-variant="info"] > svg {
       color: var(--hashti-support-info, var(--hashti-interactive));
     }
     .hashti-alert-dialog .react-aria-Heading[slot="title"] {
@@ -3143,7 +3124,7 @@
     .hashti-ai-label[data-revert-active] {
       cursor: pointer;
     }
-    .hashti-ai-label[data-revert-active]:is([data-hovered], :hover) {
+    .hashti-ai-label[data-revert-active]:hover {
       opacity: 0.9;
     }
     .hashti-ai-label[data-revert-active]:focus-visible {
@@ -3203,9 +3184,9 @@
       color: var(--notification-color);
     }
     .hashti-actionable-notification-actions
-      .hashti-button:is([data-hovered], :hover):not([data-disabled]),
+      .hashti-button:hover:not([data-disabled]),
     .hashti-actionable-notification-actions
-      .hashti-button[data-variant]:is([data-hovered], :hover):not([data-disabled]) {
+      .hashti-button[data-variant]:hover:not([data-disabled]) {
       background: var(--notification-bg);
       border-color: var(--notification-color);
       color: var(--notification-color);
@@ -3226,7 +3207,7 @@
     }
     .hashti-actionable-notification[data-variant="solid"]
       .hashti-actionable-notification-actions
-      .hashti-button:is([data-hovered], :hover):not([data-disabled]) {
+      .hashti-button:hover:not([data-disabled]) {
       background: color-mix(in srgb, currentColor 16%, transparent);
       border-color: currentColor;
     }
@@ -3297,7 +3278,7 @@
       --button-icon: currentColor;
       border: 1px solid color-mix(in srgb, currentColor 40%, transparent);
     }
-    .hashti-table-batch-bar .hashti-button[data-variant="ghost"][data-hovered] {
+    .hashti-table-batch-bar .hashti-button[data-variant="ghost"]:hover {
       background: color-mix(in srgb, currentColor 15%, transparent);
       border-color: color-mix(in srgb, currentColor 70%, transparent);
     }
@@ -3357,7 +3338,7 @@
       background: var(--hashti-field);
       transition: border-color var(--hashti-duration-fast-01) ease;
     }
-    .hashti-token-input[data-focus-visible] {
+    .hashti-token-input:focus-visible {
       outline: var(--hashti-focus-width, 2px) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset, 2px);
       border-color: var(--hashti-border-strong);
@@ -3418,14 +3399,14 @@
       min-height: var(--hashti-size-sm);
       font-size: var(--hashti-body-compact-01-font-size);
     }
-    .hashti-tree-item[data-hovered] {
+    .hashti-tree-item:hover {
       background: var(--hashti-layer-hover);
     }
     .hashti-tree-item[data-selected] {
       background: var(--hashti-layer-selected);
       font-weight: 500;
     }
-    .hashti-tree-item[data-focus-visible] {
+    .hashti-tree-item:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: -2px;
     }
@@ -3500,7 +3481,7 @@
       transition: background-color var(--hashti-duration-fast-01)
         var(--hashti-ease-standard-productive);
     }
-    .hashti-navigation-tree-item[data-hovered] {
+    .hashti-navigation-tree-item:hover {
       background: var(--hashti-layer-hover);
       color: var(--hashti-text-primary);
     }
@@ -3514,7 +3495,7 @@
       color: var(--hashti-text-primary);
       font-weight: 500;
     }
-    .hashti-navigation-tree-item[data-focus-visible] {
+    .hashti-navigation-tree-item:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: -2px;
     }
@@ -3763,7 +3744,7 @@
     }
     .hashti-actionable-notification[data-variant="solid"]
       .hashti-actionable-notification-actions
-      .hashti-button:is([data-hovered], :hover):not([data-disabled]) {
+      .hashti-button:hover:not([data-disabled]) {
       background: rgba(255, 255, 255, 0.16);
       border-color: #ffffff;
       color: #ffffff;
@@ -3841,12 +3822,12 @@
         background: Field;
         border-color: ButtonText;
       }
-      .hashti-button[data-focus-visible],
-      .hashti-link[data-focus-visible],
+      .hashti-button:focus-visible,
+      .hashti-link:focus-visible,
       .hashti-field > :is(.react-aria-Input, .react-aria-TextArea):focus,
-      .hashti-field > .hashti-field__control[data-focus-within],
-      .hashti-input-group[data-focus-within],
-      .hashti-select-trigger[data-focus-visible] {
+      .hashti-field > .hashti-field__control:focus-within,
+      .hashti-input-group:focus-within,
+      .hashti-select-trigger:focus-visible {
         outline-color: Highlight;
       }
       .react-aria-ListBoxItem[data-selected],
@@ -3854,15 +3835,15 @@
         color: HighlightText;
         background: Highlight;
       }
-      .react-aria-ListBoxItem[data-focus-visible],
-      .react-aria-MenuItem[data-focus-visible] {
+      .react-aria-ListBoxItem:focus-visible,
+      .react-aria-MenuItem:focus-visible {
         outline-color: Highlight;
       }
       .hashti-table .react-aria-Row[data-selected] {
         color: HighlightText;
         background: Highlight;
       }
-      .hashti-table :is(.react-aria-Cell, .react-aria-Row, .hashti-column)[data-focus-visible] {
+      .hashti-table :is(.react-aria-Cell, .react-aria-Row, .hashti-column):focus-visible {
         outline-color: Highlight;
       }
       .hashti-tile--clickable:focus-visible,
@@ -3883,7 +3864,7 @@
         background: Highlight;
         color: HighlightText;
       }
-      .hashti-file-uploader .react-aria-DropZone[data-focus-visible] {
+      .hashti-file-uploader .react-aria-DropZone:focus-visible {
         outline-color: Highlight;
       }
       .hashti-notification,

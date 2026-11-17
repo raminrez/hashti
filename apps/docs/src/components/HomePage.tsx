@@ -60,9 +60,9 @@ const FOUNDATIONS: Array<[string, string]> = [
   ["Longevity", "Apache 2.0, one stylesheet, no runtime dependency on the theme package."],
 ];
 
-const QUICKSTART = `bun add @hashti/react @hashti/tokens react-aria-components
+const QUICKSTART = `bun add @hashti/react @hashti/styles react-aria-components
 
-import "@hashti/tokens/tokens.css";
+import "@hashti/styles/tokens.css";
 import "@hashti/react/styles.css";
 
 import { Theme, Button } from "@hashti/react";

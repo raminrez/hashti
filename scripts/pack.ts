@@ -6,9 +6,11 @@ const destination = resolve(root, "dist/packages");
 await mkdir(destination, { recursive: true });
 const packages = [];
 
-for (const name of ["tokens", "react", "agent"]) {
+for (const name of ["styles", "react", "agent"]) {
   const folder = resolve(root, `packages/${name}`);
-  if (!(await Bun.file(`${folder}/dist/index.d.ts`).exists()))
+  // styles ships CSS only; the code packages carry type declarations.
+  const built = name === "styles" ? "dist/index.css" : "dist/index.d.ts";
+  if (!(await Bun.file(`${folder}/${built}`).exists()))
     throw new Error("Run bun run build before packing the libraries.");
   const pkg = await Bun.file(`${folder}/package.json`).json();
   const process = Bun.spawn(

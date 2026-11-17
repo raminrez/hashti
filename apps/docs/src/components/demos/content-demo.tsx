@@ -86,7 +86,7 @@ export function BreadcrumbsLiveDemo() {
 export function CodeSnippetLiveDemo() {
   return (
     <div className="w-full max-w-md">
-      <CodeSnippet type="inline" code="bun add @hashti/react @hashti/tokens" />
+      <CodeSnippet type="inline" code="bun add @hashti/react @hashti/styles" />
     </div>
   );
 }

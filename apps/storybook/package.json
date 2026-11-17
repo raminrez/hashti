@@ -11,7 +11,7 @@
   "devDependencies": {
     "@hashti/agent": "workspace:*",
     "@hashti/react": "workspace:*",
-    "@hashti/tokens": "workspace:*",
+    "@hashti/styles": "workspace:*",
     "@storybook/addon-a11y": "10.6.6",
     "@storybook/addon-docs": "10.6.6",
     "@storybook/addon-themes": "10.6.6",

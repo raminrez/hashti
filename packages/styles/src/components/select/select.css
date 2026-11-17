@@ -20,8 +20,8 @@
     box-sizing: border-box;
   }
 
-  .hashti-select-trigger[data-hovered],
-  .hashti-select-trigger[data-hovered] {
+  .hashti-select-trigger:hover,
+  .hashti-select-trigger:hover {
     border-color: var(--hashti-border-subtle, #525252);
   }
 

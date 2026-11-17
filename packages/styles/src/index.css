@@ -38,7 +38,7 @@
 @import "./components/theme/theme.css";
 
 
-/* Cinder owns appearance; RAC owns interaction and accessible semantics. */
+/* Hashti owns appearance; RAC owns interaction and accessible semantics. */
 @layer hashti.reset {
   :where(.hashti-theme, [data-hashti-theme]) {
     font-family: var(--hashti-font-sans);
@@ -244,51 +244,51 @@
   .hashti-button[data-variant="danger-ghost"] > svg:last-child {
     margin-inline-end: 0;
   }
-  .hashti-button[data-hovered] {
+  .hashti-button:hover {
     background: var(--button-hover, var(--hashti-button-primary-hover));
   }
-  .hashti-button[data-pressed] {
+  .hashti-button:active {
     background: var(--button-active, var(--hashti-button-primary-active));
     transform: scale(0.98);
   }
-  .hashti-button[data-variant="tertiary"]:is([data-hovered], [data-pressed]) {
+  .hashti-button[data-variant="tertiary"]:is(:hover, :active) {
     color: var(--hashti-text-inverse);
   }
-  .hashti-button[data-variant="ghost"]:is([data-hovered], [data-pressed]) {
+  .hashti-button[data-variant="ghost"]:is(:hover, :active) {
     color: var(--hashti-link-primary-hover);
   }
   .hashti-button:is([data-variant="danger-tertiary"], [data-variant="danger-ghost"]):is(
-      [data-hovered],
-      [data-pressed]
+      :hover,
+      :active
     ) {
     color: var(--hashti-text-on-color);
   }
-  .hashti-button[data-variant="danger-tertiary"][data-hovered] {
+  .hashti-button[data-variant="danger-tertiary"]:hover {
     border-color: var(--hashti-button-danger-hover);
   }
-  .hashti-button[data-focus-visible] {
+  .hashti-button:focus-visible {
     border-color: var(--hashti-focus, var(--hashti-focus));
     box-shadow:
       0 0 0 2px var(--hashti-background, var(--hashti-background)),
       0 0 0 4px var(--hashti-focus, var(--hashti-focus)),
       0 0 12px rgba(0, 180, 216, 0.35);
   }
-  .hashti-button[data-variant="tertiary"][data-focus-visible] {
+  .hashti-button[data-variant="tertiary"]:focus-visible {
     background: var(--hashti-button-tertiary);
     color: var(--hashti-text-inverse);
   }
-  .hashti-button[data-variant="danger-tertiary"][data-focus-visible] {
+  .hashti-button[data-variant="danger-tertiary"]:focus-visible {
     background: var(--hashti-button-danger-primary);
     color: var(--hashti-text-on-color);
   }
-  .hashti-button[data-variant="ghost"][data-icon-only][data-focus-visible] {
+  .hashti-button[data-variant="ghost"][data-icon-only]:focus-visible {
     box-shadow: inset 0 0 0 1px var(--hashti-focus);
   }
-  .hashti-button[data-variant="tertiary"][data-pressed] {
+  .hashti-button[data-variant="tertiary"]:active {
     border-color: transparent;
     background: var(--hashti-button-tertiary-active);
   }
-  .hashti-button[data-variant="danger-tertiary"][data-pressed] {
+  .hashti-button[data-variant="danger-tertiary"]:active {
     border-color: var(--hashti-button-danger-active);
     background: var(--hashti-button-danger-active);
   }
@@ -338,11 +338,11 @@
     text-decoration: underline;
     text-underline-offset: 0.15em;
   }
-  .hashti-link[data-hovered] {
+  .hashti-link:hover {
     color: var(--hashti-link-primary-hover);
     text-decoration: underline;
   }
-  .hashti-link[data-focus-visible] {
+  .hashti-link:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 2px;
   }
@@ -502,7 +502,7 @@
       .react-aria-TextArea,
       .hashti-input-group,
       .hashti-select-trigger
-    ):is([data-focus-visible], [data-focus-within]) {
+    ):is(:focus-visible, :focus-within) {
     position: relative;
     z-index: 3;
   }
@@ -662,10 +662,10 @@
     background: var(--hashti-field-hover);
   }
   /* Keyboard focus only, ring outside the border, never painted by a click. */
-  .hashti-field .react-aria-Input[data-focus-visible],
-  .hashti-field .react-aria-TextArea[data-focus-visible],
+  .hashti-field .react-aria-Input:focus-visible,
+  .hashti-field .react-aria-TextArea:focus-visible,
   .hashti-native-select select:focus-visible,
-  .hashti-date-field > .react-aria-DateInput:has([data-focus-visible]) {
+  .hashti-date-field > .react-aria-DateInput:has(:focus-visible) {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 2px;
     position: relative;
@@ -710,8 +710,8 @@
     outline-offset: -2px;
   }
   .hashti-field[data-invalid]
-    :is(.react-aria-Input[data-focus-visible], .react-aria-TextArea[data-focus-visible]),
-  .hashti-field[data-invalid] > .hashti-input-group:has([data-focus-visible]) {
+    :is(.react-aria-Input:focus-visible, .react-aria-TextArea:focus-visible),
+  .hashti-field[data-invalid] > .hashti-input-group:has(:focus-visible) {
     outline-color: var(--hashti-focus);
   }
   .hashti-field[data-disabled] :is(label, .react-aria-Label, [slot="description"]) {
@@ -739,7 +739,7 @@
     border-block-end: 1px solid var(--hashti-border-strong);
     height: var(--control-height, 2.5rem);
   }
-  .hashti-input-group:has([data-focus-visible]) {
+  .hashti-input-group:has(:focus-visible) {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 2px;
   }
@@ -788,7 +788,7 @@
   .hashti-select > .hashti-select-trigger:not([data-disabled]) {
     color: var(--hashti-text-primary);
   }
-  .hashti-select-trigger[data-hovered] {
+  .hashti-select-trigger:hover {
     background: var(--hashti-field-hover);
   }
   .hashti-select-trigger .react-aria-SelectValue {
@@ -904,17 +904,17 @@
     height: 14px;
     stroke-width: 1.75;
   }
-  .hashti-checkbox[data-selected] .hashti-checkbox-control,
+  .hashti-checkbox[data-checked] .hashti-checkbox-control,
   .hashti-checkbox[data-indeterminate] .hashti-checkbox-control {
     background: var(--hashti-icon-primary);
     color: var(--hashti-icon-inverse);
   }
-  .hashti-checkbox[data-focus-visible] .hashti-checkbox-control,
-  .hashti-radio[data-focus-visible] .hashti-radio-control {
+  .hashti-checkbox:focus-visible .hashti-checkbox-control,
+  .hashti-radio:focus-visible .hashti-radio-control {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 2px;
   }
-  .hashti-checkbox[data-focus-visible] .hashti-checkbox-control {
+  .hashti-checkbox:focus-visible .hashti-checkbox-control {
     outline-offset: 1px;
   }
   .hashti-checkbox[data-invalid] .hashti-checkbox-control,
@@ -930,7 +930,7 @@
   .hashti-radio[data-disabled] .hashti-radio-control {
     border-color: var(--hashti-icon-disabled);
   }
-  .hashti-checkbox[data-disabled]:is([data-selected], [data-indeterminate])
+  .hashti-checkbox[data-disabled]:is([data-checked], [data-indeterminate])
     .hashti-checkbox-control {
     background: var(--hashti-icon-disabled);
   }
@@ -949,7 +949,7 @@
     display: grid;
     place-items: center;
   }
-  .hashti-radio[data-selected] .hashti-radio-control::after {
+  .hashti-radio[data-checked] .hashti-radio-control::after {
     content: "";
     width: 0.625rem;
     height: 0.625rem;
@@ -993,16 +993,16 @@
     background: var(--hashti-icon-on-color);
     transition: transform var(--hashti-duration-fast-02) var(--hashti-ease-standard-productive);
   }
-  .hashti-switch[data-selected] .hashti-switch-track {
+  .hashti-switch[data-checked] .hashti-switch-track {
     background: var(--hashti-support-success);
   }
-  .hashti-switch[data-selected] .hashti-switch-thumb {
+  .hashti-switch[data-checked] .hashti-switch-thumb {
     transform: translateX(1.5rem);
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
-    .hashti-switch[data-selected]
+  :dir(rtl)
+    .hashti-switch[data-checked]
     .hashti-switch-thumb,
-  .hashti-switch:is([dir="rtl"], [data-direction="rtl"], :dir(rtl))[data-selected]
+  .hashti-switch:dir(rtl)[data-checked]
     .hashti-switch-thumb {
     transform: translateX(-1.5rem);
   }
@@ -1015,17 +1015,17 @@
     width: 0.625rem;
     height: 0.625rem;
   }
-  .hashti-switch[data-size="sm"][data-selected] .hashti-switch-thumb {
+  .hashti-switch[data-size="sm"][data-checked] .hashti-switch-thumb {
     transform: translateX(1rem);
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
-    .hashti-switch[data-size="sm"][data-selected]
+  :dir(rtl)
+    .hashti-switch[data-size="sm"][data-checked]
     .hashti-switch-thumb,
-  .hashti-switch:is([dir="rtl"], [data-direction="rtl"], :dir(rtl))[data-size="sm"][data-selected]
+  .hashti-switch:dir(rtl)[data-size="sm"][data-checked]
     .hashti-switch-thumb {
     transform: translateX(-1rem);
   }
-  .hashti-switch[data-focus-visible] .hashti-switch-track {
+  .hashti-switch:focus-visible .hashti-switch-track {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 2px;
   }
@@ -1041,7 +1041,7 @@
   :is(
       .hashti-checkbox[data-color="success"],
       .hashti-checkbox-group[data-color="success"] .hashti-checkbox
-    )[data-selected]
+    )[data-checked]
     .hashti-checkbox-control,
   :is(
       .hashti-checkbox[data-color="success"],
@@ -1054,25 +1054,25 @@
   :is(
       .hashti-radio[data-color="success"],
       .hashti-radio-group[data-color="success"] .hashti-radio
-    )[data-selected]
+    )[data-checked]
     .hashti-radio-control {
     border-color: var(--hashti-support-success);
   }
   :is(
       .hashti-radio[data-color="success"],
       .hashti-radio-group[data-color="success"] .hashti-radio
-    )[data-selected]
+    )[data-checked]
     .hashti-radio-control::after {
     background: var(--hashti-support-success);
   }
-  .hashti-switch[data-color="success"][data-selected] .hashti-switch-track {
+  .hashti-switch[data-color="success"][data-checked] .hashti-switch-track {
     background: var(--hashti-support-success);
   }
 
   :is(
       .hashti-checkbox[data-color="warning"],
       .hashti-checkbox-group[data-color="warning"] .hashti-checkbox
-    )[data-selected]
+    )[data-checked]
     .hashti-checkbox-control,
   :is(
       .hashti-checkbox[data-color="warning"],
@@ -1086,25 +1086,25 @@
   :is(
       .hashti-radio[data-color="warning"],
       .hashti-radio-group[data-color="warning"] .hashti-radio
-    )[data-selected]
+    )[data-checked]
     .hashti-radio-control {
     border-color: var(--hashti-support-warning);
   }
   :is(
       .hashti-radio[data-color="warning"],
       .hashti-radio-group[data-color="warning"] .hashti-radio
-    )[data-selected]
+    )[data-checked]
     .hashti-radio-control::after {
     background: var(--hashti-support-warning);
   }
-  .hashti-switch[data-color="warning"][data-selected] .hashti-switch-track {
+  .hashti-switch[data-color="warning"][data-checked] .hashti-switch-track {
     background: var(--hashti-support-warning);
   }
 
   :is(
       .hashti-checkbox[data-color="danger"],
       .hashti-checkbox-group[data-color="danger"] .hashti-checkbox
-    )[data-selected]
+    )[data-checked]
     .hashti-checkbox-control,
   :is(
       .hashti-checkbox[data-color="danger"],
@@ -1117,25 +1117,25 @@
   :is(
       .hashti-radio[data-color="danger"],
       .hashti-radio-group[data-color="danger"] .hashti-radio
-    )[data-selected]
+    )[data-checked]
     .hashti-radio-control {
     border-color: var(--hashti-support-error);
   }
   :is(
       .hashti-radio[data-color="danger"],
       .hashti-radio-group[data-color="danger"] .hashti-radio
-    )[data-selected]
+    )[data-checked]
     .hashti-radio-control::after {
     background: var(--hashti-support-error);
   }
-  .hashti-switch[data-color="danger"][data-selected] .hashti-switch-track {
+  .hashti-switch[data-color="danger"][data-checked] .hashti-switch-track {
     background: var(--hashti-support-error);
   }
 
   :is(
       .hashti-checkbox[data-color="secondary"],
       .hashti-checkbox-group[data-color="secondary"] .hashti-checkbox
-    )[data-selected]
+    )[data-checked]
     .hashti-checkbox-control,
   :is(
       .hashti-checkbox[data-color="secondary"],
@@ -1149,21 +1149,21 @@
   :is(
       .hashti-radio[data-color="secondary"],
       .hashti-radio-group[data-color="secondary"] .hashti-radio
-    )[data-selected]
+    )[data-checked]
     .hashti-radio-control {
     border-color: var(--hashti-icon-secondary);
   }
   :is(
       .hashti-radio[data-color="secondary"],
       .hashti-radio-group[data-color="secondary"] .hashti-radio
-    )[data-selected]
+    )[data-checked]
     .hashti-radio-control::after {
     background: var(--hashti-icon-secondary);
   }
-  .hashti-switch[data-color="secondary"][data-selected] .hashti-switch-track {
+  .hashti-switch[data-color="secondary"][data-checked] .hashti-switch-track {
     background: var(--hashti-icon-secondary);
   }
-  .hashti-switch[data-color="secondary"][data-selected] .hashti-switch-thumb {
+  .hashti-switch[data-color="secondary"][data-checked] .hashti-switch-thumb {
     background: var(--hashti-text-on-color, #ffffff);
   }
 
@@ -1177,7 +1177,7 @@
     :is(
       .hashti-checkbox[data-color="secondary"],
       .hashti-checkbox-group[data-color="secondary"] .hashti-checkbox
-    )[data-selected]
+    )[data-checked]
     .hashti-checkbox-control,
   :where(
       [data-hashti-theme="g90"],
@@ -1199,7 +1199,7 @@
     :is(
       .hashti-checkbox[data-color="secondary"],
       .hashti-checkbox-group[data-color="secondary"] .hashti-checkbox
-    )[data-selected]
+    )[data-checked]
     .hashti-checkbox-control,
   :is(
       [data-hashti-theme="g90"],
@@ -1220,7 +1220,7 @@
       [data-hashti-theme="relay-dark"],
       [data-hashti-theme="frame-dark"]
     )
-    .hashti-switch[data-color="secondary"][data-selected]
+    .hashti-switch[data-color="secondary"][data-checked]
     .hashti-switch-thumb,
   :is(
       [data-hashti-theme="g90"],
@@ -1228,24 +1228,24 @@
       [data-hashti-theme="relay-dark"],
       [data-hashti-theme="frame-dark"]
     )
-    .hashti-switch[data-color="secondary"][data-selected]
+    .hashti-switch[data-color="secondary"][data-checked]
     .hashti-switch-thumb {
     background: var(--hashti-background, #161616);
   }
 
   /* Invalid state always takes precedence */
-  .hashti-checkbox[data-invalid][data-selected] .hashti-checkbox-control,
+  .hashti-checkbox[data-invalid][data-checked] .hashti-checkbox-control,
   .hashti-checkbox[data-invalid][data-indeterminate] .hashti-checkbox-control {
     background: var(--hashti-support-error) !important;
     border-color: var(--hashti-support-error) !important;
   }
-  .hashti-radio[data-invalid][data-selected] .hashti-radio-control {
+  .hashti-radio[data-invalid][data-checked] .hashti-radio-control {
     border-color: var(--hashti-support-error) !important;
   }
-  .hashti-radio[data-invalid][data-selected] .hashti-radio-control::after {
+  .hashti-radio[data-invalid][data-checked] .hashti-radio-control::after {
     background: var(--hashti-support-error) !important;
   }
-  .hashti-switch[data-invalid][data-selected] .hashti-switch-track {
+  .hashti-switch[data-invalid][data-checked] .hashti-switch-track {
     background: var(--hashti-support-error) !important;
   }
   .hashti-checkbox,
@@ -1321,12 +1321,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .hashti-toggle-button[data-hovered] {
+  .hashti-toggle-button:hover {
     background: var(--hashti-content-switcher-background-hover);
     color: var(--hashti-text-primary);
   }
-  .hashti-toggle-button[data-selected],
-  .hashti-content-switcher > .hashti-toggle-button[data-selected] {
+  .hashti-toggle-button[data-pressed],
+  .hashti-content-switcher > .hashti-toggle-button[data-pressed] {
     background: var(--hashti-layer, #ffffff);
     color: var(--hashti-text-primary);
     font-weight: 600;
@@ -1335,8 +1335,8 @@
       0 1px 2px rgba(0, 0, 0, 0.08);
     border-color: transparent;
   }
-  .hashti-toggle-button[data-focus-visible],
-  .hashti-content-switcher > .hashti-toggle-button[data-focus-visible] {
+  .hashti-toggle-button:focus-visible,
+  .hashti-content-switcher > .hashti-toggle-button:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: -2px;
     box-shadow: inset 0 0 0 3px var(--hashti-focus-inset);
@@ -1399,7 +1399,7 @@
     cursor: grabbing;
   }
   .hashti-slider:not([data-disabled])
-    .react-aria-SliderThumb:is([data-hovered], [data-dragging], [data-focus-visible]) {
+    .react-aria-SliderThumb:is(:hover, [data-dragging], :focus-visible) {
     width: 1.25rem;
     height: 1.25rem;
   }
@@ -1407,7 +1407,7 @@
     width: 1rem;
     height: 1rem;
   }
-  .hashti-slider .react-aria-SliderThumb[data-focus-visible] {
+  .hashti-slider .react-aria-SliderThumb:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 3px;
   }
@@ -1431,11 +1431,11 @@
     overflow: auto;
     isolation: isolate;
   }
-  .hashti-popover[data-entering] {
+  .hashti-popover[data-starting-style] {
     animation: hashti-popover-in var(--hashti-duration-fast-02)
       var(--hashti-ease-entrance-productive);
   }
-  .hashti-popover[data-exiting] {
+  .hashti-popover[data-ending-style] {
     animation: hashti-popover-in var(--hashti-duration-fast-01) var(--hashti-ease-exit-productive)
       reverse;
   }
@@ -1483,12 +1483,12 @@
       line-height: 1.25rem;
       text-decoration: none;
     }
-    .react-aria-ListBoxItem[data-focused],
-    .react-aria-MenuItem[data-focused] {
+    .react-aria-ListBoxItem[data-highlighted],
+    .react-aria-MenuItem[data-highlighted] {
       background: var(--hashti-layer-hover);
     }
-    .react-aria-ListBoxItem[data-focus-visible],
-    .react-aria-MenuItem[data-focus-visible] {
+    .react-aria-ListBoxItem:focus-visible,
+    .react-aria-MenuItem:focus-visible {
       outline: 2px solid var(--hashti-focus);
       outline-offset: -2px;
     }
@@ -1517,7 +1517,7 @@
       position: absolute;
       inset-inline-end: 1rem;
     }
-    :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
+    :dir(rtl)
       .react-aria-MenuItem[data-has-submenu]::after {
       content: "‹";
     }
@@ -1631,11 +1631,11 @@
     padding: 3rem 1rem;
     overflow-y: auto;
   }
-  .hashti-modal-overlay[data-entering] {
+  .hashti-modal-overlay[data-starting-style] {
     animation: hashti-fade-in var(--hashti-duration-moderate-02)
       var(--hashti-ease-entrance-productive);
   }
-  .hashti-modal-overlay[data-exiting] {
+  .hashti-modal-overlay[data-ending-style] {
     animation: hashti-fade-in var(--hashti-duration-fast-02) var(--hashti-ease-exit-productive)
       reverse forwards;
   }
@@ -1656,7 +1656,7 @@
   .hashti-modal[data-size="lg"] {
     max-width: 60rem;
   }
-  .hashti-modal[data-entering] {
+  .hashti-modal[data-starting-style] {
     animation: hashti-modal-in var(--hashti-duration-moderate-02)
       var(--hashti-ease-entrance-productive);
   }
@@ -1700,11 +1700,11 @@
     z-index: 1000;
     display: flex;
   }
-  .hashti-drawer-overlay[data-entering] {
+  .hashti-drawer-overlay[data-starting-style] {
     animation: hashti-frame-backdrop-in var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .hashti-drawer-overlay[data-exiting] {
+  .hashti-drawer-overlay[data-ending-style] {
     animation: hashti-frame-backdrop-out var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -1726,11 +1726,11 @@
     inset-inline-end: 0;
     height: 100vh;
   }
-  .hashti-drawer:is([data-placement="right"], [data-placement="end"])[data-entering] {
+  .hashti-drawer:is([data-placement="right"], [data-placement="end"])[data-starting-style] {
     animation: hashti-drawer-slide-in-end var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .hashti-drawer:is([data-placement="right"], [data-placement="end"])[data-exiting] {
+  .hashti-drawer:is([data-placement="right"], [data-placement="end"])[data-ending-style] {
     animation: hashti-drawer-slide-out-end var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -1740,11 +1740,11 @@
     inset-inline-start: 0;
     height: 100vh;
   }
-  .hashti-drawer:is([data-placement="left"], [data-placement="start"])[data-entering] {
+  .hashti-drawer:is([data-placement="left"], [data-placement="start"])[data-starting-style] {
     animation: hashti-drawer-slide-in-start var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .hashti-drawer:is([data-placement="left"], [data-placement="start"])[data-exiting] {
+  .hashti-drawer:is([data-placement="left"], [data-placement="start"])[data-ending-style] {
     animation: hashti-drawer-slide-out-start var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -1754,11 +1754,11 @@
     right: 0;
     width: 100vw;
   }
-  .hashti-drawer[data-placement="top"][data-entering] {
+  .hashti-drawer[data-placement="top"][data-starting-style] {
     animation: hashti-drawer-slide-in-top var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .hashti-drawer[data-placement="top"][data-exiting] {
+  .hashti-drawer[data-placement="top"][data-ending-style] {
     animation: hashti-drawer-slide-out-top var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -1770,11 +1770,11 @@
     border-start-start-radius: var(--hashti-overlay-radius, 16px);
     border-start-end-radius: var(--hashti-overlay-radius, 16px);
   }
-  .hashti-drawer[data-placement="bottom"][data-entering] {
+  .hashti-drawer[data-placement="bottom"][data-starting-style] {
     animation: hashti-drawer-slide-in-bottom var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .hashti-drawer[data-placement="bottom"][data-exiting] {
+  .hashti-drawer[data-placement="bottom"][data-ending-style] {
     animation: hashti-drawer-slide-out-bottom var(--hashti-duration-moderate-01)
       cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -1939,20 +1939,20 @@
       transform: translate3d(0, 100%, 0);
     }
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
-    .hashti-drawer:is([data-placement="right"], [data-placement="end"])[data-entering] {
+  :dir(rtl)
+    .hashti-drawer:is([data-placement="right"], [data-placement="end"])[data-starting-style] {
     animation-name: hashti-drawer-slide-in-end-rtl;
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
-    .hashti-drawer:is([data-placement="right"], [data-placement="end"])[data-exiting] {
+  :dir(rtl)
+    .hashti-drawer:is([data-placement="right"], [data-placement="end"])[data-ending-style] {
     animation-name: hashti-drawer-slide-out-end-rtl;
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
-    .hashti-drawer:is([data-placement="left"], [data-placement="start"])[data-entering] {
+  :dir(rtl)
+    .hashti-drawer:is([data-placement="left"], [data-placement="start"])[data-starting-style] {
     animation-name: hashti-drawer-slide-in-start-rtl;
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
-    .hashti-drawer:is([data-placement="left"], [data-placement="start"])[data-exiting] {
+  :dir(rtl)
+    .hashti-drawer:is([data-placement="left"], [data-placement="start"])[data-ending-style] {
     animation-name: hashti-drawer-slide-out-start-rtl;
   }
   @keyframes hashti-drawer-slide-in-end-rtl {
@@ -2064,7 +2064,7 @@
       transform: translate(-50%, -50%) scale(1.15) !important;
     }
 
-    &[data-focus-visible] {
+    &:focus-visible {
       box-shadow:
         0 0 0 2px #ffffff,
         0 0 0 4px var(--hashti-focus);
@@ -2236,7 +2236,7 @@
       transform: scale(1.08);
     }
 
-    &[data-focus-visible] {
+    &:focus-visible {
       outline: 2px solid var(--hashti-focus);
       outline-offset: 2px;
     }
@@ -2308,7 +2308,7 @@
     color: var(--hashti-text-secondary);
     outline: none;
   }
-  .hashti-tabs .react-aria-Tab[data-hovered] {
+  .hashti-tabs .react-aria-Tab:hover {
     color: var(--hashti-text-primary);
     border-color: var(--hashti-border-strong);
   }
@@ -2317,7 +2317,7 @@
     border-color: var(--hashti-border-interactive);
     font-weight: 600;
   }
-  .hashti-tabs .react-aria-Tab[data-focus-visible] {
+  .hashti-tabs .react-aria-Tab:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: -2px;
   }
@@ -2359,7 +2359,7 @@
       color var(--hashti-duration-fast-01, var(--hashti-duration-fast-01)) ease,
       box-shadow var(--hashti-duration-fast-01, var(--hashti-duration-fast-01)) ease;
   }
-  .hashti-tabs[data-variant="contained"] .react-aria-Tab[data-hovered]:not([data-selected]) {
+  .hashti-tabs[data-variant="contained"] .react-aria-Tab:hover:not([data-selected]) {
     color: var(--hashti-text-primary);
     background: var(--hashti-layer-hover, rgba(0, 0, 0, 0.04));
   }
@@ -2413,7 +2413,7 @@
     width: 100%;
     border-radius: var(--hashti-control-radius, 12px);
   }
-  .hashti-disclosure[data-expanded]:not([data-variant="card"]) {
+  .hashti-disclosure[data-open]:not([data-variant="card"]) {
     background: var(--hashti-layer-accent);
   }
   .hashti-disclosure[data-variant="default"] {
@@ -2444,12 +2444,12 @@
     text-align: start;
     cursor: pointer;
   }
-  .hashti-disclosure[data-expanded] .hashti-disclosure-trigger {
+  .hashti-disclosure[data-open] .hashti-disclosure-trigger {
     background: transparent;
   }
-  .hashti-disclosure-trigger[data-hovered],
+  .hashti-disclosure-trigger:hover,
   .hashti-disclosure-trigger:active,
-  .hashti-disclosure-trigger[data-pressed] {
+  .hashti-disclosure-trigger:active {
     transform: none !important;
     background: var(--hashti-layer-hover);
   }
@@ -2464,21 +2464,21 @@
     transition: transform var(--hashti-duration-fast-02, var(--hashti-duration-fast-01))
       var(--hashti-ease-standard-productive, cubic-bezier(0.2, 0, 0.38, 0.9));
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl)) .hashti-disclosure-indicator > svg,
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl)) .hashti-disclosure-trigger > svg {
+  :dir(rtl) .hashti-disclosure-indicator > svg,
+  :dir(rtl) .hashti-disclosure-trigger > svg {
     transform: rotate(180deg);
   }
-  .hashti-disclosure[data-expanded] .hashti-disclosure-indicator > svg,
-  .hashti-disclosure[data-expanded] .hashti-disclosure-trigger > svg {
+  .hashti-disclosure[data-open] .hashti-disclosure-indicator > svg,
+  .hashti-disclosure[data-open] .hashti-disclosure-trigger > svg {
     transform: rotate(90deg);
     color: var(--hashti-text-primary);
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
-    .hashti-disclosure[data-expanded]
+  :dir(rtl)
+    .hashti-disclosure[data-open]
     .hashti-disclosure-indicator
     > svg,
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
-    .hashti-disclosure[data-expanded]
+  :dir(rtl)
+    .hashti-disclosure[data-open]
     .hashti-disclosure-trigger
     > svg {
     transform: rotate(90deg);
@@ -2554,7 +2554,7 @@
     cursor: pointer;
     padding-inline-end: 2.5rem;
   }
-  .hashti-column[data-hovered] {
+  .hashti-column:hover {
     background: var(--hashti-layer-accent-hover);
   }
   .hashti-sort-icon {
@@ -2563,7 +2563,7 @@
     opacity: 0;
   }
   .hashti-sort-icon[data-direction],
-  .hashti-column[data-hovered] .hashti-sort-icon {
+  .hashti-column:hover .hashti-sort-icon {
     opacity: 1;
   }
   .hashti-table .react-aria-Cell {
@@ -2575,13 +2575,13 @@
   .hashti-table .react-aria-Row {
     outline: none;
   }
-  .hashti-table .react-aria-Row[data-hovered] {
+  .hashti-table .react-aria-Row:hover {
     background: var(--hashti-layer-hover);
   }
   .hashti-table .react-aria-Row[data-selected] {
     background: var(--hashti-layer-selected);
   }
-  .hashti-table :is(.react-aria-Cell, .react-aria-Row, .hashti-column)[data-focus-visible] {
+  .hashti-table :is(.react-aria-Cell, .react-aria-Row, .hashti-column):focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: -2px;
   }
@@ -2607,7 +2607,7 @@
       cursor: col-resize;
     }
     .react-aria-ColumnResizer[data-resizing],
-    .react-aria-ColumnResizer[data-focus-visible] {
+    .react-aria-ColumnResizer:focus-visible {
       background: var(--hashti-border-interactive);
     }
   }
@@ -2646,7 +2646,7 @@
     color: var(--hashti-icon-primary);
     border-inline-start: 1px solid var(--hashti-border-subtle);
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl))
+  :dir(rtl)
     :is(.hashti-pagination-actions, .hashti-calendar-header)
     svg {
     transform: scaleX(-1);
@@ -2670,10 +2670,10 @@
       background: var(--hashti-layer-selected);
       box-shadow: inset 3px 0 var(--hashti-border-interactive);
     }
-    .react-aria-TreeItem[data-hovered] {
+    .react-aria-TreeItem:hover {
       background: var(--hashti-layer-hover);
     }
-    .react-aria-TreeItem[data-focus-visible] {
+    .react-aria-TreeItem:focus-visible {
       outline: 2px solid var(--hashti-focus);
       outline-offset: -2px;
     }
@@ -2702,13 +2702,13 @@
       border-block-end: 1px solid var(--hashti-border-subtle);
       outline: none;
     }
-    .react-aria-GridListItem[data-hovered] {
+    .react-aria-GridListItem:hover {
       background: var(--hashti-layer-hover);
     }
     .react-aria-GridListItem[data-selected] {
       background: var(--hashti-layer-selected);
     }
-    .react-aria-GridListItem[data-focus-visible] {
+    .react-aria-GridListItem:focus-visible {
       outline: 2px solid var(--hashti-focus);
       outline-offset: -2px;
     }
@@ -2829,10 +2829,10 @@
     .react-aria-DateSegment[data-type="literal"] {
       padding: 0;
     }
-    .react-aria-DateSegment[data-placeholder] {
+    .react-aria-DateSegment[data-empty] {
       color: var(--hashti-text-placeholder);
     }
-    .react-aria-DateSegment[data-focused] {
+    .react-aria-DateSegment:focus {
       background: var(--hashti-background-inverse);
       color: var(--hashti-text-inverse);
     }
@@ -2882,7 +2882,7 @@
     outline: none;
     cursor: pointer;
   }
-  .hashti-calendar .react-aria-CalendarCell[data-hovered] {
+  .hashti-calendar .react-aria-CalendarCell:hover {
     background: var(--hashti-layer-hover);
   }
   .hashti-calendar .react-aria-CalendarCell[data-selected] {
@@ -2902,7 +2902,7 @@
     position: absolute;
     bottom: 4px;
   }
-  .hashti-calendar .react-aria-CalendarCell[data-focus-visible] {
+  .hashti-calendar .react-aria-CalendarCell:focus-visible {
     outline: 2px solid var(--hashti-button-primary);
     outline-offset: -2px;
   }
@@ -2911,22 +2911,22 @@
     color: var(--hashti-text-disabled);
     cursor: not-allowed;
   }
-  .hashti-calendar .react-aria-CalendarCell[data-outside-month] {
+  .hashti-calendar .react-aria-CalendarCell[data-outside] {
     visibility: hidden;
   }
   .hashti-range-calendar .react-aria-CalendarCell[data-selected] {
     background: var(--hashti-highlight);
     color: var(--hashti-text-primary);
   }
-  .hashti-range-calendar .react-aria-CalendarCell[data-selection-start],
-  .hashti-range-calendar .react-aria-CalendarCell[data-selection-end] {
+  .hashti-range-calendar .react-aria-CalendarCell[data-range-start],
+  .hashti-range-calendar .react-aria-CalendarCell[data-range-end] {
     background: var(--hashti-button-primary);
     color: var(--hashti-text-on-color);
   }
   .hashti-calendar:not(.hashti-range-calendar)
-    .react-aria-CalendarCell[data-selected][data-focus-visible],
+    .react-aria-CalendarCell[data-selected]:focus-visible,
   .hashti-range-calendar
-    .react-aria-CalendarCell:is([data-selection-start], [data-selection-end])[data-focus-visible] {
+    .react-aria-CalendarCell:is([data-range-start], [data-range-end]):focus-visible {
     outline: 1px solid var(--hashti-layer-02);
     outline-offset: -3px;
   }
@@ -3002,7 +3002,7 @@
     min-height: 1.5rem;
     border-radius: 50%;
   }
-  .hashti-filter-tag[data-focus-visible] {
+  .hashti-filter-tag:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 2px;
   }
@@ -3020,7 +3020,7 @@
     color: var(--hashti-text-primary);
     border-inline-start: 3px solid var(--notification-color, var(--hashti-support-info));
   }
-  :where(.hashti-notification, .hashti-toast, .hashti-actionable-notification)[data-kind="info"] {
+  :where(.hashti-notification, .hashti-toast, .hashti-actionable-notification)[data-variant="info"] {
     --notification-bg: var(--hashti-notification-background-info);
     --notification-color: var(--hashti-support-info);
     --notification-color-inverse: var(--hashti-support-info-inverse);
@@ -3029,7 +3029,7 @@
     .hashti-notification,
     .hashti-toast,
     .hashti-actionable-notification
-  )[data-kind="success"] {
+  )[data-variant="success"] {
     --notification-bg: var(--hashti-notification-background-success);
     --notification-color: var(--hashti-support-success);
     --notification-color-inverse: var(--hashti-support-success-inverse);
@@ -3038,12 +3038,12 @@
     .hashti-notification,
     .hashti-toast,
     .hashti-actionable-notification
-  )[data-kind="warning"] {
+  )[data-variant="warning"] {
     --notification-bg: var(--hashti-notification-background-warning);
     --notification-color: var(--hashti-support-warning);
     --notification-color-inverse: var(--hashti-support-warning-inverse);
   }
-  :where(.hashti-notification, .hashti-toast, .hashti-actionable-notification)[data-kind="error"] {
+  :where(.hashti-notification, .hashti-toast, .hashti-actionable-notification)[data-variant="error"] {
     --notification-bg: var(--hashti-notification-background-error);
     --notification-color: var(--hashti-support-error);
     --notification-color-inverse: var(--hashti-support-error-inverse);
@@ -3090,8 +3090,8 @@
     border: 0;
     color: inherit;
   }
-  .hashti-notification > .hashti-button[data-focus-visible],
-  .hashti-toast > .hashti-button[data-focus-visible] {
+  .hashti-notification > .hashti-button:focus-visible,
+  .hashti-toast > .hashti-button:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: -2px;
     box-shadow: none;
@@ -3340,7 +3340,7 @@
   .hashti-toast [slot="title"] {
     font-weight: 600;
   }
-  .hashti-toast[data-focus-visible] {
+  .hashti-toast:focus-visible {
     outline: 2px solid var(--hashti-focus);
   }
 
@@ -3598,13 +3598,13 @@
     border-radius: var(--hashti-control-radius, var(--hashti-control-radius, 12px));
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
-  .hashti-dropzone[data-drop-target],
-  .hashti-file-uploader .react-aria-DropZone[data-drop-target] {
+  .hashti-dropzone[data-dragging],
+  .hashti-file-uploader .react-aria-DropZone[data-dragging] {
     border-color: var(--hashti-border-interactive);
     background: var(--hashti-highlight);
   }
-  .hashti-dropzone[data-focus-visible],
-  .hashti-file-uploader .react-aria-DropZone[data-focus-visible] {
+  .hashti-dropzone:focus-visible,
+  .hashti-file-uploader .react-aria-DropZone:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 2px;
   }
@@ -4006,7 +4006,7 @@
     padding: var(--hashti-spacing-06);
     text-align: start;
   }
-  :is([dir="rtl"], [data-direction="rtl"], :dir(rtl)) .hashti-alert-dialog {
+  :dir(rtl) .hashti-alert-dialog {
     text-align: right;
   }
   .hashti-alert-dialog-header {
@@ -4019,13 +4019,13 @@
     flex-shrink: 0;
     margin-block-start: 2px;
   }
-  .hashti-alert-dialog-header[data-kind="danger"] > svg {
+  .hashti-alert-dialog-header[data-variant="danger"] > svg {
     color: var(--hashti-support-error);
   }
-  .hashti-alert-dialog-header[data-kind="warning"] > svg {
+  .hashti-alert-dialog-header[data-variant="warning"] > svg {
     color: var(--hashti-support-warning);
   }
-  .hashti-alert-dialog-header[data-kind="info"] > svg {
+  .hashti-alert-dialog-header[data-variant="info"] > svg {
     color: var(--hashti-interactive);
   }
   .hashti-alert-dialog .react-aria-Heading[slot="title"] {
@@ -4236,7 +4236,7 @@
     color: var(--hashti-text-on-color);
     border: 1px solid color-mix(in srgb, currentColor 40%, transparent);
   }
-  .hashti-table-batch-bar .hashti-button[data-variant="ghost"]:is([data-hovered], :hover) {
+  .hashti-table-batch-bar .hashti-button[data-variant="ghost"]:hover {
     background: color-mix(in srgb, currentColor 15%, transparent);
     border-color: color-mix(in srgb, currentColor 70%, transparent);
     color: var(--hashti-text-on-color);
@@ -4345,7 +4345,7 @@
     cursor: pointer;
     transition: background-color var(--hashti-duration-fast-01, var(--hashti-duration-fast-01));
   }
-  .hashti-navigation-tree-item[data-hovered] {
+  .hashti-navigation-tree-item:hover {
     background: var(--hashti-layer-hover);
   }
   .hashti-navigation-tree-item[data-current] {
@@ -4357,7 +4357,7 @@
   .hashti-navigation-tree-item[data-current-ancestor]:not([data-current]) {
     font-weight: 500;
   }
-  .hashti-navigation-tree-item[data-focus-visible] {
+  .hashti-navigation-tree-item:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: -2px;
   }
@@ -4490,7 +4490,7 @@
   }
 
   /* Keyboard focus only, ring outside the border like every other field. */
-  .hashti-token-input[data-focus-visible] {
+  .hashti-token-input:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 2px;
     position: relative;
@@ -4773,8 +4773,7 @@
     transition: background var(--hashti-duration-fast-01) ease;
   }
 
-  .hashti-command-palette__item[data-hovered],
-  .hashti-command-palette__item[data-focused],
+  .hashti-command-palette__item[data-highlighted],
   .hashti-command-palette__item:hover,
   .hashti-command-palette__item:focus {
     background: var(--hashti-layer-hover, rgba(0, 0, 0, 0.05));
@@ -4900,9 +4899,9 @@
         .hashti-tile--selectable
       ):active,
     :where([data-hashti-theme]) .hashti-card[data-interactive]:active,
-    :where([data-hashti-theme]) .hashti-checkbox[data-pressed] .hashti-checkbox-control,
-    :where([data-hashti-theme]) .hashti-radio[data-pressed] .hashti-radio-control,
-    :where([data-hashti-theme]) .react-aria-CalendarCell[data-pressed] {
+    :where([data-hashti-theme]) .hashti-checkbox:active .hashti-checkbox-control,
+    :where([data-hashti-theme]) .hashti-radio:active .hashti-radio-control,
+    :where([data-hashti-theme]) .react-aria-CalendarCell:active {
       transform: none !important;
     }
   }
@@ -4922,13 +4921,13 @@
       color: ButtonText;
       border: 1px solid ButtonText;
     }
-    .hashti-checkbox:is([data-selected], [data-indeterminate]) .hashti-checkbox-control,
-    .hashti-switch[data-selected] .hashti-switch-track,
-    .hashti-toggle-button[data-selected] {
+    .hashti-checkbox:is([data-checked], [data-indeterminate]) .hashti-checkbox-control,
+    .hashti-switch[data-checked] .hashti-switch-track,
+    .hashti-toggle-button[data-pressed] {
       background: Highlight;
       color: HighlightText;
     }
-    .hashti-radio[data-selected] .hashti-radio-control::after,
+    .hashti-radio[data-checked] .hashti-radio-control::after,
     .hashti-progress-fill,
     .hashti-slider .react-aria-SliderThumb {
       background: Highlight;
@@ -4940,7 +4939,7 @@
     .hashti-switch-thumb {
       background: ButtonText;
     }
-    .hashti-switch[data-selected] .hashti-switch-thumb {
+    .hashti-switch[data-checked] .hashti-switch-thumb {
       background: HighlightText;
     }
     .hashti-checkbox[data-disabled] .hashti-checkbox-control,
@@ -4954,9 +4953,9 @@
     .hashti-switch[data-disabled] .hashti-switch-thumb {
       background: GrayText;
     }
-    .hashti-checkbox[data-focus-visible] .hashti-checkbox-control,
-    .hashti-radio[data-focus-visible] .hashti-radio-control,
-    .hashti-switch[data-focus-visible] .hashti-switch-track {
+    .hashti-checkbox:focus-visible .hashti-checkbox-control,
+    .hashti-radio:focus-visible .hashti-radio-control,
+    .hashti-switch:focus-visible .hashti-switch-track {
       outline-color: Highlight;
     }
     .hashti-button[data-disabled] {

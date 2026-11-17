@@ -8,7 +8,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "paths": {
-      "@hashti/tokens": ["./packages/tokens/dist/index.d.ts"]
+      "@hashti/styles/tokens": ["./packages/styles/src/tokens/index.ts"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],

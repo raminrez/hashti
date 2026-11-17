@@ -42,7 +42,6 @@
     "./dist/*": "./dist/*"
   },
   "peerDependencies": {
-    "@hashti/tokens": "workspace:*",
     "@hashti/styles": "workspace:*",
     "react": ">=19.0.0 <20",
     "react-dom": ">=19.0.0 <20",

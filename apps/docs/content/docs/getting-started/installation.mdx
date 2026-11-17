@@ -7,37 +7,37 @@ description: Install and configure Hashti Design System packages in your React, 
 
 Hashti is distributed as two primary packages:
 
-1. **`@hashti/tokens`**: Comprehensive design tokens, CSS variables, Core, Relay & Frame themes, color scales, and spacing primitives.
+1. **`@hashti/styles`**: Design tokens, CSS variables, themes, and component stylesheets.
 2. **`@hashti/react`**: 45+ enterprise React components built on top of [React Aria Components (RAC 1.22.1)](https://react-spectrum.adobe.com/react-aria/index.html).
 
 ---
 
 ## 1. Package Manager Installation
 
-Install both `@hashti/react` and `@hashti/tokens` alongside their peer dependencies (`react` and `react-dom` version 19+, and `react-aria-components`).
+Install both `@hashti/react` and `@hashti/styles` alongside their peer dependencies (`react` and `react-dom` version 19+, and `react-aria-components`).
 
 ### Bun (Recommended)
 
 ```bash
-bun add @hashti/react @hashti/tokens react-aria-components
+bun add @hashti/react @hashti/styles react-aria-components
 ```
 
 ### npm
 
 ```bash
-npm install @hashti/react @hashti/tokens react-aria-components
+npm install @hashti/react @hashti/styles react-aria-components
 ```
 
 ### pnpm
 
 ```bash
-pnpm add @hashti/react @hashti/tokens react-aria-components
+pnpm add @hashti/react @hashti/styles react-aria-components
 ```
 
 ### Yarn
 
 ```bash
-yarn add @hashti/react @hashti/tokens react-aria-components
+yarn add @hashti/react @hashti/styles react-aria-components
 ```
 
 ---
@@ -48,7 +48,7 @@ Hashti uses two modular prebuilt stylesheets. Add them at your application's roo
 
 ```css
 /* 1. Foundational design tokens & theme CSS variables */
-import "@hashti/tokens/tokens.css";
+import "@hashti/styles/tokens.css";
 
 /* 2. Component structural layouts, focus rings, and BEM styles */
 import "@hashti/react/styles.css";
@@ -68,7 +68,7 @@ In Next.js 14/15/16 App Router, configure your root layout (`app/layout.tsx`) wi
 ```tsx
 // app/layout.tsx
 import type { Metadata } from "next";
-import "@hashti/tokens/tokens.css";
+import "@hashti/styles/tokens.css";
 import "@hashti/react/styles.css";
 import { Theme } from "@hashti/react";
 
@@ -95,7 +95,7 @@ To use Hashti components in an Astro project, enable the `@astrojs/react` integr
 ```astro
 ---
 // src/layouts/BaseLayout.astro
-import "@hashti/tokens/tokens.css";
+import "@hashti/styles/tokens.css";
 import "@hashti/react/styles.css";
 import { Theme } from "@hashti/react";
 
@@ -129,7 +129,7 @@ In a Vite application, configure `src/main.tsx`:
 // src/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "@hashti/tokens/tokens.css";
+import "@hashti/styles/tokens.css";
 import "@hashti/react/styles.css";
 import { Theme } from "@hashti/react";
 import App from "./App";

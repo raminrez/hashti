@@ -16,7 +16,7 @@ const run = async (...command: string[]) => {
 };
 
 await run("bun", "run", "build:tokens");
-for (const name of ["tokens", "styles", "agent", "react"]) {
+for (const name of ["styles", "agent", "react"]) {
   const folder = `${root}/packages/${name}`;
   if (!process.argv.includes("--no-clean")) {
     await rm(`${folder}/dist`, { recursive: true, force: true });
@@ -44,7 +44,7 @@ for (const name of ["tokens", "styles", "agent", "react"]) {
     format: "esm",
     jsx: { runtime: "automatic", development: false },
     packages: "external",
-    external: ["@hashti/tokens", "@hashti/styles", "@hashti/agent"],
+    external: ["@hashti/styles", "@hashti/agent"],
     plugins: [workspaceExternal],
     sourcemap: "linked",
     minify: false,
@@ -55,13 +55,7 @@ for (const name of ["tokens", "styles", "agent", "react"]) {
   await Promise.all(
     ["LICENSE", "NOTICE"].map((file) => copyFile(`${root}/${file}`, `${folder}/${file}`)),
   );
-  if (name === "tokens") {
-    await Promise.all(
-      ["tokens.css", "tokens.json"].map((file) =>
-        copyFile(`${folder}/src/${file}`, `${folder}/dist/${file}`),
-      ),
-    );
-  } else if (name === "react") {
+  if (name === "react") {
     const css = await Bun.build({
       entrypoints: [`${folder}/src/styles.css`],
       outdir: `${folder}/dist`,

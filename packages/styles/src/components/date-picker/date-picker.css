@@ -70,8 +70,8 @@
       box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .hashti-calendar .react-aria-CalendarCell[data-hovered],
-  .hashti-calendar .react-aria-CalendarCell[data-hovered] {
+  .hashti-calendar .react-aria-CalendarCell:hover,
+  .hashti-calendar .react-aria-CalendarCell:hover {
     background-color: var(--hashti-layer-accent-01, #f4f4f4);
   }
 

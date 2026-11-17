@@ -38,10 +38,10 @@
       background: transparent;
       border-color: var(--hashti-button-tertiary);
     }
-    .hashti-button[data-variant="tertiary"][data-hovered] {
+    .hashti-button[data-variant="tertiary"]:hover {
       background: var(--hashti-button-tertiary-hover);
     }
-    .hashti-button[data-variant="tertiary"][data-pressed] {
+    .hashti-button[data-variant="tertiary"]:active {
       background: var(--hashti-button-tertiary-active);
     }
     .hashti-button:is([data-variant="danger-tertiary"], [data-variant="danger-ghost"]) {
@@ -50,8 +50,8 @@
       background: transparent;
     }
     .hashti-button:is([data-variant="danger-tertiary"], [data-variant="danger-ghost"]):is(
-        [data-hovered],
-        [data-pressed]
+        :hover,
+        :active
       ) {
       --relay-button-ink: var(--hashti-text-on-color);
       background: var(--button-hover);
@@ -59,19 +59,19 @@
     .hashti-button:is(
         [data-variant="danger-tertiary"],
         [data-variant="danger-ghost"]
-      )[data-pressed] {
+      ):active {
       background: var(--button-active);
     }
-    .hashti-button[data-focus-visible] {
+    .hashti-button:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset);
       box-shadow: none;
       border-color: transparent;
     }
-    .hashti-button[data-variant="tertiary"][data-focus-visible] {
+    .hashti-button[data-variant="tertiary"]:focus-visible {
       border-color: var(--hashti-button-tertiary);
     }
-    .hashti-button[data-variant="danger-tertiary"][data-focus-visible] {
+    .hashti-button[data-variant="danger-tertiary"]:focus-visible {
       border-color: var(--hashti-button-danger-secondary);
     }
     .hashti-button[data-disabled] {
@@ -125,9 +125,9 @@
         background-color var(--hashti-duration-fast-02) var(--hashti-ease-standard-productive),
         border-color var(--hashti-duration-fast-02) var(--hashti-ease-standard-productive);
     }
-    .hashti-field :is(.react-aria-Input, .react-aria-TextArea):is(:hover, [data-hovered]),
-    .hashti-input-group[data-hovered],
-    .hashti-select-trigger[data-hovered] {
+    .hashti-field :is(.react-aria-Input, .react-aria-TextArea):hover,
+    .hashti-input-group:hover,
+    .hashti-select-trigger:hover {
       background: var(--hashti-field-hover);
       border-color: var(--hashti-text-primary);
     }
@@ -136,9 +136,9 @@
       text-align: start;
       font-weight: 400;
     }
-    .hashti-field :is(.react-aria-Input, .react-aria-TextArea):is(:focus, [data-focused]),
-    .hashti-input-group[data-focus-within],
-    .hashti-select-trigger[data-focus-visible] {
+    .hashti-field :is(.react-aria-Input, .react-aria-TextArea):focus,
+    .hashti-input-group:focus-within,
+    .hashti-select-trigger:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset);
       box-shadow: none;
@@ -149,9 +149,9 @@
       outline: none;
     }
     .hashti-field[data-invalid]
-      :is(.react-aria-Input, .react-aria-TextArea):is(:focus, [data-focused]),
-    .hashti-field[data-invalid] > .hashti-input-group[data-focus-within],
-    .hashti-field[data-invalid] .hashti-select-trigger[data-focus-visible] {
+      :is(.react-aria-Input, .react-aria-TextArea):focus,
+    .hashti-field[data-invalid] > .hashti-input-group:focus-within,
+    .hashti-field[data-invalid] .hashti-select-trigger:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset);
     }
@@ -206,24 +206,24 @@
     .hashti-checkbox-control {
       border-radius: 4px;
     }
-    .hashti-checkbox:is([data-selected], [data-indeterminate]) .hashti-checkbox-control {
+    .hashti-checkbox:is([data-checked], [data-indeterminate]) .hashti-checkbox-control {
       background: var(--hashti-button-primary);
       border-color: var(--hashti-button-primary);
       color: var(--hashti-text-on-color);
     }
-    .hashti-radio[data-selected] .hashti-radio-control {
+    .hashti-radio[data-checked] .hashti-radio-control {
       border-color: var(--hashti-button-primary);
     }
-    .hashti-checkbox[data-hovered] .hashti-checkbox-control,
-    .hashti-radio[data-hovered] .hashti-radio-control {
+    .hashti-checkbox:hover .hashti-checkbox-control,
+    .hashti-radio:hover .hashti-radio-control {
       border-color: var(--hashti-text-primary);
     }
-    .hashti-checkbox:not([data-selected], [data-indeterminate])[data-pressed]
+    .hashti-checkbox:not([data-checked], [data-indeterminate]):active
       .hashti-checkbox-control,
-    .hashti-radio:not([data-selected])[data-pressed] .hashti-radio-control {
+    .hashti-radio:not([data-checked]):active .hashti-radio-control {
       background: var(--hashti-layer-active);
     }
-    .hashti-checkbox:is([data-selected], [data-indeterminate])[data-pressed]
+    .hashti-checkbox:is([data-checked], [data-indeterminate]):active
       .hashti-checkbox-control {
       background: var(--hashti-button-primary-active);
     }
@@ -231,9 +231,9 @@
     .hashti-radio[data-invalid] .hashti-radio-control {
       border-color: var(--hashti-support-error);
     }
-    .hashti-checkbox[data-focus-visible] .hashti-checkbox-control,
-    .hashti-radio[data-focus-visible] .hashti-radio-control,
-    .hashti-switch[data-focus-visible] .hashti-switch-track {
+    .hashti-checkbox:focus-visible .hashti-checkbox-control,
+    .hashti-radio:focus-visible .hashti-radio-control,
+    .hashti-switch:focus-visible .hashti-switch-track {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset);
     }
@@ -241,12 +241,12 @@
     .hashti-radio[data-disabled] .hashti-radio-control {
       border-color: var(--hashti-icon-disabled);
     }
-    .hashti-checkbox[data-disabled]:is([data-selected], [data-indeterminate])
+    .hashti-checkbox[data-disabled]:is([data-checked], [data-indeterminate])
       .hashti-checkbox-control {
       background: var(--hashti-icon-disabled);
       color: var(--hashti-field);
     }
-    .hashti-switch[data-selected] .hashti-switch-track {
+    .hashti-switch[data-checked] .hashti-switch-track {
       background: var(--hashti-button-primary);
     }
     .hashti-switch-thumb {
@@ -328,7 +328,7 @@
         color: ButtonText;
         border-color: ButtonText;
       }
-      .hashti-toggle-button[data-selected] {
+      .hashti-toggle-button[data-pressed] {
         background: Highlight;
         color: HighlightText;
       }
@@ -346,11 +346,11 @@
       .hashti-button[data-pending] {
         color: transparent;
       }
-      .hashti-button[data-focus-visible],
-      .hashti-toggle-button[data-focus-visible],
-      .hashti-checkbox[data-focus-visible] .hashti-checkbox-control,
-      .hashti-radio[data-focus-visible] .hashti-radio-control,
-      .hashti-switch[data-focus-visible] .hashti-switch-track {
+      .hashti-button:focus-visible,
+      .hashti-toggle-button:focus-visible,
+      .hashti-checkbox:focus-visible .hashti-checkbox-control,
+      .hashti-radio:focus-visible .hashti-radio-control,
+      .hashti-switch:focus-visible .hashti-switch-track {
         outline-color: Highlight;
       }
       .hashti-checkbox-control,
@@ -358,15 +358,15 @@
       .hashti-switch-track {
         border-color: ButtonText;
       }
-      .hashti-checkbox:is([data-selected], [data-indeterminate]) .hashti-checkbox-control,
-      .hashti-switch[data-selected] .hashti-switch-track {
+      .hashti-checkbox:is([data-checked], [data-indeterminate]) .hashti-checkbox-control,
+      .hashti-switch[data-checked] .hashti-switch-track {
         background: Highlight;
         color: HighlightText;
       }
       .hashti-switch-thumb {
         background: ButtonText;
       }
-      .hashti-switch[data-selected] .hashti-switch-thumb {
+      .hashti-switch[data-checked] .hashti-switch-thumb {
         background: HighlightText;
       }
       .hashti-checkbox[data-disabled] .hashti-checkbox-control,

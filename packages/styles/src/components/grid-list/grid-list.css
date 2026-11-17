@@ -9,12 +9,12 @@
       color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
       box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
-  [data-hashti-theme] .hashti-grid-list[data-pressed],
-  [data-hashti-theme] .hashti-grid-list[data-pressed] {
+  [data-hashti-theme] .hashti-grid-list:active,
+  [data-hashti-theme] .hashti-grid-list:active {
     transform: scale(0.98);
   }
-  [data-hashti-theme] .hashti-grid-list[data-focus-visible],
-  [data-hashti-theme] .hashti-grid-list[data-focus-visible] {
+  [data-hashti-theme] .hashti-grid-list:focus-visible,
+  [data-hashti-theme] .hashti-grid-list:focus-visible {
     outline: none;
     box-shadow:
       0 0 0 2px var(--hashti-background, var(--hashti-background)),

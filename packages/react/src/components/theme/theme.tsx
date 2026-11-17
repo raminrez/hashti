@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, type ComponentPropsWithRef } from "react";
 import { I18nProvider, useLocale } from "react-aria-components";
-import { nextLayer, type LayerLevel, type ThemeName } from "@hashti/tokens";
+import { nextLayer, type LayerLevel, type ThemeName } from "@hashti/styles/tokens";
 
 type ThemeContextValue = {
   theme: ThemeName;

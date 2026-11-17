@@ -1,2 +1,2 @@
 export * from "@hashti/react";
-export * from "@hashti/tokens";
+export * from "@hashti/styles/tokens";

@@ -43,23 +43,23 @@
     height: 14px;
   }
 
-  .hashti-switch[data-selected] .hashti-switch-track,
-  .hashti-switch[data-selected] .hashti-switch-track {
+  .hashti-switch[data-checked] .hashti-switch-track,
+  .hashti-switch[data-checked] .hashti-switch-track {
     background-color: var(--hashti-focus);
   }
 
-  .hashti-switch[data-selected] .hashti-switch-thumb,
-  .hashti-switch[data-selected] .hashti-switch-thumb {
+  .hashti-switch[data-checked] .hashti-switch-thumb,
+  .hashti-switch[data-checked] .hashti-switch-thumb {
     transform: translateX(20px);
   }
 
-  .hashti-switch[data-size="sm"][data-selected] .hashti-switch-thumb,
-  .hashti-switch[data-size="sm"][data-selected] .hashti-switch-thumb {
+  .hashti-switch[data-size="sm"][data-checked] .hashti-switch-thumb,
+  .hashti-switch[data-size="sm"][data-checked] .hashti-switch-thumb {
     transform: translateX(16px);
   }
 
-  .hashti-switch[data-focus-visible] .hashti-switch-track,
-  .hashti-switch[data-focus-visible] .hashti-switch-track {
+  .hashti-switch:focus-visible .hashti-switch-track,
+  .hashti-switch:focus-visible .hashti-switch-track {
     outline: none;
     box-shadow:
       0 0 0 2px var(--hashti-background, #ffffff),

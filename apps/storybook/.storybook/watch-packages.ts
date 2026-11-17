@@ -3,14 +3,18 @@ import { fileURLToPath } from "node:url";
 import { normalizePath, type Plugin } from "vite";
 
 const root = fileURLToPath(new URL("../../../", import.meta.url));
-const inputs = ["packages/react/src/", "packages/tokens/src/", "packages/tokens/scripts/"].map(
-  (path) => normalizePath(root + path),
-);
-const outputs = ["packages/react/dist/", "packages/tokens/dist/"].map((path) =>
+const inputs = [
+  "packages/react/src/",
+  "packages/styles/src/",
+  "packages/styles/scripts/",
+].map((path) => normalizePath(root + path));
+const outputs = ["packages/react/dist/", "packages/styles/dist/"].map((path) =>
   normalizePath(root + path),
 );
 const generated = new Set(
-  ["tokens.css", "tokens.json"].map((file) => normalizePath(`${root}packages/tokens/src/${file}`)),
+  ["tokens/tokens.css", "tokens/tokens.json", "tokens.css"].map((file) =>
+    normalizePath(`${root}packages/styles/src/${file}`),
+  ),
 );
 
 export function watchPackages() {

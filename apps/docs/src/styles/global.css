@@ -3,7 +3,7 @@
 @import "fumadocs-ui/css/preset.css";
 
 /* Import Hashti tokens & component styles */
-@import "@hashti/tokens/dist/tokens.css";
+@import "@hashti/styles/tokens.css";
 @import "@hashti/react/dist/styles.css";
 
 /* Fumadocs search trigger sits on a muted surface; lift its label to AA contrast. */

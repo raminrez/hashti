@@ -27,20 +27,20 @@
     color: #ffffff;
   }
 
-  .hashti-checkbox[data-selected] .hashti-checkbox-control,
+  .hashti-checkbox[data-checked] .hashti-checkbox-control,
   .hashti-checkbox[data-indeterminate] .hashti-checkbox-control,
   .hashti-checkbox[data-indeterminate] .hashti-checkbox-control {
     background-color: var(--hashti-focus);
     border-color: var(--hashti-focus);
   }
 
-  .hashti-checkbox[data-pressed] .hashti-checkbox-control,
-  .hashti-checkbox[data-pressed] .hashti-checkbox-control {
+  .hashti-checkbox:active .hashti-checkbox-control,
+  .hashti-checkbox:active .hashti-checkbox-control {
     transform: scale(0.92);
   }
 
-  .hashti-checkbox[data-focus-visible] .hashti-checkbox-control,
-  .hashti-checkbox[data-focus-visible] .hashti-checkbox-control {
+  .hashti-checkbox:focus-visible .hashti-checkbox-control,
+  .hashti-checkbox:focus-visible .hashti-checkbox-control {
     outline: none;
     box-shadow:
       0 0 0 2px var(--hashti-background, #ffffff),

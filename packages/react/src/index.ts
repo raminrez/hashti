@@ -58,7 +58,7 @@ export { Icon } from "./icons";
 export type { IconName, IconProps } from "./icons";
 export { cx, classes } from "./utils";
 export type { ControlSize } from "./utils";
-export type { ThemeName, LayerLevel } from "@hashti/tokens";
+export type { ThemeName, LayerLevel } from "@hashti/styles/tokens";
 
 // Compositional RAC parts: their types, slots, refs and collection behavior
 export {

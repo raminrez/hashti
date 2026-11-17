@@ -8,21 +8,18 @@
   ],
   "exports": {
     ".": "./src/index.css",
-    "./*": "./src/*",
+    "./tokens": {
+      "types": "./src/tokens/index.ts",
+      "import": "./src/tokens/index.ts"
+    },
     "./tokens.css": "./src/tokens.css",
     "./tokens.json": "./src/tokens/tokens.json",
     "./layers.css": "./src/layers.css",
     "./frame.css": "./src/frame.css",
     "./relay.css": "./src/relay.css",
     "./styles.css": "./src/index.css",
+    "./*": "./src/*",
     "./dist/*": "./dist/*"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "@carbon/themes": "11.85.0",
-    "@carbon/layout": "11.63.0",
-    "@carbon/type": "11.71.0",
-    "@carbon/motion": "11.56.0",
-    "@carbon/colors": "11.62.0"
-  }
+  "dependencies": {}
 }

@@ -28,8 +28,8 @@
     margin: 0;
   }
 
-  .hashti-alert-dialog-header[data-kind="danger"] svg,
-  .hashti-alert-dialog-header[data-kind="danger"] svg {
+  .hashti-alert-dialog-header[data-variant="danger"] svg,
+  .hashti-alert-dialog-header[data-variant="danger"] svg {
     color: var(--hashti-text-error, #da1e28);
   }
 

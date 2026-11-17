@@ -1,16 +1,15 @@
 # @hashti/react
 
-React Aria Components (**RAC**) with Carbon reference styling, Relay themes, and
-reusable Frame foundations.
-Version **0.1.0**; Cinder and the package scope are working names.
+React Aria Components (**RAC**) with reusable Frame foundations.
+Version **0.1.0**; pre-release.
 
 ## Installation
 
-In the Cinder workspace, run `bun run pack`. In a separate React app:
+In the Hashti workspace, run `bun run pack`. In a separate React app:
 
 ```sh
-bun add /path/to/cinder/dist/packages/cinder-react-0.1.0.tgz \
-  /path/to/cinder/dist/packages/cinder-tokens-0.1.0.tgz \
+bun add /path/to/hashti/dist/packages/hashti-react-0.1.0.tgz \
+  /path/to/hashti/dist/packages/hashti-styles-0.1.0.tgz \
   react@19.3.1 react-dom@19.3.1 react-aria-components@1.22.1
 ```
 
@@ -21,7 +20,7 @@ React 19 and RAC 1.22+, but those other versions have not been independently tes
 
 ESM JavaScript and TypeScript declarations are exported from `@hashti/react`.
 Import `@hashti/react/styles.css` once; this static stylesheet includes all tokens,
-themes, and component CSS. No Cinder CSS compiler is required.
+themes, and component CSS. No Hashti CSS compiler is required.
 React, React DOM, RAC, and `@internationalized/date` are external to the JS bundle.
 
 ```tsx
@@ -33,7 +32,7 @@ export function Settings() {
     <Theme theme="frame-light" locale="en-US">
       <Layer>
         <Stack gap={6}>
-          <TextField label="Workspace name" defaultValue="Cinder studio" />
+          <TextField label="Workspace name" defaultValue="Hashti studio" />
           <Button onPress={() => console.log("Saved locally")}>Save workspace</Button>
         </Stack>
       </Layer>
@@ -42,27 +41,18 @@ export function Settings() {
 }
 ```
 
-## Frame foundations — Phase 1
+## Frame foundations
 
-The approved `frame-light` and `frame-dark` foundations and customization contracts
-below are implemented. These themes are additive: `white`, `g10`,
-`g90`, `g100`, `relay-light`, and `relay-dark` keep their existing defaults.
-Each Frame map contains 343 entries, including 25 theme-owned typography/size
-foundation overrides. The six older maps, 191 global foundations, and 36 structured
-Carbon typography objects retain their values; see the
-[token guide](../tokens/README.md#authored-frame-values).
-
-Phase 1 representative installed-package proof passed for native CSS, real Bun CSS
-Modules, and Tailwind 4.3.5. The workspace's
-[Phase 1 verification](../../docs/verification.md#frame-phase-1) records the executed checks; the
-[coverage matrix](../../docs/coverage.md) records implemented family scope.
+The `frame-light` and `frame-dark` foundations and customization contracts
+below are implemented. The token set is the pruned stylesheet-referenced
+closure maintained in `@hashti/styles`
+([tokens.json](../styles/src/tokens/tokens.json)).
 
 Minimum heights for ordinary Buttons and single-line fields at a 16px root are:
 
-| Theme family | Button, size omitted | Field, size omitted | Explicit `sm` / `md` / `lg` |
-| ------------ | -------------------- | ------------------- | --------------------------- |
-| Carbon/Relay | 48px                 | 40px                | 32 / 40 / 48px              |
-| Frame        | 44px                 | 44px                | 32 / 44 / 48px              |
+| Theme | Button, size omitted | Field, size omitted | Explicit `sm` / `md` / `lg` |
+| ----- | -------------------- | ------------------- | --------------------------- |
+| Frame | 44px                 | 44px                | 32 / 44 / 48px              |
 
 Fields still default to `size="md"`. Button retains its resolved
 `data-size="lg"` when size is omitted; Frame distinguishes omission internally
@@ -74,10 +64,7 @@ These are foundation contracts, not a claim that the full catalog has completed
 Frame review. The current field/form batch adds persistent guidance, attached
 recovery, and additive compound APIs. Grouped, collection, and date compounds are
 included for shared anatomy and API compatibility only, not completed later-family
-Frame review. The [Phase 2 plan](../../docs/component-library-plan.md#phase-2--first-complete-frame-slice)
-and [coverage matrix](../../docs/coverage.md) track the wider family scope; the
-[field/form verification](../../docs/verification.md#frame-fields--phase-2-second-batch) distinguishes executed evidence
-from authored stories and fixtures.
+Frame review. The ticket queue in `.tickets/` tracks the wider family scope.
 
 ## Button and Link
 
@@ -85,7 +72,7 @@ Use **Button** to perform an action and **Link** to navigate. Choose one primary
 action per decision. Destructive variants need explicit wording such as “Delete
 draft”; color alone does not explain the consequence.
 
-Cinder's recommended Frame button set has four choices:
+Hashti's recommended Frame button set has four choices:
 
 | Variant     | Use                                                     |
 | ----------- | ------------------------------------------------------- |
@@ -94,23 +81,20 @@ Cinder's recommended Frame button set has four choices:
 | `ghost`     | Low-emphasis actions: unfilled until interaction.       |
 | `danger`    | Destructive actions: an explicit label and danger fill. |
 
-This compact hierarchy follows the emphasis guidance in [Base](../../docs/research-base.md),
-[HeroUI](../../docs/research-heroui.md), and [Astryx](../../docs/research-astryx.md).
-Cinder keeps its own Frame palette and geometry.
+Hashti keeps its own Frame palette and geometry.
 
 The canonical [Button stories](../../apps/storybook/stories/Button.stories.tsx) and
 [Link stories](../../apps/storybook/stories/Link.stories.tsx) cover appearance,
 keyboard/pointer interaction, pending and recovery, customization, long labels,
 and Persian and Arabic `Theme locale` boundaries. They inherit Frame light/dark from Storybook's
-preview. Story coverage is distinct from the executed browser/AT evidence in
-the [verification record](../../docs/verification.md).
+preview.
 
 ### Button props and behavior
 
 | Prop                    | Contract                                                                                                                                                                                  |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `variant`               | `primary` (default), `secondary`, `ghost`, or `danger` for new Frame work. Existing `tertiary`, `danger-tertiary`, and `danger-ghost` values remain supported.                            |
-| `size`                  | Omitted: Frame 44px, Carbon/Relay 48px. Explicit `sm`, `md`, `lg`, `xl`, `2xl` use the [theme minimums](#frame-foundations--phase-1).                                                     |
+| `size`                  | Omitted: Frame 44px. Explicit `sm`, `md`, `lg`, `xl`, `2xl` use the [theme minimums](#frame-foundations).|
 | `iconOnly`              | Defaults to `false`. Gives the icon a square target at the resolved size; supply `aria-label` or `aria-labelledby` on Button.                                                             |
 | `isDisabled`            | Native disabled button: unavailable, skipped in tab order, and does not activate.                                                                                                         |
 | `isPending`             | Application-owned pending state. RAC prevents press/hover interaction and repeat activation while retaining focusability.                                                                 |
@@ -128,7 +112,7 @@ standalone targets.
 #### Pending, naming, and request ownership
 
 Keep the action's children and accessible label stable while pending to preserve
-its identity and dimensions. Frame and Relay visually replace the retained content
+its identity and dimensions. Frame visually replaces the retained content
 with the centered progress mark. `isPending` keeps focus; adding `isDisabled` also
 applies native disabling and loses that focus-retaining contract.
 
@@ -137,7 +121,7 @@ accessible name: for example, **“Save draft” → “Save draft Saving draft�
 text is retained, not replaced by “Saving”. The nested progressbar is independently
 named by `pendingLabel`. Some DOM-based accessible-name helpers omit this embedded
 progress text; the browser accessibility tree is the authority for the combined
-name. Cinder does not freeze or rewrite caller-authored children: a `children`
+name. Hashti does not freeze or rewrite caller-authored children: a `children`
 render function can still change its text, and the caller owns that label change.
 
 Applications own the request, pending lifetime, failure message, and retry. Keep
@@ -175,7 +159,7 @@ integration and current-page `aria-current` value.
   in nearby text.
 - Without a nonempty `href`, RAC likewise renders a `<span role="link">`. This
   upstream behavior is preserved, but it has no native URL to open or copy.
-- Link text names the destination. Name icon-only links explicitly; Cinder `Icon`
+- Link text names the destination. Name icon-only links explicitly; Hashti `Icon`
   is decorative by default. If opening a new tab, include that information in the
   link text when it would otherwise surprise the user.
 
@@ -194,11 +178,11 @@ integration and current-page `aria-current` value.
 | Component/part   | Actual target and responsibility                                                                                                                                                                                                |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Button           | One `<button>` with `hashti-button`; `ref`, `className`, and `style` target it.                                                                                                                                                 |
-| Pending progress | A `div.hashti-spinner` with `role="progressbar"` inside Button while pending. RAC supplies the announcement relationship; Cinder supplies the indeterminate appearance and `pendingLabel`.                                      |
+| Pending progress | A `div.hashti-spinner` with `role="progressbar"` inside Button while pending. RAC supplies the announcement relationship; Hashti supplies the indeterminate appearance and `pendingLabel`.                                      |
 | Link             | `hashti-link` on the anchor, or on RAC's fallback span. `className`, `style`, and the ref reach that same element. The inherited ref type is `HTMLAnchorElement`; it is an actual anchor only with an enabled, nonempty `href`. |
 
 Both components preserve RAC `children`, `className`, and `style` render functions.
-Custom classes are appended to the Cinder root hook. A `render` function must
+Custom classes are appended to the Hashti root hook. A `render` function must
 return one correct native element and pass all supplied DOM props and the ref
 through. Button expects `<button>`; Link's render props distinguish `<a>` from
 `<span>` using a nonempty authored `href` and the render state's `!isDisabled`.
@@ -221,34 +205,6 @@ class/style render functions, and a custom DOM render while retaining the base
 classes, labels, and interaction. Private recipe variables are not customization
 contracts. See [CSS integration](#css-integration) for cascade order.
 
-## Relay themes
-
-Use `theme="relay-light"` or `theme="relay-dark"` on the existing `Theme` component.
-The first Relay slice styles Button, TextField, Select, Checkbox/CheckboxGroup,
-Radio/RadioGroup, Switch, ContentSwitcher, and Dialog/Modal/Popover compositions.
-The remaining families keep their baseline geometry with the selected theme's
-tokens. The original `white`, `g10`, `g90`, and `g100` themes remain available.
-
-- Switch has its own `sm`/`md` track geometry; Checkbox and Radio do not expose
-  a size prop.
-- Controls, popovers, and dialogs have 8/12/20px corners. Labels and control text
-  use IBM Plex Sans at 14/20px; buttons and field labels use weight 500.
-- `variant` applies to Button: `primary`, `secondary`, `tertiary`, `ghost`, `danger`,
-  `danger-tertiary`, and `danger-ghost`. Validation is a field state, not a variant.
-- `isPending` keeps a Button focusable and prevents repeat activation. Keep its
-  children stable; Relay replaces their appearance with a progress mark without
-  changing the width. `pendingLabel` labels that progress mark and defaults to
-  `"Pending"`; localize it alongside the action, e.g. `pendingLabel="Saving"`.
-  Applications own when pending starts and ends. Icon-only buttons need an
-  `aria-label`.
-
-Relay uses native CSS `@scope` to stop styling at a nested Theme boundary,
-including portals. See [CSS integration](#css-integration) for cascade order and
-browser requirements. Reduced-motion preferences remove transitions and animation.
-
-The running workspace's `/relay` page shows the states, token values, live
-compositions, and customization examples. `docs/relay.md` records the specification.
-
 ## Composition contracts
 
 - Use RAC's `onPress` for actions. Fields expose their upstream controlled/default
@@ -262,7 +218,7 @@ compositions, and customization examples. `docs/relay.md` records the specificat
   expose a `ref` to the outer `div` and an `inputRef` to the default input or textarea.
   With custom children, supply the control ref yourself. SearchField retains its
   `inputProps` contract.
-- Cinder wrappers retain their base classes when `className` is customized. Direct
+- Hashti wrappers retain their base classes when `className` is customized. Direct
   RAC re-exports such as `Label`, `Input`, `Text`, `FieldError`, `MenuItem`,
   `ListBoxItem`, `Tab`, and `TreeItem` retain RAC's behavior: a custom class replaces
   the default. Include the `react-aria-*` class yourself to retain the existing
@@ -275,7 +231,7 @@ compositions, and customization examples. `docs/relay.md` records the specificat
 - A fully controlled ComboBox owns both `value` and `inputValue` in the application.
   RAC calls `onChange` or `onInputChange` for an interaction, not both. Update the
   input text on selection and clear the selected key when the input is cleared;
-  Cinder does not reconcile application-controlled state.
+  Hashti does not reconcile application-controlled state.
 - TextField, TextArea, NumberField, SearchField, and date-field conveniences retain
   custom replacement `children`, including RAC state render functions. Raw RAC
   replacements still work. Select and ComboBox convenience `children` remain their
@@ -292,7 +248,7 @@ pagination, content, layout, and shell primitives. Run the docs for all 45 famil
 
 Default field roots and compound `.Root`s keep `hashti-field` and their family
 classes, such as `hashti-text-field`, `hashti-text-area`, and `hashti-select`.
-Cinder-owned default anatomy and compound parts share these stable BEM-style hooks
+Hashti-owned default anatomy and compound parts share these stable BEM-style hooks
 alongside the existing classes:
 
 | Hook                        | Default part                                                  |
@@ -312,7 +268,7 @@ alongside the existing classes:
 
 RAC classes such as `react-aria-Label`, `react-aria-Input`, `react-aria-Text`,
 `react-aria-FieldError`, `react-aria-SelectValue`, and `react-aria-ListBox` are
-retained on the default parts, as are existing Cinder family/part classes.
+retained on the default parts, as are existing Hashti family/part classes.
 RAC slots establish relationships; the BEM classes provide styling hooks.
 State selectors belong on the element that owns the state: for example,
 `.hashti-field[data-invalid]` for the field and
@@ -333,10 +289,7 @@ The convenience API remains callable:
 
 In `frame-light` and `frame-dark`, defaults follow **label → persistent guidance →
 control → recovery**. The description stays before the control and remains visible
-when validation fails; the Help part contains the RAC error. The six existing
-Carbon/Relay themes keep **label → control → help/error**, including the rule that a
-nonempty error replaces the visible description in the help container. Their
-defaults, APIs, and classes are unchanged. Custom children keep their authored order.
+when validation fails; the Help part contains the RAC error. Custom children keep their authored order.
 
 Frame's Help immediately after a control reserves a bounded, padded **one-line
 recovery minimum**, not a fixed error height or a promise that arbitrary text cannot
@@ -352,7 +305,7 @@ fields are not made invalid or given the larger required-field budget.
 Each namespace below is still the existing callable convenience component.
 `.Root` accepts the original RAC props and original whole-tree `children` contract,
 including state render functions; it does not insert convenience labels, controls,
-or feedback. Cinder exports the corresponding `*RootProps` alongside the existing
+or feedback. Hashti exports the corresponding `*RootProps` alongside the existing
 convenience `*Props`. TextArea.Root uses RAC's **TextField** root props; `rows`,
 `placeholder`, and native textarea events belong on TextArea.Input. It has no `size`
 prop. Other sized field roots retain `size="md"` by default.
@@ -367,7 +320,7 @@ RAC/native prop and ref types, not a generalized field-part interface:
 | `.Help`         | `FieldHelpProps` = native `ComponentProps<"div">`            | `<div>`; `HTMLDivElement`; ordinary DOM props, not RAC render props                   |
 | `.ErrorMessage` | `FieldErrorMessageProps` = RAC FieldError component props    | `<span>`; `HTMLElement`; `elementType="div"` for block-level recovery children        |
 | `.Status`       | `FieldStatusProps` = RAC Text props without children/slot/id | `<span>`; `HTMLElement`; content and ID belong to the root's `status`                 |
-| `.StatusIcon`   | `FieldStatusIconProps` = Cinder Icon props without name      | `<svg>`; decorative; actual invalidity takes precedence over presentation status      |
+| `.StatusIcon`   | `FieldStatusIconProps` = Hashti Icon props without name      | `<svg>`; decorative; actual invalidity takes precedence over presentation status      |
 
 The family-specific parts below are the exported members; there are no new flat
 component exports for them. Ref targets are shown in parentheses.
@@ -376,16 +329,16 @@ component exports for them. Ref targets are shown in parentheses.
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `TextField`       | `Input` → RAC Input (`HTMLInputElement`); `TextArea` → RAC TextArea (`HTMLTextAreaElement`); `Control` → RAC Group (`HTMLDivElement`)                                                                                                                                                                                                            |
 | `TextArea`        | `Input` → RAC TextArea (`HTMLTextAreaElement`); `Control` → RAC Group (`HTMLDivElement`)                                                                                                                                                                                                                                                         |
-| `NumberField`     | `Input` → RAC Input (`HTMLInputElement`); `Control` → RAC Group (`HTMLDivElement`); `Button` → Cinder Button (`HTMLButtonElement`), with `slot="decrement"` or `slot="increment"`                                                                                                                                                                |
-| `SearchField`     | `Input` → RAC Input (`HTMLInputElement`); `Control` → RAC Group (`HTMLDivElement`); `ClearButton` → Cinder Button (`HTMLButtonElement`)                                                                                                                                                                                                          |
-| `CheckboxGroup`   | `Checkbox` → existing Cinder Checkbox (`HTMLLabelElement`); inherited `inputRef` targets `HTMLInputElement`                                                                                                                                                                                                                                      |
-| `RadioGroup`      | `Radio` → existing Cinder Radio (`HTMLLabelElement`); inherited `inputRef` targets `HTMLInputElement`; `Options` → native div (`HTMLDivElement`)                                                                                                                                                                                                 |
-| `Select`          | `Trigger` → Cinder Button (`HTMLButtonElement`); `Value` → RAC SelectValue (`HTMLSpanElement`); `Popover` → Cinder Popover (`HTMLElement`); `ListBox` → RAC ListBox (`HTMLDivElement`)                                                                                                                                                           |
-| `ComboBox`        | `Input` → RAC Input (`HTMLInputElement`); `Control` → RAC Group (`HTMLDivElement`); `Trigger` → Cinder Button (`HTMLButtonElement`); `Value` → RAC ComboBoxValue (`HTMLDivElement`); `Popover` → Cinder Popover (`HTMLElement`); `ListBox` → RAC ListBox (`HTMLDivElement`)                                                                      |
+| `NumberField`     | `Input` → RAC Input (`HTMLInputElement`); `Control` → RAC Group (`HTMLDivElement`); `Button` → Hashti Button (`HTMLButtonElement`), with `slot="decrement"` or `slot="increment"`                                                                                                                                                                |
+| `SearchField`     | `Input` → RAC Input (`HTMLInputElement`); `Control` → RAC Group (`HTMLDivElement`); `ClearButton` → Hashti Button (`HTMLButtonElement`)                                                                                                                                                                                                          |
+| `CheckboxGroup`   | `Checkbox` → existing Hashti Checkbox (`HTMLLabelElement`); inherited `inputRef` targets `HTMLInputElement`                                                                                                                                                                                                                                      |
+| `RadioGroup`      | `Radio` → existing Hashti Radio (`HTMLLabelElement`); inherited `inputRef` targets `HTMLInputElement`; `Options` → native div (`HTMLDivElement`)                                                                                                                                                                                                 |
+| `Select`          | `Trigger` → Hashti Button (`HTMLButtonElement`); `Value` → RAC SelectValue (`HTMLSpanElement`); `Popover` → Hashti Popover (`HTMLElement`); `ListBox` → RAC ListBox (`HTMLDivElement`)                                                                                                                                                           |
+| `ComboBox`        | `Input` → RAC Input (`HTMLInputElement`); `Control` → RAC Group (`HTMLDivElement`); `Trigger` → Hashti Button (`HTMLButtonElement`); `Value` → RAC ComboBoxValue (`HTMLDivElement`); `Popover` → Hashti Popover (`HTMLElement`); `ListBox` → RAC ListBox (`HTMLDivElement`)                                                                      |
 | `DateField`       | `Input` → RAC DateInput (`HTMLDivElement`); `Segment` → unchanged RAC DateSegment (`HTMLSpanElement`)                                                                                                                                                                                                                                            |
 | `TimeField`       | `Input` → RAC DateInput (`HTMLDivElement`); `Segment` → unchanged RAC DateSegment (`HTMLSpanElement`)                                                                                                                                                                                                                                            |
-| `DatePicker`      | `Input` → RAC DateInput (`HTMLDivElement`); `Segment` → unchanged RAC DateSegment (`HTMLSpanElement`); `Control` → RAC Group (`HTMLDivElement`); `Trigger` → Cinder Button (`HTMLButtonElement`); `Popover` → Cinder Popover (`HTMLElement`); `Calendar` → existing Cinder Calendar (`HTMLDivElement`)                                           |
-| `DateRangePicker` | `Input` → RAC DateInput (`HTMLDivElement`), with `slot="start"` or `slot="end"`; `Segment` → unchanged RAC DateSegment (`HTMLSpanElement`); `Control` → RAC Group (`HTMLDivElement`); `Trigger` → Cinder Button (`HTMLButtonElement`); `Popover` → Cinder Popover (`HTMLElement`); `Calendar` → existing Cinder RangeCalendar (`HTMLDivElement`) |
+| `DatePicker`      | `Input` → RAC DateInput (`HTMLDivElement`); `Segment` → unchanged RAC DateSegment (`HTMLSpanElement`); `Control` → RAC Group (`HTMLDivElement`); `Trigger` → Hashti Button (`HTMLButtonElement`); `Popover` → Hashti Popover (`HTMLElement`); `Calendar` → existing Hashti Calendar (`HTMLDivElement`)                                           |
+| `DateRangePicker` | `Input` → RAC DateInput (`HTMLDivElement`), with `slot="start"` or `slot="end"`; `Segment` → unchanged RAC DateSegment (`HTMLSpanElement`); `Control` → RAC Group (`HTMLDivElement`); `Trigger` → Hashti Button (`HTMLButtonElement`); `Popover` → Hashti Popover (`HTMLElement`); `Calendar` → existing Hashti RangeCalendar (`HTMLDivElement`) |
 
 `FieldInputProps`, `FieldTextAreaProps`, `FieldControlProps`, and
 `FieldDateInputProps` are the respective RAC Input, TextArea, Group, and DateInput
@@ -502,7 +455,7 @@ separate.
 #### Raw replacement children
 
 Existing raw replacement children still work. To retain this styling, supply both
-the raw RAC classes and the part hooks explicitly; Cinder does not inject or
+the raw RAC classes and the part hooks explicitly; Hashti does not inject or
 rearrange a custom tree:
 
 ```tsx
@@ -605,7 +558,7 @@ inline icon. Status does not create a live region; applications own announcement
 for asynchronous results. Application labels, help, messages, and validation copy
 remain caller-localized.
 
-Cinder-owned labels inherit actual `isRequired` and append localized necessity
+Hashti-owned labels inherit actual `isRequired` and append localized necessity
 wording. Required wins over optional; `isOptional` only adds a visible optional
 marker, never changes validity. A `.Label isRequired` marker is likewise presentation
 only: set `isRequired` on Root for actual required behavior. Avoid manually adding
@@ -628,9 +581,9 @@ have a 44px minimum.
 timing, invalid/required state, first-invalid focus, and the description/error
 associations. Use the upstream `isRequired`, constraints, `validate`,
 `validationBehavior`, and `Form validationErrors` contracts. ErrorMessage is RAC
-FieldError with Cinder classes: it appears when RAC reports an error, and its
+FieldError with Hashti classes: it appears when RAC reports an error, and its
 children may read `ValidationResult`, including `validationDetails` and
-`validationErrors`. Use Cinder's necessity wording or author it on raw labels, and
+`validationErrors`. Use Hashti's necessity wording or author it on raw labels, and
 provide useful localized recovery; Theme
 locale does not guarantee that browser-generated validation text uses that language.
 
@@ -642,8 +595,7 @@ retain drafts rather than use an auto-resetting React action. They guard in-flig
 native/implicit submission as well as use Button `isPending`; pending appearance
 alone is not a request lock. Read-only controls remain selectable and included in
 FormData, unlike disabled controls. Server-side validation and authorization remain
-the application's responsibility. Authored stories are not execution evidence;
-see the [verification record](../../docs/verification.md) for completed checks.
+the application's responsibility.
 
 ## Checkbox, Radio, and Switch
 
@@ -651,7 +603,7 @@ These controls retain RAC's native inputs, controlled/default values, event prop
 and label-root composition. For Checkbox, Radio, and Switch, the root `ref`,
 `className`, `style`, and `render` target the `HTMLLabelElement`; `inputRef` targets
 its contained `HTMLInputElement`. Group roots remain `HTMLDivElement` targets.
-Root class callbacks retain the Cinder class, and style/children callbacks receive
+Root class callbacks retain the Hashti class, and style/children callbacks receive
 the current RAC state. A custom `render` must preserve the supplied DOM props and
 children, including the native input and label relationship.
 
@@ -697,8 +649,7 @@ Use a Checkbox for a preference applied only by Save. The
 [Switch](../../apps/storybook/stories/Switch.stories.tsx) stories demonstrate state,
 native values, recovery, custom rendering/refs, and Persian/Arabic/German labels.
 Switch stories change only local preview state; applications own real requests
-and failure feedback. See [verification](../../docs/verification.md) for the bounded
-executed scope and remaining manual checks.
+and failure feedback.
 
 ## Theme, locale, and portals
 
@@ -724,7 +675,7 @@ not copied to portals.
 Declare the variables and fonts a recipe needs on the recipe's matched roots;
 variables inherited only from a page ancestor cannot reach detached content.
 
-A raw nested `I18nProvider` changes RAC locale but does not update Cinder's portal
+A raw nested `I18nProvider` changes RAC locale but does not update Hashti's portal
 boundary. Native `lang`/`dir` attributes on Layer are DOM-local. Introduce a nested
 `Theme` when a locale or language change must stay coherent through portals.
 An explicit `lang` on Popover, Modal, or Tooltip overrides the bridged HTML
@@ -775,7 +726,7 @@ import "./workspace.css";
 export function WorkspaceSharing() {
   return (
     <Theme theme="frame-light" locale="en-US" appearanceClassName="workspace-appearance">
-      <TextField label="Workspace name" defaultValue="Cinder studio" />
+      <TextField label="Workspace name" defaultValue="Hashti studio" />
       <DialogTrigger>
         <Button variant="secondary">Edit sharing</Button>
         <Modal isDismissable>
@@ -820,24 +771,23 @@ classes. `style` and `modalStyle` accept inline styles or RAC style render funct
 
 ## CSS integration
 
-The distributed stylesheet uses one top-level `cinder` cascade layer, ordered
-internally as `cinder.tokens`, `cinder.reset`, `cinder.components`, `cinder.themes`,
-and `cinder.accessibility`. Normal unlayered application CSS wins over Cinder's
+The distributed stylesheet uses one top-level `hashti` cascade layer, ordered
+internally as `hashti.tokens`, `hashti.reset`, `hashti.components`, `hashti.themes`,
+and `hashti.accessibility`. Normal unlayered application CSS wins over Hashti's
 normal layered declarations. Native nesting, cascade layers, and `@scope` require
-a modern browser. Current browser verification is Chromium-only; see the
-[verification record](../../docs/verification.md) for the tested scope.
+a modern browser. Current browser verification is Chromium-only.
 
 Use ordinary CSS or CSS Modules with your application's bundler. To adapt the
 recipe above to a CSS Module, rename `.workspace-appearance` to `.appearance`
-and keep the Cinder part selectors global: `:global(.hashti-field__label)` and
+and keep the Hashti part selectors global: `:global(.hashti-field__label)` and
 `:global(.hashti-select__listbox)`. Import the module as `styles`, then pass
 `appearanceClassName={styles.appearance}`. The variables stay on the recipe class
 itself so each portal can resolve them.
 
-Carbon and Relay boundaries keep their typography defaults. Baseline styles for
+Baseline styles for
 raw RAC parts are scoped within `[data-hashti-theme]`. A raw RAC component imported
 directly inside Theme is indistinguishable from the same component re-exported by
-Cinder and receives those styles. The boundary isolates neighboring raw RAC
+Hashti and receives those styles. The boundary isolates neighboring raw RAC
 controls outside it, not raw components intentionally placed inside it.
 
 ### Tailwind
@@ -847,21 +797,20 @@ to **4.3.5**, with real preflight and generated utilities. Establish this order
 before the imports in the application's CSS entry:
 
 ```css
-@layer theme, base, cinder, components, utilities;
+@layer theme, base, hashti, components, utilities;
 @import "tailwindcss";
 @import "@hashti/react/styles.css";
 ```
 
-Cinder already declares its own layer, so import it without a second `layer(cinder)`
-wrapper. This order places preflight before Cinder and application components and
-utilities after it. With this CSS entry, the Cinder stylesheet is already imported
-once. Tailwind is optional application build tooling, not a Cinder runtime
-dependency. The [Phase 1 verification](../../docs/verification.md#frame-phase-1)
-records the passing installed-consumer proof for this pinned version.
+Hashti already declares its own layer, so import it without a second `layer(hashti)`
+wrapper. This order places preflight before Hashti and application components and
+utilities after it. With this CSS entry, the Hashti stylesheet is already imported
+once. Tailwind is optional application build tooling, not a Hashti runtime
+dependency.
 
 ### Installed-package fixture commands
 
-From Cinder's root:
+From Hashti's root:
 
 ```sh
 bun run build
@@ -871,7 +820,7 @@ bun run test:package
 
 The [consumer fixtures](../../tests/fixtures/consumer/README.md) install both
 tarballs into two isolated apps with no workspace aliases. Both use `strict: true`
-and `skipLibCheck: false`. The native app builds `index.html` for Carbon/Relay,
+and `skipLibCheck: false`. The native app builds `index.html` for the base theme,
 `frame.html` for plain CSS and a real Bun CSS Module, and a generated
 `composition.html` entry for the compound API fixture. The second app compiles
 `tailwind.css` through the pinned CLI and builds `tailwind.html`, importing the
@@ -880,21 +829,19 @@ Chromium; fixture source or build coverage alone is not new execution evidence.
 
 ## Visual and behavioral boundary
 
-Cinder's original themes follow Carbon v11; Relay is an authored extension using
-the same initial independent API. RAC Switch uses Space (Enter can submit a containing form). ContentSwitcher
+RAC Switch uses Space (Enter can submit a containing form). ContentSwitcher
 uses radio-group semantics; use Tabs for tab-to-panel relationships. Table, GridList,
 and TagGroup are interactive grids; Tree is a treegrid. Date inputs are segmented,
 and dialog Popover uses RAC's modal focus model. NativeSelect remains available for
 native select behavior. Toast relies on RAC's `UNSTABLE_*` APIs and is experimental.
 
-Carbon variants such as AI label, toggletip, advanced shell panels, selectable tiles,
-and advanced table features are not implied by a similarly shaped primitive. See
-the workspace's `docs/coverage.md` for the exact supported scope and verification.
+Upstream variant families such as AI label, toggletip, advanced shell panels, selectable
+tiles, and advanced table features are not implied by a similarly shaped primitive.
 
 ## Fonts and TypeScript
 
-Frame uses a system sans-serif stack and needs no web-font installation. Carbon
-and Relay retain IBM Plex Sans with CSS fallbacks. To match their example typography:
+Frame uses a system sans-serif stack and needs no web-font installation. To match
+the documentation site's example typography:
 
 ```sh
 bun add @fontsource/ibm-plex-sans@5.3.0
@@ -923,5 +870,5 @@ directly should declare `@internationalized/date@3.12.4` as a dependency too.
 
 ## License
 
-Apache-2.0. See `LICENSE` and `NOTICE` shipped with this package. Carbon is an IBM
-project; RAC is an Adobe project. Fonts retain their separate SIL Open Font License.
+Apache-2.0. See `LICENSE` and `NOTICE` shipped with this package. Fonts retain
+their separate SIL Open Font License.

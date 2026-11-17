@@ -84,7 +84,7 @@
       padding-inline-end: 0.625rem;
     }
 
-    .hashti-filter-tag[data-hovered] {
+    .hashti-filter-tag:hover {
       background: var(--hashti-layer-hover);
       border-color: var(--hashti-border-interactive);
     }
@@ -95,7 +95,7 @@
       color: var(--hashti-text-primary);
     }
 
-    .hashti-filter-tag[data-focus-visible] {
+    .hashti-filter-tag:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: 2px;
     }
@@ -115,7 +115,7 @@
       color: var(--hashti-text-secondary);
     }
 
-    .hashti-filter-tag .hashti-button[data-hovered] {
+    .hashti-filter-tag .hashti-button:hover {
       color: var(--hashti-text-primary);
     }
   }

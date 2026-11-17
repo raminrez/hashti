@@ -15,14 +15,14 @@
       transform var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .hashti-popover[data-entering],
-  .hashti-popover[data-entering] {
+  .hashti-popover[data-starting-style],
+  .hashti-popover[data-starting-style] {
     transform: scale(0.96);
     opacity: 0;
   }
 
-  .hashti-popover[data-exiting],
-  .hashti-popover[data-exiting] {
+  .hashti-popover[data-ending-style],
+  .hashti-popover[data-ending-style] {
     transform: scale(0.96);
     opacity: 0;
   }

@@ -9,12 +9,12 @@
       color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
       box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
-  [data-hashti-theme] .hashti-dropzone[data-pressed],
-  [data-hashti-theme] .hashti-dropzone[data-pressed] {
+  [data-hashti-theme] .hashti-dropzone:active,
+  [data-hashti-theme] .hashti-dropzone:active {
     transform: scale(0.98);
   }
-  [data-hashti-theme] .hashti-dropzone[data-focus-visible],
-  [data-hashti-theme] .hashti-dropzone[data-focus-visible] {
+  [data-hashti-theme] .hashti-dropzone:focus-visible,
+  [data-hashti-theme] .hashti-dropzone:focus-visible {
     outline: var(--hashti-focus-width, 2px) solid var(--hashti-focus);
     outline-offset: 2px;
   }

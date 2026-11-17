@@ -37,8 +37,8 @@
     outline: none;
   }
 
-  .hashti-tabs .react-aria-Tab[data-hovered],
-  .hashti-tabs .react-aria-Tab[data-hovered] {
+  .hashti-tabs .react-aria-Tab:hover,
+  .hashti-tabs .react-aria-Tab:hover {
     color: var(--hashti-text-primary, #161616);
   }
 

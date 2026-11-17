@@ -12,7 +12,7 @@
   "dependencies": {
     "@astrojs/react": "^7.0.0",
     "@hashti/react": "workspace:*",
-    "@hashti/tokens": "workspace:*",
+    "@hashti/styles": "workspace:*",
     "@fumadocs/astro": "^0.2.2",
     "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.10",

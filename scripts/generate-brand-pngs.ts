@@ -63,7 +63,7 @@ async function main() {
   }
 
   const publicDir = resolve(import.meta.dirname, "../apps/docs/public");
-  const tokensDir = resolve(import.meta.dirname, "../packages/tokens/assets");
+  const tokensDir = resolve(import.meta.dirname, "../packages/styles/assets");
 
   // Read source SVGs
   const markSvg = readFileSync(resolve(publicDir, "hashti-mark.svg"), "utf-8");

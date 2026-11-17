@@ -5,7 +5,7 @@ interface CopyCommandProps {
 }
 
 export function CopyCommand({
-  command = "bun add @hashti/react @hashti/tokens",
+  command = "bun add @hashti/react @hashti/styles",
 }: CopyCommandProps) {
   const [copied, setCopied] = useState(false);
 

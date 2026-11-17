@@ -42,13 +42,9 @@ export async function siteLicenses(root: string) {
     "astro",
   ])
     await collect(name, app);
-  const tokens = resolve(root, "packages/tokens/package.json");
-  for (const name of ["@carbon/themes", "@carbon/layout", "@carbon/type", "@carbon/motion"])
-    await collect(name, tokens);
-
   return [
-    "Cinder documentation — third-party licenses",
-    "Installed runtime dependencies and Carbon token sources. Tree-shaken code may be absent from the final bundle.",
+    "Hashti documentation — third-party licenses",
+    "Installed runtime dependencies. Tree-shaken code may be absent from the final bundle.",
     ...[...sections].sort(([a], [b]) => a.localeCompare(b)).map(([, text]) => text),
   ].join("\n\n============================================================\n\n");
 }

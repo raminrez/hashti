@@ -29,7 +29,7 @@
     "build:packages": "bun scripts/build.ts --packages",
     "build:docs": "bun --cwd apps/docs build",
     "docs": "bun --cwd apps/docs dev",
-    "build:tokens": "bun packages/tokens/scripts/generate.ts",
+    "build:tokens": "bun packages/styles/scripts/generate.ts",
     "storybook": "bun run --cwd apps/storybook dev",
     "build:storybook": "bun run --cwd apps/storybook build",
     "pack": "bun run build && bun scripts/pack.ts",

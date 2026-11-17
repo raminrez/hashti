@@ -54,10 +54,10 @@ for (const name of archives.map((archive) => archive.name)) {
   );
 }
 const installed = await readdir(join(consumer, "node_modules/@hashti"));
-assert.deepEqual(installed.sort(), ["agent", "react", "tokens"]);
+assert.deepEqual(installed.sort(), ["agent", "react", "styles"]);
 
 const reactCss = await Bun.file(Bun.resolveSync("@hashti/react/styles.css", consumer)).text();
-const tokenCss = await Bun.file(Bun.resolveSync("@hashti/tokens/tokens.css", consumer)).text();
+const tokenCss = await Bun.file(Bun.resolveSync("@hashti/styles/tokens.css", consumer)).text();
 assert.match(tokenCss, /--hashti-popover-radius:\s*1\.125rem/, "popover radius token missing");
 assert.match(reactCss, /hashti-themes|hashti\.themes/, "theme layer missing from styles.css");
 
@@ -65,7 +65,7 @@ await Bun.write(
   join(consumer, "index.tsx"),
   `import { createRoot } from "react-dom/client";
 import { Theme, Button } from "@hashti/react";
-import "@hashti/tokens/tokens.css";
+import "@hashti/styles/tokens.css";
 import "@hashti/react/styles.css";
 
 createRoot(document.getElementById("root")!).render(

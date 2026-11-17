@@ -35,11 +35,11 @@
 @import "./components/avatar/avatar.css";
 @import "./components/theme/theme.css";
 
-@import "../../tokens/src/tokens.css";
+@import "@hashti/styles/tokens.css";
 @import "./relay.css";
 @import "./frame.css";
 
-/* Cinder owns appearance; RAC owns interaction and accessible semantics. */
+/* Hashti owns appearance; ui-sdk owns interaction and accessible semantics. */
 @layer hashti.reset {
   :where(.hashti-theme, [data-hashti-theme]) {
     font-family: var(--hashti-font-sans);

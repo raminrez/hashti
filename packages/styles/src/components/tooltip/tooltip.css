@@ -17,14 +17,14 @@
       transform 150ms ease;
   }
 
-  .hashti-tooltip[data-entering],
-  .hashti-tooltip[data-entering] {
+  .hashti-tooltip[data-starting-style],
+  .hashti-tooltip[data-starting-style] {
     opacity: 0;
     transform: scale(0.95);
   }
 
-  .hashti-tooltip[data-exiting],
-  .hashti-tooltip[data-exiting] {
+  .hashti-tooltip[data-ending-style],
+  .hashti-tooltip[data-ending-style] {
     opacity: 0;
     transform: scale(0.95);
   }
