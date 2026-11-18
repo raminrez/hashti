@@ -50,13 +50,13 @@ each ticket file.
 - [x] **TICK-013**: [TICK-013-Contract-Spike.md](TICK-013-Contract-Spike.md) — Contract-validation
   spike: styled Button from a second framework against unmodified `@hashti/styles`.
   **Blocks Phase 3+ if the contract cracks.**
-- [ ] **TICK-003**: [TICK-003-Toolbar-ContentSwitcher.md](TICK-003-Toolbar-ContentSwitcher.md) —
+- [x] **TICK-003**: [TICK-003-Toolbar-ContentSwitcher.md](TICK-003-Toolbar-ContentSwitcher.md) —
   `Toolbar`; ContentSwitcher → `SegmentedControl`.
 
 ### Phase 3: Form Controls & Inputs
-- [ ] **TICK-004**: [TICK-004-Checkbox-Radio-Switch.md](TICK-004-Checkbox-Radio-Switch.md) —
+- [x] **TICK-004**: [TICK-004-Checkbox-Radio-Switch.md](TICK-004-Checkbox-Radio-Switch.md) —
   `Checkbox`, `Radio`, `Switch`.
-- [ ] **TICK-005**: [TICK-005-TextField-TextArea-NumberField.md](TICK-005-TextField-TextArea-NumberField.md) —
+- [x] **TICK-005**: [TICK-005-TextField-TextArea-NumberField.md](TICK-005-TextField-TextArea-NumberField.md) —
   `Field` anatomy; `Input` / `Textarea` (was TextField), `NumberInput`, `OtpInput`, `SearchField`,
   `FileInput` (was Dropzone), `TimeInput`; plus field-adjacent wraps `Meter`, `Pagination`,
   `Progress`, `Slider`.
@@ -64,7 +64,7 @@ each ticket file.
   `ComboBox`, `Autocomplete` (re-export), `TokenInput`, `Command` (was CommandPalette).
 
 ### Phase 4: Overlays & Floating Panels
-- [ ] **TICK-007**: [TICK-007-Modal-Dialog-Popover.md](TICK-007-Modal-Dialog-Popover.md) —
+- [x] **TICK-007**: [TICK-007-Modal-Dialog-Popover.md](TICK-007-Modal-Dialog-Popover.md) —
   `Dialog` (absorbs Modal, incl. AlertDialog-style confirm), `Drawer` (absorbs Sheet,
   keeps `draggable={false}` desktop mode), `Popover`.
 - [ ] **TICK-008**: [TICK-008-Tooltip-Toast.md](TICK-008-Tooltip-Toast.md) — `Tooltip`, `Toast`.
