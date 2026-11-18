@@ -183,7 +183,7 @@ function LongContentAndLocalesExample() {
 
   return (
     <div className="feedback-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl" className="feedback-card">
           <div>
             <h4 className="feedback-card-title">نمایش پیشرفت و ظرفیت منابع (فارسی)</h4>

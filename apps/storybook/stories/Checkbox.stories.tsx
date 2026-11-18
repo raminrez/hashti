@@ -461,7 +461,8 @@ function LocalizedChannels() {
         <Theme
           key={copy.locale}
           theme={theme}
-          locale={copy.locale}
+          lang={copy.locale}
+          dir={copy.locale.startsWith("ar") || copy.locale.startsWith("fa") ? "rtl" : "ltr"}
           className="field-story-stack field-story-narrow"
         >
           <CheckboxGroup

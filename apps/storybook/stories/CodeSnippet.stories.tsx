@@ -149,7 +149,7 @@ function LongContentAndLocalesExample() {
       </div>
 
       {/* Persian RTL notes */}
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl" className="content-card">
           <div>
             <h4 className="content-card-title">قطعه کد همراه با راهنمای فارسی</h4>

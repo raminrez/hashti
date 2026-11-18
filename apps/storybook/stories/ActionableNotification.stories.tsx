@@ -26,7 +26,7 @@ function ActionableNotificationDemo() {
   if (!visible) {
     return (
       <div className="feedback-story-stack">
-        <Button variant="secondary" onPress={() => setVisible(true)}>
+        <Button variant="secondary" onClick={() => setVisible(true)}>
           Show Notification
         </Button>
       </div>
@@ -36,7 +36,7 @@ function ActionableNotificationDemo() {
   return (
     <div className="feedback-story-stack">
       <ActionableNotification
-        kind="warning"
+        status="warning"
         title="Unsaved changes detected"
         action={
           <Button variant="secondary" size="sm">
@@ -66,7 +66,7 @@ export const Kinds: Story = {
   render: () => (
     <div className="feedback-story-stack">
       <ActionableNotification
-        kind="error"
+        status="error"
         autoFocusAction={false}
         title="Build deployment failed"
         action={
@@ -79,7 +79,7 @@ export const Kinds: Story = {
       </ActionableNotification>
 
       <ActionableNotification
-        kind="success"
+        status="success"
         autoFocusAction={false}
         title="Payment verified"
         action={
@@ -114,7 +114,7 @@ export const VariantsAndKinds: Story = {
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             <ActionableNotification
               variant={variant}
-              kind="info"
+              status="info"
               autoFocusAction={false}
               title="Update available"
               action={action("Review release")}
@@ -123,7 +123,7 @@ export const VariantsAndKinds: Story = {
             </ActionableNotification>
             <ActionableNotification
               variant={variant}
-              kind="success"
+              status="success"
               autoFocusAction={false}
               title="Backup completed"
               action={action("Open archive")}
@@ -132,7 +132,7 @@ export const VariantsAndKinds: Story = {
             </ActionableNotification>
             <ActionableNotification
               variant={variant}
-              kind="warning"
+              status="warning"
               autoFocusAction={false}
               title="Quota almost exhausted"
               action={action("Upgrade tier")}
@@ -141,7 +141,7 @@ export const VariantsAndKinds: Story = {
             </ActionableNotification>
             <ActionableNotification
               variant={variant}
-              kind="error"
+              status="error"
               autoFocusAction={false}
               title="Payment declined"
               action={action("Fix billing")}
@@ -164,7 +164,7 @@ export const RTL: Story = {
   render: () => (
     <div dir="rtl" className="feedback-story-stack">
       <ActionableNotification
-        kind="info"
+        status="info"
         autoFocusAction={false}
         title="نسخه جدید در دسترس است"
         action={

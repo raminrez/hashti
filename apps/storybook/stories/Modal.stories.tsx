@@ -530,7 +530,7 @@ function LocalizedModalExamples() {
 
       <div className="overlay-story-case">
         <h2>Persian RTL dialog</h2>
-        <Theme theme={theme} locale="fa-IR">
+        <Theme theme={theme} lang="fa-IR" dir="rtl">
           <DialogTrigger>
             <Button>تنظیمات امنیتی سامانه</Button>
             <Modal size="sm" isDismissable>

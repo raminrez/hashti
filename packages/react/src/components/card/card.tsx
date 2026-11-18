@@ -7,15 +7,14 @@ export type CardElevation = "flat" | "raised" | "overlay";
 
 export interface CardProps extends ComponentPropsWithRef<"div"> {
   elevation?: CardElevation;
-  isPressable?: boolean;
-  onPress?: () => void;
+  /** Renders the card as a focusable, keyboard-activatable button region. Pair with `onClick`. */
+  interactive?: boolean;
   ref?: Ref<HTMLDivElement>;
 }
 
 export function Card({
   elevation = "flat",
-  isPressable = false,
-  onPress,
+  interactive = false,
   children,
   className,
   ref,
@@ -25,13 +24,13 @@ export function Card({
 }: CardProps) {
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(e);
-    if (isPressable && (e.key === "Enter" || e.key === " ")) {
+    if (interactive && (e.key === "Enter" || e.key === " ")) {
       e.preventDefault();
-      onPress?.();
+      e.currentTarget.click();
     }
   };
 
-  if (isPressable) {
+  if (interactive) {
     return (
       <div
         {...props}
@@ -40,10 +39,7 @@ export function Card({
         tabIndex={0}
         data-elevation={elevation}
         data-interactive="true"
-        onClick={(e) => {
-          onClick?.(e);
-          onPress?.();
-        }}
+        onClick={onClick}
         onKeyDown={handleKeyDown}
         className={cx("hashti-card", className)}
       >

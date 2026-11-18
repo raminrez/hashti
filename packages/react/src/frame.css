@@ -2800,26 +2800,26 @@
       > .hashti-badge[data-placement="bottom-start"] {
       transform: translate(50%, 50%);
     }
-    .hashti-badge[data-kind="success"] {
+    .hashti-badge[data-variant="success"] {
       background: var(--hashti-support-success);
     }
-    .hashti-badge[data-kind="warning"] {
+    .hashti-badge[data-variant="warning"] {
       background: var(--hashti-support-warning, #f1c21b);
       color: var(--hashti-text-on-color);
     }
-    .hashti-badge[data-kind="info"] {
+    .hashti-badge[data-variant="info"] {
       background: var(--hashti-support-info, var(--hashti-interactive));
     }
-    .hashti-badge[data-kind="primary"] {
+    .hashti-badge[data-variant="primary"] {
       background: var(--hashti-interactive);
       color: var(--hashti-text-on-color);
     }
-    .hashti-badge[data-kind="neutral"] {
+    .hashti-badge[data-variant="neutral"] {
       background: var(--hashti-layer-accent);
       color: var(--hashti-text-primary);
       border: 1px solid var(--hashti-border-subtle);
     }
-    .hashti-badge[data-kind="secondary"] {
+    .hashti-badge[data-variant="secondary"] {
       background: var(--hashti-layer-accent-01, var(--hashti-layer-accent));
       color: var(--hashti-text-primary);
       border: 1px solid var(--hashti-border-subtle);
@@ -2860,26 +2860,26 @@
     }
 
     /* ------------------------------------------------------------------ */
-    /*  New Components: Divider / Separator                               */
+    /*  New Components: Separator                               */
     /* ------------------------------------------------------------------ */
 
-    .hashti-divider {
+    .hashti-separator {
       border: none;
       margin: 0;
       flex-shrink: 0;
     }
-    .hashti-divider[data-orientation="horizontal"] {
+    .hashti-separator[data-orientation="horizontal"] {
       width: 100%;
       height: 0;
       border-block-start: 1px solid var(--hashti-border-subtle);
     }
-    .hashti-divider[data-orientation="vertical"] {
+    .hashti-separator[data-orientation="vertical"] {
       height: 100%;
       width: 0;
       border-inline-start: 1px solid var(--hashti-border-subtle);
       align-self: stretch;
     }
-    .hashti-divider-labeled {
+    .hashti-separator-labeled {
       display: flex;
       align-items: center;
       gap: var(--hashti-spacing-04);
@@ -2888,8 +2888,8 @@
       font-size: var(--hashti-body-compact-01-font-size);
       font-weight: 500;
     }
-    .hashti-divider-labeled::before,
-    .hashti-divider-labeled::after {
+    .hashti-separator-labeled::before,
+    .hashti-separator-labeled::after {
       content: "";
       flex: 1;
       border-block-start: 1px solid var(--hashti-border-subtle);

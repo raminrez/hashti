@@ -179,7 +179,7 @@ function LocalizedContentSwitcher() {
   const { theme } = useTheme();
   return (
     <div className="navigation-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl">
           <ContentSwitcher defaultSelectedKeys={["hourly"]} aria-label="دوره‌های گزارش‌گیری">
             <ToggleButton id="hourly">ساعتی</ToggleButton>

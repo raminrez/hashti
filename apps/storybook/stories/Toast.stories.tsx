@@ -29,11 +29,11 @@ function ToastTriggerButtons() {
     <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
       <Button
         variant="primary"
-        onPress={() =>
+        onClick={() =>
           toast.add({
             title: "Build succeeded",
             description: "Artifacts deployed to 8 edge regions.",
-            kind: "success",
+            status: "success",
           })
         }
       >
@@ -41,11 +41,11 @@ function ToastTriggerButtons() {
       </Button>
       <Button
         variant="secondary"
-        onPress={() =>
+        onClick={() =>
           toast.add({
             title: "Cluster high memory warning",
             description: "Node worker-04 memory threshold at 87%.",
-            kind: "warning",
+            status: "warning",
           })
         }
       >
@@ -53,11 +53,11 @@ function ToastTriggerButtons() {
       </Button>
       <Button
         variant="danger"
-        onPress={() =>
+        onClick={() =>
           toast.add({
             title: "Service connection failed",
             description: "Timeout connecting to remote database.",
-            kind: "error",
+            status: "error",
           })
         }
       >
@@ -105,11 +105,11 @@ function FaToastButtons() {
     <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
       <Button
         variant="primary"
-        onPress={() =>
+        onClick={() =>
           toast.add({
             title: "بارگذاری با موفقیت انجام شد",
             description: "تمام داده‌ها در حافظه پایدار ثبت شدند.",
-            kind: "success",
+            status: "success",
           })
         }
       >
@@ -123,7 +123,7 @@ function LongContentAndLocalesExample() {
   const { theme } = useTheme();
 
   return (
-    <Theme theme={theme} locale="fa-IR">
+    <Theme theme={theme} lang="fa-IR" dir="rtl">
       <ToastProvider>
         <div dir="rtl" className="feedback-story-stack">
           <div className="feedback-card">
@@ -161,11 +161,11 @@ function VariantsExample() {
     <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
       <Button
         variant="secondary"
-        onPress={() =>
+        onClick={() =>
           toast.add({
             title: "Subtle toast notification",
             description: "Soft surface with muted borders.",
-            kind: "info",
+            status: "info",
             variant: "subtle",
           })
         }
@@ -174,11 +174,11 @@ function VariantsExample() {
       </Button>
       <Button
         variant="primary"
-        onPress={() =>
+        onClick={() =>
           toast.add({
             title: "Solid toast notification",
             description: "High-emphasis saturated fill.",
-            kind: "success",
+            status: "success",
             variant: "solid",
           })
         }
@@ -187,11 +187,11 @@ function VariantsExample() {
       </Button>
       <Button
         variant="secondary"
-        onPress={() =>
+        onClick={() =>
           toast.add({
             title: "Bordered toast notification",
             description: "Clean outlined card presentation.",
-            kind: "warning",
+            status: "warning",
             variant: "bordered",
           })
         }

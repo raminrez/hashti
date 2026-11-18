@@ -122,7 +122,7 @@ export const Backdrops: Story = {
 function AlertDialogRtlDemo() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <Theme direction="rtl">
+    <Theme dir="rtl">
       <div dir="rtl" className="overlay-story-stack">
         <Button variant="danger" onPress={() => setIsOpen(true)}>
           حذف پایگاه داده

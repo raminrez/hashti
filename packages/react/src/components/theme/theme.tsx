@@ -1,5 +1,4 @@
 import { createContext, useContext, useMemo, type ComponentPropsWithRef } from "react";
-import { I18nProvider, useLocale } from "react-aria-components";
 import { nextLayer, type LayerLevel, type ThemeName } from "@hashti/styles/tokens";
 
 type ThemeContextValue = {
@@ -13,54 +12,43 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export interface ThemeProps extends ComponentPropsWithRef<"div"> {
   theme?: ThemeName;
-  /** Controls formatting, translated RAC labels, and reading/keyboard direction. */
-  locale?: string;
-  /** Explicit reading/keyboard direction override. */
-  direction?: "ltr" | "rtl";
+  /** Explicit reading/keyboard direction. ui-sdk reads direction from the DOM. */
   dir?: "ltr" | "rtl";
+  /** BCP 47 language tag stamped on the root element. */
+  lang?: string;
   /** Portable root/portal recipe. Omit to inherit; a string replaces it; "" clears it. */
   appearanceClassName?: string;
 }
 
-export function Theme({ locale, direction, dir, ...props }: ThemeProps) {
-  const inherited = useLocale();
-  const explicitDir = direction ?? dir;
-  return (
-    <I18nProvider locale={locale ?? (explicitDir === "rtl" ? "ar-EG" : inherited.locale)}>
-      <ThemeRoot explicitDirection={explicitDir} {...props} />
-    </I18nProvider>
-  );
-}
-
-function ThemeRoot({
+export function Theme({
   theme,
+  dir,
+  lang,
   appearanceClassName,
   className,
   children,
-  explicitDirection,
   ...props
-}: Omit<ThemeProps, "locale" | "direction" | "dir"> & { explicitDirection?: "ltr" | "rtl" }) {
+}: ThemeProps) {
   const parent = useContext(ThemeContext);
-  const { locale, direction: ariaDirection } = useLocale();
-  const direction = explicitDirection ?? ariaDirection ?? parent?.direction ?? "ltr";
   const resolvedTheme = theme ?? parent?.theme ?? "frame-light";
+  const direction = dir ?? parent?.direction ?? "ltr";
+  const resolvedLang = lang ?? parent?.lang;
   const appearance = appearanceClassName ?? parent?.appearanceClassName;
-  const lang = props.lang ?? locale ?? parent?.lang;
   const value = useMemo(
     () => ({
       theme: resolvedTheme,
       layer: 0 as const,
       direction,
-      lang,
+      lang: resolvedLang,
       appearanceClassName: appearance,
     }),
-    [resolvedTheme, direction, lang, appearance],
+    [resolvedTheme, direction, resolvedLang, appearance],
   );
   return (
     <ThemeContext.Provider value={value}>
       <div
         {...props}
-        lang={lang}
+        lang={resolvedLang}
         dir={direction}
         data-hashti-theme={resolvedTheme}
         data-hashti-layer="0"

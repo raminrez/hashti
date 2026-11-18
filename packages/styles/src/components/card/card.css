@@ -1,6 +1,5 @@
 /* Hashti Modern Aesthetic - card */
 @layer hashti.components {
-  [data-hashti-theme] .hashti-card,
   [data-hashti-theme] .hashti-card {
     border-radius: var(--hashti-surface-radius, 16px);
     transition:
@@ -9,12 +8,10 @@
       color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
       box-shadow var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
-  [data-hashti-theme] .hashti-card:active,
-  [data-hashti-theme] .hashti-card:active {
+  [data-hashti-theme] .hashti-card[data-interactive]:active {
     transform: scale(0.98);
   }
-  [data-hashti-theme] .hashti-card:focus-visible,
-  [data-hashti-theme] .hashti-card:focus-visible {
+  [data-hashti-theme] .hashti-card[data-interactive]:focus-visible {
     outline: var(--hashti-focus-width, 2px) solid var(--hashti-focus);
     outline-offset: 2px;
   }

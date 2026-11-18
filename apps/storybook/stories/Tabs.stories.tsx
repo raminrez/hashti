@@ -308,7 +308,7 @@ function LocalizedTabs() {
   const { theme } = useTheme();
   return (
     <div className="navigation-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl">
           <Tabs defaultSelectedKey="dashboard">
             <TabList aria-label="ناوبری سامانه">

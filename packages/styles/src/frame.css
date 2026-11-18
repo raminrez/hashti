@@ -2841,26 +2841,26 @@
     }
 
     /* ------------------------------------------------------------------ */
-    /*  New Components: Divider / Separator                               */
+    /*  New Components: Separator                               */
     /* ------------------------------------------------------------------ */
 
-    .hashti-divider {
+    .hashti-separator {
       border: none;
       margin: 0;
       flex-shrink: 0;
     }
-    .hashti-divider[data-orientation="horizontal"] {
+    .hashti-separator[data-orientation="horizontal"] {
       width: 100%;
       height: 0;
       border-block-start: 1px solid var(--hashti-border-subtle);
     }
-    .hashti-divider[data-orientation="vertical"] {
+    .hashti-separator[data-orientation="vertical"] {
       height: 100%;
       width: 0;
       border-inline-start: 1px solid var(--hashti-border-subtle);
       align-self: stretch;
     }
-    .hashti-divider-labeled {
+    .hashti-separator-labeled {
       display: flex;
       align-items: center;
       gap: var(--hashti-spacing-04);
@@ -2869,8 +2869,8 @@
       font-size: var(--hashti-body-compact-01-font-size);
       font-weight: 500;
     }
-    .hashti-divider-labeled::before,
-    .hashti-divider-labeled::after {
+    .hashti-separator-labeled::before,
+    .hashti-separator-labeled::after {
       content: "";
       flex: 1;
       border-block-start: 1px solid var(--hashti-border-subtle);

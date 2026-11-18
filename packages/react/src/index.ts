@@ -15,7 +15,6 @@ export * from "./components/command-palette";
 export * from "./components/date-picker";
 export * from "./components/dialog";
 export * from "./components/disclosure";
-export * from "./components/divider";
 export * from "./components/drawer";
 export * from "./components/dropzone";
 export * from "./components/empty-state";
@@ -36,6 +35,7 @@ export * from "./components/progress";
 export * from "./components/radio";
 export * from "./components/search-field";
 export * from "./components/select";
+export * from "./components/separator";
 export * from "./components/sheet";
 export * from "./components/slider";
 export * from "./components/switch";
@@ -78,7 +78,6 @@ export {
   MenuItem,
   MenuSection,
   Header as SectionHeader,
-  Separator,
   SelectValue,
   ComboBoxValue,
   TableHeader,

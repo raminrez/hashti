@@ -233,7 +233,7 @@ function RightToLeftExample(args: LinkProps) {
   const { theme } = useTheme();
   return (
     <div className="action-story-stack action-story-narrow">
-      <Theme theme={theme} locale="fa-IR" className="action-story-stack">
+      <Theme theme={theme} lang="fa-IR" dir="rtl" className="action-story-stack">
         <p>
           فارسی · فضای کاری <bdi dir="ltr">WS-1042</bdi>
         </p>
@@ -244,7 +244,7 @@ function RightToLeftExample(args: LinkProps) {
           پیش از انتشار، تنظیمات اشتراک‌گذاری را بررسی کنید.
         </p>
       </Theme>
-      <Theme theme={theme} locale="ar" className="action-story-stack">
+      <Theme theme={theme} lang="ar" dir="rtl" className="action-story-stack">
         <p>
           العربية · مساحة العمل <bdi dir="ltr">WS-1042</bdi>
         </p>

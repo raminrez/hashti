@@ -135,7 +135,7 @@ function LongContentAndLocalesExample() {
   return (
     <div className="content-story-stack">
       {/* Persian RTL List */}
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl" className="content-card">
           <div>
             <h4 className="content-card-title">مشخصات سرویس مالی و پرداخت</h4>

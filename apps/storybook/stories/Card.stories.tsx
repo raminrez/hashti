@@ -86,9 +86,9 @@ function InteractiveCardDemo() {
   return (
     <div className="content-story-stack">
       <Card
-        isPressable
+        interactive
         elevation="raised"
-        onPress={() => {
+        onClick={() => {
           setClicks((c) => c + 1);
           handlePress();
         }}

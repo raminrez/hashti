@@ -1,6 +1,8 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, waitFor, within } from "storybook/test";
+// Menu separators are RAC collection children until the Menu rewrite (TICK-006).
+import { Separator } from "react-aria-components";
 import {
   Button,
   Keyboard,
@@ -11,7 +13,6 @@ import {
   OverflowMenu,
   Popover,
   SectionHeader,
-  Separator,
   SubmenuTrigger,
   Theme,
   useTheme,
@@ -375,7 +376,7 @@ function LocalizedMenu() {
   const { theme } = useTheme();
   return (
     <div className="navigation-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl">
           <MenuTrigger>
             <Button>گزینه‌های حساب</Button>

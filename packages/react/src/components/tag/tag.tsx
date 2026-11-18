@@ -1,19 +1,6 @@
 "use client";
 
-import { type CSSProperties, type ComponentPropsWithRef, type ReactNode, type Ref } from "react";
-import {
-  TagGroup as RACTagGroup,
-  TagList,
-  Tag as RACTag,
-  Label,
-  composeRenderProps,
-  type TagGroupProps as RACTagGroupProps,
-  type TagListProps,
-  type TagProps as RACTagProps,
-} from "react-aria-components";
-import { Button } from "../button";
-import { Icon } from "../../icons";
-import { classes } from "../../utils";
+import { type CSSProperties, type ComponentPropsWithRef } from "react";
 
 export type TagColor =
   | "gray"
@@ -32,11 +19,12 @@ export interface TagProps extends ComponentPropsWithRef<"span"> {
   size?: "sm" | "md";
 }
 
+/** Static, presentational tag. Removable/selectable tag groups move to TokenInput (TICK-006). */
 export function Tag({ color = "gray", size = "md", className, style, ...props }: TagProps) {
   return (
     <span
       {...props}
-      data-slot="tag"
+      data-color={color}
       data-size={size}
       className={["hashti-tag", className].filter(Boolean).join(" ")}
       style={
@@ -47,42 +35,5 @@ export function Tag({ color = "gray", size = "md", className, style, ...props }:
         } as CSSProperties
       }
     />
-  );
-}
-
-export interface TagGroupProps<T> extends Omit<RACTagGroupProps, "children"> {
-  label?: ReactNode;
-  items?: Iterable<T>;
-  children: TagListProps<T>["children"];
-  ref?: Ref<HTMLDivElement>;
-}
-
-export function TagGroup<T>({ label, items, children, className, ...props }: TagGroupProps<T>) {
-  return (
-    <RACTagGroup {...props} className={["hashti-tag-group", className].filter(Boolean).join(" ")}>
-      {label && <Label>{label}</Label>}
-      <TagList items={items}>{children}</TagList>
-    </RACTagGroup>
-  );
-}
-
-export interface FilterTagProps extends RACTagProps {
-  ref?: Ref<HTMLDivElement>;
-}
-
-export function FilterTag({ className, children, ...props }: FilterTagProps) {
-  return (
-    <RACTag {...props} className={classes("hashti-filter-tag", className)}>
-      {composeRenderProps(children, (content, { allowsRemoving }) => (
-        <>
-          {content}
-          {allowsRemoving && (
-            <Button slot="remove" size="sm" iconOnly variant="ghost">
-              <Icon name="close" />
-            </Button>
-          )}
-        </>
-      ))}
-    </RACTag>
   );
 }

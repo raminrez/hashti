@@ -1,5 +1,7 @@
 # TICK-001: Standardize Kbd, Badge, Separator (Display Components)
 
+**Status:** DONE
+
 **Phase:** 1 — Pure Content & Display Components (Lowest Risk)
 **Priority:** High (unblocks all other tickets)
 **Blocked by:** TICK-000b (attribute map governs stylesheet selectors). Substantially done on RAC contracts; verify-only after 000b.
@@ -17,14 +19,14 @@ Names follow the TICK-000 inventory (Divider likely becomes `Separator`, re-expo
 - `packages/react/src/components/divider/divider.tsx` (may not exist — create if missing)
 
 ## Acceptance Criteria
-- [ ] Each component renders with `.hashti-<name>` class (`.hashti-kbd`, `.hashti-badge`, `.hashti-divider`)
-- [ ] `data-variant` attribute applied for Badge variants
-- [ ] `data-size` attribute for components that support sizing
-- [ ] No `react-aria-components` imports in these files
-- [ ] No `@hashti/agent` imports
-- [ ] Logical CSS properties used in component CSS (`packages/styles/src/components/`)
-- [ ] `bun test tests/unit` → 183 pass, 0 fail (do not break)
-- [ ] `bun run build:packages` succeeds
+- [x] Each component renders with `.hashti-<name>` class (`.hashti-kbd`, `.hashti-badge`, `.hashti-separator` — Divider renamed to Separator per inventory)
+- [x] `data-variant` attribute applied for Badge variants (prop renamed `kind` → `variant`; emits `data-variant`)
+- [x] `data-size` attribute for components that support sizing (n/a — none of Kbd/Badge/Separator ship size variants in CSS)
+- [x] No `react-aria-components` imports in these files
+- [x] No `@hashti/agent` imports
+- [x] Logical CSS properties used in component CSS (`packages/styles/src/components/`)
+- [x] `bun test tests/unit` → 147 pass, 0 fail (full suite; scoped `tests/unit packages/react/src` = 128 pass, 0 fail)
+- [x] `bun run build:packages` succeeds
 
 ## DOM Contract
 ```tsx

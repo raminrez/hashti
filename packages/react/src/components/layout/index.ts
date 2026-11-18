@@ -16,6 +16,7 @@ export type {
   StackProps,
   ColumnLayoutProps,
   HeaderProps,
+  HeaderNameProps,
   ListProps,
   StructuredListProps,
   StructuredListRowProps,

@@ -164,7 +164,7 @@ function LocalizedTime() {
   const { theme } = useTheme();
   return (
     <div className="field-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <TimeField
           label="ساعت شروع انتشار"
           description="زمان را بر اساس منطقهٔ زمانی محلی وارد کنید."
@@ -172,7 +172,7 @@ function LocalizedTime() {
           defaultValue={parseTime("08:15")}
         />
       </Theme>
-      <Theme theme={theme} locale="ar">
+      <Theme theme={theme} lang="ar" dir="rtl">
         <TimeField
           label="وقت بدء النشر"
           description="أدخل الوقت حسب منطقتك الزمنية المحلية."

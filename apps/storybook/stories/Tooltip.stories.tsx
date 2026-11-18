@@ -216,7 +216,7 @@ function LocalizedTooltipExamples() {
     <div className="overlay-story-grid">
       <div className="overlay-story-case">
         <h2>Persian RTL tooltip</h2>
-        <Theme theme={theme} locale="fa-IR">
+        <Theme theme={theme} lang="fa-IR" dir="rtl">
           <div style={{ padding: "1rem" }}>
             <TooltipTrigger delay={0}>
               <Button>رونوشت نشانی خوشه</Button>

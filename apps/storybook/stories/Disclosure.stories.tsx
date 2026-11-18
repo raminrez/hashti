@@ -371,7 +371,7 @@ function LocalizedGroup() {
   const { theme } = useTheme();
   return (
     <div className="navigation-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl">
           <DisclosureGroup aria-label="راهنمای تنظیمات سامانه">
             <Disclosure id="fa-1">

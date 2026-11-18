@@ -345,7 +345,7 @@ function DirectionalDelivery() {
   const { theme } = useTheme();
   return (
     <div className="field-story-grid">
-      <Theme theme={theme} locale="en-US" className="field-story-case">
+      <Theme theme={theme} lang="en-US" className="field-story-case">
         <RadioGroup
           label="Horizontal delivery"
           description="Arrow keys select a schedule; the unavailable option is skipped."
@@ -362,7 +362,7 @@ function DirectionalDelivery() {
           Continue review
         </Button>
       </Theme>
-      <Theme theme={theme} locale="fa-IR" className="field-story-case">
+      <Theme theme={theme} lang="fa-IR" dir="rtl" className="field-story-case">
         <RadioGroup
           label="زمان دریافت پیام‌ها"
           description="با کلیدهای جهت‌دار، زمان دریافت پیام‌ها را انتخاب کنید."
@@ -451,7 +451,7 @@ function LocalizedDelivery() {
   const { theme } = useTheme();
   return (
     <div className="field-story-grid">
-      <Theme theme={theme} locale="de-DE" className="field-story-stack field-story-narrow">
+      <Theme theme={theme} lang="de-DE" className="field-story-stack field-story-narrow">
         <RadioGroup
           label="Zustellung der Benachrichtigungen für die gemeinsame Freigabeprüfung"
           description={
@@ -473,7 +473,7 @@ function LocalizedDelivery() {
           </Radio>
         </RadioGroup>
       </Theme>
-      <Theme theme={theme} locale="fa-IR" className="field-story-stack field-story-narrow">
+      <Theme theme={theme} lang="fa-IR" dir="rtl" className="field-story-stack field-story-narrow">
         <RadioGroup
           label="زمان دریافت پیام‌های پروژه"
           description={
@@ -492,7 +492,7 @@ function LocalizedDelivery() {
           <Radio value="daily">دریافت خلاصهٔ روزانه پس از پایان مرور تیم</Radio>
         </RadioGroup>
       </Theme>
-      <Theme theme={theme} locale="ar" className="field-story-stack field-story-narrow">
+      <Theme theme={theme} lang="ar" dir="rtl" className="field-story-stack field-story-narrow">
         <RadioGroup
           label="موعد استلام رسائل المراجعة"
           description={

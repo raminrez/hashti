@@ -28,10 +28,10 @@ test("Theme defaults to frame-light, not white", () => {
   expect(html).not.toContain('data-hashti-theme="white"');
 });
 
-test("nested Theme direction='rtl' inherits parent theme and does not revert to white", () => {
+test("nested Theme dir='rtl' inherits parent theme and does not revert to white", () => {
   const html = renderToStaticMarkup(
     <Theme theme="frame-light">
-      <Theme direction="rtl">
+      <Theme dir="rtl">
         <ThemeInspector />
       </Theme>
     </Theme>,
@@ -43,10 +43,10 @@ test("nested Theme direction='rtl' inherits parent theme and does not revert to 
   expect(html).not.toContain('data-theme="white"');
 });
 
-test("nested Theme direction='rtl' under frame-dark inherits frame-dark", () => {
+test("nested Theme dir='rtl' under frame-dark inherits frame-dark", () => {
   const html = renderToStaticMarkup(
     <Theme theme="frame-dark">
-      <Theme direction="rtl">
+      <Theme dir="rtl">
         <ThemeInspector />
       </Theme>
     </Theme>,
@@ -60,7 +60,7 @@ test("nested Theme direction='rtl' under frame-dark inherits frame-dark", () => 
 
 test("Layer nests properly without corrupting theme or direction", () => {
   const html = renderToStaticMarkup(
-    <Theme theme="frame-light" direction="rtl">
+    <Theme theme="frame-light" dir="rtl">
       <Layer>
         <ThemeInspector />
       </Layer>

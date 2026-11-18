@@ -151,7 +151,7 @@ function LocalizedNativeSelect() {
   const { theme } = useTheme();
   return (
     <div className="field-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl">
           <NativeSelect
             label="واحد پولی پرداخت"

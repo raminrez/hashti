@@ -322,7 +322,7 @@ function LocalizedPopoverExamples() {
     <div className="overlay-story-grid">
       <div className="overlay-story-case">
         <h2>Persian RTL popover</h2>
-        <Theme theme={theme} locale="fa-IR">
+        <Theme theme={theme} lang="fa-IR" dir="rtl">
           <DialogTrigger>
             <Button>فیلترهای پیشرفته سامانه</Button>
             <Popover placement="bottom start">

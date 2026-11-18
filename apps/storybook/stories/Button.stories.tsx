@@ -369,7 +369,7 @@ export const Customization: Story = {
 function LongLabelExample(args: ButtonProps) {
   const { theme } = useTheme();
   return (
-    <Theme theme={theme} locale="de-DE" className="action-story-narrow">
+    <Theme theme={theme} lang="de-DE" className="action-story-narrow">
       <Button {...args}>
         Projektbenachrichtigungseinstellungen für diesen Arbeitsbereich speichern
       </Button>
@@ -387,7 +387,7 @@ function RightToLeftExample(args: ButtonProps) {
   const { theme } = useTheme();
   return (
     <div className="action-story-stack action-story-narrow">
-      <Theme theme={theme} locale="fa-IR" className="action-story-stack">
+      <Theme theme={theme} lang="fa-IR" dir="rtl" className="action-story-stack">
         <p>
           فارسی · فضای کاری <bdi dir="ltr">WS-1042</bdi>
         </p>
@@ -395,7 +395,7 @@ function RightToLeftExample(args: ButtonProps) {
           ذخیرهٔ تغییرات تنظیمات فضای کاری <Icon name="chevronLeft" />
         </Button>
       </Theme>
-      <Theme theme={theme} locale="ar" className="action-story-stack">
+      <Theme theme={theme} lang="ar" dir="rtl" className="action-story-stack">
         <p>
           العربية · مساحة العمل <bdi dir="ltr">WS-1042</bdi>
         </p>

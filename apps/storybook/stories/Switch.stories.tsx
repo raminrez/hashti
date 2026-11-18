@@ -307,20 +307,20 @@ function LocalizedSettings() {
   const { theme } = useTheme();
   return (
     <div className="field-story-grid">
-      <Theme theme={theme} locale="de-DE" className="field-story-stack field-story-narrow">
+      <Theme theme={theme} lang="de-DE" className="field-story-stack field-story-narrow">
         <p>Die Einstellung gilt sofort für diese lokale Vorschau.</p>
         <Switch defaultSelected>
           Benachrichtigungen über Änderungen und Kommentare im gemeinsamen Arbeitsbereich{" "}
           <bdi dir="ltr">WS-1042</bdi> sofort anzeigen
         </Switch>
       </Theme>
-      <Theme theme={theme} locale="fa-IR" className="field-story-stack field-story-narrow">
+      <Theme theme={theme} lang="fa-IR" dir="rtl" className="field-story-stack field-story-narrow">
         <p>این تنظیم در همین پیش‌نمایش اعمال می‌شود.</p>
         <Switch defaultSelected>
           نمایش فوری پیام‌های تغییرها و نظرهای تیم برای فضای کاری <bdi dir="ltr">WS-1042</bdi>
         </Switch>
       </Theme>
-      <Theme theme={theme} locale="ar" className="field-story-stack field-story-narrow">
+      <Theme theme={theme} lang="ar" dir="rtl" className="field-story-stack field-story-narrow">
         <p>يُطبّق هذا الإعداد فورًا في هذه المعاينة المحلية.</p>
         <Switch defaultSelected>
           عرض رسائل التغييرات وتعليقات الفريق فورًا في مساحة العمل <bdi dir="ltr">WS-1042</bdi>

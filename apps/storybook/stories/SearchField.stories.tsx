@@ -268,7 +268,7 @@ function LocalizedSearch() {
   const { theme } = useTheme();
   return (
     <div className="field-story-grid">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <SearchField
           label="جست‌وجوی مرورها"
           description={
@@ -280,7 +280,7 @@ function LocalizedSearch() {
           defaultValue="مرور WS-1042"
         />
       </Theme>
-      <Theme theme={theme} locale="ar">
+      <Theme theme={theme} lang="ar" dir="rtl">
         <SearchField
           label="البحث في المراجعات"
           description={

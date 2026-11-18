@@ -3020,7 +3020,7 @@
     color: var(--hashti-text-primary);
     border-inline-start: 3px solid var(--notification-color, var(--hashti-support-info));
   }
-  :where(.hashti-notification, .hashti-toast, .hashti-actionable-notification)[data-variant="info"] {
+  :where(.hashti-notification, .hashti-toast, .hashti-actionable-notification)[data-status="info"] {
     --notification-bg: var(--hashti-notification-background-info);
     --notification-color: var(--hashti-support-info);
     --notification-color-inverse: var(--hashti-support-info-inverse);
@@ -3029,7 +3029,7 @@
     .hashti-notification,
     .hashti-toast,
     .hashti-actionable-notification
-  )[data-variant="success"] {
+  )[data-status="success"] {
     --notification-bg: var(--hashti-notification-background-success);
     --notification-color: var(--hashti-support-success);
     --notification-color-inverse: var(--hashti-support-success-inverse);
@@ -3038,12 +3038,12 @@
     .hashti-notification,
     .hashti-toast,
     .hashti-actionable-notification
-  )[data-variant="warning"] {
+  )[data-status="warning"] {
     --notification-bg: var(--hashti-notification-background-warning);
     --notification-color: var(--hashti-support-warning);
     --notification-color-inverse: var(--hashti-support-warning-inverse);
   }
-  :where(.hashti-notification, .hashti-toast, .hashti-actionable-notification)[data-variant="error"] {
+  :where(.hashti-notification, .hashti-toast, .hashti-actionable-notification)[data-status="error"] {
     --notification-bg: var(--hashti-notification-background-error);
     --notification-color: var(--hashti-support-error);
     --notification-color-inverse: var(--hashti-support-error-inverse);
@@ -3875,23 +3875,23 @@
   }
 
   /* Divider base */
-  .hashti-divider {
+  .hashti-separator {
     border: none;
     margin: 0;
     flex-shrink: 0;
   }
-  .hashti-divider[data-orientation="horizontal"] {
+  .hashti-separator[data-orientation="horizontal"] {
     width: 100%;
     height: 0;
     border-block-start: 1px solid var(--hashti-border-subtle);
   }
-  .hashti-divider[data-orientation="vertical"] {
+  .hashti-separator[data-orientation="vertical"] {
     height: 100%;
     width: 0;
     border-inline-start: 1px solid var(--hashti-border-subtle);
     align-self: stretch;
   }
-  .hashti-divider-labeled {
+  .hashti-separator-labeled {
     display: flex;
     align-items: center;
     gap: var(--hashti-spacing-04);
@@ -3900,8 +3900,8 @@
     font-size: var(--hashti-body-01-font-size);
     font-weight: 500;
   }
-  .hashti-divider-labeled::before,
-  .hashti-divider-labeled::after {
+  .hashti-separator-labeled::before,
+  .hashti-separator-labeled::after {
     content: "";
     flex: 1;
     border-block-start: 1px solid var(--hashti-border-subtle);

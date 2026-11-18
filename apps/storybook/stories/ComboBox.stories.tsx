@@ -354,7 +354,7 @@ function LocalizedComboBox() {
   const { theme } = useTheme();
   return (
     <div className="field-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl">
           <ComboBox
             label="ناحیه رایانش ابری"

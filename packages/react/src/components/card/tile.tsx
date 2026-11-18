@@ -45,7 +45,7 @@ export interface SelectableTileProps extends Omit<ComponentPropsWithRef<"label">
   name?: string;
   value?: string;
   selected?: boolean;
-  defaultSelected?: boolean;
+  defaultChecked?: boolean;
   onChange?: (selected: boolean) => void;
   disabled?: boolean;
   title?: string;
@@ -57,13 +57,13 @@ export function SelectableTile({
   name,
   value,
   selected: controlledSelected,
-  defaultSelected = false,
+  defaultChecked = false,
   onChange,
   disabled,
   title,
   ...props
 }: SelectableTileProps) {
-  const [internalSelected, setInternalSelected] = useState(defaultSelected);
+  const [internalSelected, setInternalSelected] = useState(defaultChecked);
   const isSelected = controlledSelected !== undefined ? controlledSelected : internalSelected;
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {

@@ -286,7 +286,7 @@ function LongContentExample() {
       </div>
 
       {/* RTL fa-IR */}
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl" className="data-table-card">
           <div className="data-table-header-bar">
             <div>

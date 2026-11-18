@@ -147,7 +147,7 @@ function LocalizedSlider() {
   const [val, setVal] = useState<number>(60);
   return (
     <div className="navigation-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl">
           <Slider
             label="ظرفیت حافظه موقت (مگابایت)"

@@ -983,7 +983,12 @@ function LocalizedExamples() {
   return (
     <div className="field-story-grid">
       {localeExamples.map((copy) => (
-        <Theme theme={theme} locale={copy.locale} key={copy.locale}>
+        <Theme
+          theme={theme}
+          lang={copy.locale}
+          dir={copy.locale.startsWith("ar") || copy.locale.startsWith("fa") ? "rtl" : "ltr"}
+          key={copy.locale}
+        >
           <section className="field-story-case">
             <h2>{copy.heading}</h2>
             <TextField

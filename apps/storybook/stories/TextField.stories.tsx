@@ -249,7 +249,7 @@ function LocalizedFields() {
   const { theme } = useTheme();
   return (
     <div className="field-story-grid">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <TextField
           label="نام فضای کاری"
           description={
@@ -262,7 +262,7 @@ function LocalizedFields() {
           errorMessage="نامی بنویسید که تیم شما بشناسد."
         />
       </Theme>
-      <Theme theme={theme} locale="ar">
+      <Theme theme={theme} lang="ar" dir="rtl">
         <TextField
           label="اسم مساحة العمل"
           description={

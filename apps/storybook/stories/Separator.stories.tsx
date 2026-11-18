@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
-import { Button, Divider } from "@hashti/react";
+import { Button, Separator } from "@hashti/react";
 import "./content.css";
 
 const meta = {
-  title: "Content/Divider",
-  component: Divider,
+  title: "Content/Separator",
+  component: Separator,
   parameters: {
     docs: {
       description: {
         component:
-          "Dividers separate content into clear distinct groups, horizontally or vertically, with optional centered label text.",
+          "Separators divide content into clear distinct groups, horizontally or vertically, with optional centered label text.",
       },
     },
   },
-} satisfies Meta<typeof Divider>;
+} satisfies Meta<typeof Separator>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -23,26 +23,26 @@ export const Playground: Story = {
   render: () => (
     <div className="content-story-stack">
       <div className="content-card">
-        <h4 className="content-card-title">Horizontal Divider</h4>
-        <p>Section above the divider</p>
-        <Divider />
-        <p>Section below the divider</p>
+        <h4 className="content-card-title">Horizontal Separator</h4>
+        <p>Section above the separator</p>
+        <Separator />
+        <p>Section below the separator</p>
       </div>
 
       <div className="content-card">
-        <h4 className="content-card-title">Divider with Text Label</h4>
+        <h4 className="content-card-title">Separator with Text Label</h4>
         <Button variant="primary">Sign in with SSO</Button>
-        <Divider label="OR" />
+        <Separator label="OR" />
         <Button variant="secondary">Sign in with Email</Button>
       </div>
 
       <div className="content-card">
-        <h4 className="content-card-title">Vertical Divider</h4>
+        <h4 className="content-card-title">Vertical Separator</h4>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", height: "2.5rem" }}>
           <span>Left Item</span>
-          <Divider orientation="vertical" />
+          <Separator orientation="vertical" />
           <span>Center Item</span>
-          <Divider orientation="vertical" />
+          <Separator orientation="vertical" />
           <span>Right Item</span>
         </div>
       </div>
@@ -61,7 +61,7 @@ export const RTL: Story = {
       <div className="content-card">
         <h4 className="content-card-title">خط جداکننده راست‌به‌چپ (RTL)</h4>
         <Button variant="primary">ورود با گذرواژه یکبار مصرف</Button>
-        <Divider label="یا" />
+        <Separator label="یا" />
         <Button variant="secondary">ورود با رمز عبور</Button>
       </div>
     </div>

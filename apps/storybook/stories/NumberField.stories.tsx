@@ -318,7 +318,7 @@ function LocalizedNumbers() {
   const { theme } = useTheme();
   return (
     <div className="field-story-grid">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <NumberField
           label="تعداد مرورکننده‌ها"
           description={
@@ -332,7 +332,7 @@ function LocalizedNumbers() {
           step={3}
         />
       </Theme>
-      <Theme theme={theme} locale="ar-EG">
+      <Theme theme={theme} lang="ar-EG" dir="rtl">
         <NumberField
           label="عدد المراجعين"
           description={

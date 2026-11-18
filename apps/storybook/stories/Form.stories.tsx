@@ -727,10 +727,10 @@ function RightToLeftExample(args: FormProps) {
   const { theme } = useTheme();
   return (
     <div className="form-story-locales">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <DraftForm {...args} copy={persianCopy} empty />
       </Theme>
-      <Theme theme={theme} locale="ar">
+      <Theme theme={theme} lang="ar" dir="rtl">
         <DraftForm {...args} copy={arabicCopy} empty />
       </Theme>
     </div>

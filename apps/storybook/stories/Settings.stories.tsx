@@ -467,7 +467,7 @@ function LocalizedSettings() {
   const { theme } = useTheme();
   return (
     <div style={{ display: "grid", gap: "2rem" }}>
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl">
           <SettingsForm
             initialData={{

@@ -216,7 +216,7 @@ function LocalizedDialog() {
   const [confirmed, setConfirmed] = useState("");
   return (
     <div className="overlay-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <DialogTrigger>
           <Button>بررسی درخواست دسترسی</Button>
           <Modal size="sm" isDismissable>

@@ -7,7 +7,7 @@ import {
   Breadcrumbs,
   Breadcrumb,
   CodeSnippet,
-  Divider,
+  Separator,
   EmptyState,
   Kbd,
   Link,
@@ -95,7 +95,7 @@ export function DividerLiveDemo() {
   return (
     <div className="w-full max-w-sm flex flex-col gap-4">
       <span className="text-xs text-neutral-500">Section Alpha: Public Exterior</span>
-      <Divider />
+      <Separator />
       <span className="text-xs text-neutral-500">Section Beta: Octagonal Vestibule</span>
     </div>
   );
@@ -151,7 +151,7 @@ export function ToolbarLiveDemo() {
       <Button size="sm" variant="ghost">
         Underline
       </Button>
-      <Divider orientation="vertical" className="h-5 my-auto mx-1" />
+      <Separator orientation="vertical" className="h-5 my-auto mx-1" />
       <Button size="sm" variant="secondary">
         Publish
       </Button>

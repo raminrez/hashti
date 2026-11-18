@@ -104,7 +104,7 @@ function DrawerRtlDemo() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Theme direction="rtl">
+    <Theme dir="rtl">
       <div dir="rtl" className="overlay-story-stack">
         <Button onPress={() => setIsOpen(true)}>باز کردن کشوی کناری</Button>
         <Drawer

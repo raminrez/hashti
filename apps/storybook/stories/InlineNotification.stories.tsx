@@ -37,14 +37,14 @@ function PlaygroundExample() {
         </div>
         {!dismissed ? (
           <InlineNotification
-            kind="success"
+            status="success"
             title="Cluster provisioned successfully"
             onDismiss={() => setDismissed(true)}
           >
             All 16 worker nodes are ready and accepting incoming traffic on port 443.
           </InlineNotification>
         ) : (
-          <Button variant="secondary" size="sm" onPress={() => setDismissed(false)}>
+          <Button variant="secondary" size="sm" onClick={() => setDismissed(false)}>
             Reopen notification
           </Button>
         )}
@@ -79,21 +79,21 @@ function AllKindsExample() {
           </p>
         </div>
 
-        <InlineNotification kind="info" title="Scheduled Maintenance Window">
+        <InlineNotification status="info" title="Scheduled Maintenance Window">
           Telemetry cluster will experience intermittent connectivity between 02:00 and 04:00 UTC.
         </InlineNotification>
 
-        <InlineNotification kind="success" title="Backup Created">
+        <InlineNotification status="success" title="Backup Created">
           Database snapshot snapshot-2026-11-09-01 completed and stored in multi-region cold
           storage.
         </InlineNotification>
 
-        <InlineNotification kind="warning" title="Memory Utilization Threshold Exceeded">
+        <InlineNotification status="warning" title="Memory Utilization Threshold Exceeded">
           Service ingress-router is running at 88% memory capacity. Consider adding additional
           replicas.
         </InlineNotification>
 
-        <InlineNotification kind="error" title="Certificate Expiration Imminent">
+        <InlineNotification status="error" title="Certificate Expiration Imminent">
           TLS wildcard certificate expires in 3 days. Automated renewal webhook failed with status
           503.
         </InlineNotification>
@@ -123,11 +123,11 @@ function WithActionExample() {
         </div>
 
         <InlineNotification
-          kind="warning"
+          status="warning"
           title="API Rate Limit Approaching"
           action={
             <div style={{ marginTop: "0.5rem" }}>
-              <Button variant="tertiary" size="sm">
+              <Button variant="secondary" size="sm">
                 Upgrade Quota
               </Button>
             </div>
@@ -154,7 +154,7 @@ function LongContentAndLocalesExample() {
 
   return (
     <div className="feedback-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl" className="feedback-card">
           <div>
             <h4 className="feedback-card-title">اعلان‌های وضعیت سیستم (فارسی)</h4>
@@ -163,11 +163,11 @@ function LongContentAndLocalesExample() {
             </p>
           </div>
 
-          <InlineNotification kind="success" title="تراکنش با موفقیت ثبت شد">
+          <InlineNotification status="success" title="تراکنش با موفقیت ثبت شد">
             رسید پرداخت به شماره پیگیری ۹۸۴۱۷۲۸ صادر گردید.
           </InlineNotification>
 
-          <InlineNotification kind="error" title="خطا در اتصال به پایگاه داده">
+          <InlineNotification status="error" title="خطا در اتصال به پایگاه داده">
             زمان پاسخ‌دهی سرور بیش از حد مجاز بوده است. لطفاً ارتباط شبکه را بررسی نمایید.
           </InlineNotification>
         </div>
@@ -191,19 +191,19 @@ export const Variants: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
       <div>
         <h4 style={{ margin: "0 0 0.5rem" }}>Subtle</h4>
-        <InlineNotification variant="subtle" kind="info" title="Subtle notification">
+        <InlineNotification variant="subtle" status="info" title="Subtle notification">
           Standard operational message with muted background.
         </InlineNotification>
       </div>
       <div>
         <h4 style={{ margin: "0 0 0.5rem" }}>Solid</h4>
-        <InlineNotification variant="solid" kind="success" title="Solid notification">
+        <InlineNotification variant="solid" status="success" title="Solid notification">
           High-emphasis status with saturated solid background.
         </InlineNotification>
       </div>
       <div>
         <h4 style={{ margin: "0 0 0.5rem" }}>Bordered</h4>
-        <InlineNotification variant="bordered" kind="warning" title="Bordered notification">
+        <InlineNotification variant="bordered" status="warning" title="Bordered notification">
           Clean card with semantic colored border outline.
         </InlineNotification>
       </div>

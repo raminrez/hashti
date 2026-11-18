@@ -514,7 +514,7 @@ function LocalizedSelectExamples() {
 
       <div className="field-story-case">
         <h2>Persian RTL with Latin identifier</h2>
-        <Theme theme={theme} locale="fa-IR">
+        <Theme theme={theme} lang="fa-IR" dir="rtl">
           <Select
             label="نقش کاربری در سامانه"
             description="سطح دسترسی خود را برای اتصال به اطلس مشخص نمایید."
@@ -536,7 +536,7 @@ function LocalizedSelectExamples() {
 
       <div className="field-story-case">
         <h2>Arabic RTL</h2>
-        <Theme theme={theme} locale="ar-AE">
+        <Theme theme={theme} lang="ar-AE" dir="rtl">
           <Select
             label="الصلاحية المخصصة للمستخدم"
             description="حدد مستوى الأذونات الخاصة ببيئة العمل."

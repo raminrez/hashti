@@ -393,7 +393,7 @@ function RightToLeftExample() {
       ]),
   );
   return (
-    <Theme theme={theme} locale="fa-IR">
+    <Theme theme={theme} lang="fa-IR" dir="rtl">
       <div dir="rtl" className="field-story-stack">
         <TokenField
           label="دستور دستیار با نشانه‌های زمینه"

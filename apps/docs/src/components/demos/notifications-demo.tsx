@@ -12,12 +12,12 @@ export function AlertLiveDemo() {
   return (
     <div className="w-full max-w-md flex flex-col gap-3">
       <Alert
-        kind="info"
+        status="info"
         title="Zenithal Angle Aligned"
         subtitle="The sunlight aperture has transitioned into the midday solar window."
       />
       <Alert
-        kind="error"
+        status="error"
         title="Threshold Access Blocked"
         subtitle="Ingress certificate expired for external perimeter."
       />
@@ -29,12 +29,12 @@ export function InlineNotificationLiveDemo() {
   return (
     <div className="w-full max-w-md flex flex-col gap-3">
       <InlineNotification
-        kind="success"
+        status="success"
         title="Configuration Saved"
         subtitle="Masonry bench parameters successfully stored in state."
       />
       <InlineNotification
-        kind="warning"
+        status="warning"
         title="High Thermal Delta"
         subtitle="Exterior temperature differs by 18°C from inner courtyard."
       />

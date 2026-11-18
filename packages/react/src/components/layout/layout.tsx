@@ -2,6 +2,7 @@
 
 import type { ComponentPropsWithRef, ReactNode, CSSProperties } from "react";
 import { Link, type LinkProps } from "../button";
+import { cx } from "../../utils";
 
 export interface StackProps extends ComponentPropsWithRef<"div"> {
   gap?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13;
@@ -59,17 +60,11 @@ export interface HeaderProps extends ComponentPropsWithRef<"header"> {
 export function Header({ className, ...props }: HeaderProps) {
   return <header {...props} className={["hashti-header", className].filter(Boolean).join(" ")} />;
 }
-export function HeaderName({ className, ...props }: LinkProps) {
-  return (
-    <Link
-      {...props}
-      className={
-        typeof className === "function"
-          ? (state) => `hashti-header-name ${className(state)}`
-          : `hashti-header-name ${className ?? ""}`
-      }
-    />
-  );
+export interface HeaderNameProps extends Omit<LinkProps, "className"> {
+  className?: string;
+}
+export function HeaderName({ className, ...props }: HeaderNameProps) {
+  return <Link {...props} className={cx("hashti-header-name", className)} />;
 }
 export function HeaderNav({ className, ...props }: ComponentPropsWithRef<"nav">) {
   return <nav {...props} className={["hashti-header-nav", className].filter(Boolean).join(" ")} />;

@@ -81,7 +81,7 @@ function LongContentAndLocalesExample() {
 
   return (
     <div className="layout-story-stack">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl" className="layout-card">
           <div>
             <h4 className="layout-card-title">سربرگ ناوبری چندزبانه (فارسی)</h4>

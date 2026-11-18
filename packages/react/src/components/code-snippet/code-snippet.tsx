@@ -53,7 +53,7 @@ export function CodeSnippet({
             size="sm"
             iconOnly
             aria-label={`Copy ${label.toLowerCase()}`}
-            onPress={copy}
+            onClick={copy}
           >
             <Icon name={copyStatus === "Copied to clipboard" ? "check" : "copy"} />
           </Button>
@@ -71,7 +71,7 @@ export function CodeSnippet({
       data-wrap={wrapText ? "true" : undefined}
       className={[
         "hashti-code-snippet",
-        `hashti-code-snippet--${type} hashti-code-snippet--${type}`,
+        `hashti-code-snippet--${type}`,
         wrapText ? "hashti-code-snippet--wrap" : undefined,
         className,
       ]
@@ -84,7 +84,7 @@ export function CodeSnippet({
           size="sm"
           iconOnly
           aria-label={`Copy ${label.toLowerCase()}`}
-          onPress={copy}
+          onClick={copy}
         >
           <Icon name={copyStatus === "Copied to clipboard" ? "check" : "copy"} />
         </Button>

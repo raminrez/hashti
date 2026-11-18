@@ -1,4 +1,6 @@
 import { useState } from "react";
+// Menu separators are RAC collection children until the Menu rewrite (TICK-006).
+import { Separator } from "react-aria-components";
 import {
   Button,
   Dialog,
@@ -12,7 +14,6 @@ import {
   Menu,
   MenuItem,
   MenuTrigger,
-  Separator,
 } from "@hashti/react";
 
 export function DialogLiveDemo() {

@@ -227,7 +227,7 @@ function LocalizedNotes() {
   const { theme } = useTheme();
   return (
     <div className="field-story-grid">
-      <Theme theme={theme} locale="fa-IR">
+      <Theme theme={theme} lang="fa-IR" dir="rtl">
         <TextArea
           label="یادداشت‌های مرور"
           description={
@@ -239,7 +239,7 @@ function LocalizedNotes() {
           rows={3}
         />
       </Theme>
-      <Theme theme={theme} locale="ar">
+      <Theme theme={theme} lang="ar" dir="rtl">
         <TextArea
           label="ملاحظات المراجعة"
           description={

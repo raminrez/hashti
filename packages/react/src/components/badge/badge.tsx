@@ -3,7 +3,7 @@
 import { type ComponentPropsWithRef, type ReactNode, type Ref } from "react";
 import { cx } from "../../utils";
 
-export type BadgeKind =
+export type BadgeVariant =
   "danger" | "success" | "warning" | "info" | "primary" | "neutral" | "secondary";
 export type BadgePlacement =
   | "top-end"
@@ -21,7 +21,7 @@ export interface BadgeProps extends Omit<ComponentPropsWithRef<"span">, "content
   maxCount?: number;
   max?: number;
   isDot?: boolean;
-  kind?: BadgeKind;
+  variant?: BadgeVariant;
   placement?: BadgePlacement;
   children?: ReactNode;
   ref?: Ref<HTMLSpanElement>;
@@ -33,7 +33,7 @@ export function Badge({
   maxCount = 99,
   max,
   isDot = false,
-  kind = "danger",
+  variant = "danger",
   placement = "top-end",
   children,
   className,
@@ -65,7 +65,7 @@ export function Badge({
       {...props}
       ref={ref}
       role="status"
-      data-kind={kind}
+      data-variant={variant}
       data-placement={normalizedPlacement}
       className={cx("hashti-badge", isDotMode ? "hashti-badge--dot" : undefined, className)}
     >

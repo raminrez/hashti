@@ -61,7 +61,7 @@ export const Playground: Story = {
 
 export const RTL: Story = {
   render: () => (
-    <Theme direction="rtl">
+    <Theme dir="rtl">
       <div dir="rtl" className="content-story-stack">
         <div className="content-card">
           <h4 className="content-card-title">کلیدهای میانبر در راست‌به‌چپ (RTL)</h4>
