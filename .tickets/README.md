@@ -47,7 +47,7 @@ each ticket file.
 ### Phase 2: Fundamental Interactive Actions
 - [x] **TICK-002**: [TICK-002-Button-Link.md](TICK-002-Button-Link.md) — `Button`, `Link`
   (Button with `render={<a>}`), `Toggle`; css-only `Breadcrumbs` composing Link.
-- [ ] **TICK-013**: [TICK-013-Contract-Spike.md](TICK-013-Contract-Spike.md) — Contract-validation
+- [x] **TICK-013**: [TICK-013-Contract-Spike.md](TICK-013-Contract-Spike.md) — Contract-validation
   spike: styled Button from a second framework against unmodified `@hashti/styles`.
   **Blocks Phase 3+ if the contract cracks.**
 - [ ] **TICK-003**: [TICK-003-Toolbar-ContentSwitcher.md](TICK-003-Toolbar-ContentSwitcher.md) —
