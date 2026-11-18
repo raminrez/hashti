@@ -75,7 +75,7 @@ each ticket file.
 - [ ] **TICK-010**: [TICK-010-Tree-GridList-Table.md](TICK-010-Tree-GridList-Table.md) — `Tree`
   (absorbs NavigationTree, keeps Section/Header parts); css-only semantic `Table`;
   GridList dropped.
-- [ ] **TICK-012**: [TICK-012-Presentational-Theme.md](TICK-012-Presentational-Theme.md) —
+- [x] **TICK-012**: [TICK-012-Presentational-Theme.md](TICK-012-Presentational-Theme.md) —
   css-only batch (`Card`, `CodeSnippet`, `EmptyState`, `Layout`, `Tag`, inline notifications)
   + `Theme` provider (RAC `I18nProvider` deleted).
 - [ ] **TICK-016**: [TICK-016-Adopt-New-Components.md](TICK-016-Adopt-New-Components.md) — Adopt

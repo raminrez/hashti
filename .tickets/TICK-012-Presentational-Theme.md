@@ -1,5 +1,7 @@
 # TICK-012: Presentational Batch + Theme Provider
 
+**Status:** DONE (18 Nov 2026)
+
 **Phase:** 1.5 — After TICK-001, parallel-safe with component tickets
 **Priority:** Medium
 **Blocked by:** TICK-000b. No ui-sdk primitives, so parallel-safe with TICK-002+.
