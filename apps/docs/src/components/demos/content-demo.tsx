@@ -12,6 +12,7 @@ import {
   Kbd,
   Link,
   Toolbar,
+  SegmentedControl,
   Button,
 } from "@hashti/react";
 
@@ -159,32 +160,16 @@ export function ToolbarLiveDemo() {
   );
 }
 
-export function ContentSwitcherLiveDemo() {
-  const [selected, setSelected] = useState("preview");
+export function SegmentedControlLiveDemo() {
+  const [selected, setSelected] = useState<string | null>("preview");
   return (
-    <div className="flex items-center p-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl">
-      <button
-        type="button"
-        onClick={() => setSelected("preview")}
-        className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-all ${
-          selected === "preview"
-            ? "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white shadow-xs"
-            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900"
-        }`}
-      >
-        Live Preview
-      </button>
-      <button
-        type="button"
-        onClick={() => setSelected("code")}
-        className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-all ${
-          selected === "code"
-            ? "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white shadow-xs"
-            : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900"
-        }`}
-      >
-        Source Code
-      </button>
-    </div>
+    <SegmentedControl
+      aria-label="Preview mode"
+      value={selected}
+      onValueChange={(value) => setSelected(value)}
+    >
+      <SegmentedControl.Item value="preview">Live Preview</SegmentedControl.Item>
+      <SegmentedControl.Item value="code">Source Code</SegmentedControl.Item>
+    </SegmentedControl>
   );
 }

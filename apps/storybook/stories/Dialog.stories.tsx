@@ -1,31 +1,17 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, waitFor, within } from "storybook/test";
-import {
-  Button,
-  Dialog,
-  DialogTrigger,
-  Heading,
-  Icon,
-  Modal,
-  Theme,
-  useTheme,
-} from "@hashti/react";
+import { Button, Dialog, DialogClose, Icon, Theme, useTheme } from "@hashti/react";
 import "./overlays.css";
 
 const meta = {
   title: "Overlays/Dialog",
   component: Dialog,
-  args: { role: "dialog" },
-  argTypes: {
-    role: { control: "select", options: ["dialog", "alertdialog"] },
-    children: { control: false },
-  },
   parameters: {
     docs: {
       description: {
         component:
-          'Dialog wraps RAC Dialog and supplies heading semantics, the close slot, and the 18px overlay surface. It always renders inside Modal: Modal owns the backdrop, portal, focus trap and Escape order, Dialog owns the reading column. A Heading with slot="title" names the dialog; a Button with slot="close" and a meaningful aria-label is the reachable dismissal.',
+          "Dialog wraps @ui-sdk/react/dialog: a focused window over the page with focus trap, Escape and outside-press dismissal, and return focus to the trigger. The RAC-era Modal folded into it — Dialog.Backdrop is the scrim (backdrop: dim | blur | none on the root), Dialog.Content is the surface (size: xs | sm | md | lg). DialogTitle names the dialog; DialogClose parts dismiss it.",
       },
     },
   },
@@ -35,39 +21,25 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
-  render: (args) => (
+  render: () => (
     <div className="overlay-story-stack">
-      <DialogTrigger>
-        <Button>Open dialog</Button>
-        <Modal isDismissable>
-          <Dialog {...args}>
-            {({ close }) => (
-              <>
-                <Heading slot="title">Workspace settings</Heading>
-                <Button
-                  slot="close"
-                  variant="ghost"
-                  size="md"
-                  iconOnly
-                  aria-label="Close dialog"
-                  onClick={close}
-                >
-                  <Icon name="close" />
-                </Button>
-                <p>Configure team permissions and shared notification preferences.</p>
-                <div className="hashti-dialog-footer">
-                  <Button variant="outline" onClick={close}>
-                    Cancel
-                  </Button>
-                  <Button variant="primary" onClick={close}>
-                    Save changes
-                  </Button>
-                </div>
-              </>
-            )}
-          </Dialog>
-        </Modal>
-      </DialogTrigger>
+      <Dialog>
+        <Dialog.Trigger render={<Button>Open dialog</Button>} />
+        <Dialog.Backdrop />
+        <Dialog.Content>
+          <Dialog.Title>Workspace settings</Dialog.Title>
+          <Dialog.Description>
+            Configure team permissions and shared notification preferences.
+          </Dialog.Description>
+          <div className="hashti-dialog-footer">
+            <DialogClose render={<Button variant="outline">Cancel</Button>} />
+            <DialogClose render={<Button variant="primary">Save changes</Button>} />
+          </div>
+          <DialogClose aria-label="Close dialog" render={<Button variant="ghost" iconOnly />}>
+            <Icon name="close" />
+          </DialogClose>
+        </Dialog.Content>
+      </Dialog>
     </div>
   ),
   play: async ({ canvasElement, userEvent }) => {
@@ -82,117 +54,124 @@ export const Playground: Story = {
     await expect(within(dialog).getByRole("button", { name: "Close dialog" })).toBeVisible();
 
     await userEvent.click(within(dialog).getByRole("button", { name: "Save changes" }));
-    await waitFor(() => expect(document.querySelector(".hashti-modal")).toBeNull());
+    await waitFor(() => expect(document.querySelector(".hashti-dialog")).toBeNull());
     await waitFor(() => expect(trigger).toHaveFocus());
   },
 };
 
-export const Anatomy: Story = {
+export const Sizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dialog.Content takes the size scale the deleted Modal owned: xs, sm, md (default), lg. The stylesheet caps the inline size per data-size.",
+      },
+    },
+  },
   render: () => (
     <div className="overlay-story-grid">
-      <div className="overlay-story-case">
-        <h2>Title, context, actions</h2>
-        <DialogTrigger>
-          <Button variant="secondary">Full anatomy</Button>
-          <Modal size="sm" isDismissable>
-            <Dialog>
-              {({ close }) => (
-                <>
-                  <Heading slot="title">Delete environment</Heading>
-                  <Button
-                    slot="close"
-                    variant="ghost"
-                    size="md"
-                    iconOnly
-                    aria-label="Close delete dialog"
-                    onClick={close}
-                  >
-                    <Icon name="close" />
-                  </Button>
-                  <p>Staging loses its data, logs, and deploy history. Production is untouched.</p>
-                  <div className="hashti-dialog-footer">
-                    <Button variant="outline" onClick={close}>
-                      Keep environment
-                    </Button>
-                    <Button variant="danger" onClick={close}>
-                      Delete staging
-                    </Button>
-                  </div>
-                </>
-              )}
-            </Dialog>
-          </Modal>
-        </DialogTrigger>
-      </div>
-
-      <div className="overlay-story-case">
-        <h2>Labelled by aria-label</h2>
-        <DialogTrigger>
-          <Button variant="secondary">No visible title</Button>
-          <Modal size="xs" isDismissable>
-            <Dialog aria-label="Keyboard shortcuts">
-              {({ close }) => (
-                <>
-                  <p>Press Escape to dismiss. Tab stays inside until the dialog closes.</p>
-                  <div className="hashti-dialog-footer">
-                    <Button variant="primary" onClick={close}>
-                      Got it
-                    </Button>
-                  </div>
-                </>
-              )}
-            </Dialog>
-          </Modal>
-        </DialogTrigger>
-      </div>
+      {(["xs", "sm", "md", "lg"] as const).map((size) => (
+        <div key={size} className="overlay-story-case">
+          <h2>Size {size.toUpperCase()}</h2>
+          <Dialog>
+            <Dialog.Trigger
+              render={<Button variant="secondary">{`Open ${size} dialog`}</Button>}
+            />
+            <Dialog.Backdrop />
+            <Dialog.Content size={size}>
+              <Dialog.Title>{`Dialog size: ${size.toUpperCase()}`}</Dialog.Title>
+              <Dialog.Description>
+                The content carries <code>{`data-size="${size}"`}</code>.
+              </Dialog.Description>
+              <div className="hashti-dialog-footer">
+                <DialogClose render={<Button variant="primary">Close</Button>} />
+              </div>
+            </Dialog.Content>
+          </Dialog>
+        </div>
+      ))}
     </div>
   ),
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByRole("button", { name: "No visible title" }));
-    const dialog = await waitFor(() =>
-      within(document.body).getByRole("dialog", { name: "Keyboard shortcuts" }),
-    );
+    const trigger = canvas.getByRole("button", { name: "Open md dialog" });
+    await userEvent.click(trigger);
+
+    const dialog = await waitFor(() => {
+      const el = document.querySelector<HTMLElement>('.hashti-dialog[data-size="md"]');
+      expect(el).not.toBeNull();
+      return el!;
+    });
     await waitFor(() => expect(dialog).toBeVisible());
+
+    await userEvent.click(within(dialog).getByRole("button", { name: "Close" }));
+    await waitFor(() => expect(document.querySelector(".hashti-dialog")).toBeNull());
+    await waitFor(() => expect(trigger).toHaveFocus());
+  },
+};
+
+export const Backdrops: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The root's backdrop prop styles Dialog.Backdrop: dim (the DESIGN scrim), blur (adds a 6px blur), or none (for surfaces that carry their own scrim).",
+      },
+    },
+  },
+  render: () => (
+    <div className="overlay-story-grid">
+      {(["dim", "blur", "none"] as const).map((backdrop) => (
+        <div key={backdrop} className="overlay-story-case">
+          <h2>{`Backdrop ${backdrop}`}</h2>
+          <Dialog backdrop={backdrop}>
+            <Dialog.Trigger
+              render={<Button variant="secondary">{`Open ${backdrop} dialog`}</Button>}
+            />
+            <Dialog.Backdrop />
+            <Dialog.Content size="sm">
+              <Dialog.Title>{`Backdrop: ${backdrop}`}</Dialog.Title>
+              <Dialog.Description>
+                The backdrop carries <code>{`data-backdrop="${backdrop}"`}</code>.
+              </Dialog.Description>
+              <div className="hashti-dialog-footer">
+                <DialogClose render={<Button variant="primary">Close</Button>} />
+              </div>
+            </Dialog.Content>
+          </Dialog>
+        </div>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("button", { name: "Open blur dialog" }));
+    const backdrop = await waitFor(() => {
+      const el = document.querySelector<HTMLElement>(".hashti-overlay");
+      expect(el).not.toBeNull();
+      return el!;
+    });
+    expect(backdrop.getAttribute("data-backdrop")).toBe("blur");
     await userEvent.keyboard("{Escape}");
-    await waitFor(() => expect(document.querySelector(".hashti-modal")).toBeNull());
+    await waitFor(() => expect(document.querySelector(".hashti-dialog")).toBeNull());
   },
 };
 
 export const FocusAndDismissal: Story = {
   render: () => (
     <div className="overlay-story-stack">
-      <DialogTrigger>
-        <Button>Review access request</Button>
-        <Modal size="sm" isDismissable>
-          <Dialog>
-            {({ close }) => (
-              <>
-                <Heading slot="title">Access request</Heading>
-                <Button
-                  slot="close"
-                  variant="ghost"
-                  size="md"
-                  iconOnly
-                  aria-label="Close access request"
-                  onClick={close}
-                >
-                  <Icon name="close" />
-                </Button>
-                <p>Allow build access for the release pipeline?</p>
-                <div className="hashti-dialog-footer">
-                  <Button variant="outline" onClick={close}>
-                    Deny
-                  </Button>
-                  <Button variant="primary" onClick={close}>
-                    Allow
-                  </Button>
-                </div>
-              </>
-            )}
-          </Dialog>
-        </Modal>
-      </DialogTrigger>
+      <Dialog>
+        <Dialog.Trigger render={<Button>Review access request</Button>} />
+        <Dialog.Backdrop />
+        <Dialog.Content size="sm">
+          <Dialog.Title>Access request</Dialog.Title>
+          <Dialog.Description>Allow build access for the release pipeline?</Dialog.Description>
+          <div className="hashti-dialog-footer">
+            <DialogClose render={<Button variant="outline">Deny</Button>} />
+            <DialogClose render={<Button variant="primary">Allow</Button>} />
+          </div>
+        </Dialog.Content>
+      </Dialog>
     </div>
   ),
   play: async ({ canvasElement, userEvent }) => {
@@ -206,7 +185,7 @@ export const FocusAndDismissal: Story = {
     // Focus enters the dialog and stays inside it.
     await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
     await userEvent.keyboard("{Escape}");
-    await waitFor(() => expect(document.querySelector(".hashti-modal")).toBeNull());
+    await waitFor(() => expect(document.querySelector(".hashti-dialog")).toBeNull());
     await waitFor(() => expect(trigger).toHaveFocus());
   },
 };
@@ -217,43 +196,23 @@ function LocalizedDialog() {
   return (
     <div className="overlay-story-stack">
       <Theme theme={theme} lang="fa-IR" dir="rtl">
-        <DialogTrigger>
-          <Button>بررسی درخواست دسترسی</Button>
-          <Modal size="sm" isDismissable>
-            <Dialog>
-              {({ close }) => (
-                <>
-                  <Heading slot="title">درخواست دسترسی</Heading>
-                  <Button
-                    slot="close"
-                    variant="ghost"
-                    size="md"
-                    iconOnly
-                    aria-label="بستن پنجره"
-                    onClick={close}
-                  >
-                    <Icon name="close" />
-                  </Button>
-                  <p>آیا دسترسی ساخت برای خط انتشار تأیید می‌شود؟</p>
-                  <div className="hashti-dialog-footer">
-                    <Button variant="outline" onClick={close}>
-                      رد درخواست
-                    </Button>
-                    <Button
-                      variant="primary"
-                      onClick={() => {
-                        setConfirmed("تأیید شد");
-                        close();
-                      }}
-                    >
-                      تأیید دسترسی
-                    </Button>
-                  </div>
-                </>
-              )}
-            </Dialog>
-          </Modal>
-        </DialogTrigger>
+        <Dialog>
+          <Dialog.Trigger render={<Button>بررسی درخواست دسترسی</Button>} />
+          <Dialog.Backdrop />
+          <Dialog.Content size="sm">
+            <Dialog.Title>درخواست دسترسی</Dialog.Title>
+            <Dialog.Description>
+              آیا دسترسی ساخت برای خط انتشار تأیید می‌شود؟
+            </Dialog.Description>
+            <div className="hashti-dialog-footer">
+              <DialogClose render={<Button variant="outline">رد درخواست</Button>} />
+              <DialogClose
+                action={() => setConfirmed("تأیید شد")}
+                render={<Button variant="primary">تأیید دسترسی</Button>}
+              />
+            </div>
+          </Dialog.Content>
+        </Dialog>
         <output aria-label="نتیجه بررسی">{confirmed || "در انتظار بررسی."}</output>
       </Theme>
     </div>
@@ -271,7 +230,7 @@ export const RightToLeft: Story = {
     );
     await expect(getComputedStyle(dialog).direction).toBe("rtl");
     await userEvent.click(within(dialog).getByRole("button", { name: "تأیید دسترسی" }));
-    await waitFor(() => expect(document.querySelector(".hashti-modal")).toBeNull());
+    await waitFor(() => expect(document.querySelector(".hashti-dialog")).toBeNull());
     await expect(canvas.getByRole("status", { name: "نتیجه بررسی" })).toHaveTextContent("تأیید شد");
   },
 };

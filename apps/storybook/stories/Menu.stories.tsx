@@ -10,14 +10,22 @@ import {
   MenuItem,
   MenuSection,
   MenuTrigger,
-  OverflowMenu,
-  Popover,
   SectionHeader,
   SubmenuTrigger,
   Theme,
   useTheme,
   type Selection,
 } from "@hashti/react";
+// TICK-007 interim: Hashti Popover is ui-sdk now; RAC MenuTrigger still needs a
+// RAC popover for its overlay context. Menu migrates in TICK-016. The local wrapper
+// keeps the .hashti-popover hook so the overlay CSS and the stories' queries hold.
+import { Popover as RACPopover } from "react-aria-components";
+import type { ComponentProps } from "react";
+
+function Popover({ className, ...props }: ComponentProps<typeof RACPopover>) {
+  const cls = typeof className === "string" ? `hashti-popover ${className}` : "hashti-popover";
+  return <RACPopover {...props} className={cls} />;
+}
 import "./navigation.css";
 import "./overlays.css";
 
@@ -323,6 +331,9 @@ export const KeyboardAndSubmenus: Story = {
   },
 };
 
+/* TICK-007: OverflowMenu was removed with the RAC-era popover. It returns in
+   TICK-016 rebuilt on @ui-sdk/react/menu + popover (docs/component-inventory.md).
+
 function OverflowMenuExample() {
   const [action, setAction] = useState<string>("None");
   return (
@@ -371,6 +382,7 @@ export const OverflowMenuStory: Story = {
     await waitFor(() => expect(canvas.getByText(/Last action: restart/)).toBeVisible());
   },
 };
+*/
 
 function LocalizedMenu() {
   const { theme } = useTheme();

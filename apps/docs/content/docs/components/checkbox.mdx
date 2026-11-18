@@ -5,7 +5,7 @@ description: Selection control enabling users to select one or more options from
 
 # Checkbox
 
-Checkboxes allow users to select multiple options from a group or toggle a single binary setting. Hashti's `Checkbox` and `CheckboxGroup` components are built on [React Aria Components Checkbox](https://react-spectrum.adobe.com/react-aria/Checkbox.html), providing native indeterminate state support, tri-state ARIA semantics, group-level validation, and Persian architectural color harmonies.
+Checkboxes allow users to select multiple options from a group or toggle a single binary setting. Hashti's `Checkbox` and `CheckboxGroup` components are built on [ui-sdk Checkbox](https://ui-sdk.dev/docs), providing native indeterminate state support, tri-state ARIA semantics, group-level required/read-only handling, and Persian architectural color harmonies.
 
 <ComponentPreview
   title="Live Interactive Selection Controls"
@@ -28,7 +28,7 @@ The Hashti checkbox uses an architectural square glyph with precise corner radiu
 ```
 
 - **Dual Mode (Single or Grouped)**: Use standalone `Checkbox` for agreement disclosures (e.g. Terms of Service), or wrap in `CheckboxGroup` for grouped categorical options.
-- **Tri-State Support**: Supports `true`, `false`, and `isIndeterminate` for parent-child selection trees (e.g., selecting all permissions in a role).
+- **Tri-State Support**: Supports `true`, `false`, and `"indeterminate"` for parent-child selection trees (e.g., selecting all permissions in a role).
 - **Comprehensive Group Layouts**: `CheckboxGroup` includes built-in accessible labeling, helper descriptions, error messages, and optional/required badges.
 
 ---
@@ -56,7 +56,7 @@ export function SingleCheckboxDemo() {
   const [agreed, setAgreed] = useState(false);
 
   return (
-    <Checkbox isSelected={agreed} onChange={setAgreed}>
+    <Checkbox checked={agreed} onCheckedChange={(next) => setAgreed(next === true)}>
       I agree to the Hashti Architectural Service Terms and Privacy Policy
     </Checkbox>
   );
@@ -67,7 +67,7 @@ export function SingleCheckboxDemo() {
 
 ### Indeterminate State (Parent-Child Hierarchy)
 
-When a parent checkbox governs a set of child checkboxes where only some are selected, set `isIndeterminate={true}`. The component renders an architectural minus icon (`−`) and announces `aria-checked="mixed"`:
+When a parent checkbox governs a set of child checkboxes where only some are selected, pass `checked="indeterminate"`. The component renders an architectural minus icon (`−`) and announces `aria-checked="mixed"`:
 
 ```tsx
 import { useState } from "react";
@@ -78,7 +78,7 @@ export function IndeterminateCheckboxDemo() {
 
   const allItems = ["read", "write", "admin"];
   const isAllSelected = selectedItems.length === allItems.length;
-  const isIndeterminate = selectedItems.length > 0 && !isAllSelected;
+  const mixed = selectedItems.length > 0 && !isAllSelected;
 
   const toggleAll = () => {
     if (isAllSelected) {
@@ -96,18 +96,18 @@ export function IndeterminateCheckboxDemo() {
 
   return (
     <div className="flex flex-col gap-2">
-      <Checkbox isSelected={isAllSelected} isIndeterminate={isIndeterminate} onChange={toggleAll}>
+      <Checkbox checked={isAllSelected ? true : mixed ? "indeterminate" : false} onCheckedChange={toggleAll}>
         Select All Permissions
       </Checkbox>
 
       <div className="ml-6 flex flex-col gap-2 border-l border-neutral-200 pl-4 dark:border-neutral-800">
-        <Checkbox isSelected={selectedItems.includes("read")} onChange={() => toggleItem("read")}>
+        <Checkbox checked={selectedItems.includes("read")} onCheckedChange={() => toggleItem("read")}>
           Read telemetry logs
         </Checkbox>
-        <Checkbox isSelected={selectedItems.includes("write")} onChange={() => toggleItem("write")}>
+        <Checkbox checked={selectedItems.includes("write")} onCheckedChange={() => toggleItem("write")}>
           Write configuration changes
         </Checkbox>
-        <Checkbox isSelected={selectedItems.includes("admin")} onChange={() => toggleItem("admin")}>
+        <Checkbox checked={selectedItems.includes("admin")} onCheckedChange={() => toggleItem("admin")}>
           Administer security tokens
         </Checkbox>
       </div>
@@ -134,7 +134,7 @@ export function CheckboxGroupDemo() {
       label="Notification Preferences"
       description="Choose which event digests you wish to receive via email."
       value={notifications}
-      onChange={setNotifications}
+      onValueChange={setNotifications}
     >
       <Checkbox value="security">Security incidents and alerts</Checkbox>
       <Checkbox value="deployments">Pipeline deployment completions</Checkbox>
@@ -149,7 +149,7 @@ export function CheckboxGroupDemo() {
 
 ### Invalid Validation Error State
 
-When validation fails (such as submitting an empty mandatory group), pass `isInvalid` and provide an `errorMessage`:
+When validation fails (such as submitting an empty mandatory group), surface an error through the group's `status`:
 
 ```tsx
 import { useState } from "react";
@@ -163,10 +163,9 @@ export function InvalidCheckboxGroupDemo() {
     <CheckboxGroup
       label="Required Compliance Attestation"
       description="You must select at least one compliance standard before provisioning."
-      errorMessage="Please select at least one standard."
-      isInvalid={isInvalid}
+      status={isInvalid ? { type: "error", message: "Please select at least one standard." } : undefined}
       value={selected}
-      onChange={setSelected}
+      onValueChange={setSelected}
     >
       <Checkbox value="soc2">SOC 2 Type II</Checkbox>
       <Checkbox value="iso27001">ISO / IEC 27001</Checkbox>
@@ -188,19 +187,19 @@ import { Checkbox } from "@hashti/react";
 export function CheckboxColorsDemo() {
   return (
     <div className="flex flex-wrap gap-4">
-      <Checkbox defaultSelected color="primary">
+      <Checkbox defaultChecked color="primary">
         Primary
       </Checkbox>
-      <Checkbox defaultSelected color="secondary">
+      <Checkbox defaultChecked color="secondary">
         Secondary
       </Checkbox>
-      <Checkbox defaultSelected color="success">
+      <Checkbox defaultChecked color="success">
         Success
       </Checkbox>
-      <Checkbox defaultSelected color="warning">
+      <Checkbox defaultChecked color="warning">
         Warning
       </Checkbox>
-      <Checkbox defaultSelected color="danger">
+      <Checkbox defaultChecked color="danger">
         Danger
       </Checkbox>
     </div>
@@ -214,16 +213,18 @@ export function CheckboxColorsDemo() {
 
 ### Checkbox Props
 
-`Checkbox` extends `RACCheckboxProps` from `react-aria-components`.
+`Checkbox` wraps the ui-sdk `Checkbox` from `@ui-sdk/react/checkbox` and accepts its props.
 
 | Prop              | Type                                                             | Default     | Description                                                            |
 | :---------------- | :--------------------------------------------------------------- | :---------- | :--------------------------------------------------------------------- |
-| `isSelected`      | `boolean`                                                        | —           | Whether the checkbox is currently checked (controlled).                |
-| `defaultSelected` | `boolean`                                                        | `false`     | Initial selection state (uncontrolled).                                |
-| `onChange`        | `(isSelected: boolean) => void`                                  | —           | Handler invoked when the checked state changes.                        |
-| `isIndeterminate` | `boolean`                                                        | `false`     | Sets tri-state indeterminate visual icon and `aria-checked="mixed"`.   |
-| `isDisabled`      | `boolean`                                                        | `false`     | Whether the checkbox cannot be interacted with.                        |
-| `isInvalid`       | `boolean`                                                        | `false`     | Indicates validation failure and highlights the control.               |
+| `checked`         | `boolean \| "indeterminate"`                                     | —           | Controlled checked state; `"indeterminate"` is the mixed state.        |
+| `defaultChecked`  | `boolean \| "indeterminate"`                                     | `false`     | Initial checked state (uncontrolled).                                  |
+| `onCheckedChange` | `(checked: boolean \| "indeterminate", details) => void`         | —           | Handler invoked when the checked state changes.                        |
+| `disabled`        | `boolean`                                                        | `false`     | Whether the checkbox cannot be interacted with.                        |
+| `readOnly`        | `boolean`                                                        | `false`     | Prevents changes while staying focusable and submitted.                |
+| `required`        | `boolean`                                                        | `false`     | Blocks form submission until the checkbox is checked.                  |
+| `parent`          | `boolean`                                                        | `false`     | Makes it the parent of its group, reflecting and driving all members.  |
+| `size`            | `'sm' \| 'md' \| 'lg'`                                           | —           | Control size, applied as `data-size`.                                  |
 | `color`           | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger'` | `'primary'` | Semantic color token for the checked surface.                          |
 | `value`           | `string`                                                         | —           | Value associated with the checkbox when used inside a `CheckboxGroup`. |
 | `children`        | `ReactNode`                                                      | —           | Text label or content rendered adjacent to the checkbox box.           |
@@ -231,18 +232,21 @@ export function CheckboxColorsDemo() {
 
 ### CheckboxGroup Props
 
-`CheckboxGroup` extends `RACCheckboxGroupProps` from `react-aria-components`.
+`CheckboxGroup` wraps the ui-sdk `CheckboxGroup` from `@ui-sdk/react/checkbox` and adds Hashti's field anatomy.
 
 | Prop           | Type                        | Default     | Description                                               |
 | :------------- | :-------------------------- | :---------- | :-------------------------------------------------------- |
 | `label`        | `ReactNode`                 | —           | Accessible label for the group of checkboxes.             |
 | `description`  | `ReactNode`                 | —           | Descriptive helper text displayed underneath the label.   |
-| `errorMessage` | `ReactNode`                 | —           | Error text displayed when `isInvalid` is true.            |
-| `value`        | `string[]`                  | —           | Controlled array of selected checkbox values.             |
-| `defaultValue` | `string[]`                  | —           | Initial array of selected checkbox values (uncontrolled). |
-| `onChange`     | `(value: string[]) => void` | —           | Callback invoked when the group selection changes.        |
-| `isInvalid`    | `boolean`                   | `false`     | Whether the group currently fails validation.             |
-| `isDisabled`   | `boolean`                   | `false`     | Disables all child checkboxes within the group.           |
+| `errorMessage` | `ReactNode`                     | —           | Error text shown while the field is invalid.              |
+| `value`        | `string[]`                      | —           | Controlled array of selected checkbox values.             |
+| `defaultValue` | `string[]`                      | —           | Initial array of selected checkbox values (uncontrolled). |
+| `onValueChange`| `(value: string[], details) => void` | —      | Callback invoked when the group selection changes.        |
+| `status`       | `FieldStatus`                   | —           | Detached group recovery: warning/error/success message.   |
+| `disabled`     | `boolean`                       | `false`     | Disables all child checkboxes within the group.           |
+| `required`     | `boolean`                       | `false`     | Blocks submission until at least one member is checked.   |
+| `readOnly`     | `boolean`                       | `false`     | Keeps members focusable and submitted, stops changes.     |
+| `isOptional`
 | `isOptional`   | `boolean`                   | `false`     | Renders an optional badge next to the group label.        |
 | `color`        | `SelectionColor`            | `'primary'` | Inherited color accent applied to child checkboxes.       |
 
@@ -261,8 +265,8 @@ Hashti checkboxes adhere strictly to the [W3C WAI-ARIA Checkbox Pattern](https:/
 ### ARIA Semantics
 
 - **Indeterminate State**: Sets `aria-checked="mixed"`, signalling to screen readers that a partial subset of child items is active.
-- **Group Association**: `CheckboxGroup` renders a semantic `<div role="group">` linked to its label via `aria-labelledby` and its helper/error message via `aria-describedby`.
-- **Validation Signals**: When `isInvalid` is true, the group applies `aria-invalid="true"`.
+- **Group Association**: `CheckboxGroup` renders a semantic `<div role="group">`; inside Hashti's field anatomy the ui-sdk Field wires its label via `aria-labelledby` and its description/error via `aria-describedby`.
+- **Validation Signals**: While invalid, the group applies `aria-invalid="true"` and `data-invalid`.
 - **High Contrast Focus**: Features an outer offset focus ring meeting the WCAG 2.2 AAA minimum 3:1 contrast ratio against both light and dark canvas surfaces.
 
 ---
@@ -280,9 +284,10 @@ Hashti checkboxes adhere strictly to the [W3C WAI-ARIA Checkbox Pattern](https:/
 
 | Attribute              | Target   | Description                                     |
 | :--------------------- | :------- | :---------------------------------------------- |
-| `[data-hovered]`       | Checkbox | Present when hovered by pointer.                |
-| `[data-focused]`       | Checkbox | Present when receiving keyboard focus.          |
-| `[data-pressed]`       | Checkbox | Active during mouse or space key press.         |
-| `[data-selected]`      | Checkbox | Active when checkbox is checked.                |
-| `[data-indeterminate]` | Checkbox | Active when checkbox is in indeterminate state. |
-| `[data-disabled]`      | Checkbox | Present when checkbox is disabled.              |
+| `[data-checked]`       | Checkbox, CheckboxIndicator | Present while checked.                          |
+| `[data-unchecked]`     | Checkbox, CheckboxIndicator | Present while unchecked.                        |
+| `[data-indeterminate]` | Checkbox, CheckboxIndicator | Present while in the mixed state.               |
+| `[data-disabled]`      | Checkbox, group             | Present when disabled.                          |
+| `[data-readonly]`      | Checkbox, group             | Present when read-only.                         |
+| `[data-required]`      | Checkbox, group             | Present when required.                          |
+| `[data-invalid]`       | Checkbox, group             | Present while the surrounding field is invalid. |

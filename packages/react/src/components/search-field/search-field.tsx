@@ -1,29 +1,32 @@
 "use client";
 
 import type { ReactNode, Ref } from "react";
+import { Field as UiSdkField, type FieldState } from "@ui-sdk/react/field";
 import {
-  SearchField as RACSearchField,
-  SearchFieldContext,
-  Input,
-  type SearchFieldProps as RACSearchFieldProps,
-  type InputProps,
-} from "react-aria-components";
-import { Icon } from "../../icons";
+  Input as UiSdkInput,
+  InputClear,
+  InputGroup,
+  type InputState,
+} from "@ui-sdk/react/input";
 import {
   FieldLayout,
-  FieldGroupInput,
-  FieldButton,
-  FieldControl,
-  useFieldAnatomy,
+  FieldPresentationProvider,
   fieldClassName,
-  fieldParts,
+  useFieldPresentation,
   type FieldContentProps,
   type FieldPresentationProps,
 } from "../field";
-import { classes, type ControlSize } from "../../utils";
+import { Icon } from "../../icons";
+import { cx, type ControlSize } from "../../utils";
 
-export interface SearchFieldRootProps extends RACSearchFieldProps, FieldPresentationProps {
+export interface SearchFieldRootProps extends FieldPresentationProps {
   size?: ControlSize;
+  name?: string;
+  disabled?: boolean;
+  invalid?: boolean;
+  required?: boolean;
+  className?: string | ((state: FieldState) => string | undefined);
+  children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
 }
 
@@ -34,29 +37,50 @@ function SearchFieldRoot({
   status,
   statusVariant,
   isOptional,
+  name,
+  disabled,
+  invalid,
+  required,
   ...props
 }: SearchFieldRootProps) {
-  const anatomy = useFieldAnatomy(
-    { ...props, status, statusVariant, isOptional },
-    SearchFieldContext as Parameters<typeof useFieldAnatomy>[1],
-  );
+  const presentation = useFieldPresentation({ status, statusVariant, isOptional }, undefined);
   return (
-    <RACSearchField
-      {...props}
-      {...anatomy.props}
+    <UiSdkField
+      name={name}
+      disabled={disabled}
+      invalid={invalid}
       data-size={size}
-      className={classes(fieldClassName("search-field"), className)}
+      {...presentation.props}
+      className={cx(fieldClassName("search-field"), className as string)}
     >
-      {anatomy.wrap(children, anatomy.slotted?.children as ReactNode)}
-    </RACSearchField>
+      <FieldPresentationProvider
+        status={status}
+        statusVariant={presentation.statusVariant}
+        isOptional={isOptional}
+        isRequired={required}
+        fieldGated
+      >
+        {children}
+      </FieldPresentationProvider>
+    </UiSdkField>
   );
 }
 
-export interface SearchFieldProps extends SearchFieldRootProps, FieldContentProps {
+export interface SearchFieldProps extends Omit<SearchFieldRootProps, "children">, FieldContentProps {
   placeholder?: string;
-  inputProps?: InputProps;
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+  inputRef?: Ref<HTMLInputElement>;
+  /** Accessible name for the clear button. */
+  clearLabel?: string;
+  children?: ReactNode;
 }
 
+/**
+ * A search box: a ui-sdk `Input type="search"` with the search icon and a
+ * clear button, inside the field anatomy.
+ */
 function SearchFieldDefault({
   label,
   labelTooltip,
@@ -64,13 +88,18 @@ function SearchFieldDefault({
   errorMessage,
   size = "md",
   placeholder = "Search",
-  inputProps,
+  clearLabel = "Clear search",
+  inputRef,
   className,
   children,
+  value,
+  defaultValue,
+  onValueChange,
+  required,
   ...props
 }: SearchFieldProps) {
   return (
-    <SearchFieldRoot {...props} size={size} className={className}>
+    <SearchFieldRoot {...props} required={required} size={size} className={className}>
       {children ?? (
         <FieldLayout
           label={label}
@@ -78,23 +107,35 @@ function SearchFieldDefault({
           description={description}
           errorMessage={errorMessage}
         >
-          <FieldControl>
+          <InputGroup className="hashti-field__control hashti-input-group">
             <Icon name="search" />
-            <Input placeholder={placeholder} {...inputProps} />
-            <FieldButton size={size}>
+            <UiSdkInput
+              type="search"
+              placeholder={placeholder}
+              value={value}
+              defaultValue={defaultValue}
+              onValueChange={onValueChange}
+              required={required}
+              ref={inputRef}
+            />
+            <InputClear aria-label={clearLabel} className="hashti-button" data-variant="ghost">
               <Icon name="close" />
-            </FieldButton>
-          </FieldControl>
+            </InputClear>
+          </InputGroup>
         </FieldLayout>
       )}
     </SearchFieldRoot>
   );
 }
 
-export const SearchField = Object.assign(SearchFieldDefault, {
+export const SearchField: typeof SearchFieldDefault & {
+  Root: typeof SearchFieldRoot;
+  Group: typeof InputGroup;
+  Clear: typeof InputClear;
+} = Object.assign(SearchFieldDefault, {
   Root: SearchFieldRoot,
-  ...fieldParts,
-  Input: FieldGroupInput,
-  Control: FieldControl,
-  ClearButton: FieldButton,
+  Group: InputGroup,
+  Clear: InputClear,
 });
+
+export type { InputState };

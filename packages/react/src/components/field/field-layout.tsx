@@ -1,22 +1,27 @@
+"use client";
+
 import type { ReactNode } from "react";
-import type { FieldErrorProps } from "react-aria-components";
+import { useTheme } from "../../theme";
 import {
-  FieldLabel,
   FieldDescription,
   FieldErrorMessage,
   FieldHelp,
+  FieldLabel,
   FieldStatusIcon,
   FieldStatusMessage,
 } from "./field-parts";
-import { useTheme } from "../../theme";
 
 export interface FieldContentProps {
   label?: ReactNode;
   labelTooltip?: ReactNode;
   description?: ReactNode;
-  errorMessage?: FieldErrorProps["children"];
+  errorMessage?: ReactNode;
 }
 
+/**
+ * The reading order every typed field shares: label, guidance (before the
+ * control in the frame themes), the control itself, then recovery and status.
+ */
 export function FieldLayout({
   label,
   labelTooltip,
@@ -35,7 +40,7 @@ export function FieldLayout({
       {inlineIcon && <FieldStatusIcon />}
       <FieldHelp>
         {!isFrame && description != null && <FieldDescription>{description}</FieldDescription>}
-        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+        {errorMessage != null && <FieldErrorMessage>{errorMessage}</FieldErrorMessage>}
         <FieldStatusMessage />
       </FieldHelp>
     </>

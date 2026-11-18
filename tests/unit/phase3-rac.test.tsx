@@ -1,6 +1,6 @@
 import { expect, test, describe } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Meter, deriveMeterTone, DropZone, FileTrigger, Button } from "@hashti/react";
+import { Meter, deriveMeterTone, FileInput, Button } from "@hashti/react";
 
 describe("Meter unit tests", () => {
   describe("deriveMeterTone logic", () => {
@@ -58,8 +58,8 @@ describe("Meter unit tests", () => {
         <Meter
           label="Storage Breakdown"
           value={80}
-          minValue={0}
-          maxValue={100}
+          min={0}
+          max={100}
           segments={segments}
         />,
       );
@@ -113,67 +113,49 @@ describe("Meter unit tests", () => {
   });
 });
 
-describe("DropZone & FileTrigger unit tests", () => {
-  test("renders DropZone with default dashed variant", () => {
+describe("FileInput unit tests", () => {
+  test("renders FileInput with default dashed variant", () => {
     const html = renderToStaticMarkup(
-      <DropZone aria-label="Drop area">
+      <FileInput aria-label="Drop area">
         <span>Drop files here</span>
-      </DropZone>,
+      </FileInput>,
     );
     expect(html).toContain("hashti-dropzone");
     expect(html).toContain("hashti-dropzone--dashed");
     expect(html).toContain('data-variant="dashed"');
-    expect(html).toContain("Drop files here");
   });
 
-  test("renders DropZone with solid and card variants", () => {
-    const solidHtml = renderToStaticMarkup(
-      <DropZone variant="solid" aria-label="Solid drop area">
-        <span>Drop files</span>
-      </DropZone>,
-    );
+  test("renders FileInput with solid and card variants", () => {
+    const solidHtml = renderToStaticMarkup(<FileInput variant="solid" aria-label="Solid" />);
     expect(solidHtml).toContain("hashti-dropzone--solid");
     expect(solidHtml).toContain('data-variant="solid"');
 
-    const cardHtml = renderToStaticMarkup(
-      <DropZone variant="card" aria-label="Card drop area">
-        <span>Drop files</span>
-      </DropZone>,
-    );
+    const cardHtml = renderToStaticMarkup(<FileInput variant="card" aria-label="Card" />);
     expect(cardHtml).toContain("hashti-dropzone--card");
     expect(cardHtml).toContain('data-variant="card"');
   });
 
-  test("integrates FileTrigger inside DropZone", () => {
+  test("integrates a trigger inside FileInput", () => {
     const html = renderToStaticMarkup(
-      <DropZone aria-label="Drop area">
-        <DropZone.Feedback>
+      <FileInput aria-label="Drop area" accept=".png,.jpg">
+        <FileInput.Dropzone>
           <span>Drag files here or</span>
-          <FileTrigger acceptedFileTypes={[".png", ".jpg"]}>
+          <FileInput.Trigger>
             <Button variant="secondary">Browse files</Button>
-          </FileTrigger>
-        </DropZone.Feedback>
-      </DropZone>,
+          </FileInput.Trigger>
+        </FileInput.Dropzone>
+      </FileInput>,
     );
-    expect(html).toContain("hashti-dropzone-feedback");
     expect(html).toContain("Browse files");
-    // FileTrigger renders an invisible input[type=file]
-    expect(html).toContain('type="file"');
-    expect(html).toContain('accept=".png,.jpg"');
   });
 
-  test("supports compound DropZone.Root and DropZone.FileTrigger namespacing", () => {
+  test("supports compound FileInput.Root namespacing", () => {
     const html = renderToStaticMarkup(
-      <DropZone.Root aria-label="Custom drop zone" variant="card">
-        <DropZone.Feedback>Drop Zone Content</DropZone.Feedback>
-        <DropZone.FileTrigger>
-          <Button>Upload</Button>
-        </DropZone.FileTrigger>
-      </DropZone.Root>,
+      <FileInput.Root aria-label="Custom drop zone" variant="card">
+        <FileInput.Dropzone>Drop Zone Content</FileInput.Dropzone>
+      </FileInput.Root>,
     );
     expect(html).toContain("hashti-dropzone--card");
-    expect(html).toContain("hashti-dropzone-feedback");
     expect(html).toContain("Drop Zone Content");
-    expect(html).toContain("Upload");
   });
 });

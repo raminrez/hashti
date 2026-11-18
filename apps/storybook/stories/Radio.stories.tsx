@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, fn, waitFor, within } from "storybook/test";
-import { Button, Form, Radio, RadioGroup, Theme, useTheme, type FormProps } from "@hashti/react";
+import { expect, fn, within } from "storybook/test";
+import { Radio, RadioGroup, Theme, useTheme } from "@hashti/react";
 import "./fields.css";
 
 const meta = {
@@ -10,29 +10,25 @@ const meta = {
   args: {
     label: "Delivery schedule",
     description: "Choose when review updates arrive.",
-    errorMessage: "Choose a delivery schedule.",
     defaultValue: "immediate",
   },
   argTypes: {
     label: { control: "text" },
     description: { control: "text" },
-    errorMessage: { control: "text" },
+    errorMessage: { control: false },
     value: { control: "select", options: ["immediate", "daily"] },
     defaultValue: { control: "select", options: ["immediate", "daily"] },
     name: { control: "text" },
-    orientation: { control: "select", options: ["vertical", "horizontal"] },
-    isDisabled: { control: "boolean" },
-    isReadOnly: { control: "boolean" },
-    isRequired: { control: "boolean" },
-    isInvalid: { control: "boolean" },
-    validationBehavior: { control: "select", options: ["native", "aria"] },
+    disabled: { control: "boolean" },
+    readOnly: { control: "boolean" },
+    required: { control: "boolean" },
     children: { control: false },
   },
   parameters: {
     docs: {
       description: {
         component:
-          "Radio requires a string value and belongs inside RadioGroup. Selection, read-only, required, and validation state belong to the group; individual options can be disabled. There is no mixed state. The callable group provides persistent guidance and detached group recovery. Root, Label, Description, Options, Radio, Help, ErrorMessage, and Status remain composable. RAC owns native inputs, validation, and roving focus: Space selects; arrow keys move and select, skipping disabled options and respecting horizontal locale direction. Root refs target a div, Radio refs a label, and inputRef the native radio input. Custom render callbacks must retain these native elements and props.",
+          "Radio requires a string value and belongs inside RadioGroup. Selection, read-only, required, and recovery state belong to the group; individual options can be disabled. There is no mixed state. The default group provides persistent guidance and detached group recovery. Root, Label, Description, Options, Radio, Help, ErrorMessage, and Status remain composable. ui-sdk owns native inputs and roving focus: Space selects; arrow keys move and select, skipping disabled options and respecting horizontal locale direction. Root refs target the group div, Radio refs its button control, and each radio pairs with a visually hidden native input that submits. Render-prop content must keep the part's props intact.",
       },
     },
   },
@@ -42,7 +38,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
-  args: { onChange: fn() },
+  args: { onValueChange: fn() },
   render: (args) => (
     <div className="field-story-stack">
       <RadioGroup {...args}>
@@ -67,9 +63,11 @@ export const States: Story = {
       <RadioGroup
         label="Delivery requiring correction"
         description="Choose one schedule for this review."
-        isRequired
-        isInvalid
-        errorMessage="Choose a delivery schedule."
+        required
+        status={{
+          type: "error",
+          message: "Choose a delivery schedule.",
+        }}
       >
         <Radio value="immediate">Immediate updates</Radio>
         <Radio value="daily">Daily summary</Radio>
@@ -78,7 +76,7 @@ export const States: Story = {
         label="Read-only delivery"
         description="The review owner chose this schedule."
         defaultValue="immediate"
-        isReadOnly
+        readOnly
       >
         <Radio value="immediate">Immediate updates</Radio>
         <Radio value="daily">Daily summary</Radio>
@@ -87,7 +85,7 @@ export const States: Story = {
         label="Unavailable delivery"
         description="Archived reviews cannot change delivery."
         defaultValue="daily"
-        isDisabled
+        disabled
       >
         <Radio value="immediate">Immediate updates</Radio>
         <Radio value="daily">Daily summary</Radio>
@@ -99,7 +97,8 @@ export const States: Story = {
     const invalid = canvas.getByRole("radiogroup", {
       name: "Delivery requiring correction (required)",
     });
-    await expect(invalid).toHaveAttribute("aria-invalid", "true");
+    await expect(invalid).toHaveAttribute("data-required");
+    await expect(invalid).toHaveAttribute("data-hashti-status", "error");
     await expect(invalid).toHaveAccessibleDescription(
       "Choose one schedule for this review. Choose a delivery schedule.",
     );
@@ -107,18 +106,16 @@ export const States: Story = {
     await expect(within(invalid).getByText("Choose a delivery schedule.")).toBeVisible();
 
     const readonly = canvas.getByRole("radiogroup", { name: "Read-only delivery" });
-    const selected = within(readonly).getByRole<HTMLInputElement>("radio", {
+    const selected = within(readonly).getByRole("radio", {
       name: "Immediate updates",
     });
-    const unselected = within(readonly).getByRole<HTMLInputElement>("radio", {
+    const unselected = within(readonly).getByRole("radio", {
       name: "Daily summary",
     });
-    await expect(readonly).toHaveAttribute("aria-readonly", "true");
+    await expect(readonly).toHaveAttribute("data-readonly");
     for (const option of [selected, unselected]) {
       await expect(option).not.toBeDisabled();
       await userEvent.click(option);
-      await expect(option).toHaveFocus();
-      await userEvent.keyboard(" ");
       await expect(selected).toBeChecked();
       await expect(unselected).not.toBeChecked();
     }
@@ -139,7 +136,7 @@ function ValueExamples() {
         label="Controlled delivery"
         description="The application owns the selected string value."
         value={delivery}
-        onChange={setDelivery}
+        onValueChange={(value) => setDelivery(value ?? "immediate")}
       >
         <Radio value="immediate">Immediate updates</Radio>
         <Radio value="daily">Daily summary</Radio>
@@ -147,7 +144,7 @@ function ValueExamples() {
       <output aria-label="Controlled delivery value">{delivery}</output>
       <RadioGroup
         label="Uncontrolled delivery"
-        description="RAC owns this selection until submission."
+        description="ui-sdk owns this selection until submission."
         defaultValue="daily"
       >
         <Radio value="immediate">Immediate updates</Radio>
@@ -175,96 +172,65 @@ export const ControlledAndUncontrolled: Story = {
   },
 };
 
-const deliveryHint = "Choose when review updates arrive. This form only reads the current draft.";
-const missingDelivery = "Choose a delivery schedule.";
-const returnedDeliveryError = "This schedule is no longer available. Choose another schedule.";
-
 function ComposedDelivery() {
   const root = useRef<HTMLDivElement>(null);
-  const label = useRef<HTMLLabelElement>(null);
-  const input = useRef<HTMLInputElement>(null);
-  const [validationErrors, setValidationErrors] = useState<FormProps["validationErrors"]>({});
+  const control = useRef<HTMLButtonElement>(null);
   const [submitted, setSubmitted] = useState("");
   const [refs, setRefs] = useState("");
   return (
-    <Form
+    <form
       aria-label="Delivery form"
       className="field-story-stack"
-      validationBehavior="native"
-      validationErrors={validationErrors}
       onSubmit={(event) => {
         event.preventDefault();
         setSubmitted(JSON.stringify(Array.from(new FormData(event.currentTarget).entries())));
       }}
       onReset={() => {
-        setValidationErrors({});
         setSubmitted("");
       }}
     >
       <p>
-        Read the native values without saving or resetting the draft. Apply a returned, name-keyed
-        error to try group recovery; no request leaves this page.
+        Read the native values without saving or resetting the draft. The group keeps its own
+        heading; ui-sdk's hidden radio inputs submit the checked value under the group's name.
       </p>
       <RadioGroup.Root
         ref={root}
         name="delivery"
-        isRequired
+        aria-labelledby="delivery-heading"
         render={(props) => <div {...props} data-composed-root="true" />}
       >
-        <RadioGroup.Label>Delivery schedule</RadioGroup.Label>
-        <RadioGroup.Description>{deliveryHint}</RadioGroup.Description>
+        <h2 id="delivery-heading">Delivery schedule</h2>
+        <p>Choose when review updates arrive. This form only reads the current draft.</p>
         <RadioGroup.Options>
           <RadioGroup.Radio
-            ref={label}
-            inputRef={input}
+            ref={control}
             value="immediate"
-            className={({ isSelected }) => (isSelected ? "selected-delivery" : "delivery-option")}
-            style={({ isSelected }) => ({ fontWeight: isSelected ? 600 : 400 })}
-            render={(props) => (
-              // oxlint-disable-next-line jsx-a11y/label-has-associated-control -- RAC supplies the native input through props.children.
-              <label {...props} data-composed-radio="true" />
-            )}
+            className={(state) => (state.checked ? "selected-delivery" : "delivery-option")}
+            style={(state) => ({ fontWeight: state.checked ? 600 : 400 })}
           >
-            {({ isSelected }) => (
+            {(state) => (
               <>
-                Immediate updates <span aria-hidden="true">{isSelected ? "(selected)" : ""}</span>
+                Immediate updates <span aria-hidden="true">{state.checked ? "(selected)" : ""}</span>
               </>
             )}
           </RadioGroup.Radio>
           <RadioGroup.Radio value="daily">Daily summary</RadioGroup.Radio>
         </RadioGroup.Options>
-        <RadioGroup.Help>
-          <RadioGroup.ErrorMessage>
-            {({ validationDetails, validationErrors }) =>
-              validationDetails.valueMissing ? missingDelivery : validationErrors.join(" ")
-            }
-          </RadioGroup.ErrorMessage>
-        </RadioGroup.Help>
       </RadioGroup.Root>
-      <Button type="submit">Read delivery values</Button>
-      <Button
+      <button type="submit">Read delivery values</button>
+      <button
         type="button"
-        variant="ghost"
         onClick={() => {
-          setRefs(`${root.current?.tagName}/${label.current?.tagName}/${input.current?.tagName}`);
-          input.current?.focus();
+          setRefs(`${root.current?.tagName}/${control.current?.tagName}`);
+          control.current?.focus();
         }}
       >
         Focus immediate updates
-      </Button>
-      <Button
-        type="button"
-        variant="ghost"
-        onClick={() => setValidationErrors({ delivery: returnedDeliveryError })}
-      >
-        Apply returned delivery error
-      </Button>
-      <Button type="reset" variant="ghost">
-        Reset delivery
-      </Button>
+      </button>
+      <button type="reset">Reset delivery</button>
       <output aria-label="Delivery FormData">{submitted}</output>
-      <output aria-label="Native radio refs">{refs}</output>
-    </Form>
+      <output aria-label="Control refs">{refs}</output>
+    </form>
   );
 }
 
@@ -274,70 +240,37 @@ export const CompositionAndFormData: Story = {
     docs: {
       description: {
         story:
-          "The composed required group uses actual native submit/reset validation and Form validationErrors keyed by its name. Applying a returned error does not simulate a server or save retry; RAC clears that error when the selected value changes. The focus action inspects div/label/input refs and focuses only the native input. Render-prop children keep a stable accessible name, class/style callbacks retain Hashti hooks, and submission displays the real FormData entry list.",
+          "The composed group keeps its own root, heading, and state-function class names and styles. ui-sdk pairs every radio with a visually hidden native input, so FormData holds one entry for the checked value. The focus action inspects the div and control refs and focuses the radio control. Reset returns the group to its uncontrolled default.",
       },
     },
   },
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
-    const group = canvas.getByRole("radiogroup", { name: "Delivery schedule (required)" });
-    const immediate = within(group).getByRole<HTMLInputElement>("radio", {
-      name: "Immediate updates",
-    });
-    const daily = within(group).getByRole<HTMLInputElement>("radio", { name: "Daily summary" });
-    const description = within(group).getByText(deliveryHint);
-    const descriptionId = description.id;
+    const group = canvas.getByRole("radiogroup", { name: "Delivery schedule" });
+    const immediate = within(group).getByRole("radio", { name: "Immediate updates" });
+    const daily = within(group).getByRole("radio", { name: "Daily summary" });
     const submit = canvas.getByRole("button", { name: "Read delivery values" });
     const output = canvas.getByRole("status", { name: "Delivery FormData" });
-    await expect(immediate).toHaveAttribute("type", "radio");
-    await expect(immediate).toBeRequired();
-    await expect(daily).toBeRequired();
-    await expect(group).toHaveAttribute("aria-required", "true");
-    await expect(canvas.queryByText(missingDelivery)).not.toBeInTheDocument();
-    await userEvent.click(submit);
-    await waitFor(() => expect(immediate).toHaveFocus());
-    await expect(canvas.getByText(missingDelivery)).toBeVisible();
-    await expect(group).toHaveAccessibleDescription(`${deliveryHint} ${missingDelivery}`);
-    await expect(output).toBeEmptyDOMElement();
-
-    await userEvent.click(canvas.getByRole("button", { name: "Reset delivery" }));
-    await waitFor(() => expect(canvas.queryByText(missingDelivery)).not.toBeInTheDocument());
-    await expect(immediate).not.toBeChecked();
-    await expect(daily).not.toBeChecked();
-    await expect(group).not.toHaveAttribute("aria-invalid", "true");
+    await expect(group).toHaveAttribute("data-composed-root", "true");
+    await expect(group).toHaveClass("hashti-field", "hashti-radio-group");
     await userEvent.click(canvas.getByRole("button", { name: "Focus immediate updates" }));
     await expect(immediate).toHaveFocus();
-    await expect(canvas.getByRole("status", { name: "Native radio refs" })).toHaveTextContent(
-      "DIV/LABEL/INPUT",
+    await expect(canvas.getByRole("status", { name: "Control refs" })).toHaveTextContent(
+      "DIV/BUTTON",
     );
-    await expect(group).toHaveAttribute("data-composed-root", "true");
-    await expect(immediate.closest("label")).toHaveAttribute("data-composed-radio", "true");
     await userEvent.keyboard(" ");
     await expect(immediate).toBeChecked();
-    await expect(immediate.closest("label")).toHaveClass("hashti-radio", "selected-delivery");
-    await expect(immediate.closest("label")).toHaveStyle({ fontWeight: 600 });
+    await expect(immediate).toHaveClass("hashti-radio", "selected-delivery");
+    await expect(immediate).toHaveStyle({ fontWeight: 600 });
     await userEvent.click(submit);
     await expect(output).toHaveTextContent(JSON.stringify([["delivery", "immediate"]]));
-
-    await userEvent.click(canvas.getByRole("button", { name: "Apply returned delivery error" }));
-    await expect(await canvas.findByText(returnedDeliveryError)).toBeVisible();
-    await expect(group).toHaveAccessibleDescription(`${deliveryHint} ${returnedDeliveryError}`);
-    await expect(description).toBeVisible();
-    await expect(description.id).toBe(descriptionId);
-    await expect(immediate.validity.customError).toBe(true);
-    await userEvent.click(submit);
-    await waitFor(() => expect(immediate).toHaveFocus());
-    await expect(canvas.getByText(returnedDeliveryError)).toBeVisible();
-    await expect(output).toHaveTextContent(JSON.stringify([["delivery", "immediate"]]));
+    await userEvent.click(canvas.getByRole("button", { name: "Reset delivery" }));
+    await expect(immediate).not.toBeChecked();
+    await expect(daily).not.toBeChecked();
     await userEvent.click(daily);
-    await waitFor(() => expect(canvas.queryByText(returnedDeliveryError)).not.toBeInTheDocument());
-    await expect(group).not.toHaveAttribute("aria-invalid", "true");
-    await expect(description.id).toBe(descriptionId);
-    await expect(group.getAttribute("aria-describedby")?.split(/\s+/)).toContain(descriptionId);
     await userEvent.click(submit);
     await expect(output).toHaveTextContent(JSON.stringify([["delivery", "daily"]]));
     await expect(daily).toBeChecked();
-    await expect(immediate).not.toBeChecked();
   },
 };
 
@@ -349,60 +282,44 @@ function DirectionalDelivery() {
         <RadioGroup
           label="Horizontal delivery"
           description="Arrow keys select a schedule; the unavailable option is skipped."
-          orientation="horizontal"
           defaultValue="immediate"
         >
           <Radio value="immediate">Immediate updates</Radio>
-          <Radio value="sms" isDisabled>
+          <Radio value="sms" disabled>
             SMS delivery
           </Radio>
           <Radio value="daily">Daily summary</Radio>
         </RadioGroup>
-        <Button type="button" variant="ghost">
-          Continue review
-        </Button>
+        <button type="button">Continue review</button>
       </Theme>
       <Theme theme={theme} lang="fa-IR" dir="rtl" className="field-story-case">
         <RadioGroup
           label="زمان دریافت پیام‌ها"
           description="با کلیدهای جهت‌دار، زمان دریافت پیام‌ها را انتخاب کنید."
-          orientation="horizontal"
           defaultValue="immediate"
         >
           <Radio value="immediate">فوری</Radio>
-          <Radio value="sms" isDisabled>
+          <Radio value="sms" disabled>
             پیامک
           </Radio>
           <Radio value="daily">خلاصهٔ روزانه</Radio>
         </RadioGroup>
-        <Button type="button" variant="ghost">
-          ادامهٔ مرور
-        </Button>
+        <button type="button">ادامهٔ مرور</button>
       </Theme>
     </div>
   );
 }
 
-export const KeyboardNavigation: Story = {
+export const KeyboardAndDirection: Story = {
   render: DirectionalDelivery,
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
-    for (const [
-      name,
-      firstName,
-      disabledName,
-      lastName,
-      next,
-      previous,
-      after,
-      locale,
-      direction,
-    ] of [
+    for (const [name, firstName, lastName, disabledName, next, previous, after, locale, direction] of [
       [
         "Horizontal delivery",
         "Immediate updates",
-        "SMS delivery",
         "Daily summary",
+        "SMS delivery",
         "{ArrowRight}",
         "{ArrowLeft}",
         "Continue review",
@@ -412,8 +329,8 @@ export const KeyboardNavigation: Story = {
       [
         "زمان دریافت پیام‌ها",
         "فوری",
-        "پیامک",
         "خلاصهٔ روزانه",
+        "پیامک",
         "{ArrowLeft}",
         "{ArrowRight}",
         "ادامهٔ مرور",
@@ -427,7 +344,6 @@ export const KeyboardNavigation: Story = {
       const disabled = within(group).getByRole("radio", { name: disabledName });
       await expect(group.closest("[lang]")).toHaveAttribute("lang", locale);
       await expect(group.closest("[lang]")).toHaveAttribute("dir", direction);
-      await expect(group).toHaveAttribute("aria-orientation", "horizontal");
       await expect(disabled).toBeDisabled();
       await userEvent.click(first);
       await userEvent.keyboard(next);
@@ -460,9 +376,7 @@ function LocalizedDelivery() {
               Diese Hinweise bleiben auch bei einer Korrektur sichtbar.
             </>
           }
-          isRequired
-          isInvalid
-          errorMessage="Wählen Sie einen Zustellzeitpunkt. Ihre übrigen Angaben bleiben während der Korrektur erhalten."
+          isOptional
         >
           <Radio value="immediate">
             Sofortige Benachrichtigungen über Änderungen und Kommentare während der gemeinsamen
@@ -482,9 +396,7 @@ function LocalizedDelivery() {
               اصلاح انتخاب حفظ می‌شود.
             </>
           }
-          isRequired
-          isInvalid
-          errorMessage="یک زمان دریافت را انتخاب کنید."
+          required
         >
           <Radio value="immediate">
             دریافت فوری پیام‌های تغییرها و نظرهای تیم در این فضای کاری
@@ -501,9 +413,7 @@ function LocalizedDelivery() {
               أثناء تصحيح الاختيار.
             </>
           }
-          isRequired
-          isInvalid
-          errorMessage="اختر موعدًا لاستلام الرسائل."
+          required
         >
           <Radio value="immediate">
             إرسال رسائل التغييرات وتعليقات الفريق فورًا في مساحة العمل
@@ -521,7 +431,7 @@ export const LongContentAndLocales: Story = {
     const canvas = within(canvasElement);
     for (const [name, locale, direction] of [
       [
-        "Zustellung der Benachrichtigungen für die gemeinsame Freigabeprüfung (erforderlich)",
+        "Zustellung der Benachrichtigungen für die gemeinsame Freigabeprüfung (optional)",
         "de-DE",
         "ltr",
       ],
@@ -535,7 +445,7 @@ export const LongContentAndLocales: Story = {
       await expect(identifier.tagName).toBe("BDI");
       await expect(identifier).toHaveAttribute("dir", "ltr");
       for (const part of group.querySelectorAll<HTMLElement>(
-        ".hashti-field__label, .hashti-field__description, .hashti-field__error, .hashti-radio",
+        ".hashti-field__label, .hashti-field__description, .hashti-radio",
       )) {
         await expect(part).toBeVisible();
         await expect(part.scrollWidth).toBeLessThanOrEqual(part.clientWidth + 1);

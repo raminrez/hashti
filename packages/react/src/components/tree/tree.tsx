@@ -17,7 +17,7 @@ import {
   type CheckboxRenderProps,
 } from "react-aria-components";
 import { classes, cx } from "../../utils";
-import { Checkbox } from "../checkbox";
+import { Checkbox, type CheckboxProps } from "../checkbox";
 import { Icon } from "../../icons";
 
 export interface TreeContextValue {
@@ -135,13 +135,13 @@ export function TreeContent({ className, children, ...props }: TreeContentProps)
   );
 }
 
-export interface TreeCheckboxProps extends Omit<RACCheckboxProps, "className"> {
-  className?: string | ((values: CheckboxRenderProps) => string);
+export interface TreeCheckboxProps extends Omit<CheckboxProps, "className"> {
+  className?: CheckboxProps["className"];
 }
 
 export function TreeCheckbox({ className, children, ...props }: TreeCheckboxProps) {
   return (
-    <Checkbox slot="selection" {...props} className={classes("hashti-tree-checkbox", className)}>
+    <Checkbox {...props} className={cx("hashti-tree-checkbox", typeof className === "function" ? undefined : className)}>
       {children}
     </Checkbox>
   );

@@ -1,23 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
-import { Button, Heading, Link, Popover, PreviewTrigger } from "@hashti/react";
+import { Button, Link, Popover } from "@hashti/react";
 import "./overlays.css";
 
+// TICK-007: PreviewTrigger was RAC-only and is deleted; TICK-016 replaces it with
+// HoverCard. Until then, Popover's openOnHover + delay/closeDelay is the preview pattern.
 const meta = {
   title: "Overlays/PreviewTrigger",
-  component: PreviewTrigger,
-  args: {
-    children: null as any,
-  },
+  component: Popover,
   parameters: {
     docs: {
       description: {
         component:
-          "PreviewTrigger manages non-modal contextual preview popovers (HoverCards) that open when hovering or focusing a trigger element, with configurable delays.",
+          "Hover previews are Popover with `openOnHover` and `delay`/`closeDelay` — resting the pointer on the trigger opens the preview, and moving into the content keeps it open. (The RAC PreviewTrigger component is gone; TICK-016 adds a dedicated HoverCard.)",
       },
     },
   },
-} satisfies Meta<typeof PreviewTrigger>;
+} satisfies Meta<typeof Popover>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -27,14 +26,18 @@ export const Playground: Story = {
     <div className="overlay-story-stack">
       <p style={{ margin: 0 }}>
         Collaborators on this document:{" "}
-        <PreviewTrigger delay={200} closeDelay={150}>
-          <Link
-            href="#alice"
-            style={{ fontWeight: 600, color: "var(--hashti-link-primary, #0f62fe)" }}
+        <Popover openOnHover delay={200} closeDelay={150}>
+          <Popover.Trigger
+            render={
+              <Link
+                href="#alice"
+                style={{ fontWeight: 600, color: "var(--hashti-link-primary, #0f62fe)" }}
+              />
+            }
           >
             @alice_smith
-          </Link>
-          <Popover>
+          </Popover.Trigger>
+          <Popover.Content sideOffset={8}>
             <div
               style={{ display: "flex", flexDirection: "column", gap: "0.75rem", width: "260px" }}
             >
@@ -55,9 +58,9 @@ export const Playground: Story = {
                   AS
                 </div>
                 <div>
-                  <Heading slot="title" style={{ fontSize: "1rem", margin: 0 }}>
+                  <Popover.Title style={{ fontSize: "1rem", margin: 0 }}>
                     Alice Smith
-                  </Heading>
+                  </Popover.Title>
                   <span
                     style={{ fontSize: "0.75rem", color: "var(--hashti-text-secondary, #525252)" }}
                   >
@@ -68,17 +71,9 @@ export const Playground: Story = {
               <p style={{ fontSize: "0.875rem", margin: 0 }}>
                 Staff Systems Engineer working on distributed compilers and reactive primitives.
               </p>
-              <div style={{ display: "flex", gap: "1rem", fontSize: "0.75rem" }}>
-                <span>
-                  <strong>1.4k</strong> Following
-                </span>
-                <span>
-                  <strong>12.8k</strong> Followers
-                </span>
-              </div>
             </div>
-          </Popover>
-        </PreviewTrigger>
+          </Popover.Content>
+        </Popover>
       </p>
     </div>
   ),
@@ -104,29 +99,29 @@ export const Playground: Story = {
 export const DelayVariants: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-      <PreviewTrigger delay={100} closeDelay={100}>
-        <Button variant="ghost">Instant Preview (100ms)</Button>
-        <Popover>
+      <Popover openOnHover delay={100} closeDelay={100}>
+        <Popover.Trigger render={<Button variant="ghost">Instant Preview (100ms)</Button>} />
+        <Popover.Content sideOffset={8}>
           <div style={{ padding: "0.5rem" }}>
             <strong>Instant Context</strong>
             <p style={{ margin: "0.25rem 0 0", fontSize: "0.875rem" }}>
               Triggered with minimal latency.
             </p>
           </div>
-        </Popover>
-      </PreviewTrigger>
+        </Popover.Content>
+      </Popover>
 
-      <PreviewTrigger delay={600} closeDelay={300}>
-        <Button variant="ghost">Deliberate Preview (600ms)</Button>
-        <Popover>
+      <Popover openOnHover delay={600} closeDelay={300}>
+        <Popover.Trigger render={<Button variant="ghost">Deliberate Preview (600ms)</Button>} />
+        <Popover.Content sideOffset={8}>
           <div style={{ padding: "0.5rem" }}>
             <strong>Deliberate Context</strong>
             <p style={{ margin: "0.25rem 0 0", fontSize: "0.875rem" }}>
               Triggered only on intentional dwell.
             </p>
           </div>
-        </Popover>
-      </PreviewTrigger>
+        </Popover.Content>
+      </Popover>
     </div>
   ),
   play: async ({ canvasElement }) => {
@@ -143,39 +138,6 @@ export const DelayVariants: Story = {
     await waitFor(
       () => {
         expect(body.getByText("Instant Context")).toBeInTheDocument();
-      },
-      { timeout: 3000 },
-    );
-  },
-};
-
-export const CompoundComponents: Story = {
-  render: () => (
-    <div className="overlay-story-stack">
-      <PreviewTrigger.Root delay={200}>
-        <Button variant="secondary">Preview Card</Button>
-        <PreviewTrigger.Popover>
-          <div style={{ padding: "0.75rem", width: "220px" }}>
-            <Heading slot="title">Compound Preview</Heading>
-            <p style={{ margin: "0.5rem 0 0", fontSize: "0.875rem" }}>
-              Uses PreviewTrigger.Root and PreviewTrigger.Popover namespaced compounds.
-            </p>
-          </div>
-        </PreviewTrigger.Popover>
-      </PreviewTrigger.Root>
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const btn = canvas.getByRole("button", { name: "Preview Card" });
-    expect(btn).toBeInTheDocument();
-
-    await userEvent.hover(btn);
-
-    const body = within(document.body);
-    await waitFor(
-      () => {
-        expect(body.getByText("Compound Preview")).toBeInTheDocument();
       },
       { timeout: 3000 },
     );

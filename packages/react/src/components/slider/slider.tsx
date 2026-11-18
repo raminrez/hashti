@@ -1,66 +1,63 @@
 "use client";
 
-import { type ReactNode, type Ref } from "react";
+import type { ComponentProps, ReactNode, Ref } from "react";
 import {
-  Slider as RACSlider,
-  SliderOutput,
-  SliderTrack,
-  SliderFill,
+  Slider as UiSdkSlider,
+  SliderControl,
+  SliderIndicator,
   SliderThumb,
-  Label,
-  type SliderProps as RACSliderProps,
-} from "react-aria-components";
-import { classes, cx } from "../../utils";
+  SliderTrack,
+  SliderValue,
+} from "@ui-sdk/react/slider";
+import { cx } from "../../utils";
 
-export interface SliderProps<T extends number | number[] = number> extends RACSliderProps<T> {
+export interface SliderProps
+  extends Omit<ComponentProps<typeof UiSdkSlider>, "className" | "children"> {
   label?: ReactNode;
+  /** Accessible names for each thumb, like "Minimum" / "Maximum". */
   thumbLabels?: string[];
+  className?: string;
+  children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
 }
 
-export function Slider<T extends number | number[] = number>({
+export function Slider({
   label,
   thumbLabels,
   children,
   className,
+  value,
+  defaultValue,
   ...props
-}: SliderProps<T>) {
+}: SliderProps) {
+  const initial = value ?? defaultValue;
+  const thumbCount = Array.isArray(initial) ? initial.length : 1;
   return (
-    <RACSlider<T>
-      {...props}
-      aria-disabled={props.isDisabled || undefined}
-      className={classes("hashti-slider", className)}
-    >
+    <UiSdkSlider {...props} value={value} defaultValue={defaultValue} className={cx("hashti-slider", className)}>
       {children ?? (
         <>
           <div className="hashti-slider-label">
-            <Label>{label}</Label>
-            <SliderOutput>
-              {({ state }) =>
-                state.values.map((_, index) => state.getThumbValueLabel(index)).join(" – ")
-              }
-            </SliderOutput>
+            {label}
+            <SliderValue />
           </div>
-          <SliderTrack className={cx("react-aria-SliderTrack", "hashti-slider-track")}>
-            {({ state }) => (
-              <>
-                <SliderFill className={cx("react-aria-SliderFill", "hashti-slider-fill")} />
-                {state.values.map((_, index) => (
-                  <SliderThumb
-                    key={index}
-                    index={index}
-                    className={cx("react-aria-SliderThumb", "hashti-slider-thumb")}
-                    aria-label={
-                      thumbLabels?.[index] ??
-                      (state.values.length > 1 ? (index === 0 ? "Minimum" : "Maximum") : undefined)
-                    }
-                  />
-                ))}
-              </>
-            )}
-          </SliderTrack>
+          <SliderControl>
+            <SliderTrack className="hashti-slider-track">
+              <SliderIndicator className="hashti-slider-fill" />
+              {Array.from({ length: thumbCount }, (_, index) => (
+                <SliderThumb
+                  key={index}
+                  index={index}
+                  className="hashti-slider-thumb"
+                  aria-label={
+                    thumbLabels?.[index] ??
+                    (thumbCount > 1 ? (index === 0 ? "Minimum" : "Maximum") : undefined)
+                  }
+                />
+              ))}
+            </SliderTrack>
+          </SliderControl>
         </>
       )}
-    </RACSlider>
+    </UiSdkSlider>
   );
 }

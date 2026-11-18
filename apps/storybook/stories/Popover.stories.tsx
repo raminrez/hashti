@@ -1,40 +1,18 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, waitFor, within } from "storybook/test";
-import {
-  Button,
-  Checkbox,
-  Dialog,
-  DialogTrigger,
-  Heading,
-  Icon,
-  Popover,
-  Theme,
-  useTheme,
-} from "@hashti/react";
+import { Button, Checkbox, Icon, Popover, Theme, useTheme } from "@hashti/react";
 import "./overlays.css";
 import "./fields.css";
 
 const meta = {
   title: "Overlays/Popover",
   component: Popover,
-  args: {
-    offset: 8,
-    placement: "bottom",
-  },
-  argTypes: {
-    offset: { control: "number" },
-    placement: {
-      control: "select",
-      options: ["bottom", "top", "left", "right", "start", "end"],
-    },
-    children: { control: false },
-  },
   parameters: {
     docs: {
       description: {
         component:
-          "Popover wraps RAC Popover, creating an anchored temporary surface for non-modal popups, menus, and selection pickers. Popover receives the portable Theme appearanceClassName and effective language across portals. Frame applies a 14px border-radius (var(--hashti-popover-radius)), a 1px subtle border, and a 0 8px 24px shadow without ambient backdrop darkening.",
+          "Popover wraps @ui-sdk/react/popover: an anchored, non-modal surface for contextual content and pickers. Popover.Content takes side/align plus sideOffset/alignOffset and carries data-side/data-align for styling. The popover receives the portable Theme across portals.",
       },
     },
   },
@@ -44,44 +22,58 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
-  render: (args) => (
+  render: () => (
     <div className="overlay-placement-canvas">
-      <DialogTrigger>
-        <Button variant="secondary">Open playground popover</Button>
-        <Popover {...args}>
-          <Dialog>
-            <Heading slot="title">Popover details</Heading>
-            <p>Floating contextual information attached to the trigger anchor.</p>
-          </Dialog>
-        </Popover>
-      </DialogTrigger>
+      <Popover>
+        <Popover.Trigger render={<Button variant="secondary">Open playground popover</Button>} />
+        <Popover.Content sideOffset={8}>
+          <Popover.Title>Popover details</Popover.Title>
+          <Popover.Description>
+            Floating contextual information attached to the trigger anchor.
+          </Popover.Description>
+        </Popover.Content>
+      </Popover>
     </div>
   ),
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole("button", { name: "Open playground popover" });
+    await userEvent.click(trigger);
+
+    const popover = await waitFor(() => {
+      const el = document.querySelector<HTMLElement>(".hashti-popover");
+      expect(el).not.toBeNull();
+      return el!;
+    });
+    await waitFor(() => expect(popover).toBeVisible());
+
+    await userEvent.keyboard("{Escape}");
+    await waitFor(() => expect(document.querySelector(".hashti-popover")).toBeNull());
+    await waitFor(() => expect(trigger).toHaveFocus());
+  },
 };
 
 export const Placements: Story = {
-  render: () => {
-    return (
-      <div className="overlay-story-grid">
-        {(["bottom", "top", "start", "end"] as const).map((placement) => (
-          <div key={placement} className="overlay-story-case">
-            <h2>Placement: {placement}</h2>
-            <DialogTrigger>
-              <Button variant="secondary">{`Open ${placement} popover`}</Button>
-              <Popover placement={placement} offset={8}>
-                <Dialog>
-                  <Heading slot="title">{`Anchored: ${placement}`}</Heading>
-                  <p>
-                    Positioned with <code>placement="{placement}"</code>.
-                  </p>
-                </Dialog>
-              </Popover>
-            </DialogTrigger>
-          </div>
-        ))}
-      </div>
-    );
-  },
+  render: () => (
+    <div className="overlay-story-grid">
+      {(["bottom", "top", "start", "end"] as const).map((side) => (
+        <div key={side} className="overlay-story-case">
+          <h2>Side: {side}</h2>
+          <Popover>
+            <Popover.Trigger
+              render={<Button variant="secondary">{`Open ${side} popover`}</Button>}
+            />
+            <Popover.Content side={side} sideOffset={8}>
+              <Popover.Title>{`Anchored: ${side}`}</Popover.Title>
+              <Popover.Description>
+                Positioned with <code>{`side="${side}"`}</code>.
+              </Popover.Description>
+            </Popover.Content>
+          </Popover>
+        </div>
+      ))}
+    </div>
+  ),
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
     const trigger = canvas.getByRole("button", { name: "Open bottom popover" });
@@ -93,76 +85,61 @@ export const Placements: Story = {
       return el!;
     });
     await waitFor(() => expect(popover).toBeVisible());
-    await waitFor(() =>
-      expect(within(popover).getByRole("heading", { name: "Anchored: bottom" })).toBeVisible(),
-    );
+    expect(popover.getAttribute("data-side")).toBe("bottom");
 
     await userEvent.keyboard("{Escape}");
-    await waitFor(() => {
-      expect(document.querySelector(".hashti-popover")).toBeNull();
-    });
-    await expect(trigger).toHaveFocus();
+    await waitFor(() => expect(document.querySelector(".hashti-popover")).toBeNull());
+    await waitFor(() => expect(trigger).toHaveFocus());
   },
 };
 
 function FilterMenuExample() {
   const [activeFilters, setActiveFilters] = useState<string[]>(["prod"]);
+  const toggle = (key: string, next: boolean | "indeterminate") =>
+    setActiveFilters((prev) =>
+      next === true ? [...prev, key] : prev.filter((k) => k !== key),
+    );
+
   return (
     <div className="overlay-story-stack">
-      <DialogTrigger>
-        <Button variant="secondary">
-          Filter deployments <Icon name="settings" />
-        </Button>
-        <Popover placement="bottom start" offset={8}>
-          <Dialog>
-            {({ close }) => (
-              <>
-                <Heading slot="title">Deployment filters</Heading>
-                <div className="overlay-filter-list">
-                  <Checkbox
-                    isSelected={activeFilters.includes("prod")}
-                    onChange={(selected) =>
-                      setActiveFilters((prev) =>
-                        selected ? [...prev, "prod"] : prev.filter((k) => k !== "prod"),
-                      )
-                    }
-                  >
-                    Production clusters
-                  </Checkbox>
-                  <Checkbox
-                    isSelected={activeFilters.includes("stage")}
-                    onChange={(selected) =>
-                      setActiveFilters((prev) =>
-                        selected ? [...prev, "stage"] : prev.filter((k) => k !== "stage"),
-                      )
-                    }
-                  >
-                    Staging preview
-                  </Checkbox>
-                  <Checkbox
-                    isSelected={activeFilters.includes("canary")}
-                    onChange={(selected) =>
-                      setActiveFilters((prev) =>
-                        selected ? [...prev, "canary"] : prev.filter((k) => k !== "canary"),
-                      )
-                    }
-                  >
-                    Canary rollout
-                  </Checkbox>
-                </div>
-                <div className="hashti-dialog-footer" style={{ marginTop: "1rem" }}>
-                  <Button variant="ghost" size="sm" onClick={() => setActiveFilters([])}>
-                    Clear
-                  </Button>
-                  <Button variant="primary" size="sm" onClick={close}>
-                    Apply filters
-                  </Button>
-                </div>
-              </>
-            )}
-          </Dialog>
-        </Popover>
-      </DialogTrigger>
+      <Popover>
+        <Popover.Trigger
+          render={
+            <Button variant="secondary">
+              Filter deployments <Icon name="settings" />
+            </Button>
+          }
+        />
+        <Popover.Content side="bottom" align="start" sideOffset={8}>
+          <Popover.Title>Deployment filters</Popover.Title>
+          <div className="overlay-filter-list">
+            <Checkbox
+              checked={activeFilters.includes("prod")}
+              onCheckedChange={(next) => toggle("prod", next)}
+            >
+              Production clusters
+            </Checkbox>
+            <Checkbox
+              checked={activeFilters.includes("stage")}
+              onCheckedChange={(next) => toggle("stage", next)}
+            >
+              Staging preview
+            </Checkbox>
+            <Checkbox
+              checked={activeFilters.includes("canary")}
+              onCheckedChange={(next) => toggle("canary", next)}
+            >
+              Canary rollout
+            </Checkbox>
+          </div>
+          <div className="hashti-dialog-footer" style={{ marginTop: "1rem" }}>
+            <Button variant="ghost" size="sm" onClick={() => setActiveFilters([])}>
+              Clear
+            </Button>
+            <Popover.Close render={<Button variant="primary" size="sm">Apply filters</Button>} />
+          </div>
+        </Popover.Content>
+      </Popover>
       <output aria-label="Active filters output">
         Filters: {activeFilters.length ? activeFilters.join(", ") : "none"}
       </output>
@@ -174,7 +151,7 @@ export const FilterMenu: Story = {
   render: () => <FilterMenuExample />,
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
-    const trigger = canvas.getByRole("button", { name: "Filter deployments" });
+    const trigger = canvas.getByRole("button", { name: /Filter deployments/ });
     const output = canvas.getByRole("status", { name: "Active filters output" });
     await expect(output).toHaveTextContent("Filters: prod");
 
@@ -191,128 +168,9 @@ export const FilterMenu: Story = {
     const applyBtn = within(popover).getByRole("button", { name: "Apply filters" });
     await userEvent.click(applyBtn);
 
-    await waitFor(() => {
-      expect(document.querySelector(".hashti-popover")).toBeNull();
-    });
+    await waitFor(() => expect(document.querySelector(".hashti-popover")).toBeNull());
     await expect(output).toHaveTextContent("Filters: prod, stage");
     await waitFor(() => expect(trigger).toHaveFocus());
-  },
-};
-
-export const FocusManagement: Story = {
-  render: () => {
-    return (
-      <div className="overlay-story-stack">
-        <DialogTrigger>
-          <Button>Open contextual actions</Button>
-          <Popover placement="bottom start">
-            <Dialog>
-              {({ close }) => (
-                <>
-                  <Heading slot="title">Quick actions</Heading>
-                  <p>Tab through options or press Escape to dismiss and return focus.</p>
-                  <div style={{ display: "grid", gap: "0.5rem" }}>
-                    <Button variant="ghost" onClick={close}>
-                      Export snapshot
-                    </Button>
-                    <Button variant="ghost" onClick={close}>
-                      Share report
-                    </Button>
-                  </div>
-                </>
-              )}
-            </Dialog>
-          </Popover>
-        </DialogTrigger>
-      </div>
-    );
-  },
-  play: async ({ canvasElement, userEvent }) => {
-    const canvas = within(canvasElement);
-    const trigger = canvas.getByRole("button", { name: "Open contextual actions" });
-    await userEvent.click(trigger);
-
-    const popover = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>(".hashti-popover");
-      expect(el).not.toBeNull();
-      return el!;
-    });
-
-    // Tab through actions
-    await userEvent.tab();
-    const firstAction = within(popover).getByRole("button", { name: "Export snapshot" });
-    await expect(firstAction).toHaveFocus();
-
-    // Escape returns focus to trigger
-    await userEvent.keyboard("{Escape}");
-    await waitFor(() => {
-      expect(document.querySelector(".hashti-popover")).toBeNull();
-    });
-    await expect(trigger).toHaveFocus();
-  },
-};
-
-function CustomStylingAndRefsExample() {
-  const popoverRef = useRef<HTMLElement>(null);
-  const [resolved, setResolved] = useState<boolean>(false);
-  return (
-    <div className="overlay-story-stack">
-      <DialogTrigger>
-        <Button variant="secondary">Inspect popover ref</Button>
-        <Popover ref={popoverRef} className="overlay-custom-surface" style={{ minWidth: "16rem" }}>
-          <Dialog>
-            {({ close }) => (
-              <>
-                <Heading slot="title">Ref verification</Heading>
-                <p>Verifies custom class name, inline styles, and element ref forwarding.</p>
-                <div className="hashti-dialog-footer">
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    onClick={() => setResolved(popoverRef.current !== null)}
-                  >
-                    Check ref
-                  </Button>
-                  <Button variant="primary" size="sm" onClick={close}>
-                    Done
-                  </Button>
-                </div>
-              </>
-            )}
-          </Dialog>
-        </Popover>
-      </DialogTrigger>
-      <output aria-label="Popover ref status">
-        {resolved ? "Popover ref resolved correctly." : "Awaiting popover check."}
-      </output>
-    </div>
-  );
-}
-
-export const CustomStylingAndRefs: Story = {
-  render: () => <CustomStylingAndRefsExample />,
-  play: async ({ canvasElement, userEvent }) => {
-    const canvas = within(canvasElement);
-    const trigger = canvas.getByRole("button", { name: "Inspect popover ref" });
-    const output = canvas.getByRole("status", { name: "Popover ref status" });
-
-    await userEvent.click(trigger);
-    const popover = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>(".hashti-popover");
-      expect(el).not.toBeNull();
-      return el!;
-    });
-    await expect(popover).toHaveClass(/overlay-custom-surface/);
-
-    const checkBtn = within(popover).getByRole("button", { name: "Check ref" });
-    await userEvent.click(checkBtn);
-    await expect(output).toHaveTextContent("Popover ref resolved correctly.");
-
-    const doneBtn = within(popover).getByRole("button", { name: "Done" });
-    await userEvent.click(doneBtn);
-    await waitFor(() => {
-      expect(document.querySelector(".hashti-popover")).toBeNull();
-    });
   },
 };
 
@@ -323,36 +181,36 @@ function LocalizedPopoverExamples() {
       <div className="overlay-story-case">
         <h2>Persian RTL popover</h2>
         <Theme theme={theme} lang="fa-IR" dir="rtl">
-          <DialogTrigger>
-            <Button>فیلترهای پیشرفته سامانه</Button>
-            <Popover placement="bottom start">
-              <Dialog>
-                <Heading slot="title">گزینه‌های دسترسی</Heading>
-                <p>این پاپ‌اور در جهت راست‌به‌چپ با زبان فارسی و قلم یکپارچه نمایش داده می‌شود.</p>
-                <div className="overlay-filter-list">
-                  <Checkbox defaultSelected>خوشه اصلی تهران</Checkbox>
-                  <Checkbox>پشتیبان فرانکفورت</Checkbox>
-                </div>
-              </Dialog>
-            </Popover>
-          </DialogTrigger>
+          <Popover>
+            <Popover.Trigger render={<Button>فیلترهای پیشرفته سامانه</Button>} />
+            <Popover.Content side="bottom" align="start">
+              <Popover.Title>گزینه‌های دسترسی</Popover.Title>
+              <Popover.Description>
+                این پاپ‌اور در جهت راست‌به‌چپ با زبان فارسی نمایش داده می‌شود.
+              </Popover.Description>
+              <div className="overlay-filter-list">
+                <Checkbox defaultChecked>خوشه اصلی تهران</Checkbox>
+                <Checkbox>پشتیبان فرانکفورت</Checkbox>
+              </div>
+            </Popover.Content>
+          </Popover>
         </Theme>
       </div>
 
       <div className="overlay-story-case">
         <h2>German expanded text</h2>
-        <DialogTrigger>
-          <Button variant="secondary">Erweiterte Systeminformationen</Button>
-          <Popover placement="bottom end">
-            <Dialog>
-              <Heading slot="title">Konfigurationsparameter</Heading>
-              <p>
-                Detaillierte Übersicht der aktiven Authentifizierungszertifikate und
-                Verschlüsselungseinstellungen.
-              </p>
-            </Dialog>
-          </Popover>
-        </DialogTrigger>
+        <Popover>
+          <Popover.Trigger
+            render={<Button variant="secondary">Erweiterte Systeminformationen</Button>}
+          />
+          <Popover.Content side="bottom" align="end">
+            <Popover.Title>Konfigurationsparameter</Popover.Title>
+            <Popover.Description>
+              Detaillierte Übersicht der aktiven Authentifizierungszertifikate und
+              Verschlüsselungseinstellungen.
+            </Popover.Description>
+          </Popover.Content>
+        </Popover>
       </div>
     </div>
   );
@@ -375,9 +233,7 @@ export const LongContentAndLocales: Story = {
     );
 
     await userEvent.keyboard("{Escape}");
-    await waitFor(() => {
-      expect(document.querySelector(".hashti-popover")).toBeNull();
-    });
-    await expect(trigger).toHaveFocus();
+    await waitFor(() => expect(document.querySelector(".hashti-popover")).toBeNull());
+    await waitFor(() => expect(trigger).toHaveFocus());
   },
 };

@@ -1,4 +1,27 @@
 "use client";
 
-export { Drawer } from "./drawer";
-export type { DrawerProps, DrawerPlacement, DrawerSize } from "./drawer";
+export {
+  Drawer,
+  DrawerRoot,
+  DrawerTrigger,
+  DrawerBackdrop,
+  DrawerContent,
+  DrawerHandle,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose,
+  DrawerShortcut,
+  DrawerOutlet,
+  createDrawerController,
+  sheetPhysics,
+} from "./drawer";
+export type {
+  DrawerRootProps,
+  DrawerTriggerProps,
+  DrawerBackdropProps,
+  DrawerContentProps,
+  DrawerHandleProps,
+  DrawerSide,
+  DrawerSize,
+  SnapPoint,
+} from "./drawer";

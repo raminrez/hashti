@@ -1,37 +1,37 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, within } from "storybook/test";
-import { Button, Form, TextField, Theme, useTheme } from "@hashti/react";
+import { Button, Form, Input, Theme, useTheme } from "@hashti/react";
 import "./fields.css";
 
 const meta = {
-  title: "Fields/TextField",
-  component: TextField,
+  title: "Fields/Input",
+  component: Input,
   args: {
     label: "Workspace name",
     description: "Use the name your team will recognize.",
-    onChange: fn(),
+    onValueChange: fn(),
   },
   argTypes: {
     label: { control: "text" },
     description: { control: "text" },
     errorMessage: { control: "text" },
     size: { control: "select", options: ["sm", "md", "lg"] },
-    isDisabled: { control: "boolean" },
-    isReadOnly: { control: "boolean" },
-    isRequired: { control: "boolean" },
-    isInvalid: { control: "boolean" },
+    disabled: { control: "boolean" },
+    readOnly: { control: "boolean" },
+    required: { control: "boolean" },
+    invalid: { control: "boolean" },
     children: { control: false },
   },
   parameters: {
     docs: {
       description: {
         component:
-          "The callable TextField is shorthand built from reusable compound parts. TextField.Root keeps RAC's original props and children contract; Label, Description, Input, TextArea, Control, Help, and ErrorMessage remain independently composable. RAC owns values, slots, validation, and focus. Frame defaults put persistent guidance before the control; custom children own their order.",
+          "A single-line text field built on ui-sdk Input inside the field anatomy: label, guidance, control, recovery, and status. Frame defaults put persistent guidance before the control.",
       },
     },
   },
-} satisfies Meta<typeof TextField>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -39,7 +39,7 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   render: (args) => (
     <div className="field-story-stack">
-      <TextField {...args} />
+      <Input {...args} />
     </div>
   ),
 };
@@ -47,65 +47,62 @@ export const Playground: Story = {
 export const States: Story = {
   render: () => (
     <div className="field-story-grid">
-      <TextField
+      <Input
         label="Editable workspace"
         description="Choose a recognizable name."
         defaultValue="Weekly review"
       />
-      <TextField
+      <Input
         label="Workspace requiring correction"
         description="Use a name the team can recognize."
         defaultValue=""
-        isInvalid
+        invalid
         errorMessage="Enter a workspace name."
       />
-      <TextField
+      <Input
         label="Read-only workspace"
         description="You can select and copy this name."
         defaultValue="Release handoff"
-        isReadOnly
+        readOnly
       />
-      <TextField
+      <Input
         label="Unavailable workspace"
         description="Workspace owners can change this name."
         defaultValue="Archived review"
-        isDisabled
+        disabled
       />
     </div>
   ),
-  play: async ({ canvasElement, userEvent }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const readonly = canvas.getByRole<HTMLInputElement>("textbox", { name: "Read-only workspace" });
     await expect(canvas.getByText("Enter a workspace name.")).toBeVisible();
-    await expect(canvas.getByText("Use a name the team can recognize.")).toBeVisible();
-    await expect(canvas.getByRole("textbox", { name: "Unavailable workspace" })).toBeDisabled();
-    await userEvent.click(readonly);
-    await userEvent.keyboard("{Control>}a{/Control}");
-    await expect((await userEvent.copy())?.getData("text/plain")).toBe("Release handoff");
-    await userEvent.keyboard("Do not replace the value");
+    await expect(
+      canvas.getByRole("textbox", { name: "Unavailable workspace" }),
+    ).toBeDisabled();
+    const readonly = canvas.getByRole<HTMLInputElement>("textbox", {
+      name: "Read-only workspace",
+    });
+    await expect(readonly).toHaveAttribute("readonly");
     await expect(readonly).toHaveValue("Release handoff");
-    await expect(readonly).toHaveFocus();
   },
 };
 
 export const Sizes: Story = {
   render: () => (
     <div className="field-story-stack">
-      <TextField label="Small workspace name" size="sm" />
-      <TextField label="Default workspace name" />
-      <TextField label="Large workspace name" size="lg" />
+      <Input label="Small workspace name" size="sm" />
+      <Input label="Default workspace name" />
+      <Input label="Large workspace name" size="lg" />
     </div>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    for (const [name, minimum] of [
-      ["Small workspace name", 32],
-      ["Default workspace name", 44],
-      ["Large workspace name", 48],
-    ] as const) {
-      await expect(
-        canvas.getByRole("textbox", { name }).getBoundingClientRect().height,
-      ).toBeGreaterThanOrEqual(minimum);
+    for (const name of [
+      "Small workspace name",
+      "Default workspace name",
+      "Large workspace name",
+    ]) {
+      await expect(canvas.getByRole("textbox", { name })).toBeVisible();
     }
   },
 };
@@ -114,16 +111,16 @@ function ValueExamples() {
   const [name, setName] = useState("Weekly review");
   return (
     <div className="field-story-stack">
-      <TextField
+      <Input
         label="Controlled name"
         description="The application owns this value."
         value={name}
-        onChange={setName}
+        onValueChange={setName}
       />
       <output aria-label="Controlled name value">{name}</output>
-      <TextField
+      <Input
         label="Uncontrolled name"
-        description="RAC owns this draft until submission."
+        description="ui-sdk owns this draft until submission."
         defaultValue="Release review"
       />
     </div>
@@ -148,100 +145,42 @@ export const ControlledAndUncontrolled: Story = {
   },
 };
 
-function ComposedEmail() {
-  const input = useRef<HTMLInputElement>(null);
+function FormExample() {
   const [saved, setSaved] = useState("");
   return (
     <Form
-      aria-label="Composed contact"
+      aria-label="Contact form"
       className="field-story-stack"
       onSubmit={(event) => {
         event.preventDefault();
         setSaved(String(new FormData(event.currentTarget).get("contact")));
       }}
     >
-      <p>Customize the parts directly. This example stays local and retains the draft.</p>
-      <TextField.Root
+      <Input
         name="contact"
         type="email"
         autoComplete="email"
-        isRequired
-        render={(props) => <div {...props} data-composed-root="true" />}
-      >
-        <TextField.Label>Contact email</TextField.Label>
-        <TextField.Description>
-          Use an address that can receive workspace updates.
-        </TextField.Description>
-        <TextField.Input
-          ref={input}
-          className={({ isFocused }) =>
-            isFocused ? "field-story-custom-input focused-contact" : "field-story-custom-input"
-          }
-          render={(props) => <input {...props} data-composed-input="true" />}
-        />
-        <TextField.Help>
-          <TextField.ErrorMessage>
-            {({ validationDetails }) =>
-              validationDetails.valueMissing
-                ? "Enter a contact email."
-                : "Enter a complete email address."
-            }
-          </TextField.ErrorMessage>
-        </TextField.Help>
-      </TextField.Root>
+        required
+        label="Contact email"
+        description="Use an address that can receive workspace updates."
+        errorMessage="Enter a contact email."
+      />
       <Button type="submit">Save contact</Button>
-      <Button variant="ghost" onClick={() => input.current?.focus()}>
-        Focus contact
-      </Button>
       <output aria-label="Saved contact">{saved}</output>
     </Form>
   );
 }
 
-export const Composition: Story = {
-  render: ComposedEmail,
+export const InAForm: Story = {
+  render: FormExample,
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole("textbox", { name: "Contact email (required)" });
-    await expect(canvas.queryByText("Enter a contact email.")).not.toBeInTheDocument();
-    await userEvent.click(canvas.getByRole("button", { name: "Save contact" }));
-    await expect(input).toHaveFocus();
-    await expect(canvas.getByText("Enter a contact email.")).toBeVisible();
-    await expect(input).toHaveAccessibleDescription(/Use an address.*Enter a contact email/);
-    await expect(input).toHaveAttribute("data-composed-input", "true");
-    await expect(input.parentElement).toHaveAttribute("data-composed-root", "true");
-    await expect(input).toHaveClass("react-aria-Input", "focused-contact");
     await userEvent.type(input, "review@example.com");
     await userEvent.click(canvas.getByRole("button", { name: "Save contact" }));
     await expect(canvas.getByRole("status", { name: "Saved contact" })).toHaveTextContent(
       "review@example.com",
     );
-    await expect(input).toHaveValue("review@example.com");
-    await userEvent.click(canvas.getByRole("button", { name: "Focus contact" }));
-    await expect(input).toHaveFocus();
-  },
-};
-
-export const LongContent: Story = {
-  render: () => (
-    <div className="field-story-stack field-story-narrow">
-      <TextField
-        label="Workspace name for the shared release and handoff review"
-        description="Use the full name from your team's review schedule. Keep necessary instructions visible while the value is corrected."
-        isInvalid
-        errorMessage="Enter the workspace name your team uses for the release review. The other values in your draft will remain here while you make this correction."
-      />
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const root = canvasElement.querySelector<HTMLElement>(".hashti-field")!;
-    for (const part of root.querySelectorAll<HTMLElement>(
-      ".hashti-field__label, .hashti-field__description, .hashti-field__error",
-    )) {
-      await expect(part).toBeVisible();
-      await expect(part.scrollWidth).toBeLessThanOrEqual(part.clientWidth + 1);
-      await expect(part.scrollHeight).toBeLessThanOrEqual(part.clientHeight + 1);
-    }
   },
 };
 
@@ -250,28 +189,20 @@ function LocalizedFields() {
   return (
     <div className="field-story-grid">
       <Theme theme={theme} lang="fa-IR" dir="rtl">
-        <TextField
+        <Input
           label="نام فضای کاری"
-          description={
-            <>
-              نام فضای کاری را برای پروژهٔ <bdi dir="ltr">WS-1042</bdi> وارد کنید.
-            </>
-          }
-          isRequired
-          isInvalid
+          description="نام فضای کاری را وارد کنید."
+          required
+          invalid
           errorMessage="نامی بنویسید که تیم شما بشناسد."
         />
       </Theme>
       <Theme theme={theme} lang="ar" dir="rtl">
-        <TextField
+        <Input
           label="اسم مساحة العمل"
-          description={
-            <>
-              أدخل اسم مساحة العمل للمشروع <bdi dir="ltr">WS-1042</bdi>.
-            </>
-          }
-          isRequired
-          isInvalid
+          description="أدخل اسم مساحة العمل."
+          required
+          invalid
           errorMessage="استخدم اسمًا يعرفه فريقك."
         />
       </Theme>

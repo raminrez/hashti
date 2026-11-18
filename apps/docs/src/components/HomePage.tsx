@@ -4,18 +4,17 @@ import { useEffect, useState } from "react";
 import {
   Button,
   CodeSnippet,
-  ContentSwitcher,
   Header,
   HeaderName,
   HeaderNav,
   Layer,
   Link,
+  SegmentedControl,
   Stack,
   StructuredList,
   StructuredListRow,
   TextField,
   Theme,
-  ToggleButton,
 } from "@hashti/react";
 
 type FrameTheme = "frame-light" | "frame-dark";
@@ -126,18 +125,17 @@ export function HomePage() {
           <Layer level={1} className="home-live">
             <div className="home-live-head">
               <h2 className="home-live-title">Change the room, not the code</h2>
-              <ContentSwitcher
+              <SegmentedControl
                 aria-label="Preview theme"
                 size="sm"
-                selectedKeys={[demoTheme]}
-                onSelectionChange={(keys) => {
-                  const next = [...keys][0];
+                value={demoTheme}
+                onValueChange={(next) => {
                   if (next === "frame-light" || next === "frame-dark") setDemoTheme(next);
                 }}
               >
-                <ToggleButton id="frame-light">Light</ToggleButton>
-                <ToggleButton id="frame-dark">Dark</ToggleButton>
-              </ContentSwitcher>
+                <SegmentedControl.Item value="frame-light">Light</SegmentedControl.Item>
+                <SegmentedControl.Item value="frame-dark">Dark</SegmentedControl.Item>
+              </SegmentedControl>
             </div>
 
             <Theme theme={demoTheme} className="home-live-stage">

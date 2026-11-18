@@ -3,17 +3,29 @@
 import {
   createContext,
   useContext,
+  type ComponentProps,
   type ComponentPropsWithRef,
   type ReactNode,
   type Ref,
 } from "react";
 import {
-  Meter as RACMeter,
-  Label,
-  type MeterProps as RACMeterProps,
-  type MeterRenderProps,
-} from "react-aria-components";
-import { classes, cx } from "../../utils";
+  Meter as UiSdkMeter,
+  MeterIndicator as UiSdkMeterIndicator,
+  MeterLabel as UiSdkMeterLabel,
+  MeterTrack as UiSdkMeterTrack,
+  MeterValue as UiSdkMeterValue,
+} from "@ui-sdk/react/meter";
+import { cx } from "../../utils";
+
+/** Joins the component's CSS hook with a possibly state-function className. */
+function classes<S>(
+  base: string,
+  custom: string | ((state: S) => string | undefined) | undefined,
+): string | ((state: S) => string) {
+  return typeof custom === "function"
+    ? (state: S) => cx(base, custom(state))
+    : cx(base, custom);
+}
 
 export type MeterTone = "auto" | "neutral" | "success" | "warning" | "error";
 
@@ -26,8 +38,8 @@ export interface MeterSegment {
 export interface MeterContextValue {
   tone?: MeterTone;
   derivedTone?: "neutral" | "success" | "warning" | "error";
-  percentage?: number;
-  valueText?: string;
+  percent?: number | null;
+  text?: string;
   size?: "sm" | "md" | "lg";
   variant?: "bar" | "circular";
 }
@@ -58,50 +70,44 @@ export function deriveMeterTone({
   const effectiveHigh = high ?? max;
   const effectiveOptimum = optimum ?? (effectiveLow + effectiveHigh) / 2;
 
-  // Case 1: Optimum is in the low range (optimum <= low)
-  // E.g., CPU load or disk usage - lower is better
+  // Optimum in the low range (optimum <= low): lower is better (CPU, disk).
   if (effectiveOptimum <= effectiveLow) {
     if (value <= effectiveLow) return "success";
     if (value >= effectiveHigh) return "error";
     return "warning";
   }
 
-  // Case 2: Optimum is in the high range (optimum >= high)
-  // E.g., battery life or test score - higher is better
+  // Optimum in the high range (optimum >= high): higher is better (battery, score).
   if (effectiveOptimum >= effectiveHigh) {
     if (value >= effectiveHigh) return "success";
     if (value <= effectiveLow) return "error";
     return "warning";
   }
 
-  // Case 3: Optimum is in the medium range (low < optimum < high)
-  // E.g., room temperature - medium is best, outer regions are suboptimal
+  // Optimum in the middle: the low..high band is best (room temperature).
   if (value >= effectiveLow && value <= effectiveHigh) {
     return "success";
   }
   return "warning";
 }
 
-export interface MeterRootProps extends Omit<RACMeterProps, "className" | "children"> {
+export interface MeterRootProps
+  extends Omit<ComponentProps<typeof UiSdkMeter>, "className" | "children"> {
   low?: number;
   high?: number;
   optimum?: number;
   tone?: MeterTone;
   size?: "sm" | "md" | "lg";
   variant?: "bar" | "circular";
-  className?: string | ((values: MeterRenderProps) => string);
-  children?:
-    | ReactNode
-    | ((
-        values: MeterRenderProps & { derivedTone: "neutral" | "success" | "warning" | "error" },
-      ) => ReactNode);
+  className?: string;
+  children?: ReactNode | ((state: { percent: number | null; text: string; derivedTone: MeterContextValue["derivedTone"] }) => ReactNode);
   ref?: Ref<HTMLDivElement>;
 }
 
 export function MeterRoot({
   value = 0,
-  minValue = 0,
-  maxValue = 100,
+  min = 0,
+  max = 100,
   low,
   high,
   optimum,
@@ -110,110 +116,79 @@ export function MeterRoot({
   variant = "bar",
   className,
   children,
-  ref,
   ...props
 }: MeterRootProps) {
   const derivedTone =
-    tone === "auto"
-      ? deriveMeterTone({
-          value,
-          min: minValue,
-          max: maxValue,
-          low,
-          high,
-          optimum,
-        })
-      : tone;
+    tone === "auto" ? deriveMeterTone({ value, min, max, low, high, optimum }) : tone;
 
   return (
-    <RACMeter
+    <UiSdkMeter
       {...props}
-      ref={ref}
       value={value}
-      minValue={minValue}
-      maxValue={maxValue}
+      min={min}
+      max={max}
       data-tone={derivedTone}
       data-size={size}
       data-variant={variant}
-      className={classes(
-        cx("hashti-progress hashti-meter", variant === "circular" && "hashti-meter--circular"),
+      className={cx(
+        "hashti-progress hashti-meter",
+        variant === "circular" && "hashti-meter--circular",
         className,
       )}
     >
-      {(renderProps) => {
+      {(state) => {
         const contextValue: MeterContextValue = {
           tone,
           derivedTone,
-          percentage: renderProps.percentage,
-          valueText: renderProps.valueText,
+          percent: state.percent,
+          text: (state as { text?: string }).text,
           size,
           variant,
         };
         return (
           <MeterContext.Provider value={contextValue}>
             {typeof children === "function"
-              ? (
-                  children as (
-                    values: MeterRenderProps & {
-                      derivedTone: "neutral" | "success" | "warning" | "error";
-                    },
-                  ) => ReactNode
-                )({
-                  ...renderProps,
-                  derivedTone,
-                })
+              ? children({ percent: state.percent, text: (state as { text?: string }).text ?? "", derivedTone })
               : children}
           </MeterContext.Provider>
         );
       }}
-    </RACMeter>
+    </UiSdkMeter>
   );
 }
 
-export interface MeterLabelProps extends ComponentPropsWithRef<typeof Label> {}
+export interface MeterLabelProps extends ComponentProps<typeof UiSdkMeterLabel> {}
 export function MeterLabel({ className, ...props }: MeterLabelProps) {
-  return <Label {...props} className={cx("hashti-meter-label-text", className)} />;
+  return <UiSdkMeterLabel {...props} className={classes("hashti-meter-label-text", className)} />;
 }
 
-export interface MeterValueProps extends ComponentPropsWithRef<"span"> {
-  children?: ReactNode;
-}
+export interface MeterValueProps extends ComponentProps<typeof UiSdkMeterValue> {}
 export function MeterValue({ children, className, ...props }: MeterValueProps) {
-  const { valueText } = useContext(MeterContext);
   return (
-    <span {...props} className={cx("hashti-meter-value-text", className)}>
-      {children ?? valueText}
-    </span>
+    <UiSdkMeterValue {...props} className={classes("hashti-meter-value-text", className)}>
+      {children}
+    </UiSdkMeterValue>
   );
 }
 
-export interface MeterTrackProps extends ComponentPropsWithRef<"div"> {
-  children?: ReactNode;
-}
+export interface MeterTrackProps extends ComponentProps<typeof UiSdkMeterTrack> {}
 export function MeterTrack({ children, className, ...props }: MeterTrackProps) {
   return (
-    <div {...props} className={cx("hashti-progress-track hashti-meter-track", className)}>
+    <UiSdkMeterTrack {...props} className={classes("hashti-progress-track hashti-meter-track", className)}>
       {children}
-    </div>
+    </UiSdkMeterTrack>
   );
 }
 
-export interface MeterFillProps extends ComponentPropsWithRef<"div"> {
+export interface MeterFillProps extends ComponentProps<typeof UiSdkMeterIndicator> {
   percentage?: number;
 }
-export function MeterFill({
-  percentage: propPercentage,
-  style,
-  className,
-  ...props
-}: MeterFillProps) {
-  const { percentage: ctxPercentage } = useContext(MeterContext);
-  const percent = propPercentage ?? ctxPercentage ?? 0;
+export function MeterFill({ percentage, className, style, ...props }: MeterFillProps) {
   return (
-    <div
+    <UiSdkMeterIndicator
       {...props}
-      className={cx("hashti-progress-fill hashti-meter-fill", className)}
-      style={{ width: `${percent}%`, ...style }}
+      className={classes("hashti-progress-fill hashti-meter-fill", className)}
+      style={percentage != null ? { width: `${percentage}%` } : undefined}
     />
   );
 }
@@ -233,17 +208,12 @@ export interface MeterCircleProps extends ComponentPropsWithRef<"div"> {
   showValueLabel?: boolean;
 }
 export function MeterCircle({ showValueLabel = true, className, ...props }: MeterCircleProps) {
-  const {
-    percentage = 0,
-    valueText,
-    size = "md",
-    derivedTone = "neutral",
-  } = useContext(MeterContext);
+  const { percent = 0, text, size = "md", derivedTone = "neutral" } = useContext(MeterContext);
   const pixelSize = size === "sm" ? 36 : size === "lg" ? 64 : 48;
   const strokeWidth = size === "sm" ? 3 : size === "lg" ? 5 : 4;
   const radius = (pixelSize - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference * (1 - Math.min(Math.max(percentage / 100, 0), 1));
+  const strokeDashoffset = circumference * (1 - Math.min(Math.max((percent ?? 0) / 100, 0), 1));
 
   return (
     <div
@@ -276,7 +246,7 @@ export function MeterCircle({ showValueLabel = true, className, ...props }: Mete
           strokeDashoffset={strokeDashoffset}
         />
       </svg>
-      {showValueLabel && <span className="hashti-meter-circle-value">{valueText}</span>}
+      {showValueLabel && <span className="hashti-meter-circle-value">{text}</span>}
     </div>
   );
 }
@@ -293,14 +263,14 @@ function MeterDefault({
   segments,
   variant = "bar",
   children,
-  minValue = 0,
-  maxValue = 100,
+  min = 0,
+  max = 100,
   ...props
 }: MeterProps) {
   return (
-    <MeterRoot {...props} minValue={minValue} maxValue={maxValue} variant={variant}>
+    <MeterRoot {...props} min={min} max={max} variant={variant}>
       {children ??
-        (({ percentage, valueText }) => {
+        (({ percent }) => {
           if (variant === "circular") {
             return (
               <>
@@ -315,14 +285,14 @@ function MeterDefault({
             );
           }
 
-          const totalRange = maxValue - minValue;
+          const totalRange = max - min;
 
           return (
             <>
-              {(label || valueText) && (
+              {label && (
                 <div className="hashti-progress-label hashti-meter-header">
-                  {label && <MeterLabel>{label}</MeterLabel>}
-                  {valueText && <MeterValue>{valueText}</MeterValue>}
+                  <MeterLabel>{label}</MeterLabel>
+                  <MeterValue />
                 </div>
               )}
               <MeterTrack>
@@ -342,7 +312,7 @@ function MeterDefault({
                     );
                   })
                 ) : (
-                  <MeterFill percentage={percentage} />
+                  <MeterFill percentage={percent ?? undefined} />
                 )}
               </MeterTrack>
               {helperText && <MeterHelperText>{helperText}</MeterHelperText>}

@@ -1,95 +1,75 @@
 "use client";
 
-import { createContext, useContext, type ComponentProps, type Ref } from "react";
+import { createContext, type ComponentProps, type Ref } from "react";
 import {
-  Toolbar as RACToolbar,
-  Group as RACGroup,
-  Separator as RACSeparator,
-  SeparatorContext as RACSeparatorContext,
-  ToggleButtonGroupContext as RACToggleButtonGroupContext,
-  type ToolbarProps as RACToolbarProps,
-  type GroupProps as RACGroupProps,
-  type SeparatorProps as RACSeparatorProps,
-} from "react-aria-components";
-import { classes, cx, type ControlSize } from "../../utils";
+  Toolbar as UiSdkToolbar,
+  ToolbarGroup as UiSdkToolbarGroup,
+  ToolbarSeparator as UiSdkToolbarSeparator,
+  type ToolbarGroupState,
+  type ToolbarSeparatorState,
+  type ToolbarState,
+} from "@ui-sdk/react/toolbar";
+import { cx, type ControlSize } from "../../utils";
 
 export interface ToolbarContextValue {
   size?: ControlSize;
   orientation?: "horizontal" | "vertical";
-  isDisabled?: boolean;
+  disabled?: boolean;
 }
 
 export const ToolbarContext = createContext<ToolbarContextValue>({});
 
-export interface ToolbarProps extends Omit<RACToolbarProps, "className"> {
+export interface ToolbarProps extends ComponentProps<typeof UiSdkToolbar> {
   size?: ControlSize;
-  orientation?: "horizontal" | "vertical";
   variant?: "flat" | "raised" | "floating";
-  isDisabled?: boolean;
-  className?: RACToolbarProps["className"];
-  ref?: Ref<HTMLDivElement>;
 }
 
 export function ToolbarRoot({
   size = "md",
   orientation = "horizontal",
   variant = "flat",
-  isDisabled,
+  disabled,
   className,
   children,
   ...props
 }: ToolbarProps) {
-  const contextValue: ToolbarContextValue = {
-    size,
-    orientation,
-    isDisabled,
-  };
+  const contextValue: ToolbarContextValue = { size, orientation, disabled };
 
-  const separatorOrientation = orientation === "vertical" ? "horizontal" : "vertical";
+  const classHook =
+    typeof className === "function"
+      ? (state: ToolbarState) => cx("hashti-toolbar", className(state))
+      : cx("hashti-toolbar", className);
 
   return (
     <ToolbarContext.Provider value={contextValue}>
-      <RACToggleButtonGroupContext.Provider value={{ orientation }}>
-        <RACSeparatorContext.Provider value={{ orientation: separatorOrientation }}>
-          <RACToolbar
-            {...props}
-            aria-disabled={isDisabled || undefined}
-            data-disabled={isDisabled || undefined}
-            orientation={orientation}
-            data-size={size}
-            data-orientation={orientation}
-            data-variant={variant}
-            className={classes("react-aria-Toolbar hashti-toolbar", className)}
-          >
-            {children}
-          </RACToolbar>
-        </RACSeparatorContext.Provider>
-      </RACToggleButtonGroupContext.Provider>
+      <UiSdkToolbar
+        {...props}
+        orientation={orientation}
+        disabled={disabled}
+        data-size={size}
+        data-variant={variant}
+        className={classHook}
+      >
+        {children}
+      </UiSdkToolbar>
     </ToolbarContext.Provider>
   );
 }
 
-export interface ToolbarGroupProps extends Omit<RACGroupProps, "className"> {
-  ariaLabel?: string;
-  className?: RACGroupProps["className"];
+export interface ToolbarGroupProps extends ComponentProps<typeof UiSdkToolbarGroup> {
   ref?: Ref<HTMLDivElement>;
 }
 
-export function ToolbarGroup({
-  ariaLabel,
-  "aria-label": ariaLabelProp,
-  className,
-  children,
-  ...props
-}: ToolbarGroupProps) {
+export function ToolbarGroup({ className, children, ...props }: ToolbarGroupProps) {
+  const classHook =
+    typeof className === "function"
+      ? (state: ToolbarGroupState) => cx("hashti-toolbar-group", className(state))
+      : cx("hashti-toolbar-group", className);
+
   return (
-    <RACGroup
-      {...props}
-      aria-label={ariaLabel ?? ariaLabelProp}
-      className={classes("hashti-toolbar-group", className)}
-    >
+    <UiSdkToolbarGroup {...props} className={classHook}>
       {children}
-    </RACGroup>
+    </UiSdkToolbarGroup>
   );
 }
 
@@ -105,22 +85,20 @@ export function ToolbarItem({ className, children, ...props }: ToolbarItemProps)
   );
 }
 
-export interface ToolbarSeparatorProps extends RACSeparatorProps {
-  ref?: Ref<HTMLElement>;
-}
+// The separator's line runs across the toolbar's axis; ui-sdk derives it from
+// the toolbar's orientation.
+export type ToolbarSeparatorProps = ComponentProps<typeof UiSdkToolbarSeparator>;
 
-export function ToolbarSeparator({ orientation, className, ...props }: ToolbarSeparatorProps) {
-  const toolbarContext = useContext(ToolbarContext);
-  const defaultOrientation = toolbarContext.orientation === "vertical" ? "horizontal" : "vertical";
-  const resolvedOrientation = orientation ?? defaultOrientation;
+export function ToolbarSeparator({
+  className,
+  ...props
+}: ComponentProps<typeof UiSdkToolbarSeparator>) {
+  const classHook =
+    typeof className === "function"
+      ? (state: ToolbarSeparatorState) => cx("hashti-toolbar-separator", className(state))
+      : cx("hashti-toolbar-separator", className);
 
-  return (
-    <RACSeparator
-      {...props}
-      orientation={resolvedOrientation}
-      className={cx("react-aria-Separator", "hashti-toolbar-separator", className)}
-    />
-  );
+  return <UiSdkToolbarSeparator {...props} className={classHook} />;
 }
 
 export const Toolbar = Object.assign(ToolbarRoot, {

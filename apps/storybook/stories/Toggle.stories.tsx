@@ -24,7 +24,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Toggle keeps a button pressed until it is pressed again, like pinning a message or starring a document. For a group of mutually exclusive options, use ContentSwitcher.",
+          "Toggle keeps a button pressed until it is pressed again, like pinning a message or starring a document. For a group of mutually exclusive options, use SegmentedControl.",
       },
     },
   },

@@ -1,60 +1,96 @@
 "use client";
 
-import { type ReactNode, type Ref } from "react";
+import type { ReactNode, Ref } from "react";
 import {
-  TextField as RACTextField,
-  TextFieldContext,
-  type TextFieldProps as RACTextFieldProps,
-} from "react-aria-components";
+  Field as UiSdkField,
+  type FieldState,
+} from "@ui-sdk/react/field";
+import { Input as UiSdkInput, type InputState } from "@ui-sdk/react/input";
+import { Textarea as UiSdkTextarea, type TextareaState } from "@ui-sdk/react/textarea";
 import {
   FieldLayout,
-  FieldInput,
-  FieldTextArea,
-  FieldControl,
-  useFieldAnatomy,
+  FieldPresentationProvider,
   fieldClassName,
-  fieldParts,
+  useFieldPresentation,
   type FieldContentProps,
   type FieldPresentationProps,
 } from "../field";
-import { classes, type ControlSize } from "../../utils";
+import { cx, type ControlSize } from "../../utils";
 
-export interface TextFieldRootProps extends RACTextFieldProps, FieldPresentationProps {
-  size?: ControlSize;
+/**
+ * Where a change came from. ui-sdk reports its own reasons through the
+ * `details` argument of `onValueChange`; these remain for the Hashti
+ * onChange API the old TextField exposed.
+ */
+export type ChangeSource = "user" | "agent";
+export interface ChangeDetails {
+  source: ChangeSource;
+}
+
+export interface InputRootProps extends FieldPresentationProps {
+  size?: "sm" | "md" | "lg";
+  name?: string;
+  disabled?: boolean;
+  invalid?: boolean;
+  required?: boolean;
+  className?: string | ((state: FieldState) => string | undefined);
+  children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
 }
 
-function TextFieldRoot({
+function InputRoot({
   size = "md",
   className,
   children,
   status,
   statusVariant,
   isOptional,
+  name,
+  disabled,
+  invalid,
+  required,
   ...props
-}: TextFieldRootProps) {
-  const anatomy = useFieldAnatomy(
-    { ...props, status, statusVariant, isOptional },
-    TextFieldContext as Parameters<typeof useFieldAnatomy>[1],
-  );
+}: InputRootProps) {
+  const presentation = useFieldPresentation({ status, statusVariant, isOptional }, undefined);
   return (
-    <RACTextField
-      {...props}
-      {...anatomy.props}
+    <UiSdkField
+      name={name}
+      disabled={disabled}
+      invalid={invalid}
       data-size={size}
-      className={classes(fieldClassName("text-field"), className)}
+      {...presentation.props}
+      className={cx(fieldClassName("text-field"), className as string)}
     >
-      {anatomy.wrap(children, anatomy.slotted?.children as ReactNode)}
-    </RACTextField>
+      <FieldPresentationProvider
+        status={status}
+        statusVariant={presentation.statusVariant}
+        isOptional={isOptional}
+        isRequired={required}
+        fieldGated
+      >
+        {children}
+      </FieldPresentationProvider>
+    </UiSdkField>
   );
 }
 
-export interface TextFieldProps extends TextFieldRootProps, FieldContentProps {
+export interface InputProps extends Omit<InputRootProps, "children">, FieldContentProps {
   placeholder?: string;
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
   inputRef?: Ref<HTMLInputElement>;
+  type?: string;
+  required?: boolean;
+  readOnly?: boolean;
+  autoComplete?: string;
+  children?: ReactNode;
 }
 
-function TextFieldDefault({
+/**
+ * Hashti's text input: a ui-sdk Input inside the field anatomy.
+ */
+function InputDefault({
   label,
   labelTooltip,
   description,
@@ -64,15 +100,17 @@ function TextFieldDefault({
   inputRef,
   className,
   children,
+  value,
+  defaultValue,
+  onValueChange,
+  type,
+  required,
+  readOnly,
+  autoComplete,
   ...props
-}: TextFieldProps) {
+}: InputProps) {
   return (
-    <TextFieldRoot
-      {...props}
-      size={size}
-      className={className}
-      data-hashti-input-icon={children == null ? "" : undefined}
-    >
+    <InputRoot {...props} required={required} size={size} className={className}>
       {children ?? (
         <FieldLayout
           inlineIcon
@@ -81,23 +119,35 @@ function TextFieldDefault({
           description={description}
           errorMessage={errorMessage}
         >
-          <FieldInput placeholder={placeholder} ref={inputRef} />
+          <UiSdkInput
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            defaultValue={defaultValue}
+            onValueChange={onValueChange}
+            required={required}
+            readOnly={readOnly}
+            autoComplete={autoComplete}
+            ref={inputRef}
+          />
         </FieldLayout>
       )}
-    </TextFieldRoot>
+    </InputRoot>
   );
 }
 
-export const TextField = Object.assign(TextFieldDefault, {
-  Root: TextFieldRoot,
-  ...fieldParts,
-  Input: FieldInput,
-  TextArea: FieldTextArea,
-  Control: FieldControl,
+export const Input = Object.assign(InputDefault, {
+  Root: InputRoot,
 });
 
-export interface TextAreaRootProps extends RACTextFieldProps, FieldPresentationProps {
-  size?: ControlSize;
+export interface TextAreaRootProps extends FieldPresentationProps {
+  size?: "sm" | "md" | "lg";
+  name?: string;
+  disabled?: boolean;
+  invalid?: boolean;
+  required?: boolean;
+  className?: string | ((state: FieldState) => string | undefined);
+  children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
 }
 
@@ -108,28 +158,46 @@ function TextAreaRoot({
   status,
   statusVariant,
   isOptional,
+  name,
+  disabled,
+  invalid,
+  required,
   ...props
 }: TextAreaRootProps) {
-  const anatomy = useFieldAnatomy(
-    { ...props, status, statusVariant, isOptional },
-    TextFieldContext as Parameters<typeof useFieldAnatomy>[1],
-  );
+  const presentation = useFieldPresentation({ status, statusVariant, isOptional }, undefined);
   return (
-    <RACTextField
-      {...props}
-      {...anatomy.props}
+    <UiSdkField
+      name={name}
+      disabled={disabled}
+      invalid={invalid}
       data-size={size}
-      className={classes(fieldClassName("text-area"), className)}
+      {...presentation.props}
+      className={cx(fieldClassName("text-area"), className as string)}
     >
-      {anatomy.wrap(children, anatomy.slotted?.children as ReactNode)}
-    </RACTextField>
+      <FieldPresentationProvider
+        status={status}
+        statusVariant={presentation.statusVariant}
+        isOptional={isOptional}
+        isRequired={required}
+        fieldGated
+      >
+        {children}
+      </FieldPresentationProvider>
+    </UiSdkField>
   );
 }
 
-export interface TextAreaProps extends TextAreaRootProps, FieldContentProps {
+export interface TextAreaProps extends Omit<TextAreaRootProps, "children">, FieldContentProps {
   placeholder?: string;
   rows?: number;
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
   inputRef?: Ref<HTMLTextAreaElement>;
+  required?: boolean;
+  readOnly?: boolean;
+  autoResize?: boolean;
+  children?: ReactNode;
 }
 
 function TextAreaDefault({
@@ -143,15 +211,16 @@ function TextAreaDefault({
   inputRef,
   className,
   children,
+  value,
+  defaultValue,
+  onValueChange,
+  required,
+  readOnly,
+  autoResize,
   ...props
 }: TextAreaProps) {
   return (
-    <TextAreaRoot
-      {...props}
-      size={size}
-      className={className}
-      data-hashti-input-icon={children == null ? "" : undefined}
-    >
+    <TextAreaRoot {...props} required={required} size={size} className={className}>
       {children ?? (
         <FieldLayout
           inlineIcon
@@ -160,7 +229,17 @@ function TextAreaDefault({
           description={description}
           errorMessage={errorMessage}
         >
-          <FieldTextArea rows={rows} placeholder={placeholder} ref={inputRef} />
+          <UiSdkTextarea
+            rows={rows}
+            placeholder={placeholder}
+            value={value}
+            defaultValue={defaultValue}
+            onValueChange={onValueChange}
+            required={required}
+            readOnly={readOnly}
+            autoResize={autoResize}
+            ref={inputRef}
+          />
         </FieldLayout>
       )}
     </TextAreaRoot>
@@ -169,7 +248,6 @@ function TextAreaDefault({
 
 export const TextArea = Object.assign(TextAreaDefault, {
   Root: TextAreaRoot,
-  ...fieldParts,
-  Input: FieldTextArea,
-  Control: FieldControl,
 });
+
+export type { InputState, TextareaState };

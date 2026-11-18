@@ -5,17 +5,15 @@ import {
   Button,
   Checkbox,
   Dialog,
-  DialogTrigger,
+  DialogClose,
   Form,
-  Heading,
   Icon,
   ListBoxItem,
-  Modal,
-  NumberField,
+  NumberInput,
   Select,
   Switch,
   TextArea,
-  TextField,
+  Input,
   Theme,
   useTheme,
 } from "@hashti/react";
@@ -99,33 +97,33 @@ function SettingsForm({
                 <p>Use a name your team recognizes and an address that can receive replies.</p>
               </div>
               <div className="settings-fields">
-                <TextField
-                  isRequired
+                <Input
+                  required
                   label="Workspace name"
                   name="workspaceName"
                   value={settings.name}
-                  onChange={(name) => {
+                  onValueChange={(name) => {
                     setSettings((s) => ({ ...s, name }));
                     setSaveState("idle");
                   }}
                   description="This name appears in review invitations."
                   errorMessage="Enter a workspace name."
                 />
-                <TextField
-                  isRequired
+                <Input
+                  required
                   type="email"
                   label="Reply-to email"
                   name="replyTo"
                   value={settings.email}
-                  onChange={(email) => {
+                  onValueChange={(email) => {
                     setSettings((s) => ({ ...s, email }));
                     setSaveState("idle");
                   }}
                   description="Replies to review summaries go to this address."
                   errorMessage="Enter a valid email address."
                 />
-                <TextField
-                  isReadOnly
+                <Input
+                  readOnly
                   label="Workspace ID"
                   value="hashti-studio-demo"
                   description="This identifier stays fixed when you rename the workspace."
@@ -156,15 +154,15 @@ function SettingsForm({
                 >
                   {(item) => <ListBoxItem id={item.id}>{item.name}</ListBoxItem>}
                 </Select>
-                <NumberField
-                  isRequired
-                  minValue={1}
-                  maxValue={24}
+                <NumberInput
+                  required
+                  min={1}
+                  max={24}
                   label="Daily review limit"
                   name="reviewLimit"
                   value={settings.limit}
-                  onChange={(limit) => {
-                    setSettings((s) => ({ ...s, limit }));
+                  onValueChange={(limit) => {
+                    setSettings((s) => ({ ...s, limit: limit ?? s.limit }));
                     setSaveState("idle");
                   }}
                   description="Allow 1 to 24 reviews per person."
@@ -180,8 +178,8 @@ function SettingsForm({
               </div>
               <div className="settings-fields">
                 <Switch
-                  isSelected={settings.digest}
-                  onChange={(digest) => {
+                  checked={settings.digest}
+                  onCheckedChange={(digest) => {
                     setSettings((s) => ({
                       ...s,
                       digest,
@@ -193,12 +191,12 @@ function SettingsForm({
                   Send a daily review summary
                 </Switch>
                 <Checkbox
-                  isSelected={settings.completed}
-                  onChange={(completed) => {
-                    setSettings((s) => ({ ...s, completed }));
+                  checked={settings.completed}
+                  onCheckedChange={(completed) => {
+                    setSettings((s) => ({ ...s, completed: completed === true }));
                     setSaveState("idle");
                   }}
-                  isDisabled={!settings.digest}
+                  disabled={!settings.digest}
                 >
                   Include reviews that are already ready
                 </Checkbox>
@@ -333,88 +331,68 @@ function NestedReviewDialogExample() {
 
   return (
     <div className="overlay-story-stack">
-      <DialogTrigger>
-        <Button>Open review task</Button>
-        <Modal size="md" isDismissable>
-          <Dialog>
-            {({ close }) => (
-              <>
-                <Heading slot="title">Review submission CDR-101</Heading>
-                <Button
-                  slot="close"
-                  variant="ghost"
-                  size="md"
-                  iconOnly
-                  aria-label="Close task dialog"
-                  onClick={close}
-                >
-                  <Icon name="close" />
-                </Button>
-                <p>Complete the review checklist before marking approved.</p>
+      <Dialog>
+        <Dialog.Trigger render={<Button>Open review task</Button>} />
+        <Dialog.Backdrop />
+        <Dialog.Content size="md">
+          <Dialog.Title>Review submission CDR-101</Dialog.Title>
+          <DialogClose
+            aria-label="Close task dialog"
+            render={<Button variant="ghost" size="md" iconOnly />}
+          >
+            <Icon name="close" />
+          </DialogClose>
+          <p>Complete the review checklist before marking approved.</p>
 
-                <Form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    close();
-                  }}
-                  style={{ display: "grid", gap: "1rem" }}
-                >
-                  <Select
-                    label="Decision"
-                    selectedKey={status}
-                    onSelectionChange={(k) => setStatus(k as string)}
-                    items={[
-                      { id: "approved", name: "Approved" },
-                      { id: "changes_requested", name: "Changes requested" },
-                      { id: "rejected", name: "Rejected" },
-                    ]}
-                  >
-                    {(item) => <ListBoxItem id={item.id}>{item.name}</ListBoxItem>}
-                  </Select>
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+            style={{ display: "grid", gap: "1rem" }}
+          >
+            <Select
+              label="Decision"
+              selectedKey={status}
+              onSelectionChange={(k) => setStatus(k as string)}
+              items={[
+                { id: "approved", name: "Approved" },
+                { id: "changes_requested", name: "Changes requested" },
+                { id: "rejected", name: "Rejected" },
+              ]}
+            >
+              {(item) => <ListBoxItem id={item.id}>{item.name}</ListBoxItem>}
+            </Select>
 
-                  <TextArea
-                    label="Review notes"
-                    value={reviewNote}
-                    onChange={setReviewNote}
-                    rows={3}
-                  />
+            <TextArea
+              label="Review notes"
+              value={reviewNote}
+              onValueChange={setReviewNote}
+              rows={3}
+            />
 
+            <div className="hashti-dialog-footer">
+              <Dialog>
+                <Dialog.Trigger render={<Button variant="outline">Discard changes</Button>} />
+                <Dialog.Backdrop />
+                <Dialog.Content size="xs">
+                  <Dialog.Title>Discard changes?</Dialog.Title>
+                  <Dialog.Description>
+                    All unsaved modifications to this review will be lost.
+                  </Dialog.Description>
                   <div className="hashti-dialog-footer">
-                    <DialogTrigger>
-                      <Button variant="outline">Discard changes</Button>
-                      <Modal size="xs" isDismissable>
-                        <Dialog role="alertdialog">
-                          {({ close: closeDiscardModal }) => (
-                            <>
-                              <Heading slot="title">Discard changes?</Heading>
-                              <p>All unsaved modifications to this review will be lost.</p>
-                              <div className="hashti-dialog-footer">
-                                <Button variant="ghost" onClick={closeDiscardModal}>
-                                  Keep editing
-                                </Button>
-                                <Button
-                                  variant="danger"
-                                  onClick={() => {
-                                    closeDiscardModal();
-                                    close();
-                                  }}
-                                >
-                                  Discard
-                                </Button>
-                              </div>
-                            </>
-                          )}
-                        </Dialog>
-                      </Modal>
-                    </DialogTrigger>
-                    <Button type="submit">Submit decision</Button>
+                    <DialogClose render={<Button variant="ghost">Keep editing</Button>} />
+                    <DialogClose
+                      render={<Button variant="danger">Discard</Button>}
+                      action={() => setReviewNote("")}
+                    />
                   </div>
-                </Form>
-              </>
-            )}
-          </Dialog>
-        </Modal>
-      </DialogTrigger>
+                </Dialog.Content>
+              </Dialog>
+              <Button type="submit">Submit decision</Button>
+            </div>
+          </Form>
+        </Dialog.Content>
+      </Dialog>
     </div>
   );
 }
@@ -427,7 +405,7 @@ export const NestedReviewDialog: Story = {
     await userEvent.click(trigger);
 
     const taskModal = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>('.hashti-modal[data-size="md"]');
+      const el = document.querySelector<HTMLElement>('.hashti-dialog[data-size="md"]');
       expect(el).not.toBeNull();
       return el!;
     });
@@ -438,7 +416,7 @@ export const NestedReviewDialog: Story = {
     await userEvent.click(discardTrigger);
 
     const confirmModal = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>('.hashti-modal[data-size="xs"]');
+      const el = document.querySelector<HTMLElement>('.hashti-dialog[data-size="xs"]');
       expect(el).not.toBeNull();
       return el!;
     });
@@ -447,7 +425,7 @@ export const NestedReviewDialog: Story = {
     // Press Escape to dismiss nested modal first
     await userEvent.keyboard("{Escape}");
     await waitFor(() => {
-      expect(document.querySelector('.hashti-modal[data-size="xs"]')).toBeNull();
+      expect(document.querySelector('.hashti-dialog[data-size="xs"]')).toBeNull();
     });
 
     // Parent task modal is still open
@@ -457,7 +435,7 @@ export const NestedReviewDialog: Story = {
     const closeBtn = within(taskModal).getByRole("button", { name: "Close task dialog" });
     await userEvent.click(closeBtn);
     await waitFor(() => {
-      expect(document.querySelector('.hashti-modal[data-size="md"]')).toBeNull();
+      expect(document.querySelector('.hashti-dialog[data-size="md"]')).toBeNull();
     });
     expect(trigger).toHaveFocus();
   },

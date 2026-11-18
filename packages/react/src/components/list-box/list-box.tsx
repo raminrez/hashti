@@ -26,7 +26,7 @@ import {
   type CheckboxRenderProps,
 } from "react-aria-components";
 import { classes, cx, type ControlSize } from "../../utils";
-import { Checkbox } from "../checkbox";
+import { Checkbox, type CheckboxProps } from "../checkbox";
 import { Icon } from "../../icons";
 
 export interface ListBoxContextValue {
@@ -167,14 +167,14 @@ export function ListBoxDragHandle({
   );
 }
 
-export interface ListBoxCheckboxProps extends Omit<RACCheckboxProps, "className"> {
-  className?: string | ((values: CheckboxRenderProps) => string);
+export interface ListBoxCheckboxProps extends Omit<CheckboxProps, "className"> {
+  className?: CheckboxProps["className"];
 }
 
 export function ListBoxCheckbox({ className, children, ...props }: ListBoxCheckboxProps) {
   return (
-    <Checkbox slot="selection" {...props} className={classes("hashti-listbox-checkbox", className)}>
-      {children as any}
+    <Checkbox {...props} className={cx("hashti-listbox-checkbox", typeof className === "function" ? undefined : className)}>
+      {children}
     </Checkbox>
   );
 }

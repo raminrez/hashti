@@ -134,7 +134,7 @@ function DisabledStateExample() {
           label="System manifest"
           description="Modifications are disabled by workspace release policy."
           files={sampleFiles}
-          isDisabled
+          disabled
         />
       </div>
     </div>

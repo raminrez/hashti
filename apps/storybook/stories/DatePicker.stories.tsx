@@ -7,12 +7,11 @@ import {
   DateRangePicker,
   Calendar,
   RangeCalendar,
-  DateField,
-  TimeField,
+  DateInput,
+  TimeInput,
   Theme,
   useTheme,
   type DateRange as RACDateRange,
-  type TimeValue,
 } from "@hashti/react";
 import "./feedback.css";
 
@@ -220,8 +219,8 @@ export const LongContentAndLocales: Story = {
 };
 
 function DateAndFieldsExample() {
-  const [date, setDate] = useState<DateValue | null>(() => parseDate("2026-11-09"));
-  const [time, setTime] = useState<TimeValue | null>(() => parseTime("14:30"));
+  const [date, setDate] = useState<string | null>("2026-11-09");
+  const [time, setTime] = useState<string | null>("14:30");
 
   return (
     <div className="feedback-story-stack">
@@ -239,17 +238,21 @@ function DateAndFieldsExample() {
             gap: "1.5rem",
           }}
         >
-          <DateField
-            label="Direct Date Field"
-            description="Type MM/DD/YYYY or use arrow keys."
-            value={date}
-            onChange={setDate}
-          />
-          <TimeField
+          <div>
+            <label htmlFor="direct-date" style={{ display: "block", marginBottom: "0.25rem" }}>
+              Direct Date Field
+            </label>
+            <DateInput
+              aria-label="Direct Date Field"
+              value={date}
+              onValueChange={setDate}
+            />
+          </div>
+          <TimeInput
             label="Direct Time Field"
-            description="Type HH:MM AM/PM or use arrow keys."
+            description="Type HH:MM or use arrow keys."
             value={time}
-            onChange={setTime}
+            onValueChange={setTime}
           />
         </div>
       </div>

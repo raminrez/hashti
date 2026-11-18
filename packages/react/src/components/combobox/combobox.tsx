@@ -7,11 +7,11 @@ import {
   ComboBoxContext,
   ComboBoxStateContext,
   ListBox as RACListBox,
+  Popover as RACPopover,
   type ComboBoxProps as RACComboBoxProps,
   type ListBoxProps,
   type ComboBoxValueProps,
 } from "react-aria-components";
-import { Popover } from "../popover";
 import {
   FieldLayout,
   FieldControl,
@@ -150,7 +150,8 @@ function ComboBoxDefault<T extends object, M extends SelectionMode = "single">({
       >
         <FieldControl>
           <FieldGroupInput placeholder={placeholder} />
-          <FieldButton iconOnly aria-label="Open items list">
+          {/* TICK-007 interim: FieldButton no longer takes iconOnly; combobox migrates in TICK-006. */}
+          <FieldButton data-icon-only aria-label="Open items list">
             <Icon name="chevronDown" />
           </FieldButton>
         </FieldControl>
@@ -219,12 +220,14 @@ function ComboBoxDefault<T extends object, M extends SelectionMode = "single">({
           </ComboBoxValuePart>
         )}
       </FieldLayout>
-      <Popover offset={6} className="hashti-combobox-popover">
+      {/* TICK-007 interim: Hashti Popover is ui-sdk now; RAC ComboBox still needs
+          a RAC popover for its overlay context. Combobox migrates in TICK-006. */}
+      <RACPopover offset={6} className="hashti-popover hashti-combobox-popover">
         <RACListBox items={items} className="hashti-combobox-listbox react-aria-ListBox">
           {children}
         </RACListBox>
         {allowCreateItem && <ComboBoxCreateItem onCreateItem={onCreateItem} />}
-      </Popover>
+      </RACPopover>
     </ComboBoxRoot>
   );
 }
@@ -236,7 +239,7 @@ export const ComboBox = Object.assign(ComboBoxDefault, {
   Control: FieldControl,
   Trigger: FieldButton,
   Value: ComboBoxValuePart,
-  Popover,
+  Popover: RACPopover,
   ListBox: RACListBox,
   CreateItem: ComboBoxCreateItem,
 });

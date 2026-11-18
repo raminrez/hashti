@@ -1,0 +1,207 @@
+---
+title: Segmented Control
+description: Segmented control for switching between mutually exclusive views or data modes, with an indicator that slides to the checked option.
+---
+
+# Segmented Control
+
+The Segmented Control (formerly Content Switcher) lets users rapidly switch between mutually exclusive views, filtering modes, or display formats—such as "Grid" and "List" layouts, or "Monthly" and "Annual" billing plans.
+
+It follows the WAI-ARIA radio group pattern: exactly one option is checked at a time, and a sliding indicator sits behind the checked segment.
+
+<ComponentPreview
+  title="Segmented Control"
+  description="Binary or ternary view toggles with pill geometry."
+>
+  <SegmentedControlLiveDemo />
+</ComponentPreview>
+
+---
+
+## Import
+
+```tsx
+import { SegmentedControl } from "@hashti/react";
+// Or the named part:
+// import { SegmentedControlItem } from "@hashti/react";
+```
+
+---
+
+## Examples
+
+### Basic Segmented Control
+
+Wrap two or more `<SegmentedControl.Item>` components inside `<SegmentedControl>`. Each item takes a `value`; the control's value is the checked item's value:
+
+```tsx
+import { useState } from "react";
+import { SegmentedControl } from "@hashti/react";
+
+export function BasicSegmentedControlExample() {
+  const [view, setView] = useState<string | null>("grid");
+
+  return (
+    <div className="space-y-4">
+      <SegmentedControl
+        value={view}
+        onValueChange={setView}
+        aria-label="View presentation style"
+      >
+        <SegmentedControl.Item value="grid">Grid View</SegmentedControl.Item>
+        <SegmentedControl.Item value="table">Table View</SegmentedControl.Item>
+        <SegmentedControl.Item value="compact">Compact View</SegmentedControl.Item>
+      </SegmentedControl>
+
+      <div className="p-4 border border-subtle rounded bg-layer-1 text-sm">
+        Active View: <strong>{view}</strong>
+      </div>
+    </div>
+  );
+}
+```
+
+### With Icons & Labels
+
+Combine icons with descriptive labels to provide instant visual affordances:
+
+```tsx
+import { useState } from "react";
+import { SegmentedControl, Icon } from "@hashti/react";
+
+export function IconSegmentedControlExample() {
+  const [mode, setMode] = useState<string | null>("code");
+
+  return (
+    <SegmentedControl value={mode} onValueChange={setMode} aria-label="Editor display mode">
+      <SegmentedControl.Item value="code">
+        <Icon name="code" size={16} />
+        <span>Source Code</span>
+      </SegmentedControl.Item>
+
+      <SegmentedControl.Item value="preview">
+        <Icon name="view" size={16} />
+        <span>Live Preview</span>
+      </SegmentedControl.Item>
+
+      <SegmentedControl.Item value="split">
+        <Icon name="splitScreen" size={16} />
+        <span>Split Screen</span>
+      </SegmentedControl.Item>
+    </SegmentedControl>
+  );
+}
+```
+
+### Sizes
+
+Hashti offers three density sizes (`sm`, `md`, `lg`) to match adjacent input heights and dense toolbars. Set `size` on the control; every item inherits it:
+
+```tsx
+import { SegmentedControl } from "@hashti/react";
+
+export function SegmentedControlSizesExample() {
+  return (
+    <div className="space-y-4">
+      {/* Small */}
+      <SegmentedControl size="sm" defaultValue="day" aria-label="Timeframe small">
+        <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+        <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+        <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+      </SegmentedControl>
+
+      {/* Medium (default) */}
+      <SegmentedControl size="md" defaultValue="day" aria-label="Timeframe medium">
+        <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+        <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+        <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+      </SegmentedControl>
+
+      {/* Large */}
+      <SegmentedControl size="lg" defaultValue="day" aria-label="Timeframe large">
+        <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+        <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+        <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+      </SegmentedControl>
+    </div>
+  );
+}
+```
+
+### Binary Switcher
+
+Ideal for two-option toggles such as pricing tiers or light/dark themes:
+
+```tsx
+import { useState } from "react";
+import { SegmentedControl } from "@hashti/react";
+
+export function BinarySwitcherExample() {
+  const [billing, setBilling] = useState<string | null>("annual");
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <SegmentedControl value={billing} onValueChange={setBilling} aria-label="Billing cycle">
+        <SegmentedControl.Item value="monthly">Monthly Billing</SegmentedControl.Item>
+        <SegmentedControl.Item value="annual">Annual Billing (Save 20%)</SegmentedControl.Item>
+      </SegmentedControl>
+
+      <p className="text-xs text-subtle">
+        {billing === "annual" ? "$80 / year (billed annually)" : "$10 / month"}
+      </p>
+    </div>
+  );
+}
+```
+
+---
+
+## Props Reference
+
+### SegmentedControl Props
+
+| Prop            | Type                                   | Default        | Description                                                                     |
+| :-------------- | :------------------------------------- | :------------- | :------------------------------------------------------------------------------ |
+| `size`          | `'sm' \| 'md' \| 'lg'`                 | `'md'`         | Height and padding density applied to all items.                                |
+| `value`         | `string \| null`                       | —              | The checked item's value (controlled). `null` checks nothing.                   |
+| `defaultValue`  | `string \| null`                       | —              | The item checked at first (uncontrolled).                                       |
+| `onValueChange` | `(value, details) => void`             | —              | Callback fired when the checked item changes.                                   |
+| `orientation`   | `'horizontal' \| 'vertical'`           | `'horizontal'` | Which way the items run; arrow keys on both axes move between items either way. |
+| `disabled`      | `boolean`                              | `false`        | Disables every item; the value is not submitted.                                |
+| `readOnly`      | `boolean`                              | `false`        | Items stay focusable, but the value cannot change.                              |
+| `name`          | `string`                               | —              | The name the checked value submits under in a form.                             |
+| `aria-label`    | `string`                               | —              | **Recommended**: Accessible name describing the control to screen readers.      |
+| `children`      | `ReactNode`                            | **Required**   | Two or more `<SegmentedControl.Item>` components.                               |
+| `className`     | `string \| ((state) => string)`        | —              | Additional CSS class names.                                                     |
+
+### SegmentedControl.Item Props
+
+| Prop       | Type        | Default      | Description                                               |
+| :--------- | :---------- | :----------- | :-------------------------------------------------------- |
+| `value`    | `string`    | **Required** | What the control's value becomes when this item is checked. |
+| `children` | `ReactNode` | **Required** | Text label, icon, or content rendered inside the segment. |
+| `disabled` | `boolean`   | `false`      | Whether this individual segment is disabled.              |
+
+---
+
+## Accessibility (a11y)
+
+- **WAI-ARIA Pattern**: A segmented control is a radio group. Each item renders a button with the `radio` role plus a hidden native radio, so the control takes part in forms.
+- **Selection State**: The checked item exposes `aria-checked="true"` and `data-checked`; unchecked items expose `aria-checked="false"` and `data-unchecked`.
+- **Keyboard Navigation**:
+  - <kbd>Tab</kbd> moves into the control, onto the checked item (or the first enabled one).
+  - Arrow keys move to the next or previous item and check it, skipping disabled ones.
+  - <kbd>Space</kbd> checks the focused item; <kbd>Enter</kbd> submits its form.
+  - Focus order respects RTL layouts automatically.
+- **Group Labelling**: Always supply an `aria-label` (or `aria-labelledby`) on the `<SegmentedControl>` so assistive technology users understand the grouping's purpose.
+
+---
+
+## WAI-ARIA & Data Attributes
+
+| Attribute         | Target              | Description                          |
+| :---------------- | :------------------ | :----------------------------------- |
+| `[data-checked]`  | Item                | Present on the checked item.         |
+| `[data-unchecked]`| Item                | Present on items that aren't checked.|
+| `[data-disabled]` | Control & Item      | Present when disabled.               |
+| `[data-orientation]` | Control & Indicator | `horizontal` or `vertical`.       |

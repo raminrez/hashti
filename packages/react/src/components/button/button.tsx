@@ -49,7 +49,7 @@ export function Button({
     <UiSdkButton
       {...props}
       // A disabled Toolbar disables its actions, matching its presentation.
-      disabled={disabled ?? toolbar.isDisabled}
+      disabled={disabled ?? toolbar.disabled}
       className={classHook}
       data-variant={variant}
       data-size={size}

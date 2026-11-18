@@ -35,9 +35,9 @@ import { Toolbar, ToolbarGroup, ToolbarItem, ToolbarSeparator } from "@hashti/re
 ```tsx
 <Toolbar>
   <Toolbar.Group aria-label="Text formatting">
-    <ToggleButton>B</ToggleButton>
-    <ToggleButton>I</ToggleButton>
-    <ToggleButton>U</ToggleButton>
+    <Toggle>B</Toggle>
+    <Toggle>I</Toggle>
+    <Toggle>U</Toggle>
   </Toolbar.Group>
   <Toolbar.Separator />
   <Toolbar.Group aria-label="Actions">
@@ -56,21 +56,21 @@ import { Toolbar, ToolbarGroup, ToolbarItem, ToolbarSeparator } from "@hashti/re
 In a standard toolbar, action buttons and toggles are grouped logically with separators. The roving tabindex ensures arrow keys move focus seamlessly between items:
 
 ```tsx
-import { Toolbar, Button, ToggleButton, Icon } from "@hashti/react";
+import { Toolbar, Button, Toggle, Icon } from "@hashti/react";
 
 export function RichTextToolbar() {
   return (
     <Toolbar aria-label="Document editor toolbar" variant="flat">
       <Toolbar.Group aria-label="Font styling">
-        <ToggleButton aria-label="Bold">
+        <Toggle aria-label="Bold">
           <strong>B</strong>
-        </ToggleButton>
-        <ToggleButton aria-label="Italic">
+        </Toggle>
+        <Toggle aria-label="Italic">
           <em>I</em>
-        </ToggleButton>
-        <ToggleButton aria-label="Underline">
+        </Toggle>
+        <Toggle aria-label="Underline">
           <u>U</u>
-        </ToggleButton>
+        </Toggle>
       </Toolbar.Group>
 
       <Toolbar.Separator />
@@ -135,21 +135,21 @@ export function FloatingCanvasToolbar() {
 For sidebars, creative drawing apps, or secondary inspectors, set `orientation="vertical"`. When vertical, arrow keys automatically flip to <kbd>↓</kbd> and <kbd>↑</kbd>, and separators orient horizontally:
 
 ```tsx
-import { Toolbar, Button, ToggleButton, Icon } from "@hashti/react";
+import { Toolbar, Button, Toggle, Icon } from "@hashti/react";
 
 export function DrawingSideToolbar() {
   return (
     <Toolbar orientation="vertical" variant="raised" aria-label="Drawing tools">
       <Toolbar.Group aria-label="Select mode">
-        <ToggleButton aria-label="Pointer tool" isSelected>
+        <Toggle aria-label="Pointer tool" defaultPressed>
           <Icon name="menu" />
-        </ToggleButton>
-        <ToggleButton aria-label="Pencil tool">
+        </Toggle>
+        <Toggle aria-label="Pencil tool">
           <Icon name="edit" />
-        </ToggleButton>
+        </Toggle>
       </Toolbar.Group>
       <Toolbar.Separator />
-      <Button variant="danger-ghost" size="sm" iconOnly aria-label="Delete selection">
+      <Button variant="danger" size="sm" iconOnly aria-label="Delete selection">
         <Icon name="trash" />
       </Button>
     </Toolbar>
@@ -159,10 +159,10 @@ export function DrawingSideToolbar() {
 
 ### Disabled State
 
-Disable an entire toolbar by setting `isDisabled={true}` on the root. All child controls inherit this state and are grayed out with focus disabled:
+Disable an entire toolbar by setting `disabled` on the root. Every item in the toolbar stops working and stays focusable with `aria-disabled`, so the toolbar keeps its tab stop:
 
 ```tsx
-<Toolbar isDisabled aria-label="Read-only editor toolbar">
+<Toolbar disabled aria-label="Read-only editor toolbar">
   <Button variant="ghost">Cut</Button>
   <Button variant="ghost">Copy</Button>
   <Button variant="ghost">Paste</Button>
@@ -180,7 +180,7 @@ Disable an entire toolbar by setting `isDisabled={true}` on the root. All child 
 | `orientation` | `'horizontal' \| 'vertical'`       | `'horizontal'` | Axis along which toolbar items are arranged and arrow keys navigate. |
 | `variant`     | `'flat' \| 'raised' \| 'floating'` | `'flat'`       | Elevation and background surface styling.                            |
 | `size`        | `'sm' \| 'md' \| 'lg'`             | `'md'`         | Height and padding density scale applied across child items.         |
-| `isDisabled`  | `boolean`                          | `false`        | Whether all interactive controls in the toolbar are disabled.        |
+| `disabled`    | `boolean`                          | `false`        | Whether all interactive controls in the toolbar are disabled.        |
 | `aria-label`  | `string`                           | —              | Accessible landmark description required for screen readers.         |
 | `children`    | `ReactNode`                        | —              | Toolbar groups, separators, and interactive children.                |
 | `className`   | `string \| ((values) => string)`   | —              | Custom CSS class or render function.                                 |

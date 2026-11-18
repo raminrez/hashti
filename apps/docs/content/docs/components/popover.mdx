@@ -152,10 +152,10 @@ export function QuickSettingsPopover() {
               Layer Visibility
             </Heading>
             <div className="flex flex-col gap-2">
-              <Switch isSelected={wireframe} onChange={setWireframe}>
+              <Switch checked={wireframe} onCheckedChange={setWireframe}>
                 Wireframe Mesh
               </Switch>
-              <Switch isSelected={contours} onChange={setContours}>
+              <Switch checked={contours} onCheckedChange={setContours}>
                 Topographic Contours
               </Switch>
             </div>

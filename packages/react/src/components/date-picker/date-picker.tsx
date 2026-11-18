@@ -15,6 +15,9 @@ import {
   DateSegment,
   DatePickerContext,
   DateRangePickerContext,
+  Dialog as RACDialog,
+  Popover as RACPopover,
+  type PopoverProps as RACPopoverProps,
   type CalendarProps as RACCalendarProps,
   type RangeCalendarProps as RACRangeCalendarProps,
   type DatePickerProps as RACDatePickerProps,
@@ -23,8 +26,6 @@ import {
 } from "react-aria-components";
 import { Button } from "../button";
 import { Icon } from "../../icons";
-import { Popover, type PopoverProps } from "../popover";
-import { Dialog } from "../dialog";
 import {
   FieldLayout,
   FieldControl,
@@ -89,8 +90,12 @@ export function RangeCalendar<T extends DateValue>({
   );
 }
 
-function DatePopover({ className, ...props }: PopoverProps) {
-  return <Popover {...props} className={classes("hashti-date-popover", className)} />;
+// TICK-007 interim: Hashti Popover/Dialog are ui-sdk now; RAC DatePicker still
+// needs RAC popover + dialog for its overlay context. DatePicker migrates in TICK-016.
+function DatePopover({ className, ...props }: RACPopoverProps) {
+  return (
+    <RACPopover {...props} className={classes("hashti-popover hashti-date-popover", className)} />
+  );
 }
 
 export interface DatePickerRootProps<T extends DateValue>
@@ -157,9 +162,9 @@ function DatePickerDefault<T extends DateValue>({
             </FieldControl>
           </FieldLayout>
           <DatePopover>
-            <Dialog aria-label="Choose a date">
+            <RACDialog aria-label="Choose a date">
               <Calendar />
-            </Dialog>
+            </RACDialog>
           </DatePopover>
         </>
       )}
@@ -246,9 +251,9 @@ function DateRangePickerDefault<T extends DateValue>({
             </FieldControl>
           </FieldLayout>
           <DatePopover>
-            <Dialog aria-label="Choose a date range">
+            <RACDialog aria-label="Choose a date range">
               <RangeCalendar />
-            </Dialog>
+            </RACDialog>
           </DatePopover>
         </>
       )}

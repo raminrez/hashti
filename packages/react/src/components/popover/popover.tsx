@@ -1,63 +1,87 @@
 "use client";
 
-import type { ReactNode, Ref } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import {
-  Popover as RACPopover,
-  MenuTrigger,
-  Menu,
-  type PopoverProps as RACPopoverProps,
-  type Key,
-} from "react-aria-components";
-import { Button } from "../button";
-import { Icon } from "../../icons";
-import { classes, type ControlSize } from "../../utils";
+  Popover as UiSdkPopover,
+  PopoverTrigger as UiSdkPopoverTrigger,
+  PopoverContent as UiSdkPopoverContent,
+  PopoverArrow as UiSdkPopoverArrow,
+  PopoverTitle,
+  PopoverDescription,
+  PopoverClose,
+  PopoverShortcut,
+  createPopoverController,
+} from "@ui-sdk/react/popover";
 import { useOverlayTheme } from "../../theme";
+import { uiClass } from "../../utils";
 
-export interface PopoverProps extends RACPopoverProps {
-  ref?: Ref<HTMLElement>;
+export type PopoverSize = "sm" | "md" | "lg";
+
+export type PopoverRootProps = ComponentProps<typeof UiSdkPopover>;
+
+function PopoverRoot(props: PopoverRootProps) {
+  return <UiSdkPopover {...props} />;
 }
 
-export function Popover({ className, ...props }: PopoverProps) {
+export type PopoverTriggerProps = ComponentProps<typeof UiSdkPopoverTrigger>;
+
+function PopoverTrigger({ className, ...props }: PopoverTriggerProps) {
+  return (
+    <UiSdkPopoverTrigger {...props} className={uiClass(className, "hashti-popover-trigger")} />
+  );
+}
+
+export interface PopoverContentProps extends ComponentProps<typeof UiSdkPopoverContent> {
+  size?: PopoverSize;
+}
+
+function PopoverContent({ size, className, ...props }: PopoverContentProps) {
   const { appearanceClassName, ...theme } = useOverlayTheme();
   return (
-    <RACPopover
+    <UiSdkPopoverContent
       {...props}
       {...theme}
-      lang={props.lang ?? theme.lang}
-      className={classes("hashti-popover", classes(appearanceClassName ?? "", className))}
+      data-size={size}
+      className={uiClass(className, "hashti-popover", appearanceClassName)}
     />
   );
 }
 
-export interface OverflowMenuProps {
-  "aria-label": string;
-  children: ReactNode;
-  onAction?: (key: Key) => void;
-  disabledKeys?: Iterable<Key>;
-  size?: ControlSize;
-  className?: string;
-  popoverClassName?: string;
+export type PopoverArrowProps = ComponentProps<typeof UiSdkPopoverArrow>;
+
+function PopoverArrow({ className, ...props }: PopoverArrowProps) {
+  return <UiSdkPopoverArrow {...props} className={uiClass(className, "hashti-popover-arrow")} />;
 }
 
-export function OverflowMenu({
-  "aria-label": ariaLabel,
-  children,
-  onAction,
-  disabledKeys,
-  size = "md",
-  className,
-  popoverClassName,
-}: OverflowMenuProps) {
-  return (
-    <MenuTrigger>
-      <Button variant="ghost" iconOnly size={size} aria-label={ariaLabel} className={className}>
-        <Icon name="overflow" />
-      </Button>
-      <Popover className={popoverClassName}>
-        <Menu onAction={onAction} disabledKeys={disabledKeys}>
-          {children}
-        </Menu>
-      </Popover>
-    </MenuTrigger>
-  );
+interface PopoverCompound {
+  (props: PopoverRootProps): ReactNode;
+  Trigger: typeof PopoverTrigger;
+  Content: typeof PopoverContent;
+  Arrow: typeof PopoverArrow;
+  Title: typeof PopoverTitle;
+  Description: typeof PopoverDescription;
+  Close: typeof PopoverClose;
+  Shortcut: typeof PopoverShortcut;
 }
+
+export const Popover: PopoverCompound = Object.assign(PopoverRoot, {
+  Trigger: PopoverTrigger,
+  Content: PopoverContent,
+  Arrow: PopoverArrow,
+  Title: PopoverTitle,
+  Description: PopoverDescription,
+  Close: PopoverClose,
+  Shortcut: PopoverShortcut,
+});
+
+export {
+  createPopoverController,
+  PopoverRoot,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverTitle,
+  PopoverDescription,
+  PopoverClose,
+  PopoverShortcut,
+};

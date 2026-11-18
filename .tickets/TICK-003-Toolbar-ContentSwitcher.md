@@ -1,5 +1,6 @@
 # TICK-003: Toolbar & ContentSwitcher
 
+**Status:** DONE
 **Phase:** 2 — Fundamental Interactive Actions
 **Priority:** Medium
 **Blocked by:** TICK-013 (contract proven).
@@ -19,14 +20,14 @@ Check `node_modules/.bun/@ui-sdk+react@0.1.0-beta.6+98c4ab0ca8cf4886/node_module
 for available Toolbar/RovingFocus primitives. Key docs: `lists-and-menus.md`, `introduction.md`.
 
 ## Acceptance Criteria
-- [ ] `Toolbar` uses roving tabindex from `@ui-sdk/react` (or plain `role="toolbar"` + keyboard handlers if ui-sdk has no toolbar primitive)
-- [ ] `ContentSwitcher` manages selected state without RAC
-- [ ] `.hashti-toolbar`, `.hashti-content-switcher` root classes
-- [ ] `data-orientation` on Toolbar
-- [ ] `data-selected` on active ContentSwitcher item
-- [ ] No `react-aria-components` imports
-- [ ] 183 unit tests pass
-- [ ] `bun run build:packages` succeeds
+- [x] `Toolbar` uses roving tabindex from `@ui-sdk/react` (or plain `role="toolbar"` + keyboard handlers if ui-sdk has no toolbar primitive)
+- [x] `ContentSwitcher` manages selected state without RAC
+- [x] `.hashti-toolbar`, `.hashti-content-switcher` root classes
+- [x] `data-orientation` on Toolbar
+- [x] `data-selected` on active ContentSwitcher item
+- [x] No `react-aria-components` imports
+- [x] 183 unit tests pass
+- [x] `bun run build:packages` succeeds
 
 ## DOM Contract
 ```tsx

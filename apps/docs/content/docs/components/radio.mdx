@@ -5,7 +5,7 @@ description: Single-choice selection control for mutually exclusive options.
 
 # Radio Group
 
-Radio Groups allow users to select exactly one option from a set of mutually exclusive choices. Built on [React Aria Components RadioGroup](https://react-spectrum.adobe.com/react-aria/RadioGroup.html), Hashti's `RadioGroup` and `Radio` components provide keyboard roving tabindex navigation, horizontal and vertical flow layouts, architectural circular geometry, and accessible fieldset associations.
+Radio Groups allow users to select exactly one option from a set of mutually exclusive choices. Built on [ui-sdk RadioGroup](https://ui-sdk.dev/docs), Hashti's `RadioGroup` and `Radio` components provide keyboard roving tabindex navigation, horizontal and vertical flow layouts, architectural circular geometry, and accessible fieldset associations.
 
 <ComponentPreview>
   <SelectionLiveDemo />
@@ -54,7 +54,7 @@ export function BasicRadioGroupDemo() {
       label="Subscription Tier"
       description="Choose the compute capacity allocated to your Hashti instances."
       value={tier}
-      onChange={setTier}
+      onValueChange={(value) => setTier(value ?? "pro")}
     >
       <Radio value="starter">Starter — 2 vCPU / 4 GB RAM</Radio>
       <Radio value="pro">Pro — 8 vCPU / 32 GB RAM (Recommended)</Radio>
@@ -83,7 +83,7 @@ export function HorizontalRadioGroupDemo() {
       label="Storage Media"
       description="Select physical disk medium."
       value={storageType}
-      onChange={setStorageType}
+      onValueChange={(value) => setStorageType(value ?? "ssd")}
     >
       <Radio value="nvme">NVMe</Radio>
       <Radio value="ssd">SSD</Radio>
@@ -97,7 +97,7 @@ export function HorizontalRadioGroupDemo() {
 
 ### Validation Error Display
 
-When a required choice has not been made, mark `isInvalid={true}` and provide an explicit `errorMessage`:
+When a required choice has not been made, mark the group `required` and surface recovery through `status`:
 
 ```tsx
 import { useState } from "react";
@@ -120,10 +120,9 @@ export function InvalidRadioGroupDemo() {
       <RadioGroup
         label="Data Center Location"
         description="Select the primary edge node for your deployment."
-        errorMessage="You must select a deployment region to proceed."
-        isInvalid={isInvalid}
+        status={isInvalid ? { type: "error", message: "You must select a deployment region to proceed." } : undefined}
         value={region}
-        onChange={setRegion}
+        onValueChange={(value) => setRegion(value ?? "")}
       >
         <Radio value="tehran">Tehran (IR-THR)</Radio>
         <Radio value="frankfurt">Frankfurt (EU-FRA)</Radio>
@@ -151,7 +150,7 @@ export function DisabledRadioDemo() {
   return (
     <RadioGroup label="Network Protocols" defaultValue="https">
       <Radio value="https">HTTPS / TLS 1.3 (Enforced)</Radio>
-      <Radio value="http" isDisabled>
+      <Radio value="http" disabled>
         HTTP (Plaintext — Deprecated)
       </Radio>
       <Radio value="grpc">gRPC Streaming</Radio>
@@ -166,30 +165,31 @@ export function DisabledRadioDemo() {
 
 ### RadioGroup Props
 
-`RadioGroup` extends `RACRadioGroupProps` from `react-aria-components`.
+`RadioGroup` wraps the ui-sdk `RadioGroup` from `@ui-sdk/react/radio` and adds Hashti's field anatomy.
 
 | Prop           | Type                         | Default      | Description                                              |
 | :------------- | :--------------------------- | :----------- | :------------------------------------------------------- |
 | `label`        | `ReactNode`                  | —            | Accessible label for the radio group.                    |
 | `description`  | `ReactNode`                  | —            | Supporting description text displayed under the label.   |
-| `errorMessage` | `ReactNode`                  | —            | Error text rendered when `isInvalid` is true.            |
-| `value`        | `string`                     | —            | Controlled value of the currently selected radio option. |
-| `defaultValue` | `string`                     | —            | Initial selected value for uncontrolled usage.           |
-| `onChange`     | `(value: string) => void`    | —            | Callback invoked when the selected option changes.       |
-| `orientation`  | `'horizontal' \| 'vertical'` | `'vertical'` | Layout direction of the radio options.                   |
-| `isInvalid`    | `boolean`                    | `false`      | Whether the radio group fails validation.                |
-| `isDisabled`   | `boolean`                    | `false`      | Disables user interaction across the entire group.       |
+| `errorMessage` | `ReactNode`                     | —            | Error text shown while the field is invalid.             |
+| `value`        | `string \| null`                | —            | Controlled value of the currently selected radio option. |
+| `defaultValue` | `string \| null`                | —            | Initial selected value for uncontrolled usage.           |
+| `onValueChange`| `(value: string \| null, details) => void` | — | Callback invoked when the selected option changes. |
+| `disabled`     | `boolean`                    | `false`      | Disables user interaction across the entire group.       |
+| `readOnly`     | `boolean`                    | `false`      | Keeps options focusable and submitted, stops changes.    |
+| `required`     | `boolean`                    | `false`      | Blocks submission until an option is checked.            |
+| `status`       | `FieldStatus`                | —            | Detached group recovery: warning/error/success message.  |
 | `isOptional`   | `boolean`                    | `false`      | Displays an optional badge next to the group label.      |
 | `color`        | `SelectionColor`             | `'primary'`  | Semantic accent color applied to the checked state.      |
 
 ### Radio Props
 
-`Radio` extends `RACRadioProps` from `react-aria-components`.
+`Radio` wraps the ui-sdk `Radio` from `@ui-sdk/react/radio`.
 
 | Prop         | Type             | Default     | Description                                                       |
 | :----------- | :--------------- | :---------- | :---------------------------------------------------------------- |
 | `value`      | `string`         | —           | Unique value represented by this radio option.                    |
-| `isDisabled` | `boolean`        | `false`     | Disables interaction for this individual option.                  |
+| `disabled`   | `boolean`        | `false`     | Disables interaction for this individual option.                  |
 | `color`      | `SelectionColor` | `'primary'` | Semantic color token for the active radio dot.                    |
 | `children`   | `ReactNode`      | —           | Label or description content rendered alongside the radio circle. |
 | `className`  | `string`         | —           | Additional CSS class names.                                       |

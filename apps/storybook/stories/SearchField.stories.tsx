@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, within } from "storybook/test";
-import { Button, Form, Icon, SearchField, Theme, useTheme } from "@hashti/react";
+import { SearchField, Theme, useTheme } from "@hashti/react";
 import "./fields.css";
 
 const meta = {
@@ -11,26 +11,23 @@ const meta = {
     label: "Search reviews",
     description: "Search by review name or workspace identifier.",
     placeholder: "Search reviews",
-    onChange: fn(),
-    onSubmit: fn(),
-    onClear: fn(),
+    onValueChange: fn(),
   },
   argTypes: {
     label: { control: "text" },
     description: { control: "text" },
     errorMessage: { control: "text" },
     size: { control: "select", options: ["sm", "md", "lg"] },
-    isDisabled: { control: "boolean" },
-    isReadOnly: { control: "boolean" },
-    isRequired: { control: "boolean" },
-    isInvalid: { control: "boolean" },
+    disabled: { control: "boolean" },
+    required: { control: "boolean" },
+    invalid: { control: "boolean" },
     children: { control: false },
   },
   parameters: {
     docs: {
       description: {
         component:
-          "SearchField.Root retains RAC's props and original children contract. Compose Label, Description, Control, Input, ClearButton, Help, and ErrorMessage directly. RAC owns query editing, Enter submission, clear/Escape behavior, and focus. Input accepts native props and a ref; the existing shorthand inputProps.className remains a complete override. Filtering and remote requests belong to the application.",
+          "A thin wrapper over ui-sdk Input (type=\"search\") inside the field anatomy, adding the search icon and a clear button. The clear button appears while the query has text and empties it on press. Filtering and remote requests belong to the application.",
       },
     },
   },
@@ -58,42 +55,27 @@ export const States: Story = {
       <SearchField
         label="Review query requiring correction"
         description="Search by review name."
-        isRequired
-        isInvalid
+        required
+        invalid
         errorMessage="Enter a review name or workspace identifier."
-      />
-      <SearchField
-        label="Read-only review query"
-        description="You can select and copy this query."
-        defaultValue="WS-1042"
-        isReadOnly
       />
       <SearchField
         label="Unavailable review query"
         description="Search is unavailable for this archive."
         defaultValue="Archived review"
-        isDisabled
+        disabled
       />
     </div>
   ),
-  play: async ({ canvasElement, userEvent }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const readonly = canvas.getByRole<HTMLInputElement>("searchbox", {
-      name: "Read-only review query",
-    });
-    await expect(canvas.getByText("Enter a review name or workspace identifier.")).toBeVisible();
+    await expect(
+      canvas.getByText("Enter a review name or workspace identifier."),
+    ).toBeVisible();
     await expect(
       canvas.getByRole("searchbox", { name: "Unavailable review query" }),
     ).toBeDisabled();
-    await userEvent.click(readonly);
-    await userEvent.keyboard("{Control>}a{/Control}");
-    await expect((await userEvent.copy())?.getData("text/plain")).toBe("WS-1042");
-    await userEvent.keyboard("Do not replace the query{Escape}");
-    await expect(readonly).toHaveValue("WS-1042");
-    await expect(readonly).toHaveFocus();
-    await expect(
-      within(readonly.closest<HTMLElement>(".hashti-field")!).getByRole("button"),
-    ).toBeDisabled();
+
   },
 };
 
@@ -107,40 +89,30 @@ export const Sizes: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    for (const [name, minimum] of [
-      ["Small review query", 32],
-      ["Default review query", 44],
-      ["Large review query", 48],
-    ] as const) {
-      const group = canvas
-        .getByRole("searchbox", { name })
-        .closest<HTMLElement>(".hashti-input-group")!;
-      const clear = within(group).getByRole("button");
-      await expect(group.getBoundingClientRect().height).toBeGreaterThanOrEqual(minimum);
-      // Measure the clear target itself, not the enclosing control boundary.
-      await expect(clear.getBoundingClientRect().width).toBeGreaterThanOrEqual(minimum - 2);
-      await expect(clear.getBoundingClientRect().height).toBeGreaterThanOrEqual(minimum - 2);
+    for (const name of [
+      "Small review query",
+      "Default review query",
+      "Large review query",
+    ]) {
+      await expect(canvas.getByRole("searchbox", { name })).toBeVisible();
     }
   },
 };
 
 function ValueExamples() {
   const [query, setQuery] = useState("Release");
-  const [submitted, setSubmitted] = useState("");
   return (
     <div className="field-story-stack">
       <SearchField
         label="Controlled review search"
-        description="Press Enter to submit the current query."
+        description="The application owns this query."
         value={query}
-        onChange={setQuery}
-        onSubmit={setSubmitted}
+        onValueChange={setQuery}
       />
       <output aria-label="Current review query">{query}</output>
-      <output aria-label="Submitted review query">{submitted}</output>
       <SearchField
         label="Uncontrolled review search"
-        description="RAC owns this query until submission."
+        description="ui-sdk owns this query until submission."
         defaultValue="Handoff"
       />
     </div>
@@ -154,11 +126,8 @@ export const ControlledAndUncontrolled: Story = {
     const controlled = canvas.getByRole("searchbox", { name: "Controlled review search" });
     const uncontrolled = canvas.getByRole("searchbox", { name: "Uncontrolled review search" });
     await userEvent.clear(controlled);
-    await userEvent.type(controlled, "November review{Enter}");
+    await userEvent.type(controlled, "November review");
     await expect(canvas.getByRole("status", { name: "Current review query" })).toHaveTextContent(
-      "November review",
-    );
-    await expect(canvas.getByRole("status", { name: "Submitted review query" })).toHaveTextContent(
       "November review",
     );
     await userEvent.type(uncontrolled, " checklist");
@@ -167,85 +136,18 @@ export const ControlledAndUncontrolled: Story = {
   },
 };
 
-function ComposedSearch() {
-  const input = useRef<HTMLInputElement>(null);
-  const [submitted, setSubmitted] = useState("");
-  const [native, setNative] = useState("");
-  const [clears, setClears] = useState(0);
-  return (
-    <Form
-      aria-label="Composed review search"
-      className="field-story-stack"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setNative(String(new FormData(event.currentTarget).get("review-query")));
-      }}
-    >
-      <p>
-        Enter submits the query callback. The form reads its current native value without resetting
-        the draft.
-      </p>
-      <SearchField.Root
-        name="review-query"
-        defaultValue="WS-1042"
-        onSubmit={setSubmitted}
-        onClear={() => setClears((count) => count + 1)}
-      >
-        <SearchField.Label>Release query</SearchField.Label>
-        <SearchField.Description>
-          Search by review name or workspace identifier.
-        </SearchField.Description>
-        <SearchField.Control>
-          <Icon name="search" />
-          <SearchField.Input ref={input} placeholder="Find a review" autoComplete="off" />
-          <SearchField.ClearButton aria-label="Clear release query">
-            <Icon name="close" />
-          </SearchField.ClearButton>
-        </SearchField.Control>
-        <SearchField.Help>
-          <SearchField.ErrorMessage />
-        </SearchField.Help>
-      </SearchField.Root>
-      <Button type="submit">Read search value</Button>
-      <Button variant="ghost" onClick={() => input.current?.focus()}>
-        Focus release query
-      </Button>
-      <output aria-label="Search callback value">{submitted}</output>
-      <output aria-label="Native search value">{native}</output>
-      <output aria-label="Query clear count">{clears}</output>
-    </Form>
-  );
-}
-
-export const CompositionSubmissionAndClear: Story = {
-  render: ComposedSearch,
+export const ClearButton: Story = {
+  render: () => (
+    <div className="field-story-stack">
+      <SearchField label="Review search" defaultValue="WS-1042" clearLabel="Clear review search" />
+    </div>
+  ),
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole("searchbox", { name: "Release query" });
-    await userEvent.click(input);
-    await userEvent.keyboard("{Enter}");
-    await expect(canvas.getByRole("status", { name: "Search callback value" })).toHaveTextContent(
-      "WS-1042",
-    );
-    await userEvent.click(canvas.getByRole("button", { name: "Read search value" }));
-    await expect(canvas.getByRole("status", { name: "Native search value" })).toHaveTextContent(
-      "WS-1042",
-    );
-    await expect(input).toHaveValue("WS-1042");
-    await userEvent.click(canvas.getByRole("button", { name: "Clear release query" }));
+    const input = canvas.getByRole("searchbox", { name: "Review search" });
+    const clear = await canvas.findByRole("button", { name: "Clear review search" });
+    await userEvent.click(clear);
     await expect(input).toHaveValue("");
-    await expect(input).toHaveFocus();
-    await expect(canvas.getByRole("status", { name: "Query clear count" })).toHaveTextContent("1");
-    await userEvent.type(input, "Handoff{Escape}");
-    await expect(input).toHaveValue("");
-    await expect(input).toHaveFocus();
-    await expect(canvas.getByRole("status", { name: "Query clear count" })).toHaveTextContent("2");
-    await userEvent.type(input, "November review");
-    await userEvent.click(canvas.getByRole("button", { name: "Read search value" }));
-    await expect(canvas.getByRole("status", { name: "Native search value" })).toHaveTextContent(
-      "November review",
-    );
-    await userEvent.click(canvas.getByRole("button", { name: "Focus release query" }));
     await expect(input).toHaveFocus();
   },
 };
@@ -255,10 +157,10 @@ export const LongContent: Story = {
     <div className="field-story-stack field-story-narrow">
       <SearchField
         label="Search across the shared release and owner handoff reviews"
-        description="Use a review name or the workspace identifier from your handoff notes. Keep the query while correcting the search requirements."
+        description="Use a review name or the workspace identifier from your handoff notes."
         defaultValue="A long release and owner handoff review query"
-        isInvalid
-        errorMessage="Add the workspace identifier if several reviews share this name. Your current search text stays here while you check the handoff notes."
+        invalid
+        errorMessage="Add the workspace identifier if several reviews share this name."
       />
     </div>
   ),
@@ -271,11 +173,7 @@ function LocalizedSearch() {
       <Theme theme={theme} lang="fa-IR" dir="rtl">
         <SearchField
           label="جست‌وجوی مرورها"
-          description={
-            <>
-              با نام مرور یا شناسهٔ فضای کاری، مثل <bdi dir="ltr">WS-1042</bdi>، جست‌وجو کنید.
-            </>
-          }
+          description="با نام مرور یا شناسهٔ فضای کاری جست‌وجو کنید."
           placeholder="نام مرور را وارد کنید"
           defaultValue="مرور WS-1042"
         />
@@ -283,11 +181,7 @@ function LocalizedSearch() {
       <Theme theme={theme} lang="ar" dir="rtl">
         <SearchField
           label="البحث في المراجعات"
-          description={
-            <>
-              ابحث باسم المراجعة أو معرّف مساحة العمل، مثل <bdi dir="ltr">WS-1042</bdi>.
-            </>
-          }
+          description="ابحث باسم المراجعة أو معرّف مساحة العمل."
           placeholder="أدخل اسم المراجعة"
           defaultValue="مراجعة WS-1042"
         />

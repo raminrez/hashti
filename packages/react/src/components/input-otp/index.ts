@@ -1,4 +1,4 @@
 "use client";
 
-export { InputOTP } from "./input-otp";
-export type { InputOTPProps } from "./input-otp";
+export { OtpInput } from "./input-otp";
+export type { OtpInputProps, OtpInputRootProps } from "./input-otp";

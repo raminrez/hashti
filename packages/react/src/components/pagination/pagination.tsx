@@ -1,5 +1,14 @@
-import { useId, type ComponentPropsWithRef, type ReactNode } from "react";
-import { Button } from "../button";
+"use client";
+
+import { useId, type ComponentProps, type ComponentPropsWithRef, type ReactNode } from "react";
+import {
+  Pagination as UiSdkPagination,
+  PaginationItem,
+  PaginationLink,
+  PaginationList,
+  PaginationNext,
+  PaginationPrevious,
+} from "@ui-sdk/react/pagination";
 import { Field } from "../field";
 import { Icon } from "../../icons";
 import { cx, type ControlSize } from "../../utils";
@@ -10,6 +19,8 @@ export interface NativeSelectProps extends Omit<ComponentPropsWithRef<"select">,
   description?: ReactNode;
   errorMessage?: ReactNode;
 }
+
+/** A native `<select>` in the field anatomy, used here as the page-size picker. */
 export function NativeSelect({
   label,
   size = "md",
@@ -31,10 +42,7 @@ export function NativeSelect({
       data-invalid={Boolean(errorMessage) || undefined}
     >
       <Field.Label htmlFor={id}>{label}</Field.Label>
-      {/* Guidance stays visible while recovery is shown: it sits outside the help row. */}
-      {description != null && (
-        <Field.Description id={descriptionId}>{description}</Field.Description>
-      )}
+      {description != null && <Field.Description id={descriptionId}>{description}</Field.Description>}
       <div className="hashti-native-select-control">
         <select
           {...props}
@@ -56,6 +64,7 @@ export function NativeSelect({
   );
 }
 
+/** The range math the parts use, kept for consumers that page their own data. */
 export function paginationRange(totalItems: number, pageSize: number, page: number) {
   const total = Number.isFinite(totalItems) ? Math.max(0, Math.floor(totalItems)) : 0;
   const size = Number.isFinite(pageSize) ? Math.max(1, Math.floor(pageSize)) : 10;
@@ -71,16 +80,22 @@ export function paginationRange(totalItems: number, pageSize: number, page: numb
   };
 }
 
-export interface PaginationProps {
-  totalItems: number;
+export interface PaginationProps
+  extends Omit<ComponentProps<typeof UiSdkPagination>, "children" | "className" | "page" | "onPageChange"> {
+  /** Controlled current page. */
   page: number;
-  pageSize: number;
-  pageSizes?: number[];
+  /** Called with the requested page. */
   onPageChange: (page: number) => void;
+  /** Total number of items across every page. */
+  totalItems: number;
+  /** How many items fit on a page. */
+  pageSize?: number;
+  /** The page sizes offered in the picker. */
+  pageSizes?: number[];
   onPageSizeChange?: (size: number) => void;
-  "aria-label"?: string;
   className?: string;
 }
+
 export function Pagination({
   totalItems,
   page,
@@ -90,13 +105,14 @@ export function Pagination({
   onPageSizeChange,
   "aria-label": label = "Pagination",
   className,
+  ...props
 }: PaginationProps) {
-  const range = paginationRange(totalItems, pageSize, page);
+  const range = paginationRange(totalItems, pageSize ?? 10, page);
   const sizes = Array.from(
     new Set([...pageSizes.filter((size) => size > 0 && Number.isInteger(size)), range.pageSize]),
   ).sort((a, b) => a - b);
   return (
-    <nav aria-label={label} className={["hashti-pagination", className].filter(Boolean).join(" ")}>
+    <nav aria-label={label} className={cx("hashti-pagination", className)}>
       {onPageSizeChange && (
         <NativeSelect
           label="Items per page"
@@ -117,28 +133,37 @@ export function Pagination({
       <span>
         {range.page} of {range.pages} pages
       </span>
-      <div className="hashti-pagination-actions">
-        <Button
-          variant="ghost"
-          size="md"
-          iconOnly
-          aria-label="Previous page"
-          disabled={range.page <= 1}
-          onClick={() => onPageChange(range.page - 1)}
-        >
-          <Icon name="chevronLeft" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="md"
-          iconOnly
-          aria-label="Next page"
-          disabled={range.page >= range.pages}
-          onClick={() => onPageChange(range.page + 1)}
-        >
-          <Icon name="chevronRight" />
-        </Button>
-      </div>
+      <UiSdkPagination
+        aria-label={label}
+        page={range.page}
+        pageCount={range.pages}
+        onPageChange={onPageChange}
+        {...props}
+        className="hashti-pagination-pages"
+      >
+        <PaginationList className="hashti-pagination-actions">
+          <PaginationItem>
+            <PaginationPrevious
+              aria-label="Previous page"
+              className="hashti-button"
+              data-variant="ghost"
+            >
+              <Icon name="chevronLeft" />
+            </PaginationPrevious>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext
+              aria-label="Next page"
+              className="hashti-button"
+              data-variant="ghost"
+            >
+              <Icon name="chevronRight" />
+            </PaginationNext>
+          </PaginationItem>
+        </PaginationList>
+      </UiSdkPagination>
     </nav>
   );
 }
+
+export { PaginationItem, PaginationLink, PaginationList };

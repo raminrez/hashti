@@ -1,15 +1,7 @@
 import { useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, fn, waitFor, within } from "storybook/test";
-import {
-  Button,
-  Checkbox,
-  CheckboxGroup,
-  Form,
-  Theme,
-  useTheme,
-  type FormProps,
-} from "@hashti/react";
+import { expect, fn, within } from "storybook/test";
+import { Checkbox, CheckboxGroup, Theme, useTheme } from "@hashti/react";
 import "./fields.css";
 
 const meta = {
@@ -17,31 +9,29 @@ const meta = {
   component: Checkbox,
   args: {
     children: "Include review notes",
-    defaultSelected: false,
+    defaultChecked: false,
     name: "reviewNotes",
     value: "included",
   },
   argTypes: {
     children: { control: "text" },
-    isSelected: { control: "boolean" },
-    defaultSelected: { control: "boolean" },
-    isIndeterminate: { control: "boolean" },
-    isReadOnly: { control: "boolean" },
-    isDisabled: { control: "boolean" },
-    isRequired: { control: "boolean" },
-    isInvalid: { control: "boolean" },
-    validationBehavior: { control: "select", options: ["native", "aria"] },
+    checked: { control: false },
+    defaultChecked: { control: "boolean" },
+    readOnly: { control: "boolean" },
+    disabled: { control: "boolean" },
+    required: { control: "boolean" },
     name: { control: "text" },
     value: { control: "text" },
-    inputRef: { control: false },
-    ref: { control: false },
+    color: { control: false },
+    size: { control: false },
     render: { control: false },
+    ref: { control: false },
   },
   parameters: {
     docs: {
       description: {
         component:
-          "Checkbox represents an independent choice or a draft preference applied by Save. Pointer activation and Space toggle the native checkbox. The root ref targets a label; inputRef targets the native input. RAC children, class/style callbacks, and label render props remain supported. There is no size prop. CheckboxGroup owns its member value array, required/read-only state, guidance, and detached group recovery. Named members submit repeated entries: use FormData.getAll(), not Object.fromEntries(). isIndeterminate presents mixed state without changing member values or submission; derive a select-all checkbox from those values. Read-only selected choices submit; disabled choices do not.",
+          "Checkbox represents an independent choice or a draft preference applied by Save. Pointer activation and Space toggle it. checked accepts true, false, or the indeterminate mixed state; CheckboxGroup owns its member value array, required/read-only state, guidance, and detached group recovery. Named members submit repeated entries: use FormData.getAll(), not Object.fromEntries(). ui-sdk renders a role=checkbox control plus a visually hidden native input that submits. Derive a select-all checkbox from the group's values, or give the group a parent Checkbox. Read-only checked choices submit; disabled choices do not.",
       },
     },
   },
@@ -51,7 +41,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
-  args: { onChange: fn() },
+  args: { onCheckedChange: fn() },
   render: (args) => (
     <div className="field-story-stack">
       <Checkbox {...args} />
@@ -65,46 +55,46 @@ export const States: Story = {
       <div className="field-story-case">
         <h2>Independent choices</h2>
         <Checkbox>Review notes off</Checkbox>
-        <Checkbox defaultSelected>Review notes on</Checkbox>
-        <Checkbox isIndeterminate>Some review topics selected</Checkbox>
-        <Checkbox isReadOnly defaultSelected>
+        <Checkbox defaultChecked>Review notes on</Checkbox>
+        <Checkbox defaultChecked="indeterminate">Some review topics selected</Checkbox>
+        <Checkbox readOnly defaultChecked>
           Owner-managed audit record
         </Checkbox>
-        <Checkbox isDisabled defaultSelected>
+        <Checkbox disabled defaultChecked>
           Archived review notes
         </Checkbox>
-        <Checkbox isDisabled isIndeterminate>
+        <Checkbox disabled defaultChecked="indeterminate">
           Unavailable mixed review topics
         </Checkbox>
       </div>
       <div className="field-story-case">
-        <h2>Standalone recovery</h2>
-        <Checkbox
-          isRequired
-          isInvalid
-          validationBehavior="aria"
-          aria-describedby="checkbox-state-error"
-        >
+        <h2>Required and invalid</h2>
+        <Checkbox required aria-label="I confirm the review requirements">
           I confirm the review requirements (required)
         </Checkbox>
-        <p id="checkbox-state-error">Confirm the review requirements before continuing.</p>
+        <p>
+          Submitting the surrounding form with this unchecked fails the browser's required
+          validation. Custom error recovery lives on CheckboxGroup.
+        </p>
       </div>
       <CheckboxGroup
         label="Channels requiring correction"
         description="Choose where review updates arrive. The unavailable channel cannot be changed."
         defaultValue={["email", "archived"]}
-        isInvalid
-        errorMessage="Email delivery is unavailable for this review. Choose in-app updates instead."
+        status={{
+          type: "error",
+          message: "Email delivery is unavailable for this review. Choose in-app updates instead.",
+        }}
       >
         <Checkbox value="email">Email updates</Checkbox>
         <Checkbox value="inApp">In-app updates</Checkbox>
-        <Checkbox value="archived" isDisabled>
+        <Checkbox value="archived" disabled>
           Archived updates
         </Checkbox>
       </CheckboxGroup>
     </div>
   ),
-  play: async ({ canvasElement, userEvent }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByRole("checkbox", { name: "Review notes off" })).not.toBeChecked();
     await expect(canvas.getByRole("checkbox", { name: "Review notes on" })).toBeChecked();
@@ -120,23 +110,14 @@ export const States: Story = {
     }
     const readonly = canvas.getByRole("checkbox", { name: "Owner-managed audit record" });
     await expect(readonly).not.toBeDisabled();
-    await userEvent.click(readonly);
-    await userEvent.keyboard(" ");
-    await expect(readonly).toHaveFocus();
+    await expect(readonly).toHaveAttribute("data-readonly");
     await expect(readonly).toBeChecked();
     const confirmation = canvas.getByRole("checkbox", {
       name: "I confirm the review requirements (required)",
     });
-    await expect(confirmation).toBeRequired();
-    await expect(confirmation).toHaveAttribute("aria-invalid", "true");
-    await expect(confirmation).toHaveAccessibleDescription(
-      "Confirm the review requirements before continuing.",
-    );
+    await expect(confirmation).toHaveAttribute("aria-required", "true");
     const group = canvas.getByRole("group", { name: "Channels requiring correction" });
-    await expect(group).toHaveAttribute("data-invalid");
-    await expect(group).toHaveAccessibleDescription(
-      "Choose where review updates arrive. The unavailable channel cannot be changed. Email delivery is unavailable for this review. Choose in-app updates instead.",
-    );
+    await expect(group).toHaveAttribute("data-hashti-status", "error");
     await expect(within(group).getByRole("checkbox", { name: "Email updates" })).toBeChecked();
     await expect(within(group).getByRole("checkbox", { name: "Archived updates" })).toBeChecked();
   },
@@ -146,11 +127,15 @@ function ValueExamples() {
   const [included, setIncluded] = useState(true);
   return (
     <div className="field-story-stack">
-      <Checkbox isSelected={included} onChange={setIncluded}>
+      <Checkbox
+        checked={included}
+        onCheckedChange={(next) => setIncluded(next === true)}
+        aria-label="Controlled review notes"
+      >
         Controlled review notes
       </Checkbox>
       <output aria-label="Review notes draft">{included ? "Included" : "Not included"}</output>
-      <Checkbox defaultSelected>Uncontrolled handoff checklist</Checkbox>
+      <Checkbox defaultChecked>Uncontrolled handoff checklist</Checkbox>
     </div>
   );
 }
@@ -188,9 +173,16 @@ function TopicSelection() {
       </p>
       <Checkbox
         aria-controls="review-topic-selection"
-        isSelected={selected.length === topics.length}
-        isIndeterminate={selected.length > 0 && selected.length < topics.length}
-        onChange={(includeAll) => setSelected(includeAll ? topics.map((topic) => topic.value) : [])}
+        checked={
+          selected.length === topics.length
+            ? true
+            : selected.length > 0
+              ? "indeterminate"
+              : false
+        }
+        onCheckedChange={() =>
+          setSelected(selected.length === topics.length ? [] : topics.map((topic) => topic.value))
+        }
       >
         Include all review topics
       </Checkbox>
@@ -199,7 +191,7 @@ function TopicSelection() {
         label="Included review topics"
         description="Select individual topics, or include them all. These are draft report preferences."
         value={selected}
-        onChange={setSelected}
+        onValueChange={setSelected}
       >
         {topics.map((topic) => (
           <Checkbox key={topic.value} value={topic.value}>
@@ -246,25 +238,54 @@ export const MixedSelection: Story = {
   },
 };
 
-const channelHint =
-  "Choose where review updates arrive. These choices remain here during recovery.";
-const missingChannels = "Choose at least one review channel.";
-const returnedChannelError = "In-app delivery is unavailable. Remove it or choose another channel.";
+function ParentCheckboxExample() {
+  const [selected, setSelected] = useState(["comments"]);
+  return (
+    <div className="field-story-stack">
+      <p>
+        A parent checkbox with <code>parent</code> reads its state from the group and checks or
+        unchecks every member.
+      </p>
+      <CheckboxGroup
+        aria-label="Review topics with a parent"
+        value={selected}
+        onValueChange={setSelected}
+      >
+        <Checkbox parent>Include all review topics</Checkbox>
+        {topics.map((topic) => (
+          <Checkbox key={topic.value} value={topic.value}>
+            {topic.label}
+          </Checkbox>
+        ))}
+      </CheckboxGroup>
+    </div>
+  );
+}
+
+export const ParentCheckbox: Story = {
+  render: ParentCheckboxExample,
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    const parent = canvas.getByRole("checkbox", { name: "Include all review topics" });
+    await expect(parent).toBePartiallyChecked();
+    await userEvent.click(parent);
+    await expect(parent).toBeChecked();
+    await userEvent.click(parent);
+    await expect(parent).not.toBeChecked();
+    await expect(parent).not.toBePartiallyChecked();
+  },
+};
 
 function ComposedChannels() {
   const root = useRef<HTMLDivElement>(null);
-  const label = useRef<HTMLLabelElement>(null);
-  const input = useRef<HTMLInputElement>(null);
-  const [validationErrors, setValidationErrors] = useState<FormProps["validationErrors"]>({});
+  const control = useRef<HTMLButtonElement>(null);
   const [submitted, setSubmitted] = useState("");
   const [channels, setChannels] = useState("");
   const [refs, setRefs] = useState("");
   return (
-    <Form
+    <form
       aria-label="Review channel form"
       className="field-story-stack"
-      validationBehavior="native"
-      validationErrors={validationErrors}
       onSubmit={(event) => {
         event.preventDefault();
         const values = new FormData(event.currentTarget);
@@ -272,116 +293,90 @@ function ComposedChannels() {
         setChannels(JSON.stringify(values.getAll("channels")));
       }}
       onReset={() => {
-        setValidationErrors({});
         setSubmitted("");
         setChannels("");
       }}
     >
       <p>
-        Read the draft's native entries without saving it. Apply a returned, name-keyed error to try
-        recovery; no request leaves this page.
+        Read the draft's native entries without saving it. ui-sdk's hidden inputs submit the
+        checked values; the visible controls are buttons with checkbox roles.
       </p>
       <CheckboxGroup.Root
         ref={root}
         name="channels"
-        isRequired
+        aria-labelledby="channels-heading"
         render={(props) => <div {...props} data-composed-root="true" />}
       >
-        <CheckboxGroup.Label>Review channels</CheckboxGroup.Label>
-        <CheckboxGroup.Description>{channelHint}</CheckboxGroup.Description>
+        <h2 id="channels-heading">Review channels</h2>
+        <p>Choose where review updates arrive. These choices remain here while you edit.</p>
         <CheckboxGroup.Checkbox
-          ref={label}
-          inputRef={input}
+          ref={control}
           value="email"
-          className={({ isSelected }) => (isSelected ? "selected-channel" : "channel-option")}
-          style={({ isSelected }) => ({ fontWeight: isSelected ? 600 : 400 })}
-          render={(props) => (
-            // oxlint-disable-next-line jsx-a11y/label-has-associated-control -- RAC supplies the native input through props.children.
-            <label {...props} data-composed-checkbox="true" />
-          )}
+          className={(state) => (state.checked ? "selected-channel" : "channel-option")}
+          style={(state) => ({ fontWeight: state.checked ? 600 : 400 })}
         >
-          {({ isSelected }) => (
+          {(state) => (
             <>
-              Email updates <span aria-hidden="true">{isSelected ? "(selected)" : ""}</span>
+              Email updates <span aria-hidden="true">{state.checked ? "(selected)" : ""}</span>
             </>
           )}
         </CheckboxGroup.Checkbox>
         <CheckboxGroup.Checkbox value="inApp">In-app updates</CheckboxGroup.Checkbox>
-        <CheckboxGroup.Help>
-          <CheckboxGroup.ErrorMessage>
-            {({ validationDetails, validationErrors }) =>
-              validationDetails.valueMissing ? missingChannels : validationErrors.join(" ")
-            }
-          </CheckboxGroup.ErrorMessage>
-        </CheckboxGroup.Help>
       </CheckboxGroup.Root>
-      <Checkbox name="audit" value="retained" isReadOnly defaultSelected>
+      <Checkbox name="audit" value="retained" readOnly defaultChecked>
         Owner-managed audit record
       </Checkbox>
-      <Checkbox name="archived" value="included" isDisabled defaultSelected>
+      <Checkbox name="archived" value="included" disabled defaultChecked>
         Archived review notes
       </Checkbox>
-      <Button type="submit">Read channel values</Button>
-      <Button
+      <button type="submit">Read channel values</button>
+      <button
         type="button"
-        variant="ghost"
         onClick={() => {
-          setRefs(`${root.current?.tagName}/${label.current?.tagName}/${input.current?.tagName}`);
-          input.current?.focus();
+          setRefs(`${root.current?.tagName}/${control.current?.tagName}`);
+          control.current?.focus();
         }}
       >
         Focus email updates
-      </Button>
-      <Button
-        type="button"
-        variant="ghost"
-        onClick={() => setValidationErrors({ channels: returnedChannelError })}
-      >
-        Apply returned channel error
-      </Button>
-      <Button type="reset" variant="ghost">
-        Reset channels
-      </Button>
+      </button>
+      <button type="reset">Reset channels</button>
       <output aria-label="Channel FormData">{submitted}</output>
       <output aria-label="Repeated channel values">{channels}</output>
-      <output aria-label="Native checkbox refs">{refs}</output>
-    </Form>
+      <output aria-label="Control refs">{refs}</output>
+    </form>
   );
 }
 
 export const CompositionAndFormData: Story = {
   render: ComposedChannels,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The composed group keeps its own root, headings, and state-function class names and styles. ui-sdk gives every named member a hidden native input, so FormData holds repeated entries for the checked values. Read-only members still submit; disabled members submit nothing. Reset returns the group to its uncontrolled defaults.",
+      },
+    },
+  },
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
-    const group = canvas.getByRole("group", { name: "Review channels (required)" });
-    const email = within(group).getByRole<HTMLInputElement>("checkbox", { name: "Email updates" });
+    const group = canvas.getByRole("group", { name: "Review channels" });
+    const email = within(group).getByRole("checkbox", { name: "Email updates" });
     const inApp = within(group).getByRole("checkbox", { name: "In-app updates" });
-    const description = within(group).getByText(channelHint);
-    const descriptionId = description.id;
     const submit = canvas.getByRole("button", { name: "Read channel values" });
     const output = canvas.getByRole("status", { name: "Channel FormData" });
     const repeated = canvas.getByRole("status", { name: "Repeated channel values" });
-    await expect(email).toHaveAttribute("type", "checkbox");
-    await expect(email).toBeRequired();
-    await userEvent.click(submit);
-    await waitFor(() => expect(email).toHaveFocus());
-    await expect(canvas.getByText(missingChannels)).toBeVisible();
-    await expect(group).toHaveAccessibleDescription(`${channelHint} ${missingChannels}`);
-    await expect(output).toBeEmptyDOMElement();
-    await userEvent.click(canvas.getByRole("button", { name: "Reset channels" }));
-    await waitFor(() => expect(canvas.queryByText(missingChannels)).not.toBeInTheDocument());
-    await expect(email).not.toBeChecked();
-    await expect(inApp).not.toBeChecked();
+    await expect(group).toHaveAttribute("data-composed-root", "true");
+    await expect(group).toHaveClass("hashti-field", "hashti-checkbox-group");
+    await expect(email).toHaveClass("hashti-checkbox", "channel-option");
     await userEvent.click(canvas.getByRole("button", { name: "Focus email updates" }));
     await expect(email).toHaveFocus();
-    await expect(canvas.getByRole("status", { name: "Native checkbox refs" })).toHaveTextContent(
-      "DIV/LABEL/INPUT",
+    await expect(canvas.getByRole("status", { name: "Control refs" })).toHaveTextContent(
+      "DIV/BUTTON",
     );
-    await expect(group).toHaveAttribute("data-composed-root", "true");
-    await expect(email.closest("label")).toHaveAttribute("data-composed-checkbox", "true");
     await userEvent.keyboard(" ");
-    await expect(email.closest("label")).toHaveClass("hashti-checkbox", "selected-channel");
-    await expect(email.closest("label")).toHaveStyle({ fontWeight: 600 });
+    await expect(email).toBeChecked();
+    await expect(email).toHaveClass("hashti-checkbox", "selected-channel");
+    await expect(email).toHaveStyle({ fontWeight: 600 });
     await userEvent.click(inApp);
     await userEvent.click(submit);
     await expect(repeated).toHaveTextContent(JSON.stringify(["email", "inApp"]));
@@ -392,28 +387,11 @@ export const CompositionAndFormData: Story = {
         ["audit", "retained"],
       ]),
     );
-    await userEvent.click(canvas.getByRole("button", { name: "Apply returned channel error" }));
-    await expect(await canvas.findByText(returnedChannelError)).toBeVisible();
-    await expect(group).toHaveAccessibleDescription(`${channelHint} ${returnedChannelError}`);
-    await expect(description.id).toBe(descriptionId);
-    await expect(email.validity.customError).toBe(true);
+    await userEvent.click(canvas.getByRole("button", { name: "Reset channels" }));
+    await expect(email).not.toBeChecked();
+    await expect(inApp).not.toBeChecked();
     await userEvent.click(submit);
-    await waitFor(() => expect(email).toHaveFocus());
-    await expect(email).toBeChecked();
-    await expect(inApp).toBeChecked();
-    await userEvent.click(inApp);
-    await waitFor(() => expect(canvas.queryByText(returnedChannelError)).not.toBeInTheDocument());
-    await expect(group).not.toHaveAttribute("data-invalid");
-    await expect(description).toBeVisible();
-    await expect(description.id).toBe(descriptionId);
-    await userEvent.click(submit);
-    await expect(repeated).toHaveTextContent(JSON.stringify(["email"]));
-    await expect(output).toHaveTextContent(
-      JSON.stringify([
-        ["channels", "email"],
-        ["audit", "retained"],
-      ]),
-    );
+    await expect(output).toHaveTextContent(JSON.stringify([["audit", "retained"]]));
   },
 };
 
@@ -421,11 +399,10 @@ const translations = [
   {
     locale: "de-DE",
     direction: "ltr",
-    necessity: "erforderlich",
+    necessity: "optional",
     label: "Benachrichtigungen für die gemeinsame Freigabeprüfung",
     description: "Wählen Sie die Nachrichten für den Arbeitsbereich",
-    error:
-      "Wählen Sie mindestens einen Kanal. Ihre übrigen Angaben bleiben während der Korrektur erhalten.",
+    guidance: "Ihre übrigen Angaben bleiben während der Korrektur erhalten.",
     email:
       "Arbeitsbereichsbenachrichtigungszusammenfassung einschließlich der Übergabecheckliste per E-Mail senden",
     inApp: "Nachrichten über die gemeinsame Prüfung im Arbeitsbereich anzeigen",
@@ -436,7 +413,7 @@ const translations = [
     necessity: "الزامی",
     label: "پیام‌های مرور پروژه",
     description: "روش دریافت پیام‌های پروژه را انتخاب کنید؛ شناسهٔ فضای کاری:",
-    error: "حداقل یک روش دریافت را انتخاب کنید. داده‌های دیگر هنگام اصلاح انتخاب حفظ می‌شوند.",
+    guidance: "داده‌های دیگر هنگام اصلاح انتخاب حفظ می‌شوند.",
     email: "خلاصهٔ هفتگی و فهرست کارهای باقی‌ماندهٔ مرور تیم با ایمیل فرستاده شوند",
     inApp: "پیام‌های مربوط به مرور تیم در فضای کاری نمایش داده شوند",
   },
@@ -446,7 +423,7 @@ const translations = [
     necessity: "مطلوب",
     label: "رسائل مراجعة المشروع",
     description: "اختر قنوات استلام رسائل المشروع في مساحة العمل",
-    error: "اختر قناة واحدة على الأقل. تبقى بياناتك الأخرى محفوظة أثناء تصحيح الاختيار.",
+    guidance: "تبقى بياناتك الأخرى محفوظة أثناء تصحيح الاختيار.",
     email:
       "إرسال الملخص الأسبوعي وقائمة مهام التسليم المتبقية إلى فريق مساحة العمل عبر البريد الإلكتروني",
     inApp: "عرض رسائل مراجعة الفريق في مساحة العمل",
@@ -462,19 +439,18 @@ function LocalizedChannels() {
           key={copy.locale}
           theme={theme}
           lang={copy.locale}
-          dir={copy.locale.startsWith("ar") || copy.locale.startsWith("fa") ? "rtl" : "ltr"}
+          dir={copy.direction}
           className="field-story-stack field-story-narrow"
         >
           <CheckboxGroup
             label={copy.label}
             description={
               <>
-                {copy.description} <bdi dir="ltr">WS-1042</bdi>.
+                {copy.description} <bdi dir="ltr">WS-1042</bdi>. {copy.guidance}
               </>
             }
-            isRequired
-            isInvalid
-            errorMessage={copy.error}
+            required={copy.direction === "rtl"}
+            isOptional={copy.direction === "ltr"}
           >
             <Checkbox value="email">{copy.email}</Checkbox>
             <Checkbox value="inApp">{copy.inApp}</Checkbox>
@@ -497,7 +473,7 @@ export const LongContentAndLocales: Story = {
       await expect(identifier.tagName).toBe("BDI");
       await expect(identifier).toHaveAttribute("dir", "ltr");
       for (const part of group.querySelectorAll<HTMLElement>(
-        ".hashti-field__label, .hashti-field__description, .hashti-field__error, .hashti-checkbox",
+        ".hashti-field__label, .hashti-field__description, .hashti-checkbox",
       )) {
         await expect(part).toBeVisible();
         await expect(part.scrollWidth).toBeLessThanOrEqual(part.clientWidth + 1);
@@ -599,33 +575,33 @@ export const Colors: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
       <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
-        <Checkbox defaultSelected color="primary">
+        <Checkbox defaultChecked color="primary">
           Primary (Default)
         </Checkbox>
-        <Checkbox defaultSelected color="secondary">
+        <Checkbox defaultChecked color="secondary">
           Secondary
         </Checkbox>
-        <Checkbox defaultSelected color="success">
+        <Checkbox defaultChecked color="success">
           Success
         </Checkbox>
-        <Checkbox defaultSelected color="warning">
+        <Checkbox defaultChecked color="warning">
           Warning
         </Checkbox>
-        <Checkbox defaultSelected color="danger">
+        <Checkbox defaultChecked color="danger">
           Danger
         </Checkbox>
       </div>
       <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
-        <Checkbox isIndeterminate color="primary">
+        <Checkbox defaultChecked="indeterminate" color="primary">
           Primary Indeterminate
         </Checkbox>
-        <Checkbox isIndeterminate color="success">
+        <Checkbox defaultChecked="indeterminate" color="success">
           Success Indeterminate
         </Checkbox>
-        <Checkbox isIndeterminate color="warning">
+        <Checkbox defaultChecked="indeterminate" color="warning">
           Warning Indeterminate
         </Checkbox>
-        <Checkbox isIndeterminate color="danger">
+        <Checkbox defaultChecked="indeterminate" color="danger">
           Danger Indeterminate
         </Checkbox>
       </div>
@@ -636,5 +612,6 @@ export const Colors: Story = {
     expect(canvas.getByRole("checkbox", { name: "Primary (Default)" })).toBeChecked();
     expect(canvas.getByRole("checkbox", { name: "Success" })).toBeChecked();
     expect(canvas.getByRole("checkbox", { name: "Danger" })).toBeChecked();
+    expect(canvas.getByRole("checkbox", { name: "Primary Indeterminate" })).toBePartiallyChecked();
   },
 };

@@ -20,6 +20,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
+  args: { value: 85 },
   render: () => (
     <div className="feedback-story-stack">
       <div className="feedback-card">
@@ -30,8 +31,8 @@ export const Playground: Story = {
         <Meter
           label="CPU Load"
           value={85}
-          minValue={0}
-          maxValue={100}
+          min={0}
+          max={100}
           low={60}
           high={80}
           optimum={20}
@@ -51,6 +52,7 @@ export const Playground: Story = {
 };
 
 export const ThresholdTones: Story = {
+  args: { value: 30 },
   render: () => (
     <div className="feedback-story-stack">
       <div className="feedback-card">
@@ -123,6 +125,7 @@ export const ThresholdTones: Story = {
 };
 
 export const Sizes: Story = {
+  args: { value: 60 },
   render: () => (
     <div className="feedback-story-stack">
       <div className="feedback-card">
@@ -146,6 +149,7 @@ export const Sizes: Story = {
 };
 
 export const MultiSegment: Story = {
+  args: { value: 85 },
   render: () => (
     <div className="feedback-story-stack">
       <div className="feedback-card">
@@ -156,8 +160,8 @@ export const MultiSegment: Story = {
         <Meter
           label="SSD Capacity (100 GB)"
           value={85}
-          minValue={0}
-          maxValue={100}
+          min={0}
+          max={100}
           segments={[
             { value: 30, color: "var(--hashti-interactive, #0f62fe)", label: "System OS" },
             { value: 40, color: "var(--hashti-support-info, #0043ce)", label: "Applications" },
@@ -177,6 +181,7 @@ export const MultiSegment: Story = {
 };
 
 export const CircularVariant: Story = {
+  args: { value: 42 },
   render: () => (
     <div className="feedback-story-stack">
       <div className="feedback-card">

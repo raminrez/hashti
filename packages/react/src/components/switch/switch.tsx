@@ -1,36 +1,36 @@
 "use client";
 
-import { type Ref } from "react";
+import { type ComponentProps } from "react";
 import {
-  Switch as RACSwitch,
-  composeRenderProps,
-  type SwitchProps as RACSwitchProps,
-} from "react-aria-components";
-import { classes } from "../../utils";
+  Switch as UiSdkSwitch,
+  SwitchThumb,
+  type SwitchState,
+} from "@ui-sdk/react/switch";
+import { cx } from "../../utils";
 import type { SelectionColor } from "../checkbox";
 
-export interface SwitchProps extends RACSwitchProps {
+export interface SwitchProps extends ComponentProps<typeof UiSdkSwitch> {
   color?: SelectionColor;
   size?: "sm" | "md";
-  ref?: Ref<HTMLLabelElement>;
 }
 
 export function Switch({ className, children, size = "md", color, ...props }: SwitchProps) {
+  const classHook =
+    typeof className === "function"
+      ? (state: SwitchState) => cx("hashti-switch", className(state))
+      : cx("hashti-switch", className);
   return (
-    <RACSwitch
-      {...props}
-      data-size={size}
-      data-color={color}
-      className={classes("hashti-switch", className)}
-    >
-      {composeRenderProps(children, (content) => (
+    <UiSdkSwitch {...props} data-size={size} data-color={color} className={classHook}>
+      {(state) => (
         <>
           <span className="hashti-switch-track" aria-hidden="true">
-            <span className="hashti-switch-thumb" />
+            <SwitchThumb className="hashti-switch-thumb" />
           </span>
-          {content != null && <span>{content}</span>}
+          {typeof children === "function"
+            ? children(state)
+            : children != null && <span>{children}</span>}
         </>
-      ))}
-    </RACSwitch>
+      )}
+    </UiSdkSwitch>
   );
 }

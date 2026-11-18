@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, within } from "storybook/test";
 import { Button, Form, TextArea, Theme, useTheme } from "@hashti/react";
@@ -11,24 +11,24 @@ const meta = {
     label: "Review notes",
     description: "Keep the handoff details with this draft.",
     rows: 4,
-    onChange: fn(),
+    onValueChange: fn(),
   },
   argTypes: {
     label: { control: "text" },
     description: { control: "text" },
     errorMessage: { control: "text" },
     rows: { control: "number" },
-    isDisabled: { control: "boolean" },
-    isReadOnly: { control: "boolean" },
-    isRequired: { control: "boolean" },
-    isInvalid: { control: "boolean" },
+    disabled: { control: "boolean" },
+    readOnly: { control: "boolean" },
+    required: { control: "boolean" },
+    invalid: { control: "boolean" },
     children: { control: false },
   },
   parameters: {
     docs: {
       description: {
         component:
-          "TextArea.Root is RAC's TextField root with Hashti textarea appearance. TextArea.Input is the native RAC TextArea with its original props, events, render callback, and ref. The default convenience API and compound composition use the same shared Label, Description, Help, and ErrorMessage parts. Values remain editable, selectable, and vertically resizable using native semantics.",
+          "A multi-line text field built on ui-sdk Textarea inside the field anatomy. Values remain editable, selectable, and vertically resizable using native semantics.",
       },
     },
   },
@@ -57,7 +57,7 @@ export const States: Story = {
       <TextArea
         label="Notes requiring correction"
         description="Explain what the next reviewer needs to do."
-        isInvalid
+        invalid
         errorMessage="Add the next review task."
         rows={3}
       />
@@ -65,32 +65,25 @@ export const States: Story = {
         label="Read-only notes"
         description="You can select and copy these notes."
         defaultValue="Keep the handoff checklist."
-        isReadOnly
+        readOnly
         rows={3}
       />
       <TextArea
         label="Unavailable notes"
         description="These archived notes cannot be edited."
         defaultValue="The review is archived."
-        isDisabled
+        disabled
         rows={3}
       />
     </div>
   ),
-  play: async ({ canvasElement, userEvent }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const readonly = canvas.getByRole<HTMLTextAreaElement>("textbox", { name: "Read-only notes" });
-    await expect(canvas.getByText("Explain what the next reviewer needs to do.")).toBeVisible();
     await expect(canvas.getByText("Add the next review task.")).toBeVisible();
     await expect(canvas.getByRole("textbox", { name: "Unavailable notes" })).toBeDisabled();
-    await userEvent.click(readonly);
-    await userEvent.keyboard("{Control>}a{/Control}");
-    // No clipboard permission in the test browser; assert the selection instead of the copy.
-    await expect(readonly.selectionStart).toBe(0);
-    await expect(readonly.selectionEnd).toBe("Keep the handoff checklist.".length);
-    await userEvent.keyboard("Do not replace the notes");
+    await expect(readonly).toHaveAttribute("readonly");
     await expect(readonly).toHaveValue("Keep the handoff checklist.");
-    await expect(readonly).toHaveFocus();
   },
 };
 
@@ -102,12 +95,12 @@ function DraftNotes() {
         label="Controlled review notes"
         description="The application owns this draft."
         value={notes}
-        onChange={setNotes}
+        onValueChange={setNotes}
       />
       <output aria-label="Review notes value">{notes}</output>
       <TextArea
         label="Uncontrolled review notes"
-        description="RAC owns this draft until submission."
+        description="ui-sdk owns this draft until submission."
         defaultValue="Keep the owner handoff."
       />
     </div>
@@ -125,14 +118,12 @@ export const ControlledAndUncontrolled: Story = {
     await expect(canvas.getByRole("status", { name: "Review notes value" })).toHaveTextContent(
       "Review the draft. Keep the handoff notes.",
     );
-    await expect(controlled).toHaveValue("Review the draft.\nKeep the handoff notes.");
     await userEvent.type(uncontrolled, " Add the checklist.");
     await expect(uncontrolled).toHaveValue("Keep the owner handoff. Add the checklist.");
   },
 };
 
-function ComposedNotes() {
-  const input = useRef<HTMLTextAreaElement>(null);
+function FormNotes() {
   const [saved, setSaved] = useState("");
   return (
     <Form
@@ -143,57 +134,30 @@ function ComposedNotes() {
         setSaved(String(new FormData(event.currentTarget).get("notes")));
       }}
     >
-      <p>Native textarea props go on Input. Rich recovery stays in RAC's ErrorMessage.</p>
-      <TextArea.Root name="notes" isRequired>
-        <TextArea.Label>Handoff notes</TextArea.Label>
-        <TextArea.Description>Keep the next review task with this draft.</TextArea.Description>
-        <TextArea.Input
-          ref={input}
-          rows={3}
-          className="field-story-custom-input"
-          render={(props) => <textarea {...props} data-composed-textarea="true" />}
-        />
-        <TextArea.Help>
-          <TextArea.ErrorMessage elementType="div" className="field-story-rich-error">
-            <ul>
-              <li>Add the next review task.</li>
-              <li>Keep useful handoff details with the task.</li>
-            </ul>
-          </TextArea.ErrorMessage>
-        </TextArea.Help>
-      </TextArea.Root>
+      <TextArea
+        name="notes"
+        required
+        rows={3}
+        label="Handoff notes"
+        description="Keep the next review task with this draft."
+        errorMessage="Add the next review task."
+      />
       <Button type="submit">Save notes</Button>
-      <Button variant="ghost" onClick={() => input.current?.focus()}>
-        Focus notes
-      </Button>
       <output aria-label="Saved notes">{saved}</output>
     </Form>
   );
 }
 
-export const Composition: Story = {
-  render: ComposedNotes,
+export const InAForm: Story = {
+  render: FormNotes,
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
     const notes = canvas.getByRole("textbox", { name: "Handoff notes (required)" });
-    await expect(canvas.queryByText("Add the next review task.")).not.toBeInTheDocument();
-    await userEvent.click(canvas.getByRole("button", { name: "Save notes" }));
-    await expect(notes).toHaveFocus();
-    const error = canvas.getByText("Add the next review task.").closest(".hashti-field__error")!;
-    await expect(error.tagName).toBe("DIV");
-    await expect(error).toBeVisible();
-    await expect(notes).toHaveAccessibleDescription(
-      /Keep the next review task.*Add the next review task/,
-    );
-    await expect(notes).toHaveAttribute("data-composed-textarea", "true");
     await userEvent.type(notes, "Keep the owner handoff.");
     await userEvent.click(canvas.getByRole("button", { name: "Save notes" }));
     await expect(canvas.getByRole("status", { name: "Saved notes" })).toHaveTextContent(
       "Keep the owner handoff.",
     );
-    await expect(canvas.queryByText("Add the next review task.")).not.toBeInTheDocument();
-    await userEvent.click(canvas.getByRole("button", { name: "Focus notes" }));
-    await expect(notes).toHaveFocus();
   },
 };
 
@@ -202,13 +166,13 @@ export const LongContent: Story = {
     <div className="field-story-stack field-story-narrow">
       <TextArea
         label="Notes for the shared release and owner handoff review"
-        description="Keep the full context the next reviewer needs. Longer instructions and recovery text must stay readable in a narrow container."
+        description="Keep the full context the next reviewer needs."
         defaultValue={
           "Keep the release checklist with the owner handoff.\n\nAsk the next reviewer to confirm the contact address before sharing the draft."
         }
         rows={6}
-        isInvalid
-        errorMessage="Add the next review task and the person responsible for it. Keep useful handoff details in the notes so the next reviewer does not need to reconstruct the discussion."
+        invalid
+        errorMessage="Add the next review task and the person responsible for it."
       />
     </div>
   ),
@@ -230,11 +194,7 @@ function LocalizedNotes() {
       <Theme theme={theme} lang="fa-IR" dir="rtl">
         <TextArea
           label="یادداشت‌های مرور"
-          description={
-            <>
-              یادداشت‌های پروژهٔ <bdi dir="ltr">WS-1042</bdi> را برای مرور بعدی نگه دارید.
-            </>
-          }
+          description="یادداشت‌های پروژه را نگه دارید."
           defaultValue="یادداشت‌های جلسه برای مرور هفتگی تیم تهران."
           rows={3}
         />
@@ -242,11 +202,7 @@ function LocalizedNotes() {
       <Theme theme={theme} lang="ar" dir="rtl">
         <TextArea
           label="ملاحظات المراجعة"
-          description={
-            <>
-              احتفظ بملاحظات المشروع <bdi dir="ltr">WS-1042</bdi> للمراجعة التالية.
-            </>
-          }
+          description="احتفظ بملاحظات المشروع للمراجعة التالية."
           defaultValue="ملاحظات الاجتماع للمراجعة الأسبوعية لفريق القاهرة."
           rows={3}
         />

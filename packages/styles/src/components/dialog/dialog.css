@@ -1,18 +1,52 @@
-/* Hashti Modern Aesthetic - Dialog & AlertDialog */
+/* Hashti Modern Aesthetic - Dialog, AlertDialog, and the shared overlay scrim.
+   ui-sdk Dialog owns focus, dismissal, and portals; Hashti owns the surface, the
+   size scale the deleted Modal carried, and the backdrop variants. */
 @layer hashti.components {
+  /* Shared scrim: Dialog.Backdrop, Drawer.Backdrop and the AlertDialog backdrop. */
+  .hashti-overlay {
+    background-color: var(--hashti-overlay);
+  }
+  .hashti-overlay[data-backdrop="blur"] {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+  .hashti-overlay[data-backdrop="none"] {
+    background-color: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
   .hashti-dialog {
     display: flex;
     flex-direction: column;
+    gap: var(--hashti-spacing-04, 12px);
     padding: var(--hashti-spacing-05, 16px);
     outline: none;
+    background-color: var(--hashti-layer);
+    border: 1px solid var(--hashti-border-subtle, #e0e0e0);
+    border-radius: var(--hashti-surface-radius, 16px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    max-inline-size: 90vw;
+    inline-size: 100%;
+    overflow: hidden;
+  }
+
+  .hashti-dialog[data-size="xs"] {
+    max-inline-size: 320px;
+  }
+  .hashti-dialog[data-size="sm"] {
+    max-inline-size: 440px;
+  }
+  .hashti-dialog[data-size="md"] {
+    max-inline-size: 560px;
+  }
+  .hashti-dialog[data-size="lg"] {
+    max-inline-size: 720px;
   }
 
   .hashti-alert-dialog {
-    display: flex;
-    flex-direction: column;
     gap: 16px;
     padding: 24px;
-    outline: none;
   }
 
   .hashti-alert-dialog-header {
@@ -21,14 +55,12 @@
     gap: 12px;
   }
 
-  .hashti-alert-dialog-header h2,
   .hashti-alert-dialog-header h2 {
     font-size: 1.125rem;
     font-weight: 600;
     margin: 0;
   }
 
-  .hashti-alert-dialog-header[data-variant="danger"] svg,
   .hashti-alert-dialog-header[data-variant="danger"] svg {
     color: var(--hashti-text-error, #da1e28);
   }
@@ -37,12 +69,13 @@
     font-size: 0.875rem;
     color: var(--hashti-text-secondary, #525252);
     line-height: 1.5;
+    margin: 0;
   }
 
   .hashti-alert-dialog-footer {
     display: flex;
     justify-content: flex-end;
     gap: 8px;
-    margin-top: 8px;
+    margin-block-start: 8px;
   }
 }

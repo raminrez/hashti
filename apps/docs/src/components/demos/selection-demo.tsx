@@ -12,7 +12,7 @@ export function SelectionLiveDemo() {
         <span className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">
           Checkbox
         </span>
-        <Checkbox isSelected={checked} onChange={setChecked}>
+        <Checkbox checked={checked} onCheckedChange={(next) => setChecked(next === true)}>
           Zenithal Skylight (Hoor-Noor)
         </Checkbox>
       </div>
@@ -21,7 +21,7 @@ export function SelectionLiveDemo() {
         <span className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">
           Radio Group
         </span>
-        <RadioGroup value={radio} onChange={setRadio} aria-label="Portal Geometry">
+        <RadioGroup value={radio} onValueChange={(value) => setRadio(value ?? "octagonal")} aria-label="Portal Geometry">
           <Radio value="octagonal">Octagonal</Radio>
           <Radio value="quadrilateral">Quadrilateral</Radio>
           <Radio value="circular">Circular Vault</Radio>
@@ -32,7 +32,7 @@ export function SelectionLiveDemo() {
         <span className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">
           Switch
         </span>
-        <Switch isSelected={switched} onChange={setSwitched}>
+        <Switch checked={switched} onCheckedChange={setSwitched}>
           Indirect Angle
         </Switch>
       </div>

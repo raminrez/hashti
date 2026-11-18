@@ -21,7 +21,7 @@ import {
   type CheckboxRenderProps,
 } from "react-aria-components";
 import { classes, cx, type ControlSize } from "../../utils";
-import { Checkbox } from "../checkbox";
+import { Checkbox, type CheckboxProps } from "../checkbox";
 import { Icon } from "../../icons";
 
 export interface GridListContextValue {
@@ -170,24 +170,20 @@ export function GridListDragHandle({
       slot="drag"
       aria-label={ariaLabel}
       {...props}
-      className={classes("hashti-grid-list-drag-handle", className)}
+      className={cx("hashti-grid-list-checkbox", typeof className === "function" ? undefined : className)}
     >
       {children ?? <Icon name="menu" size={16} />}
     </RACButton>
   );
 }
 
-export interface GridListCheckboxProps extends Omit<RACCheckboxProps, "className"> {
-  className?: string | ((values: CheckboxRenderProps) => string);
+export interface GridListCheckboxProps extends Omit<CheckboxProps, "className"> {
+  className?: CheckboxProps["className"];
 }
 
 export function GridListCheckbox({ className, children, ...props }: GridListCheckboxProps) {
   return (
-    <Checkbox
-      slot="selection"
-      {...props}
-      className={classes("hashti-grid-list-checkbox", className)}
-    >
+    <Checkbox {...props} className={cx("hashti-grid-list-checkbox", typeof className === "function" ? undefined : className)}>
       {children}
     </Checkbox>
   );

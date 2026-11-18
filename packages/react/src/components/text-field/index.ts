@@ -1,9 +1,11 @@
 "use client";
 
-export { TextField, TextArea } from "./text-field";
+export { Input, TextArea } from "./text-field";
 export type {
-  TextFieldProps,
-  TextFieldRootProps,
+  InputProps,
+  InputRootProps,
   TextAreaProps,
   TextAreaRootProps,
+  ChangeDetails,
+  ChangeSource,
 } from "./text-field";

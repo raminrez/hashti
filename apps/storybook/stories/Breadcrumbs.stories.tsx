@@ -5,12 +5,23 @@ import {
   Breadcrumb,
   Breadcrumbs,
   Button,
+  Icon,
   Link,
   MenuItem,
-  OverflowMenu,
+  MenuTrigger,
   Theme,
   useTheme,
 } from "@hashti/react";
+// TICK-007 interim: OverflowMenu was removed with the RAC-era popover and returns
+// in TICK-016 on @ui-sdk/react/menu. RAC MenuTrigger still needs a RAC popover for
+// its overlay context; the local wrapper keeps the .hashti-popover hook.
+import { Menu, Popover as RACPopover } from "react-aria-components";
+import type { ComponentProps } from "react";
+
+function Popover({ className, ...props }: ComponentProps<typeof RACPopover>) {
+  const cls = typeof className === "string" ? `hashti-popover ${className}` : "hashti-popover";
+  return <RACPopover {...props} className={cls} />;
+}
 import "./navigation.css";
 
 const meta = {
@@ -142,11 +153,18 @@ export const CollapsibleOrOverflow: Story = {
           <Link href="#root">Workspaces</Link>
         </Breadcrumb>
         <Breadcrumb>
-          <OverflowMenu aria-label="Show intermediate path" size="sm">
-            <MenuItem href="#engineering">Engineering Org</MenuItem>
-            <MenuItem href="#frontend">Frontend Platform</MenuItem>
-            <MenuItem href="#design-system">Design System</MenuItem>
-          </OverflowMenu>
+          <MenuTrigger>
+            <Button variant="ghost" iconOnly size="sm" aria-label="Show intermediate path">
+              <Icon name="overflow" />
+            </Button>
+            <Popover>
+              <Menu>
+                <MenuItem href="#engineering">Engineering Org</MenuItem>
+                <MenuItem href="#frontend">Frontend Platform</MenuItem>
+                <MenuItem href="#design-system">Design System</MenuItem>
+              </Menu>
+            </Popover>
+          </MenuTrigger>
         </Breadcrumb>
         <Breadcrumb>
           <Link href="#hashti">Hashti</Link>

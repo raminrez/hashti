@@ -83,7 +83,7 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
       expect(html).toContain("hashti-listbox-drag-handle");
       expect(html).toContain("hashti-listbox-checkbox");
       expect(html).toContain('slot="drag"');
-      expect(html).toContain('slot="selection"');
+      expect(html).toContain('data-slot="checkbox"');
       expect(html).toContain("Item 1");
     });
 

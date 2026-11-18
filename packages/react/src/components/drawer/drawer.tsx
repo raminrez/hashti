@@ -1,110 +1,156 @@
 "use client";
 
-import type { ReactNode, Ref } from "react";
+import { createContext, useContext, type ComponentProps, type ReactNode } from "react";
 import {
-  Heading,
-  ModalOverlay,
-  Modal as RACModal,
-  Dialog as RACDialog,
-  type ModalOverlayProps,
-} from "react-aria-components";
-import { Button } from "../button";
-import { Icon } from "../../icons";
+  Drawer as UiSdkDrawer,
+  DrawerTrigger as UiSdkDrawerTrigger,
+  DrawerBackdrop as UiSdkDrawerBackdrop,
+  DrawerContent as UiSdkDrawerContent,
+  DrawerHandle as UiSdkDrawerHandle,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose,
+  DrawerShortcut,
+  DrawerOutlet,
+  createDrawerController,
+  sheetPhysics,
+} from "@ui-sdk/react/drawer";
+import type { DialogBackdropVariant } from "../dialog";
 import { useOverlayTheme } from "../../theme";
-import { classes } from "../../utils";
-import { type ModalBackdrop } from "../modal";
+import { cx, uiClass } from "../../utils";
 
-export type DrawerPlacement = "left" | "right" | "top" | "bottom" | "start" | "end";
+export type DrawerSide = "top" | "right" | "bottom" | "left" | "start" | "end";
 export type DrawerSize = "sm" | "md" | "lg" | "xl" | "full";
+export type { SnapPoint } from "@ui-sdk/react/drawer";
 
-export interface DrawerProps extends Omit<ModalOverlayProps, "children"> {
-  title?: ReactNode;
-  description?: ReactNode;
-  children?: ReactNode;
-  footer?: ReactNode;
-  placement?: DrawerPlacement;
-  size?: DrawerSize;
-  /** The scrim behind the drawer. Matches Modal: `dim` (default), `blur`, or `none`. */
-  backdrop?: ModalBackdrop;
-  isDismissable?: boolean;
-  dir?: "ltr" | "rtl";
-  className?: string;
-  overlayClassName?: string;
-  ref?: Ref<HTMLDivElement>;
+interface DrawerContextValue {
+  backdrop: DialogBackdropVariant;
+  appearanceClassName?: string;
+  theme: { dir?: string; lang?: string; [attribute: string]: unknown };
 }
 
-export function Drawer({
-  title,
-  description,
-  children,
-  footer,
-  placement = "end",
-  size = "md",
-  backdrop = "dim",
-  isDismissable = true,
-  dir,
-  className,
-  overlayClassName,
-  ref,
-  ...props
-}: DrawerProps) {
-  const { appearanceClassName, ...theme } = useOverlayTheme();
-  const resolvedDir = dir ?? theme.dir;
+const DrawerContext = createContext<DrawerContextValue>({ backdrop: "dim", theme: {} });
 
+export interface DrawerRootProps extends ComponentProps<typeof UiSdkDrawer> {
+  /** The scrim behind the drawer: `dim` (default), `blur`, or `none`. */
+  backdrop?: DialogBackdropVariant;
+  /**
+   * Whether the sheet follows a pointer drag. Set false for desktop panel-from-edge
+   * surfaces that only open and close.
+   *
+   * ui-sdk gates swipe, Escape and outside-press dismissal behind the one
+   * `dismissible` switch, so `draggable={false}` maps to `dismissible={false}`:
+   * dismiss a non-draggable panel through `Drawer.Close`, a trigger, or a
+   * controller. Pass `dismissible` explicitly to override.
+   *
+   * @default true
+   */
+  draggable?: boolean;
+}
+
+function DrawerRoot({
+  backdrop = "dim",
+  draggable = true,
+  dismissible,
+  children,
+  ...props
+}: DrawerRootProps) {
+  const { appearanceClassName, ...theme } = useOverlayTheme();
   return (
-    <ModalOverlay
-      {...props}
-      {...theme}
-      dir={resolvedDir}
-      isDismissable={isDismissable}
-      data-backdrop={backdrop}
-      className={classes(
-        "hashti-drawer-overlay",
-        classes(appearanceClassName ?? "", overlayClassName),
-      )}
-    >
-      <RACModal
-        ref={ref}
-        dir={resolvedDir}
-        data-placement={placement}
-        data-size={size}
-        className={classes("hashti-drawer", className)}
-      >
-        <RACDialog role="dialog" className="hashti-drawer-dialog">
-          {({ close }) => (
-            <>
-              {(title != null || isDismissable) && (
-                <div className="hashti-drawer-header">
-                  <div className="hashti-drawer-header-content">
-                    {title != null && (
-                      <Heading slot="title" className="hashti-drawer-title">
-                        {title}
-                      </Heading>
-                    )}
-                    {description != null && (
-                      <div className="hashti-drawer-description">{description}</div>
-                    )}
-                  </div>
-                  {isDismissable && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      iconOnly
-                      aria-label="Close drawer"
-                      className="hashti-drawer-close"
-                      onClick={close}
-                    >
-                      <Icon name="close" />
-                    </Button>
-                  )}
-                </div>
-              )}
-              <div className="hashti-drawer-body">{children}</div>
-              {footer != null && <div className="hashti-drawer-footer">{footer}</div>}
-            </>
-          )}
-        </RACDialog>
-      </RACModal>
-    </ModalOverlay>
+    <DrawerContext.Provider value={{ backdrop, appearanceClassName, theme }}>
+      <UiSdkDrawer {...props} dismissible={dismissible ?? draggable}>
+        {children}
+      </UiSdkDrawer>
+    </DrawerContext.Provider>
   );
 }
+
+export type DrawerTriggerProps = ComponentProps<typeof UiSdkDrawerTrigger>;
+
+function DrawerTrigger({ className, ...props }: DrawerTriggerProps) {
+  return (
+    <UiSdkDrawerTrigger {...props} className={uiClass(className, "hashti-drawer-trigger")} />
+  );
+}
+
+export type DrawerBackdropProps = ComponentProps<typeof UiSdkDrawerBackdrop>;
+
+function DrawerBackdrop({ className, ...props }: DrawerBackdropProps) {
+  const { backdrop, appearanceClassName, theme } = useContext(DrawerContext);
+  return (
+    <UiSdkDrawerBackdrop
+      {...props}
+      {...theme}
+      data-backdrop={backdrop}
+      className={uiClass(className, "hashti-overlay", appearanceClassName)}
+    />
+  );
+}
+
+export interface DrawerContentProps extends ComponentProps<typeof UiSdkDrawerContent> {
+  size?: DrawerSize;
+}
+
+function DrawerContent({ size = "md", className, ...props }: DrawerContentProps) {
+  const { appearanceClassName, theme } = useContext(DrawerContext);
+  return (
+    <UiSdkDrawerContent
+      {...props}
+      {...theme}
+      data-size={size}
+      className={uiClass(className, "hashti-drawer", appearanceClassName)}
+    />
+  );
+}
+
+export type DrawerHandleProps = ComponentProps<typeof UiSdkDrawerHandle>;
+
+function DrawerHandle({ className, ...props }: DrawerHandleProps) {
+  return (
+    <UiSdkDrawerHandle
+      aria-label="Resize drawer"
+      {...props}
+      className={uiClass(className, "hashti-sheet-handle")}
+    />
+  );
+}
+
+interface DrawerCompound {
+  (props: DrawerRootProps): ReactNode;
+  Trigger: typeof DrawerTrigger;
+  Backdrop: typeof DrawerBackdrop;
+  Content: typeof DrawerContent;
+  Handle: typeof DrawerHandle;
+  Title: typeof DrawerTitle;
+  Description: typeof DrawerDescription;
+  Close: typeof DrawerClose;
+  Shortcut: typeof DrawerShortcut;
+  Outlet: typeof DrawerOutlet;
+}
+
+export const Drawer: DrawerCompound = Object.assign(DrawerRoot, {
+  Trigger: DrawerTrigger,
+  Backdrop: DrawerBackdrop,
+  Content: DrawerContent,
+  Handle: DrawerHandle,
+  Title: DrawerTitle,
+  Description: DrawerDescription,
+  Close: DrawerClose,
+  Shortcut: DrawerShortcut,
+  Outlet: DrawerOutlet,
+});
+
+export {
+  createDrawerController,
+  sheetPhysics,
+  DrawerRoot,
+  DrawerTrigger,
+  DrawerBackdrop,
+  DrawerContent,
+  DrawerHandle,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose,
+  DrawerShortcut,
+  DrawerOutlet,
+};

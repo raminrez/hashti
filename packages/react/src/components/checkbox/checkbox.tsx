@@ -1,20 +1,21 @@
 "use client";
 
-import { type Ref } from "react";
+import { type ComponentProps, type ReactNode } from "react";
 import {
-  Checkbox as RACCheckbox,
-  CheckboxGroup as RACCheckboxGroup,
-  CheckboxGroupContext,
-  composeRenderProps,
-  type CheckboxProps as RACCheckboxProps,
-  type CheckboxGroupProps as RACCheckboxGroupProps,
-} from "react-aria-components";
+  Checkbox as UiSdkCheckbox,
+  CheckboxGroup as UiSdkCheckboxGroup,
+  CheckboxIndicator,
+  type CheckboxState,
+  type CheckboxGroupState,
+} from "@ui-sdk/react/checkbox";
+import { Field as UiSdkField } from "@ui-sdk/react/field";
 import { Icon } from "../../icons";
-import { classes } from "../../utils";
+import { cx, type ControlSize } from "../../utils";
 import {
   FieldLayout,
+  FieldPresentationProvider,
   fieldClassName,
-  useFieldAnatomy,
+  useFieldPresentation,
   fieldParts,
   type FieldContentProps,
   type FieldPresentationProps,
@@ -22,33 +23,41 @@ import {
 
 export type SelectionColor = "primary" | "secondary" | "success" | "warning" | "danger";
 
-export interface CheckboxProps extends RACCheckboxProps {
+export interface CheckboxProps extends ComponentProps<typeof UiSdkCheckbox> {
   color?: SelectionColor;
-  ref?: Ref<HTMLLabelElement>;
+  size?: ControlSize;
 }
 
-export function Checkbox({ children, className, color, ...props }: CheckboxProps) {
+export function Checkbox({ className, children, color, size, ...props }: CheckboxProps) {
+  const classHook =
+    typeof className === "function"
+      ? (state: CheckboxState) => cx("hashti-checkbox", className(state))
+      : cx("hashti-checkbox", className);
   return (
-    <RACCheckbox {...props} data-color={color} className={classes("hashti-checkbox", className)}>
-      {composeRenderProps(children, (content, state) => (
+    <UiSdkCheckbox {...props} data-color={color} data-size={size} className={classHook}>
+      {(state) => (
         <>
           <span className="hashti-checkbox-control" aria-hidden="true">
-            {state.isIndeterminate ? (
-              <Icon name="minus" />
-            ) : state.isSelected ? (
-              <Icon name="check" />
-            ) : null}
+            <CheckboxIndicator keepMounted>
+              <Icon name={state.indeterminate ? "minus" : "check"} />
+            </CheckboxIndicator>
           </span>
-          {content != null && <span>{content}</span>}
+          {typeof children === "function"
+            ? children(state)
+            : children != null && <span>{children}</span>}
         </>
-      ))}
-    </RACCheckbox>
+      )}
+    </UiSdkCheckbox>
   );
 }
 
-export interface CheckboxGroupRootProps extends RACCheckboxGroupProps, FieldPresentationProps {
+export interface CheckboxGroupRootProps
+  extends
+    Omit<ComponentProps<typeof UiSdkCheckboxGroup>, "children" | "className">,
+    FieldPresentationProps {
   color?: SelectionColor;
-  ref?: Ref<HTMLDivElement>;
+  className?: string;
+  children?: ReactNode;
 }
 
 function CheckboxGroupRoot({
@@ -60,20 +69,29 @@ function CheckboxGroupRoot({
   color,
   ...props
 }: CheckboxGroupRootProps) {
-  const anatomy = useFieldAnatomy(
-    { ...props, status, statusVariant, isOptional },
-    CheckboxGroupContext,
+  const presentation = useFieldPresentation(
+    { status, statusVariant, isOptional },
+    props["aria-describedby"],
     "detached",
   );
   return (
-    <RACCheckboxGroup
-      {...props}
-      {...anatomy.props}
+    <div
+      {...presentation.props}
       data-color={color}
-      className={classes(fieldClassName("checkbox-group"), className)}
+      className={cx(fieldClassName("checkbox-group"), className)}
     >
-      {anatomy.wrap(children, anatomy.slotted?.children)}
-    </RACCheckboxGroup>
+      <UiSdkField disabled={props.disabled} name={props.name}>
+        <FieldPresentationProvider
+          status={status}
+          statusVariant={presentation.statusVariant}
+          isOptional={isOptional}
+          isRequired={props.required}
+          fieldGated
+        >
+          <UiSdkCheckboxGroup {...props}>{children}</UiSdkCheckboxGroup>
+        </FieldPresentationProvider>
+      </UiSdkField>
+    </div>
   );
 }
 
@@ -93,16 +111,14 @@ function CheckboxGroupDefault({
 }: CheckboxGroupProps) {
   return (
     <CheckboxGroupRoot {...props} color={color} className={className}>
-      {composeRenderProps(children, (content) => (
-        <FieldLayout
-          label={label}
-          labelTooltip={labelTooltip}
-          description={description}
-          errorMessage={errorMessage}
-        >
-          {content}
-        </FieldLayout>
-      ))}
+      <FieldLayout
+        label={label}
+        labelTooltip={labelTooltip}
+        description={description}
+        errorMessage={errorMessage}
+      >
+        {children}
+      </FieldLayout>
     </CheckboxGroupRoot>
   );
 }

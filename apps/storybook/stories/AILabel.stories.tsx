@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, within } from "storybook/test";
-import { AILabel, TextField } from "@hashti/react";
+import { AILabel, Input } from "@hashti/react";
 import "./content.css";
 
 const handleRevert = fn();
@@ -49,10 +49,10 @@ function AILabelDemo() {
             }}
           />
         </div>
-        <TextField
+        <Input
           aria-label="Summary note input"
           value={val}
-          onChange={(newVal) => {
+          onValueChange={(newVal) => {
             setVal(newVal);
             setReverted(true);
           }}

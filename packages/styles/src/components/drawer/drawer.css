@@ -1,22 +1,18 @@
 /* Hashti Modern Aesthetic - drawer
-   Owner of the drawer's corners and backdrop. A drawer flush to an edge has square corners on that
-   edge and rounded corners only on the side facing the page. Logical properties keep it correct in
-   RTL, where inline-start and inline-end swap sides. */
+   ui-sdk Drawer positions and translates the content itself; Hashti owns the surface,
+   sizes, and corners. A drawer flush to an edge has square corners on that edge and
+   rounded corners only on the side facing the page. Logical properties keep it
+   correct in RTL, where inline-start and inline-end swap sides; ui-sdk resolves
+   side="start"/"end" to a physical data-side. */
 @layer hashti.components {
-  .hashti-drawer-overlay {
-    background-color: var(--hashti-overlay);
-  }
-  .hashti-drawer-overlay[data-backdrop="blur"] {
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
-  }
-  .hashti-drawer-overlay[data-backdrop="none"] {
-    background-color: transparent;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-
   .hashti-drawer {
+    background-color: var(--hashti-layer);
+    color: var(--hashti-text-primary);
+    border: 1px solid var(--hashti-border-subtle, #e0e0e0);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+    padding: var(--hashti-spacing-06, 1.5rem);
+    overflow: auto;
+    overscroll-behavior: contain;
     border-start-start-radius: var(--hashti-surface-radius, 16px);
     border-start-end-radius: var(--hashti-surface-radius, 16px);
     border-end-start-radius: var(--hashti-surface-radius, 16px);
@@ -24,28 +20,82 @@
   }
 
   /* Flush to the inline-end edge. */
-  .hashti-drawer[data-placement="right"],
-  .hashti-drawer[data-placement="end"] {
+  .hashti-drawer[data-side="right"] {
     border-start-end-radius: 0;
     border-end-end-radius: 0;
   }
 
   /* Flush to the inline-start edge. */
-  .hashti-drawer[data-placement="left"],
-  .hashti-drawer[data-placement="start"] {
+  .hashti-drawer[data-side="left"] {
     border-start-start-radius: 0;
     border-end-start-radius: 0;
   }
 
   /* Flush to the block-start edge. */
-  .hashti-drawer[data-placement="top"] {
+  .hashti-drawer[data-side="top"] {
     border-start-start-radius: 0;
     border-start-end-radius: 0;
   }
 
   /* Flush to the block-end edge. */
-  .hashti-drawer[data-placement="bottom"] {
+  .hashti-drawer[data-side="bottom"] {
     border-end-start-radius: 0;
     border-end-end-radius: 0;
+  }
+
+  .hashti-drawer[data-side="left"],
+  .hashti-drawer[data-side="right"] {
+    block-size: 100%;
+    max-block-size: 100%;
+  }
+  .hashti-drawer:is([data-side="left"], [data-side="right"])[data-size="sm"] {
+    inline-size: 320px;
+  }
+  .hashti-drawer:is([data-side="left"], [data-side="right"])[data-size="md"] {
+    inline-size: 420px;
+  }
+  .hashti-drawer:is([data-side="left"], [data-side="right"])[data-size="lg"] {
+    inline-size: 560px;
+  }
+  .hashti-drawer:is([data-side="left"], [data-side="right"])[data-size="xl"] {
+    inline-size: 720px;
+  }
+  .hashti-drawer:is([data-side="left"], [data-side="right"])[data-size="full"] {
+    inline-size: 100%;
+  }
+
+  .hashti-drawer[data-side="top"],
+  .hashti-drawer[data-side="bottom"] {
+    inline-size: 100%;
+    max-inline-size: 100%;
+  }
+  .hashti-drawer:is([data-side="top"], [data-side="bottom"])[data-size="sm"] {
+    block-size: 240px;
+  }
+  .hashti-drawer:is([data-side="top"], [data-side="bottom"])[data-size="md"] {
+    block-size: 360px;
+  }
+  .hashti-drawer:is([data-side="top"], [data-side="bottom"])[data-size="lg"] {
+    block-size: 520px;
+  }
+  .hashti-drawer:is([data-side="top"], [data-side="bottom"])[data-size="xl"],
+  .hashti-drawer:is([data-side="top"], [data-side="bottom"])[data-size="full"] {
+    block-size: 100%;
+  }
+
+  /* ui-sdk DrawerHandle: the grabber that cycles snap points. */
+  .hashti-sheet-handle {
+    border-radius: 9999px;
+    background: var(--hashti-border-strong-01, rgba(0, 0, 0, 0.2));
+    align-self: center;
+    touch-action: none;
+  }
+  .hashti-drawer:is([data-side="top"], [data-side="bottom"]) .hashti-sheet-handle {
+    inline-size: 48px;
+    block-size: 4px;
+  }
+  .hashti-drawer:is([data-side="left"], [data-side="right"]) .hashti-sheet-handle {
+    inline-size: 4px;
+    block-size: 48px;
   }
 }

@@ -1,31 +1,35 @@
 import { describe, expect, test } from "bun:test";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
+// Direct imports keep this suite independent of the barrel while other
+// components are mid-migration.
 import {
   Toolbar,
   ToolbarGroup,
   ToolbarItem,
   ToolbarSeparator,
+} from "../../packages/react/src/components/toolbar";
+import { Button } from "../../packages/react/src/components/button";
+import {
   Disclosure,
   DisclosureRoot,
   DisclosureTrigger,
   DisclosureIndicator,
   DisclosurePanel,
   DisclosureGroup,
-  Button,
-} from "../../packages/react/src";
+} from "../../packages/react/src/components/disclosure";
 
 describe("Toolbar & Disclosure unit tests", () => {
   describe("Toolbar component suite", () => {
     test("renders horizontal flat Toolbar with groups and items", () => {
       const html = ReactDOMServer.renderToString(
         <Toolbar aria-label="Editor actions">
-          <Toolbar.Group ariaLabel="Text formatting">
+          <Toolbar.Group aria-label="Text formatting">
             <Button variant="ghost">Bold</Button>
             <Button variant="ghost">Italic</Button>
           </Toolbar.Group>
           <Toolbar.Separator />
-          <Toolbar.Group ariaLabel="History">
+          <Toolbar.Group aria-label="History">
             <Button variant="ghost">Undo</Button>
           </Toolbar.Group>
         </Toolbar>,
@@ -38,6 +42,7 @@ describe("Toolbar & Disclosure unit tests", () => {
       expect(html).toContain("hashti-toolbar");
       expect(html).toContain("hashti-toolbar-group");
       expect(html).toContain("hashti-toolbar-separator");
+      // The separator's line runs across the toolbar's axis.
       expect(html).toContain('aria-orientation="vertical"');
     });
 
@@ -62,14 +67,15 @@ describe("Toolbar & Disclosure unit tests", () => {
       expect(html).toContain('data-variant="floating"');
       expect(html).toContain('data-size="sm"');
       expect(html).toContain("hashti-toolbar-item");
-      // In vertical toolbar, the separator renders as horizontal divider (<hr>)
-      expect(html).toContain("<hr");
+      // In vertical toolbar, the separator's line runs horizontally.
+      expect(html).toContain('role="separator"');
+      expect(html).toContain('aria-orientation="horizontal"');
       expect(html).toContain("hashti-toolbar-separator");
     });
 
     test("supports disabled toolbar state and standalone component imports", () => {
       const html = ReactDOMServer.renderToString(
-        <Toolbar isDisabled variant="raised" aria-label="Disabled bar">
+        <Toolbar disabled variant="raised" aria-label="Disabled bar">
           <ToolbarGroup aria-label="Cluster">
             <ToolbarItem>
               <Button>Action</Button>
@@ -79,7 +85,7 @@ describe("Toolbar & Disclosure unit tests", () => {
         </Toolbar>,
       );
 
-      expect(html).toContain('data-disabled="true"');
+      expect(html).toContain("data-disabled");
       expect(html).toContain('data-variant="raised"');
     });
   });

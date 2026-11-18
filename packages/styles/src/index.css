@@ -7,11 +7,9 @@
 @import "./components/token-field/token-field.css";
 @import "./components/tree/tree.css";
 @import "./components/grid-list/grid-list.css";
-@import "./components/modal/modal.css";
 @import "./components/dialog/dialog.css";
 @import "./components/popover/popover.css";
 @import "./components/drawer/drawer.css";
-@import "./components/sheet/sheet.css";
 @import "./components/checkbox/checkbox.css";
 @import "./components/radio/radio.css";
 @import "./components/switch/switch.css";

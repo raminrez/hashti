@@ -60,7 +60,7 @@ describe("Phase 4 Collection Components unit tests", () => {
       expect(html).toContain("hashti-grid-list-drag-handle");
       expect(html).toContain("hashti-grid-list-checkbox");
       expect(html).toContain('slot="drag"');
-      expect(html).toContain('slot="selection"');
+      expect(html).toContain('data-slot="checkbox"');
       expect(html).toContain("Item 1 Content");
     });
 
@@ -115,7 +115,7 @@ describe("Phase 4 Collection Components unit tests", () => {
       expect(html).toContain("hashti-tree--sm");
       expect(html).toContain("hashti-tree-item--sm");
       expect(html).toContain("hashti-tree-checkbox");
-      expect(html).toContain('slot="selection"');
+      expect(html).toContain('data-slot="checkbox"');
       expect(html).toContain("settings");
     });
 

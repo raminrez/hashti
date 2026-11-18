@@ -26,10 +26,10 @@ function PlaygroundExample() {
     <div className="navigation-story-stack">
       <Slider
         label="Storage allocation (GB)"
-        minValue={0}
-        maxValue={100}
+        min={0}
+        max={100}
         value={value}
-        onChange={(v) => setValue(v as number)}
+        onValueChange={(v) => setValue(v as number)}
       />
     </div>
   );
@@ -58,11 +58,11 @@ function RangeSliderExample() {
     <div className="navigation-story-stack">
       <Slider
         label="Throughput bounds (MB/s)"
-        minValue={0}
-        maxValue={100}
+        min={0}
+        max={100}
         value={range}
         thumbLabels={["Min bandwidth", "Max bandwidth"]}
-        onChange={(v) => setRange(v as number[])}
+        onValueChange={(v) => setRange(v as number[])}
       />
     </div>
   );
@@ -96,8 +96,8 @@ export const FormattedAndStep: Story = {
         <h4 style={{ margin: "0 0 0.5rem" }}>Step increment (step = 10)</h4>
         <Slider
           label="Cluster replica scale"
-          minValue={10}
-          maxValue={100}
+          min={10}
+          max={100}
           step={10}
           defaultValue={30}
         />
@@ -107,11 +107,11 @@ export const FormattedAndStep: Story = {
         <h4 style={{ margin: "0 0 0.5rem" }}>Currency formatting</h4>
         <Slider
           label="Budget cap"
-          minValue={100}
-          maxValue={5000}
+          min={100}
+          max={5000}
           step={50}
           defaultValue={1200}
-          formatOptions={{ style: "currency", currency: "USD" }}
+          format={{ style: "currency", currency: "USD" }}
         />
       </div>
 
@@ -119,10 +119,10 @@ export const FormattedAndStep: Story = {
         <h4 style={{ margin: "0 0 0.5rem" }}>Disabled state</h4>
         <Slider
           label="Locked provisioned IOPS"
-          minValue={1000}
-          maxValue={10000}
+          min={1000}
+          max={10000}
           defaultValue={3000}
-          isDisabled
+          disabled
         />
       </div>
     </div>
@@ -151,10 +151,10 @@ function LocalizedSlider() {
         <div dir="rtl">
           <Slider
             label="ظرفیت حافظه موقت (مگابایت)"
-            minValue={0}
-            maxValue={100}
+            min={0}
+            max={100}
             value={val}
-            onChange={(v) => setVal(v as number)}
+            onValueChange={(v) => setVal(v as number)}
           />
         </div>
       </Theme>

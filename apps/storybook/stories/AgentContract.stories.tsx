@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button, ListBoxItem, Select, TextField } from "@hashti/react";
+import { Button, ListBoxItem, Select, Input } from "@hashti/react";
 import { createAgent } from "@hashti/agent";
 
 /**
@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>;
 export const Uncontrolled: Story = {
   render: () => (
     <div style={{ display: "grid", gap: "1rem", maxWidth: "22rem" }}>
-      <TextField label="Notes" defaultValue="Draft" />
+      <Input label="Notes" defaultValue="Draft" />
       <Select label="Tier" defaultSelectedKey="free">
         <ListBoxItem id="free">Free</ListBoxItem>
         <ListBoxItem id="pro">Pro</ListBoxItem>

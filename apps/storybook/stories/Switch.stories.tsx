@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, fn, waitFor, within } from "storybook/test";
-import { Button, Form, Switch, Theme, useTheme } from "@hashti/react";
+import { expect, fn, within } from "storybook/test";
+import { Switch, Theme, useTheme } from "@hashti/react";
 import "./fields.css";
 
 const meta = {
@@ -9,28 +9,28 @@ const meta = {
   component: Switch,
   args: {
     children: "Live review updates",
-    defaultSelected: false,
+    defaultChecked: false,
     name: "liveUpdates",
     value: "enabled",
   },
   argTypes: {
     children: { control: "text" },
     size: { control: "select", options: ["sm", "md"] },
-    isSelected: { control: "boolean" },
-    defaultSelected: { control: "boolean" },
-    isReadOnly: { control: "boolean" },
-    isDisabled: { control: "boolean" },
+    checked: { control: "boolean" },
+    defaultChecked: { control: "boolean" },
+    readOnly: { control: "boolean" },
+    disabled: { control: "boolean" },
     name: { control: "text" },
     value: { control: "text" },
-    inputRef: { control: false },
-    ref: { control: false },
+    color: { control: false },
     render: { control: false },
+    ref: { control: false },
   },
   parameters: {
     docs: {
       description: {
         component:
-          "Switch toggles a setting immediately; these examples change only local preview state. A setting applied only by Save should use Checkbox or explicitly describe a draft. RAC owns the native checkbox input with role switch: pointer activation and Space toggle it, not Enter. Only sm and md are supported; md is the default. Read-only switches remain focusable and submit when selected; disabled switches are omitted from FormData. This label-root wrapper supports isSelected/defaultSelected, onChange, name/value, inputRef, label ref, render-prop children, className, style, and native label rendering. It does not support isRequired, isInvalid, validate, validationBehavior, or mixed state. Render callbacks must preserve the native label and its props, and ref focus must target inputRef rather than the label.",
+          "Switch toggles a setting immediately; these examples change only local preview state. A setting applied only by Save should use Checkbox or explicitly describe a draft. ui-sdk renders a role=switch control plus a visually hidden native checkbox input that submits: pointer activation and Space toggle it, not Enter. Only sm and md are supported; md is the default. Read-only switches remain focusable and submit when checked; disabled switches are omitted from FormData. This wrapper supports checked/defaultChecked, onCheckedChange, name/value, size, color, state-function children, className, and style. It does not support required or a mixed state; in an invalid field it picks up data-invalid from the field.",
       },
     },
   },
@@ -40,7 +40,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
-  args: { onChange: fn() },
+  args: { onCheckedChange: fn() },
   render: (args) => (
     <div className="field-story-stack">
       <Switch {...args} />
@@ -54,19 +54,19 @@ export const States: Story = {
       <div className="field-story-case">
         <h2>Editable</h2>
         <Switch>Editable updates off</Switch>
-        <Switch defaultSelected>Editable updates on</Switch>
+        <Switch defaultChecked>Editable updates on</Switch>
       </div>
       <div className="field-story-case">
         <h2>Read-only</h2>
-        <Switch isReadOnly>Read-only updates off</Switch>
-        <Switch isReadOnly defaultSelected>
+        <Switch readOnly>Read-only updates off</Switch>
+        <Switch readOnly defaultChecked>
           Read-only updates on
         </Switch>
       </div>
       <div className="field-story-case">
         <h2>Unavailable</h2>
-        <Switch isDisabled>Unavailable updates off</Switch>
-        <Switch isDisabled defaultSelected>
+        <Switch disabled>Unavailable updates off</Switch>
+        <Switch disabled defaultChecked>
           Unavailable updates on
         </Switch>
       </div>
@@ -85,9 +85,9 @@ export const States: Story = {
       await expect(canvas.getByRole("switch", { name })).toBeChecked();
     }
     for (const name of ["Read-only updates off", "Read-only updates on"]) {
-      const input = canvas.getByRole("switch", { name });
-      await expect(input).not.toBeDisabled();
-      await expect(input.closest("label")).toHaveAttribute("data-readonly", "true");
+      const control = canvas.getByRole("switch", { name });
+      await expect(control).not.toBeDisabled();
+      await expect(control).toHaveAttribute("data-readonly");
     }
     for (const name of ["Unavailable updates off", "Unavailable updates on"]) {
       await expect(canvas.getByRole("switch", { name })).toBeDisabled();
@@ -98,7 +98,7 @@ export const States: Story = {
 export const SizesAndKeyboard: Story = {
   render: () => (
     <div className="field-story-stack">
-      <p>Tab focuses each native switch. Space toggles it; Enter is not a switch activation key.</p>
+      <p>Tab focuses each switch control. Space toggles it; Enter is not a switch activation key.</p>
       <Switch size="sm">Small live updates</Switch>
       <Switch>Default live updates</Switch>
       <Switch size="md">Medium live updates</Switch>
@@ -106,15 +106,14 @@ export const SizesAndKeyboard: Story = {
   ),
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
-    const small = canvas.getByRole<HTMLInputElement>("switch", { name: "Small live updates" });
-    const defaultSize = canvas.getByRole<HTMLInputElement>("switch", {
+    const small = canvas.getByRole("switch", { name: "Small live updates" });
+    const defaultSize = canvas.getByRole("switch", {
       name: "Default live updates",
     });
-    const medium = canvas.getByRole<HTMLInputElement>("switch", { name: "Medium live updates" });
-    await expect(small.closest("label")).toHaveAttribute("data-size", "sm");
-    await expect(defaultSize.closest("label")).toHaveAttribute("data-size", "md");
-    await expect(medium.closest("label")).toHaveAttribute("data-size", "md");
-    await expect(small).toHaveAttribute("type", "checkbox");
+    const medium = canvas.getByRole("switch", { name: "Medium live updates" });
+    await expect(small).toHaveAttribute("data-size", "sm");
+    await expect(defaultSize).toHaveAttribute("data-size", "md");
+    await expect(medium).toHaveAttribute("data-size", "md");
     await userEvent.click(small);
     await expect(small).toBeChecked();
     await userEvent.keyboard(" ");
@@ -137,12 +136,12 @@ function ValueExamples() {
   const [liveUpdates, setLiveUpdates] = useState(true);
   return (
     <div className="field-story-stack">
-      <p>Changes apply immediately to this local preview. RAC owns the uncontrolled setting.</p>
-      <Switch isSelected={liveUpdates} onChange={setLiveUpdates}>
+      <p>Changes apply immediately to this local preview. ui-sdk owns the uncontrolled setting.</p>
+      <Switch checked={liveUpdates} onCheckedChange={setLiveUpdates}>
         Controlled live updates
       </Switch>
       <output aria-label="Live updates setting">{liveUpdates ? "On" : "Off"}</output>
-      <Switch defaultSelected>Uncontrolled comment alerts</Switch>
+      <Switch defaultChecked>Uncontrolled comment alerts</Switch>
     </div>
   );
 }
@@ -172,12 +171,11 @@ export const ControlledAndUncontrolled: Story = {
 };
 
 function ComposedSettings() {
-  const label = useRef<HTMLLabelElement>(null);
-  const input = useRef<HTMLInputElement>(null);
+  const control = useRef<HTMLButtonElement>(null);
   const [submitted, setSubmitted] = useState("");
   const [refs, setRefs] = useState("");
   return (
-    <Form
+    <form
       aria-label="Current review settings"
       className="field-story-stack"
       onSubmit={(event) => {
@@ -186,54 +184,48 @@ function ComposedSettings() {
       }}
     >
       <p>
-        These settings change immediately in this local preview. Read FormData only snapshots the
-        native values; it does not save or apply them.
+        These settings change immediately in this local preview. Reading FormData only snapshots
+        the native values; it does not save or apply them.
       </p>
       <Switch
-        ref={label}
-        inputRef={input}
+        ref={control}
         name="liveUpdates"
         value="enabled"
-        defaultSelected
-        className={({ isSelected }) => (isSelected ? "selected-setting" : "setting-option")}
-        style={({ isSelected }) => ({ fontWeight: isSelected ? 600 : 400 })}
-        render={(props) => (
-          // oxlint-disable-next-line jsx-a11y/label-has-associated-control -- RAC supplies the native input through props.children.
-          <label {...props} data-composed-switch="true" />
-        )}
+        defaultChecked
+        className={(state) => (state.checked ? "selected-setting" : "setting-option")}
+        style={(state) => ({ fontWeight: state.checked ? 600 : 400 })}
       >
-        {({ isSelected }) => (
+        {(state) => (
           <>
-            Live review updates <span aria-hidden="true">{isSelected ? "(On)" : "(Off)"}</span>
+            Live review updates <span aria-hidden="true">{state.checked ? "(On)" : "(Off)"}</span>
           </>
         )}
       </Switch>
-      <Switch name="managedUpdates" value="enabled" isReadOnly defaultSelected>
+      <Switch name="managedUpdates" value="enabled" readOnly defaultChecked>
         Owner-managed updates
       </Switch>
-      <Switch name="managedSounds" value="enabled" isReadOnly>
+      <Switch name="managedSounds" value="enabled" readOnly>
         Owner-managed sounds
       </Switch>
-      <Switch name="archivedUpdates" value="enabled" isDisabled defaultSelected>
+      <Switch name="archivedUpdates" value="enabled" disabled defaultChecked>
         Archived review updates
       </Switch>
-      <Switch name="archivedSounds" value="enabled" isDisabled>
+      <Switch name="archivedSounds" value="enabled" disabled>
         Archived review sounds
       </Switch>
-      <Button type="submit">Read current settings</Button>
-      <Button
+      <button type="submit">Read current settings</button>
+      <button
         type="button"
-        variant="ghost"
         onClick={() => {
-          setRefs(`${label.current?.tagName}/${input.current?.tagName}`);
-          input.current?.focus();
+          setRefs(`${control.current?.tagName}`);
+          control.current?.focus();
         }}
       >
         Focus live updates
-      </Button>
+      </button>
       <output aria-label="Settings FormData">{submitted}</output>
-      <output aria-label="Native switch refs">{refs}</output>
-    </Form>
+      <output aria-label="Switch control ref">{refs}</output>
+    </form>
   );
 }
 
@@ -241,37 +233,28 @@ export const CompositionAndFormData: Story = {
   render: ComposedSettings,
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
-    const live = canvas.getByRole<HTMLInputElement>("switch", { name: "Live review updates" });
+    const live = canvas.getByRole("switch", { name: "Live review updates" });
     await userEvent.click(canvas.getByRole("button", { name: "Focus live updates" }));
     await expect(live).toHaveFocus();
-    await waitFor(() =>
-      expect(canvas.getByRole("status", { name: "Native switch refs" })).toHaveTextContent(
-        "LABEL/INPUT",
-      ),
+    await expect(canvas.getByRole("status", { name: "Switch control ref" })).toHaveTextContent(
+      "BUTTON",
     );
-    await expect(live).toHaveAttribute("type", "checkbox");
-    await expect(live).toHaveAttribute("name", "liveUpdates");
-    await expect(live).toHaveAttribute("value", "enabled");
-    await expect(live.closest("label")).toHaveAttribute("data-composed-switch", "true");
-    await expect(live.closest("label")).toHaveClass("hashti-switch", "selected-setting");
-    await expect(live.closest("label")).toHaveStyle({ fontWeight: 600 });
+    await expect(live).toHaveClass("hashti-switch", "selected-setting");
+    await expect(live).toHaveStyle({ fontWeight: 600 });
+    await expect(live).toHaveAttribute("data-checked");
 
-    const readonlyOn = canvas.getByRole<HTMLInputElement>("switch", {
+    const readonlyOn = canvas.getByRole("switch", {
       name: "Owner-managed updates",
     });
-    const readonlyOff = canvas.getByRole<HTMLInputElement>("switch", {
+    const readonlyOff = canvas.getByRole("switch", {
       name: "Owner-managed sounds",
     });
-    for (const control of [readonlyOn, readonlyOff]) {
-      await userEvent.tab();
-      await expect(control).toHaveFocus();
-      await expect(control).not.toBeDisabled();
-      await userEvent.click(control);
-      await expect(control).toHaveFocus();
+    for (const toggle of [readonlyOn, readonlyOff]) {
+      await expect(toggle).not.toBeDisabled();
+      await userEvent.click(toggle);
       await expect(readonlyOn).toBeChecked();
       await expect(readonlyOff).not.toBeChecked();
       await userEvent.keyboard(" ");
-      await expect(control).toHaveFocus();
       await expect(readonlyOn).toBeChecked();
       await expect(readonlyOff).not.toBeChecked();
     }
@@ -283,8 +266,6 @@ export const CompositionAndFormData: Story = {
     await expect(disabledOff).not.toBeChecked();
     const submit = canvas.getByRole("button", { name: "Read current settings" });
     const output = canvas.getByRole("status", { name: "Settings FormData" });
-    await userEvent.tab();
-    await expect(submit).toHaveFocus();
     await userEvent.click(submit);
     await expect(output).toHaveTextContent(
       JSON.stringify([
@@ -295,8 +276,8 @@ export const CompositionAndFormData: Story = {
     await userEvent.click(canvas.getByRole("button", { name: "Focus live updates" }));
     await userEvent.keyboard(" ");
     await expect(live).not.toBeChecked();
-    await expect(live.closest("label")).toHaveClass("hashti-switch", "setting-option");
-    await expect(live.closest("label")).toHaveStyle({ fontWeight: 400 });
+    await expect(live).toHaveClass("hashti-switch", "setting-option");
+    await expect(live).toHaveStyle({ fontWeight: 400 });
     await userEvent.click(submit);
     await expect(output).toHaveTextContent(JSON.stringify([["managedUpdates", "enabled"]]));
     await expect(readonlyOn).toBeChecked();
@@ -309,20 +290,20 @@ function LocalizedSettings() {
     <div className="field-story-grid">
       <Theme theme={theme} lang="de-DE" className="field-story-stack field-story-narrow">
         <p>Die Einstellung gilt sofort für diese lokale Vorschau.</p>
-        <Switch defaultSelected>
+        <Switch defaultChecked>
           Benachrichtigungen über Änderungen und Kommentare im gemeinsamen Arbeitsbereich{" "}
           <bdi dir="ltr">WS-1042</bdi> sofort anzeigen
         </Switch>
       </Theme>
       <Theme theme={theme} lang="fa-IR" dir="rtl" className="field-story-stack field-story-narrow">
         <p>این تنظیم در همین پیش‌نمایش اعمال می‌شود.</p>
-        <Switch defaultSelected>
+        <Switch defaultChecked>
           نمایش فوری پیام‌های تغییرها و نظرهای تیم برای فضای کاری <bdi dir="ltr">WS-1042</bdi>
         </Switch>
       </Theme>
       <Theme theme={theme} lang="ar" dir="rtl" className="field-story-stack field-story-narrow">
         <p>يُطبّق هذا الإعداد فورًا في هذه المعاينة المحلية.</p>
-        <Switch defaultSelected>
+        <Switch defaultChecked>
           عرض رسائل التغييرات وتعليقات الفريق فورًا في مساحة العمل <bdi dir="ltr">WS-1042</bdi>
         </Switch>
       </Theme>
@@ -343,18 +324,15 @@ export const LongContentAndLocales: Story = {
       ["نمایش فوری پیام‌های تغییرها و نظرهای تیم برای فضای کاری WS-1042", "fa-IR", "rtl"],
       ["عرض رسائل التغييرات وتعليقات الفريق فورًا في مساحة العمل WS-1042", "ar", "rtl"],
     ] as const) {
-      const control = canvas.getByRole<HTMLInputElement>("switch", { name });
-      const label = control.closest<HTMLLabelElement>("label")!;
-      await expect(label.closest("[lang]")).toHaveAttribute("lang", locale);
-      await expect(label.closest("[lang]")).toHaveAttribute("dir", direction);
-      const identifier = within(label).getByText("WS-1042");
+      const control = canvas.getByRole("switch", { name });
+      await expect(control.closest("[lang]")).toHaveAttribute("lang", locale);
+      await expect(control.closest("[lang]")).toHaveAttribute("dir", direction);
+      const identifier = within(control).getByText("WS-1042");
       await expect(identifier.tagName).toBe("BDI");
       await expect(identifier).toHaveAttribute("dir", "ltr");
-      for (const part of [label, label.querySelector<HTMLElement>(":scope > span:last-child")!]) {
-        await expect(part).toBeVisible();
-        await expect(part.scrollWidth).toBeLessThanOrEqual(part.clientWidth + 1);
-        await expect(part.scrollHeight).toBeLessThanOrEqual(part.clientHeight + 1);
-      }
+      await expect(control).toBeVisible();
+      await expect(control.scrollWidth).toBeLessThanOrEqual(control.clientWidth + 1);
+      await expect(control.scrollHeight).toBeLessThanOrEqual(control.clientHeight + 1);
     }
     const documentRoot = canvasElement.ownerDocument.documentElement;
     await expect(documentRoot.scrollWidth).toBeLessThanOrEqual(documentRoot.clientWidth + 1);
@@ -364,19 +342,19 @@ export const LongContentAndLocales: Story = {
 export const Colors: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", alignItems: "center" }}>
-      <Switch defaultSelected color="primary">
+      <Switch defaultChecked color="primary">
         Primary
       </Switch>
-      <Switch defaultSelected color="secondary">
+      <Switch defaultChecked color="secondary">
         Secondary
       </Switch>
-      <Switch defaultSelected color="success">
+      <Switch defaultChecked color="success">
         Success
       </Switch>
-      <Switch defaultSelected color="warning">
+      <Switch defaultChecked color="warning">
         Warning
       </Switch>
-      <Switch defaultSelected color="danger">
+      <Switch defaultChecked color="danger">
         Danger
       </Switch>
     </div>

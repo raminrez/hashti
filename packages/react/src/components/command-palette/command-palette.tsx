@@ -18,13 +18,18 @@ import {
   TextField as RACTextField,
   type Key,
 } from "react-aria-components";
-import { Modal, type ModalProps } from "../modal";
-import { Dialog } from "../dialog";
+import {
+  DialogRoot,
+  DialogBackdrop,
+  DialogContent,
+  DialogClose,
+  type DialogRootProps,
+} from "../dialog";
 import { Button } from "../button";
 import { ListBox, type ListBoxItemProps } from "../list-box";
 import { Kbd } from "../kbd";
 import { Icon } from "../../icons";
-import { classes, cx } from "../../utils";
+import { cx } from "../../utils";
 
 export interface CommandPaletteContextValue {
   isOpen: boolean;
@@ -124,9 +129,11 @@ export function CommandPaletteRoot({
   );
 }
 
-export interface CommandPaletteDialogProps extends Omit<ModalProps, "children"> {
+export interface CommandPaletteDialogProps extends Omit<DialogRootProps, "children"> {
   children: ReactNode;
   "aria-label"?: string;
+  /** Class names for the dialog content surface. */
+  className?: string;
   dialogClassName?: string;
   /** Hides the dialog's close button. */
   hideCloseButton?: boolean;
@@ -135,44 +142,36 @@ export interface CommandPaletteDialogProps extends Omit<ModalProps, "children"> 
 export function CommandPaletteDialog({
   children,
   className,
-  overlayClassName,
   dialogClassName,
   "aria-label": ariaLabel = "Command Palette",
   hideCloseButton = false,
-  ref,
   ...props
 }: CommandPaletteDialogProps) {
   const { isOpen, setIsOpen } = useCommandPaletteContext();
 
   return (
-    <Modal
-      {...props}
-      ref={ref}
-      isOpen={isOpen}
-      onOpenChange={setIsOpen}
-      overlayClassName={classes("hashti-command-palette-overlay", overlayClassName)}
-      className={classes("hashti-command-palette-modal", className)}
-    >
-      <Dialog
-        aria-label={ariaLabel}
-        className={cx("hashti-command-palette-dialog", dialogClassName)}
-      >
+    <DialogRoot {...props} open={isOpen} onOpenChange={setIsOpen}>
+      <DialogBackdrop className="hashti-command-palette-overlay" />
+      <DialogContent className={cx("hashti-command-palette-modal hashti-command-palette-dialog", className, dialogClassName)} aria-label={ariaLabel}>
         {/* Autocomplete owns the arrow keys and the filtering between the input and the list. */}
         <Autocomplete>{children}</Autocomplete>
         {!hideCloseButton && (
-          <Button
-            variant="ghost"
-            size="sm"
-            iconOnly
-            aria-label="Close command palette"
+          <DialogClose
             className="hashti-command-palette__close"
-            onClick={() => setIsOpen(false)}
+            render={
+              <Button
+                variant="ghost"
+                size="sm"
+                iconOnly
+                aria-label="Close command palette"
+              />
+            }
           >
             <Icon name="close" />
-          </Button>
+          </DialogClose>
         )}
-      </Dialog>
-    </Modal>
+      </DialogContent>
+    </DialogRoot>
   );
 }
 CommandPaletteDialog.displayName = "CommandPaletteDialog";

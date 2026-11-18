@@ -17,7 +17,7 @@ describe("field parts stand alone", () => {
     const markup = renderToStaticMarkup(<FieldLabel>Workspace name</FieldLabel>);
     expect(markup).toContain("Workspace name");
     expect(markup).toContain("hashti-field__label");
-    expect(markup).toContain('data-slot="label"');
+    expect(markup).toContain('data-slot="field-label"');
   });
 
   test("label still honours the necessity marker from props", () => {
@@ -30,14 +30,14 @@ describe("field parts stand alone", () => {
     const markup = renderToStaticMarkup(<FieldDescription>Use a team name.</FieldDescription>);
     expect(markup).toContain("Use a team name.");
     expect(markup).toContain("hashti-field__description");
-    expect(markup).toContain('data-slot="description"');
+    expect(markup).toContain('data-slot="field-description"');
   });
 
   test("field error renders alone", () => {
     const markup = renderToStaticMarkup(<FieldErrorMessage>Enter a value.</FieldErrorMessage>);
     expect(markup).toContain("Enter a value.");
     expect(markup).toContain("hashti-field__error");
-    expect(markup).toContain('data-slot="error"');
+    expect(markup).toContain('data-slot="field-error"');
   });
 
   test("help container and status message render alone", () => {

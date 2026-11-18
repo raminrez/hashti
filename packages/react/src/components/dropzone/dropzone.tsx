@@ -3,116 +3,139 @@
 import {
   createContext,
   useContext,
-  useId,
-  useState,
-  type ComponentPropsWithRef,
+  type ComponentProps,
   type ReactNode,
   type Ref,
 } from "react";
 import {
-  DropZone as RACDropZone,
-  FileTrigger as RACFileTrigger,
-  isFileDropItem,
-  type DropZoneProps as RACDropZoneProps,
-  type DropZoneRenderProps,
-  type FileTriggerProps as RACFileTriggerProps,
-} from "react-aria-components";
+  FileInput as UiSdkFileInput,
+  FileInputDropzone as UiSdkFileInputDropzone,
+  FileInputTrigger as UiSdkFileInputTrigger,
+  FileInputList,
+  FileInputItem,
+  FileInputItemRemove,
+  formatFileSize,
+  type FileInputDropzoneState,
+  type FileInputValueChangeDetails,
+} from "@ui-sdk/react/file-input";
 import { Button } from "../button";
 import { Icon } from "../../icons";
-import { classes, cx } from "../../utils";
+import { cx } from "../../utils";
 
-export interface DropZoneContextValue {
-  variant?: "dashed" | "solid" | "card";
-  isDropTarget?: boolean;
+export type FileInputVariant = "dashed" | "solid" | "card";
+
+export interface FileInputContextValue {
+  variant?: FileInputVariant;
+  dragging?: boolean;
 }
 
-export const DropZoneContext = createContext<DropZoneContextValue>({});
+export const FileInputContext = createContext<FileInputContextValue>({});
 
-export interface DropZoneRootProps extends Omit<RACDropZoneProps, "className"> {
-  variant?: "dashed" | "solid" | "card";
+export type FileInputRootProps = Omit<
+  ComponentProps<typeof UiSdkFileInput>,
+  "children" | "className"
+> & {
+  variant?: FileInputVariant;
+  /** Convenience: the accepted files after a drop or pick. */
   onDropFiles?: (files: File[]) => void;
-  className?: string | ((values: DropZoneRenderProps) => string);
-  children?: ReactNode | ((values: DropZoneRenderProps) => ReactNode);
+  className?: string;
+  children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
-}
+};
 
-export function DropZoneRoot({
+function FileInputRoot({
   variant = "dashed",
   onDropFiles,
-  onDrop,
+  onValueChange,
   className,
   children,
-  ref,
   ...props
-}: DropZoneRootProps) {
+}: FileInputRootProps) {
+  const handleChange = (value: File[], details: FileInputValueChangeDetails) => {
+    onValueChange?.(value, details);
+    onDropFiles?.(value);
+  };
   return (
-    <RACDropZone
+    <UiSdkFileInput
       {...props}
-      ref={ref}
+      onValueChange={handleChange}
+      className={cx(`hashti-dropzone hashti-dropzone--${variant}`, className)}
       data-variant={variant}
-      className={classes(
-        cx("react-aria-DropZone", "hashti-dropzone", `hashti-dropzone--${variant}`),
-        className,
-      )}
-      onDrop={async (e) => {
-        onDrop?.(e);
-        if (onDropFiles) {
-          const fileItems = e.items.filter(isFileDropItem);
-          const files = await Promise.all(fileItems.map((item) => item.getFile()));
-          if (files.length > 0) {
-            onDropFiles(files);
-          }
-        }
-      }}
     >
-      {(renderProps) => {
-        const contextValue: DropZoneContextValue = {
-          variant,
-          isDropTarget: renderProps.isDropTarget,
-        };
-        return (
-          <DropZoneContext.Provider value={contextValue}>
-            {typeof children === "function" ? children(renderProps) : children}
-          </DropZoneContext.Provider>
-        );
-      }}
-    </RACDropZone>
+      <FileInputContext.Provider value={{ variant }}>
+        {children}
+      </FileInputContext.Provider>
+    </UiSdkFileInput>
   );
 }
 
-export interface DropZoneFeedbackProps extends ComponentPropsWithRef<"div"> {
-  children?: ReactNode;
-}
-export function DropZoneFeedback({ children, className, ...props }: DropZoneFeedbackProps) {
-  const { isDropTarget } = useContext(DropZoneContext);
+export type FileInputDropzoneProps = ComponentProps<typeof UiSdkFileInputDropzone>;
+
+/** The drop surface. Takes dropped or pasted files; keep a trigger beside it. */
+function FileInputDropzone({ className, children, ...props }: FileInputDropzoneProps) {
+  const hook =
+    typeof className === "function"
+      ? (state: FileInputDropzoneState) => cx("hashti-dropzone-feedback", className(state))
+      : cx("hashti-dropzone-feedback", className);
   return (
-    <div
-      {...props}
-      data-drop-target={isDropTarget || undefined}
-      className={cx("hashti-dropzone-feedback", className)}
-    >
+    <UiSdkFileInputDropzone {...props} className={hook}>
       {children}
-    </div>
+    </UiSdkFileInputDropzone>
   );
 }
 
-export interface FileTriggerProps extends RACFileTriggerProps {
-  children: ReactNode;
-}
-export function FileTrigger({ children, ...props }: FileTriggerProps) {
-  return <RACFileTrigger {...props}>{children}</RACFileTrigger>;
-}
+export type FileInputTriggerProps = ComponentProps<typeof UiSdkFileInputTrigger> & {
+  children?: ReactNode;
+};
 
-export interface DropZoneProps extends DropZoneRootProps {}
-
-function DropZoneDefault({ children, ...props }: DropZoneProps) {
-  return <DropZoneRoot {...props}>{children}</DropZoneRoot>;
+/** Opens the system file picker. */
+function FileInputTrigger({ children, ...props }: FileInputTriggerProps) {
+  return <UiSdkFileInputTrigger {...props}>{children}</UiSdkFileInputTrigger>;
 }
 
-export const DropZone = Object.assign(DropZoneDefault, {
-  Root: DropZoneRoot,
-  Feedback: DropZoneFeedback,
-  FileTrigger,
+export type FileInputProps = FileInputRootProps;
+
+function FileInputDefault({ children, ...props }: FileInputProps) {
+  return (
+    <FileInputRoot {...props}>
+      {children ?? (
+        <>
+          <FileInputDropzone>
+            <p>Drag and drop files here</p>
+            <FileInputTrigger>
+              <Button variant="ghost">
+                <span>Browse files</span>
+                <Icon name="upload" />
+              </Button>
+            </FileInputTrigger>
+          </FileInputDropzone>
+          <FileInputList aria-label="Files" className="hashti-file-list">
+            <FileInputItem>
+              {({ file }) => (
+                <>
+                  <Icon name="file" />
+                  <span>{file.name}</span>
+                  <span className="hashti-description">{formatFileSize(file.size)}</span>
+                  <FileInputItemRemove className="hashti-button" data-variant="ghost">
+                    <Icon name="close" />
+                  </FileInputItemRemove>
+                </>
+              )}
+            </FileInputItem>
+          </FileInputList>
+        </>
+      )}
+    </FileInputRoot>
+  );
+}
+
+export const FileInput = Object.assign(FileInputDefault, {
+  Root: FileInputRoot,
+  Dropzone: FileInputDropzone,
+  Trigger: FileInputTrigger,
+  List: FileInputList,
+  Item: FileInputItem,
+  ItemRemove: FileInputItemRemove,
 });
 
 export function acceptsFile(
@@ -141,10 +164,14 @@ export interface FileUploaderProps {
   maxSize?: number;
   files?: readonly File[];
   onFilesChange?: (files: File[]) => void;
-  isDisabled?: boolean;
+  disabled?: boolean;
   className?: string;
 }
 
+/**
+ * A FileInput with a label, description, accept/size validation and a file
+ * list — the pattern the old FileUploader shipped, on ui-sdk file-input.
+ */
 export function FileUploader({
   label,
   description,
@@ -153,97 +180,21 @@ export function FileUploader({
   maxSize,
   files: controlledFiles,
   onFilesChange,
-  isDisabled,
+  disabled,
   className,
 }: FileUploaderProps) {
-  const id = useId();
-  const errorId = `${id}-error`;
-  const [localFiles, setLocalFiles] = useState<File[]>([]);
-  const [error, setError] = useState("");
-  const files = controlledFiles ?? localFiles;
-
-  function update(next: File[]) {
-    if (controlledFiles === undefined) setLocalFiles(next);
-    onFilesChange?.(next);
-  }
-
-  function select(incoming: File[]) {
-    const messages: string[] = [];
-    const accepted = incoming.filter((file) => {
-      const reason = acceptsFile(file, acceptedFileTypes, maxSize);
-      if (reason) messages.push(reason);
-      return !reason;
-    });
-    setError(messages.join(" "));
-    if (!accepted.length) return;
-    update(allowsMultiple ? [...files, ...accepted] : accepted.slice(0, 1));
-  }
-
   return (
-    <div className={["hashti-file-uploader", className].filter(Boolean).join(" ")}>
-      <div id={`${id}-label`} className="hashti-file-label">
-        {label}
-      </div>
-      {description && (
-        <p id={`${id}-description`} className="hashti-description">
-          {description}
-        </p>
-      )}
-      <DropZoneRoot
-        aria-labelledby={`${id}-label`}
-        aria-describedby={
-          [description ? `${id}-description` : undefined, error ? errorId : undefined]
-            .filter(Boolean)
-            .join(" ") || undefined
-        }
-        isDisabled={isDisabled}
-        onDrop={async (event) => {
-          const incoming = await Promise.all(
-            event.items.filter((item) => item.kind === "file").map((item) => item.getFile()),
-          );
-          select(incoming);
-        }}
-      >
-        <FileTrigger
-          acceptedFileTypes={acceptedFileTypes}
-          allowsMultiple={allowsMultiple}
-          onSelect={(list) => list && select(Array.from(list))}
-        >
-          <Button variant="ghost" disabled={isDisabled}>
-            <span>Drag files here or choose files</span>
-            <Icon name="upload" />
-          </Button>
-        </FileTrigger>
-      </DropZoneRoot>
-      {error && (
-        <p id={errorId} role="alert" className="hashti-error-message">
-          {error}
-        </p>
-      )}
-      <ul className="hashti-file-list">
-        {files.map((file, index) => (
-          <li key={`${file.name}-${file.lastModified}-${index}`}>
-            <Icon name="file" />
-            <span>{file.name}</span>
-            <span className="hashti-description">
-              {new Intl.NumberFormat(undefined, { maximumFractionDigits: 1 }).format(
-                file.size >= 1024 * 1024 ? file.size / (1024 * 1024) : file.size / 1024,
-              )}{" "}
-              {file.size >= 1024 * 1024 ? "MB" : "KB"}
-            </span>
-            <Button
-              variant="ghost"
-              size="sm"
-              iconOnly
-              disabled={isDisabled}
-              aria-label={`Remove ${file.name}`}
-              onClick={() => update(files.filter((_, position) => position !== index))}
-            >
-              <Icon name="close" />
-            </Button>
-          </li>
-        ))}
-      </ul>
+    <div className={cx("hashti-file-uploader", className)}>
+      <div className="hashti-file-label">{label}</div>
+      {description && <p className="hashti-description">{description}</p>}
+      <FileInput
+        multiple={allowsMultiple}
+        accept={acceptedFileTypes}
+        maxSize={maxSize}
+        disabled={disabled}
+        value={controlledFiles ? [...controlledFiles] : undefined}
+        onValueChange={(value) => onFilesChange?.([...value])}
+      />
     </div>
   );
 }

@@ -1,28 +1,33 @@
 "use client";
 
-import { type ComponentProps, type Ref } from "react";
+import { type ComponentProps, type ReactNode } from "react";
 import {
-  RadioGroup as RACRadioGroup,
-  Radio as RACRadio,
-  RadioGroupContext,
-  composeRenderProps,
-  type RadioProps as RACRadioProps,
-  type RadioGroupProps as RACRadioGroupProps,
-} from "react-aria-components";
-import { classes } from "../../utils";
+  Radio as UiSdkRadio,
+  RadioGroup as UiSdkRadioGroup,
+  RadioIndicator,
+  type RadioState,
+} from "@ui-sdk/react/radio";
+import { Field as UiSdkField } from "@ui-sdk/react/field";
+import { cx, type ControlSize } from "../../utils";
 import {
   FieldLayout,
+  FieldPresentationProvider,
   fieldClassName,
-  useFieldAnatomy,
+  useFieldPresentation,
   fieldParts,
   type FieldContentProps,
   type FieldPresentationProps,
 } from "../field";
 import type { SelectionColor } from "../checkbox";
 
-export interface RadioGroupRootProps extends RACRadioGroupProps, FieldPresentationProps {
+export interface RadioGroupRootProps
+  extends
+    Omit<ComponentProps<typeof UiSdkRadioGroup>, "children" | "className">,
+    FieldPresentationProps {
   color?: SelectionColor;
-  ref?: Ref<HTMLDivElement>;
+  size?: ControlSize;
+  className?: string;
+  children?: ReactNode;
 }
 
 function RadioGroupRoot({
@@ -32,29 +37,38 @@ function RadioGroupRoot({
   statusVariant,
   isOptional,
   color,
+  size,
   ...props
 }: RadioGroupRootProps) {
-  const anatomy = useFieldAnatomy(
-    { ...props, status, statusVariant, isOptional },
-    RadioGroupContext,
+  const presentation = useFieldPresentation(
+    { status, statusVariant, isOptional },
+    props["aria-describedby"],
     "detached",
   );
   return (
-    <RACRadioGroup
-      {...props}
-      {...anatomy.props}
+    <div
+      {...presentation.props}
       data-color={color}
-      className={classes(fieldClassName("radio-group"), className)}
+      data-size={size}
+      className={cx(fieldClassName("radio-group"), className)}
     >
-      {anatomy.wrap(children, anatomy.slotted?.children)}
-    </RACRadioGroup>
+      <UiSdkField disabled={props.disabled} name={props.name}>
+        <FieldPresentationProvider
+          status={status}
+          statusVariant={presentation.statusVariant}
+          isOptional={isOptional}
+          isRequired={props.required}
+          fieldGated
+        >
+          <UiSdkRadioGroup {...props}>{children}</UiSdkRadioGroup>
+        </FieldPresentationProvider>
+      </UiSdkField>
+    </div>
   );
 }
 
 function RadioOptions({ className, ...props }: ComponentProps<"div">) {
-  return (
-    <div {...props} className={["hashti-radio-options", className].filter(Boolean).join(" ")} />
-  );
+  return <div {...props} className={cx("hashti-radio-options", className)} />;
 }
 
 export interface RadioGroupProps extends RadioGroupRootProps, FieldContentProps {
@@ -73,35 +87,40 @@ function RadioGroupDefault({
 }: RadioGroupProps) {
   return (
     <RadioGroupRoot {...props} color={color} className={className}>
-      {composeRenderProps(children, (content) => (
-        <FieldLayout
-          label={label}
-          labelTooltip={labelTooltip}
-          description={description}
-          errorMessage={errorMessage}
-        >
-          <RadioOptions>{content}</RadioOptions>
-        </FieldLayout>
-      ))}
+      <FieldLayout
+        label={label}
+        labelTooltip={labelTooltip}
+        description={description}
+        errorMessage={errorMessage}
+      >
+        <RadioOptions>{children}</RadioOptions>
+      </FieldLayout>
     </RadioGroupRoot>
   );
 }
 
-export interface RadioProps extends RACRadioProps {
+export interface RadioProps extends ComponentProps<typeof UiSdkRadio> {
   color?: SelectionColor;
-  ref?: Ref<HTMLLabelElement>;
 }
 
 export function Radio({ className, children, color, ...props }: RadioProps) {
+  const classHook =
+    typeof className === "function"
+      ? (state: RadioState) => cx("hashti-radio", className(state))
+      : cx("hashti-radio", className);
   return (
-    <RACRadio {...props} data-color={color} className={classes("hashti-radio", className)}>
-      {composeRenderProps(children, (content) => (
+    <UiSdkRadio {...props} data-color={color} className={classHook}>
+      {(state) => (
         <>
-          <span className="hashti-radio-control" aria-hidden="true" />
-          <span>{content}</span>
+          <span className="hashti-radio-control" aria-hidden="true">
+            <RadioIndicator keepMounted />
+          </span>
+          {typeof children === "function"
+            ? children(state)
+            : children != null && <span>{children}</span>}
         </>
-      ))}
-    </RACRadio>
+      )}
+    </UiSdkRadio>
   );
 }
 

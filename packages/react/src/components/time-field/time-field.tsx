@@ -1,79 +1,84 @@
 "use client";
 
-import type { Ref } from "react";
+import type { ComponentProps, ReactNode, Ref } from "react";
+import { Field as UiSdkField, type FieldState } from "@ui-sdk/react/field";
 import {
-  DateField as RACDateField,
-  TimeField as RACTimeField,
-  DateSegment,
-  DateFieldContext,
-  TimeFieldContext,
-  type DateFieldProps as RACDateFieldProps,
-  type TimeFieldProps as RACTimeFieldProps,
-  type DateValue,
-  type TimeValue,
-} from "react-aria-components";
+  TimeInput as UiSdkTimeInput,
+  TimeInputSegment,
+} from "@ui-sdk/react/time-input";
+// The DateField half: ui-sdk's date-input is re-exported for TICK-016, which
+// builds the full DateField/DatePicker around it.
+export { DateInput, DateInputSegment } from "@ui-sdk/react/date-input";
 import {
   FieldLayout,
-  FieldDateInput,
-  useFieldAnatomy,
+  FieldPresentationProvider,
   fieldClassName,
-  fieldParts,
+  useFieldPresentation,
   type FieldContentProps,
   type FieldPresentationProps,
 } from "../field";
-import { classes, type ControlSize } from "../../utils";
+import { cx, type ControlSize } from "../../utils";
 
-export interface DateFieldRootProps<T extends DateValue>
-  extends RACDateFieldProps<T>, FieldPresentationProps {
+export interface TimeInputRootProps
+  extends Omit<ComponentProps<typeof UiSdkTimeInput>, "children" | "className">,
+    FieldPresentationProps {
   size?: ControlSize;
+  /** Mark the field invalid (ui-sdk Field-level). */
+  invalid?: boolean;
+  className?: string | ((state: FieldState) => string | undefined);
+  children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
 }
 
-function DateFieldRoot<T extends DateValue>({
+function TimeInputRoot({
   size = "md",
   className,
   children,
   status,
   statusVariant,
   isOptional,
+  invalid,
+  required,
   ...props
-}: DateFieldRootProps<T>) {
-  const anatomy = useFieldAnatomy(
-    { ...props, status, statusVariant, isOptional },
-    DateFieldContext,
-  );
+}: TimeInputRootProps) {
+  const presentation = useFieldPresentation({ status, statusVariant, isOptional }, undefined);
   return (
-    <RACDateField<T>
-      {...props}
-      {...anatomy.props}
+    <UiSdkField
+      disabled={props.disabled}
+      invalid={invalid}
       data-size={size}
-      className={classes(fieldClassName("date-field"), className)}
+      {...presentation.props}
+      className={cx(`${fieldClassName("time-field")} hashti-date-field`, className as string)}
     >
-      {anatomy.wrap(children, anatomy.slotted?.children)}
-    </RACDateField>
+      <FieldPresentationProvider
+        status={status}
+        statusVariant={presentation.statusVariant}
+        isOptional={isOptional}
+        isRequired={required}
+        fieldGated
+      >
+        {children}
+      </FieldPresentationProvider>
+    </UiSdkField>
   );
 }
 
-export interface DateFieldProps<T extends DateValue>
-  extends DateFieldRootProps<T>, FieldContentProps {}
+export interface TimeInputProps extends Omit<TimeInputRootProps, "children">, FieldContentProps {
+  children?: ReactNode;
+}
 
-function DateFieldDefault<T extends DateValue>({
+function TimeInputDefault({
   label,
   labelTooltip,
   description,
   errorMessage,
+  size = "md",
   className,
   children,
-  size = "md",
   ...props
-}: DateFieldProps<T>) {
+}: TimeInputProps) {
   return (
-    <DateFieldRoot<T>
-      {...props}
-      size={size}
-      className={className}
-      data-hashti-input-icon={children == null ? "" : undefined}
-    >
+    <TimeInputRoot {...props} size={size} className={className}>
       {children ?? (
         <FieldLayout
           inlineIcon
@@ -82,92 +87,15 @@ function DateFieldDefault<T extends DateValue>({
           description={description}
           errorMessage={errorMessage}
         >
-          <FieldDateInput>{(segment) => <DateSegment segment={segment} />}</FieldDateInput>
+          {/* ui-sdk renders the segments itself when it has no children. */}
+          <UiSdkTimeInput {...props} />
         </FieldLayout>
       )}
-    </DateFieldRoot>
+    </TimeInputRoot>
   );
 }
 
-export const DateField = Object.assign(DateFieldDefault, {
-  Root: DateFieldRoot,
-  ...fieldParts,
-  Input: FieldDateInput,
-  Segment: DateSegment,
-});
-
-export interface TimeFieldRootProps<T extends TimeValue>
-  extends RACTimeFieldProps<T>, FieldPresentationProps {
-  size?: ControlSize;
-  ref?: Ref<HTMLDivElement>;
-}
-
-function TimeFieldRoot<T extends TimeValue>({
-  size = "md",
-  className,
-  children,
-  status,
-  statusVariant,
-  isOptional,
-  ...props
-}: TimeFieldRootProps<T>) {
-  const anatomy = useFieldAnatomy(
-    { ...props, status, statusVariant, isOptional },
-    TimeFieldContext,
-  );
-  return (
-    <RACTimeField<T>
-      {...props}
-      {...anatomy.props}
-      data-size={size}
-      // TimeField is still styled through the DateField token: styles.css keys its input box
-      // (44px, border, radius) on .hashti-date-field. Keep the pair until those rules learn
-      // .hashti-time-field; renaming alone drops 44px height and the field surface.
-      className={classes(`${fieldClassName("time-field")} hashti-date-field`, className)}
-    >
-      {anatomy.wrap(children, anatomy.slotted?.children)}
-    </RACTimeField>
-  );
-}
-
-export interface TimeFieldProps<T extends TimeValue>
-  extends TimeFieldRootProps<T>, FieldContentProps {}
-
-function TimeFieldDefault<T extends TimeValue>({
-  label,
-  labelTooltip,
-  description,
-  errorMessage,
-  className,
-  children,
-  size = "md",
-  ...props
-}: TimeFieldProps<T>) {
-  return (
-    <TimeFieldRoot<T>
-      {...props}
-      size={size}
-      className={className}
-      data-hashti-input-icon={children == null ? "" : undefined}
-    >
-      {children ?? (
-        <FieldLayout
-          inlineIcon
-          label={label}
-          labelTooltip={labelTooltip}
-          description={description}
-          errorMessage={errorMessage}
-        >
-          <FieldDateInput>{(segment) => <DateSegment segment={segment} />}</FieldDateInput>
-        </FieldLayout>
-      )}
-    </TimeFieldRoot>
-  );
-}
-
-export const TimeField = Object.assign(TimeFieldDefault, {
-  Root: TimeFieldRoot,
-  ...fieldParts,
-  Input: FieldDateInput,
-  Segment: DateSegment,
+export const TimeInput = Object.assign(TimeInputDefault, {
+  Root: TimeInputRoot,
+  Segment: TimeInputSegment,
 });

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
-import { Toolbar, Button, ToggleButton, Icon } from "@hashti/react";
+import { Toolbar, Button, Toggle, Icon } from "@hashti/react";
 import "./actions.css";
 
 const meta = {
@@ -24,15 +24,15 @@ export const Playground: Story = {
     <div className="action-story-stack">
       <Toolbar aria-label="Text formatting toolbar">
         <Toolbar.Group aria-label="Style formatting">
-          <ToggleButton id="bold" aria-label="Bold">
+          <Toggle aria-label="Bold">
             B
-          </ToggleButton>
-          <ToggleButton id="italic" aria-label="Italic">
+          </Toggle>
+          <Toggle aria-label="Italic">
             I
-          </ToggleButton>
-          <ToggleButton id="underline" aria-label="Underline">
+          </Toggle>
+          <Toggle aria-label="Underline">
             U
-          </ToggleButton>
+          </Toggle>
         </Toolbar.Group>
         <Toolbar.Separator />
         <Toolbar.Group aria-label="Actions">
@@ -211,7 +211,7 @@ export const VerticalOrientation: Story = {
 export const Disabled: Story = {
   render: () => (
     <div className="action-story-stack">
-      <Toolbar isDisabled variant="raised" aria-label="Disabled toolbar">
+      <Toolbar disabled variant="raised" aria-label="Disabled toolbar">
         <Button variant="ghost">Action 1</Button>
         <Toolbar.Separator />
         <Button variant="ghost">Action 2</Button>
@@ -221,6 +221,6 @@ export const Disabled: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const toolbar = canvas.getByRole("toolbar", { name: "Disabled toolbar" });
-    expect(toolbar).toHaveAttribute("data-disabled", "true");
+    expect(toolbar).toHaveAttribute("data-disabled");
   },
 };

@@ -32,7 +32,7 @@ function PlaygroundExample() {
         <ProgressBar
           label="Cluster Disk Space"
           value={74}
-          valueLabel="74% (3.7 TB / 5.0 TB)"
+          getValueLabel={() => "74% (3.7 TB / 5.0 TB)"}
           helperText="Threshold warning triggers at 85% capacity."
         />
       </div>
@@ -64,21 +64,21 @@ function StatusVariantsExample() {
         <ProgressBar
           label="Active Job Execution"
           value={45}
-          valueLabel="45% complete"
+          getValueLabel={() => "45% complete"}
           status="active"
         />
 
         <ProgressBar
           label="Integrity Verification Completed"
           value={100}
-          valueLabel="100% verified"
+          getValueLabel={() => "100% verified"}
           status="success"
         />
 
         <ProgressBar
           label="Cluster Approaching Capacity"
           value={88}
-          valueLabel="88% (4.4 TB / 5.0 TB)"
+          getValueLabel={() => "88% (4.4 TB / 5.0 TB)"}
           status="warning"
           helperText="Warning threshold exceeded: auto-scaling recommended."
         />
@@ -86,7 +86,7 @@ function StatusVariantsExample() {
         <ProgressBar
           label="Container Image Push Failed"
           value={68}
-          valueLabel="Failed at layer 7"
+          getValueLabel={() => "Failed at layer 7"}
           status="error"
           helperText="Connection timed out while writing layer sha256:7b91."
         />
@@ -116,7 +116,7 @@ function IndeterminateExample() {
           </p>
         </div>
         <ProgressBar
-          isIndeterminate
+          value={null}
           label="Provisioning virtual cluster instances"
           helperText="Allocating cloud IP addresses and mounting block volumes…"
         />
@@ -149,17 +149,17 @@ function MeterExample() {
         <Meter
           label="CPU Core Utilization"
           value={32}
-          minValue={0}
-          maxValue={64}
-          valueLabel="32 of 64 Cores"
+          min={0}
+          max={64}
+          getValueLabel={() => "32 of 64 Cores"}
         />
 
         <Meter
           label="RAM Allocation"
           value={18}
-          minValue={0}
-          maxValue={32}
-          valueLabel="18 GB / 32 GB"
+          min={0}
+          max={32}
+          getValueLabel={() => "18 GB / 32 GB"}
         />
       </div>
     </div>
@@ -195,16 +195,16 @@ function LongContentAndLocalesExample() {
           <ProgressBar
             label="میزان فضای دیسک مصرفی"
             value={60}
-            valueLabel="۶۰ گیگابایت از ۱۰۰ گیگابایت"
+            getValueLabel={() => "۶۰ گیگابایت از ۱۰۰ گیگابایت"}
             helperText="ظرفیت باقی‌مانده برای ۴ ماه آینده کافی است."
           />
 
           <Meter
             label="تعداد درخواست‌های همزمان"
             value={750}
-            minValue={0}
-            maxValue={1000}
-            valueLabel="۷۵۰ از ۱۰۰۰ اتصال"
+            min={0}
+            max={1000}
+            getValueLabel={() => "۷۵۰ از ۱۰۰۰ اتصال"}
           />
         </div>
       </Theme>

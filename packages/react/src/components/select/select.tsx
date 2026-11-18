@@ -7,12 +7,13 @@ import {
   SelectValue,
   SelectContext,
   ListBox as RACListBox,
+  Popover as RACPopover,
   type SelectProps as RACSelectProps,
+  type PopoverProps as RACPopoverProps,
   type ListBoxProps,
   type SelectValueProps,
 } from "react-aria-components";
 import { Button, type ButtonProps } from "../button";
-import { Popover, type PopoverProps } from "../popover";
 import {
   FieldLayout,
   FieldStatusIcon,
@@ -117,9 +118,11 @@ function SelectValuePart<T>({
   );
 }
 
-function SelectPopover({ className, offset = 6, ...props }: PopoverProps) {
+// TICK-007 interim: Hashti Popover is ui-sdk now; RAC Select still needs a RAC
+// popover for its overlay context. Select migrates in TICK-006.
+function SelectPopover({ className, offset = 6, ...props }: RACPopoverProps) {
   return (
-    <Popover offset={offset} {...props} className={classes("hashti-select-popover", className)} />
+    <RACPopover offset={offset} {...props} className={classes("hashti-popover hashti-select-popover", className)} />
   );
 }
 

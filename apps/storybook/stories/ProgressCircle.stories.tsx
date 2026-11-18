@@ -43,7 +43,7 @@ export const StatusesAndIndeterminate: Story = {
   render: () => (
     <div className="feedback-story-stack">
       <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-        <ProgressCircle aria-label="Processing job" isIndeterminate size="md" />
+        <ProgressCircle aria-label="Processing job" size="md" />
         <ProgressCircle aria-label="Completed job" status="success" value={100} size="md" />
         <ProgressCircle aria-label="Warning threshold" status="warning" value={85} size="md" />
         <ProgressCircle aria-label="Failed upload" status="error" value={45} size="md" />

@@ -671,11 +671,9 @@ function MultipleSelectionExample() {
         </Select.Trigger>
         <Select.Popover>
           <Autocomplete>
-            <SearchField
-              aria-label="Search roles"
-              placeholder="Search roles..."
-              style={{ margin: 4 }}
-            />
+            <div style={{ margin: 4 }}>
+              <SearchField aria-label="Search roles" placeholder="Search roles..." />
+            </div>
             <Select.ListBox renderEmptyState={() => "No roles match that search."}>
               {items.map((item) => (
                 <ListBoxItem id={item.id} key={item.id} textValue={item.name} value={item}>

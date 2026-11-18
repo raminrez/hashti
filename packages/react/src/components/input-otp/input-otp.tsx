@@ -1,128 +1,114 @@
 "use client";
 
-import { useRef, useState, type ClipboardEvent, type KeyboardEvent, type Ref } from "react";
-import { cx } from "../../utils";
+import type { ComponentProps, ReactNode, Ref } from "react";
+import { Field as UiSdkField, type FieldState } from "@ui-sdk/react/field";
+import {
+  OTPInput as UiSdkOTPInput,
+  OTPInputGroup,
+  OTPInputSlot,
+} from "@ui-sdk/react/otp-input";
+import {
+  FieldLayout,
+  FieldPresentationProvider,
+  fieldClassName,
+  useFieldPresentation,
+  type FieldContentProps,
+  type FieldPresentationProps,
+} from "../field";
+import { cx, type ControlSize } from "../../utils";
 
-export interface InputOTPProps {
-  length?: number;
-  value?: string;
-  defaultValue?: string;
-  onChange?: (value: string) => void;
-  onComplete?: (value: string) => void;
-  isDisabled?: boolean;
-  isInvalid?: boolean;
-  "aria-label"?: string;
-  className?: string;
+export interface OtpInputRootProps
+  extends Omit<ComponentProps<typeof UiSdkOTPInput>, "children" | "className">,
+    FieldPresentationProps {
+  size?: ControlSize;
+  /** Mark the field invalid (ui-sdk Field-level). */
+  invalid?: boolean;
+  className?: string | ((state: FieldState) => string | undefined);
+  children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
 }
 
-export function InputOTP({
-  length = 6,
-  value: controlledValue,
-  defaultValue = "",
-  onChange,
-  onComplete,
-  isDisabled = false,
-  isInvalid = false,
-  "aria-label": ariaLabel = "One-time code",
+function OtpInputRoot({
+  size = "md",
   className,
-  ref,
-}: InputOTPProps) {
-  const [internalValue, setInternalValue] = useState(defaultValue);
-  const isControlled = controlledValue !== undefined;
-  const rawValue = isControlled ? controlledValue : internalValue;
-  const digits = rawValue.split("").slice(0, length);
-
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-
-  const updateValue = (newVal: string) => {
-    const trimmed = newVal.slice(0, length);
-    if (!isControlled) {
-      setInternalValue(trimmed);
-    }
-    onChange?.(trimmed);
-    if (trimmed.length === length) {
-      onComplete?.(trimmed);
-    }
-  };
-
-  const handleKeyDown = (index: number, e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Backspace") {
-      e.preventDefault();
-      const currentDigits = [...digits];
-      if (currentDigits[index]) {
-        currentDigits[index] = "";
-        updateValue(currentDigits.join(""));
-      } else if (index > 0) {
-        currentDigits[index - 1] = "";
-        updateValue(currentDigits.join(""));
-        inputRefs.current[index - 1]?.focus();
-      }
-    } else if (e.key === "ArrowLeft" && index > 0) {
-      e.preventDefault();
-      inputRefs.current[index - 1]?.focus();
-    } else if (e.key === "ArrowRight" && index < length - 1) {
-      e.preventDefault();
-      inputRefs.current[index + 1]?.focus();
-    }
-  };
-
-  const handleChange = (index: number, char: string) => {
-    const clean = char.replace(/[^0-9]/g, "");
-    if (!clean) return;
-
-    const currentDigits = Array.from({ length }, (_, i) => digits[i] ?? "");
-    currentDigits[index] = clean[clean.length - 1] ?? "";
-    const nextVal = currentDigits.join("");
-    updateValue(nextVal);
-
-    if (index < length - 1) {
-      inputRefs.current[index + 1]?.focus();
-    }
-  };
-
-  const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const pasted = e.clipboardData.getData("text").replace(/[^0-9]/g, "");
-    if (!pasted) return;
-
-    updateValue(pasted);
-    const focusIndex = Math.min(pasted.length, length - 1);
-    inputRefs.current[focusIndex]?.focus();
-  };
-
+  children,
+  status,
+  statusVariant,
+  isOptional,
+  invalid,
+  required,
+  ...props
+}: OtpInputRootProps) {
+  const presentation = useFieldPresentation({ status, statusVariant, isOptional }, undefined);
   return (
-    <div
-      ref={ref}
-      role="group"
-      aria-label={ariaLabel}
-      className={cx("hashti-input-otp", className)}
+    <UiSdkField
+      disabled={props.disabled}
+      invalid={invalid}
+      data-size={size}
+      {...presentation.props}
+      className={cx(fieldClassName("input-otp"), className as string)}
     >
-      {Array.from({ length }, (_, index) => {
-        const digit = digits[index] ?? "";
-        return (
-          <input
-            key={index}
-            ref={(el) => {
-              inputRefs.current[index] = el;
-            }}
-            type="text"
-            inputMode="numeric"
-            autoComplete="one-time-code"
-            maxLength={1}
-            value={digit}
-            disabled={isDisabled}
-            aria-label={`Digit ${index + 1} of ${length}`}
-            aria-invalid={isInvalid || undefined}
-            data-filled={digit ? "true" : undefined}
-            data-invalid={isInvalid ? "true" : undefined}
-            className="hashti-input-otp-slot"
-            onChange={(e) => handleChange(index, e.target.value)}
-            onKeyDown={(e) => handleKeyDown(index, e)}
-            onPaste={handlePaste}
-          />
-        );
-      })}
-    </div>
+      <FieldPresentationProvider
+        status={status}
+        statusVariant={presentation.statusVariant}
+        isOptional={isOptional}
+        isRequired={required}
+        fieldGated
+      >
+        {children}
+      </FieldPresentationProvider>
+    </UiSdkField>
   );
 }
+
+export interface OtpInputProps extends Omit<OtpInputRootProps, "children">, FieldContentProps {
+  /** How many characters the code has; one slot each. Defaults to 6. */
+  length?: number;
+  children?: ReactNode;
+}
+
+function OtpInputDefault({
+  label,
+  labelTooltip,
+  description,
+  errorMessage,
+  size = "md",
+  length,
+  className,
+  children,
+  maxLength,
+  ...props
+}: OtpInputProps) {
+  const count = maxLength ?? length ?? 6;
+  return (
+    <OtpInputRoot {...props} size={size} className={className}>
+      {children ?? (
+        <FieldLayout
+          label={label}
+          labelTooltip={labelTooltip}
+          description={description}
+          errorMessage={errorMessage}
+        >
+          {/* The ui-sdk control is a sibling of the label, not its parent. */}
+          <UiSdkOTPInput {...props} maxLength={count}>
+            <OTPInputGroup>
+              {Array.from({ length: count }, (_, index) => (
+                <OTPInputSlot key={index} index={index} />
+              ))}
+            </OTPInputGroup>
+          </UiSdkOTPInput>
+        </FieldLayout>
+      )}
+    </OtpInputRoot>
+  );
+}
+
+export const OtpInput: typeof OtpInputDefault & {
+  Root: typeof OtpInputRoot;
+  Group: typeof OTPInputGroup;
+  Slot: typeof OTPInputSlot;
+} = Object.assign(OtpInputDefault, {
+  Root: OtpInputRoot,
+  Group: OTPInputGroup,
+  Slot: OTPInputSlot,
+});

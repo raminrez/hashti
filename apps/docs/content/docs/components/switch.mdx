@@ -5,7 +5,7 @@ description: Toggle switch for immediately alternating between binary on/off sta
 
 # Switch
 
-Switches represent a physical toggle that allows users to instantly alternate between binary states (such as active/inactive or on/off). Unlike checkboxes — which usually queue changes until a form is submitted — switches apply changes immediately. Hashti's `Switch` is built on [React Aria Components Switch](https://react-spectrum.adobe.com/react-aria/Switch.html), providing smooth fluid animations, full keyboard accessibility, RTL layout mirroring for Persian and Arabic, and semantic color accents.
+Switches represent a physical toggle that allows users to instantly alternate between binary states (such as active/inactive or on/off). Unlike checkboxes — which usually queue changes until a form is submitted — switches apply changes immediately. Hashti's `Switch` is built on [ui-sdk Switch](https://ui-sdk.dev/docs), providing smooth fluid animations, full keyboard accessibility, RTL layout mirroring for Persian and Arabic, and semantic color accents.
 
 <ComponentPreview>
   <SelectionLiveDemo />
@@ -53,7 +53,7 @@ export function BasicSwitchDemo() {
   const [airplaneMode, setAirplaneMode] = useState(false);
 
   return (
-    <Switch isSelected={airplaneMode} onChange={setAirplaneMode}>
+    <Switch checked={airplaneMode} onCheckedChange={setAirplaneMode}>
       Airplane Mode
     </Switch>
   );
@@ -75,7 +75,7 @@ export function SwitchWithDescriptionDemo() {
 
   return (
     <div className="flex flex-col gap-1">
-      <Switch isSelected={tlsProxy} onChange={setTlsProxy}>
+      <Switch checked={tlsProxy} onCheckedChange={setTlsProxy}>
         Enable Strict TLS 1.3 Termination
       </Switch>
       <span className="text-xs text-neutral-500 dark:text-neutral-400 pl-11">
@@ -98,11 +98,11 @@ import { Switch } from "@hashti/react";
 export function SwitchSizesDemo() {
   return (
     <div className="flex flex-col gap-4">
-      <Switch size="sm" defaultSelected>
+      <Switch size="sm" defaultChecked>
         Small Switch (Dense layouts & table rows)
       </Switch>
 
-      <Switch size="md" defaultSelected>
+      <Switch size="md" defaultChecked>
         Medium Switch (Standard forms & settings panels)
       </Switch>
     </div>
@@ -122,16 +122,16 @@ import { Switch } from "@hashti/react";
 export function SwitchColorsDemo() {
   return (
     <div className="flex flex-col gap-3">
-      <Switch defaultSelected color="primary">
+      <Switch defaultChecked color="primary">
         Primary (Default)
       </Switch>
-      <Switch defaultSelected color="success">
+      <Switch defaultChecked color="success">
         System Online (Success)
       </Switch>
-      <Switch defaultSelected color="warning">
+      <Switch defaultChecked color="warning">
         Maintenance Mode (Warning)
       </Switch>
-      <Switch defaultSelected color="danger">
+      <Switch defaultChecked color="danger">
         Debug Interceptor (Danger)
       </Switch>
     </div>
@@ -154,7 +154,7 @@ export function RTLSwitchDemo() {
 
   return (
     <div dir="rtl" className="font-[Vazirmatn] flex flex-col gap-2">
-      <Switch isSelected={isSecure} onChange={setIsSecure} color="success">
+      <Switch checked={isSecure} onCheckedChange={setIsSecure} color="success">
         احراز هویت دو مرحله‌ای (۲FA)
       </Switch>
       <p className="text-xs text-neutral-500 pr-11">
@@ -177,10 +177,10 @@ import { Switch } from "@hashti/react";
 export function DisabledSwitchDemo() {
   return (
     <div className="flex flex-col gap-3">
-      <Switch defaultSelected isDisabled>
+      <Switch defaultChecked disabled>
         Automatic Daily Backups (Mandatory for Enterprise)
       </Switch>
-      <Switch isDisabled>Experimental LLM Acceleration (Hardware Unsupported)</Switch>
+      <Switch disabled>Experimental LLM Acceleration (Hardware Unsupported)</Switch>
     </div>
   );
 }
@@ -190,17 +190,18 @@ export function DisabledSwitchDemo() {
 
 ## Props Reference
 
-`Switch` extends `RACSwitchProps` from `react-aria-components`.
+`Switch` wraps the ui-sdk `Switch` from `@ui-sdk/react/switch` and accepts its props.
 
 | Prop              | Type                                                             | Default     | Description                                                            |
 | :---------------- | :--------------------------------------------------------------- | :---------- | :--------------------------------------------------------------------- |
-| `isSelected`      | `boolean`                                                        | —           | Controlled active state of the switch.                                 |
-| `defaultSelected` | `boolean`                                                        | `false`     | Uncontrolled initial state.                                            |
-| `onChange`        | `(isSelected: boolean) => void`                                  | —           | Callback invoked when the switch is toggled.                           |
+| `checked`         | `boolean`                                                        | —           | Controlled active state of the switch.                                 |
+| `defaultChecked`  | `boolean`                                                        | `false`     | Uncontrolled initial state.                                            |
+| `onCheckedChange` | `(checked: boolean, details) => void`                            | —           | Callback invoked when the switch is toggled.                           |
 | `size`            | `'sm' \| 'md'`                                                   | `'md'`      | Control dimensions (`sm` for tight tables, `md` standard).             |
 | `color`           | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger'` | `'primary'` | Semantic color token for the activated track.                          |
-| `isDisabled`      | `boolean`                                                        | `false`     | Whether the switch is disabled and non-interactive.                    |
-| `isReadOnly`      | `boolean`                                                        | `false`     | Prevents value changes while retaining keyboard focusability.          |
+| `disabled`        | `boolean`                                                        | `false`     | Whether the switch is disabled and non-interactive.                    |
+| `readOnly`        | `boolean`                                                        | `false`     | Prevents value changes while retaining keyboard focusability.          |
+| `required`        | `boolean`                                                        | `false`     | Blocks form submission until the switch is on.                         |
 | `name`            | `string`                                                         | —           | Input name attribute submitted when placed within standard HTML forms. |
 | `value`           | `string`                                                         | —           | The value attribute submitted when the switch is on.                   |
 | `children`        | `ReactNode`                                                      | —           | Text label or content rendered alongside the switch control.           |

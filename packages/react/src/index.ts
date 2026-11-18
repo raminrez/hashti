@@ -26,18 +26,16 @@ export * from "./components/layout";
 export * from "./components/link";
 export * from "./components/list-box";
 export * from "./components/meter";
-export * from "./components/modal";
 export * from "./components/navigation-tree";
 export * from "./components/number-field";
 export * from "./components/pagination";
 export * from "./components/popover";
-export * from "./components/preview-trigger";
 export * from "./components/progress";
 export * from "./components/radio";
 export * from "./components/search-field";
+export * from "./components/segmented-control";
 export * from "./components/select";
 export * from "./components/separator";
-export * from "./components/sheet";
 export * from "./components/slider";
 export * from "./components/switch";
 export * from "./components/table";
@@ -66,7 +64,6 @@ export type { ThemeName, LayerLevel } from "@hashti/styles/tokens";
 export {
   Form,
   Label,
-  Input,
   Text,
   FieldError,
   Group,
@@ -94,8 +91,6 @@ export {
   TabPanel,
   TabPanels,
   TreeSection,
-  DateInput,
-  DateSegment,
   CalendarGrid,
   CalendarCell,
   SliderTrack,

@@ -1,19 +1,26 @@
 "use client";
 
-import type { ReactNode, Ref, ComponentPropsWithRef } from "react";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode, Ref } from "react";
 import {
-  ProgressBar as RACProgressBar,
-  Label,
-  type ProgressBarProps as RACProgressBarProps,
-} from "react-aria-components";
+  Progress as UiSdkProgress,
+  ProgressIndicator as UiSdkProgressBarFill,
+  ProgressLabel,
+  ProgressTrack,
+  ProgressValue,
+} from "@ui-sdk/react/progress";
 import { Icon } from "../../icons";
 import { Button } from "../button";
-import { classes } from "../../utils";
+import { cx } from "../../utils";
 
-export interface ProgressBarProps extends RACProgressBarProps {
+export type ProgressStatus = "active" | "success" | "warning" | "error";
+
+export interface ProgressBarProps
+  extends Omit<ComponentProps<typeof UiSdkProgress>, "className" | "children"> {
   label?: ReactNode;
   helperText?: ReactNode;
-  status?: "active" | "success" | "warning" | "error";
+  status?: ProgressStatus;
+  className?: string;
+  children?: ReactNode;
   ref?: Ref<HTMLDivElement>;
 }
 
@@ -26,49 +33,51 @@ export function ProgressBar({
   ...props
 }: ProgressBarProps) {
   return (
-    <RACProgressBar
+    <UiSdkProgress
       {...props}
       data-status={status}
-      className={classes("hashti-progress", className)}
+      className={cx("hashti-progress", className)}
     >
-      {children ??
-        (({ percentage, valueText, isIndeterminate }) => (
-          <>
-            <div className="hashti-progress-label">
-              <Label>{label}</Label>
-              {valueText && <span>{valueText}</span>}
-            </div>
-            <div
-              className="hashti-progress-track"
-              data-indeterminate={isIndeterminate || undefined}
-            >
-              <div
-                className="hashti-progress-fill"
-                style={{ width: percentage == null ? "30%" : `${percentage}%` }}
-              />
-            </div>
-            {helperText && <span className="hashti-description">{helperText}</span>}
-          </>
-        ))}
-    </RACProgressBar>
+      {children ?? (
+        <>
+          <div className="hashti-progress-label">
+            <ProgressLabel>{label}</ProgressLabel>
+            <ProgressValue />
+          </div>
+          <ProgressTrack className="hashti-progress-track">
+            <UiSdkProgressBarFill className="hashti-progress-fill" />
+          </ProgressTrack>
+          {helperText && <span className="hashti-description">{helperText}</span>}
+        </>
+      )}
+    </UiSdkProgress>
   );
 }
 
-export interface ProgressCircleProps extends RACProgressBarProps {
+export interface ProgressCircleProps {
   size?: "sm" | "md" | "lg";
-  status?: "active" | "success" | "warning" | "error";
+  status?: ProgressStatus;
   showValueLabel?: boolean;
+  value?: number;
+  min?: number;
+  max?: number;
+  /** `aria-label` naming the circle for screen readers. */
+  "aria-label"?: string;
+  className?: string;
   ref?: Ref<HTMLDivElement>;
 }
 
+/**
+ * A circular progress indicator. ui-sdk's progress covers the bar; the circle
+ * stays a Hashti styled variant that shows the same value.
+ */
 export function ProgressCircle({
   size = "md",
   status = "active",
   showValueLabel = false,
   value,
-  minValue = 0,
-  maxValue = 100,
-  isIndeterminate = false,
+  min = 0,
+  max = 100,
   className,
   ref,
   ...props
@@ -79,53 +88,52 @@ export function ProgressCircle({
   const circumference = 2 * Math.PI * radius;
 
   const currentVal = value ?? 0;
-  const percent = Math.min(Math.max((currentVal - minValue) / (maxValue - minValue), 0), 1);
-  const strokeDashoffset = isIndeterminate ? circumference * 0.25 : circumference * (1 - percent);
+  const percent = Math.min(Math.max((currentVal - min) / (max - min), 0), 1);
+  const strokeDashoffset = circumference * (1 - percent);
 
   return (
-    <RACProgressBar
+    <UiSdkProgress
       {...props}
-      ref={ref}
-      value={value}
-      minValue={minValue}
-      maxValue={maxValue}
-      isIndeterminate={isIndeterminate}
+      value={value ?? null}
+      min={min}
+      max={max}
       data-size={size}
       data-status={status}
-      data-indeterminate={isIndeterminate || undefined}
-      className={classes("hashti-progress-circle", className)}
+      className={cx("hashti-progress-circle", className)}
     >
-      {({ valueText }) => (
-        <>
-          <svg
-            width={pixelSize}
-            height={pixelSize}
-            viewBox={`0 0 ${pixelSize} ${pixelSize}`}
-            aria-hidden="true"
-          >
-            <circle
-              className="hashti-progress-circle-track"
-              cx={pixelSize / 2}
-              cy={pixelSize / 2}
-              r={radius}
-              strokeWidth={strokeWidth}
-            />
-            <circle
-              className="hashti-progress-circle-fill"
-              cx={pixelSize / 2}
-              cy={pixelSize / 2}
-              r={radius}
-              strokeWidth={strokeWidth}
-              strokeDasharray={circumference}
-              strokeDashoffset={strokeDashoffset}
-            />
-          </svg>
-          {showValueLabel && !isIndeterminate && (
-            <span className="hashti-progress-circle-value">{valueText}</span>
-          )}
-        </>
-      )}
-    </RACProgressBar>
+      <ProgressValue>
+        {(state) => (
+          <>
+            <svg
+              width={pixelSize}
+              height={pixelSize}
+              viewBox={`0 0 ${pixelSize} ${pixelSize}`}
+              aria-hidden="true"
+            >
+              <circle
+                className="hashti-progress-circle-track"
+                cx={pixelSize / 2}
+                cy={pixelSize / 2}
+                r={radius}
+                strokeWidth={strokeWidth}
+              />
+              <circle
+                className="hashti-progress-circle-fill"
+                cx={pixelSize / 2}
+                cy={pixelSize / 2}
+                r={radius}
+                strokeWidth={strokeWidth}
+                strokeDasharray={circumference}
+                strokeDashoffset={strokeDashoffset}
+              />
+            </svg>
+            {showValueLabel && value != null && (
+              <span className="hashti-progress-circle-value">{state.text}</span>
+            )}
+          </>
+        )}
+      </ProgressValue>
+    </UiSdkProgress>
   );
 }
 
@@ -139,7 +147,7 @@ export function Loading({ label = "Loading", size = "lg", className }: LoadingPr
   return (
     <div
       role="status"
-      className={["hashti-loading", className].filter(Boolean).join(" ")}
+      className={cx("hashti-loading", className)}
       data-size={size}
     >
       <span className="hashti-spinner" aria-hidden="true" />
@@ -176,7 +184,7 @@ export function Skeleton({ width, height, lines = 1, style, className, ...props 
   return (
     <div
       {...props}
-      className={["hashti-skeleton", className].filter(Boolean).join(" ")}
+      className={cx("hashti-skeleton", className)}
       aria-hidden="true"
       style={{ width, ...style }}
     >
@@ -203,6 +211,7 @@ export interface ProgressIndicatorProps {
   className?: string;
 }
 
+/** A step-by-step progress list, distinct from the bar. */
 export function ProgressIndicator({
   steps,
   onStepChange,
@@ -213,7 +222,7 @@ export function ProgressIndicator({
   return (
     <ol
       aria-label={label}
-      className={["hashti-progress-indicator", className].filter(Boolean).join(" ")}
+      className={cx("hashti-progress-indicator", className)}
       data-orientation={orientation}
     >
       {steps.map((step) => (

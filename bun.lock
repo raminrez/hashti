@@ -255,6 +255,21 @@
 
     "@capsizecss/unpack": ["@capsizecss/unpack@4.0.1", "", { "dependencies": { "fontkitten": "^1.0.3" } }, "sha512-CuNiSqg7+e1cO/GjffyMOm5Tt2jUF9CWHHnvQ/UkqvtkGfHdgwEC0wpmq7fkN3gxwpRnrAN0WzO3vREKmNolMQ=="],
 
+<<<<<<< Updated upstream
+=======
+    "@carbon/colors": ["@carbon/colors@11.62.0", "", { "dependencies": { "@ibm/telemetry-js": "^1.5.0" }, "hasInstallScript": true }, "sha512-xdOpneCuNgMDcH/38BLHmPpB4hDrMNf5+flYXGCI2KuMx+d4r6ByaKqpteaWnXzwu8CA4PBflUovoD0wTYBsHQ=="],
+
+    "@carbon/grid": ["@carbon/grid@11.66.0", "", { "dependencies": { "@carbon/layout": "^11.63.0", "@ibm/telemetry-js": "^1.5.0" }, "hasInstallScript": true }, "sha512-yeNsn3dnxn8cVWsT7Vfj6bgbfMUzM7+ZRCtxYq+fMnTw3LeiFBUz6eVEh7LMhUoGf+zyz/njHn1NXKtdhGGglw=="],
+
+    "@carbon/layout": ["@carbon/layout@11.63.0", "", { "dependencies": { "@ibm/telemetry-js": "^1.5.0" }, "hasInstallScript": true }, "sha512-crAS//pE8xmRZmz4ecx96UUScTfaipVYJNR5qOaku5PoJRjiYvqn8CY5Dmd087bjurO4pt/H33V6dv9qBnqzQg=="],
+
+    "@carbon/motion": ["@carbon/motion@11.56.0", "", { "dependencies": { "@ibm/telemetry-js": "^1.5.0" }, "hasInstallScript": true }, "sha512-XQDW/6SjyrVNojc3OgODlGAIWxlq+tOjDlRRJ3xqdNg2vk3R0xHy9DfEARDIDlYLwEGYdu6/Ua0BAqorp1nTzA=="],
+
+    "@carbon/themes": ["@carbon/themes@11.85.0", "", { "dependencies": { "@carbon/colors": "^11.62.0", "@carbon/layout": "^11.63.0", "@carbon/type": "^11.71.0", "@ibm/telemetry-js": "^1.5.0", "color": "^4.0.0" }, "hasInstallScript": true }, "sha512-8usV/OEFgFHRIBJ6mLez5PBwCQOAVFiT0yPm/waekbSS8juzIX/KbM5LHVuFXegXvouHsk9DooGbeMQEZ2L4Zg=="],
+
+    "@carbon/type": ["@carbon/type@11.71.0", "", { "dependencies": { "@carbon/grid": "^11.66.0", "@carbon/layout": "^11.63.0", "@ibm/telemetry-js": "^1.5.0" }, "hasInstallScript": true }, "sha512-9HXTa7VWbACP9yrx4iK/OiNhW4D09KmFK0y414KNlET27ZsAoJHbyWict4HylTxnDWgUVGbd0JiCp2XDm9nwsg=="],
+
+>>>>>>> Stashed changes
     "@clack/core": ["@clack/core@1.6.0", "", { "dependencies": { "fast-string-width": "^3.0.2", "fast-wrap-ansi": "^0.2.0", "sisteransi": "^2.0.0" } }, "sha512-4GZynIB2IIe431odxesswvWTCP6orvqd6e2b07b3VFWBQRqUqIHc/EPIZwFoKS692QBp+ooPuXKaJV8g4kXuYA=="],
 
     "@clack/prompts": ["@clack/prompts@1.9.0", "", { "dependencies": { "@clack/core": "1.6.0", "fast-string-width": "^3.0.2", "fast-wrap-ansi": "^0.2.0", "sisteransi": "^2.0.0" } }, "sha512-tEj8X2No2A1c9NDnZECxiiJ8TP3vmFlN9tLlLeSaMqVW4tUmVG2R4qpv/eP4zymWxnymYLkLcIYVV0VcWj3RCQ=="],
@@ -337,8 +352,11 @@
 
     "@fumari/image-size": ["@fumari/image-size@0.1.1", "", {}, "sha512-iaiV2wyzJ4mW358NX4CX3yGit+WjKYzpaQ+rldK9BjL/5jFpeV6ruWnZVq7MEyMn3Gd0DLi8g/79NZAAQaGscw=="],
 
+<<<<<<< Updated upstream
     "@hashti/agent": ["@hashti/agent@workspace:packages/agent"],
 
+=======
+>>>>>>> Stashed changes
     "@hashti/docs": ["@hashti/docs@workspace:apps/docs"],
 
     "@hashti/react": ["@hashti/react@workspace:packages/react"],
