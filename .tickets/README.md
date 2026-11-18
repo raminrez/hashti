@@ -45,7 +45,7 @@ each ticket file.
   `Kbd`, `Badge`, `Separator` (was Divider, re-export of `@ui-sdk/react/separator`).
 
 ### Phase 2: Fundamental Interactive Actions
-- [ ] **TICK-002**: [TICK-002-Button-Link.md](TICK-002-Button-Link.md) — `Button`, `Link`
+- [x] **TICK-002**: [TICK-002-Button-Link.md](TICK-002-Button-Link.md) — `Button`, `Link`
   (Button with `render={<a>}`), `Toggle`; css-only `Breadcrumbs` composing Link.
 - [ ] **TICK-013**: [TICK-013-Contract-Spike.md](TICK-013-Contract-Spike.md) — Contract-validation
   spike: styled Button from a second framework against unmodified `@hashti/styles`.
