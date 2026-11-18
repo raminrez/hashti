@@ -63,16 +63,16 @@ export const Playground: Story = {
                   size="md"
                   iconOnly
                   aria-label="Close dialog"
-                  onPress={close}
+                  onClick={close}
                 >
                   <Icon name="close" />
                 </Button>
                 <p>Configure team permissions and shared notification preferences.</p>
                 <div className="hashti-dialog-footer">
-                  <Button variant="tertiary" onPress={close}>
+                  <Button variant="outline" onClick={close}>
                     Cancel
                   </Button>
-                  <Button variant="primary" onPress={close}>
+                  <Button variant="primary" onClick={close}>
                     Save changes
                   </Button>
                 </div>
@@ -112,13 +112,13 @@ export const Backdrops: Story = {
                       size="md"
                       iconOnly
                       aria-label={`Close ${backdrop} dialog`}
-                      onPress={close}
+                      onClick={close}
                     >
                       <Icon name="close" />
                     </Button>
                     <p>The overlay carries `data-backdrop="{backdrop}"`.</p>
                     <div className="hashti-dialog-footer">
-                      <Button variant="primary" onPress={close}>
+                      <Button variant="primary" onClick={close}>
                         Close
                       </Button>
                     </div>
@@ -165,7 +165,7 @@ export const Sizes: Story = {
                         size="md"
                         iconOnly
                         aria-label={`Close ${size} dialog`}
-                        onPress={close}
+                        onClick={close}
                       >
                         <Icon name="close" />
                       </Button>
@@ -174,7 +174,7 @@ export const Sizes: Story = {
                         and responsive padding.
                       </p>
                       <div className="hashti-dialog-footer">
-                        <Button variant="primary" onPress={close}>
+                        <Button variant="primary" onClick={close}>
                           Close size dialog
                         </Button>
                       </div>
@@ -227,7 +227,7 @@ function FormDialogExample() {
                   size="md"
                   iconOnly
                   aria-label="Close invite dialog"
-                  onPress={close}
+                  onClick={close}
                 >
                   <Icon name="close" />
                 </Button>
@@ -255,7 +255,7 @@ function FormDialogExample() {
                     Send onboarding digest email
                   </Checkbox>
                   <div className="hashti-dialog-footer">
-                    <Button variant="tertiary" onPress={close}>
+                    <Button variant="outline" onClick={close}>
                       Cancel
                     </Button>
                     <Button type="submit">Send invitation</Button>
@@ -316,7 +316,7 @@ export const NestedSelect: Story = {
                     size="md"
                     iconOnly
                     aria-label="Close access modal"
-                    onPress={close}
+                    onClick={close}
                   >
                     <Icon name="close" />
                   </Button>
@@ -333,7 +333,7 @@ export const NestedSelect: Story = {
                     </Select>
                   </div>
                   <div className="hashti-dialog-footer">
-                    <Button variant="tertiary" onPress={close}>
+                    <Button variant="outline" onClick={close}>
                       Close
                     </Button>
                   </div>
@@ -410,7 +410,7 @@ function CustomPartTargetingExample() {
                   size="md"
                   iconOnly
                   aria-label="Close customized modal"
-                  onPress={close}
+                  onClick={close}
                 >
                   <Icon name="close" />
                 </Button>
@@ -421,7 +421,7 @@ function CustomPartTargetingExample() {
                 <div className="hashti-dialog-footer">
                   <Button
                     variant="secondary"
-                    onPress={() => {
+                    onClick={() => {
                       const hasOverlay = overlayRef.current !== null;
                       const hasModal = modalRef.current !== null;
                       setInspected(hasOverlay && hasModal);
@@ -429,7 +429,7 @@ function CustomPartTargetingExample() {
                   >
                     Verify refs
                   </Button>
-                  <Button variant="primary" onPress={close}>
+                  <Button variant="primary" onClick={close}>
                     Done
                   </Button>
                 </div>
@@ -494,7 +494,7 @@ function LocalizedModalExamples() {
                     size="md"
                     iconOnly
                     aria-label="Close terms modal"
-                    onPress={close}
+                    onClick={close}
                   >
                     <Icon name="close" />
                   </Button>
@@ -517,7 +517,7 @@ function LocalizedModalExamples() {
                     </p>
                   </div>
                   <div className="hashti-dialog-footer">
-                    <Button variant="primary" onPress={close}>
+                    <Button variant="primary" onClick={close}>
                       Accept terms
                     </Button>
                   </div>
@@ -544,7 +544,7 @@ function LocalizedModalExamples() {
                       size="md"
                       iconOnly
                       aria-label="بستن پنجره"
-                      onPress={close}
+                      onClick={close}
                     >
                       <Icon name="close" />
                     </Button>
@@ -553,10 +553,10 @@ function LocalizedModalExamples() {
                       این عملیات بلافاصله اعمال خواهد شد.
                     </p>
                     <div className="hashti-dialog-footer">
-                      <Button variant="tertiary" onPress={close}>
+                      <Button variant="outline" onClick={close}>
                         انصراف
                       </Button>
-                      <Button variant="danger" onPress={close}>
+                      <Button variant="danger" onClick={close}>
                         بازنشانی کلیدها
                       </Button>
                     </div>

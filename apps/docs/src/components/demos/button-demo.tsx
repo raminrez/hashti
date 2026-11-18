@@ -7,19 +7,19 @@ export function ButtonLiveDemo() {
   return (
     <div className="flex flex-col items-center gap-4 w-full max-w-md">
       <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button variant="primary" onPress={() => setClicked((c) => c + 1)}>
+        <Button variant="primary" onClick={() => setClicked((c) => c + 1)}>
           Primary
         </Button>
-        <Button variant="secondary" onPress={() => setClicked((c) => c + 1)}>
+        <Button variant="secondary" onClick={() => setClicked((c) => c + 1)}>
           Secondary
         </Button>
-        <Button variant="tertiary" onPress={() => setClicked((c) => c + 1)}>
+        <Button variant="outline" onClick={() => setClicked((c) => c + 1)}>
           Tertiary
         </Button>
-        <Button variant="ghost" onPress={() => setClicked((c) => c + 1)}>
+        <Button variant="ghost" onClick={() => setClicked((c) => c + 1)}>
           Ghost
         </Button>
-        <Button variant="danger" onPress={() => setClicked((c) => c + 1)}>
+        <Button variant="danger" onClick={() => setClicked((c) => c + 1)}>
           Danger
         </Button>
       </div>

@@ -50,16 +50,16 @@ export const Playground: Story = {
                   size="md"
                   iconOnly
                   aria-label="Close dialog"
-                  onPress={close}
+                  onClick={close}
                 >
                   <Icon name="close" />
                 </Button>
                 <p>Configure team permissions and shared notification preferences.</p>
                 <div className="hashti-dialog-footer">
-                  <Button variant="tertiary" onPress={close}>
+                  <Button variant="outline" onClick={close}>
                     Cancel
                   </Button>
-                  <Button variant="primary" onPress={close}>
+                  <Button variant="primary" onClick={close}>
                     Save changes
                   </Button>
                 </div>
@@ -105,16 +105,16 @@ export const Anatomy: Story = {
                     size="md"
                     iconOnly
                     aria-label="Close delete dialog"
-                    onPress={close}
+                    onClick={close}
                   >
                     <Icon name="close" />
                   </Button>
                   <p>Staging loses its data, logs, and deploy history. Production is untouched.</p>
                   <div className="hashti-dialog-footer">
-                    <Button variant="tertiary" onPress={close}>
+                    <Button variant="outline" onClick={close}>
                       Keep environment
                     </Button>
-                    <Button variant="danger" onPress={close}>
+                    <Button variant="danger" onClick={close}>
                       Delete staging
                     </Button>
                   </div>
@@ -135,7 +135,7 @@ export const Anatomy: Story = {
                 <>
                   <p>Press Escape to dismiss. Tab stays inside until the dialog closes.</p>
                   <div className="hashti-dialog-footer">
-                    <Button variant="primary" onPress={close}>
+                    <Button variant="primary" onClick={close}>
                       Got it
                     </Button>
                   </div>
@@ -175,16 +175,16 @@ export const FocusAndDismissal: Story = {
                   size="md"
                   iconOnly
                   aria-label="Close access request"
-                  onPress={close}
+                  onClick={close}
                 >
                   <Icon name="close" />
                 </Button>
                 <p>Allow build access for the release pipeline?</p>
                 <div className="hashti-dialog-footer">
-                  <Button variant="tertiary" onPress={close}>
+                  <Button variant="outline" onClick={close}>
                     Deny
                   </Button>
-                  <Button variant="primary" onPress={close}>
+                  <Button variant="primary" onClick={close}>
                     Allow
                   </Button>
                 </div>
@@ -230,18 +230,18 @@ function LocalizedDialog() {
                     size="md"
                     iconOnly
                     aria-label="بستن پنجره"
-                    onPress={close}
+                    onClick={close}
                   >
                     <Icon name="close" />
                   </Button>
                   <p>آیا دسترسی ساخت برای خط انتشار تأیید می‌شود؟</p>
                   <div className="hashti-dialog-footer">
-                    <Button variant="tertiary" onPress={close}>
+                    <Button variant="outline" onClick={close}>
                       رد درخواست
                     </Button>
                     <Button
                       variant="primary"
-                      onPress={() => {
+                      onClick={() => {
                         setConfirmed("تأیید شد");
                         close();
                       }}

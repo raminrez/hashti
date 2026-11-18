@@ -106,7 +106,7 @@ export function BrandbookAssets() {
               <Button
                 variant="secondary"
                 size="md"
-                onPress={() => handleDownload(asset.path, asset.filename)}
+                onClick={() => handleDownload(asset.path, asset.filename)}
               >
                 <Icon name={downloaded === asset.filename ? "check" : "download"} />
                 {downloaded === asset.filename ? "Downloaded" : "Download SVG"}

@@ -546,13 +546,13 @@ function AppearanceOnlyForm() {
       <Button type="submit">Read native draft</Button>
       <Button
         variant="secondary"
-        onPress={() => setType((current) => (current === "error" ? "success" : "error"))}
+        onClick={() => setType((current) => (current === "error" ? "success" : "error"))}
       >
         Toggle contact presentation
       </Button>
       <Button
         variant="ghost"
-        onPress={() => {
+        onClick={() => {
           if (root.current?.contains(input.current)) input.current?.focus();
         }}
       >
@@ -659,7 +659,7 @@ function CompoundExamples() {
         </TextField.Root>
         <Button
           variant="ghost"
-          onPress={() => {
+          onClick={() => {
             if (root.current?.contains(input.current)) input.current?.focus();
           }}
         >

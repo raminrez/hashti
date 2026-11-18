@@ -325,7 +325,7 @@ function ComposedChannels() {
       <Button
         type="button"
         variant="ghost"
-        onPress={() => {
+        onClick={() => {
           setRefs(`${root.current?.tagName}/${label.current?.tagName}/${input.current?.tagName}`);
           input.current?.focus();
         }}
@@ -335,7 +335,7 @@ function ComposedChannels() {
       <Button
         type="button"
         variant="ghost"
-        onPress={() => setValidationErrors({ channels: returnedChannelError })}
+        onClick={() => setValidationErrors({ channels: returnedChannelError })}
       >
         Apply returned channel error
       </Button>

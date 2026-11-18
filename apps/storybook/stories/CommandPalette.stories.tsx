@@ -88,7 +88,7 @@ function PlaygroundExample() {
   return (
     <div className="overlay-story-stack">
       <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-        <Button variant="primary" onPress={() => setIsOpen(true)}>
+        <Button variant="primary" onClick={() => setIsOpen(true)}>
           Open Command Palette
         </Button>
         <span style={{ fontSize: "0.875rem", color: "var(--hashti-text-secondary)" }}>
@@ -182,7 +182,7 @@ function EmptyStateExample() {
 
   return (
     <div className="overlay-story-stack">
-      <Button onPress={() => setIsOpen(true)}>Open Empty Palette Demo</Button>
+      <Button onClick={() => setIsOpen(true)}>Open Empty Palette Demo</Button>
 
       <CommandPalette
         isOpen={isOpen}

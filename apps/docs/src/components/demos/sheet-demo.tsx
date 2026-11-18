@@ -6,7 +6,7 @@ export function SheetLiveDemo() {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <Button variant="secondary" onPress={() => setIsOpen(true)}>
+      <Button variant="secondary" onClick={() => setIsOpen(true)}>
         Open Gesture Sheet
       </Button>
 
@@ -29,10 +29,10 @@ export function SheetLiveDemo() {
             sanctuary.
           </p>
           <div className="flex justify-end gap-3 pt-4">
-            <Button variant="secondary" onPress={() => setIsOpen(false)}>
+            <Button variant="secondary" onClick={() => setIsOpen(false)}>
               Close
             </Button>
-            <Button variant="primary" onPress={() => setIsOpen(false)}>
+            <Button variant="primary" onClick={() => setIsOpen(false)}>
               Confirm Spatial Layout
             </Button>
           </div>

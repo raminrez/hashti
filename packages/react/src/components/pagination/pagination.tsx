@@ -123,8 +123,8 @@ export function Pagination({
           size="md"
           iconOnly
           aria-label="Previous page"
-          isDisabled={range.page <= 1}
-          onPress={() => onPageChange(range.page - 1)}
+          disabled={range.page <= 1}
+          onClick={() => onPageChange(range.page - 1)}
         >
           <Icon name="chevronLeft" />
         </Button>
@@ -133,8 +133,8 @@ export function Pagination({
           size="md"
           iconOnly
           aria-label="Next page"
-          isDisabled={range.page >= range.pages}
-          onPress={() => onPageChange(range.page + 1)}
+          disabled={range.page >= range.pages}
+          onClick={() => onPageChange(range.page + 1)}
         >
           <Icon name="chevronRight" />
         </Button>

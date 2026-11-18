@@ -25,7 +25,7 @@ export function CommandPaletteLiveDemo() {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <Button variant="secondary" onPress={() => setIsOpen(true)}>
+      <Button variant="secondary" onClick={() => setIsOpen(true)}>
         <span>Open Command Palette</span>
         <Kbd>⌘K</Kbd>
       </Button>

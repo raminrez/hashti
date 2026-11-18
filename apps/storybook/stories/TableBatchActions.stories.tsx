@@ -26,10 +26,10 @@ function TableBatchActionsDemo() {
   return (
     <div className="data-story-stack">
       <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1rem" }}>
-        <Button variant="secondary" size="sm" onPress={() => setSelectedCount((c) => c + 1)}>
+        <Button variant="secondary" size="sm" onClick={() => setSelectedCount((c) => c + 1)}>
           Select Another Row
         </Button>
-        <Button variant="ghost" size="sm" onPress={() => setSelectedCount(0)}>
+        <Button variant="ghost" size="sm" onClick={() => setSelectedCount(0)}>
           Clear Selection
         </Button>
       </div>

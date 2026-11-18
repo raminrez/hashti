@@ -236,8 +236,8 @@ export function ProgressIndicator({
               <Button
                 variant="ghost"
                 size="sm"
-                isDisabled={step.disabled}
-                onPress={() => onStepChange(step.id)}
+                disabled={step.disabled}
+                onClick={() => onStepChange(step.id)}
               >
                 {step.label}
               </Button>

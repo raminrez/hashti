@@ -203,7 +203,7 @@ function CustomBreadcrumbWithRef() {
       <Button
         size="sm"
         variant="secondary"
-        onPress={() => {
+        onClick={() => {
           if (breadcrumbRef.current) {
             breadcrumbRef.current.style.outline = "2px solid var(--hashti-focus)";
           }

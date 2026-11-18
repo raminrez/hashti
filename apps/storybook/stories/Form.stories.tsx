@@ -286,7 +286,7 @@ function DraftForm({
             )}
             <p role="status">{phase === "saved" ? copy.success : ""}</p>
           </div>
-          <Button type="submit" isPending={pending} pendingLabel={copy.pendingLabel}>
+          <Button type="submit" disabled={pending} pendingLabel={copy.pendingLabel}>
             {copy.saveLabel}
           </Button>
         </div>

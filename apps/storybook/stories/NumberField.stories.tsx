@@ -266,7 +266,7 @@ function ComposedNumbers() {
         formatOptions={{ style: "percent" }}
       />
       <Button type="submit">Read number values</Button>
-      <Button variant="ghost" onPress={() => input.current?.focus()}>
+      <Button variant="ghost" onClick={() => input.current?.focus()}>
         Focus estimate
       </Button>
       <output aria-label="Raw number values">{saved}</output>

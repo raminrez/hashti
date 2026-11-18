@@ -23,7 +23,7 @@ import {
   type FieldPresentationProps,
 } from "../field";
 import { Icon } from "../../icons";
-import { classes, type ControlSize } from "../../utils";
+import { classes, cx, type ControlSize } from "../../utils";
 
 type SelectionMode = "single" | "multiple";
 
@@ -89,7 +89,7 @@ function SelectTrigger({ className, children, size = "md", ref, ...props }: Butt
         else if (ref) ref.current = element;
       }}
       size={size}
-      className={classes("hashti-field__control hashti-select-trigger", className)}
+      className={cx("hashti-field__control hashti-select-trigger", typeof className === "function" ? undefined : className)}
     >
       {composeTriggerContent(children)}
     </Button>

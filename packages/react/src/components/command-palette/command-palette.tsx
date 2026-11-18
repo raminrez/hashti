@@ -166,7 +166,7 @@ export function CommandPaletteDialog({
             iconOnly
             aria-label="Close command palette"
             className="hashti-command-palette__close"
-            onPress={() => setIsOpen(false)}
+            onClick={() => setIsOpen(false)}
           >
             <Icon name="close" />
           </Button>

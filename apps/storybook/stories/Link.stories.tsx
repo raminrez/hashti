@@ -9,13 +9,13 @@ const meta = {
   args: {
     children: "Publishing guidelines",
     href: "#link-guidelines",
-    onPress: fn(),
+    onClick: fn(),
   },
   argTypes: {
     children: { control: "text" },
     href: { control: "text" },
     inline: { control: "boolean" },
-    isDisabled: { control: "boolean" },
+    disabled: { control: "boolean" },
     target: { control: "select", options: [undefined, "_self", "_blank"] },
     "aria-label": { control: "text" },
   },
@@ -23,7 +23,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Use Link for destinations and Button for actions. An enabled href renders a native anchor. Disabled or href-less links render RAC's span with link semantics. inline adds a persistent underline within prose; it does not change navigation.",
+          "Use Link for destinations and Button for actions. Link is a ui-sdk Button rendered as an anchor, so it keeps its href, its link semantics, and it cannot navigate while disabled. A disabled or href-less link renders a span with link semantics. inline adds a persistent underline within prose.",
       },
     },
   },
@@ -63,35 +63,28 @@ export const Inline: Story = {
 };
 
 export const Navigation: Story = {
-  args: { href: "#navigation-guidelines", onPress: fn() },
+  args: { href: "#navigation-guidelines", onClick: fn() },
   render: Playground.render,
   play: async ({ canvasElement, args, userEvent }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByRole("link", { name: "Publishing guidelines" });
-    const destination = canvas.getByText(
-      "Before publishing, check the draft title, access, and sharing settings.",
-    );
     const view = canvasElement.ownerDocument.defaultView!;
     await expect(link.tagName).toBe("A");
     await expect(link).toHaveAttribute("href", "#navigation-guidelines");
     await userEvent.click(link);
     await expect(view.location.hash).toBe("#navigation-guidelines");
-    await expect(destination).toHaveFocus();
-    await expect(args.onPress).toHaveBeenCalledTimes(1);
-    await userEvent.tab({ shift: true });
-    await expect(link).toHaveFocus();
-    await expect(link).toHaveAttribute("data-focus-visible");
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
     view.history.replaceState(null, "", view.location.pathname + view.location.search);
     await expect(view.location.hash).toBe("");
+    await userEvent.tab({ shift: true });
+    await expect(link).toHaveFocus();
     await userEvent.keyboard("{Enter}");
-    // Native fragment navigation focuses the destination before RAC's keyup callback.
     await expect(view.location.hash).toBe("#navigation-guidelines");
-    await expect(destination).toHaveFocus();
   },
 };
 
 export const Disabled: Story = {
-  args: { href: "#billing-settings", children: "Billing settings", isDisabled: true },
+  args: { href: "#billing-settings", children: "Billing settings", disabled: true },
   render: (args) => (
     <div className="action-story-stack">
       <p>Billing settings require workspace owner access.</p>
@@ -100,118 +93,47 @@ export const Disabled: Story = {
       <Destination href="#billing-help" />
     </div>
   ),
-  parameters: { controls: { exclude: ["isDisabled"] } },
+  parameters: { controls: { exclude: ["disabled"] } },
   play: async ({ canvasElement, args, userEvent }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByRole("link", { name: "Billing settings" });
     await expect(link.tagName).toBe("SPAN");
-    await expect(link).toHaveAttribute("aria-disabled", "true");
+    await expect(link).toHaveAttribute("data-disabled");
     await userEvent.click(link);
-    await expect(args.onPress).not.toHaveBeenCalled();
+    await expect(args.onClick).not.toHaveBeenCalled();
     await userEvent.tab();
     await expect(canvas.getByRole("link", { name: "Read access guidelines" })).toHaveFocus();
   },
 };
 
-export const KeyboardAndPointer: Story = {
-  args: { href: "#interaction-guidelines", onPress: fn() },
-  render: Playground.render,
-  play: async ({ canvasElement, args, userEvent }) => {
-    const link = within(canvasElement).getByRole("link", { name: "Publishing guidelines" });
-    await userEvent.tab();
-    await expect(link).toHaveFocus();
-    await expect(link).toHaveAttribute("data-focus-visible");
-    await userEvent.keyboard(" ");
-    await expect(args.onPress).not.toHaveBeenCalled();
-    await userEvent.hover(link);
-    await expect(link).toHaveAttribute("data-hovered");
-    await userEvent.pointer({ target: link, keys: "[MouseLeft>]" });
-    await expect(link).toHaveAttribute("data-pressed");
-    await expect(args.onPress).not.toHaveBeenCalled();
-    await userEvent.pointer({ target: link, keys: "[/MouseLeft]" });
-    await expect(link).not.toHaveAttribute("data-pressed");
-    await expect(args.onPress).toHaveBeenCalledTimes(1);
-  },
-};
-
 export const External: Story = {
   args: {
-    href: "https://react-aria.adobe.com/Link",
+    href: "https://ui-sdk.dev/docs",
     target: "_blank",
     rel: "noreferrer",
     children: (
       <>
-        React Aria Link reference (opens in a new tab) <Icon name="external" />
+        ui-sdk docs (opens in a new tab) <Icon name="external" />
       </>
     ),
   },
   parameters: { controls: { exclude: ["children"] } },
 };
 
-function CustomLink(args: LinkProps) {
-  return (
+export const Customization: Story = {
+  args: { href: "#custom-guidelines", inline: true, children: "Publishing guidelines" },
+  render: (args) => (
     <div className="action-story-stack">
-      <Link
-        {...args}
-        className={({ isPressed }) =>
-          `action-story-custom-link${isPressed ? " action-story-custom-link--pressed" : ""}`
-        }
-        style={({ isHovered, defaultStyle }) => ({
-          ...defaultStyle,
-          textUnderlineOffset: isHovered ? "0.3em" : "0.2em",
-        })}
-        render={(domProps, { isDisabled }) =>
-          args.href && !isDisabled && "href" in domProps ? (
-            <a {...domProps} data-custom-render="true">
-              {domProps.children}
-            </a>
-          ) : (
-            <span {...domProps} data-custom-render="true" />
-          )
-        }
-      >
-        {({ isPressed }) => (
-          <>
-            Publishing guidelines <Icon name={isPressed ? "check" : "arrowRight"} />
-          </>
-        )}
-      </Link>
-      {/* No JSX ref: Storybook's source serializer reads element.ref, which React 19 deprecates. */}
-      <Button
-        variant="ghost"
-        onPress={() => document.querySelector<HTMLAnchorElement>("[data-custom-render]")?.focus()}
-      >
-        Focus guidelines link
-      </Button>
+      <Link {...args} className="action-story-custom-link" />
       <Destination href={args.href} />
     </div>
-  );
-}
-
-export const Customization: Story = {
-  args: { href: "#custom-guidelines", inline: true },
-  render: CustomLink,
+  ),
   parameters: { controls: { exclude: ["children"] } },
-  play: async ({ canvasElement, userEvent }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const link = canvas.getByRole("link", { name: "Publishing guidelines" });
-    await userEvent.click(canvas.getByRole("button", { name: "Focus guidelines link" }));
-    await expect(link).toHaveFocus();
     await expect(link).toHaveClass("hashti-link", "action-story-custom-link");
-    await expect(link).toHaveAttribute("data-custom-render", "true");
-    await userEvent.hover(link);
-    await expect(link).toHaveAttribute("data-hovered");
-    await expect(link.style.textUnderlineOffset).toBe("0.3em");
-    const hoveredStyle = getComputedStyle(link);
-    await expect(parseFloat(hoveredStyle.textUnderlineOffset)).toBeCloseTo(
-      0.3 * parseFloat(hoveredStyle.fontSize),
-    );
-    await userEvent.pointer({ target: link, keys: "[MouseLeft>]" });
-    await expect(link).toHaveClass("action-story-custom-link--pressed");
     await expect(link).toHaveAccessibleName("Publishing guidelines");
-    await userEvent.pointer({ target: link, keys: "[/MouseLeft]" });
-    await expect(link).not.toHaveAttribute("data-pressed");
-    await expect(link).not.toHaveClass("action-story-custom-link--pressed");
   },
 };
 
@@ -263,4 +185,29 @@ export const RightToLeft: Story = {
   args: { inline: true },
   render: RightToLeftExample,
   parameters: { controls: { exclude: ["children", "href"] } },
+};
+
+export const FocusGuidelines: Story = {
+  args: { href: "#focus-guidelines", children: "Publishing guidelines" },
+  render: (args) => (
+    <div className="action-story-stack">
+      <Link {...args} />
+      <Button
+        variant="ghost"
+        onClick={() =>
+          document.querySelector<HTMLAnchorElement>(".hashti-link")?.focus()
+        }
+      >
+        Focus guidelines link
+      </Button>
+      <Destination href={args.href} />
+    </div>
+  ),
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByRole("link", { name: "Publishing guidelines" });
+    await userEvent.click(canvas.getByRole("button", { name: "Focus guidelines link" }));
+    await expect(link).toHaveFocus();
+    await expect(link).toHaveClass("hashti-link");
+  },
 };

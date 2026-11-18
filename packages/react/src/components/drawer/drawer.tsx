@@ -92,7 +92,7 @@ export function Drawer({
                       iconOnly
                       aria-label="Close drawer"
                       className="hashti-drawer-close"
-                      onPress={close}
+                      onClick={close}
                     >
                       <Icon name="close" />
                     </Button>

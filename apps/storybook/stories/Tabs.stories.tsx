@@ -202,7 +202,7 @@ function ControlledTabsExample() {
         <span>
           Controlled active key: <strong>{String(selectedKey)}</strong>
         </span>
-        <Button size="sm" variant="secondary" onPress={() => setSelectedKey("deploy")}>
+        <Button size="sm" variant="secondary" onClick={() => setSelectedKey("deploy")}>
           Jump to Deploy
         </Button>
       </div>

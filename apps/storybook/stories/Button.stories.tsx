@@ -1,4 +1,6 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+"use client";
+
+import { Fragment, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, waitFor, within } from "storybook/test";
 import { Button, Icon, Theme, useTheme, type ButtonProps, type ButtonVariant } from "@hashti/react";
@@ -7,13 +9,9 @@ import "./actions.css";
 const variants = [
   "primary",
   "secondary",
-  "ghost",
   "danger",
-] as const satisfies readonly ButtonVariant[];
-const compatibilityVariants = [
-  "tertiary",
-  "danger-tertiary",
-  "danger-ghost",
+  "ghost",
+  "outline",
 ] as const satisfies readonly ButtonVariant[];
 
 const meta = {
@@ -21,23 +19,23 @@ const meta = {
   component: Button,
   args: {
     children: "Save changes",
-    onPress: fn(),
+    onClick: fn(),
   },
   argTypes: {
     variant: { control: "select", options: variants },
     size: { control: "select", options: [undefined, "sm", "md", "lg"] },
     children: { control: "text" },
     iconOnly: { control: "boolean" },
-    isDisabled: { control: "boolean" },
-    isPending: { control: "boolean" },
+    disabled: { control: "boolean" },
     pendingLabel: { control: "text" },
+    agentConfirm: { control: "text" },
     "aria-label": { control: "text" },
   },
   parameters: {
     docs: {
       description: {
         component:
-          "Four core choices: primary for the main action, secondary for supporting actions, ghost for quiet actions, and danger for destructive actions. Frame defaults to a 44px minimum. Keep action text mounted while pending and localize pendingLabel alongside it.",
+          "Five core choices: primary for the main action, secondary for supporting actions, ghost for quiet actions, outline for bordered quiet actions, and danger for destructive actions. Frame defaults to a 44px minimum. Return a Promise from onClick to keep the button pending until it settles; pendingLabel is what screen readers hear after a second.",
       },
     },
   },
@@ -65,10 +63,10 @@ function VariantButtons({
               variant={variant}
               pendingLabel={
                 args.pendingLabel ??
-                (variant.startsWith("danger") ? "Deleting draft" : "Saving changes")
+                (variant === "danger" ? "Deleting draft" : "Saving changes")
               }
             >
-              {variant.startsWith("danger") ? "Delete draft" : "Save changes"}
+              {variant === "danger" ? "Delete draft" : "Save changes"}
             </Button>
           </dd>
         </Fragment>
@@ -80,19 +78,6 @@ function VariantButtons({
 export const Variants: Story = {
   render: VariantButtons,
   parameters: { controls: { exclude: ["variant", "children"] } },
-};
-
-export const CompatibilityVariants: Story = {
-  render: (args) => <VariantButtons {...args} variants={compatibilityVariants} />,
-  parameters: {
-    controls: { exclude: ["variant", "children"] },
-    docs: {
-      description: {
-        story:
-          "Existing outlined and quiet-destructive treatments remain supported. Use the four core variants for new Frame interfaces.",
-      },
-    },
-  },
 };
 
 export const Sizes: Story = {
@@ -115,7 +100,7 @@ export const Sizes: Story = {
     docs: {
       description: {
         story:
-          "Frame: default 44px; sm 32px, md 44px, lg 48px, xl 64px, 2xl 80px. These are scalable minimums, so labels and text resizing can increase the height.",
+          "Frame: default 44px; sm 32px, md 44px, lg 48px. These are scalable minimums, so labels and text resizing can increase the height.",
       },
     },
   },
@@ -135,180 +120,165 @@ export const IconOnly: Story = {
     await userEvent.tab();
     await expect(button).toHaveFocus();
     await userEvent.keyboard("{Enter}");
-    await expect(args.onPress).toHaveBeenCalled();
+    await expect(args.onClick).toHaveBeenCalled();
   },
 };
 
 export const Disabled: Story = {
-  args: { isDisabled: true },
+  args: { disabled: true },
   render: (args) => (
     <div className="action-story-stack">
       <p>These actions are unavailable until you have permission to edit the draft.</p>
       <VariantButtons {...args} />
     </div>
   ),
-  parameters: { controls: { exclude: ["variant", "children", "isDisabled"] } },
+  parameters: { controls: { exclude: ["variant", "children", "disabled"] } },
   play: async ({ canvasElement, args, userEvent }) => {
     for (const button of within(canvasElement).getAllByRole("button")) {
       await expect(button).toBeDisabled();
       await userEvent.click(button);
     }
-    await expect(args.onPress).not.toHaveBeenCalled();
-  },
-};
-
-export const Pending: Story = {
-  args: { isPending: true },
-  render: VariantButtons,
-  parameters: {
-    controls: { exclude: ["variant", "children", "isPending"] },
-    docs: {
-      description: {
-        story:
-          "Persistent pending states for inspection. isPending blocks activation without native disabling. Save and retry below demonstrates application-owned request state.",
-      },
-    },
-  },
-  play: async ({ canvasElement, args, userEvent }) => {
-    const buttons = within(canvasElement).getAllByRole("button");
-    await userEvent.tab();
-    await expect(buttons[0]).toHaveFocus();
-    for (const button of buttons) {
-      await expect(button).toHaveAttribute("aria-disabled", "true");
-      await expect(button).not.toBeDisabled();
-      await expect(within(button).getByRole("progressbar")).toHaveAccessibleName(
-        button.textContent?.startsWith("Delete") ? "Deleting draft" : "Saving changes",
-      );
-      await userEvent.click(button);
-      await userEvent.keyboard("{Enter} ");
-    }
-    await expect(args.onPress).not.toHaveBeenCalled();
+    await expect(args.onClick).not.toHaveBeenCalled();
   },
 };
 
 export const KeyboardAndPointer: Story = {
-  args: { children: "Run action", onPress: fn() },
+  args: { children: "Run action", onClick: fn() },
   play: async ({ canvasElement, args, userEvent }) => {
     const button = within(canvasElement).getByRole("button", { name: "Run action" });
     await userEvent.tab();
     await expect(button).toHaveFocus();
-    await expect(button).toHaveAttribute("data-focus-visible");
     await userEvent.keyboard("[Space>]");
-    await expect(button).toHaveAttribute("data-pressed");
-    await expect(args.onPress).not.toHaveBeenCalled();
+    await expect(args.onClick).not.toHaveBeenCalled();
     await userEvent.keyboard("[/Space]");
-    await expect(button).not.toHaveAttribute("data-pressed");
-    await expect(args.onPress).toHaveBeenCalledTimes(1);
-    await userEvent.hover(button);
-    await expect(button).toHaveAttribute("data-hovered");
-    await userEvent.pointer({ target: button, keys: "[MouseLeft>]" });
-    await expect(button).toHaveAttribute("data-pressed");
-    await expect(args.onPress).toHaveBeenCalledTimes(1);
-    await userEvent.pointer({ target: button, keys: "[/MouseLeft]" });
-    await expect(button).not.toHaveAttribute("data-pressed");
-    await expect(args.onPress).toHaveBeenCalledTimes(2);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
     await userEvent.keyboard("{Enter}");
-    await expect(args.onPress).toHaveBeenCalledTimes(3);
+    await expect(args.onClick).toHaveBeenCalledTimes(2);
   },
 };
 
-function simulateSave(attempt: number, signal: AbortSignal) {
-  return new Promise<void>((resolve, reject) => {
-    const abort = () => {
-      clearTimeout(timer);
-      reject(signal.reason);
-    };
-    const timer = setTimeout(() => {
-      signal.removeEventListener("abort", abort);
-      if (attempt === 1) reject(new Error("The first example request fails."));
-      else resolve();
-    }, 800);
-    signal.addEventListener("abort", abort, { once: true });
-  });
-}
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const saveDraft = fn(simulateSave);
+export const Pending: Story = {
+  args: {
+    children: "Save draft",
+    pendingLabel: "Saving draft",
+  },
+  render: (args) => <Button {...args} onClick={() => wait(2000)} />,
+  parameters: { controls: { exclude: ["onClick"] } },
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: "Save draft" });
+    const before = button.getBoundingClientRect();
+    await userEvent.tab();
+    await userEvent.keyboard("{Enter}");
+    // ui-sdk drives pending from the handler's Promise: busy, unpressable, focused.
+    await waitFor(() => expect(button).toHaveAttribute("data-pending"));
+    await expect(button).toHaveAttribute("aria-busy", "true");
+    await expect(button).toHaveAttribute("aria-disabled", "true");
+    await expect(button).toHaveTextContent("Save draft");
+    await expect(button).toHaveFocus();
+    await expect(within(button).getByText("Save draft")).toBeInTheDocument();
+    expect(button.querySelector(".hashti-spinner")).not.toBeNull();
+    const pendingRect = button.getBoundingClientRect();
+    await expect([pendingRect.width, pendingRect.height]).toEqual([before.width, before.height]);
+    await userEvent.click(button);
+    await waitFor(() => expect(button).not.toHaveAttribute("data-pending"), {
+      timeout: 4000,
+    });
+  },
+};
 
 function SaveExample(args: ButtonProps) {
-  const [phase, setPhase] = useState<"idle" | "pending" | "error" | "saved">("idle");
-  const attempts = useRef(0);
-  const request = useRef<AbortController | null>(null);
-  useEffect(() => () => request.current?.abort(), []);
+  const [attempts, setAttempts] = useState(0);
+  const [saved, setSaved] = useState(false);
 
   return (
     <div className="action-story-stack">
       <p>Local example: the first save fails; the next succeeds. No request leaves this page.</p>
-      <p>Draft: Weekly review notes</p>
       <Button
         {...args}
-        isPending={phase === "pending"}
-        onPress={async (event) => {
-          args.onPress?.(event);
-          const controller = new AbortController();
-          request.current = controller;
-          setPhase("pending");
-          try {
-            await saveDraft(++attempts.current, controller.signal);
-            if (!controller.signal.aborted) setPhase("saved");
-          } catch {
-            if (!controller.signal.aborted) setPhase("error");
-          }
+        pendingLabel="Saving draft"
+        onClick={async () => {
+          const attempt = attempts + 1;
+          setAttempts(attempt);
+          setSaved(false);
+          await wait(600);
+          if (attempt === 1) throw new Error("The first example request fails.");
+          setSaved(true);
         }}
-      />
-      <div className="action-story-feedback">
-        {phase === "error" && (
-          <p role="alert" className="action-story-error">
-            Draft was not saved. It is still here. Choose Save draft to try again.
-          </p>
-        )}
-        <p role="status">{phase === "saved" ? "Draft saved." : ""}</p>
-      </div>
+      >
+        {attempts > 0 && !saved ? "Try again" : "Save draft"}
+      </Button>
+      <p role="status">{saved ? "Draft saved." : ""}</p>
     </div>
   );
 }
 
 export const SaveAndRetry: Story = {
-  args: { children: "Save draft", pendingLabel: "Saving draft", onPress: fn() },
+  args: { children: "Save draft" },
   render: SaveExample,
-  parameters: { controls: { exclude: ["children", "isPending", "isDisabled"] } },
-  beforeEach: () => {
-    saveDraft.mockReset().mockImplementation(simulateSave);
+  parameters: {
+    controls: { exclude: ["children", "disabled"] },
+    docs: {
+      description: {
+        story:
+          "ui-sdk keeps the button pending while the handler's Promise runs and clears the failure on the next press. Keep the label stable; the announcement says it is working.",
+      },
+    },
   },
   play: async ({ canvasElement, userEvent }) => {
     const canvas = within(canvasElement);
-    const button = canvas.getByRole("button", { name: "Save draft" });
-    let rejectSave: (error: Error) => void = () => {};
-    // Control completion explicitly so pending assertions never race the example delay.
-    saveDraft.mockReturnValueOnce(
-      new Promise<void>((_, reject) => {
-        rejectSave = reject;
-      }),
-    );
-    saveDraft.mockResolvedValueOnce();
-    const before = button.getBoundingClientRect();
-    await userEvent.tab();
-    await userEvent.keyboard("{Enter}");
-    await expect(button).toHaveAttribute("data-pending");
-    await expect(button).toHaveTextContent("Save draft");
-    await expect(button).toHaveFocus();
-    await expect(
-      within(button).getByRole("progressbar", { name: "Saving draft" }),
-    ).toBeInTheDocument();
-    const pending = button.getBoundingClientRect();
-    await expect([pending.width, pending.height]).toEqual([before.width, before.height]);
+    const button = canvas.getByRole("button");
     await userEvent.click(button);
-    await userEvent.keyboard("{Enter} ");
-    await expect(saveDraft).toHaveBeenCalledTimes(1);
-    await expect(button).toHaveFocus();
-    rejectSave(new Error("Example save failed."));
-    await expect(await canvas.findByRole("alert")).toHaveTextContent("Draft was not saved.");
-    await expect(button).not.toHaveAttribute("data-pending");
-    await expect(button).toHaveFocus();
-    await expect(canvas.getByText("Draft: Weekly review notes")).toBeInTheDocument();
-    await userEvent.keyboard("{Enter}");
+    await waitFor(() => expect(button).toHaveTextContent("Try again"));
+    await userEvent.click(button);
     await waitFor(() => expect(canvas.getByRole("status")).toHaveTextContent("Draft saved."));
-    await expect(saveDraft).toHaveBeenCalledTimes(2);
-    await expect(button).toHaveFocus();
+  },
+};
+
+export const AgentConfirm: Story = {
+  args: {
+    variant: "danger",
+    children: "Delete workspace",
+    agentConfirm: "Permanently deletes the workspace and all of its projects",
+  },
+  parameters: {
+    controls: { exclude: ["variant", "children"] },
+    docs: {
+      description: {
+        story:
+          "agentConfirm emits ui-sdk's data-agent-confirm mark: an agent sees the sentence in its snapshot and must wait for a person before pressing.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole("button", { name: "Delete workspace" });
+    await expect(button).toHaveAttribute(
+      "data-agent-confirm",
+      "Permanently deletes the workspace and all of its projects",
+    );
+  },
+};
+
+export const AsLink: Story = {
+  args: {
+    variant: "outline",
+    children: "Publishing guidelines",
+    render: <a href="#link-guidelines" />,
+  },
+  parameters: {
+    controls: { exclude: ["render", "children"] },
+    docs: {
+      description: {
+        story: "render swaps the element; the button look and behavior stay. See the Link stories for prose links.",
+      },
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const link = within(canvasElement).getByRole("link", { name: "Publishing guidelines" });
+    await expect(link.tagName).toBe("A");
+    await expect(link).toHaveAttribute("href", "#link-guidelines");
   },
 };
 
@@ -317,26 +287,11 @@ function CustomButton(args: ButtonProps) {
     <div className="action-story-row">
       <Button
         {...args}
-        className={({ isPressed }) =>
-          `action-story-custom-button${isPressed ? " action-story-custom-button--pressed" : ""}`
-        }
-        style={({ isPressed, defaultStyle }) => ({
-          ...defaultStyle,
-          borderStyle: isPressed ? "dashed" : "solid",
-        })}
-        render={(domProps) => <button {...domProps} data-custom-render="true" />}
-      >
-        {({ isPressed }) => (
-          <>
-            <Icon name={isPressed ? "check" : "file"} />
-            Save draft
-          </>
-        )}
-      </Button>
-      {/* No JSX ref: Storybook's source serializer reads element.ref, which React 19 deprecates. */}
+        className="action-story-custom-button"
+      />
       <Button
         variant="ghost"
-        onPress={() => document.querySelector<HTMLButtonElement>("[data-custom-render]")?.focus()}
+        onClick={() => document.querySelector<HTMLButtonElement>(".action-story-custom-button")?.focus()}
       >
         Focus save action
       </Button>
@@ -345,7 +300,7 @@ function CustomButton(args: ButtonProps) {
 }
 
 export const Customization: Story = {
-  args: { variant: "secondary" },
+  args: { variant: "secondary", children: "Save draft" },
   render: CustomButton,
   parameters: { controls: { exclude: ["children", "iconOnly"] } },
   play: async ({ canvasElement, userEvent }) => {
@@ -354,15 +309,6 @@ export const Customization: Story = {
     await userEvent.click(canvas.getByRole("button", { name: "Focus save action" }));
     await expect(button).toHaveFocus();
     await expect(button).toHaveClass("hashti-button", "action-story-custom-button");
-    await expect(button).toHaveAttribute("data-custom-render", "true");
-    await userEvent.keyboard("[Space>]");
-    await expect(button).toHaveClass("action-story-custom-button--pressed");
-    await expect(button).toHaveStyle({ borderStyle: "dashed" });
-    await expect(button).toHaveAccessibleName("Save draft");
-    await userEvent.keyboard("[/Space]");
-    await expect(button).not.toHaveAttribute("data-pressed");
-    await expect(button).not.toHaveClass("action-story-custom-button--pressed");
-    await expect(button).toHaveStyle({ borderStyle: "solid" });
   },
 };
 
@@ -410,4 +356,13 @@ function RightToLeftExample(args: ButtonProps) {
 export const RightToLeft: Story = {
   render: RightToLeftExample,
   parameters: { controls: { exclude: ["children", "iconOnly", "pendingLabel"] } },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const persian = canvas.getByRole("button", { name: /ذخیرهٔ تغییرات/ });
+    const arabic = canvas.getByRole("button", { name: /حفظ تغييرات/ });
+    await expect(persian).toBeInTheDocument();
+    await expect(arabic).toBeInTheDocument();
+    await expect(persian.closest("[dir='rtl']")).not.toBeNull();
+    await expect(arabic.closest("[dir='rtl']")).not.toBeNull();
+  },
 };

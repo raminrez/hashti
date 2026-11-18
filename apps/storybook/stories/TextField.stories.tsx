@@ -190,7 +190,7 @@ function ComposedEmail() {
         </TextField.Help>
       </TextField.Root>
       <Button type="submit">Save contact</Button>
-      <Button variant="ghost" onPress={() => input.current?.focus()}>
+      <Button variant="ghost" onClick={() => input.current?.focus()}>
         Focus contact
       </Button>
       <output aria-label="Saved contact">{saved}</output>

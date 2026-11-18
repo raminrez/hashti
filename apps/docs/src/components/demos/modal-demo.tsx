@@ -6,7 +6,7 @@ export function ModalLiveDemo() {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <Button variant="secondary" onPress={() => setIsOpen(true)}>
+      <Button variant="secondary" onClick={() => setIsOpen(true)}>
         Open Modal Dialog
       </Button>
 
@@ -22,10 +22,10 @@ export function ModalLiveDemo() {
                 interior environment provides acoustic damping and diffused natural light.
               </p>
               <div className="flex justify-end gap-3 pt-3">
-                <Button variant="secondary" onPress={close}>
+                <Button variant="secondary" onClick={close}>
                   Cancel
                 </Button>
-                <Button variant="primary" onPress={close}>
+                <Button variant="primary" onClick={close}>
                   Proceed Through Portal
                 </Button>
               </div>

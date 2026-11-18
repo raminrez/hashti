@@ -331,7 +331,7 @@ function ControlledSelectionExample() {
         </Select>
         <div className="overlay-row">
           <output aria-label="Observed selection">Selected: {String(selected ?? "none")}</output>
-          <Button variant="ghost" size="sm" onPress={() => setSelected("admin")}>
+          <Button variant="ghost" size="sm" onClick={() => setSelected("admin")}>
             Reset to Admin
           </Button>
         </div>
@@ -689,8 +689,8 @@ function MultipleSelectionExample() {
               <Button
                 variant="ghost"
                 size="sm"
-                onPress={loadMore}
-                isDisabled={isLoading || limit >= reviewerRoles.length}
+                onClick={loadMore}
+                disabled={isLoading || limit >= reviewerRoles.length}
               >
                 Load more roles
               </Button>

@@ -230,7 +230,7 @@ function SettingsForm({
                     ? "Failed to save changes."
                     : "Ready to save."}
             </span>
-            <Button type="submit" isPending={saveState === "saving"}>
+            <Button type="submit" disabled={saveState === "saving"}>
               Save changes
             </Button>
           </div>
@@ -346,7 +346,7 @@ function NestedReviewDialogExample() {
                   size="md"
                   iconOnly
                   aria-label="Close task dialog"
-                  onPress={close}
+                  onClick={close}
                 >
                   <Icon name="close" />
                 </Button>
@@ -381,7 +381,7 @@ function NestedReviewDialogExample() {
 
                   <div className="hashti-dialog-footer">
                     <DialogTrigger>
-                      <Button variant="tertiary">Discard changes</Button>
+                      <Button variant="outline">Discard changes</Button>
                       <Modal size="xs" isDismissable>
                         <Dialog role="alertdialog">
                           {({ close: closeDiscardModal }) => (
@@ -389,12 +389,12 @@ function NestedReviewDialogExample() {
                               <Heading slot="title">Discard changes?</Heading>
                               <p>All unsaved modifications to this review will be lost.</p>
                               <div className="hashti-dialog-footer">
-                                <Button variant="ghost" onPress={closeDiscardModal}>
+                                <Button variant="ghost" onClick={closeDiscardModal}>
                                   Keep editing
                                 </Button>
                                 <Button
                                   variant="danger"
-                                  onPress={() => {
+                                  onClick={() => {
                                     closeDiscardModal();
                                     close();
                                   }}

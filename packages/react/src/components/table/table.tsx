@@ -161,7 +161,7 @@ export function TableBatchActions({
         <div className="hashti-table-batch-action-list">
           {children}
           {onCancel && (
-            <Button variant="ghost" size="sm" onPress={onCancel}>
+            <Button variant="ghost" size="sm" onClick={onCancel}>
               {cancelLabel}
             </Button>
           )}

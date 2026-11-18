@@ -245,7 +245,7 @@ function ComposedDelivery() {
       <Button
         type="button"
         variant="ghost"
-        onPress={() => {
+        onClick={() => {
           setRefs(`${root.current?.tagName}/${label.current?.tagName}/${input.current?.tagName}`);
           input.current?.focus();
         }}
@@ -255,7 +255,7 @@ function ComposedDelivery() {
       <Button
         type="button"
         variant="ghost"
-        onPress={() => setValidationErrors({ delivery: returnedDeliveryError })}
+        onClick={() => setValidationErrors({ delivery: returnedDeliveryError })}
       >
         Apply returned delivery error
       </Button>

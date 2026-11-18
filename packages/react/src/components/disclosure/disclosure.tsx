@@ -77,7 +77,7 @@ export function DisclosureTrigger({
       variant={variant}
       size={resolvedSize}
       {...props}
-      className={classes("hashti-disclosure-trigger", className)}
+      className={cx("hashti-disclosure-trigger", typeof className === "function" ? undefined : className)}
     >
       {children}
     </Button>

@@ -207,7 +207,7 @@ function ComposedSearch() {
         </SearchField.Help>
       </SearchField.Root>
       <Button type="submit">Read search value</Button>
-      <Button variant="ghost" onPress={() => input.current?.focus()}>
+      <Button variant="ghost" onClick={() => input.current?.focus()}>
         Focus release query
       </Button>
       <output aria-label="Search callback value">{submitted}</output>

@@ -20,7 +20,7 @@ export function DialogLiveDemo() {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <Button onPress={() => setOpen(true)}>Open Architectural Dialog</Button>
+      <Button onClick={() => setOpen(true)}>Open Architectural Dialog</Button>
       {open && (
         <Dialog
           aria-label="Spatial Configuration"
@@ -34,10 +34,10 @@ export function DialogLiveDemo() {
               Configure zenithal skylight diffusion angle and masonry bench orientation.
             </p>
             <div className="flex justify-end gap-2 mt-4">
-              <Button variant="ghost" size="sm" onPress={() => setOpen(false)}>
+              <Button variant="ghost" size="sm" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              <Button variant="primary" size="sm" onPress={() => setOpen(false)}>
+              <Button variant="primary" size="sm" onClick={() => setOpen(false)}>
                 Confirm Settings
               </Button>
             </div>
@@ -52,7 +52,7 @@ export function AlertDialogLiveDemo() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <Button variant="danger" onPress={() => setIsOpen(true)}>
+      <Button variant="danger" onClick={() => setIsOpen(true)}>
         Revoke Ingress Certificate
       </Button>
       {isOpen && (
@@ -129,7 +129,7 @@ export function DrawerLiveDemo() {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <Button variant="secondary" onPress={() => setOpen(true)}>
+      <Button variant="secondary" onClick={() => setOpen(true)}>
         Open Side Drawer (Dalan)
       </Button>
       <Drawer
@@ -144,7 +144,7 @@ export function DrawerLiveDemo() {
             scrutiny while exposing progressive state controls.
           </p>
           <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800 flex justify-end">
-            <Button size="sm" onPress={() => setOpen(false)}>
+            <Button size="sm" onClick={() => setOpen(false)}>
               Close Drawer
             </Button>
           </div>

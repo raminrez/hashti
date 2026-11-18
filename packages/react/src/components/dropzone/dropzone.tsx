@@ -209,7 +209,7 @@ export function FileUploader({
           allowsMultiple={allowsMultiple}
           onSelect={(list) => list && select(Array.from(list))}
         >
-          <Button variant="ghost" isDisabled={isDisabled}>
+          <Button variant="ghost" disabled={isDisabled}>
             <span>Drag files here or choose files</span>
             <Icon name="upload" />
           </Button>
@@ -235,9 +235,9 @@ export function FileUploader({
               variant="ghost"
               size="sm"
               iconOnly
-              isDisabled={isDisabled}
+              disabled={isDisabled}
               aria-label={`Remove ${file.name}`}
-              onPress={() => update(files.filter((_, position) => position !== index))}
+              onClick={() => update(files.filter((_, position) => position !== index))}
             >
               <Icon name="close" />
             </Button>

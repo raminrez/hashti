@@ -151,10 +151,10 @@ function FilterMenuExample() {
                   </Checkbox>
                 </div>
                 <div className="hashti-dialog-footer" style={{ marginTop: "1rem" }}>
-                  <Button variant="ghost" size="sm" onPress={() => setActiveFilters([])}>
+                  <Button variant="ghost" size="sm" onClick={() => setActiveFilters([])}>
                     Clear
                   </Button>
-                  <Button variant="primary" size="sm" onPress={close}>
+                  <Button variant="primary" size="sm" onClick={close}>
                     Apply filters
                   </Button>
                 </div>
@@ -212,10 +212,10 @@ export const FocusManagement: Story = {
                   <Heading slot="title">Quick actions</Heading>
                   <p>Tab through options or press Escape to dismiss and return focus.</p>
                   <div style={{ display: "grid", gap: "0.5rem" }}>
-                    <Button variant="ghost" onPress={close}>
+                    <Button variant="ghost" onClick={close}>
                       Export snapshot
                     </Button>
-                    <Button variant="ghost" onPress={close}>
+                    <Button variant="ghost" onClick={close}>
                       Share report
                     </Button>
                   </div>
@@ -269,11 +269,11 @@ function CustomStylingAndRefsExample() {
                   <Button
                     variant="secondary"
                     size="sm"
-                    onPress={() => setResolved(popoverRef.current !== null)}
+                    onClick={() => setResolved(popoverRef.current !== null)}
                   >
                     Check ref
                   </Button>
-                  <Button variant="primary" size="sm" onPress={close}>
+                  <Button variant="primary" size="sm" onClick={close}>
                     Done
                   </Button>
                 </div>

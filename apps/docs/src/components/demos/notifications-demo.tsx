@@ -52,7 +52,7 @@ export function ToastLiveDemo() {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <Button onPress={triggerToast}>Trigger System Toast</Button>
+      <Button onClick={triggerToast}>Trigger System Toast</Button>
       {toastMsg && (
         <div className="px-4 py-2.5 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-medium shadow-lg animate-fade-in flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[var(--hashti-focus)]"></span>

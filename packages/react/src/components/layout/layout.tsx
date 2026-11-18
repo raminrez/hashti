@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentPropsWithRef, ReactNode, CSSProperties } from "react";
-import { Link, type LinkProps } from "../button";
+import { Link, type LinkProps } from "../link";
 import { cx } from "../../utils";
 
 export interface StackProps extends ComponentPropsWithRef<"div"> {

@@ -28,7 +28,7 @@ function AlertDialogDemo() {
 
   return (
     <div className="overlay-story-stack">
-      <Button variant="danger" onPress={() => setIsOpen(true)}>
+      <Button variant="danger" onClick={() => setIsOpen(true)}>
         Delete Cluster
       </Button>
 
@@ -75,7 +75,7 @@ function AlertDialogBackdropDemo({ backdrop }: { backdrop: "dim" | "blur" | "non
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="overlay-story-case">
-      <Button variant="danger" onPress={() => setIsOpen(true)}>
+      <Button variant="danger" onClick={() => setIsOpen(true)}>
         {`Open ${backdrop} alert`}
       </Button>
       <AlertDialog
@@ -124,7 +124,7 @@ function AlertDialogRtlDemo() {
   return (
     <Theme dir="rtl">
       <div dir="rtl" className="overlay-story-stack">
-        <Button variant="danger" onPress={() => setIsOpen(true)}>
+        <Button variant="danger" onClick={() => setIsOpen(true)}>
           حذف پایگاه داده
         </Button>
         <AlertDialog

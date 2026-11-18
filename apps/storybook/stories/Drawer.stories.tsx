@@ -25,7 +25,7 @@ function DrawerDemo({ placement = "end" }: { placement?: DrawerPlacement }) {
 
   return (
     <div className="overlay-story-stack">
-      <Button onPress={() => setIsOpen(true)}>Open {placement} Drawer</Button>
+      <Button onClick={() => setIsOpen(true)}>Open {placement} Drawer</Button>
       <Drawer
         isOpen={isOpen}
         onOpenChange={setIsOpen}
@@ -34,10 +34,10 @@ function DrawerDemo({ placement = "end" }: { placement?: DrawerPlacement }) {
         description="Configure your environment variables and deployment pipeline."
         footer={
           <>
-            <Button variant="secondary" onPress={() => setIsOpen(false)}>
+            <Button variant="secondary" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
-            <Button variant="primary" onPress={() => setIsOpen(false)}>
+            <Button variant="primary" onClick={() => setIsOpen(false)}>
               Save changes
             </Button>
           </>
@@ -76,7 +76,7 @@ function DrawerPlacementsDemo() {
   return (
     <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
       {(["start", "end", "top", "bottom"] as const).map((p) => (
-        <Button key={p} variant="secondary" onPress={() => setActivePlacement(p)}>
+        <Button key={p} variant="secondary" onClick={() => setActivePlacement(p)}>
           {p.toUpperCase()} Drawer
         </Button>
       ))}
@@ -88,7 +88,7 @@ function DrawerPlacementsDemo() {
           title={`${activePlacement.toUpperCase()} Drawer`}
           description={`Drawer mounted from the ${activePlacement} edge of the screen.`}
           footer={
-            <Button variant="primary" onPress={() => setActivePlacement(null)}>
+            <Button variant="primary" onClick={() => setActivePlacement(null)}>
               Close
             </Button>
           }
@@ -106,7 +106,7 @@ function DrawerRtlDemo() {
   return (
     <Theme dir="rtl">
       <div dir="rtl" className="overlay-story-stack">
-        <Button onPress={() => setIsOpen(true)}>باز کردن کشوی کناری</Button>
+        <Button onClick={() => setIsOpen(true)}>باز کردن کشوی کناری</Button>
         <Drawer
           isOpen={isOpen}
           onOpenChange={setIsOpen}
@@ -116,10 +116,10 @@ function DrawerRtlDemo() {
           description="پیکربندی متغیرهای محیطی و خط لوله انتشار."
           footer={
             <>
-              <Button variant="secondary" onPress={() => setIsOpen(false)}>
+              <Button variant="secondary" onClick={() => setIsOpen(false)}>
                 انصراف
               </Button>
-              <Button variant="primary" onPress={() => setIsOpen(false)}>
+              <Button variant="primary" onClick={() => setIsOpen(false)}>
                 ذخیره تغییرات
               </Button>
             </>
@@ -140,7 +140,7 @@ function DrawerBackdropDemo({ backdrop }: { backdrop: "dim" | "blur" | "none" })
 
   return (
     <div className="overlay-story-case">
-      <Button variant="secondary" onPress={() => setIsOpen(true)}>
+      <Button variant="secondary" onClick={() => setIsOpen(true)}>
         {`Open ${backdrop} drawer`}
       </Button>
       <Drawer

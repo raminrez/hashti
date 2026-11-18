@@ -1,63 +1,70 @@
 "use client";
 
-import { Children, isValidElement, type ComponentProps, type ReactNode, type Ref } from "react";
 import {
-  Breadcrumbs as RACBreadcrumbs,
-  Breadcrumb,
-  type BreadcrumbsProps as RACBreadcrumbsProps,
-} from "react-aria-components";
-import { Link } from "../button";
+  Children,
+  cloneElement,
+  isValidElement,
+  type ComponentPropsWithRef,
+  type ReactElement,
+  type ReactNode,
+} from "react";
+import { Link, type LinkProps } from "../link";
+import { cx } from "../../utils";
 
-export interface BreadcrumbItemProps extends ComponentProps<"li"> {
-  children: ReactNode;
+export interface BreadcrumbProps extends ComponentPropsWithRef<"li"> {}
+
+export function Breadcrumb({ className, ...props }: BreadcrumbProps) {
+  return <li {...props} className={cx("hashti-breadcrumb", className)} />;
+}
+
+export interface BreadcrumbsProps extends ComponentPropsWithRef<"nav"> {}
+
+export interface BreadcrumbItemProps extends Omit<ComponentPropsWithRef<"li">, "children"> {
+  children?: ReactNode;
   href?: string;
+  /** Marks the item as the current page (aria-current="page"). */
   isCurrent?: boolean;
 }
 
-export function BreadcrumbItem(_props: BreadcrumbItemProps): ReactNode {
-  void _props;
-  return null;
-}
-
-export interface BreadcrumbsProps<T extends object> extends RACBreadcrumbsProps<T> {
-  ref?: Ref<HTMLOListElement>;
-}
-
-export function Breadcrumbs<T extends object>({
-  className,
+export function BreadcrumbItem({
+  href,
+  isCurrent,
   children,
   ...props
-}: BreadcrumbsProps<T>) {
-  const transformed =
-    typeof children === "function"
-      ? children
-      : Children.map(children, (child) => {
-          if (isValidElement(child) && child.type === BreadcrumbItem) {
-            const {
-              href,
-              isCurrent,
-              children: label,
-              ...rest
-            } = child.props as BreadcrumbItemProps;
-            return (
-              <Breadcrumb {...rest}>
-                <Link href={href} aria-current={isCurrent ? "page" : undefined}>
-                  {label}
-                </Link>
-              </Breadcrumb>
-            );
-          }
-          return child;
-        });
-
+}: BreadcrumbItemProps) {
   return (
-    <RACBreadcrumbs
-      {...props}
-      className={["hashti-breadcrumbs", className].filter(Boolean).join(" ")}
-    >
-      {transformed}
-    </RACBreadcrumbs>
+    <Breadcrumb {...props}>
+      <Link href={href} aria-current={isCurrent ? "page" : undefined}>
+        {children}
+      </Link>
+    </Breadcrumb>
   );
 }
 
-export { Breadcrumb };
+export function Breadcrumbs({ className, children, ...props }: BreadcrumbsProps) {
+  const crumbs = Children.toArray(children).filter(isValidElement);
+
+  return (
+    <nav {...props} className={cx("hashti-breadcrumbs", className)}>
+      <ol>
+        {crumbs.map((crumb, index) => {
+          if (crumb.type !== Breadcrumb && crumb.type !== BreadcrumbItem) return crumb;
+          const link = Children.toArray(
+            (crumb.props as BreadcrumbProps).children,
+          ).find((child) => isValidElement(child) && child.type === Link);
+          // The last crumb is the current page unless it says otherwise.
+          if (
+            isValidElement<LinkProps>(link) &&
+            link.props["aria-current"] === undefined &&
+            index === crumbs.length - 1
+          ) {
+            return cloneElement(crumb as ReactElement<BreadcrumbProps>, {
+              children: cloneElement(link, { "aria-current": "page" }),
+            });
+          }
+          return crumb;
+        })}
+      </ol>
+    </nav>
+  );
+}

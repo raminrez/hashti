@@ -84,18 +84,18 @@ export function AlertDialog({
             <div className="hashti-alert-dialog-footer">
               <Button
                 variant="secondary"
-                onPress={() => {
+                onClick={() => {
                   onCancel?.();
                   close();
                 }}
-                isDisabled={isPending}
+                disabled={isPending}
               >
                 {cancelLabel}
               </Button>
               <Button
                 variant={kind === "danger" ? "danger" : "primary"}
-                isPending={isPending}
-                onPress={() => {
+                disabled={isPending}
+                onClick={() => {
                   onConfirm?.();
                   close();
                 }}

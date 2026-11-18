@@ -163,7 +163,7 @@ function ComposedNotes() {
         </TextArea.Help>
       </TextArea.Root>
       <Button type="submit">Save notes</Button>
-      <Button variant="ghost" onPress={() => input.current?.focus()}>
+      <Button variant="ghost" onClick={() => input.current?.focus()}>
         Focus notes
       </Button>
       <output aria-label="Saved notes">{saved}</output>

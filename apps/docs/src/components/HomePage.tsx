@@ -70,7 +70,7 @@ import { Theme, Button } from "@hashti/react";
 export function Threshold() {
   return (
     <Theme theme="frame-light">
-      <Button variant="primary" onPress={openPortal}>
+      <Button variant="primary" onClick={openPortal}>
         Enter portal
       </Button>
     </Theme>

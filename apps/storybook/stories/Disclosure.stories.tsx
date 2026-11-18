@@ -298,11 +298,11 @@ function ControlledGroupExample() {
         <Button
           size="sm"
           variant="secondary"
-          onPress={() => setExpandedKeys(["general", "advanced"])}
+          onClick={() => setExpandedKeys(["general", "advanced"])}
         >
           Expand all
         </Button>
-        <Button size="sm" variant="ghost" onPress={() => setExpandedKeys([])}>
+        <Button size="sm" variant="ghost" onClick={() => setExpandedKeys([])}>
           Collapse all
         </Button>
       </div>
