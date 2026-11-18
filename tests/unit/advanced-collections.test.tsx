@@ -1,7 +1,7 @@
 import { expect, test, describe, mock } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import {
-  ListBox,
+  Listbox,
   Table,
   TableHeader,
   TableBody,
@@ -11,17 +11,16 @@ import {
   GridList,
   NavigationTree,
   ComboBox,
-  ListBoxItem,
 } from "@hashti/react";
 
 describe("Phase 5: Advanced RAC Collection Features and Ergonomics", () => {
   describe("LoadMore Infinite Scrolling", () => {
-    test("ListBox.LoadMore renders with loading spinner and sentinel", () => {
+    test("Listbox.LoadMore renders with loading spinner and sentinel", () => {
       const html = renderToStaticMarkup(
-        <ListBox aria-label="Items List">
-          <ListBox.Item id="item-1">Item 1</ListBox.Item>
-          <ListBox.LoadMore id="load-more" isLoading={true} label="Loading more items…" />
-        </ListBox>,
+        <Listbox aria-label="Items List">
+          <Listbox.Item value="item-1">Item 1</Listbox.Item>
+          <Listbox.LoadMore isLoading={true} label="Loading more items…" />
+        </Listbox>,
       );
 
       expect(html).toContain("hashti-listbox-load-more");
@@ -30,19 +29,18 @@ describe("Phase 5: Advanced RAC Collection Features and Ergonomics", () => {
       expect(html).toContain("Loading more items…");
     });
 
-    test("ListBox.LoadMore renders error state and retry affordance", () => {
+    test("Listbox.LoadMore renders error state and retry affordance", () => {
       const handleRetry = mock(() => {});
       const html = renderToStaticMarkup(
-        <ListBox aria-label="Items List">
-          <ListBox.Item id="item-1">Item 1</ListBox.Item>
-          <ListBox.LoadMore
-            id="load-more"
+        <Listbox aria-label="Items List">
+          <Listbox.Item value="item-1">Item 1</Listbox.Item>
+          <Listbox.LoadMore
             isError={true}
             errorMessage="Network timeout"
             retryLabel="Retry loading"
             onRetry={handleRetry}
           />
-        </ListBox>,
+        </Listbox>,
       );
 
       expect(html).toContain("hashti-load-more-error");
@@ -140,38 +138,28 @@ describe("Phase 5: Advanced RAC Collection Features and Ergonomics", () => {
   });
 
   describe("ComboBox Dynamic Creation", () => {
-    test("ComboBox renders with allowCreateItem prop and CreateItem subcomponent", () => {
+    test("ComboBox renders with allowCreateItem prop and a create option", () => {
       const handleCreate = mock(() => {});
       const html = renderToStaticMarkup(
-        <ComboBox label="Tags" allowCreateItem={true} onCreateItem={handleCreate}>
-          <ListBoxItem id="react">React</ListBoxItem>
-          <ListBoxItem id="vue">Vue</ListBoxItem>
-        </ComboBox>,
+        <ComboBox
+          label="Tags"
+          allowCreateItem={true}
+          onCreateItem={handleCreate}
+          defaultOpen
+          defaultQuery="Svelte"
+          items={[
+            { value: "react", label: "React" },
+            { value: "vue", label: "Vue" },
+          ]}
+        />,
       );
 
       expect(html).toContain("hashti-combobox");
       expect(html).toContain("Tags");
-    });
-
-    test("ComboBox.CreateItem renders creation item markup when mounted", () => {
-      const handleCreate = mock(() => {});
-      const html = renderToStaticMarkup(
-        <div className="custom-combobox-popover">
-          <div
-            role="button"
-            tabIndex={0}
-            data-testid="combobox-create-item"
-            className="hashti-combobox-create-item"
-            onClick={() => handleCreate()}
-            onKeyDown={() => handleCreate()}
-          >
-            <span className="hashti-combobox-create-item-text">Create &quot;Svelte&quot;</span>
-          </div>
-        </div>,
-      );
-
-      expect(html).toContain("hashti-combobox-create-item");
-      expect(html).toContain("Create &quot;Svelte&quot;");
+      // The create option mounts on the client once the query state settles;
+      // the list itself renders its items on the server.
+      expect(html).toContain("hashti-combobox-popover");
+      expect(html).toContain("React");
     });
   });
 });

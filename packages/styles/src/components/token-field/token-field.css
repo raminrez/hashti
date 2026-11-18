@@ -1,14 +1,14 @@
-/* Hashti Modern Aesthetic - TokenField */
+/* Hashti Modern Aesthetic - TokenInput (was TokenField) */
 @layer hashti.components {
-  [data-hashti-theme] .hashti-token-field,
-  [data-hashti-theme] .hashti-token-field {
+  [data-hashti-theme] .hashti-token-input,
+  [data-hashti-theme] .hashti-token-input {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
 
-  [data-hashti-theme] .hashti-token-input,
-  [data-hashti-theme] .hashti-token-input {
+  [data-hashti-theme] .hashti-token-input__editor,
+  [data-hashti-theme] .hashti-token-input__editor {
     display: flex;
     flex-wrap: wrap;
     align-items: center;

@@ -1,26 +1,28 @@
 "use client";
 
-import {
-  Autocomplete as RACAutocomplete,
-  useFilter,
-  type AutocompleteProps as RACAutocompleteProps,
-} from "react-aria-components";
-
-export interface AutocompleteProps<T extends object = object> extends RACAutocompleteProps<T> {}
-
 /**
- * Filters its wrapped collection as the user types. Without a `filter` prop React Aria treats the
- * items as already filtered (async search), so the default here is the locale-aware `contains`.
+ * Autocomplete is a straight re-export of ui-sdk's autocomplete: an input with
+ * a suggestion popup (list, groups, empty/status parts). Hashti styles target
+ * its `data-slot` and state attributes. For a picker that commits values into
+ * a form, use `ComboBox`.
  */
-export function Autocomplete<T extends object = object>({
-  filter,
-  children,
-  ...props
-}: AutocompleteProps<T>) {
-  const { contains } = useFilter({ sensitivity: "base" });
-  return (
-    <RACAutocomplete {...props} filter={filter ?? contains}>
-      {children}
-    </RACAutocomplete>
-  );
-}
+export {
+  Autocomplete,
+  AutocompleteArrow,
+  AutocompleteClear,
+  AutocompleteContent,
+  AutocompleteEmpty,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteItemIcon,
+  AutocompleteItemText,
+  AutocompleteLabel,
+  AutocompleteList,
+  AutocompleteSeparator,
+  AutocompleteStatus,
+  AutocompleteTrigger,
+  createAutocompleteController,
+  type AutocompleteProps,
+} from "@ui-sdk/react/autocomplete";

@@ -33,7 +33,10 @@
       0 10px 25px -5px rgba(0, 0, 0, 0.1),
       0 8px 10px -6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
-    min-width: var(--trigger-width);
+    /* ui-sdk does not reset border/padding/background on Select content, so
+       the popover declares all three itself. */
+    padding: 4px;
+    min-width: var(--anchor-width);
   }
 
   .hashti-select-chips-wrapper {
@@ -55,18 +58,4 @@
     font-weight: 500;
   }
 
-  .hashti-select-chip-remove {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 9999px;
-    opacity: 0.7;
-    transition: opacity var(--hashti-duration-fast-01) ease;
-  }
-
-  .hashti-select-chip-remove:hover,
-  .hashti-select-chip-remove:hover {
-    opacity: 1;
-  }
 }

@@ -14,7 +14,7 @@
 @import "./components/radio/radio.css";
 @import "./components/switch/switch.css";
 @import "./components/tabs/tabs.css";
-@import "./components/disclosure/disclosure.css";
+@import "./components/accordion/accordion.css";
 @import "./components/toolbar/toolbar.css";
 @import "./components/meter/meter.css";
 @import "./components/dropzone/dropzone.css";
@@ -117,7 +117,7 @@
     .hashti-field,
     .hashti-content-switcher,
     .hashti-toggle-button,
-    .hashti-disclosure,
+    .hashti-accordion,
     .hashti-toolbar,
     .hashti-table
   )[data-size="sm"] {
@@ -128,7 +128,7 @@
     .hashti-field,
     .hashti-content-switcher,
     .hashti-toggle-button,
-    .hashti-disclosure,
+    .hashti-accordion,
     .hashti-toolbar,
     .hashti-table
   )[data-size="md"] {
@@ -139,7 +139,7 @@
     .hashti-field,
     .hashti-content-switcher,
     .hashti-toggle-button,
-    .hashti-disclosure,
+    .hashti-accordion,
     .hashti-toolbar,
     .hashti-table
   )[data-size="lg"] {
@@ -1437,9 +1437,11 @@
     animation: hashti-popover-in var(--hashti-duration-fast-01) var(--hashti-ease-exit-productive)
       reverse;
   }
-  .hashti-select-popover {
-    min-width: var(--trigger-width);
+  .hashti-select-popover,
+  .hashti-combobox-popover {
+    min-width: var(--anchor-width);
     max-height: 20rem;
+    overflow: auto;
   }
   .react-aria-ListBox,
   .react-aria-Menu,
@@ -2269,31 +2271,31 @@
     line-height: 1.4;
     box-shadow: 0 2px 6px var(--hashti-shadow);
   }
-  .hashti-tooltip .react-aria-OverlayArrow svg {
+  .hashti-tooltip [data-slot="tooltip-arrow"] svg {
     fill: var(--hashti-background-inverse);
     display: block;
   }
-  .hashti-tooltip[data-placement="bottom"] .react-aria-OverlayArrow svg {
+  .hashti-tooltip[data-side="bottom"] [data-slot="tooltip-arrow"] svg {
     transform: rotate(180deg);
   }
-  .hashti-tooltip[data-placement="left"] .react-aria-OverlayArrow svg {
+  .hashti-tooltip[data-side="left"] [data-slot="tooltip-arrow"] svg {
     transform: rotate(-90deg);
   }
-  .hashti-tooltip[data-placement="right"] .react-aria-OverlayArrow svg {
+  .hashti-tooltip[data-side="right"] [data-slot="tooltip-arrow"] svg {
     transform: rotate(90deg);
   }
 
   .hashti-tabs {
     min-width: 0;
   }
-  .hashti-tabs .react-aria-TabList {
+  .hashti-tabs .hashti-tabs__list {
     display: flex;
     overflow-x: auto;
     gap: 0;
     scrollbar-width: thin;
     border-block-end: 1px solid var(--hashti-border-subtle);
   }
-  .hashti-tabs .react-aria-Tab {
+  .hashti-tabs .hashti-tab {
     flex-shrink: 0;
     min-height: 44px;
     padding: 1rem 1rem 0.8125rem;
@@ -2306,32 +2308,32 @@
     color: var(--hashti-text-secondary);
     outline: none;
   }
-  .hashti-tabs .react-aria-Tab:hover {
+  .hashti-tabs .hashti-tab:hover {
     color: var(--hashti-text-primary);
     border-color: var(--hashti-border-strong);
   }
-  .hashti-tabs .react-aria-Tab[data-selected] {
+  .hashti-tabs .hashti-tab[data-selected] {
     color: var(--hashti-text-primary);
     border-color: var(--hashti-border-interactive);
     font-weight: 600;
   }
-  .hashti-tabs .react-aria-Tab:focus-visible {
+  .hashti-tabs .hashti-tab:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: -2px;
   }
-  .hashti-tabs .react-aria-Tab[data-disabled] {
+  .hashti-tabs .hashti-tab[data-disabled] {
     color: var(--hashti-text-disabled);
     cursor: not-allowed;
   }
-  .hashti-tabs .react-aria-TabPanel {
+  .hashti-tabs .hashti-tab-panel {
     padding: 1.5rem 0;
     outline: none;
   }
-  .hashti-tabs .react-aria-TabPanel:focus-visible {
+  .hashti-tabs .hashti-tab-panel:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: -2px;
   }
-  .hashti-tabs[data-variant="contained"] .react-aria-TabList {
+  .hashti-tabs[data-variant="contained"] .hashti-tabs__list {
     background: var(--hashti-layer-accent, var(--hashti-field));
     border: 1px solid var(--hashti-border-subtle);
     border-radius: var(--hashti-control-radius, var(--hashti-control-radius, 12px));
@@ -2341,7 +2343,7 @@
     max-width: 100%;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
   }
-  .hashti-tabs[data-variant="contained"] .react-aria-Tab {
+  .hashti-tabs[data-variant="contained"] .hashti-tab {
     border: none;
     margin-block-end: 0;
     border-radius: calc(var(--hashti-control-radius, var(--hashti-control-radius, 12px)) - 2px);
@@ -2357,11 +2359,11 @@
       color var(--hashti-duration-fast-01, var(--hashti-duration-fast-01)) ease,
       box-shadow var(--hashti-duration-fast-01, var(--hashti-duration-fast-01)) ease;
   }
-  .hashti-tabs[data-variant="contained"] .react-aria-Tab:hover:not([data-selected]) {
+  .hashti-tabs[data-variant="contained"] .hashti-tab:hover:not([data-selected]) {
     color: var(--hashti-text-primary);
     background: var(--hashti-layer-hover, rgba(0, 0, 0, 0.04));
   }
-  .hashti-tabs[data-variant="contained"] .react-aria-Tab[data-selected] {
+  .hashti-tabs[data-variant="contained"] .hashti-tab[data-selected] {
     background: var(--hashti-layer, white);
     box-shadow:
       0 1px 3px rgba(0, 0, 0, 0.1),
@@ -2374,66 +2376,57 @@
   .hashti-tabs[data-orientation="vertical"] {
     display: flex;
   }
-  .hashti-tabs[data-orientation="vertical"] .react-aria-TabList {
+  .hashti-tabs[data-orientation="vertical"] .hashti-tabs__list {
     flex-direction: column;
   }
-  .hashti-tabs[data-orientation="vertical"] .react-aria-TabPanel {
+  .hashti-tabs[data-orientation="vertical"] .hashti-tab-panel {
     padding: 0 1.5rem;
   }
-  /* Standalone Disclosure & DisclosureGroup */
-  .hashti-disclosure-group {
+  /* Accordion */
+  .hashti-accordion {
     display: flex;
     flex-direction: column;
     border-block-start: 1px solid var(--hashti-border-subtle);
   }
-  .hashti-disclosure-group .hashti-disclosure {
+  .hashti-accordion .hashti-accordion-item {
     border-block-end: 1px solid var(--hashti-border-subtle);
   }
-  .hashti-disclosure-group[data-variant="flush"] {
+  .hashti-accordion[data-variant="flush"] {
     border-block-start: none;
   }
-  .hashti-disclosure-group[data-variant="flush"] .hashti-disclosure {
-    border-block-end: 1px solid var(--hashti-border-subtle);
-  }
-  .hashti-disclosure-group[data-variant="card"] {
+  .hashti-accordion[data-variant="card"] {
     border: none;
     gap: var(--hashti-spacing-03, 0.5rem);
   }
-  .hashti-disclosure-group[data-variant="card"] .hashti-disclosure {
+  .hashti-accordion[data-variant="card"] .hashti-accordion-item {
     border: 1px solid var(--hashti-border-subtle);
     border-radius: var(--hashti-control-radius, var(--hashti-control-radius, 12px));
     background: var(--hashti-layer-01);
   }
-  .hashti-disclosure {
-    --hashti-disclosure-inset: var(--hashti-spacing-05, 1rem);
+  .hashti-accordion-item {
+    --hashti-accordion-inset: var(--hashti-spacing-05, 1rem);
     display: flex;
     flex-direction: column;
     width: 100%;
     border-radius: var(--hashti-control-radius, 12px);
   }
-  .hashti-disclosure[data-open]:not([data-variant="card"]) {
+  .hashti-accordion-item[data-open]:not([data-variant="card"]) {
     background: var(--hashti-layer-accent);
   }
-  .hashti-disclosure[data-variant="default"] {
-    border-block-end: 1px solid var(--hashti-border-subtle);
-  }
-  .hashti-disclosure[data-variant="card"] {
-    border: 1px solid var(--hashti-border-subtle);
-    border-radius: var(--hashti-control-radius, var(--hashti-control-radius, 12px));
-    background: var(--hashti-layer-01);
-  }
-  .hashti-disclosure[data-variant="flush"] {
+  .hashti-accordion-item[data-variant="flush"] {
     border: none;
   }
-  .hashti-disclosure > .react-aria-Heading {
+  .hashti-accordion-header {
     margin: 0;
   }
-  .hashti-disclosure-trigger {
+  .hashti-accordion-trigger {
+    display: flex;
+    align-items: center;
     width: 100%;
     min-height: var(--control-height, 2.5rem);
     justify-content: flex-start;
     gap: 0.75rem;
-    padding-inline: var(--hashti-disclosure-inset);
+    padding-inline: var(--hashti-accordion-inset);
     color: var(--hashti-text-primary) !important;
     background: transparent;
     /* The row owns the radius; a radius here would paint a card inside the row. */
@@ -2441,63 +2434,64 @@
     transform: none !important;
     text-align: start;
     cursor: pointer;
+    border: none;
+    font: inherit;
   }
-  .hashti-disclosure[data-open] .hashti-disclosure-trigger {
+  .hashti-accordion-item[data-open] .hashti-accordion-trigger {
     background: transparent;
   }
-  .hashti-disclosure-trigger:hover,
-  .hashti-disclosure-trigger:active,
-  .hashti-disclosure-trigger:active {
+  .hashti-accordion-trigger:hover,
+  .hashti-accordion-trigger:active {
     transform: none !important;
     background: var(--hashti-layer-hover);
   }
-  .hashti-disclosure-indicator {
+  .hashti-accordion-indicator {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }
-  .hashti-disclosure-indicator > svg,
-  .hashti-disclosure-trigger > svg {
+  .hashti-accordion-indicator > svg,
+  .hashti-accordion-trigger > svg {
     transition: transform var(--hashti-duration-fast-02, var(--hashti-duration-fast-01))
       var(--hashti-ease-standard-productive, cubic-bezier(0.2, 0, 0.38, 0.9));
   }
-  :dir(rtl) .hashti-disclosure-indicator > svg,
-  :dir(rtl) .hashti-disclosure-trigger > svg {
+  :dir(rtl) .hashti-accordion-indicator > svg,
+  :dir(rtl) .hashti-accordion-trigger > svg {
     transform: rotate(180deg);
   }
-  .hashti-disclosure[data-open] .hashti-disclosure-indicator > svg,
-  .hashti-disclosure[data-open] .hashti-disclosure-trigger > svg {
+  .hashti-accordion-item[data-open] .hashti-accordion-indicator > svg,
+  .hashti-accordion-item[data-open] .hashti-accordion-trigger > svg {
     transform: rotate(90deg);
     color: var(--hashti-text-primary);
   }
   :dir(rtl)
-    .hashti-disclosure[data-open]
-    .hashti-disclosure-indicator
+    .hashti-accordion-item[data-open]
+    .hashti-accordion-indicator
     > svg,
   :dir(rtl)
-    .hashti-disclosure[data-open]
-    .hashti-disclosure-trigger
+    .hashti-accordion-item[data-open]
+    .hashti-accordion-trigger
     > svg {
     transform: rotate(90deg);
   }
-  .hashti-disclosure-panel {
-    /* React Aria measures the panel and exposes its height; animating the variable is the
-       supported way to transition the disclosure. */
-    height: var(--disclosure-panel-height, auto);
+  .hashti-accordion-panel {
+    /* ui-sdk measures the panel and exposes its height; animating the variable is the
+       supported way to transition the accordion. */
+    height: var(--accordion-panel-height, auto);
     overflow: clip;
     transition: height var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .hashti-disclosure-panel-inner {
+  .hashti-accordion-panel-inner {
     min-height: 0;
     overflow: hidden;
-    padding: var(--hashti-spacing-03, 0.5rem) var(--hashti-disclosure-inset)
+    padding: var(--hashti-spacing-03, 0.5rem) var(--hashti-accordion-inset)
       var(--hashti-spacing-05, 1rem);
     /* +1px for the trigger's own hairline border, so the body lines up with its title. */
-    padding-inline-start: calc(var(--hashti-disclosure-inset) + 1px);
+    padding-inline-start: calc(var(--hashti-accordion-inset) + 1px);
     color: var(--hashti-text-secondary);
   }
-  .hashti-disclosure[data-variant="card"] .hashti-disclosure-panel-inner {
+  .hashti-accordion-item[data-variant="card"] .hashti-accordion-panel-inner {
     padding: 0.75rem 1rem 1rem;
   }
   .hashti-breadcrumbs {
@@ -3124,7 +3118,7 @@
   .hashti-toast[data-variant="solid"] .hashti-button {
     color: var(--hashti-text-on-color);
   }
-  .hashti-toast[data-variant="solid"] [slot="description"] {
+  .hashti-toast[data-variant="solid"] [data-slot="toast-description"] {
     color: color-mix(in srgb, var(--hashti-text-on-color) 88%, transparent);
   }
   .hashti-notification[data-variant="bordered"],
@@ -3295,13 +3289,9 @@
     width: 80%;
   }
   .hashti-toast-region {
-    position: fixed;
     z-index: 1200;
-    inset-inline-end: 1rem;
-    bottom: 1rem;
+    margin: 1rem;
     width: min(18rem, calc(100vw - 2rem));
-    display: flex;
-    flex-direction: column;
     gap: 0.5rem;
     outline: none;
   }
@@ -3314,16 +3304,17 @@
     padding-inline-start: 13px;
     display: flex;
     align-items: flex-start;
-    background: var(--notification-bg);
+    background: var(--notification-bg, var(--hashti-notification-background-info));
     color: var(--hashti-text-primary);
-    border-inline-start: 3px solid var(--notification-color);
+    border-inline-start: 3px solid
+      var(--notification-color, var(--hashti-support-info));
     box-shadow: 0 2px 6px var(--hashti-shadow);
     outline: none;
   }
   .hashti-toast > svg {
     margin-block-start: 1rem;
   }
-  .hashti-toast .react-aria-ToastContent {
+  .hashti-toast .hashti-toast-content {
     flex: 1;
     min-width: 0;
     display: flex;
@@ -3335,7 +3326,7 @@
     letter-spacing: var(--hashti-body-compact-01-letter-spacing);
     overflow-wrap: anywhere;
   }
-  .hashti-toast [slot="title"] {
+  .hashti-toast [data-slot="toast-title"] {
     font-weight: 600;
   }
   .hashti-toast:focus-visible {
@@ -4454,16 +4445,16 @@
   }
 
   /* ==========================================================================
-     TokenField
+     TokenInput (was TokenField)
      ========================================================================== */
-  .hashti-token-field {
+  .hashti-token-input {
     display: flex;
     flex-direction: column;
     gap: var(--hashti-spacing-02, 0.25rem);
     width: 100%;
   }
 
-  .hashti-token-input {
+  .hashti-token-input__editor {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -4483,46 +4474,43 @@
     position: relative;
   }
 
-  .hashti-token-input:hover:not([data-disabled]):not([data-readonly]) {
+  .hashti-token-input__editor:hover:not([data-disabled]):not([data-readonly]) {
     background: var(--hashti-field-hover);
   }
 
   /* Keyboard focus only, ring outside the border like every other field. */
-  .hashti-token-input:focus-visible {
+  .hashti-token-input__editor:focus-visible {
     outline: 2px solid var(--hashti-focus);
     outline-offset: 2px;
     position: relative;
     z-index: 1;
   }
 
-  .hashti-token-input[data-disabled],
-  .hashti-token-field[data-disabled] .hashti-token-input {
+  .hashti-token-input__editor[data-disabled],
+  .hashti-token-input[data-disabled] .hashti-token-input__editor {
     opacity: 0.5;
     cursor: not-allowed;
     background: var(--hashti-field);
   }
 
-  .hashti-token-input[data-readonly],
-  .hashti-token-field[data-readonly] .hashti-token-input {
+  .hashti-token-input__editor[data-readonly],
+  .hashti-token-input[data-readonly] .hashti-token-input__editor {
     cursor: default;
   }
 
-  .hashti-token-input[data-size="sm"],
-  .hashti-token-field[data-size="sm"] .hashti-token-input {
+  .hashti-token-input[data-size="sm"] .hashti-token-input__editor {
     min-height: 2rem;
     padding: 0.125rem var(--hashti-spacing-03, 0.75rem);
     font-size: 0.75rem;
   }
 
-  .hashti-token-input[data-size="lg"],
-  .hashti-token-field[data-size="lg"] .hashti-token-input {
+  .hashti-token-input[data-size="lg"] .hashti-token-input__editor {
     min-height: 3rem;
     padding: 0.375rem var(--hashti-spacing-05, 1.25rem);
     font-size: 1rem;
   }
 
-  .hashti-token-input[data-multiline="true"],
-  .hashti-token-input--multiline {
+  .hashti-token-input[data-multiline] .hashti-token-input__editor {
     min-height: 5rem;
     max-height: 16rem;
     overflow-y: auto;
@@ -4532,8 +4520,8 @@
     word-break: break-word;
   }
 
-  .hashti-token-input:empty::before {
-    content: attr(data-placeholder);
+  .hashti-token-input__editor[data-empty]::before {
+    content: attr(aria-placeholder);
     color: var(--hashti-text-placeholder);
     pointer-events: none;
     display: inline-block;

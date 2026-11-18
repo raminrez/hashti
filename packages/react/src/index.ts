@@ -11,10 +11,10 @@ export * from "./components/checkbox";
 export * from "./components/code-snippet";
 export * from "./components/color";
 export * from "./components/combobox";
-export * from "./components/command-palette";
+export * from "./components/command";
 export * from "./components/date-picker";
 export * from "./components/dialog";
-export * from "./components/disclosure";
+export * from "./components/accordion";
 export * from "./components/drawer";
 export * from "./components/dropzone";
 export * from "./components/empty-state";
@@ -24,7 +24,7 @@ export * from "./components/input-otp";
 export * from "./components/kbd";
 export * from "./components/layout";
 export * from "./components/link";
-export * from "./components/list-box";
+export * from "./components/listbox";
 export * from "./components/meter";
 export * from "./components/navigation-tree";
 export * from "./components/number-field";
@@ -46,7 +46,7 @@ export * from "./components/theme";
 export * from "./components/time-field";
 export * from "./components/toast";
 export * from "./components/toggle";
-export * from "./components/token-field";
+export * from "./components/token-input";
 export * from "./components/toolbar";
 export * from "./components/tooltip";
 export * from "./components/tree";
@@ -70,15 +70,13 @@ export {
   Heading,
   Keyboard,
   DialogTrigger,
-  TooltipTrigger,
   MenuTrigger,
   SubmenuTrigger,
   Menu,
   MenuItem,
   MenuSection,
   Header as SectionHeader,
-  SelectValue,
-  ComboBoxValue,
+
   TableHeader,
   TableBody,
   TableFooter,
@@ -86,10 +84,6 @@ export {
   Cell,
   ColumnResizer,
   ResizableTableContainer,
-  TabList,
-  Tab,
-  TabPanel,
-  TabPanels,
   TreeSection,
   CalendarGrid,
   CalendarCell,
@@ -99,7 +93,6 @@ export {
   SliderOutput,
   Collection,
   VisuallyHidden,
-  useFilter,
   useListData,
   useAsyncList,
   useDragAndDrop,
@@ -121,6 +114,5 @@ export type {
   TableBodyProps,
   RowProps,
   CellProps,
-  TabProps,
   ValidationResult,
 } from "react-aria-components";

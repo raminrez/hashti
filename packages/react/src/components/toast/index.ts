@@ -1,7 +1,7 @@
 "use client";
 
 export { ToastProvider, useToast } from "./toast";
-export type { ToastMessage } from "./toast";
+export type { ToastMessage, ToastAction, ToastAddOptions, ToastProviderProps } from "./toast";
 
 // css-only notifications (split out per docs/component-inventory.md, decisions log item 10)
 export { InlineNotification, Alert, ActionableNotification } from "./notifications";

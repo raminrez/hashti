@@ -8,7 +8,6 @@ import {
   DialogClose,
   Form,
   Icon,
-  ListBoxItem,
   NumberInput,
   Select,
   Switch,
@@ -55,9 +54,9 @@ const initialSettings: WorkspaceSettingsData = {
 };
 
 const reviewers = [
-  { id: "elena", name: "Elena Rostova" },
-  { id: "marcus", name: "Marcus Chen" },
-  { id: "sophia", name: "Sophia Patel" },
+  { value: "elena", label: "Elena Rostova" },
+  { value: "marcus", label: "Marcus Chen" },
+  { value: "sophia", label: "Sophia Patel" },
 ];
 
 function SettingsForm({
@@ -142,18 +141,16 @@ function SettingsForm({
               <div className="settings-fields settings-fields-pair">
                 <Select
                   label="Default reviewer"
-                  selectedKey={settings.reviewer}
-                  onSelectionChange={(key) => {
-                    if (typeof key === "string") {
-                      setSettings((s) => ({ ...s, reviewer: key }));
+                  value={settings.reviewer}
+                  onValueChange={(value) => {
+                    if (typeof value === "string") {
+                      setSettings((s) => ({ ...s, reviewer: value }));
                       setSaveState("idle");
                     }
                   }}
                   description="Applies to new review assignments."
                   items={reviewers}
-                >
-                  {(item) => <ListBoxItem id={item.id}>{item.name}</ListBoxItem>}
-                </Select>
+                />
                 <NumberInput
                   required
                   min={1}
@@ -247,7 +244,7 @@ function SettingsForm({
             </div>
             <div>
               <dt>Reviewer</dt>
-              <dd>{reviewers.find((r) => r.id === settings.reviewer)?.name}</dd>
+              <dd>{reviewers.find((r) => r.value === settings.reviewer)?.label}</dd>
             </div>
             <div>
               <dt>Daily capacity</dt>
@@ -352,16 +349,14 @@ function NestedReviewDialogExample() {
           >
             <Select
               label="Decision"
-              selectedKey={status}
-              onSelectionChange={(k) => setStatus(k as string)}
+              value={status}
+              onValueChange={(value) => setStatus(value as string)}
               items={[
-                { id: "approved", name: "Approved" },
-                { id: "changes_requested", name: "Changes requested" },
-                { id: "rejected", name: "Rejected" },
+                { value: "approved", label: "Approved" },
+                { value: "changes_requested", label: "Changes requested" },
+                { value: "rejected", label: "Rejected" },
               ]}
-            >
-              {(item) => <ListBoxItem id={item.id}>{item.name}</ListBoxItem>}
-            </Select>
+            />
 
             <TextArea
               label="Review notes"

@@ -1,273 +1,312 @@
 "use client";
 
-import { type ReactNode, type Ref, useContext, useEffect, useRef, type Key } from "react";
+import type { ReactNode } from "react";
 import {
-  Select as RACSelect,
-  SelectStateContext,
-  SelectValue,
-  SelectContext,
-  ListBox as RACListBox,
-  Popover as RACPopover,
-  type SelectProps as RACSelectProps,
-  type PopoverProps as RACPopoverProps,
-  type ListBoxProps,
-  type SelectValueProps,
-} from "react-aria-components";
-import { Button, type ButtonProps } from "../button";
+  Select as UiSdkSelect,
+  SelectClear,
+  SelectContent as UiSdkSelectContent,
+  SelectEmpty,
+  SelectGroup,
+  SelectGroupLabel,
+  SelectInput,
+  SelectItem as UiSdkSelectItem,
+  SelectItemIcon,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectList,
+  SelectSeparator,
+  SelectStatus,
+  SelectTrigger as UiSdkSelectTrigger,
+  SelectValue as UiSdkSelectValue,
+  createSelectController,
+  type ListData,
+  type SelectProps as UiSdkSelectProps,
+  type SelectContentState,
+  type SelectItemState,
+  type SelectTriggerState,
+  type SelectValueState,
+} from "@ui-sdk/react/select";
+import { Field as UiSdkField } from "@ui-sdk/react/field";
 import {
   FieldLayout,
-  FieldStatusIcon,
-  useFieldAnatomy,
+  FieldPresentationProvider,
   fieldClassName,
   fieldParts,
+  useFieldPresentation,
   type FieldContentProps,
   type FieldPresentationProps,
 } from "../field";
+import { useOverlayTheme } from "../../theme";
 import { Icon } from "../../icons";
-import { classes, cx, type ControlSize } from "../../utils";
+import { cx, uiClass, type ControlSize } from "../../utils";
 
-type SelectionMode = "single" | "multiple";
+/** `Omit` does not distribute over ui-sdk's single/multiple option unions; this does. */
+type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : T;
 
-export interface SelectRootProps<T = {}, M extends SelectionMode = "single">
-  extends RACSelectProps<T, M>, FieldPresentationProps {
-  size?: ControlSize;
-  ref?: Ref<HTMLDivElement>;
-}
+export type SelectRootProps<T = string, M extends boolean | undefined = false> =
+  DistributiveOmit<UiSdkSelectProps<T, M>, "status"> &
+    FieldPresentationProps & {
+      size?: ControlSize;
+      className?: string;
+    };
 
-function SelectRoot<T, M extends SelectionMode = "single">({
+/**
+ * The select root: a ui-sdk Field (so labels, descriptions and errors wire up
+ * through the field's ids) holding a ui-sdk Select. Hashti adds `size` and the
+ * field status presentation.
+ */
+function SelectRoot<T = string, M extends boolean | undefined = false>({
   size = "md",
   className,
   children,
   status,
   statusVariant,
   isOptional,
+  name,
+  disabled,
+  required,
   ...props
 }: SelectRootProps<T, M>) {
-  const anatomy = useFieldAnatomy({ ...props, status, statusVariant, isOptional }, SelectContext);
+  const presentation = useFieldPresentation({ status, statusVariant, isOptional }, undefined);
   return (
-    <RACSelect<T, M>
-      {...props}
-      {...anatomy.props}
+    <UiSdkField
+      name={name}
+      disabled={disabled}
       data-size={size}
-      className={classes(fieldClassName("select"), className)}
+      {...presentation.props}
+      className={cx(fieldClassName("select"), className as string)}
     >
-      {anatomy.wrap(children, anatomy.slotted?.children)}
-    </RACSelect>
+      <FieldPresentationProvider
+        status={status}
+        statusVariant={presentation.statusVariant}
+        isOptional={isOptional}
+        isRequired={required}
+        fieldGated
+      >
+        <UiSdkSelect<T, M> {...(props as UiSdkSelectProps<T, M>)} disabled={disabled} required={required}>
+          {children}
+        </UiSdkSelect>
+      </FieldPresentationProvider>
+    </UiSdkField>
   );
 }
 
-function SelectTrigger({ className, children, size = "md", ref, ...props }: ButtonProps) {
-  const state = useContext(SelectStateContext);
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
+export interface SelectTriggerProps
+  extends Omit<React.ComponentProps<typeof UiSdkSelectTrigger>, "children"> {
+  children?: ReactNode | ((state: SelectTriggerState) => ReactNode);
+}
 
-  // A chip's remove affordance can never take focus: ARIA gives a button's children none.
-  // Backspace/Delete is the keyboard path, and it listens on the element because RAC's own
-  // select trigger replaces any key handler passed through props.
-  // shortcut: hand-rolled chips instead of the documented TagGroup-in-SelectValue pattern, so
-  // removal is unannounced and pointer-only; upgrade when the trigger becomes a Group (as in
-  // React Aria's Select and IntentUI's MultipleSelect).
-  useEffect(() => {
-    const element = triggerRef.current;
-    if (!element || state?.selectionManager.selectionMode !== "multiple") return;
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "Backspace" && event.key !== "Delete") return;
-      const keys = [...state.selectionManager.selectedKeys];
-      if (keys.length === 0) return;
-      event.preventDefault();
-      state.selectionManager.setSelectedKeys(new Set(keys.slice(0, -1)));
-    };
-    element.addEventListener("keydown", handleKeyDown);
-    return () => element.removeEventListener("keydown", handleKeyDown);
-  }, [state]);
-
+function SelectTrigger({ className, children, ...props }: SelectTriggerProps) {
   return (
-    <Button
-      variant="ghost"
+    <UiSdkSelectTrigger
       {...props}
-      ref={(element) => {
-        triggerRef.current = element;
-        if (typeof ref === "function") ref(element);
-        else if (ref) ref.current = element;
-      }}
-      size={size}
-      className={cx("hashti-field__control hashti-select-trigger", typeof className === "function" ? undefined : className)}
+      className={uiClass(
+        className as string | ((state: SelectTriggerState) => string | undefined) | undefined,
+        "hashti-field__control",
+        "hashti-select-trigger",
+      )}
     >
-      {composeTriggerContent(children)}
-    </Button>
+      {children}
+    </UiSdkSelectTrigger>
   );
 }
 
-function composeTriggerContent(children: ReactNode | ((values: any) => ReactNode)) {
-  return (
-    <>
-      {typeof children === "function" ? (values: any) => children(values) : children}
-      <FieldStatusIcon />
-    </>
-  );
+export interface SelectValueProps
+  extends Omit<React.ComponentProps<typeof UiSdkSelectValue>, "children"> {
+  children?: ReactNode | ((state: SelectValueState) => ReactNode);
 }
 
-function SelectValuePart<T>({
-  className,
-  ...props
-}: SelectValueProps<T> & { ref?: Ref<HTMLSpanElement> }) {
+function SelectValuePart({ className, children, ...props }: SelectValueProps) {
   return (
-    <SelectValue<T>
+    <UiSdkSelectValue
       {...props}
-      className={classes("hashti-select__value react-aria-SelectValue", className)}
-    />
+      className={uiClass(
+        className as string | ((state: SelectValueState) => string | undefined) | undefined,
+        "hashti-select__value",
+      )}
+    >
+      {children}
+    </UiSdkSelectValue>
   );
 }
 
-// TICK-007 interim: Hashti Popover is ui-sdk now; RAC Select still needs a RAC
-// popover for its overlay context. Select migrates in TICK-006.
-function SelectPopover({ className, offset = 6, ...props }: RACPopoverProps) {
-  return (
-    <RACPopover offset={offset} {...props} className={classes("hashti-popover hashti-select-popover", className)} />
-  );
+export interface SelectContentProps
+  extends Omit<React.ComponentProps<typeof UiSdkSelectContent>, "children"> {
+  children?: ReactNode | ((state: SelectContentState) => ReactNode);
 }
 
-function SelectListBox<T extends object>({
-  className,
-  ...props
-}: ListBoxProps<T> & { ref?: Ref<HTMLDivElement> }) {
+function SelectContent({ className, children, ...props }: SelectContentProps) {
+  const { appearanceClassName, ...theme } = useOverlayTheme();
   return (
-    <RACListBox<T>
+    <UiSdkSelectContent
+      sideOffset={6}
+      {...theme}
       {...props}
-      className={classes("hashti-select__listbox react-aria-ListBox", className)}
-    />
+      className={uiClass(
+        className as string | ((state: SelectContentState) => string | undefined) | undefined,
+        "hashti-popover",
+        "hashti-select-popover",
+        appearanceClassName,
+      )}
+    >
+      {children}
+    </UiSdkSelectContent>
   );
 }
 
-export interface SelectProps<T extends object, M extends SelectionMode = "single">
-  extends Omit<SelectRootProps<T, M>, "children">,
-    FieldContentProps {
-  items?: Iterable<T>;
-  children: ListBoxProps<T>["children"];
-  placeholder?: string;
-  renderValue?: (selectedItems: T[]) => ReactNode;
-  multipleDisplay?: "chips" | "badge" | "text";
+export interface SelectItemProps
+  extends Omit<React.ComponentProps<typeof UiSdkSelectItem>, "children"> {
+  children?: ReactNode | ((state: SelectItemState) => ReactNode);
 }
 
-function SelectDefault<T extends object, M extends SelectionMode = "single">({
+function SelectItem({ className, children, ...props }: SelectItemProps) {
+  return (
+    <UiSdkSelectItem
+      {...props}
+      className={uiClass(
+        className as string | ((state: SelectItemState) => string | undefined) | undefined,
+        "hashti-listbox-item",
+        "hashti-select-item",
+      )}
+    >
+      {children}
+    </UiSdkSelectItem>
+  );
+}
+
+export type SelectProps<T = string, M extends boolean | undefined = false> = DistributiveOmit<
+  SelectRootProps<T, M>,
+  "children"
+> &
+  FieldContentProps & {
+    /** The options as data; the popup renders them for you. */
+    items?: ListData<T>;
+    placeholder?: string;
+    /** Custom rendering of the selected value(s) inside the trigger. */
+    renderValue?: (state: SelectValueState) => ReactNode;
+    /**
+     * With `multiple`, how the trigger shows the selection: joined text, a
+     * first-label-plus-count badge, or one chip per label (display only — the
+     * listbox toggles selection).
+     */
+    multipleDisplay?: "chips" | "badge" | "text";
+    children?: ReactNode;
+  };
+
+function renderMultipleValue(state: SelectValueState, display: "chips" | "badge") {
+  if (display === "badge") {
+    return (
+      <span className="hashti-select-multi-badge-wrapper">
+        <span className="hashti-select-multi-first">{state.labels[0]}</span>
+        {state.labels.length > 1 && (
+          <span className="hashti-badge hashti-select-badge" data-variant="info">
+            +{state.labels.length - 1}
+          </span>
+        )}
+      </span>
+    );
+  }
+  return (
+    <span className="hashti-select-chips-wrapper">
+      {state.labels.map((label) => (
+        <span key={label} className="hashti-tag hashti-select-chip" data-size="sm">
+          <span>{label}</span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function SelectDefault<T = string, M extends boolean | undefined = false>({
   label,
   labelTooltip,
   description,
   errorMessage,
-  items,
-  children,
-  className,
   size = "md",
   placeholder,
   renderValue,
   multipleDisplay = "chips",
+  children,
   ...props
 }: SelectProps<T, M>) {
-  const isMultiple = props.selectionMode === "multiple";
+  const multiple = Boolean((props as { multiple?: boolean }).multiple);
+  const renderTriggerValue = (state: SelectValueState): ReactNode => {
+    if (renderValue) return renderValue(state);
+    if (multiple && multipleDisplay !== "text" && !state.placeholder && state.labels.length > 0) {
+      return renderMultipleValue(state, multipleDisplay);
+    }
+    return state.placeholder ? (placeholder ?? null) : state.label;
+  };
 
   return (
-    <SelectRoot<T, M>
-      {...props}
-      placeholder={placeholder}
-      size={size}
-      className={className}
-    >
+    <SelectRoot<T, M> {...(props as SelectRootProps<T, M>)} size={size} placeholder={placeholder}>
       <FieldLayout
         label={label}
         labelTooltip={labelTooltip}
         description={description}
         errorMessage={errorMessage}
       >
-        <SelectTrigger size={size}>
-          <SelectValuePart>
-            {renderValue
-              ? ({ selectedItems }: any) => renderValue(selectedItems as T[])
-              : isMultiple
-                ? ({ selectedItems, state, defaultChildren }: any) => {
-                    const itemsList = selectedItems.filter(Boolean) as any[];
-                    if (!itemsList.length) {
-                      return defaultChildren;
-                    }
-
-                    if (multipleDisplay === "badge") {
-                      return (
-                        <span className="hashti-select-multi-badge-wrapper">
-                          <span className="hashti-select-multi-first">
-                            {itemsList[0]?.textValue ??
-                              itemsList[0]?.name ??
-                              itemsList[0]?.rendered ??
-                              itemsList[0]?.id ??
-                              "Selected"}
-                          </span>
-                          <span className="hashti-badge" data-kind="info">
-                            +{itemsList.length - 1}
-                          </span>
-                        </span>
-                      );
-                    }
-
-                    if (multipleDisplay === "chips") {
-                      return (
-                        <span className="hashti-select-chips-wrapper">
-                          {itemsList.map((item, idx) => {
-                            const text =
-                              item?.textValue ??
-                              item?.name ??
-                              item?.rendered ??
-                              String(item?.id ?? item);
-                            const key = item?.id ?? item?.key ?? idx;
-                            return (
-                              <span
-                                key={key}
-                                className="hashti-tag hashti-select-chip"
-                                data-size="sm"
-                                role="presentation"
-                              >
-                                <span>{text}</span>
-                                <span
-                                  aria-hidden="true"
-                                  className="hashti-select-chip-remove"
-                                  onPointerDown={(e) => {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                  }}
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    const currentKeys = new Set(
-                                      state.selectionManager.selectedKeys,
-                                    );
-                                    currentKeys.delete(key);
-                                    state.selectionManager.setSelectedKeys(currentKeys);
-                                  }}
-                                >
-                                  <Icon name="close" size={16} />
-                                </span>
-                              </span>
-                            );
-                          })}
-                        </span>
-                      );
-                    }
-
-                    return defaultChildren;
-                  }
-                : undefined}
-          </SelectValuePart>
-          <Icon name="chevronDown" />
+        <SelectTrigger>
+          <SelectValuePart placeholder={placeholder}>{renderTriggerValue}</SelectValuePart>
+          <Icon name="chevronDown" aria-hidden="true" />
         </SelectTrigger>
       </FieldLayout>
-      <SelectPopover>
-        <SelectListBox items={items}>{children}</SelectListBox>
-      </SelectPopover>
+      <SelectContent>{children}</SelectContent>
     </SelectRoot>
   );
 }
 
-export const Select = Object.assign(SelectDefault, {
+interface SelectCompound {
+  <T = string, M extends boolean | undefined = false>(props: SelectProps<T, M>): ReactNode;
+  Root: typeof SelectRoot;
+  Label: typeof fieldParts.Label;
+  Description: typeof fieldParts.Description;
+  Help: typeof fieldParts.Help;
+  ErrorMessage: typeof fieldParts.ErrorMessage;
+  Status: typeof SelectStatus;
+  StatusIcon: typeof fieldParts.StatusIcon;
+  Trigger: typeof SelectTrigger;
+  Value: typeof SelectValuePart;
+  Content: typeof SelectContent;
+  List: typeof SelectList;
+  Item: typeof SelectItem;
+  ItemIndicator: typeof SelectItemIndicator;
+  ItemIcon: typeof SelectItemIcon;
+  ItemText: typeof SelectItemText;
+  Group: typeof SelectGroup;
+  GroupLabel: typeof SelectGroupLabel;
+  Separator: typeof SelectSeparator;
+  Input: typeof SelectInput;
+  Empty: typeof SelectEmpty;
+  Clear: typeof SelectClear;
+}
+
+export const Select: SelectCompound = Object.assign(SelectDefault, {
   Root: SelectRoot,
   ...fieldParts,
   Trigger: SelectTrigger,
   Value: SelectValuePart,
-  Popover: SelectPopover,
-  ListBox: SelectListBox,
+  Content: SelectContent,
+  List: SelectList,
+  Item: SelectItem,
+  ItemIndicator: SelectItemIndicator,
+  ItemIcon: SelectItemIcon,
+  ItemText: SelectItemText,
+  Group: SelectGroup,
+  GroupLabel: SelectGroupLabel,
+  Separator: SelectSeparator,
+  Input: SelectInput,
+  Empty: SelectEmpty,
+  Status: SelectStatus,
+  Clear: SelectClear,
 });
+
+export {
+  SelectRoot,
+  SelectTrigger,
+  SelectValuePart,
+  SelectContent,
+  SelectItem,
+  createSelectController,
+};
+export type { ListData, SelectValueState };

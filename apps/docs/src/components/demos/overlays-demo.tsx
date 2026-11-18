@@ -8,6 +8,7 @@ import {
   Popover,
   Tooltip,
   TooltipTrigger,
+  TooltipContent,
   Drawer,
 } from "@hashti/react";
 
@@ -111,10 +112,10 @@ export function MenuLiveDemo() {
 export function TooltipLiveDemo() {
   return (
     <div className="flex items-center gap-4">
-      <TooltipTrigger delay={100}>
-        <Button variant="ghost">Hover for Tooltip</Button>
-        <Tooltip>Tactile touch target meets WCAG 2.2 AAA specifications</Tooltip>
-      </TooltipTrigger>
+      <Tooltip delay={100}>
+        <TooltipTrigger render={<Button variant="ghost">Hover for Tooltip</Button>} />
+        <TooltipContent>Tactile touch target meets WCAG 2.2 AAA specifications</TooltipContent>
+      </Tooltip>
     </div>
   );
 }

@@ -4,13 +4,12 @@ import { expect, waitFor, within } from "storybook/test";
 import {
   Button,
   Icon,
-  Tab,
-  TabList,
-  TabPanel,
   Tabs,
+  TabsList,
+  TabsPanel,
+  Tab,
   Theme,
   useTheme,
-  type Key,
 } from "@hashti/react";
 import "./navigation.css";
 
@@ -33,37 +32,37 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   render: () => (
     <div className="navigation-story-stack">
-      <Tabs defaultSelectedKey="overview">
-        <TabList aria-label="Project workspace">
-          <Tab id="overview">Overview</Tab>
-          <Tab id="deployments">Deployments</Tab>
-          <Tab id="analytics">Analytics</Tab>
-          <Tab id="settings">Settings</Tab>
-        </TabList>
-        <TabPanel id="overview">
+      <Tabs defaultValue="overview">
+        <TabsList aria-label="Project workspace">
+          <Tab value="overview">Overview</Tab>
+          <Tab value="deployments">Deployments</Tab>
+          <Tab value="analytics">Analytics</Tab>
+          <Tab value="settings">Settings</Tab>
+        </TabsList>
+        <TabsPanel value="overview">
           <div className="navigation-tab-content">
             <h3>Overview summary</h3>
             <p>Active project metrics, recent commits, and health status.</p>
           </div>
-        </TabPanel>
-        <TabPanel id="deployments">
+        </TabsPanel>
+        <TabsPanel value="deployments">
           <div className="navigation-tab-content">
             <h3>Deployments pipeline</h3>
             <p>All active cluster workloads running across regions.</p>
           </div>
-        </TabPanel>
-        <TabPanel id="analytics">
+        </TabsPanel>
+        <TabsPanel value="analytics">
           <div className="navigation-tab-content">
             <h3>Usage analytics</h3>
             <p>Request latency, throughput, and error rates over time.</p>
           </div>
-        </TabPanel>
-        <TabPanel id="settings">
+        </TabsPanel>
+        <TabsPanel value="settings">
           <div className="navigation-tab-content">
             <h3>Project settings</h3>
             <p>Environment variables, branch protection, and access keys.</p>
           </div>
-        </TabPanel>
+        </TabsPanel>
       </Tabs>
     </div>
   ),
@@ -99,29 +98,29 @@ export const Variants: Story = {
     <div className="navigation-story-stack">
       <div>
         <h4 style={{ margin: "0 0 0.5rem" }}>Line variant (default)</h4>
-        <Tabs variant="line" defaultSelectedKey="day">
-          <TabList aria-label="Timeframe line">
-            <Tab id="day">Day</Tab>
-            <Tab id="week">Week</Tab>
-            <Tab id="month">Month</Tab>
-          </TabList>
-          <TabPanel id="day">Past 24 hours activity</TabPanel>
-          <TabPanel id="week">Past 7 days activity</TabPanel>
-          <TabPanel id="month">Past 30 days activity</TabPanel>
+        <Tabs variant="line" defaultValue="day">
+          <TabsList aria-label="Timeframe line">
+            <Tab value="day">Day</Tab>
+            <Tab value="week">Week</Tab>
+            <Tab value="month">Month</Tab>
+          </TabsList>
+          <TabsPanel value="day">Past 24 hours activity</TabsPanel>
+          <TabsPanel value="week">Past 7 days activity</TabsPanel>
+          <TabsPanel value="month">Past 30 days activity</TabsPanel>
         </Tabs>
       </div>
 
       <div>
         <h4 style={{ margin: "0 0 0.5rem" }}>Contained / Segmented variant</h4>
-        <Tabs variant="contained" defaultSelectedKey="week">
-          <TabList aria-label="Timeframe contained">
-            <Tab id="day">Day</Tab>
-            <Tab id="week">Week</Tab>
-            <Tab id="month">Month</Tab>
-          </TabList>
-          <TabPanel id="day">Past 24 hours contained</TabPanel>
-          <TabPanel id="week">Past 7 days contained</TabPanel>
-          <TabPanel id="month">Past 30 days contained</TabPanel>
+        <Tabs variant="contained" defaultValue="week">
+          <TabsList aria-label="Timeframe contained">
+            <Tab value="day">Day</Tab>
+            <Tab value="week">Week</Tab>
+            <Tab value="month">Month</Tab>
+          </TabsList>
+          <TabsPanel value="day">Past 24 hours contained</TabsPanel>
+          <TabsPanel value="week">Past 7 days contained</TabsPanel>
+          <TabsPanel value="month">Past 30 days contained</TabsPanel>
         </Tabs>
       </div>
     </div>
@@ -141,40 +140,68 @@ export const Variants: Story = {
   },
 };
 
+export const Sizes: Story = {
+  render: () => (
+    <div className="navigation-story-stack">
+      {(["sm", "md", "lg"] as const).map((size) => (
+        <div key={size}>
+          <h4 style={{ margin: "0 0 0.5rem" }}>{size}</h4>
+          <Tabs size={size} defaultValue="overview">
+            <TabsList aria-label={`${size} tabs`}>
+              <Tab value="overview">Overview</Tab>
+              <Tab value="activity">Activity</Tab>
+              <Tab value="usage">Usage</Tab>
+            </TabsList>
+            <TabsPanel value="overview">Overview at {size}.</TabsPanel>
+            <TabsPanel value="activity">Activity at {size}.</TabsPanel>
+            <TabsPanel value="usage">Usage at {size}.</TabsPanel>
+          </Tabs>
+        </div>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    for (const size of ["sm", "md", "lg"]) {
+      expect(canvas.getByRole("tablist", { name: `${size} tabs` })).toBeInTheDocument();
+    }
+  },
+};
+
 export const Orientation: Story = {
   render: () => (
     <div className="navigation-story-stack">
-      <Tabs orientation="vertical" defaultSelectedKey="account">
-        <TabList aria-label="Vertical navigation">
-          <Tab id="account">Account</Tab>
-          <Tab id="security">Security</Tab>
-          <Tab id="notifications">Notifications</Tab>
-          <Tab id="billing">Billing</Tab>
-        </TabList>
-        <TabPanel id="account">
+      <Tabs orientation="vertical" defaultValue="account">
+        <TabsList aria-label="Vertical navigation">
+          <Tab value="account">Account</Tab>
+          <Tab value="security">Security</Tab>
+          <Tab value="notifications">Notifications</Tab>
+          <Tab value="billing">Billing</Tab>
+        </TabsList>
+        <TabsPanel value="account">
           <div className="navigation-tab-content">
             <h3>Account profile</h3>
             <p>Update your name, profile photo, and public details.</p>
           </div>
-        </TabPanel>
-        <TabPanel id="security">
+        </TabsPanel>
+        <TabsPanel value="security">
           <div className="navigation-tab-content">
             <h3>Security & Authentication</h3>
             <p>Manage multi-factor auth, recovery keys, and active sessions.</p>
           </div>
-        </TabPanel>
-        <TabPanel id="notifications">
+        </TabsPanel>
+        <TabsPanel value="notifications">
           <div className="navigation-tab-content">
             <h3>Notification preferences</h3>
             <p>Choose which alerts arrive by email, slack, or SMS.</p>
           </div>
-        </TabPanel>
-        <TabPanel id="billing">
+        </TabsPanel>
+        <TabsPanel value="billing">
           <div className="navigation-tab-content">
             <h3>Plan & Invoices</h3>
             <p>Current subscription tier and downloadable VAT receipts.</p>
           </div>
-        </TabPanel>
+        </TabsPanel>
       </Tabs>
     </div>
   ),
@@ -194,33 +221,29 @@ export const Orientation: Story = {
 };
 
 function ControlledTabsExample() {
-  const [selectedKey, setSelectedKey] = useState<Key>("build");
+  const [value, setValue] = useState<string | null>("build");
 
   return (
     <div className="navigation-story-stack">
       <div className="navigation-story-row">
         <span>
-          Controlled active key: <strong>{String(selectedKey)}</strong>
+          Controlled active value: <strong>{String(value)}</strong>
         </span>
-        <Button size="sm" variant="secondary" onClick={() => setSelectedKey("deploy")}>
+        <Button size="sm" variant="secondary" onClick={() => setValue("deploy")}>
           Jump to Deploy
         </Button>
       </div>
-      <Tabs
-        selectedKey={selectedKey}
-        onSelectionChange={setSelectedKey}
-        keyboardActivation="manual"
-      >
-        <TabList aria-label="Pipeline stages">
-          <Tab id="source">Source</Tab>
-          <Tab id="build">Build</Tab>
-          <Tab id="test">Test</Tab>
-          <Tab id="deploy">Deploy</Tab>
-        </TabList>
-        <TabPanel id="source">Source code revision checkout</TabPanel>
-        <TabPanel id="build">Compilation and Docker image packaging</TabPanel>
-        <TabPanel id="test">Unit, integration, and E2E test runner</TabPanel>
-        <TabPanel id="deploy">Cluster canary rollout and traffic switch</TabPanel>
+      <Tabs value={value} onValueChange={(next) => setValue(next)} activation="manual">
+        <TabsList aria-label="Pipeline stages">
+          <Tab value="source">Source</Tab>
+          <Tab value="build">Build</Tab>
+          <Tab value="test">Test</Tab>
+          <Tab value="deploy">Deploy</Tab>
+        </TabsList>
+        <TabsPanel value="source">Source code revision checkout</TabsPanel>
+        <TabsPanel value="build">Compilation and Docker image packaging</TabsPanel>
+        <TabsPanel value="test">Unit, integration, and E2E test runner</TabsPanel>
+        <TabsPanel value="deploy">Cluster canary rollout and traffic switch</TabsPanel>
       </Tabs>
     </div>
   );
@@ -243,7 +266,7 @@ export const ControlledAndManual: Story = {
       expect(canvas.getByText("Cluster canary rollout and traffic switch")).toBeVisible(),
     );
 
-    // Manual keyboard activation: ArrowRight moves focus without selecting until Enter/Space
+    // Manual keyboard activation: ArrowLeft moves focus without selecting until Enter/Space
     deployTab.focus();
     await userEvent.keyboard("{ArrowLeft}");
     const testTab = canvas.getByRole("tab", { name: "Test" });
@@ -258,32 +281,32 @@ export const ControlledAndManual: Story = {
 export const DisabledAndIcons: Story = {
   render: () => (
     <div className="navigation-story-stack">
-      <Tabs defaultSelectedKey="active">
-        <TabList aria-label="Feature status tabs">
-          <Tab id="active">
+      <Tabs defaultValue="active">
+        <TabsList aria-label="Feature status tabs">
+          <Tab value="active">
             <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
               <Icon name="check" size={16} />
               Active
               <span className="navigation-tab-badge">12</span>
             </span>
           </Tab>
-          <Tab id="pending">
+          <Tab value="pending">
             <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
               <Icon name="warning" size={16} />
               Pending review
               <span className="navigation-tab-badge">3</span>
             </span>
           </Tab>
-          <Tab id="archived" isDisabled>
+          <Tab value="archived" disabled>
             <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
               <Icon name="folder" size={16} />
               Archived (Unavailable)
             </span>
           </Tab>
-        </TabList>
-        <TabPanel id="active">12 active production deployments online.</TabPanel>
-        <TabPanel id="pending">3 pull requests waiting for sign-off.</TabPanel>
-        <TabPanel id="archived">Archived items cannot be viewed in this role.</TabPanel>
+        </TabsList>
+        <TabsPanel value="active">12 active production deployments online.</TabsPanel>
+        <TabsPanel value="pending">3 pull requests waiting for sign-off.</TabsPanel>
+        <TabsPanel value="archived">Archived items cannot be viewed in this role.</TabsPanel>
       </Tabs>
     </div>
   ),
@@ -310,37 +333,37 @@ function LocalizedTabs() {
     <div className="navigation-story-stack">
       <Theme theme={theme} lang="fa-IR" dir="rtl">
         <div dir="rtl">
-          <Tabs defaultSelectedKey="dashboard">
-            <TabList aria-label="ناوبری سامانه">
-              <Tab id="dashboard">پیشخوان</Tab>
-              <Tab id="reports">گزارش‌ها</Tab>
-              <Tab id="users">کاربران</Tab>
-              <Tab id="audit">ثبت وقایع</Tab>
-            </TabList>
-            <TabPanel id="dashboard">
+          <Tabs defaultValue="dashboard">
+            <TabsList aria-label="ناوبری سامانه">
+              <Tab value="dashboard">پیشخوان</Tab>
+              <Tab value="reports">گزارش‌ها</Tab>
+              <Tab value="users">کاربران</Tab>
+              <Tab value="audit">ثبت وقایع</Tab>
+            </TabsList>
+            <TabsPanel value="dashboard">
               <div className="navigation-tab-content">
                 <h3>نمای کلی پیشخوان</h3>
                 <p>آمار لحظه‌ای درخواست‌ها و پردازش‌های فعال سیستم.</p>
               </div>
-            </TabPanel>
-            <TabPanel id="reports">
+            </TabsPanel>
+            <TabsPanel value="reports">
               <div className="navigation-tab-content">
                 <h3>گزارش‌های عملکردی</h3>
                 <p>خروجی آماری هفتگی و ماهیانه.</p>
               </div>
-            </TabPanel>
-            <TabPanel id="users">
+            </TabsPanel>
+            <TabsPanel value="users">
               <div className="navigation-tab-content">
                 <h3>فهرست کاربران</h3>
                 <p>مدیریت سطوح دسترسی و حساب‌های کاربری.</p>
               </div>
-            </TabPanel>
-            <TabPanel id="audit">
+            </TabsPanel>
+            <TabsPanel value="audit">
               <div className="navigation-tab-content">
                 <h3>تاریخچه رخدادها</h3>
                 <p>لاگ‌های امنیتی و تغییرات اعمال‌شده در تنظیمات.</p>
               </div>
-            </TabPanel>
+            </TabsPanel>
           </Tabs>
         </div>
       </Theme>

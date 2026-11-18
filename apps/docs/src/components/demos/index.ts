@@ -10,7 +10,7 @@ export * from "./tree-demo";
 export * from "./feedback-demo";
 export * from "./modal-demo";
 export * from "./tabs-demo";
-export * from "./disclosure-demo";
+export * from "./accordion-demo";
 export * from "./dropzone-demo";
 export * from "./fields-demo";
 export * from "./overlays-demo";

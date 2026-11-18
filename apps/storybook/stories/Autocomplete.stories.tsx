@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, waitFor, within } from "storybook/test";
-import { Autocomplete, ListBox, SearchField, Text } from "@hashti/react";
+import {
+  Autocomplete,
+  AutocompleteContent,
+  AutocompleteEmpty,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteList,
+} from "@hashti/react";
 
 const meta = {
   title: "Collections/Autocomplete",
@@ -10,7 +17,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Autocomplete combines a text input or search field with a menu or listbox to provide search suggestions as the user types. The wrapped collection is filtered with React Aria's locale-aware `contains` unless a `filter` prop is supplied.",
+          "Autocomplete pairs a text input with a suggestion popup: typing filters the options, arrows move the highlight, Enter chooses. A straight re-export of `@ui-sdk/react/autocomplete`.",
       },
     },
   },
@@ -19,39 +26,25 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-interface ComponentItem {
-  id: string;
-  name: string;
-  category: string;
-}
-
-const components: ComponentItem[] = [
-  { id: "listbox", name: "ListBox", category: "Collections" },
-  { id: "gridlist", name: "GridList", category: "Collections" },
-  { id: "tree", name: "Tree", category: "Collections" },
-  { id: "menu", name: "Menu", category: "Overlays" },
-  { id: "popover", name: "Popover", category: "Overlays" },
-  { id: "select", name: "Select", category: "Fields" },
-  { id: "searchfield", name: "SearchField", category: "Fields" },
+const components = [
+  { value: "listbox", label: "Listbox" },
+  { value: "gridlist", label: "GridList" },
+  { value: "tree", label: "Tree" },
+  { value: "menu", label: "Menu" },
+  { value: "popover", label: "Popover" },
+  { value: "select", label: "Select" },
+  { value: "searchfield", label: "SearchField" },
 ];
 
 export const Playground: Story = {
   render: () => (
     <div style={{ maxWidth: 320, display: "flex", flexDirection: "column", gap: 8 }}>
-      <Autocomplete>
-        <SearchField label="Search components" placeholder="Type a name..." />
-        <ListBox
-          aria-label="Components"
-          items={components}
-          renderEmptyState={() => "No components match that search."}
-        >
-          {(item) => (
-            <ListBox.Item id={item.id} textValue={item.name}>
-              <Text slot="label">{item.name}</Text>
-              <Text slot="description">{item.category}</Text>
-            </ListBox.Item>
-          )}
-        </ListBox>
+      <Autocomplete items={components}>
+        <AutocompleteInput aria-label="Search components" placeholder="Type a name..." />
+        <AutocompleteContent>
+          <AutocompleteEmpty>No components match that search.</AutocompleteEmpty>
+          <AutocompleteList />
+        </AutocompleteContent>
       </Autocomplete>
     </div>
   ),
@@ -59,7 +52,9 @@ export const Playground: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByPlaceholderText("Type a name...");
     expect(input).toBeInTheDocument();
-    expect(canvas.getAllByRole("option")).toHaveLength(components.length);
+
+    await userEvent.click(input);
+    await waitFor(() => expect(canvas.getAllByRole("option")).toHaveLength(components.length));
 
     await userEvent.type(input, "grid");
     await waitFor(() => expect(canvas.getAllByRole("option")).toHaveLength(1));
@@ -70,5 +65,30 @@ export const Playground: Story = {
     await waitFor(() =>
       expect(canvas.getByText("No components match that search.")).toBeInTheDocument(),
     );
+  },
+};
+
+export const WithCustomItems: Story = {
+  render: () => (
+    <div style={{ maxWidth: 320 }}>
+      <Autocomplete>
+        <AutocompleteInput aria-label="Search components" placeholder="Type a name..." />
+        <AutocompleteContent>
+          <AutocompleteList>
+            {components.map((item) => (
+              <AutocompleteItem key={item.value} value={item.value}>
+                {item.label}
+              </AutocompleteItem>
+            ))}
+          </AutocompleteList>
+        </AutocompleteContent>
+      </Autocomplete>
+    </div>
+  ),
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByPlaceholderText("Type a name...");
+    await userEvent.click(input);
+    await waitFor(() => expect(canvas.getAllByRole("option")).toHaveLength(components.length));
   },
 };

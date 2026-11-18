@@ -6,15 +6,18 @@
     width: 100%;
   }
 
+  /* ui-sdk resets border/padding/background on Popover/Dialog content but NOT
+     on Combobox content — the three must be explicit here. */
   .hashti-combobox-popover {
     border-radius: var(--hashti-surface-radius, 16px);
     border: 1px solid var(--hashti-border-subtle, #e0e0e0);
     background-color: var(--hashti-layer, #ffffff);
+    padding: 4px;
     box-shadow:
       0 10px 25px -5px rgba(0, 0, 0, 0.1),
       0 8px 10px -6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
-    min-width: var(--trigger-width);
+    min-width: var(--anchor-width);
   }
 
   .hashti-combobox-create-item {
@@ -37,11 +40,10 @@
     background-color: var(--hashti-layer-accent-01, #e6f7f7);
   }
 
-  .hashti-combobox-chips-wrapper {
+  .hashti-combobox-values {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin-top: 6px;
   }
 
   .hashti-combobox-chip {

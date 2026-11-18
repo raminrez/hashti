@@ -40,7 +40,7 @@ const surfaces = [
     name: "toast",
     story: "feedback-toast--variants",
     container: ".hashti-toast",
-    text: '[slot="title"]',
+    text: '[data-slot="toast-title"]',
     frame: true,
     screenshot: false,
   },

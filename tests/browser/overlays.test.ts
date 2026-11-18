@@ -9,7 +9,7 @@ import { audit, states, stopStorybook, withStory } from "../harness";
 
 afterAll(stopStorybook);
 
-const PALETTE = "overlays-commandpalette--playground";
+const PALETTE = "overlays-command--playground";
 
 /** Opens the palette and clears the query the story's play function leaves behind. */
 async function openPalette(page: Page): Promise<void> {
@@ -52,14 +52,14 @@ async function dismissWithEscape(page: Page, selector: string): Promise<void> {
   }
 }
 
-/** The option the collection treats as active, whichever way React Aria marks it. */
+/** The option the collection treats as active, whichever way ui-sdk marks it. */
 function activeOption(page: Page): Promise<string | null> {
   return page.evaluate(() => {
     const input = document.querySelector(".hashti-command-palette__input");
     const id = input?.getAttribute("aria-activedescendant");
     const option =
       (id ? document.getElementById(id) : null) ??
-      document.querySelector('[role="option"][data-focused]');
+      document.querySelector('[role="option"][data-highlighted]');
     return option?.textContent?.trim() ?? null;
   });
 }

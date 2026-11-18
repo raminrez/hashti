@@ -80,3 +80,11 @@ uses Tailwind CSS, start its global stylesheet with these lines instead, in plac
 ```
 
 `web.css` is a docs/storybook base layer only — it never ships inside `@hashti/styles`.
+
+Two ui-sdk styling caveats that bite in this repo:
+- ui-sdk injects behavior CSS into the `ui-sdk` layer at runtime, so SSR HTML lacks it until
+  hydration. Global stylesheets that don't use Tailwind must hide closed parts themselves:
+  `:where([data-slot][hidden]:not([hidden="until-found"])) { display: none !important; }`
+- ui-sdk resets border/padding/background on Popover, Dialog, Drawer, Tooltip and HoverCard
+  content, but NOT on Menu, Select, Combobox or DatePicker content — those parts need
+  explicit `border`/`padding`/`background` in `@hashti/styles`.

@@ -1,29 +1,89 @@
 "use client";
 
-import type { Ref } from "react";
+import { createContext, useContext, type ComponentProps, type ReactNode } from "react";
 import {
-  Tabs as RACTabs,
-  TabList,
-  Tab,
-  TabPanel,
-  TabPanels,
-  type TabsProps as RACTabsProps,
-  type TabProps,
-  type TabListProps,
-  type TabPanelProps,
-} from "react-aria-components";
-import { classes } from "../../utils";
+  Tabs as UiSdkTabs,
+  TabsList as UiSdkTabsList,
+  TabsPanel as UiSdkTabsPanel,
+  TabsTab as UiSdkTabsTab,
+  type TabsListState,
+  type TabsPanelState,
+  type TabsState,
+  type TabsTabState,
+} from "@ui-sdk/react/tabs";
+import { uiClass, type ControlSize } from "../../utils";
 
-export interface TabsProps extends RACTabsProps {
-  variant?: "line" | "contained";
-  ref?: Ref<HTMLDivElement>;
+type TabsClass<State> = string | ((state: State) => string | undefined);
+
+interface TabsConfig {
+  variant: "line" | "contained";
+  size: ControlSize;
 }
 
-export function Tabs({ variant = "line", className, ...props }: TabsProps) {
+const TabsConfigContext = createContext<TabsConfig>({ variant: "line", size: "md" });
+
+export interface TabsProps<T extends string = string>
+  extends Omit<ComponentProps<typeof UiSdkTabs<T>>, "className" | "children"> {
+  /** Visual variant: an underline list (`line`) or a segmented box (`contained`). */
+  variant?: "line" | "contained";
+  size?: ControlSize;
+  className?: TabsClass<TabsState<T>>;
+  children?: ReactNode;
+}
+
+export function TabsRoot<T extends string = string>({
+  variant = "line",
+  size = "md",
+  className,
+  children,
+  ...props
+}: TabsProps<T>) {
   return (
-    <RACTabs {...props} data-variant={variant} className={classes("hashti-tabs", className)} />
+    <TabsConfigContext.Provider value={{ variant, size }}>
+      <UiSdkTabs<T>
+        {...props}
+        className={uiClass(className, "hashti-tabs")}
+        data-variant={variant}
+        data-size={size}
+      >
+        {children}
+      </UiSdkTabs>
+    </TabsConfigContext.Provider>
   );
 }
 
-export { TabList, Tab, TabPanel, TabPanels };
-export type { TabProps, TabListProps, TabPanelProps };
+export interface TabsListProps extends Omit<ComponentProps<typeof UiSdkTabsList>, "className"> {
+  className?: TabsClass<TabsListState>;
+  children?: ReactNode;
+}
+
+export function TabsList({ className, ...props }: TabsListProps) {
+  return <UiSdkTabsList {...props} className={uiClass(className, "hashti-tabs__list")} />;
+}
+
+export interface TabsTabProps extends Omit<ComponentProps<typeof UiSdkTabsTab>, "className"> {
+  className?: TabsClass<TabsTabState>;
+  children?: ReactNode;
+}
+
+export function Tab({ className, ...props }: TabsTabProps) {
+  const { size } = useContext(TabsConfigContext);
+  return (
+    <UiSdkTabsTab {...props} className={uiClass(className, "hashti-tab")} data-size={size} />
+  );
+}
+
+export interface TabsPanelProps extends Omit<ComponentProps<typeof UiSdkTabsPanel>, "className"> {
+  className?: TabsClass<TabsPanelState>;
+  children?: ReactNode;
+}
+
+export function TabsPanel({ className, ...props }: TabsPanelProps) {
+  return <UiSdkTabsPanel {...props} className={uiClass(className, "hashti-tab-panel")} />;
+}
+
+export const Tabs = Object.assign(TabsRoot, {
+  List: TabsList,
+  Tab,
+  Panel: TabsPanel,
+});

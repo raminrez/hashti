@@ -1,4 +1,17 @@
 "use client";
 
-export { Tooltip, TooltipTrigger } from "./tooltip";
-export type { TooltipProps } from "./tooltip";
+export {
+  Tooltip,
+  TooltipRoot,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+  TooltipShortcut,
+  createTooltipController,
+} from "./tooltip";
+export type {
+  TooltipRootProps,
+  TooltipTriggerProps,
+  TooltipContentProps,
+  TooltipArrowProps,
+} from "./tooltip";

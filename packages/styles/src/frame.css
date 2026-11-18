@@ -959,14 +959,14 @@
     }
 
     /* Frame Tabs */
-    .hashti-tabs .react-aria-TabList {
+    .hashti-tabs .hashti-tabs__list {
       display: flex;
       gap: var(--hashti-spacing-02);
       border-block-end: 1px solid var(--hashti-border-subtle);
       overflow-x: auto;
       scrollbar-width: thin;
     }
-    .hashti-tabs .react-aria-Tab {
+    .hashti-tabs .hashti-tab {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -984,35 +984,35 @@
         color var(--hashti-duration-fast-01) ease,
         border-color var(--hashti-duration-fast-01) ease;
     }
-    .hashti-tabs .react-aria-Tab:hover {
+    .hashti-tabs .hashti-tab:hover {
       color: var(--hashti-text-primary);
     }
-    .hashti-tabs .react-aria-Tab[data-selected] {
+    .hashti-tabs .hashti-tab[data-selected] {
       color: var(--hashti-text-primary);
       border-block-end-color: var(--hashti-border-interactive);
       font-weight: 600;
     }
-    .hashti-tabs .react-aria-Tab:focus-visible {
+    .hashti-tabs .hashti-tab:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset, 2px);
       border-radius: var(--hashti-control-radius);
     }
-    .hashti-tabs .react-aria-Tab[data-disabled] {
+    .hashti-tabs .hashti-tab[data-disabled] {
       color: var(--hashti-text-disabled);
       cursor: not-allowed;
     }
-    .hashti-tabs .react-aria-TabPanel {
+    .hashti-tabs .hashti-tab-panel {
       padding: var(--hashti-spacing-05) 0;
       outline: none;
     }
-    .hashti-tabs .react-aria-TabPanel:focus-visible {
+    .hashti-tabs .hashti-tab-panel:focus-visible {
       outline: var(--hashti-focus-width) solid var(--hashti-focus);
       outline-offset: 2px;
       border-radius: var(--hashti-control-radius);
     }
 
     /* Frame Contained Tabs */
-    .hashti-tabs[data-variant="contained"] .react-aria-TabList {
+    .hashti-tabs[data-variant="contained"] .hashti-tabs__list {
       background: var(--hashti-layer-accent, var(--hashti-field));
       border: 1px solid var(--hashti-border-subtle);
       border-radius: var(--hashti-control-radius);
@@ -1022,7 +1022,7 @@
       max-width: 100%;
       box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
     }
-    .hashti-tabs[data-variant="contained"] .react-aria-Tab {
+    .hashti-tabs[data-variant="contained"] .hashti-tab {
       border: none;
       margin-block-end: 0;
       border-radius: calc(var(--hashti-control-radius) - 3px);
@@ -1036,11 +1036,11 @@
         background var(--hashti-duration-fast-01) ease,
         color var(--hashti-duration-fast-01) ease;
     }
-    .hashti-tabs[data-variant="contained"] .react-aria-Tab:hover:not([data-selected]) {
+    .hashti-tabs[data-variant="contained"] .hashti-tab:hover:not([data-selected]) {
       color: var(--hashti-text-primary);
       background: var(--hashti-layer-hover, rgba(0, 0, 0, 0.04));
     }
-    .hashti-tabs[data-variant="contained"] .react-aria-Tab[data-selected] {
+    .hashti-tabs[data-variant="contained"] .hashti-tab[data-selected] {
       background: var(--hashti-layer, white);
       box-shadow:
         0 1px 3px rgba(0, 0, 0, 0.1),
@@ -1054,23 +1054,23 @@
       display: flex;
       gap: var(--hashti-spacing-06);
     }
-    .hashti-tabs[data-orientation="vertical"] .react-aria-TabList {
+    .hashti-tabs[data-orientation="vertical"] .hashti-tabs__list {
       flex-direction: column;
       border-block-end: none;
       border-inline-end: 1px solid var(--hashti-border-subtle);
       gap: var(--hashti-spacing-01);
     }
-    .hashti-tabs[data-orientation="vertical"] .react-aria-Tab {
+    .hashti-tabs[data-orientation="vertical"] .hashti-tab {
       border-block-end: none;
       border-inline-end: 2px solid transparent;
       margin-block-end: 0;
       margin-inline-end: -1px;
       justify-content: flex-start;
     }
-    .hashti-tabs[data-orientation="vertical"] .react-aria-Tab[data-selected] {
+    .hashti-tabs[data-orientation="vertical"] .hashti-tab[data-selected] {
       border-inline-end-color: var(--hashti-border-interactive);
     }
-    .hashti-tabs[data-orientation="vertical"] .react-aria-TabPanel {
+    .hashti-tabs[data-orientation="vertical"] .hashti-tab-panel {
       padding: 0 var(--hashti-spacing-05);
       flex: 1;
     }
@@ -1150,60 +1150,60 @@
       border-radius: var(--hashti-control-radius);
     }
 
-    /* Frame Disclosure & DisclosureGroup */
-    .hashti-disclosure-group {
+    /* Frame Accordion */
+    .hashti-accordion {
       border-block-start: 1px solid var(--hashti-border-subtle);
       border-block-end: 1px solid var(--hashti-border-subtle);
     }
-    .hashti-disclosure-group .hashti-disclosure {
+    .hashti-accordion .hashti-accordion-item {
       border-block-end: 1px solid var(--hashti-border-subtle);
     }
-    .hashti-disclosure-group .hashti-disclosure:last-child {
+    .hashti-accordion .hashti-accordion-item:last-child {
       border-block-end: none;
     }
-    .hashti-disclosure-group[data-variant="flush"] {
+    .hashti-accordion[data-variant="flush"] {
       border-block-start: none;
       border-block-end: none;
     }
-    .hashti-disclosure-group[data-variant="flush"] .hashti-disclosure:last-child {
+    .hashti-accordion[data-variant="flush"] .hashti-accordion-item:last-child {
       border-block-end: 1px solid var(--hashti-border-subtle);
     }
-    .hashti-disclosure-group[data-variant="card"] {
+    .hashti-accordion[data-variant="card"] {
       border: none;
       gap: var(--hashti-spacing-03);
     }
-    .hashti-disclosure-group[data-variant="card"] .hashti-disclosure {
+    .hashti-accordion[data-variant="card"] .hashti-accordion-item {
       border: 1px solid var(--hashti-border-subtle);
       border-radius: var(--hashti-control-radius);
       background: var(--hashti-layer-01);
     }
-    .hashti-disclosure {
+    .hashti-accordion-item {
       /* One row: the trigger and its panel share the row's surface, so the body needs the
          trigger's own inline inset to line up with the title. */
-      --hashti-disclosure-inset: var(--hashti-spacing-04);
+      --hashti-accordion-inset: var(--hashti-spacing-04);
       border-block-end: 1px solid var(--hashti-border-subtle);
       border-radius: var(--hashti-control-radius);
     }
-    .hashti-disclosure[data-open]:not([data-variant="card"]) {
+    .hashti-accordion-item[data-open]:not([data-variant="card"]) {
       background: var(--hashti-layer-accent);
     }
-    .hashti-disclosure[data-variant="card"] {
+    .hashti-accordion-item[data-variant="card"] {
       border: 1px solid var(--hashti-border-subtle);
       border-radius: var(--hashti-control-radius);
       background: var(--hashti-layer-01);
     }
-    .hashti-disclosure[data-variant="flush"] {
+    .hashti-accordion-item[data-variant="flush"] {
       border: none;
     }
-    .hashti-disclosure > .react-aria-Heading {
+    .hashti-accordion-header {
       margin: 0;
     }
-    .hashti-disclosure-trigger {
+    .hashti-accordion-trigger {
       width: 100%;
       min-height: var(--control-height, var(--hashti-size-md));
       justify-content: flex-start;
       gap: var(--hashti-spacing-03);
-      padding: var(--hashti-spacing-03) var(--hashti-disclosure-inset);
+      padding: var(--hashti-spacing-03) var(--hashti-accordion-inset);
       color: var(--hashti-text-primary) !important;
       font-weight: 500;
       background: transparent;
@@ -1211,65 +1211,64 @@
       border-radius: 0;
       transform: none !important;
     }
-    .hashti-disclosure[data-open] .hashti-disclosure-trigger {
+    .hashti-accordion-item[data-open] .hashti-accordion-trigger {
       background: transparent;
     }
-    .hashti-disclosure-trigger:hover,
-    .hashti-disclosure-trigger:active,
-    .hashti-disclosure-trigger:active {
+    .hashti-accordion-trigger:hover,
+    .hashti-accordion-trigger:active {
       transform: none !important;
       background: var(--hashti-layer-hover);
     }
-    .hashti-disclosure-indicator {
+    .hashti-accordion-indicator {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
-    .hashti-disclosure-indicator > svg,
-    .hashti-disclosure-trigger > svg {
+    .hashti-accordion-indicator > svg,
+    .hashti-accordion-trigger > svg {
       transition:
         transform var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
         color var(--hashti-duration-fast-01) ease;
       color: var(--hashti-text-secondary);
     }
-    .hashti-disclosure[data-open] .hashti-disclosure-indicator > svg,
-    .hashti-disclosure[data-open] .hashti-disclosure-trigger > svg {
+    .hashti-accordion-item[data-open] .hashti-accordion-indicator > svg,
+    .hashti-accordion-item[data-open] .hashti-accordion-trigger > svg {
       color: var(--hashti-text-primary);
     }
     :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
-      .hashti-disclosure-indicator
+      .hashti-accordion-indicator
       > svg,
     :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
-      .hashti-disclosure-trigger
+      .hashti-accordion-trigger
       > svg {
       transform: rotate(180deg);
     }
-    .hashti-disclosure[data-open] .hashti-disclosure-indicator > svg,
-    .hashti-disclosure[data-open] .hashti-disclosure-trigger > svg {
+    .hashti-accordion-item[data-open] .hashti-accordion-indicator > svg,
+    .hashti-accordion-item[data-open] .hashti-accordion-trigger > svg {
       transform: rotate(90deg);
     }
     :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
-      .hashti-disclosure[data-open]
-      .hashti-disclosure-indicator
+      .hashti-accordion-item[data-open]
+      .hashti-accordion-indicator
       > svg,
     :is(:scope[dir="rtl"], [dir="rtl"], :dir(rtl), :dir(rtl))
-      .hashti-disclosure[data-open]
-      .hashti-disclosure-trigger
+      .hashti-accordion-item[data-open]
+      .hashti-accordion-trigger
       > svg {
       transform: rotate(90deg);
     }
-    .hashti-disclosure-panel-inner {
+    .hashti-accordion-panel-inner {
       /* Align the body text under the trigger's title, not under nothing. */
       padding-block: 0 var(--hashti-spacing-04);
       /* +1px for the trigger's own hairline border, so the body lines up with its title. */
-      padding-inline-start: calc(var(--hashti-disclosure-inset) + 1px);
-      padding-inline-end: var(--hashti-disclosure-inset);
+      padding-inline-start: calc(var(--hashti-accordion-inset) + 1px);
+      padding-inline-end: var(--hashti-accordion-inset);
       color: var(--hashti-text-secondary);
       font-size: var(--hashti-body-compact-01-font-size);
       line-height: var(--hashti-body-compact-01-line-height);
     }
-    .hashti-disclosure[data-variant="card"] .hashti-disclosure-panel-inner {
+    .hashti-accordion-item[data-variant="card"] .hashti-accordion-panel-inner {
       padding-inline-start: var(--hashti-spacing-04);
       padding-inline-end: var(--hashti-spacing-04);
       padding-block-end: var(--hashti-spacing-04);
@@ -2338,7 +2337,7 @@
     .hashti-toast[data-variant="solid"] > svg {
       color: var(--hashti-text-on-color);
     }
-    .hashti-toast[data-variant="solid"] [slot="description"] {
+    .hashti-toast[data-variant="solid"] [data-slot="toast-description"] {
       color: color-mix(in srgb, var(--hashti-text-on-color) 88%, transparent);
     }
     .hashti-toast[data-variant="solid"] .hashti-button {
@@ -2353,14 +2352,14 @@
       margin-block-start: 2px;
       color: var(--notification-color);
     }
-    .hashti-toast .react-aria-ToastContent {
+    .hashti-toast .hashti-toast-content {
       padding-block: 0;
     }
-    .hashti-toast [slot="title"] {
+    .hashti-toast [data-slot="toast-title"] {
       font-size: var(--hashti-body-compact-01-font-size);
       font-weight: 600;
     }
-    .hashti-toast [slot="description"] {
+    .hashti-toast [data-slot="toast-description"] {
       font-size: var(--hashti-helper-text-01-font-size, 0.8125rem);
       color: var(--hashti-text-secondary);
     }
@@ -2538,6 +2537,8 @@
       }
     }
     :scope.hashti-tooltip {
+      /* ui-sdk positions the arrow and content; grow from the trigger edge. */
+      transform-origin: var(--transform-origin);
       &[data-starting-style] {
         animation: hashti-frame-overlay-in var(--hashti-duration-fast-01)
           cubic-bezier(0.16, 1, 0.3, 1);
@@ -2550,8 +2551,7 @@
     /* Overlays grow from the edge that touches their trigger, never from center. */
     :scope.hashti-popover,
     .hashti-select-popover,
-    .hashti-date-popover,
-    :scope.hashti-tooltip {
+    .hashti-date-popover {
       &[data-placement^="top"] {
         transform-origin: center bottom;
       }
@@ -3332,13 +3332,13 @@
     }
 
     /* Keyboard focus only, same paint as every other field: a ring outside the border. */
-    .hashti-token-input {
+    .hashti-token-input__editor {
       border: 1px solid var(--hashti-border-subtle);
       border-radius: var(--hashti-control-radius, 0.5rem);
       background: var(--hashti-field);
       transition: border-color var(--hashti-duration-fast-01) ease;
     }
-    .hashti-token-input:focus-visible {
+    .hashti-token-input__editor:focus-visible {
       outline: var(--hashti-focus-width, 2px) solid var(--hashti-focus);
       outline-offset: var(--hashti-focus-offset, 2px);
       border-color: var(--hashti-border-strong);
@@ -3656,7 +3656,7 @@
       .hashti-switch {
         min-height: 44px;
       }
-      .hashti-disclosure-trigger {
+      .hashti-accordion-trigger {
         min-height: 44px;
       }
       .hashti-filter-tag {
@@ -3714,7 +3714,7 @@
       color: #ffffff;
     }
     .hashti-notification[data-variant="solid"] [slot="description"],
-    .hashti-toast[data-variant="solid"] [slot="description"],
+    .hashti-toast[data-variant="solid"] [data-slot="toast-description"],
     .hashti-actionable-notification[data-variant="solid"]
       .hashti-actionable-notification-content
       > strong,

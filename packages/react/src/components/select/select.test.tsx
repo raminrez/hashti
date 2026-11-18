@@ -4,9 +4,9 @@ import { Select } from "./select";
 
 test("renders Select", () => {
   const html = renderToStaticMarkup(
-    <Select label="Country" items={[{ id: "1", label: "US" }]}>
-      {(item: any) => <span key={item.id}>{item.label}</span>}
-    </Select>,
+    <Select label="Country" items={[{ value: "us", label: "US" }]} />,
   );
   expect(html).toContain("Country");
+  expect(html).toContain("hashti-select");
+  expect(html).toContain("hashti-select-trigger");
 });

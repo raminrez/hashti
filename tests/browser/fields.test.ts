@@ -10,7 +10,7 @@ const stories = [
   "fields-searchfield--playground",
   "fields-select--playground",
   "fields-nativeselect--validation",
-  "fields-tokenfield--compound-anatomy",
+  "fields-tokeninput--custom-tokens",
   "fields-datepicker--playground",
   "fields-timefield--states",
 ];

@@ -1,4 +1,11 @@
 "use client";
 
-export { Tabs, TabList, Tab, TabPanel, TabPanels } from "./tabs";
-export type { TabsProps, TabProps, TabListProps, TabPanelProps } from "./tabs";
+export { Tabs, TabsRoot, TabsList, TabsPanel, Tab } from "./tabs";
+export type { TabsProps, TabsListProps, TabsPanelProps, TabsTabProps } from "./tabs";
+export type {
+  TabsState,
+  TabsListState,
+  TabsTabState,
+  TabsPanelState,
+  TabsOrientation,
+} from "@ui-sdk/react/tabs";

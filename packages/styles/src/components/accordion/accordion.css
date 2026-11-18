@@ -1,0 +1,13 @@
+/* Hashti Modern Aesthetic - accordion */
+@layer hashti.components {
+  [data-hashti-theme] .hashti-accordion-item {
+    border-radius: var(--hashti-control-radius, 12px);
+  }
+  [data-hashti-theme] .hashti-accordion-trigger:active {
+    transform: scale(0.98);
+  }
+  [data-hashti-theme] .hashti-accordion-trigger:focus-visible {
+    outline: var(--hashti-focus-width, 2px) solid var(--hashti-focus);
+    outline-offset: 2px;
+  }
+}

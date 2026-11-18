@@ -1,4 +1,17 @@
 "use client";
 
-export { ComboBox, ComboBoxCreateItem } from "./combobox";
-export type { ComboBoxProps, ComboBoxRootProps, ComboBoxCreateItemProps } from "./combobox";
+export {
+  ComboBox,
+  ComboBoxRoot,
+  ComboBoxCreate,
+  createComboboxController,
+} from "./combobox";
+export type {
+  ComboBoxProps,
+  ComboBoxRootProps,
+  ComboBoxInputProps,
+  ComboBoxTriggerProps,
+  ComboBoxContentProps,
+  ComboBoxItemProps,
+  ComboBoxCreateProps,
+} from "./combobox";

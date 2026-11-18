@@ -1,25 +1,25 @@
 import { expect, test, describe } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import {
-  ListBox,
+  Listbox,
   Autocomplete,
+  AutocompleteInput,
+  AutocompleteContent,
+  AutocompleteList,
+  AutocompleteItem,
   Select,
   ComboBox,
-  SearchField,
-  Input,
-  Menu,
-  MenuItem,
 } from "@hashti/react";
 
 describe("Phase 4 Collection & Selection Elevate unit tests", () => {
-  describe("Standalone ListBox", () => {
-    test("renders ListBox with default bordered style and items", () => {
+  describe("Standalone Listbox", () => {
+    test("renders Listbox with default bordered style and items", () => {
       const html = renderToStaticMarkup(
-        <ListBox aria-label="Operating Systems" selectionMode="single">
-          <ListBox.Item id="macos">macOS</ListBox.Item>
-          <ListBox.Item id="linux">Linux</ListBox.Item>
-          <ListBox.Item id="windows">Windows</ListBox.Item>
-        </ListBox>,
+        <Listbox aria-label="Operating Systems">
+          <Listbox.Item value="macos">macOS</Listbox.Item>
+          <Listbox.Item value="linux">Linux</Listbox.Item>
+          <Listbox.Item value="windows">Windows</Listbox.Item>
+        </Listbox>,
       );
       expect(html).toContain("hashti-listbox");
       expect(html).toContain("hashti-listbox--bordered");
@@ -30,37 +30,37 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
       expect(html).toContain('role="listbox"');
     });
 
-    test("renders ListBox with card, flat variants and sizes", () => {
+    test("renders Listbox with card, flat variants and sizes", () => {
       const cardHtml = renderToStaticMarkup(
-        <ListBox aria-label="Languages" variant="card" size="lg">
-          <ListBox.Item id="ts">TypeScript</ListBox.Item>
-        </ListBox>,
+        <Listbox aria-label="Languages" variant="card" size="lg">
+          <Listbox.Item value="ts">TypeScript</Listbox.Item>
+        </Listbox>,
       );
       expect(cardHtml).toContain("hashti-listbox--card");
       expect(cardHtml).toContain("hashti-listbox--lg");
       expect(cardHtml).toContain("hashti-listbox-item--lg");
 
       const flatHtml = renderToStaticMarkup(
-        <ListBox aria-label="Languages" variant="flat" size="sm">
-          <ListBox.Item id="rs">Rust</ListBox.Item>
-        </ListBox>,
+        <Listbox aria-label="Languages" variant="flat" size="sm">
+          <Listbox.Item value="rs">Rust</Listbox.Item>
+        </Listbox>,
       );
       expect(flatHtml).toContain("hashti-listbox--flat");
       expect(flatHtml).toContain("hashti-listbox--sm");
       expect(flatHtml).toContain("hashti-listbox-item--sm");
     });
 
-    test("renders ListBox with sections and section headers", () => {
+    test("renders Listbox with sections and section headers", () => {
       const html = renderToStaticMarkup(
-        <ListBox aria-label="Food Categories">
-          <ListBox.Section title="Fruits">
-            <ListBox.Item id="apple">Apple</ListBox.Item>
-            <ListBox.Item id="banana">Banana</ListBox.Item>
-          </ListBox.Section>
-          <ListBox.Section title="Vegetables">
-            <ListBox.Item id="carrot">Carrot</ListBox.Item>
-          </ListBox.Section>
-        </ListBox>,
+        <Listbox aria-label="Food Categories">
+          <Listbox.Section title="Fruits">
+            <Listbox.Item value="apple">Apple</Listbox.Item>
+            <Listbox.Item value="banana">Banana</Listbox.Item>
+          </Listbox.Section>
+          <Listbox.Section title="Vegetables">
+            <Listbox.Item value="carrot">Carrot</Listbox.Item>
+          </Listbox.Section>
+        </Listbox>,
       );
       expect(html).toContain("hashti-listbox-section");
       expect(html).toContain("hashti-listbox-header");
@@ -70,55 +70,71 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
       expect(html).toContain("Carrot");
     });
 
-    test("renders drag handle and selection checkbox in ListBox items", () => {
+    test("renders multiple selection with item indicators", () => {
       const html = renderToStaticMarkup(
-        <ListBox aria-label="Reorderable options" selectionMode="multiple">
-          <ListBox.Item id="1" textValue="Item 1">
-            <ListBox.DragHandle aria-label="Reorder item 1" />
-            <ListBox.Checkbox aria-label="Select item 1" />
-            <span>Item 1</span>
-          </ListBox.Item>
-        </ListBox>,
+        <Listbox aria-label="Toppings" multiple defaultValue={["basil"]}>
+          <Listbox.Item value="basil">
+            Basil
+            <Listbox.ItemIndicator>✓</Listbox.ItemIndicator>
+          </Listbox.Item>
+          <Listbox.Item value="olive">
+            Olive
+            <Listbox.ItemIndicator>✓</Listbox.ItemIndicator>
+          </Listbox.Item>
+        </Listbox>,
       );
-      expect(html).toContain("hashti-listbox-drag-handle");
-      expect(html).toContain("hashti-listbox-checkbox");
-      expect(html).toContain('slot="drag"');
-      expect(html).toContain('data-slot="checkbox"');
-      expect(html).toContain("Item 1");
+      expect(html).toContain("hashti-listbox-item");
+      expect(html).toContain("Basil");
+      expect(html).toContain("Olive");
     });
 
-    test("renders empty state in ListBox", () => {
+    test("renders empty state in Listbox", () => {
       const html = renderToStaticMarkup(
-        <ListBox
+        <Listbox
           aria-label="Empty list"
-          renderEmptyState={() => <ListBox.EmptyState>No options found</ListBox.EmptyState>}
-        >
-          {[]}
-        </ListBox>,
+          renderEmptyState={() => <Listbox.EmptyState>No options found</Listbox.EmptyState>}
+        />,
       );
       expect(html).toContain("hashti-listbox-empty-state");
       expect(html).toContain("No options found");
     });
+
+    test("renders load-more sentinel rows", () => {
+      const html = renderToStaticMarkup(
+        <Listbox aria-label="Items List">
+          <Listbox.Item value="item-1">Item 1</Listbox.Item>
+          <Listbox.LoadMore isLoading label="Loading more items…" />
+        </Listbox>,
+      );
+      expect(html).toContain("hashti-listbox-load-more");
+      expect(html).toContain("hashti-spinner");
+      expect(html).toContain("Loading more items…");
+
+      const errorHtml = renderToStaticMarkup(
+        <Listbox aria-label="Items List">
+          <Listbox.Item value="item-1">Item 1</Listbox.Item>
+          <Listbox.LoadMore isError errorMessage="Network timeout" retryLabel="Retry loading" onRetry={() => {}} />
+        </Listbox>,
+      );
+      expect(errorHtml).toContain("hashti-load-more-error");
+      expect(errorHtml).toContain("Network timeout");
+      expect(errorHtml).toContain("Retry loading");
+    });
   });
 
   describe("Autocomplete primitive", () => {
-    test("renders Autocomplete wrapper around search field and menu", () => {
+    test("renders Autocomplete with input and suggestion list", () => {
       const html = renderToStaticMarkup(
-        <Autocomplete
-          filter={(itemText, inputVal) => itemText.toLowerCase().includes(inputVal.toLowerCase())}
-        >
-          <SearchField aria-label="Search actions">
-            <Input />
-          </SearchField>
-          <Menu aria-label="Actions">
-            <MenuItem id="cut">Cut</MenuItem>
-            <MenuItem id="copy">Copy</MenuItem>
-            <MenuItem id="paste">Paste</MenuItem>
-          </Menu>
+        <Autocomplete aria-label="Search actions" defaultOpen>
+          <AutocompleteInput placeholder="Search actions" />
+          <AutocompleteContent>
+            <AutocompleteList>
+              <AutocompleteItem value="cut">Cut</AutocompleteItem>
+              <AutocompleteItem value="copy">Copy</AutocompleteItem>
+            </AutocompleteList>
+          </AutocompleteContent>
         </Autocomplete>,
       );
-      expect(html).toContain("hashti-search-field");
-      expect(html).toContain("react-aria-Menu");
       expect(html).toContain("Cut");
       expect(html).toContain("Copy");
     });
@@ -129,50 +145,74 @@ describe("Phase 4 Collection & Selection Elevate unit tests", () => {
       const html = renderToStaticMarkup(
         <Select
           label="Tags"
-          selectionMode="multiple"
+          multiple
           multipleDisplay="chips"
           placeholder="Pick tags"
-        >
-          <ListBox.Item id="design">Design</ListBox.Item>
-          <ListBox.Item id="engineering">Engineering</ListBox.Item>
-        </Select>,
+          items={[
+            { value: "design", label: "Design" },
+            { value: "engineering", label: "Engineering" },
+          ]}
+        />,
       );
       expect(html).toContain("hashti-select");
       expect(html).toContain("hashti-select-trigger");
-      expect(html).toContain('data-placeholder="true"');
+      expect(html).toContain("data-placeholder");
     });
 
     test("Select supports multiple selection with badge display", () => {
       const html = renderToStaticMarkup(
         <Select
           label="Categories"
-          selectionMode="multiple"
+          multiple
           multipleDisplay="badge"
           placeholder="Select categories"
-        >
-          <ListBox.Item id="cat-1">Category 1</ListBox.Item>
-          <ListBox.Item id="cat-2">Category 2</ListBox.Item>
-        </Select>,
+          items={[
+            { value: "cat-1", label: "Category 1" },
+            { value: "cat-2", label: "Category 2" },
+          ]}
+        />,
       );
       expect(html).toContain("hashti-select");
       expect(html).toContain("hashti-select-trigger");
+    });
+
+    test("Select renders selected chips in the trigger", () => {
+      const html = renderToStaticMarkup(
+        <Select
+          label="Tags"
+          multiple
+          multipleDisplay="chips"
+          defaultValue={["design"]}
+          items={[
+            { value: "design", label: "Design" },
+            { value: "engineering", label: "Engineering" },
+          ]}
+        />,
+      );
+      expect(html).toContain("hashti-select-chips-wrapper");
+      expect(html).toContain("hashti-select-chip");
+      expect(html).toContain("Design");
     });
 
     test("ComboBox supports multiple selection mode with multipleDisplay", () => {
       const html = renderToStaticMarkup(
         <ComboBox
           label="Multi ComboBox"
-          selectionMode="multiple"
+          multiple
           multipleDisplay="chips"
           placeholder="Type to add tags"
-        >
-          <ListBox.Item id="react">React</ListBox.Item>
-          <ListBox.Item id="vue">Vue</ListBox.Item>
-        </ComboBox>,
+          defaultValue={["react"]}
+          items={[
+            { value: "react", label: "React" },
+            { value: "vue", label: "Vue" },
+          ]}
+        />,
       );
       expect(html).toContain("hashti-combobox");
       expect(html).toContain('role="combobox"');
       expect(html).toContain("hashti-combobox-values");
+      expect(html).toContain("hashti-combobox-chip");
+      expect(html).toContain("React");
     });
   });
 });

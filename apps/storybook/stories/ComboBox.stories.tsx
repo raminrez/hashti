@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Header } from "react-aria-components";
 import { expect, waitFor, within } from "storybook/test";
-import { ComboBox, ListBoxItem, ListBoxSection, Theme, useTheme, type Key } from "@hashti/react";
+import { ComboBox, Theme, useTheme, type ListData } from "@hashti/react";
 import { http, HttpResponse } from "msw";
 import "./fields.css";
 
@@ -13,7 +12,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "ComboBox combines a text input with a filterable popover listbox, allowing users to search, filter, and pick from suggested options or optionally enter custom values.",
+          "ComboBox combines a text input with a filterable popup listbox: type to search, pick from suggestions, or allow custom values. Built on `@ui-sdk/react/combobox` with Hashti's field anatomy.",
       },
     },
   },
@@ -22,45 +21,34 @@ const meta = {
 export default meta;
 type Story = StoryObj;
 
-const cloudServices = [
-  { id: "compute", name: "Compute Engine (VMs)" },
-  { id: "k8s", name: "Kubernetes Engine (GKE)" },
-  { id: "functions", name: "Cloud Functions (Serverless)" },
-  { id: "storage", name: "Cloud Storage (Buckets)" },
-  { id: "sql", name: "Cloud SQL (Managed Database)" },
-  { id: "pubsub", name: "Cloud Pub/Sub (Messaging)" },
+const cloudServices: ListData<string> = [
+  { value: "compute", label: "Compute Engine (VMs)" },
+  { value: "k8s", label: "Kubernetes Engine (GKE)" },
+  { value: "functions", label: "Cloud Functions (Serverless)" },
+  { value: "storage", label: "Cloud Storage (Buckets)" },
+  { value: "sql", label: "Cloud SQL (Managed Database)" },
+  { value: "pubsub", label: "Cloud Pub/Sub (Messaging)" },
 ];
 
 function PlaygroundExample() {
-  const [selected, setSelected] = useState<Key | null>("k8s");
+  const [selected, setSelected] = useState<string | null>("k8s");
   return (
     <div className="field-story-stack">
       <ComboBox
         label="Cloud infrastructure service"
         description="Select a managed service to provision in your target project."
         placeholder="Search services..."
-        defaultInputValue="Kubernetes Engine (GKE)"
-        selectedKey={selected}
-        onSelectionChange={setSelected}
+        defaultQuery="Kubernetes Engine (GKE)"
+        value={selected}
+        onValueChange={(value) => setSelected(value)}
         items={cloudServices}
-      >
-        {(item) => (
-          <ListBoxItem id={item.id} textValue={item.name}>
-            {item.name}
-          </ListBoxItem>
-        )}
-      </ComboBox>
+      />
     </div>
   );
 }
 
-interface Service {
-  id: string;
-  name: string;
-}
-
 function AsyncComboBoxExample() {
-  const [services, setServices] = useState<Service[]>([]);
+  const [services, setServices] = useState<ListData<string>>([]);
   const [state, setState] = useState<"loading" | "ready" | "error">("loading");
 
   useEffect(() => {
@@ -68,10 +56,10 @@ function AsyncComboBoxExample() {
     fetch("/api/services", { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json() as Promise<{ services: Service[] }>;
+        return response.json() as Promise<{ services: { id: string; name: string }[] }>;
       })
       .then((payload) => {
-        setServices(payload.services);
+        setServices(payload.services.map((s) => ({ value: s.id, label: s.name })));
         setState("ready");
       })
       .catch(() => {
@@ -91,17 +79,11 @@ function AsyncComboBoxExample() {
               ? "The service catalog could not be loaded."
               : "Served by a mocked endpoint in this story."
         }
-        isInvalid={state === "error"}
+        status={state === "error" ? { type: "error", message: "Could not load services." } : undefined}
         placeholder={state === "loading" ? "Loading..." : "Search services..."}
         items={services}
-        isDisabled={state !== "ready"}
-      >
-        {(item: Service) => (
-          <ListBoxItem id={item.id} textValue={item.name}>
-            {item.name}
-          </ListBoxItem>
-        )}
-      </ComboBox>
+        disabled={state !== "ready"}
+      />
     </div>
   );
 }
@@ -140,14 +122,10 @@ export const Playground: Story = {
     const trigger = canvas.getByRole("button", { name: /Open items list/ });
     await userEvent.click(trigger);
 
-    const popover = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>(".hashti-popover");
-      expect(el).not.toBeNull();
-      return el!;
-    });
-
-    const functionsOption = await within(popover).findByRole("option", {
-      name: /Cloud Functions/,
+    const functionsOption = await waitFor(() => {
+      const opt = document.querySelector<HTMLElement>('[data-slot="combobox-item"][data-value="functions"]');
+      expect(opt).not.toBeNull();
+      return opt!;
     });
     await waitFor(() => expect(functionsOption).toBeVisible());
 
@@ -159,45 +137,20 @@ export const Playground: Story = {
 export const SizesAndStatus: Story = {
   render: () => (
     <div className="field-story-stack">
-      <ComboBox
-        size="sm"
-        label="Small (sm) service"
-        placeholder="Pick service..."
-        items={cloudServices}
-      >
-        {(item) => (
-          <ListBoxItem id={item.id} textValue={item.name}>
-            {item.name}
-          </ListBoxItem>
-        )}
-      </ComboBox>
-
+      <ComboBox size="sm" label="Small (sm) service" placeholder="Pick service..." items={cloudServices} />
       <ComboBox
         size="md"
         label="Medium (md - default) service"
         placeholder="Pick service..."
         items={cloudServices}
-      >
-        {(item) => (
-          <ListBoxItem id={item.id} textValue={item.name}>
-            {item.name}
-          </ListBoxItem>
-        )}
-      </ComboBox>
-
+      />
       <ComboBox
         size="lg"
         label="Large (lg) service"
         status={{ type: "warning", message: "Service region has limited remaining quotas." }}
         placeholder="Pick service..."
         items={cloudServices}
-      >
-        {(item) => (
-          <ListBoxItem id={item.id} textValue={item.name}>
-            {item.name}
-          </ListBoxItem>
-        )}
-      </ComboBox>
+      />
     </div>
   ),
   play: async ({ canvasElement }) => {
@@ -213,23 +166,23 @@ export const SizesAndStatus: Story = {
   },
 };
 
-const serviceGroups = [
+const serviceGroups: ListData<string> = [
   {
-    id: "compute-grp",
-    title: "Compute & Containers",
+    type: "group",
+    label: "Compute & Containers",
     items: [
-      { id: "gke", name: "Google Kubernetes Engine" },
-      { id: "cloud-run", name: "Cloud Run" },
-      { id: "compute-vm", name: "Compute Engine VMs" },
+      { value: "gke", label: "Google Kubernetes Engine" },
+      { value: "cloud-run", label: "Cloud Run" },
+      { value: "compute-vm", label: "Compute Engine VMs" },
     ],
   },
   {
-    id: "data-grp",
-    title: "Data & Storage",
+    type: "group",
+    label: "Data & Storage",
     items: [
-      { id: "cloud-sql", name: "Cloud SQL" },
-      { id: "spanner", name: "Cloud Spanner" },
-      { id: "firestore", name: "Cloud Firestore" },
+      { value: "cloud-sql", label: "Cloud SQL" },
+      { value: "spanner", label: "Cloud Spanner" },
+      { value: "firestore", label: "Cloud Firestore" },
     ],
   },
 ];
@@ -237,18 +190,7 @@ const serviceGroups = [
 export const SectionsAndGroups: Story = {
   render: () => (
     <div className="field-story-stack">
-      <ComboBox label="Service category" placeholder="Search categorized catalog...">
-        {serviceGroups.map((grp) => (
-          <ListBoxSection key={grp.id} id={grp.id}>
-            <Header className="hashti-select-section-header">{grp.title}</Header>
-            {grp.items.map((it) => (
-              <ListBoxItem key={it.id} id={it.id} textValue={it.name}>
-                {it.name}
-              </ListBoxItem>
-            ))}
-          </ListBoxSection>
-        ))}
-      </ComboBox>
+      <ComboBox label="Service category" placeholder="Search categorized catalog..." items={serviceGroups} />
     </div>
   ),
   play: async ({ canvasElement, userEvent }) => {
@@ -257,14 +199,10 @@ export const SectionsAndGroups: Story = {
     const trigger = canvas.getByRole("button", { name: /Open items list/ });
     await userEvent.click(trigger);
 
-    const popover = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>(".hashti-popover");
-      expect(el).not.toBeNull();
-      return el!;
-    });
-
-    const spannerOption = await within(popover).findByRole("option", {
-      name: "Cloud Spanner",
+    const spannerOption = await waitFor(() => {
+      const opt = document.querySelector<HTMLElement>('[data-slot="combobox-item"][data-value="spanner"]');
+      expect(opt).not.toBeNull();
+      return opt!;
     });
     await waitFor(() => expect(spannerOption).toBeVisible());
 
@@ -281,19 +219,13 @@ export const AllowsCustomValue: Story = {
         label="Custom deployment tag"
         description="Pick an existing tag or type any custom semantic tag."
         placeholder="Type or select tag..."
-        allowsCustomValue
+        allowCustomValue
         items={[
-          { id: "v1", name: "v1.0.0-release" },
-          { id: "v2", name: "v2.0.0-beta" },
-          { id: "latest", name: "latest-stable" },
+          { value: "v1", label: "v1.0.0-release" },
+          { value: "v2", label: "v2.0.0-beta" },
+          { value: "latest", label: "latest-stable" },
         ]}
-      >
-        {(item) => (
-          <ListBoxItem id={item.id} textValue={item.name}>
-            {item.name}
-          </ListBoxItem>
-        )}
-      </ComboBox>
+      />
     </div>
   ),
   play: async ({ canvasElement, userEvent }) => {
@@ -307,35 +239,22 @@ export const AllowsCustomValue: Story = {
   },
 };
 
-export const DisabledAndInvalid: Story = {
+export const DisabledAndRequired: Story = {
   render: () => (
     <div className="field-story-stack">
       <ComboBox
         label="Cluster zone (Disabled)"
         defaultValue="us-central1-a"
-        isDisabled
-        items={[{ id: "us-central1-a", name: "us-central1-a" }]}
-      >
-        {(item) => (
-          <ListBoxItem id={item.id} textValue={item.name}>
-            {item.name}
-          </ListBoxItem>
-        )}
-      </ComboBox>
+        disabled
+        items={[{ value: "us-central1-a", label: "us-central1-a" }]}
+      />
 
       <ComboBox
         label="Mandatory cluster"
-        isRequired
-        isInvalid
-        errorMessage="Please select a cluster zone before continuing."
-        items={[{ id: "europe-west1", name: "europe-west1-b" }]}
-      >
-        {(item) => (
-          <ListBoxItem id={item.id} textValue={item.name}>
-            {item.name}
-          </ListBoxItem>
-        )}
-      </ComboBox>
+        required
+        status={{ type: "error", message: "Please select a cluster zone before continuing." }}
+        items={[{ value: "europe-west1", label: "europe-west1-b" }]}
+      />
     </div>
   ),
   play: async ({ canvasElement }) => {
@@ -345,7 +264,7 @@ export const DisabledAndInvalid: Story = {
     expect(disabledInput).toBeDisabled();
 
     await waitFor(() =>
-      expect(canvas.getByText("Please select a cluster zone before continuing.")).toBeVisible(),
+      expect(canvas.getByText("Please select a cluster zone before continuing.")).toBeInTheDocument(),
     );
   },
 };
@@ -360,21 +279,15 @@ function LocalizedComboBox() {
             label="ناحیه رایانش ابری"
             description="ناحیه سرورهای ابری را جهت بهینه‌سازی تاخیر انتخاب کنید."
             placeholder="جستجوی ناحیه..."
-            defaultInputValue="تهران (مرکز داده آسیاتک)"
-            defaultSelectedKey="tehran"
+            defaultQuery="تهران (مرکز داده آسیاتک)"
+            defaultValue="tehran"
             items={[
-              { id: "tehran", name: "تهران (مرکز داده آسیاتک)" },
-              { id: "shiraz", name: "شیراز (مرکز داده پارس)" },
-              { id: "isfahan", name: "اصفهان (مرکز داده صفه)" },
-              { id: "tabriz", name: "تبریز (مرکز داده سهند)" },
+              { value: "tehran", label: "تهران (مرکز داده آسیاتک)" },
+              { value: "shiraz", label: "شیراز (مرکز داده پارس)" },
+              { value: "isfahan", label: "اصفهان (مرکز داده صفه)" },
+              { value: "tabriz", label: "تبریز (مرکز داده سهند)" },
             ]}
-          >
-            {(item) => (
-              <ListBoxItem id={item.id} textValue={item.name}>
-                {item.name}
-              </ListBoxItem>
-            )}
-          </ComboBox>
+          />
         </div>
       </Theme>
     </div>
@@ -392,14 +305,10 @@ export const LongContentAndLocales: Story = {
     const trigger = canvas.getByRole("button", { name: /Open items list/ });
     await userEvent.click(trigger);
 
-    const popover = await waitFor(() => {
-      const el = document.querySelector<HTMLElement>(".hashti-popover");
-      expect(el).not.toBeNull();
-      return el!;
-    });
-
-    const shirazOption = await within(popover).findByRole("option", {
-      name: /شیراز/,
+    const shirazOption = await waitFor(() => {
+      const opt = document.querySelector<HTMLElement>('[data-slot="combobox-item"][data-value="shiraz"]');
+      expect(opt).not.toBeNull();
+      return opt!;
     });
     await waitFor(() => expect(shirazOption).toBeVisible());
 
@@ -409,12 +318,12 @@ export const LongContentAndLocales: Story = {
 };
 
 function DynamicItemCreationDemo() {
-  const [items, setItems] = useState([
-    { id: "react", name: "React" },
-    { id: "vue", name: "Vue" },
-    { id: "svelte", name: "Svelte" },
+  const [items, setItems] = useState<ListData<string>>([
+    { value: "react", label: "React" },
+    { value: "vue", label: "Vue" },
+    { value: "svelte", label: "Svelte" },
   ]);
-  const [selected, setSelected] = useState<Key | null>(null);
+  const [selected, setSelected] = useState<string | null>(null);
 
   return (
     <div style={{ maxWidth: 360 }}>
@@ -422,21 +331,15 @@ function DynamicItemCreationDemo() {
         label="Project framework"
         placeholder="Search or create framework..."
         items={items}
-        allowCreateItem={true}
-        onCreateItem={(val) => {
-          const newItem = { id: val.toLowerCase().replace(/\s+/g, "-"), name: val };
-          setItems((prev) => [...prev, newItem]);
-          setSelected(newItem.id);
+        allowCreateItem
+        onCreateItem={(query) => {
+          const value = query.toLowerCase().replace(/\s+/g, "-");
+          setItems((prev) => [...prev, { value, label: query }]);
+          setSelected(value);
         }}
-        selectedKey={selected}
-        onSelectionChange={setSelected}
-      >
-        {(item) => (
-          <ListBoxItem id={item.id} textValue={item.name}>
-            {item.name}
-          </ListBoxItem>
-        )}
-      </ComboBox>
+        value={selected}
+        onValueChange={(value) => setSelected(value)}
+      />
     </div>
   );
 }
@@ -447,5 +350,50 @@ export const DynamicItemCreation: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole("combobox", { name: "Project framework" });
     expect(input).toBeInTheDocument();
+  },
+};
+
+function MultipleExample() {
+  const [selected, setSelected] = useState<string[]>(["react"]);
+  return (
+    <div className="field-story-stack">
+      <ComboBox
+        label="Frameworks (chips)"
+        multiple
+        multipleDisplay="chips"
+        placeholder="Add a framework..."
+        value={selected}
+        onValueChange={(value) => setSelected(value)}
+        items={[
+          { value: "react", label: "React" },
+          { value: "vue", label: "Vue" },
+          { value: "svelte", label: "Svelte" },
+          { value: "solid", label: "Solid" },
+        ]}
+      />
+      <output aria-label="Selected frameworks">{selected.join(", ")}</output>
+    </div>
+  );
+}
+
+export const Multiple: Story = {
+  render: () => <MultipleExample />,
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    const output = canvas.getByRole("status", { name: "Selected frameworks" });
+    await expect(output).toHaveTextContent("react");
+
+    const input = canvas.getByRole("combobox", { name: /Frameworks \(chips\)/ });
+    await userEvent.click(input);
+    const vueOption = await waitFor(() => {
+      const opt = document.querySelector<HTMLElement>('[data-slot="combobox-item"][data-value="vue"]');
+      expect(opt).not.toBeNull();
+      return opt!;
+    });
+    await userEvent.click(vueOption);
+
+    await waitFor(async () => {
+      await expect(output).toHaveTextContent("react, vue");
+    });
   },
 };

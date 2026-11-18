@@ -1,182 +1,159 @@
 import { describe, expect, test } from "bun:test";
-import React from "react";
 import ReactDOMServer from "react-dom/server";
 import {
-  TokenField,
-  TokenFieldContext,
-  useTokenFieldContext,
-  TokenFieldValue,
-  CommandPalette,
-  CommandPaletteContext,
-  useCommandPaletteContext,
+  TokenInput,
+  createTokenInputController,
+  type TokenInputValue,
+  Command,
+  CommandContext,
+  useCommandContext,
   ComboBox,
-  ListBox,
   Icon,
   Kbd,
 } from "../../packages/react/src";
 
-describe("TokenField & CommandPalette Unit Tests", () => {
-  describe("TokenField suite", () => {
-    test("exports TokenField, TokenFieldValue, context, and all compound subcomponents", () => {
-      expect(typeof TokenField).toBe("function");
-      expect(typeof TokenField.Root).toBe("function");
-      expect(typeof TokenField.Input).toBe("function");
-      expect(typeof TokenField.Token).toBe("function");
-      expect(typeof TokenField.Label).toBe("function");
-      expect(typeof TokenField.Description).toBe("function");
-      expect(typeof TokenField.ErrorMessage).toBe("function");
-      expect(typeof TokenFieldValue).toBe("function");
-      expect(TokenFieldContext).toBeDefined();
-      expect(typeof useTokenFieldContext).toBe("function");
+describe("TokenInput & Command unit tests", () => {
+  describe("TokenInput suite", () => {
+    test("exports TokenInput and all compound subcomponents", () => {
+      expect(typeof TokenInput).toBe("function");
+      expect(typeof TokenInput.Root).toBe("function");
+      expect(typeof TokenInput.Editor).toBe("function");
+      expect(typeof TokenInput.Token).toBe("function");
+      expect(typeof TokenInput.Label).toBe("function");
+      expect(typeof TokenInput.Description).toBe("function");
+      expect(typeof TokenInput.ErrorMessage).toBe("function");
+      expect(typeof createTokenInputController).toBe("function");
     });
 
-    test("instantiates TokenFieldValue with segments correctly", () => {
-      const value = new TokenFieldValue([
-        { type: "text", text: "Explain " },
-        { type: "token", text: "@HashtiDesignSystem", value: { id: "hashti" } },
-        { type: "text", text: " architecture." },
-      ]);
-      expect(value.toString()).toBe("Explain @HashtiDesignSystem architecture.");
-      expect(value.segments.length).toBe(3);
-      expect(value.segments[0]!.type).toBe("text");
-      expect(value.segments[1]!.type).toBe("token");
-      expect(value.segments[1]!.text).toBe("@HashtiDesignSystem");
-    });
-
-    test("renders convenient TokenField with label, description, and placeholder", () => {
-      const value = new TokenFieldValue([
-        { type: "token", text: "tag1" },
-        { type: "text", text: " " },
-      ]);
+    test("renders convenient TokenInput with label, description, and tokens", () => {
+      const value: TokenInputValue = [
+        "Explain ",
+        { type: "mention", value: "hashti", label: "@HashtiDesignSystem" },
+        " architecture.",
+      ];
       const html = ReactDOMServer.renderToString(
-        <TokenField
+        <TokenInput
           label="AI Model Directives"
           description="Type prompts and mention context tokens with @"
           placeholder="Ask a question..."
-          value={value}
+          defaultValue={value}
         />,
       );
 
       expect(html).toContain("AI Model Directives");
       expect(html).toContain("Type prompts and mention context tokens with @");
-      expect(html).toContain("hashti-token-field");
       expect(html).toContain("hashti-token-input");
-      expect(html).toContain('data-placeholder="Ask a question..."');
-      expect(html).toContain("tag1");
+      expect(html).toContain("@HashtiDesignSystem");
       expect(html).toContain("hashti-token");
     });
 
-    test("renders compound TokenField anatomy with custom tokens, icons, and remove button", () => {
-      const value = new TokenFieldValue([
-        { type: "token", text: "gpt-4o", value: { model: "gpt" } },
-        { type: "text", text: " prompt details" },
-      ]);
+    test("renders compound TokenInput anatomy with custom tokens", () => {
+      const value: TokenInputValue = [
+        { type: "model", value: "gpt-4o", label: "gpt-4o" },
+        " prompt details",
+      ];
 
       const html = ReactDOMServer.renderToString(
-        <TokenField.Root value={value} size="lg">
-          <TokenField.Label>Context Selector</TokenField.Label>
-          <TokenField.Input>
-            {(segment) => (
-              <TokenField.Token
-                key={segment.text}
-                icon={<Icon name="sparkle" />}
-                onRemove={() => {}}
-              >
-                {segment.text}
-              </TokenField.Token>
-            )}
-          </TokenField.Input>
-          <TokenField.Description>Active workspace agents</TokenField.Description>
-          <TokenField.ErrorMessage>Invalid token format</TokenField.ErrorMessage>
-        </TokenField.Root>,
+        <TokenInput.Root defaultValue={value} size="lg">
+          <TokenInput.Label>Context Selector</TokenInput.Label>
+          <TokenInput.Editor />
+          <TokenInput.Description>Active workspace agents</TokenInput.Description>
+        </TokenInput.Root>,
       );
 
       expect(html).toContain("Context Selector");
       expect(html).toContain('data-size="lg"');
-      expect(html).toContain("hashti-token-input");
       expect(html).toContain("gpt-4o");
-      expect(html).toContain("hashti-token__icon");
-      expect(html).toContain("hashti-token__remove");
-      expect(html).toContain('aria-label="Remove token"');
       expect(html).toContain("Active workspace agents");
     });
 
-    test("supports multiline=true for multi-line AI prompt boxes", () => {
-      const value = new TokenFieldValue([{ type: "text", text: "Line 1\nLine 2" }]);
-
+    test("renders tokens with their type and label", () => {
+      // On the server the editor renders each token's host with the label; the
+      // custom renderToken markup mounts with the editor on the client.
       const html = ReactDOMServer.renderToString(
-        <TokenField
+        <TokenInput.Root
+          defaultValue={[{ type: "model", value: "gpt-4o", label: "gpt-4o" }]}
+          renderToken={(token) => (
+            <TokenInput.Token icon={<Icon name="sparkle" />}>{token.label}</TokenInput.Token>
+          )}
+        >
+          <TokenInput.Editor />
+        </TokenInput.Root>,
+      );
+
+      expect(html).toContain('data-slot="token-input-host"');
+      expect(html).toContain('data-token-type="model"');
+      expect(html).toContain("gpt-4o");
+    });
+
+    test("supports multiline", () => {
+      const html = ReactDOMServer.renderToString(
+        <TokenInput
           label="System Prompt"
           multiline
           placeholder="Type multiline instructions..."
-          value={value}
+          defaultValue={["Line 1\nLine 2"]}
         />,
       );
 
       expect(html).toContain('data-multiline="true"');
-      expect(html).toContain("hashti-token-field--multiline");
-      expect(html).toContain("hashti-token-input--multiline");
     });
 
-    test("supports isDisabled and isReadOnly states", () => {
-      const value = new TokenFieldValue([{ type: "token", text: "locked-token" }]);
-
+    test("supports disabled and readOnly states", () => {
       const disabledHtml = ReactDOMServer.renderToString(
-        <TokenField label="Disabled Field" isDisabled value={value} />,
+        <TokenInput label="Disabled Field" disabled defaultValue={["locked"]} />,
       );
-      expect(disabledHtml).toContain('data-disabled="true"');
+      expect(disabledHtml).toContain("data-disabled");
 
       const readOnlyHtml = ReactDOMServer.renderToString(
-        <TokenField label="ReadOnly Field" isReadOnly value={value} />,
+        <TokenInput label="ReadOnly Field" readOnly defaultValue={["locked"]} />,
       );
-      expect(readOnlyHtml).toContain('data-readonly="true"');
+      expect(readOnlyHtml).toContain("data-readonly");
     });
   });
 
-  describe("CommandPalette suite", () => {
-    test("exports CommandPalette, context, and all compound subcomponents", () => {
-      expect(typeof CommandPalette).toBe("function");
-      expect(typeof CommandPalette.Root).toBe("function");
-      expect(typeof CommandPalette.Dialog).toBe("function");
-      expect(typeof CommandPalette.Input).toBe("function");
-      expect(typeof CommandPalette.List).toBe("function");
-      expect(typeof CommandPalette.Group).toBe("function");
-      expect(typeof CommandPalette.Item).toBe("function");
-      expect(typeof CommandPalette.Empty).toBe("function");
-      expect(typeof CommandPalette.Footer).toBe("function");
-      expect(CommandPalette.Kbd).toBe(Kbd);
-      expect(CommandPaletteContext).toBeDefined();
-      expect(typeof useCommandPaletteContext).toBe("function");
+  describe("Command suite", () => {
+    test("exports Command, context, and all compound subcomponents", () => {
+      expect(typeof Command).toBe("function");
+      expect(typeof Command.Root).toBe("function");
+      expect(typeof Command.Dialog).toBe("function");
+      expect(typeof Command.Input).toBe("function");
+      expect(typeof Command.List).toBe("function");
+      expect(typeof Command.Group).toBe("function");
+      expect(typeof Command.Item).toBe("function");
+      expect(typeof Command.Empty).toBe("function");
+      expect(typeof Command.Footer).toBe("function");
+      expect(Command.Kbd).toBe(Kbd);
+      expect(CommandContext).toBeDefined();
+      expect(typeof useCommandContext).toBe("function");
     });
 
-    test("renders CommandPalette subcomponents within Root with input, groups, items, and footer", () => {
+    test("renders Command subcomponents within the dialog", () => {
       const html = ReactDOMServer.renderToString(
-        <CommandPalette.Root isOpen={true} enableShortcut={true}>
-          <CommandPalette.Input placeholder="Search actions or commands..." />
-          <CommandPalette.List>
-            <CommandPalette.Group heading="Productivity Actions">
-              <CommandPalette.Item
-                id="new-file"
-                icon={<Icon name="file" />}
-                shortcut={["mod", "n"]}
-                description="Create a new workspace document"
-              >
-                Create Document
-              </CommandPalette.Item>
-              <CommandPalette.Item
-                id="settings"
-                icon={<Icon name="settings" />}
-                shortcut={["mod", ","]}
-              >
-                Preferences
-              </CommandPalette.Item>
-            </CommandPalette.Group>
-          </CommandPalette.List>
-          <CommandPalette.Footer />
-        </CommandPalette.Root>,
+        <Command.Root open enableShortcut={false}>
+          <Command.Dialog aria-label="Quick Commands">
+            <Command.Input placeholder="Search actions or commands..." />
+            <Command.Empty>No results found.</Command.Empty>
+            <Command.List>
+              <Command.Group heading="Productivity Actions">
+                <Command.Item
+                  value="new-file"
+                  icon={<Icon name="file" />}
+                  shortcutKeys={["mod", "n"]}
+                  description="Create a new workspace document"
+                >
+                  Create Document
+                </Command.Item>
+                <Command.Item value="settings" icon={<Icon name="settings" />} shortcutKeys={["mod", ","]}>
+                  Preferences
+                </Command.Item>
+              </Command.Group>
+            </Command.List>
+            <Command.Footer />
+          </Command.Dialog>
+        </Command.Root>,
       );
 
-      expect(html).toContain("hashti-command-palette__input-wrapper");
       expect(html).toContain("hashti-command-palette__input");
       expect(html).toContain('placeholder="Search actions or commands..."');
       expect(html).toContain("Productivity Actions");
@@ -189,34 +166,40 @@ describe("TokenField & CommandPalette Unit Tests", () => {
       expect(html).toContain("Dismiss");
     });
 
-    test("renders CommandPalette.Empty state when no items match query", () => {
+    test("renders Command.Empty content", () => {
       const html = ReactDOMServer.renderToString(
-        <CommandPalette.Root isOpen={true}>
-          <CommandPalette.Input value="nonexistent-command" />
-          <CommandPalette.List>
-            <CommandPalette.Empty
+        <Command.Root open enableShortcut={false}>
+          <Command.Dialog aria-label="Commands" defaultQuery="nonexistent-command">
+            <Command.Input />
+            <Command.Empty
               title="No commands matching your query"
               description="Try searching for files, settings, or AI actions."
             />
-          </CommandPalette.List>
-        </CommandPalette.Root>,
+            <Command.List>
+              <Command.Item value="a">Alpha</Command.Item>
+            </Command.List>
+          </Command.Dialog>
+        </Command.Root>,
       );
 
+      // The empty part mounts with the class hook; its content shows once the
+      // client confirms nothing matches the query.
       expect(html).toContain("hashti-command-palette__empty");
-      expect(html).toContain("No commands matching your query");
-      expect(html).toContain("Try searching for files, settings, or AI actions.");
+      expect(html).toContain('data-slot="command-empty"');
     });
 
-    test("renders custom footer toolbar with custom shortcuts and badges", () => {
+    test("renders custom footer content", () => {
       const html = ReactDOMServer.renderToString(
-        <CommandPalette.Root isOpen={true}>
-          <CommandPalette.Footer>
-            <div className="custom-footer-hint">
-              <Kbd keys={["tab"]} />
-              <span>Next section</span>
-            </div>
-          </CommandPalette.Footer>
-        </CommandPalette.Root>,
+        <Command.Root open enableShortcut={false}>
+          <Command.Dialog aria-label="Commands">
+            <Command.Footer>
+              <div className="custom-footer-hint">
+                <Kbd keys={["tab"]} />
+                <span>Next section</span>
+              </div>
+            </Command.Footer>
+          </Command.Dialog>
+        </Command.Root>,
       );
 
       expect(html).toContain("hashti-command-palette__footer");
@@ -225,43 +208,34 @@ describe("TokenField & CommandPalette Unit Tests", () => {
     });
   });
 
-  describe("ComboBox Selection renderValue Ergonomics", () => {
-    test("ComboBox accepts and renders custom renderValue function", () => {
-      interface Framework {
-        id: string;
-        name: string;
-        tag: string;
-      }
-      const items: Framework[] = [
-        { id: "react", name: "React", tag: "UI Library" },
-        { id: "solid", name: "Solid", tag: "Reactive" },
-      ];
-
+  describe("ComboBox renderValue ergonomics", () => {
+    test("ComboBox accepts a custom renderValue function", () => {
       const html = ReactDOMServer.renderToString(
-        <ComboBox<Framework, "multiple">
+        <ComboBox
           label="Frameworks"
-          selectionMode="multiple"
-          items={items}
-          renderValue={(selectedItems) => (
+          multiple
+          defaultValue={["react", "solid"]}
+          items={[
+            { value: "react", label: "React" },
+            { value: "solid", label: "Solid" },
+          ]}
+          renderValue={(state) => (
             <div className="custom-combobox-selection-pills">
-              {selectedItems.map((item) => (
-                <span key={item?.id ?? "unknown"} className="custom-pill">
-                  {item?.name} [{item?.tag}]
+              {state.labels.map((label) => (
+                <span key={label} className="custom-pill">
+                  {label}
                 </span>
               ))}
             </div>
           )}
-        >
-          {(item) => (
-            <ListBox.Item id={item.id} textValue={item.name}>
-              {item.name}
-            </ListBox.Item>
-          )}
-        </ComboBox>,
+        />,
       );
 
       expect(html).toContain("hashti-combobox");
       expect(html).toContain("hashti-combobox-values");
+      expect(html).toContain("custom-combobox-selection-pills");
+      expect(html).toContain("React");
+      expect(html).toContain("Solid");
     });
   });
 });
