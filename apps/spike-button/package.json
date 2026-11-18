@@ -1,0 +1,22 @@
+{
+  "name": "@hashti/spike-button",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/main.ts src/react.tsx --outdir public --target browser",
+    "serve": "bun src/server.ts"
+  },
+  "dependencies": {
+    "@ui-sdk/web": "0.1.0-beta.6",
+    "@ui-sdk/core": "catalog:",
+    "@hashti/react": "workspace:*",
+    "@hashti/styles": "workspace:*",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "pixelmatch": "^8.0.0",
+    "pngjs": "^7.0.0"
+  }
+}

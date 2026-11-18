@@ -96,6 +96,16 @@ These are set by Hashti components or themes, not by RAC, and stay as they are:
   `data-pressed`, while RAC's momentary "finger is down" has no ui-sdk attribute at all.
   The sweep maps transient-press selectors to `:active` and toggle-on selectors to
   `data-pressed`, component by component.
+
+## Spike correction (TICK-013, 2026-11-18)
+
+The map itself was right. The crack was in the **loading path**, not the selectors:
+`@hashti/react/styles.css` was a pre-sweep duplicate of `packages/styles/src/index.css`
+still using `[data-hovered]` / `[data-pressed]` / `[data-focus-visible]`. Storybook and the
+docs app loaded the duplicate, so swept selectors never reached the review surface. Fixed by
+turning `@hashti/react/styles.css` into a one-line re-export of `@hashti/styles` and deleting
+the duplicated react-local CSS. Confirmed with pixel-identical captures across `@ui-sdk/web`
+and `@ui-sdk/react` against the swept stylesheet. See `docs/spike-button-report.md`.
 - **`data-focused` vs `data-highlighted`.** ui-sdk never documents `data-focused` on
   list/menu items; `components/listbox.md` says `data-highlighted` is "the item that has
   focus". The sweep uses `data-highlighted` for items and `:focus` for segments.

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" data-hashti-theme="frame-light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hashti Button spike — @ui-sdk/web</title>
+    <link rel="stylesheet" href="/hashti-styles.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 1.5rem;
+        font-family: var(--hashti-font-sans);
+        background: var(--hashti-background);
+        color: var(--hashti-text-primary);
+      }
+      .matrix {
+        display: grid;
+        grid-template-columns: repeat(5, max-content);
+        gap: 0.75rem 1.5rem;
+        align-items: center;
+        margin-block-end: 2rem;
+      }
+      .matrix .row-label {
+        grid-column: 1 / -1;
+        font-size: 0.75rem;
+        color: var(--hashti-text-secondary);
+        margin-block-start: 0.5rem;
+      }
+      .rtl-block {
+        margin-block-end: 2rem;
+      }
+      .rtl-block p {
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size: 1.25rem">Hashti Button spike</h1>
+
+    <div class="matrix" id="variants">
+      <span class="row-label">Variants (rest)</span>
+    </div>
+
+    <div class="matrix" id="sizes">
+      <span class="row-label">Sizes</span>
+    </div>
+
+    <div class="matrix" id="states">
+      <span class="row-label">States: hover / active / disabled / pending / iconOnly</span>
+    </div>
+
+    <div class="rtl-block" dir="rtl" lang="fa">
+      <p>فارسی · فضای کاری <bdi dir="ltr">WS-1042</bdi></p>
+      <div id="rtl-fa"></div>
+    </div>
+    <div class="rtl-block" dir="rtl" lang="ar">
+      <p>العربية · مساحة العمل <bdi dir="ltr">WS-1042</bdi></p>
+      <div id="rtl-ar"></div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

@@ -1,6 +1,0 @@
-/* Hashti Modern Aesthetic - pagination */
-@layer hashti.components {
-  [data-hashti-theme] .hashti-pagination {
-    border-radius: var(--hashti-control-radius, 12px);
-  }
-}

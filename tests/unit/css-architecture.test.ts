@@ -7,9 +7,10 @@ import { join, relative } from "node:path";
 // component renders. See docs/css-conventions.md.
 
 const root = join(import.meta.dir, "../..");
-const src = join(root, "packages/react/src");
+// ADR-0002: @hashti/styles is the single home of component CSS; @hashti/react re-exports it.
+const src = join(root, "packages/styles/src");
 const componentsDir = join(src, "components");
-const stylesEntry = readFileSync(join(src, "styles.css"), "utf8");
+const stylesEntry = readFileSync(join(src, "index.css"), "utf8");
 
 // Classes that are hooks for consumers or for our own generated markup rather
 // than a class any single .tsx file spells out.
@@ -34,7 +35,7 @@ function collectTsx(dir: string, out: string[] = []): string[] {
   return out;
 }
 
-const tsxSource = collectTsx(src)
+const tsxSource = collectTsx(join(root, "packages/react/src"))
   .map((file) => readFileSync(file, "utf8"))
   .join("\n");
 

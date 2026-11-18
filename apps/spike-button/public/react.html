@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-hashti-theme="frame-light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hashti Button spike — @ui-sdk/react</title>
+    <link rel="stylesheet" href="/hashti-styles.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 1.5rem;
+        font-family: var(--hashti-font-sans);
+        background: var(--hashti-background);
+        color: var(--hashti-text-primary);
+      }
+      .matrix {
+        display: grid;
+        grid-template-columns: repeat(5, max-content);
+        gap: 0.75rem 1.5rem;
+        align-items: center;
+        margin-block-end: 2rem;
+      }
+      .matrix .row-label {
+        grid-column: 1 / -1;
+        font-size: 0.75rem;
+        color: var(--hashti-text-secondary);
+        margin-block-start: 0.5rem;
+      }
+      .rtl-block {
+        margin-block-end: 2rem;
+      }
+      .rtl-block p {
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size: 1.25rem">Hashti Button spike</h1>
+    <div id="root"></div>
+    <script type="module" src="/react.js"></script>
+  </body>
+</html>
