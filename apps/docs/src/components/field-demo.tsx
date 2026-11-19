@@ -10,8 +10,8 @@ export function FieldDemo() {
     >
       <Field name="email">
         <FieldLabel>Email</FieldLabel>
-        <Input type="email" required placeholder="hollis@example.com" />
         <FieldDescription>We'll send you a confirmation link.</FieldDescription>
+        <Input type="email" required placeholder="hollis@example.com" />
         <FieldError match="valueMissing">Enter your email address.</FieldError>
         <FieldError match="typeMismatch">Enter an email address like hollis@example.com.</FieldError>
       </Field>
