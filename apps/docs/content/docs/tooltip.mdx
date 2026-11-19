@@ -1,0 +1,20 @@
+---
+title: Tooltip
+description: Reveals a short hint on hover and focus.
+---
+
+import { TooltipDemo } from '../../src/components/tooltip-demo'
+
+## Usage
+
+<TooltipDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Tooltip` | Owns the open state and the trigger relationship. |
+| `TooltipTrigger` | The control the hint describes. |
+| `TooltipContent` | The inverse hint surface; plain text only. |
+
+Styling lives in `@hashti/styles` under `.hashti-tooltip-content` — the inverse surface, 8px radius, 175ms entrance.
