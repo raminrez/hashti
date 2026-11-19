@@ -1,0 +1,23 @@
+---
+title: Input
+description: Enters short text, connected to your form or state.
+---
+
+import { Input } from '@hashti/react'
+
+## Usage
+
+<div style={{ display: 'grid', gap: 16, maxWidth: 320 }}>
+  <Input aria-label="Username" placeholder="Username" />
+  <Input aria-label="Website" defaultValue="hollisgrant.com" />
+  <Input aria-label="Read-only" readOnly value="example.com/hollis" />
+  <Input aria-label="Disabled" disabled defaultValue="Locked value" />
+</div>
+
+## Props
+
+Input passes every native input prop through — `type`, `placeholder`,
+`autoComplete`, `required` — plus ui-sdk's controlled state and change
+reasons.
+
+Styling lives in `@hashti/styles` under `.hashti-input`: control border, 44px minimum height, 16px entered text, field focus ring at a 2px offset.
