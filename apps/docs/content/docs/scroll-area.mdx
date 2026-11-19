@@ -1,0 +1,22 @@
+---
+title: ScrollArea
+description: Scrolls content with a styled scrollbar.
+---
+
+import { ScrollAreaDemo } from '../../src/components/scroll-area-demo'
+
+## Usage
+
+<ScrollAreaDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `ScrollArea` | The sized, clipping box. |
+| `ScrollAreaViewport` | The real scroller. |
+| `ScrollAreaContent` | The content wrapper. |
+| `ScrollAreaScrollbar` | One per axis; shows under `data-visible`. |
+| `ScrollAreaThumb` | Sizes and moves itself. |
+
+Styling lives in `@hashti/styles` under `.hashti-scroll-area*` — a slim floating rail with a strong-border thumb.
