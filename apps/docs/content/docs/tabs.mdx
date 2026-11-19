@@ -1,0 +1,22 @@
+---
+title: Tabs
+description: Switches between panels of related content.
+---
+
+import { TabsDemo } from '../../src/components/tabs-demo'
+
+## Usage
+
+<TabsDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Tabs` | Owns the selected value and arrow-key movement. |
+| `TabsList` | The tab row; give it an accessible name. |
+| `TabsTab` | One tab; shares its `value` with its panel. |
+| `TabsIndicator` | The line that follows the selection. |
+| `TabsPanel` | The content a tab reveals. |
+
+Styling lives in `@hashti/styles` under `.hashti-tabs-*` — the line variant: a subtle rule under the row and a focus-blue indicator that follows the selection.

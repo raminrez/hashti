@@ -48,6 +48,8 @@ export {
 
 export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip"
 
+export { Tabs, TabsList, TabsTab, TabsIndicator, TabsPanel } from "./tabs"
+
 export {
   Toast,
   ToastAction,
