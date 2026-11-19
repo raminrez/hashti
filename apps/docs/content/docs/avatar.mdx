@@ -1,0 +1,32 @@
+---
+title: Avatar
+description: Shows an image with a fallback while it loads or if it fails.
+---
+
+import { Avatar, AvatarImage, AvatarFallback } from '@hashti/react'
+
+## Sizes
+
+<div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+  <Avatar size="xs"><AvatarFallback>XS</AvatarFallback></Avatar>
+  <Avatar size="sm"><AvatarFallback>SM</AvatarFallback></Avatar>
+  <Avatar><AvatarFallback>MD</AvatarFallback></Avatar>
+  <Avatar size="lg"><AvatarFallback>LG</AvatarFallback></Avatar>
+  <Avatar size="xl"><AvatarFallback>XL</AvatarFallback></Avatar>
+</div>
+
+## Image with fallback
+
+<Avatar size="lg">
+  <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | Root size. Default `md`. |
+| `delay` | `number` | On `AvatarFallback`: ms to wait before showing it. |
+
+Styling lives in `@hashti/styles` under `.hashti-avatar`, keyed off `data-size`, fully round, with initials at 40% of the avatar size.
