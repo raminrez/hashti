@@ -51,6 +51,8 @@ export {
 
 export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip"
 
+export { HoverCard, HoverCardTrigger, HoverCardContent } from "./hover-card"
+
 export {
   Menu,
   MenuTrigger,
