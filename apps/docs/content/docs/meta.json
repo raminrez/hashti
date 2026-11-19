@@ -1,5 +1,5 @@
 {
   "title": "Hashti",
   "defaultOpen": true,
-  "pages": ["index", "avatar", "accordion", "button", "checkbox", "collapsible", "dialog", "field", "input", "kbd", "label", "listbox", "menu", "popover", "progress", "radio", "select", "separator", "slider", "switch", "tabs", "textarea", "toast", "tooltip", "toggle"]
+  "pages": ["index", "avatar", "accordion", "button", "checkbox", "collapsible", "dialog", "field", "input", "kbd", "label", "listbox", "menu", "meter", "popover", "progress", "radio", "select", "separator", "slider", "switch", "tabs", "textarea", "toast", "tooltip", "toggle"]
 }
