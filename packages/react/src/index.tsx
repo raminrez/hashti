@@ -15,6 +15,7 @@ export { Input } from "./input"
 export { Kbd } from "./kbd"
 
 export { Textarea } from "./textarea"
+export { Toggle, ToggleGroup, ToggleIcon } from "./toggle"
 export { Checkbox, CheckboxIndicator } from "./checkbox"
 export { RadioGroup, Radio, RadioIndicator } from "./radio"
 
