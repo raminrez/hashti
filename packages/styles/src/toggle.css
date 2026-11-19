@@ -1,0 +1,50 @@
+.hashti-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  min-block-size: 2rem;
+  min-inline-size: 2rem;
+  padding: 0 0.5rem;
+  border: none;
+  border-radius: var(--hashti-control-radius);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.hashti-toggle:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .hashti-toggle:hover:not([data-pressed]):not([data-disabled]) {
+    background: var(--hashti-background-hover);
+  }
+}
+
+.hashti-toggle[data-pressed] {
+  background: var(--hashti-background-selected);
+  color: var(--hashti-focus);
+}
+
+.hashti-toggle[data-pressed][data-disabled],
+.hashti-toggle[data-disabled] {
+  background: transparent;
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-toggle-group {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.hashti-toggle-icon {
+  display: inline-flex;
+  inline-size: 1rem;
+  block-size: 1rem;
+}
