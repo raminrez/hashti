@@ -26,3 +26,4 @@
 @import "./src/listbox.css" layer(hashti.components);
 @import "./src/kbd.css" layer(hashti.components);
 @import "./src/toggle.css" layer(hashti.components);
+@import "./src/hover-card.css" layer(hashti.components);
