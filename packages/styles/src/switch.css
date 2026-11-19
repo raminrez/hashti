@@ -3,9 +3,9 @@
   display: inline-flex;
   width: 2.75rem;
   height: 1.5rem;
-  border: 1px solid var(--hashti-border);
+  border: 1px solid var(--hashti-border-subtle-00);
   border-radius: 9999px;
-  background: var(--hashti-muted);
+  background: var(--hashti-layer-accent-01);
   cursor: pointer;
   transition:
     background-color 0.15s,
@@ -21,14 +21,13 @@
   width: 1.125rem;
   height: 1.125rem;
   border-radius: 9999px;
-  background: #fff;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+  background: var(--hashti-icon-on-color);
   transition: translate 0.15s;
 }
 
 [data-slot="switch"][data-checked] {
-  background: var(--hashti-primary);
-  border-color: var(--hashti-primary);
+  background: var(--hashti-support-success);
+  border-color: var(--hashti-support-success);
 }
 
 [data-slot="switch"][data-checked]::before {
@@ -36,6 +35,6 @@
 }
 
 [data-slot="switch"]:focus-visible {
-  outline: 2px solid var(--hashti-ring);
+  outline: 2px solid var(--hashti-focus);
   outline-offset: 2px;
 }
