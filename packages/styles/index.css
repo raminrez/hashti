@@ -17,3 +17,4 @@
 @import "./src/toast.css" layer(hashti.components);
 @import "./src/tabs.css" layer(hashti.components);
 @import "./src/accordion.css" layer(hashti.components);
+@import "./src/slider.css" layer(hashti.components);

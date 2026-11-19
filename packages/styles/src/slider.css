@@ -1,0 +1,64 @@
+/* Hit area is deliberately taller than the painted rail. */
+.hashti-slider-control {
+  display: flex;
+  align-items: center;
+  position: relative;
+  inline-size: 100%;
+  block-size: 2rem;
+}
+
+.hashti-slider-track {
+  position: relative;
+  inline-size: 100%;
+  block-size: 0.25rem;
+  border-radius: 9999px;
+  background: var(--hashti-border-subtle-00);
+}
+
+.hashti-slider-indicator {
+  block-size: 0.25rem;
+  border-radius: 9999px;
+  background: var(--hashti-focus);
+}
+
+.hashti-slider-thumb {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: 9999px;
+  background: var(--hashti-layer-01);
+  cursor: grab;
+  transition:
+    inline-size var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+    block-size var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-slider-thumb:hover,
+.hashti-slider-thumb[data-dragging],
+.hashti-slider-thumb:has(:focus-visible) {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+}
+
+.hashti-slider-thumb[data-dragging] {
+  cursor: grabbing;
+}
+
+.hashti-slider-thumb:has(:focus-visible) {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-slider__value {
+  font-size: 0.8125rem;
+  color: var(--hashti-text-secondary);
+}
+
+.hashti-slider-control[data-disabled] {
+  cursor: not-allowed;
+}
+
+.hashti-slider-thumb[data-disabled] {
+  border-color: var(--hashti-border-disabled);
+  cursor: not-allowed;
+}
