@@ -1,0 +1,5 @@
+{
+  "title": "Hashti",
+  "defaultOpen": true,
+  "pages": ["index", "button", "switch"]
+}

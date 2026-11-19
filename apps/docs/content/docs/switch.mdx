@@ -1,0 +1,17 @@
+---
+title: Switch
+description: A control the user turns on or off.
+---
+
+import { Switch } from '@hashti/react'
+
+<Switch client:load />
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `defaultChecked` | `boolean` | Initial state when uncontrolled. |
+| `onCheckedChange` | `(checked: boolean) => void` | Called after the state flips. |
+
+The behavior lives in `@hashti/core`, rendering in `@hashti/react`, styling in `@hashti/styles` (`[data-slot="switch"]`, state via `data-checked`).

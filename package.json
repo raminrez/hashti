@@ -1,0 +1,13 @@
+{
+  "name": "hashti-new",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev": "bun --filter docs dev",
+    "build": "bun --filter docs build",
+    "typecheck": "bun --filter '*' types:check"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

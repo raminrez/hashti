@@ -1,0 +1,7 @@
+{
+  "name": "@hashti/styles",
+  "version": "0.1.0",
+  "exports": {
+    ".": "./index.css"
+  }
+}
