@@ -48,6 +48,16 @@ export {
 
 export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip"
 
+export {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuSeparator,
+} from "./menu"
+
 export { Tabs, TabsList, TabsTab, TabsIndicator, TabsPanel } from "./tabs"
 
 export {
