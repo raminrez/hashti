@@ -14,3 +14,5 @@ export { Label } from "./label"
 export { Avatar, AvatarImage, AvatarFallback } from "./avatar"
 
 export { Input } from "./input"
+
+export { Textarea } from "./textarea"

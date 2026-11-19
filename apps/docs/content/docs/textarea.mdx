@@ -1,0 +1,21 @@
+---
+title: Textarea
+description: Enters multiple lines of text, connected to your form or state.
+---
+
+import { Textarea } from '@hashti/react'
+
+## Usage
+
+<div style={{ display: 'grid', gap: 16, maxWidth: 320 }}>
+  <Textarea aria-label="Message" placeholder="Type your message here…" rows={4} />
+  <Textarea aria-label="Notes" defaultValue="Read-only notes." readOnly rows={2} />
+  <Textarea aria-label="Locked" disabled defaultValue="Locked value" rows={2} />
+</div>
+
+## Props
+
+Textarea passes every native textarea prop through — `rows`, `placeholder`,
+`maxLength` — plus ui-sdk's controlled state and change reasons.
+
+Styling lives in `@hashti/styles` under `.hashti-textarea`: the input control recipes with multi-line geometry and vertical-only resizing.

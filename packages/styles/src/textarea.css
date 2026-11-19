@@ -1,0 +1,39 @@
+.hashti-textarea {
+  inline-size: 100%;
+  min-block-size: 5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-01);
+  color: var(--hashti-text-primary);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  resize: vertical;
+  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-textarea::placeholder {
+  color: var(--hashti-text-secondary);
+  opacity: 1;
+}
+
+.hashti-textarea:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-textarea[aria-invalid="true"] {
+  border-color: var(--hashti-support-error);
+}
+
+.hashti-textarea[data-readonly] {
+  border-style: dashed;
+  background: var(--hashti-layer-accent-01);
+}
+
+.hashti-textarea[data-disabled] {
+  border-color: var(--hashti-border-disabled);
+  background: var(--hashti-button-disabled);
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
