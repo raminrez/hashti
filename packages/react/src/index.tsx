@@ -49,6 +49,16 @@ export {
 export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip"
 
 export {
+  Toast,
+  ToastAction,
+  ToastClose,
+  ToastDescription,
+  ToastRegion,
+  ToastTitle,
+  toast,
+} from "./toast"
+
+export {
   Select,
   SelectLabel,
   SelectTrigger,
