@@ -23,7 +23,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 013  | Popover component (ui-sdk popover + Hashti styles)     | P1 | M | 012 | DONE |
 | 014  | Tooltip component (ui-sdk tooltip + Hashti styles)     | P1 | S | 013 | DONE |
 | 015  | Toast component (ui-sdk toast + Hashti styles)         | P1 | M | 014 | DONE |
-| 016  | Tabs component (ui-sdk tabs, line variant)             | P1 | M | 015 | IN PROGRESS |
+| 016  | Tabs component (ui-sdk tabs, line variant)             | P1 | M | 015 | DONE |
+| 017  | Accordion component (ui-sdk accordion + Hashti styles) | P1 | M | 016 | IN PROGRESS |
 
 **Reassessment checkpoint** — the ui-sdk-backed list from the program brief
 is exhausted. See "Reassessed order" below.
