@@ -1,0 +1,25 @@
+---
+title: Field
+description: Labels, describes and validates a control.
+---
+
+import { FieldDemo } from '../../src/components/field-demo'
+
+## Usage
+
+Press Subscribe with an empty or malformed email to see the recovery band:
+
+<FieldDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Field` | Owns the name, validation state and wiring. |
+| `FieldLabel` | Names the control; turns error ink when invalid. |
+| `FieldDescription` | Guidance; stays visible while an error shows. |
+| `FieldError` | The recovery band; renders while the field is invalid. |
+| `FieldControl` | Wires a control ui-sdk doesn't ship. |
+| `FieldSet` / `FieldLegend` / `FieldGroup` | Group related fields. |
+
+The recovery band sits 1px under the control, tightens the control's lower corners to 3px, and carries the error ink. Guidance never hides while an error shows.
