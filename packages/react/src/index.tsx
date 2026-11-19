@@ -6,3 +6,5 @@ import { button, hashtiSwitch } from "@hashti/core"
 export const { Root: Button } = createParts(button, { root: "button" })
 
 export const { Root: Switch } = createParts(hashtiSwitch, { root: "button" })
+
+export { Divider } from "./divider"
