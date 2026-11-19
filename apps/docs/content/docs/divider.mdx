@@ -1,0 +1,29 @@
+---
+title: Divider
+description: Divides groups of content with a horizontal or vertical line.
+---
+
+import { Divider } from '@hashti/react'
+
+## Orientation
+
+<div style={{ display: 'grid', gap: 16 }}>
+  <p>Content above the line.</p>
+  <Divider />
+  <p>Content below the line.</p>
+</div>
+
+<div style={{ display: 'flex', gap: 16, alignItems: 'stretch', height: 48 }}>
+  <span>Start</span>
+  <Divider orientation="vertical" />
+  <span>End</span>
+</div>
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `orientation` | `"horizontal" \| "vertical"` | Which way the line runs. Default `horizontal`. |
+| `decorative` | `boolean` | Hides the line from assistive technology with `role="none"`. |
+
+Styling lives in `@hashti/styles` under `.hashti-divider`, keyed off `data-orientation`, with the color from `--hashti-border-subtle-00`.
