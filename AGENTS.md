@@ -46,3 +46,8 @@ component, its parts, files, exports, and docs pages.
 - Work in the assigned worktree on the assigned branch; commit on every
   step; never merge, push, or touch main.
 - Honor plan STOP conditions: report instead of improvising.
+- **Fresh session per cycle.** When a herdr terminal's opencode session
+  starts an unrelated task (a new component cycle), reset it first
+  (`/new` in the TUI, or a fresh terminal) so old task context doesn't
+  bleed into the new plan. Related follow-ups (review findings on the
+  same plan) stay in the same session.

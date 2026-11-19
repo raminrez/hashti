@@ -8,10 +8,16 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 
 | Plan | Title | Priority | Effort | Depends on | Status |
 |------|-------|----------|--------|------------|--------|
-| 001  | Divider component (ui-sdk separator + Hashti styles) | P1 | S | — | DONE |
+| 001  | Separator component (ui-sdk separator + Hashti styles) | P1 | S | — | DONE |
 
-Next in program order (not yet planned): Label / Kbd → Badge / Avatar →
-Button (all variants) → Link → Input, Textarea → Checkbox, Radio, Switch.
+Next in program order — **ui-sdk-backed components only** (naming follows
+ui-sdk): Label → Avatar → Button (all variants) → Input → Textarea →
+Checkbox, Radio, Switch. Reassess after those.
+
+**Deferred — ui-sdk ships no equivalent, Hashti-owned per the naming rule;
+do not plan these until the ui-sdk-backed list is exhausted:** Kbd, Badge,
+Link (no dedicated ui-sdk link; revisit as Button `render={<a href/>}` when
+Button lands).
 
 Naming rule: Hashti follows ui-sdk component names wherever ui-sdk ships one
 (Separator, not Divider; Input/Textarea, not TextField/TextArea). Hashti-only
