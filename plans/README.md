@@ -28,7 +28,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 018  | Slider component (ui-sdk slider + Hashti styles)       | P1 | M | 017 | DONE |
 | 019  | Menu component (ui-sdk menu + Hashti styles)           | P1 | M | 018 | DONE |
 | 020  | Listbox component (ui-sdk listbox + Hashti styles)     | P1 | M | 019 | DONE |
-| 021  | Kbd component (Hashti-owned keycap glyph)              | P2 | S | 020 | IN PROGRESS |
+| 021  | Kbd component (Hashti-owned keycap glyph)              | P2 | S | 020 | DONE |
+| 022  | Toggle component (ui-sdk toggle + group)               | P1 | S | 021 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
