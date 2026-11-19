@@ -34,7 +34,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 024  | Progress component (ui-sdk progress)                   | P1 | S | 023 | DONE |
 | 025  | Meter component (ui-sdk meter)                         | P1 | S | 024 | DONE |
 | 026  | ScrollArea component (ui-sdk scroll-area)              | P1 | M | 025 | DONE |
-| 027  | HoverCard component (ui-sdk hover-card)                | P1 | S | 026 | IN PROGRESS |
+| 027  | HoverCard component (ui-sdk hover-card)                | P1 | S | 026 | DONE |
+| 028  | Badge component (Hashti-owned status marker)           | P2 | M | 027 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
