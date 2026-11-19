@@ -19,7 +19,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 009  | Switch component (ui-sdk switch + Hashti styles)       | P1 | S | 008 | DONE |
 | 010  | Field anatomy (ui-sdk field + recovery band)           | P1 | L | 009 | DONE |
 | 011  | Select component (ui-sdk select + Hashti styles)       | P1 | L | 010 | DONE |
-| 012  | Dialog component (ui-sdk dialog + Hashti styles)       | P1 | L | 011 | IN PROGRESS |
+| 012  | Dialog component (ui-sdk dialog + Hashti styles)       | P1 | L | 011 | DONE |
+| 013  | Popover component (ui-sdk popover + Hashti styles)     | P1 | M | 012 | IN PROGRESS |
 
 **Reassessment checkpoint** — the ui-sdk-backed list from the program brief
 is exhausted. See "Reassessed order" below.
