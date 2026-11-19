@@ -1,0 +1,101 @@
+.hashti-badge-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.hashti-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 1.125rem;
+  block-size: 1.125rem;
+  padding: 0 0.3125rem;
+  border-radius: var(--hashti-border-radius-max);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
+  background: var(--hashti-support-error);
+  color: var(--hashti-text-on-color);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.hashti-badge-wrapper > .hashti-badge[data-placement="top-end"],
+.hashti-badge-wrapper > .hashti-badge[data-placement="top-start"],
+.hashti-badge-wrapper > .hashti-badge[data-placement="bottom-end"],
+.hashti-badge-wrapper > .hashti-badge[data-placement="bottom-start"] {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hashti-badge-wrapper > .hashti-badge[data-placement="top-end"] {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  translate: 50% -50%;
+}
+
+.hashti-badge-wrapper > .hashti-badge[data-placement="top-start"] {
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  translate: -50% -50%;
+}
+
+.hashti-badge-wrapper > .hashti-badge[data-placement="bottom-end"] {
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  translate: 50% 50%;
+}
+
+.hashti-badge-wrapper > .hashti-badge[data-placement="bottom-start"] {
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  translate: -50% 50%;
+}
+
+/* Percentage translate is physical; flip it on the inline axis for RTL. */
+[dir="rtl"] .hashti-badge-wrapper > .hashti-badge[data-placement="top-end"] {
+  translate: -50% -50%;
+}
+
+[dir="rtl"] .hashti-badge-wrapper > .hashti-badge[data-placement="bottom-end"] {
+  translate: -50% 50%;
+}
+
+[dir="rtl"] .hashti-badge-wrapper > .hashti-badge[data-placement="top-start"] {
+  translate: 50% -50%;
+}
+
+[dir="rtl"] .hashti-badge-wrapper > .hashti-badge[data-placement="bottom-start"] {
+  translate: 50% 50%;
+}
+
+.hashti-badge[data-kind="success"] {
+  background: var(--hashti-support-success);
+}
+
+.hashti-badge[data-kind="warning"] {
+  background: var(--hashti-support-warning);
+}
+
+.hashti-badge[data-kind="info"] {
+  background: var(--hashti-support-info);
+}
+
+.hashti-badge[data-kind="primary"] {
+  background: var(--hashti-interactive);
+}
+
+.hashti-badge[data-kind="neutral"],
+.hashti-badge[data-kind="secondary"] {
+  background: var(--hashti-layer-02);
+  color: var(--hashti-text-primary);
+  border: 1px solid var(--hashti-border-subtle-00);
+}
+
+.hashti-badge[data-dot] {
+  min-inline-size: 0.5rem;
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  padding: 0;
+}
