@@ -73,6 +73,7 @@
   line-height: 1.5rem;
   font-weight: 400;
   cursor: default;
+  outline: none;
 }
 
 .hashti-menu-item[data-highlighted] {
