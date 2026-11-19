@@ -64,7 +64,7 @@ export function Badge({
             ? "bottom-start"
             : placement
 
-  const isDotMode = isDot || actualContent == null
+  const isDotMode = isDot || (actualContent == null && children == null)
 
   const badgeElement = (
     <span
@@ -76,11 +76,13 @@ export function Badge({
       data-dot={isDotMode ? "" : undefined}
       className={className ? `hashti-badge ${className}` : "hashti-badge"}
     >
-      {!isDot && displayContent}
+      {!isDot && (displayContent ?? children)}
     </span>
   )
 
-  if (children) {
+  // Without content/count the children are the pill's label; with one they are
+  // the thing the badge marks.
+  if (children && (actualContent != null || isDot)) {
     return (
       <span className="hashti-badge-wrapper">
         {children}
