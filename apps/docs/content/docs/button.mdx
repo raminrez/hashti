@@ -1,27 +1,41 @@
 ---
 title: Button
-description: Triggers an action or event.
+description: Runs an action, shows that it's working, and stays reachable when disabled.
 ---
 
 import { Button } from '@hashti/react'
 
 ## Variants
 
-<Button>Default</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="ghost">Ghost</Button>
+<div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+  <Button>Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="tertiary">Tertiary</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="danger">Danger</Button>
+  <Button variant="danger-tertiary">Danger tertiary</Button>
+  <Button variant="danger-ghost">Danger ghost</Button>
+</div>
 
 ## Sizes
 
-<Button size="sm">Small</Button>
-<Button>Medium</Button>
-<Button size="lg">Large</Button>
+<div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+  <Button size="sm">Small</Button>
+  <Button>Medium</Button>
+  <Button size="lg">Large</Button>
+</div>
+
+## States
+
+<Button disabled>Disabled</Button>
 
 ## Props
 
 | Prop | Type | Description |
 | --- | --- | --- |
-| `variant` | `"solid" \| "outline" \| "ghost"` | Visual style. Default `solid`. |
-| `size` | `"sm" \| "md" \| "lg"` | Height and padding. Default `md`. |
+| `variant` | `"primary" \| "secondary" \| "tertiary" \| "ghost" \| "danger" \| "danger-tertiary" \| "danger-ghost"` | Visual style. Default `primary`. |
+| `size` | `"sm" \| "md" \| "lg"` | Minimum height: 32/44/48px. Default `md`. |
+| `disabled` | `boolean` | Stops presses. |
+| `pendingAnnouncement` | `string` | What screen readers hear after a second of pending. |
 
-Styling lives in `@hashti/styles` under `[data-slot="button"]`, keyed off `data-variant` and `data-size`.
+Button owns its pending state: return a Promise from `onClick` and the button shows `data-pending`, keeps focus, and ignores further presses until it settles.
