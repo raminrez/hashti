@@ -28,6 +28,16 @@ export {
 } from "./field"
 
 export {
+  Dialog,
+  DialogTrigger,
+  DialogBackdrop,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from "./dialog"
+
+export {
   Select,
   SelectLabel,
   SelectTrigger,
