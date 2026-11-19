@@ -3,24 +3,15 @@ title: Avatar
 description: Shows an image with a fallback while it loads or if it fails.
 ---
 
-import { Avatar, AvatarImage, AvatarFallback } from '@hashti/react'
+import { AvatarDemo, AvatarImageDemo } from '../../src/components/avatar-demo'
 
 ## Sizes
 
-<div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-  <Avatar size="xs"><AvatarFallback>XS</AvatarFallback></Avatar>
-  <Avatar size="sm"><AvatarFallback>SM</AvatarFallback></Avatar>
-  <Avatar><AvatarFallback>MD</AvatarFallback></Avatar>
-  <Avatar size="lg"><AvatarFallback>LG</AvatarFallback></Avatar>
-  <Avatar size="xl"><AvatarFallback>XL</AvatarFallback></Avatar>
-</div>
+<AvatarDemo client:load />
 
 ## Image with fallback
 
-<Avatar size="lg">
-  <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-  <AvatarFallback>CN</AvatarFallback>
-</Avatar>
+<AvatarImageDemo client:load />
 
 ## Props
 
