@@ -80,6 +80,8 @@ export {
   AccordionPanel,
 } from "./accordion"
 
+export { Collapsible, CollapsibleTrigger, CollapsiblePanel } from "./collapsible"
+
 export {
   Slider,
   SliderValue,
