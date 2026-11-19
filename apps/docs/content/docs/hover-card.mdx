@@ -1,0 +1,20 @@
+---
+title: HoverCard
+description: Previews a link's target on pause.
+---
+
+import { HoverCardDemo } from '../../src/components/hover-card-demo'
+
+## Usage
+
+<HoverCardDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `HoverCard` | Owns the open state and delays. |
+| `HoverCardTrigger` | The link (an `<a href>`). |
+| `HoverCardContent` | The preview surface. |
+
+Styling lives in `@hashti/styles` under `.hashti-hover-card-content` — the popover surface at hover timing. Keep the content reachable from the link target: touch users may never see it.

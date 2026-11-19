@@ -1,0 +1,34 @@
+.hashti-hover-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  inline-size: fit-content;
+  max-inline-size: 18rem;
+  padding: 0.75rem;
+  border: 1px solid var(--hashti-border-subtle-00);
+  border-radius: var(--hashti-popover-radius);
+  background: var(--hashti-layer-01);
+  box-shadow: 0 8px 24px var(--hashti-shadow);
+  color: var(--hashti-text-primary);
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+    scale var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-hover-card-content[data-starting-style],
+.hashti-hover-card-content[data-ending-style] {
+  opacity: 0;
+  scale: 0.98;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-hover-card-content {
+    transition: opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hashti-hover-card-content[data-starting-style],
+  .hashti-hover-card-content[data-ending-style] {
+    scale: none;
+  }
+}
