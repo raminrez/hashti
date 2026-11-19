@@ -1,40 +1,67 @@
-[data-slot="switch"] {
+.hashti-switch {
   position: relative;
   display: inline-flex;
-  width: 2.75rem;
-  height: 1.5rem;
-  border: 1px solid var(--hashti-border-subtle-00);
+  flex-shrink: 0;
+  inline-size: 2.75rem;
+  block-size: 1.5rem;
+  padding: 0.125rem;
+  border: none;
   border-radius: 9999px;
   background: var(--hashti-layer-accent-01);
   cursor: pointer;
-  transition:
-    background-color 0.15s,
-    border-color 0.15s;
+  transition: background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-slot="switch"]::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0.125rem;
-  translate: 0 -50%;
-  width: 1.125rem;
-  height: 1.125rem;
-  border-radius: 9999px;
-  background: var(--hashti-icon-on-color);
-  transition: translate 0.15s;
+.hashti-switch[data-size="sm"] {
+  inline-size: 2.125rem;
+  block-size: 1.125rem;
 }
 
-[data-slot="switch"][data-checked] {
+.hashti-switch[data-checked] {
   background: var(--hashti-support-success);
-  border-color: var(--hashti-support-success);
 }
 
-[data-slot="switch"][data-checked]::before {
-  translate: 1.375rem -50%;
+.hashti-switch[data-disabled] {
+  background: var(--hashti-button-disabled);
+  cursor: not-allowed;
 }
 
-[data-slot="switch"]:focus-visible {
+.hashti-switch[data-invalid] {
+  outline: 1px solid var(--hashti-support-error);
+}
+
+.hashti-switch:focus-visible {
   outline: 2px solid var(--hashti-focus);
   outline-offset: 2px;
+}
+
+.hashti-switch__thumb {
+  display: block;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  border-radius: 9999px;
+  background: var(--hashti-icon-on-color);
+  box-shadow: none;
+  inset-inline-start: 0;
+  translate: 0 -50%;
+  position: absolute;
+  top: 50%;
+  transition: translate var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-switch[data-size="sm"] .hashti-switch__thumb {
+  inline-size: 0.875rem;
+  block-size: 0.875rem;
+}
+
+.hashti-switch[data-checked] .hashti-switch__thumb {
+  translate: 1.25rem -50%;
+}
+
+.hashti-switch[data-size="sm"][data-checked] .hashti-switch__thumb {
+  translate: 1rem -50%;
+}
+
+.hashti-switch[data-disabled] .hashti-switch__thumb {
+  background: var(--hashti-text-disabled);
 }

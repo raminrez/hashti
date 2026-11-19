@@ -1,11 +1,8 @@
 "use client"
 
-import { createParts } from "@ui-sdk/react/primitive"
-import { hashtiSwitch } from "@hashti/core"
-
 export { Button } from "./button"
 
-export const { Root: Switch } = createParts(hashtiSwitch, { root: "button" })
+export { Switch, SwitchThumb } from "./switch"
 
 export { Separator } from "./separator"
 
