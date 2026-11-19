@@ -15,3 +15,14 @@ export { Input } from "./input"
 export { Textarea } from "./textarea"
 export { Checkbox, CheckboxIndicator } from "./checkbox"
 export { RadioGroup, Radio, RadioIndicator } from "./radio"
+
+export {
+  Field,
+  FieldLabel,
+  FieldControl,
+  FieldDescription,
+  FieldError,
+  FieldSet,
+  FieldLegend,
+  FieldGroup,
+} from "./field"

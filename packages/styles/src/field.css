@@ -1,0 +1,81 @@
+.hashti-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  min-inline-size: 0;
+}
+
+.hashti-field__label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: var(--hashti-text-primary);
+}
+
+.hashti-field__label[data-invalid] {
+  color: var(--hashti-text-error);
+}
+
+.hashti-field__description {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  color: var(--hashti-text-secondary);
+}
+
+.hashti-field__description[data-invalid] {
+  color: var(--hashti-text-error);
+}
+
+.hashti-field__error {
+  margin-block-start: -0.5625rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--hashti-support-error);
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  border-end-start-radius: var(--hashti-border-radius-recovery);
+  border-end-end-radius: var(--hashti-border-radius-recovery);
+  background: var(--hashti-notification-background-error);
+  color: var(--hashti-text-error);
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  z-index: 1;
+}
+
+.hashti-field:has(.hashti-field__error) :is(.hashti-input, .hashti-textarea) {
+  position: relative;
+  z-index: 2;
+  border-end-start-radius: var(--hashti-border-radius-recovery);
+  border-end-end-radius: var(--hashti-border-radius-recovery);
+}
+
+.hashti-field:has(.hashti-choice) .hashti-field__error {
+  margin-block-start: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 0;
+}
+
+.hashti-field-set {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-inline-size: 0;
+}
+
+.hashti-field__legend {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: var(--hashti-text-primary);
+  padding: 0;
+}
+
+.hashti-field-group {
+  display: grid;
+  gap: 1rem;
+}
