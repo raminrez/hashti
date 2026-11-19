@@ -11,7 +11,11 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 001  | Divider component (ui-sdk separator + Hashti styles) | P1 | S | — | DONE |
 
 Next in program order (not yet planned): Label / Kbd → Badge / Avatar →
-Button (all variants) → Link → TextField, TextArea → Checkbox, Radio, Switch.
+Button (all variants) → Link → Input, Textarea → Checkbox, Radio, Switch.
+
+Naming rule: Hashti follows ui-sdk component names wherever ui-sdk ships one
+(Separator, not Divider; Input/Textarea, not TextField/TextArea). Hashti-only
+components (Badge, Kbd) keep their own names.
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) | REJECTED (with one-line rationale)
 
