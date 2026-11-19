@@ -10,3 +10,5 @@ export const { Root: Switch } = createParts(hashtiSwitch, { root: "button" })
 export { Separator } from "./separator"
 
 export { Label } from "./label"
+
+export { Avatar, AvatarImage, AvatarFallback } from "./avatar"
