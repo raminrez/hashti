@@ -1,0 +1,19 @@
+---
+title: Kbd
+description: Renders a keyboard key glyph.
+---
+
+import { KbdDemo } from '../../src/components/kbd-demo'
+
+## Usage
+
+<KbdDemo client:load />
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `keys` | `string \| string[]` | Key names, platform-formatted (⌘/⇧/⌃… on Mac, text elsewhere). |
+| `children` | `ReactNode` | Raw content instead of formatted keys. |
+
+Adjacent Kbd elements separate themselves; pass `keys` for combos.
