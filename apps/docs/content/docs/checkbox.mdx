@@ -1,0 +1,19 @@
+---
+title: Checkbox
+description: Ticks independent choices, including the mixed state.
+---
+
+import { CheckboxDemo } from '../../src/components/checkbox-demo'
+
+## Usage
+
+<CheckboxDemo client:load />
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `checked` / `defaultChecked` | `boolean \| "indeterminate"` | The state; `"indeterminate"` marks a partly checked set. |
+| `disabled` | `boolean` | Stops presses and dims the mark. |
+
+Wrap the checkbox and its text in a `<label className="hashti-choice">` — the row is the 44px hit target, the mark is 18px. Styling lives in `@hashti/styles` under `.hashti-checkbox`, selected fill in focus blue.

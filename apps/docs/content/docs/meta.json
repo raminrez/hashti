@@ -1,5 +1,5 @@
 {
   "title": "Hashti",
   "defaultOpen": true,
-  "pages": ["index", "avatar", "button", "input", "label", "separator", "switch", "textarea"]
+  "pages": ["index", "avatar", "button", "checkbox", "input", "label", "separator", "switch", "textarea"]
 }
