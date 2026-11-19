@@ -1,13 +1,13 @@
-.hashti-divider {
+.hashti-separator {
   background: var(--hashti-border-subtle-00);
 }
 
-.hashti-divider[data-orientation="horizontal"] {
+.hashti-separator[data-orientation="horizontal"] {
   block-size: 1px;
   inline-size: 100%;
 }
 
-.hashti-divider[data-orientation="vertical"] {
+.hashti-separator[data-orientation="vertical"] {
   block-size: auto;
   inline-size: 1px;
   align-self: stretch;

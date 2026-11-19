@@ -7,4 +7,4 @@ export const { Root: Button } = createParts(button, { root: "button" })
 
 export const { Root: Switch } = createParts(hashtiSwitch, { root: "button" })
 
-export { Divider } from "./divider"
+export { Separator } from "./separator"
