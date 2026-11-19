@@ -11,5 +11,8 @@
   },
   "peerDependencies": {
     "react": "^19"
+  },
+  "scripts": {
+    "types:check": "tsc --noEmit"
   }
 }

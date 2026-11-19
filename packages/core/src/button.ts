@@ -16,6 +16,8 @@ const button = definePrimitive({
     variant: options.variant ?? "solid",
     size: options.size ?? "md",
   }),
+  // api anchors definePrimitive's Options inference; button has no api methods.
+  api: () => ({}),
   slots: (slot) => ({
     root: slot({
       attrs: (state) => ({
