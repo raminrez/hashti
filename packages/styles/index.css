@@ -9,3 +9,4 @@
 @import "./src/textarea.css" layer(hashti.components);
 @import "./src/checkbox.css" layer(hashti.components);
 @import "./src/radio.css" layer(hashti.components);
+@import "./src/field.css" layer(hashti.components);
