@@ -1,0 +1,25 @@
+.hashti-link {
+  color: var(--hashti-link-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 0.0625em;
+  text-underline-offset: 0.15em;
+  overflow-wrap: anywhere;
+}
+
+/* ui-sdk data attributes and plain pseudo-classes ship together so the class
+   contract works without a React runtime. */
+.hashti-link:is(:hover, :active),
+.hashti-link:is([data-hovered], [data-pressed]) {
+  text-decoration-thickness: 0.125em;
+}
+
+.hashti-link:focus-visible,
+.hashti-link[data-focus-visible] {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 3px;
+}
+
+/* Browsers only allow color properties on :visited, which is all we need. */
+.hashti-link:visited {
+  color: var(--hashti-link-visited);
+}
