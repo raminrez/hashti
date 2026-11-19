@@ -40,6 +40,8 @@
 
 .hashti-select-content {
   min-inline-size: var(--anchor-width);
+  max-block-size: var(--available-height);
+  overflow-y: auto;
   padding: 0.25rem;
   border: 1px solid var(--hashti-border-subtle-00);
   border-radius: var(--hashti-popover-radius);
