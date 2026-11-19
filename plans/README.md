@@ -16,7 +16,27 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 006  | Textarea component (ui-sdk textarea + Hashti styles)   | P1 | S | 005 | DONE |
 | 007  | Checkbox component (ui-sdk checkbox + Hashti styles)   | P1 | M | 006 | DONE |
 | 008  | Radio component (ui-sdk radio + Hashti styles)         | P1 | M | 007 | DONE |
-| 009  | Switch component (ui-sdk switch + Hashti styles)       | P1 | S | 008 | IN PROGRESS |
+| 009  | Switch component (ui-sdk switch + Hashti styles)       | P1 | S | 008 | DONE |
+
+**Reassessment checkpoint** — the ui-sdk-backed list from the program brief
+is exhausted. See "Reassessed order" below.
+
+## Reassessed order (post-cycle-9)
+
+Foundation candidates before more components:
+
+- **Field anatomy** (ui-sdk `/field`: Field, FieldLabel, FieldDescription,
+  FieldError, FieldControl, FieldSet) — unlocks the recovery band, invalid
+  precedence over selected fill, read-only/required recipes, and completes
+  Input/Textarea/Checkbox/Radio/Switch integration. Several deferred items
+  hang off it.
+
+Then, in leverage order (ui-sdk-backed): Select → Dialog → Popover →
+Tooltip → Toast → Tabs → Accordion → Slider → Menu → Listbox.
+
+Deferred (Hashti-owned, no ui-sdk equivalent — do not plan until asked):
+Kbd, Badge, Link (revisit as Button `render={<a href/>}`), AvatarGroup +
+presence + getInitials, InputGroup + InputClear.
 
 Next in program order — **ui-sdk-backed components only** (naming follows
 ui-sdk): Label → Avatar → Button (all variants) → Input → Textarea →
