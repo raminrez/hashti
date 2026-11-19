@@ -51,6 +51,14 @@ export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip"
 export { Tabs, TabsList, TabsTab, TabsIndicator, TabsPanel } from "./tabs"
 
 export {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionTrigger,
+  AccordionPanel,
+} from "./accordion"
+
+export {
   Toast,
   ToastAction,
   ToastClose,
