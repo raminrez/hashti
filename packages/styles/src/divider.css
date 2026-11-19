@@ -1,0 +1,14 @@
+.hashti-divider {
+  background: var(--hashti-border-subtle-00);
+}
+
+.hashti-divider[data-orientation="horizontal"] {
+  block-size: 1px;
+  inline-size: 100%;
+}
+
+.hashti-divider[data-orientation="vertical"] {
+  block-size: auto;
+  inline-size: 1px;
+  align-self: stretch;
+}
