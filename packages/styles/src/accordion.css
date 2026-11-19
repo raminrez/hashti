@@ -1,0 +1,86 @@
+.hashti-accordion__item {
+  border-block-end: 1px solid var(--hashti-border-subtle-00);
+}
+
+.hashti-accordion__item:last-child {
+  border-block-end: none;
+}
+
+.hashti-accordion__header {
+  margin: 0;
+}
+
+.hashti-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding: 0.25rem 0;
+  border: none;
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: start;
+}
+
+/* Top and right borders make a caret: right-pointing closed, down when open. */
+.hashti-accordion__trigger::after {
+  content: "";
+  flex: none;
+  inline-size: 0.375rem;
+  block-size: 0.375rem;
+  border-block-start: 1px solid currentColor;
+  border-inline-end: 1px solid currentColor;
+  rotate: 45deg;
+  transition: rotate var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-accordion__trigger[data-open]::after {
+  rotate: 135deg;
+}
+
+.hashti-accordion__trigger[data-disabled] {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-accordion__panel[data-disabled] {
+  color: var(--hashti-text-secondary);
+}
+
+.hashti-accordion__trigger:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 3px;
+}
+
+.hashti-accordion__panel {
+  box-sizing: border-box;
+  overflow: hidden;
+  block-size: var(--accordion-panel-height);
+  padding-block: 0 0.75rem;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: block-size var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-accordion__panel[data-starting-style] {
+  block-size: 0;
+}
+
+/* Exits are shorter than entrances (motion ladder). */
+.hashti-accordion__panel[data-ending-style] {
+  block-size: 0;
+  transition-duration: var(--hashti-duration-fast-01);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-accordion__trigger::after,
+  .hashti-accordion__panel {
+    transition: none;
+  }
+}

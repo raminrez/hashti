@@ -16,3 +16,4 @@
 @import "./src/tooltip.css" layer(hashti.components);
 @import "./src/toast.css" layer(hashti.components);
 @import "./src/tabs.css" layer(hashti.components);
+@import "./src/accordion.css" layer(hashti.components);
