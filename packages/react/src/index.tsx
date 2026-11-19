@@ -46,6 +46,8 @@ export {
   PopoverClose,
 } from "./popover"
 
+export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip"
+
 export {
   Select,
   SelectLabel,
