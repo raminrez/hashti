@@ -36,7 +36,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 026  | ScrollArea component (ui-sdk scroll-area)              | P1 | M | 025 | DONE |
 | 027  | HoverCard component (ui-sdk hover-card)                | P1 | S | 026 | DONE |
 | 028  | Badge component (Hashti-owned status marker)           | P2 | M | 027 | DONE |
-| 029  | Link component (Hashti-owned; also styles Button as-a) | P2 | S | 028 | IN PROGRESS |
+| 029  | Link component (Hashti-owned; also styles Button as-a) | P2 | S | 028 | DONE |
+| 030  | AvatarGroup + getInitials (Hashti-owned, wraps Avatar) | P2 | M | 029 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
