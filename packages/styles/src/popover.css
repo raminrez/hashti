@@ -1,0 +1,109 @@
+.hashti-popover-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  min-block-size: 2.75rem;
+  border: none;
+  border-radius: var(--hashti-control-radius);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hashti-popover-trigger:not([data-disabled]):hover {
+    background: var(--hashti-background-hover);
+  }
+}
+
+.hashti-popover-trigger:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-popover-trigger[data-disabled] {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-popover-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  inline-size: fit-content;
+  max-inline-size: 20rem;
+  padding: 0.75rem;
+  border: 1px solid var(--hashti-border-subtle-00);
+  border-radius: var(--hashti-popover-radius);
+  background: var(--hashti-layer-01);
+  box-shadow: 0 8px 24px var(--hashti-shadow);
+  color: var(--hashti-text-primary);
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+    scale var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-popover-content[data-starting-style],
+.hashti-popover-content[data-ending-style] {
+  opacity: 0;
+  scale: 0.98;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-popover-content {
+    transition: opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hashti-popover-content[data-starting-style],
+  .hashti-popover-content[data-ending-style] {
+    scale: none;
+  }
+}
+
+.hashti-popover__title {
+  margin: 0;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.hashti-popover__description {
+  margin: 0;
+  color: var(--hashti-text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.hashti-popover-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0 0.75rem;
+  min-block-size: 2.25rem;
+  border: none;
+  border-radius: var(--hashti-control-radius);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hashti-popover-close:hover {
+    background: var(--hashti-background-hover);
+  }
+}
+
+.hashti-popover-close:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}

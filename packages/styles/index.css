@@ -12,3 +12,4 @@
 @import "./src/field.css" layer(hashti.components);
 @import "./src/select.css" layer(hashti.components);
 @import "./src/dialog.css" layer(hashti.components);
+@import "./src/popover.css" layer(hashti.components);
