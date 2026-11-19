@@ -8,7 +8,7 @@ export { Separator } from "./separator"
 
 export { Label } from "./label"
 
-export { Avatar, AvatarImage, AvatarFallback } from "./avatar"
+export { Avatar, AvatarImage, AvatarFallback, AvatarGroup, getInitials } from "./avatar"
 
 export { Badge } from "./badge"
 
