@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--hashti-muted);
+  background: var(--hashti-layer-accent-01);
   color: var(--hashti-text-secondary);
   font-size: calc(var(--avatar-size) * 0.4);
   font-weight: 600;
