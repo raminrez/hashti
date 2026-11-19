@@ -1,0 +1,68 @@
+.hashti-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  inline-size: 100%;
+}
+
+.hashti-progress__label {
+  color: var(--hashti-text-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.hashti-progress__value {
+  color: var(--hashti-text-secondary);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.hashti-progress-track {
+  block-size: 0.5rem;
+  inline-size: 100%;
+  overflow: hidden;
+  background: var(--hashti-border-subtle-00);
+  border-radius: var(--hashti-border-radius-max);
+}
+
+/* ui-sdk sets inset-inline-start and width inline for determinate values. */
+.hashti-progress-indicator {
+  block-size: 100%;
+  background: var(--hashti-interactive);
+  border-radius: var(--hashti-border-radius-max);
+  transition: width var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-progress-track[data-indeterminate] .hashti-progress-indicator,
+.hashti-progress-indicator[data-indeterminate] {
+  inline-size: 40%;
+  animation: hashti-progress-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+}
+
+.hashti-progress-indicator[data-complete] {
+  background: var(--hashti-support-success);
+}
+
+@keyframes hashti-progress-slide {
+  from {
+    translate: -100% 0;
+  }
+
+  to {
+    translate: 250% 0;
+  }
+}
+
+/* A static half fill is the honest reduced-motion fallback. */
+@media (prefers-reduced-motion: reduce) {
+  .hashti-progress-indicator {
+    transition: none;
+  }
+
+  .hashti-progress-track[data-indeterminate] .hashti-progress-indicator,
+  .hashti-progress-indicator[data-indeterminate] {
+    inline-size: 50%;
+    animation: none;
+    translate: none;
+  }
+}
