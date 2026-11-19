@@ -4,6 +4,7 @@ description: Shows an image with a fallback while it loads or if it fails.
 ---
 
 import { AvatarDemo, AvatarImageDemo } from '../../src/components/avatar-demo'
+import { AvatarGroupDemo } from '../../src/components/avatar-group-demo'
 
 ## Sizes
 
@@ -12,6 +13,12 @@ import { AvatarDemo, AvatarImageDemo } from '../../src/components/avatar-demo'
 ## Image with fallback
 
 <AvatarImageDemo client:load />
+
+## Group
+
+<AvatarGroupDemo client:load />
+
+`AvatarGroup` stacks avatars with a 25% overlap and a "+N" count chip when `max` is set. `getInitials(name)` derives fallback initials; Hashti's `Avatar` takes no `name` prop, so pass the initials to `AvatarFallback` yourself. `overflowRenderer(count)` replaces the default chip.
 
 ## Props
 
