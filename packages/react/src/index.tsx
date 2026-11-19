@@ -10,6 +10,8 @@ export { Label } from "./label"
 
 export { Avatar, AvatarImage, AvatarFallback } from "./avatar"
 
+export { Badge } from "./badge"
+
 export { Input } from "./input"
 
 export { Kbd } from "./kbd"
