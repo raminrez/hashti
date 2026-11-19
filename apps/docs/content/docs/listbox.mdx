@@ -1,0 +1,22 @@
+---
+title: Listbox
+description: Selects one option from a visible list.
+---
+
+import { ListboxDemo } from '../../src/components/listbox-demo'
+
+## Usage
+
+<ListboxDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Listbox` | Owns the selected value; name it with `aria-label` or a Field label. |
+| `ListboxItem` | One option; a unique `value`. |
+| `ListboxItemIndicator` | Shows its content on the selected option. |
+| `ListboxGroup` / `ListboxGroupLabel` | Groups related options. |
+| `ListboxSeparator` | Divides options. |
+
+Styling lives in `@hashti/styles` under `.hashti-listbox-*` — an 18px inline surface with full-bleed items, highlight on focus and a focus-blue check on the selection.

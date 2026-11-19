@@ -58,6 +58,15 @@ export {
   MenuSeparator,
 } from "./menu"
 
+export {
+  Listbox,
+  ListboxItem,
+  ListboxItemIndicator,
+  ListboxGroup,
+  ListboxGroupLabel,
+  ListboxSeparator,
+} from "./listbox"
+
 export { Tabs, TabsList, TabsTab, TabsIndicator, TabsPanel } from "./tabs"
 
 export {
