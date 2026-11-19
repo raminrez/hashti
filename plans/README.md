@@ -17,7 +17,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 007  | Checkbox component (ui-sdk checkbox + Hashti styles)   | P1 | M | 006 | DONE |
 | 008  | Radio component (ui-sdk radio + Hashti styles)         | P1 | M | 007 | DONE |
 | 009  | Switch component (ui-sdk switch + Hashti styles)       | P1 | S | 008 | DONE |
-| 010  | Field anatomy (ui-sdk field + recovery band)           | P1 | L | 009 | IN PROGRESS |
+| 010  | Field anatomy (ui-sdk field + recovery band)           | P1 | L | 009 | DONE |
+| 011  | Select component (ui-sdk select + Hashti styles)       | P1 | L | 010 | IN PROGRESS |
 
 **Reassessment checkpoint** — the ui-sdk-backed list from the program brief
 is exhausted. See "Reassessed order" below.
