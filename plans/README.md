@@ -30,8 +30,35 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 020  | Listbox component (ui-sdk listbox + Hashti styles)     | P1 | M | 019 | DONE |
 | 021  | Kbd component (Hashti-owned keycap glyph)              | P2 | S | 020 | IN PROGRESS |
 
-**Reassessment checkpoint** — the ui-sdk-backed list from the program brief
-is exhausted. See "Reassessed order" below.
+**Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
+20 styled. Full roadmap in "Reassessed order v2" below.
+
+## Reassessed order v2 (post-cycle-20, framework-agnostic styles rule active)
+
+Standing rule added: component CSS targets ONLY class names + ui-sdk data
+attributes (never React DOM specifics) so `@hashti/styles` can back future
+Vue/Svelte packages verbatim.
+
+S batch (small primitives, no popups):
+toggle → collapsible (reuses accordion panel recipe) → progress → meter →
+scroll-area → hover-card (popover sibling) → Badge (Hashti-owned) → Link
+(Hashti-owned; Button render-as) → timeline → rating
+
+M batch (form inputs + segmented families):
+segmented-control (tabs indicator recipe) → password-input → number-input →
+date-input → time-input → file-input → otp-input → pagination → toolbar →
+carousel → resizable → alert-dialog (dialog sibling) → drawer (dialog
+sibling) → menubar (menu sibling) → trigger-menu
+
+L batch (heavy surfaces):
+combobox (→ multiselect with chips after) → autocomplete → command →
+token-input → calendar → date-picker (calendar + popover) → navigation-menu
+→ tree → preferences → color-picker → waterfall → image-cropper
+
+Advanced features after coverage (per program brief): select multiple,
+combobox multiselect with chips, then per-plan maintenance deferrals
+(submenus, checkbox menus, icons, shortcuts, context menus, promise toasts,
+queue config, sheet presentation, RTL, vertical variants).
 
 ## Reassessed order (post-cycle-9)
 

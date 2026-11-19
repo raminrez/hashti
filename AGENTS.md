@@ -58,3 +58,16 @@ component, its parts, files, exports, and docs pages.
   (`/new` in the TUI, or a fresh terminal) so old task context doesn't
   bleed into the new plan. Related follow-ups (review findings on the
   same plan) stay in the same session.
+
+## Framework-agnostic styles rule (added post-cycle-20)
+
+`@hashti/styles` must be usable verbatim by future Vue/Svelte/… packages.
+Component CSS therefore targets ONLY:
+- `hashti-*` class names (the class contract), and
+- ui-sdk's data attributes (`data-open`, `data-selected`, `data-highlighted`,
+  `data-invalid`, …) and `data-slot`.
+
+Never: React DOM specifics, `:has(react-…)`, inline-style contracts the
+wrapper must compute per-render, or JS-in-CSS coupling. Anything that needs
+a runtime value comes from a ui-sdk CSS variable (like `--anchor-width`,
+`--active-tab-*`) or a `--hashti-*` token.
