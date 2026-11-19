@@ -6,7 +6,7 @@
 > report — do not improvise. Do not update `plans/README.md`; the reviewer
 > maintains it.
 >
-> **Drift check (run first)**: `git diff --stat e41909b..HEAD -- packages apps/docs/content`
+> **Drift check (run first)**: `git diff --stat 0080aa1..HEAD -- packages apps/docs/content`
 > If any in-scope file changed since this plan was written, compare the
 > "Current state" excerpts against the live code before proceeding; on a
 > mismatch, treat it as a STOP condition.
@@ -18,7 +18,8 @@
 - **Risk**: LOW
 - **Depends on**: none
 - **Category**: migration (component build-out, cycle 1 of the Hashti component program)
-- **Planned at**: commit `e41909b`, 2026-11-19
+- **Planned at**: commit `e41909b`, 2026-11-19; **re-baselined at `0080aa1`** —
+  the typecheck gate was fixed on main before execution (see Current state).
 
 ## Why this matters
 
@@ -69,10 +70,16 @@ The repo is a bun workspace monorepo (`packages/*`, `apps/*`):
   frontmatter (`title`, `description`), an `import { X } from '@hashti/react'`,
   live JSX examples, a props table, and a page id listed in `meta.json`'s
   `pages` array (currently `["index", "button", "switch"]`).
-- `packages/core/package.json` and `packages/react/package.json` have **no
-  `scripts`**; `packages/*/tsconfig.json` extend `tsconfig.base.json`
+- `packages/core/package.json` and `packages/react/package.json` **have a
+  `types:check` script** (`tsc --noEmit`) since commit `0080aa1`, which also
+  fixed a pre-existing type error in `packages/core/src/button.ts` (missing
+  `api` broke `definePrimitive`'s Options inference). `bun run typecheck`
+  from the repo root passes. Do not re-do Step 1 of an earlier revision of
+  this plan; start at Step 2.
+- `packages/*/tsconfig.json` extend `tsconfig.base.json`
   (`strict`, `noEmit`, `jsx: react-jsx`, `include: ["src"]`). The root
-  script `bun --filter '*' types:check` currently matches only `apps/docs`.
+  script `bun --filter '*' types:check` runs every workspace's
+  `types:check`, including `apps/docs` (`astro sync && tsc --noEmit`).
 
 ### ui-sdk separator facts (from `packages/react/node_modules/@ui-sdk/react/docs/components/separator.md`)
 
@@ -125,8 +132,6 @@ for this plan; the reviewer runs the rendered check instead.
 
 **In scope** (the only files you should modify or create):
 
-- `packages/core/package.json` — add `types:check` script only
-- `packages/react/package.json` — add `types:check` script only
 - `packages/react/src/divider/divider.tsx` — create
 - `packages/react/src/divider/index.ts` — create
 - `packages/react/src/index.tsx` — add the re-export line
@@ -153,19 +158,9 @@ for this plan; the reviewer runs the rendered check instead.
 
 ## Steps
 
-### Step 1: Add `types:check` scripts so the root gate works
+### Step 1: ~~Add `types:check` scripts~~ — DONE on main (commit `0080aa1`)
 
-In `packages/core/package.json` and `packages/react/package.json` add:
-
-```json
-"scripts": {
-  "types:check": "tsc --noEmit"
-}
-```
-
-(`typescript` is hoisted at the repo root; `tsc` resolves via bun.)
-
-**Verify**: `bun run typecheck` → exit 0. (`apps/docs` runs `astro sync && tsc --noEmit` and must still pass.)
+The scripts exist and `bun run typecheck` passes. Skip to Step 2.
 
 ### Step 2: Create the Divider wrapper in `@hashti/react`
 
