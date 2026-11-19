@@ -1,17 +1,19 @@
 ---
 title: Switch
-description: A control the user turns on or off.
+description: Toggles a setting on or off.
 ---
 
-import { Switch } from '@hashti/react'
+import { SwitchDemo } from '../../src/components/switch-demo'
 
-<Switch client:load />
+## Usage
+
+<SwitchDemo client:load />
 
 ## Props
 
 | Prop | Type | Description |
 | --- | --- | --- |
-| `defaultChecked` | `boolean` | Initial state when uncontrolled. |
-| `onCheckedChange` | `(checked: boolean) => void` | Called after the state flips. |
+| `checked` / `defaultChecked` | `boolean` | The state. |
+| `size` | `"sm" \| "md"` | Track size: 34×18 or 44×24. Default `md`. |
 
-The behavior lives in `@hashti/core`, rendering in `@hashti/react`, styling in `@hashti/styles` (`[data-slot="switch"]`, state via `data-checked`).
+Wrap the switch and its text in a `<label className="hashti-choice">`. Styling lives in `@hashti/styles` under `.hashti-switch` — a 44×24 full-round track, 20px thumb sliding to the inline end, checked fill in the design's toggle-on color.
