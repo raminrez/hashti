@@ -81,6 +81,7 @@
   font-size: 0.875rem;
   line-height: 1.5rem;
   font-weight: 400;
+  outline: none;
 }
 
 .hashti-select-item[data-highlighted] {
