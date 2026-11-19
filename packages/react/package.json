@@ -14,5 +14,8 @@
   },
   "scripts": {
     "types:check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/react": "^19"
   }
 }

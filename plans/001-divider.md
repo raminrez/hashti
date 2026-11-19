@@ -6,7 +6,7 @@
 > report — do not improvise. Do not update `plans/README.md`; the reviewer
 > maintains it.
 >
-> **Drift check (run first)**: `git diff --stat 0080aa1..HEAD -- packages apps/docs/content`
+> **Drift check (run first)**: `git diff --stat 3ba8f41..HEAD -- packages apps/docs/content`
 > If any in-scope file changed since this plan was written, compare the
 > "Current state" excerpts against the live code before proceeding; on a
 > mismatch, treat it as a STOP condition.
@@ -18,7 +18,7 @@
 - **Risk**: LOW
 - **Depends on**: none
 - **Category**: migration (component build-out, cycle 1 of the Hashti component program)
-- **Planned at**: commit `e41909b`, 2026-11-19; **re-baselined at `0080aa1`** —
+- **Planned at**: commit `e41909b`, 2026-11-19; **re-baselined at `0080aa1` and `3ba8f41`** —
   the typecheck gate was fixed on main before execution (see Current state).
 
 ## Why this matters
@@ -73,9 +73,10 @@ The repo is a bun workspace monorepo (`packages/*`, `apps/*`):
 - `packages/core/package.json` and `packages/react/package.json` **have a
   `types:check` script** (`tsc --noEmit`) since commit `0080aa1`, which also
   fixed a pre-existing type error in `packages/core/src/button.ts` (missing
-  `api` broke `definePrimitive`'s Options inference). `bun run typecheck`
-  from the repo root passes. Do not re-do Step 1 of an earlier revision of
-  this plan; start at Step 2.
+  `api` broke `definePrimitive`'s Options inference). `packages/react` has
+  `@types/react` as a devDependency since commit `3ba8f41`.
+  `bun run typecheck` from the repo root passes. Do not re-do Step 1 of an
+  earlier revision of this plan; start at Step 2.
 - `packages/*/tsconfig.json` extend `tsconfig.base.json`
   (`strict`, `noEmit`, `jsx: react-jsx`, `include: ["src"]`). The root
   script `bun --filter '*' types:check` runs every workspace's
@@ -83,14 +84,7 @@ The repo is a bun workspace monorepo (`packages/*`, `apps/*`):
 
 ### ui-sdk separator facts (from `packages/react/node_modules/@ui-sdk/react/docs/components/separator.md`)
 
-Import the primitive and build a custom part exactly like this:
-
-```ts
-import { separator } from "@ui-sdk/core/separator"
-import { createParts } from "@ui-sdk/react/primitive"
-
-const { Root: Divider } = createParts(separator, { root: "div" })
-```
+Use the **ready-made component**: `import { Separator } from "@ui-sdk/react/separator"`.
 
 - The rendered root carries `data-slot="separator"`, `role="separator"`,
   `aria-orientation`, and `data-orientation` (`"horizontal"` | `"vertical"`).
@@ -103,6 +97,9 @@ const { Root: Divider } = createParts(separator, { root: "div" })
   `align-self: stretch`."
 - `className` passed to the part is merged (ui-sdk joins class names) — read
   `docs/rendering.md` §"Class names" if merge behavior needs confirmation.
+- Do NOT import from `@ui-sdk/core/separator`: `@hashti/react` does not
+  depend on `@ui-sdk/core`, and adding it is out of scope (decided by the
+  reviewer after executor STOP report, cycle 1).
 
 ### Design rules that bite (from `design/DESIGN.md`, `design/css-conventions.md`, `design/extraction/tokens.md`)
 
@@ -170,13 +167,10 @@ The scripts exist and `bun run typecheck` passes. Skip to Step 2.
 "use client"
 
 import type { ComponentProps } from "react"
-import { separator } from "@ui-sdk/core/separator"
-import { createParts } from "@ui-sdk/react/primitive"
+import { Separator } from "@ui-sdk/react/separator"
 
-const { Root: SeparatorRoot } = createParts(separator, { root: "div" })
-
-function Divider({ className, ...props }: ComponentProps<typeof SeparatorRoot>) {
-  return <SeparatorRoot className={`hashti-divider${className ? ` ${className}` : ""}`} {...props} />
+function Divider({ className, ...props }: ComponentProps<typeof Separator>) {
+  return <Separator className={`hashti-divider${className ? ` ${className}` : ""}`} {...props} />
 }
 
 export { Divider }
@@ -186,11 +180,12 @@ Notes:
 
 - The wrapper's only job is the `hashti-divider` class; every behavior prop
   (`orientation`, `decorative`, `render`, ARIA props) passes through untouched.
-- If `ComponentProps<typeof SeparatorRoot>` does not resolve (the parts type
-  may not expose plain React props), fall back to
-  `ComponentProps<"div">` plus the separator's documented props
-  (`orientation?`, `decorative?`) — match whatever `createParts` returns and
-  keep it compiling under `strict`.
+- `@types/react` is a devDependency of `packages/react` since commit
+  `3ba8f41`; `ComponentProps<typeof Separator>` resolves through it.
+- If `ComponentProps<typeof Separator>` does not resolve (check what
+  `@ui-sdk/react/separator` exports — a part, not a plain component), fall
+  back to `ComponentProps<"div"> & { orientation?: "horizontal" | "vertical";
+  decorative?: boolean }` and keep it compiling under `strict`.
 
 `packages/react/src/divider/index.ts`:
 
