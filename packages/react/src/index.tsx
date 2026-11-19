@@ -59,6 +59,15 @@ export {
 } from "./accordion"
 
 export {
+  Slider,
+  SliderValue,
+  SliderControl,
+  SliderTrack,
+  SliderIndicator,
+  SliderThumb,
+} from "./slider"
+
+export {
   Toast,
   ToastAction,
   ToastClose,
