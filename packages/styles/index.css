@@ -15,3 +15,4 @@
 @import "./src/popover.css" layer(hashti.components);
 @import "./src/tooltip.css" layer(hashti.components);
 @import "./src/toast.css" layer(hashti.components);
+@import "./src/tabs.css" layer(hashti.components);
