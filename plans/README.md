@@ -8,7 +8,7 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 
 | Plan | Title | Priority | Effort | Depends on | Status |
 |------|-------|----------|--------|------------|--------|
-| 001  | Divider component (ui-sdk separator + Hashti styles) | P1 | S | — | IN PROGRESS |
+| 001  | Divider component (ui-sdk separator + Hashti styles) | P1 | S | — | DONE |
 
 Next in program order (not yet planned): Label / Kbd → Badge / Avatar →
 Button (all variants) → Link → TextField, TextArea → Checkbox, Radio, Switch.
