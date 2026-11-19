@@ -8,6 +8,8 @@
   --hashti-primary-fg: #ffffff;
   --hashti-ring: #a3a3a3;
   --hashti-border-subtle-00: #dde1e8;
+  --hashti-border-radius-max: 999999px;
+  --hashti-text-secondary: #606674;
 }
 
 [data-theme="dark"] {
@@ -17,6 +19,7 @@
   --hashti-border: #404040;
   --hashti-ring: #525252;
   --hashti-border-subtle-00: #3e424d;
+  --hashti-text-secondary: #b1b6c3;
 }
 
 /* system follows prefers-color-scheme; an explicit data-theme wins */
@@ -28,5 +31,6 @@
     --hashti-border: #404040;
     --hashti-ring: #525252;
     --hashti-border-subtle-00: #3e424d;
+    --hashti-text-secondary: #b1b6c3;
   }
 }
