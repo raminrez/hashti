@@ -20,3 +20,4 @@
 @import "./src/slider.css" layer(hashti.components);
 @import "./src/menu.css" layer(hashti.components);
 @import "./src/listbox.css" layer(hashti.components);
+@import "./src/kbd.css" layer(hashti.components);

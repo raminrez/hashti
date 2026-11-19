@@ -12,6 +12,8 @@ export { Avatar, AvatarImage, AvatarFallback } from "./avatar"
 
 export { Input } from "./input"
 
+export { Kbd } from "./kbd"
+
 export { Textarea } from "./textarea"
 export { Checkbox, CheckboxIndicator } from "./checkbox"
 export { RadioGroup, Radio, RadioIndicator } from "./radio"
