@@ -18,6 +18,7 @@
 @import "./src/tabs.css" layer(hashti.components);
 @import "./src/accordion.css" layer(hashti.components);
 @import "./src/collapsible.css" layer(hashti.components);
+@import "./src/progress.css" layer(hashti.components);
 @import "./src/slider.css" layer(hashti.components);
 @import "./src/menu.css" layer(hashti.components);
 @import "./src/listbox.css" layer(hashti.components);

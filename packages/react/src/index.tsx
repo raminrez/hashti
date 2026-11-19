@@ -82,6 +82,8 @@ export {
 
 export { Collapsible, CollapsibleTrigger, CollapsiblePanel } from "./collapsible"
 
+export { Progress, ProgressLabel, ProgressValue, ProgressTrack, ProgressIndicator } from "./progress"
+
 export {
   Slider,
   SliderValue,
