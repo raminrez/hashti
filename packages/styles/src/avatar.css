@@ -40,3 +40,45 @@
   font-weight: 600;
   line-height: 1;
 }
+
+.hashti-avatar-group {
+  --avatar-size: 2.5rem;
+
+  display: inline-flex;
+  align-items: center;
+}
+
+.hashti-avatar-group[data-size="xs"] { --avatar-size: 1.5rem; }
+.hashti-avatar-group[data-size="sm"] { --avatar-size: 2rem; }
+.hashti-avatar-group[data-size="lg"] { --avatar-size: 3rem; }
+.hashti-avatar-group[data-size="xl"] { --avatar-size: 4rem; }
+
+/* Group size wins over an avatar's own data-size: it owns the stack geometry. */
+.hashti-avatar-group > .hashti-avatar {
+  --avatar-size: inherit;
+}
+
+.hashti-avatar-group > .hashti-avatar:not(:first-child) {
+  margin-inline-start: calc(var(--avatar-size) * -0.25);
+}
+
+.hashti-avatar-group > .hashti-avatar,
+.hashti-avatar-group-count {
+  box-shadow: 0 0 0 2px var(--hashti-background);
+}
+
+.hashti-avatar-group-count {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--avatar-size);
+  block-size: var(--avatar-size);
+  margin-inline-start: calc(var(--avatar-size) * -0.25);
+  border-radius: var(--hashti-border-radius-max);
+  background: var(--hashti-layer-02);
+  color: var(--hashti-text-secondary);
+  font-size: var(--hashti-body-compact-01-font-size);
+  font-weight: 600;
+  line-height: 1;
+}
