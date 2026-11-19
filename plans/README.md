@@ -28,6 +28,7 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 018  | Slider component (ui-sdk slider + Hashti styles)       | P1 | M | 017 | DONE |
 | 019  | Menu component (ui-sdk menu + Hashti styles)           | P1 | M | 018 | DONE |
 | 020  | Listbox component (ui-sdk listbox + Hashti styles)     | P1 | M | 019 | DONE |
+| 021  | Kbd component (Hashti-owned keycap glyph)              | P2 | S | 020 | IN PROGRESS |
 
 **Reassessment checkpoint** — the ui-sdk-backed list from the program brief
 is exhausted. See "Reassessed order" below.
