@@ -39,6 +39,13 @@ component, its parts, files, exports, and docs pages.
 - Rendered check per component on its docs page: class names present
   (`document.querySelectorAll("[class*='hashti-']")`), both themes, keyboard
   walk-through where the component is interactive.
+- **Compound parts in docs pages**: Astro/MDX renders each React component
+  child as its own React root, so ui-sdk's context-bound parts (image inside
+  Avatar, items inside Select, …) cannot be composed directly in MDX — the
+  root's context never reaches them ("part must be used inside its root").
+  Put the composition in a single React demo component under
+  `apps/docs/src/components/` and render that from the MDX page with
+  `client:load`.
 - No lint setup yet — not a gate until it exists.
 
 ## Executor workflow

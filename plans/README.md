@@ -10,7 +10,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 |------|-------|----------|--------|------------|--------|
 | 001  | Separator component (ui-sdk separator + Hashti styles) | P1 | S | — | DONE |
 | 002  | Label component (ui-sdk label + Hashti styles)         | P1 | S | 001 | DONE |
-| 003  | Avatar component (ui-sdk avatar + Hashti styles)       | P1 | S | 002 | IN PROGRESS |
+| 003  | Avatar component (ui-sdk avatar + Hashti styles)       | P1 | S | 002 | DONE |
+| 004  | Button component (all variants)                        | P1 | M | 003 | IN PROGRESS |
 
 Next in program order — **ui-sdk-backed components only** (naming follows
 ui-sdk): Label → Avatar → Button (all variants) → Input → Textarea →
