@@ -10,8 +10,18 @@
   --hashti-border-subtle-00: #dde1e8;
 }
 
+[data-theme="dark"] {
+  --hashti-bg: #171717;
+  --hashti-fg: #fafafa;
+  --hashti-muted: #262626;
+  --hashti-border: #404040;
+  --hashti-ring: #525252;
+  --hashti-border-subtle-00: #3e424d;
+}
+
+/* system follows prefers-color-scheme; an explicit data-theme wins */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --hashti-bg: #171717;
     --hashti-fg: #fafafa;
     --hashti-muted: #262626;

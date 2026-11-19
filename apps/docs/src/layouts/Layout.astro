@@ -11,7 +11,10 @@ interface Props {
 const { title, description, image } = Astro.props;
 ---
 
-<html lang="en" transition:animate="none">
+<!-- data-theme="light" pins Hashti tokens to the site's light theme until a
+     theme toggle lands; without it, dark-mode OSes resolve dark token values
+     on this light page. -->
+<html lang="en" data-theme="light" transition:animate="none">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
