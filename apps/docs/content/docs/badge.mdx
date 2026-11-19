@@ -1,0 +1,20 @@
+---
+title: Badge
+description: Marks a count or status on content.
+---
+
+import { BadgeDemo } from '../../src/components/badge-demo'
+
+## Usage
+
+<BadgeDemo client:load />
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `count` / `content` | `ReactNode` | The marker; numbers clamp at `maxCount` (99 → "99+"). |
+| `isDot` | `boolean` | An 8px dot instead of content. |
+| `kind` | `danger \| success \| warning \| info \| primary \| neutral \| secondary` | The status ink. |
+| `placement` | `top-end \| top-start \| bottom-end \| bottom-start` | Where the badge sits on `children`. |
+| `children` | `ReactNode` | The content the badge marks; wraps it. |
