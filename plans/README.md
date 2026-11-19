@@ -31,7 +31,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 021  | Kbd component (Hashti-owned keycap glyph)              | P2 | S | 020 | DONE |
 | 022  | Toggle component (ui-sdk toggle + group)               | P1 | S | 021 | DONE |
 | 023  | Collapsible component (ui-sdk collapsible)             | P1 | S | 022 | DONE |
-| 024  | Progress component (ui-sdk progress)                   | P1 | S | 023 | IN PROGRESS |
+| 024  | Progress component (ui-sdk progress)                   | P1 | S | 023 | DONE |
+| 025  | Meter component (ui-sdk meter)                         | P1 | S | 024 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
