@@ -1,0 +1,19 @@
+---
+title: Radio
+description: Selects one option from a group.
+---
+
+import { RadioDemo } from '../../src/components/radio-demo'
+
+## Usage
+
+<RadioDemo client:load />
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `value` | `string` | On `Radio`: the option's value. On `RadioGroup`: the selected value. |
+| `defaultValue` | `string` | The initially selected option. |
+
+Wrap each radio and its text in a `<label className="hashti-choice">`. Styling lives in `@hashti/styles` under `.hashti-radio` — an 18px round mark with a 10px dot in focus blue.
