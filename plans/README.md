@@ -25,7 +25,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 015  | Toast component (ui-sdk toast + Hashti styles)         | P1 | M | 014 | DONE |
 | 016  | Tabs component (ui-sdk tabs, line variant)             | P1 | M | 015 | DONE |
 | 017  | Accordion component (ui-sdk accordion + Hashti styles) | P1 | M | 016 | DONE |
-| 018  | Slider component (ui-sdk slider + Hashti styles)       | P1 | M | 017 | IN PROGRESS |
+| 018  | Slider component (ui-sdk slider + Hashti styles)       | P1 | M | 017 | DONE |
+| 019  | Menu component (ui-sdk menu + Hashti styles)           | P1 | M | 018 | IN PROGRESS |
 
 **Reassessment checkpoint** — the ui-sdk-backed list from the program brief
 is exhausted. See "Reassessed order" below.
