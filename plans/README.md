@@ -14,7 +14,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 004  | Button component (all variants)                        | P1 | M | 003 | DONE |
 | 005  | Input component (ui-sdk input + Hashti styles)         | P1 | M | 004 | DONE |
 | 006  | Textarea component (ui-sdk textarea + Hashti styles)   | P1 | S | 005 | DONE |
-| 007  | Checkbox component (ui-sdk checkbox + Hashti styles)   | P1 | M | 006 | IN PROGRESS |
+| 007  | Checkbox component (ui-sdk checkbox + Hashti styles)   | P1 | M | 006 | DONE |
+| 008  | Radio component (ui-sdk radio + Hashti styles)         | P1 | M | 007 | IN PROGRESS |
 
 Next in program order — **ui-sdk-backed components only** (naming follows
 ui-sdk): Label → Avatar → Button (all variants) → Input → Textarea →
