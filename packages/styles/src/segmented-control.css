@@ -28,6 +28,10 @@
     height var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.hashti-segmented-control[data-orientation="vertical"] {
+  flex-direction: column;
+}
+
 .hashti-segmented-control-indicator[data-activation-direction="none"] {
   transition: none;
 }
