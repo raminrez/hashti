@@ -44,3 +44,4 @@
 @import "./src/toolbar.css" layer(hashti.components);
 @import "./src/carousel.css" layer(hashti.components);
 @import "./src/resizable.css" layer(hashti.components);
+@import "./src/trigger-menu.css" layer(hashti.components);
