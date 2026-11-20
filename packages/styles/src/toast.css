@@ -20,7 +20,7 @@
   gap: 0.25rem;
   padding: 0.75rem 1rem;
   border: 1px solid var(--hashti-border-subtle-00);
-  border-radius: var(--hashti-border-radius-16);
+  border-radius: var(--hashti-control-radius);
   background: var(--hashti-layer-01);
 
   box-shadow: var(--hashti-shadow-toast);
@@ -188,6 +188,11 @@
 
 .hashti-toast[data-type="success"] {
   background: var(--hashti-notification-background-success);
+  border-color: color-mix(
+    in srgb,
+    var(--hashti-support-success) 35%,
+    var(--hashti-border-subtle-00)
+  );
 }
 
 .hashti-toast[data-type="success"] .hashti-toast__title {
@@ -196,6 +201,11 @@
 
 .hashti-toast[data-type="warning"] {
   background: var(--hashti-notification-background-warning);
+  border-color: color-mix(
+    in srgb,
+    var(--hashti-support-warning) 35%,
+    var(--hashti-border-subtle-00)
+  );
 }
 
 .hashti-toast[data-type="warning"] .hashti-toast__title {
@@ -204,6 +214,11 @@
 
 .hashti-toast[data-type="error"] {
   background: var(--hashti-notification-background-error);
+  border-color: color-mix(
+    in srgb,
+    var(--hashti-support-error) 35%,
+    var(--hashti-border-subtle-00)
+  );
 }
 
 .hashti-toast[data-type="error"] .hashti-toast__title {
