@@ -3,11 +3,15 @@
 import type { ComponentProps } from "react"
 import {
   Combobox,
+  ComboboxChip as UiComboboxChip,
+  ComboboxChipRemove as UiComboboxChipRemove,
+  ComboboxChips as UiComboboxChips,
   ComboboxContent as UiComboboxContent,
   ComboboxInput as UiComboboxInput,
   ComboboxItem as UiComboboxItem,
   ComboboxLabel as UiComboboxLabel,
   ComboboxList as UiComboboxList,
+  ComboboxValue,
 } from "@ui-sdk/react/combobox"
 
 const join = <State,>(
@@ -70,4 +74,45 @@ function ComboboxItem<T = string>(props: ComponentProps<typeof UiComboboxItem<T>
   )
 }
 
-export { Combobox, ComboboxLabel, ComboboxInput, ComboboxContent, ComboboxList, ComboboxItem }
+function ComboboxChips(props: ComponentProps<typeof UiComboboxChips>) {
+  return (
+    <UiComboboxChips
+      {...props}
+      className={join("hashti-combobox-chips", props.className)}
+    />
+  )
+}
+
+function ComboboxChip<T = string>(
+  props: ComponentProps<typeof UiComboboxChip<T>>,
+) {
+  return (
+    <UiComboboxChip
+      {...props}
+      className={join("hashti-combobox-chip", props.className)}
+    />
+  )
+}
+
+function ComboboxChipRemove(props: ComponentProps<typeof UiComboboxChipRemove>) {
+  return (
+    <UiComboboxChipRemove
+      {...props}
+      className={join("hashti-combobox-chip-remove", props.className)}
+    />
+  )
+}
+
+export {
+  Combobox,
+  ComboboxLabel,
+  ComboboxInput,
+  ComboboxContent,
+  ComboboxList,
+  ComboboxItem,
+  ComboboxChips,
+  // Renders no element of its own, so it is re-exported directly.
+  ComboboxValue,
+  ComboboxChip,
+  ComboboxChipRemove,
+}

@@ -116,3 +116,91 @@
   block-size: 1rem;
   color: var(--hashti-focus);
 }
+
+/* Multiple: the chips container is the field and carries the control chrome. */
+.hashti-combobox-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding: 0.3125rem 0.5rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-01);
+  color: var(--hashti-text-primary);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-combobox-chips:has(:focus-visible) {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-combobox-chips[data-disabled] {
+  border-color: var(--hashti-border-disabled);
+  background: var(--hashti-button-disabled);
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Inside the chips container the input is bare text; the container is the field. */
+.hashti-combobox-chips .hashti-combobox-input {
+  flex: 1 1 4rem;
+  min-block-size: 2rem;
+  padding: 0 0.25rem;
+  border: none;
+  background: transparent;
+}
+
+.hashti-combobox-chips .hashti-combobox-input:focus-visible {
+  outline: none;
+}
+
+.hashti-combobox-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--hashti-border-radius-08);
+  background: var(--hashti-background-selected);
+  color: var(--hashti-focus);
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.hashti-combobox-chip[data-disabled] {
+  background: var(--hashti-button-disabled);
+  color: var(--hashti-text-disabled);
+}
+
+.hashti-combobox-chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.125rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--hashti-border-radius-04);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.hashti-combobox-chip-remove:hover {
+  background: var(--hashti-background-hover);
+}
+
+.hashti-combobox-chip-remove:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-combobox-chip-remove[data-disabled] {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
