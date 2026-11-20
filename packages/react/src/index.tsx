@@ -26,6 +26,15 @@ export {
 
 export { DateInput, DateInputSegment } from "./date-input"
 
+export {
+  FileInput,
+  FileInputTrigger,
+  FileInputDropzone,
+  FileInputList,
+  FileInputItem,
+  FileInputItemRemove,
+} from "./file-input"
+
 export { Kbd } from "./kbd"
 
 export { Link } from "./link"

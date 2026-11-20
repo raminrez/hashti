@@ -1,0 +1,21 @@
+---
+title: FileInput
+description: Picks, drops and lists files.
+---
+
+import { FileInputDemo } from '../../src/components/file-input-demo'
+
+## Usage
+
+<FileInputDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `FileInput` | Owns the files. |
+| `FileInputTrigger` | Opens the picker; keep one beside the dropzone for keyboard users. |
+| `FileInputDropzone` | Takes drops and pastes; accept/reject drag states. |
+| `FileInputList` / `FileInputItem` / `FileInputItemRemove` | The removable file list. |
+
+Styling lives in `@hashti/styles` under `.hashti-file-input*` — a dashed dropzone that highlights blue while dragging, green on accept, red on reject.
