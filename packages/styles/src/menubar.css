@@ -1,0 +1,19 @@
+.hashti-menubar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0.1875rem;
+  border: 1px solid var(--hashti-border-subtle-00);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-02);
+}
+
+.hashti-menubar .hashti-menu-trigger {
+  min-block-size: 2rem;
+  padding: 0 0.625rem;
+  border-radius: calc(var(--hashti-control-radius) - 0.1875rem);
+}
+
+.hashti-menubar .hashti-menu-trigger[data-open] {
+  background: var(--hashti-background-hover);
+}
