@@ -11,4 +11,6 @@ export {
   MenuSubContent,
   MenuCheckboxItem,
   MenuItemIndicator,
+  MenuRadioGroup,
+  MenuRadioItem,
 } from "./menu"

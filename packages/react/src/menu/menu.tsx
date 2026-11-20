@@ -9,6 +9,8 @@ import {
   MenuGroupLabel as UiMenuGroupLabel,
   MenuItem as UiMenuItem,
   MenuItemIndicator as UiMenuItemIndicator,
+  MenuRadioGroup as UiMenuRadioGroup,
+  MenuRadioItem as UiMenuRadioItem,
   MenuSeparator as UiMenuSeparator,
   MenuSub as UiMenuSub,
   MenuSubContent as UiMenuSubContent,
@@ -84,6 +86,15 @@ function MenuItemIndicator(props: ComponentProps<typeof UiMenuItemIndicator>) {
   )
 }
 
+function MenuRadioItem(props: ComponentProps<typeof UiMenuRadioItem>) {
+  return (
+    <UiMenuRadioItem
+      {...props}
+      className={join("hashti-menu-item hashti-menu-radio-item", props.className)}
+    />
+  )
+}
+
 export {
   Menu,
   MenuTrigger,
@@ -97,4 +108,6 @@ export {
   MenuSubContent,
   MenuCheckboxItem,
   MenuItemIndicator,
+  UiMenuRadioGroup as MenuRadioGroup,
+  MenuRadioItem,
 }

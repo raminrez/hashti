@@ -8,6 +8,8 @@ import {
   MenuGroupLabel,
   MenuItem,
   MenuItemIndicator,
+  MenuRadioGroup,
+  MenuRadioItem,
   MenuSeparator,
   MenuSub,
   MenuSubContent,
@@ -62,6 +64,16 @@ export function MenuDemo() {
           </MenuItemIndicator>
           Minimap
         </MenuCheckboxItem>
+        <MenuSeparator />
+        <MenuRadioGroup name="density" defaultValue="comfortable">
+          <MenuGroupLabel>Density</MenuGroupLabel>
+          {["Compact", "Comfortable"].map((option) => (
+            <MenuRadioItem key={option} value={option.toLowerCase()}>
+              <MenuItemIndicator />
+              {option}
+            </MenuRadioItem>
+          ))}
+        </MenuRadioGroup>
         <MenuSeparator />
         <MenuGroup>
           <MenuGroupLabel>Danger zone</MenuGroupLabel>
