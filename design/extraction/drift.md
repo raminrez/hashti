@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-11-20 — imported from ancestor repo (hashti-next); describes an implementation shape (packages/tokens, Storybook, docs/verification.md) that no longer exists here. Treat as historical record.**
+
 # Drift report — 2026-11-19
 
 ## 1. Commits since 2026-11-05 (whole repo)

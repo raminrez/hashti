@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-11-20 — imported from ancestor repo (hashti-next); describes an implementation shape (packages/tokens, Storybook, docs/verification.md) that no longer exists here. Treat as historical record.**
+
 # Hashti / Frame — extracted spec (read-only digest)
 
 Sources: `docs/design-system.md` (6 Nov 2026), `docs/verification.md`, `docs/component-library-plan.md` (8 Nov 2026), plus visual authority `DESIGN.md` and one drawer fact from `docs/component-review.md`.

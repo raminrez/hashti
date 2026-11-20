@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-11-20 — imported from ancestor repo (hashti-next); describes an implementation shape (packages/tokens, Storybook, docs/verification.md) that no longer exists here. Treat as historical record.**
+
 # @hashti/tokens — extraction report
 
 Sources (all read in full):
