@@ -1,0 +1,99 @@
+.hashti-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid var(--hashti-border-subtle-00);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-02);
+}
+
+.hashti-toolbar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  min-block-size: 2.25rem;
+  padding: 0 0.625rem;
+  border: none;
+  border-radius: calc(var(--hashti-control-radius) - 0.25rem);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hashti-toolbar-button:hover:not([data-disabled]) {
+    background: var(--hashti-background-hover);
+  }
+}
+
+.hashti-toolbar-button:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: -2px;
+}
+
+.hashti-toolbar-button[data-disabled] {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-toolbar-group {
+  display: flex;
+  gap: 0.125rem;
+}
+
+.hashti-toolbar-separator {
+  align-self: stretch;
+  inline-size: 1px;
+  background: var(--hashti-border-subtle-00);
+  margin: 0.25rem 0.125rem;
+}
+
+.hashti-toolbar-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  min-block-size: 2.25rem;
+  padding: 0 0.625rem;
+  border-radius: calc(var(--hashti-control-radius) - 0.25rem);
+  color: var(--hashti-link-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hashti-toolbar-link:hover {
+    text-decoration: underline;
+  }
+}
+
+.hashti-toolbar-link:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: -2px;
+}
+
+.hashti-toolbar-input {
+  block-size: 2.25rem;
+  padding: 0 0.5rem;
+  border: none;
+  border-radius: calc(var(--hashti-control-radius) - 0.25rem);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+}
+
+.hashti-toolbar-input::placeholder {
+  color: var(--hashti-text-secondary);
+  opacity: 1;
+}
+
+.hashti-toolbar-input:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: -2px;
+}
