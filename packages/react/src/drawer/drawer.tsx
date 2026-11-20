@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { join } from "@hashti/utils";
 import {
-  Drawer,
+  Drawer as UiDrawer,
   DrawerBackdrop as UiDrawerBackdrop,
   DrawerClose as UiDrawerClose,
   DrawerContent as UiDrawerContent,
@@ -12,6 +12,12 @@ import {
   DrawerTitle as UiDrawerTitle,
   DrawerTrigger as UiDrawerTrigger,
 } from "@ui-sdk/react/drawer";
+import { useOverlayTheme } from "../theme";
+
+function Drawer(props: ComponentProps<typeof UiDrawer>) {
+  const theme = useOverlayTheme();
+  return <UiDrawer container={theme?.container} {...props} />;
+}
 
 function DrawerTrigger(props: ComponentProps<typeof UiDrawerTrigger>) {
   return (

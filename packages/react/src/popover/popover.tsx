@@ -3,13 +3,19 @@
 import type { ComponentProps } from "react";
 import { join } from "@hashti/utils";
 import {
-  Popover,
+  Popover as UiPopover,
   PopoverClose as UiPopoverClose,
   PopoverContent as UiPopoverContent,
   PopoverDescription as UiPopoverDescription,
   PopoverTitle as UiPopoverTitle,
   PopoverTrigger as UiPopoverTrigger,
 } from "@ui-sdk/react/popover";
+import { useOverlayTheme } from "../theme";
+
+function Popover(props: ComponentProps<typeof UiPopover>) {
+  const theme = useOverlayTheme();
+  return <UiPopover container={theme?.container} {...props} />;
+}
 
 function PopoverTrigger(props: ComponentProps<typeof UiPopoverTrigger>) {
   return (
