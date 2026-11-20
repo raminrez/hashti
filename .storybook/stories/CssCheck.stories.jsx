@@ -21,5 +21,14 @@ export const StylesLoaded = {
     await expect(document.documentElement.getAttribute("data-theme")).toBe(
       "light",
     );
+    // Font regression: nothing set a font, so body fell back to Times and
+    // form controls showed the browser default (Arial) — mixed fonts on one
+    // component. base.css must keep applying the token and inheriting it.
+    await expect(getComputedStyle(document.body).fontFamily).not.toMatch(
+      /Times|serif/i,
+    );
+    await expect(style.fontFamily).toBe(
+      getComputedStyle(document.body).fontFamily,
+    );
   },
 };
