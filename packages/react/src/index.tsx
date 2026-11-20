@@ -261,6 +261,8 @@ export {
   CommandEmpty,
 } from "./command"
 
+export { OTPInput, OTPInputGroup, OTPInputSeparator, OTPInputSlot } from "./otp-input"
+
 export {
   Combobox,
   ComboboxLabel,
