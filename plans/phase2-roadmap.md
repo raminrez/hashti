@@ -1,5 +1,9 @@
 # Phase 2: advanced features — roadmap
 
+> **ARCHIVED 2026-11-20 — phase 2 complete.** Cycles 061–069 all shipped and
+> merged; this file is a historical record. Follow-up debts live in the
+> handoff/anti-slop logs, not here.
+
 Component coverage is COMPLETE (cycles 001–060, all 54 ui-sdk components).
 Phase 2 adds the advanced/complex behaviors ui-sdk supports, on top of the
 merged components. Work happens on the `dev` branch (cut from main at
