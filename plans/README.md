@@ -54,7 +54,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 044  | Drawer (ui-sdk drawer, side sheet)                     | P1 | M | 043 | DONE |
 | 045  | Menubar (ui-sdk menubar — reuses Menu styles)          | P1 | S | 044 | DONE |
 | 046  | TriggerMenu (ui-sdk trigger-menu, suggest popup)       | P1 | M | 045 | DONE |
-| 047  | Combobox (ui-sdk combobox — core single select)        | P1 | M | 046 | IN PROGRESS |
+| 047  | Combobox (ui-sdk combobox — core single select)        | P1 | M | 046 | DONE |
+| 048  | Combobox multiple + chips (Chips, ChipRemove, value)   | P1 | M | 047 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
