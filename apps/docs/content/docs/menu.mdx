@@ -19,5 +19,11 @@ import { MenuDemo } from '../../src/components/menu-demo'
 | `MenuItem` | One action; a `value` for `onAction`. |
 | `MenuGroup` / `MenuGroupLabel` | Groups related actions. |
 | `MenuSeparator` | Divides items without a focus stop. |
+| `MenuSub` / `MenuSubTrigger` / `MenuSubContent` | A nested level; the trigger shows a chevron-end, the content reuses the menu surface. |
+| `MenuCheckboxItem` | An independent toggle that stays open; an `MenuItemIndicator` shows the check. |
+| `MenuRadioGroup` / `MenuRadioItem` | One choice per group; the indicator shows the dot. |
+| `MenuItemIcon` | A leading decorative icon, ignored by typeahead; `mirror` flips it in RTL. |
+
+Items take a `shortcut` prop (e.g. `shortcut="mod+s"`) that renders a trailing platform-specific hint.
 
 Styling lives in `@hashti/styles` under `.hashti-menu-*` — an 18px zero-padding surface with full-bleed items, highlighted in background-hover.
