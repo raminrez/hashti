@@ -31,7 +31,7 @@
 }
 
 .hashti-resizable-handle[data-hovering]::after {
-  background: var(--hashti-border-subtle-inverse, var(--hashti-text-secondary));
+  background: var(--hashti-text-secondary);
 }
 
 .hashti-resizable-handle[data-dragging] {
