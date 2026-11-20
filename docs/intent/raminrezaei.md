@@ -4,8 +4,8 @@
 
 - README rewritten for the wrapper architecture — stale `@hashti/core` rows and
   the old `definePrimitive` recipe out
-- oxlint now ignores vendored `.claude` assets like `.agents`; lint was red with
-  3,648 vendored errors
+- oxlint now ignores vendored `.claude` assets like `.agents`; lint was red
+  with 3,648 vendored errors
 - anti-slop audit (Evil Martians probe) — plan in `anti-slop/`, then rolled out
   all 11 steps through sub-agents
 - knip down to zero: MDX-imported demo components configured away, one dead
@@ -19,13 +19,13 @@
   className-join idiom
   **I decided:** react-doctor stays report-only; two findings kept with reasons
   (kbd index key on a static list, field-demo preventDefault on purpose)
-- first test suite: `join` in `@hashti/utils` — bun test with zero files exits 1,
-  so the pre-push test gate could never pass; wrote the test instead of weakening
-  the gate
+- first test suite: `join` in `@hashti/utils`
+  **why:** bun test with zero files exits 1, so the pre-push test gate could
+  never pass — wrote the test instead of weakening the gate
 - pre-push gate: knip + jscpd new-clones vs `dev`; AGENTS.md trimmed to what no
   check enforces, every deletion plant-proven
-- react-doctor installed through its own installer; kept the CI workflow dormant,
-  dropped its per-package `doctor` script
+- react-doctor installed through its own installer; kept the CI workflow
+  dormant, dropped its per-package `doctor` script
   **why:** the installer's script drops the release-age and privacy flags the
   root script carries
 - merged the anti-slop branch to dev, 12 commits

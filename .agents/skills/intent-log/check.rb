@@ -137,7 +137,10 @@ end
 
 # the header may show example tags; only entries count
 body = source.include?("\n## ") ? source[source.index("\n## ")..] : source
-known = pull_requests(options[:repo])
+# A log with no PR tags has nothing for gh to verify (a solo repo with no
+# remote, say); tolerate an unusable gh there instead of aborting.
+no_tags = !body.match?(/#(\d+)/)
+known = no_tags ? {} : pull_requests(options[:repo])
 failures = []
 
 unlogged = Hash.new { |h, k| h[k] = [] }
