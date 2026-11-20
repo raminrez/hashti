@@ -11,6 +11,7 @@
 @import "./src/number-input.css" layer(hashti.components);
 @import "./src/date-input.css" layer(hashti.components);
 @import "./src/time-input.css" layer(hashti.components);
+@import "./src/pagination.css" layer(hashti.components);
 @import "./src/file-input.css" layer(hashti.components);
 @import "./src/textarea.css" layer(hashti.components);
 @import "./src/checkbox.css" layer(hashti.components);
