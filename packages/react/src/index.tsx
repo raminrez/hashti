@@ -278,6 +278,16 @@ export {
 export { OTPInput, OTPInputGroup, OTPInputSeparator, OTPInputSlot } from "./otp-input"
 
 export {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  NavigationMenuViewport,
+} from "./navigation-menu"
+
+export {
   Combobox,
   ComboboxLabel,
   ComboboxInput,

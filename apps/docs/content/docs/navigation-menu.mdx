@@ -1,0 +1,22 @@
+---
+title: NavigationMenu
+description: Opens link panels from a nav row.
+---
+
+import { NavigationMenuDemo } from '../../src/components/navigation-menu-demo'
+
+## Usage
+
+<NavigationMenuDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `NavigationMenu` | Owns the open item. |
+| `NavigationMenuList` / `NavigationMenuItem` | The trigger row. |
+| `NavigationMenuTrigger` | One disclosure button. |
+| `NavigationMenuContent` / `NavigationMenuLink` | The panel of links. |
+| `NavigationMenuViewport` | The shared panel surface that follows. |
+
+Styling lives in `@hashti/styles` under `.hashti-navigation-menu*` — quiet triggers with the popover surface and a viewport that follows the open panel's size.

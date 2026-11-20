@@ -51,3 +51,5 @@
 @import "./src/autocomplete.css" layer(hashti.components);
 @import "./src/command.css" layer(hashti.components);
 @import "./src/token-input.css" layer(hashti.components);
+@import "./src/navigation-menu.css" layer(hashti.components);
+>>>>>>> particle/053-navigation-menu
