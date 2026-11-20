@@ -48,7 +48,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 038  | TimeInput (ui-sdk time-input, segment typing)          | P1 | S | 037 | DONE |
 | 039  | Pagination (ui-sdk pagination)                         | P1 | M | 038 | DONE |
 | 040  | Toolbar (ui-sdk toolbar)                               | P1 | M | 039 | DONE |
-| 041  | Carousel (ui-sdk carousel)                             | P1 | M | 040 | IN PROGRESS |
+| 041  | Carousel (ui-sdk carousel)                             | P1 | M | 040 | DONE |
+| 042  | Resizable (ui-sdk resizable)                           | P1 | S | 041 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
