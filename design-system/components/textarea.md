@@ -1,4 +1,5 @@
 ---
+sourcesHash: 2c0ab215d89d690db17e2bd7791e08a4073231847ddb18b5fb007bd09765e270
 id: textarea
 description: >-
   Enter multiple lines of text — messages, notes, descriptions — through a

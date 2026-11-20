@@ -1,4 +1,5 @@
 ---
+sourcesHash: 04a8f334f611b1c5c561ad97e72ca3050a74c74c570dd1ce7f66a548667e65a3
 id: switch
 description: >-
   Turn a setting on or off where the change takes effect immediately, with a

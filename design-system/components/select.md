@@ -1,4 +1,5 @@
 ---
+sourcesHash: c603fa470f07a7fe446df2451537b32e1f789528a5256f835361f1168bec89a8
 id: select
 description: >-
   Chooses one value or several from a popup list, with keyboard navigation and

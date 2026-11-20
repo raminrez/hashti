@@ -1,4 +1,5 @@
 ---
+sourcesHash: 0cf6c16bfe186b901e661b7f7515d2bb1763207ff6fb7fc9f08ee335a8972584
 id: popover
 description: >-
   Opens a small task — fields, buttons, other interactive content — beside its

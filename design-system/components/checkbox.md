@@ -1,4 +1,5 @@
 ---
+sourcesHash: ef42db1afc291cb8a8d4db0ace8f7708ecc5878616bf51e9e3f2aa2f578b8fa9
 id: checkbox
 description: >-
   Check or uncheck one choice, or several through a group, with a native form

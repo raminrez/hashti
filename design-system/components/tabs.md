@@ -1,4 +1,5 @@
 ---
+sourcesHash: 73d447e2017d00b4e6a3f8c06222c770bb1761dead57689bf16050592f808435
 id: tabs
 description: >-
   Switches between related panels with one tab selected at a time, through a

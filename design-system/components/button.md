@@ -1,4 +1,5 @@
 ---
+sourcesHash: 4ab4e67712b8f09a39e9942dc2162529dfe52595e679a09c592e6566c702da0c
 id: button
 description: >-
   Invoke one immediate action or navigate to one destination through a

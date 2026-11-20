@@ -1,4 +1,5 @@
 ---
+sourcesHash: c25a1cf6999f512715e65e6bbf2b901357ac8ea45acb62c8ce741847a2aac5b2
 id: dialog
 description: >-
   Opens a focused task over the page — editing a record, collecting a few

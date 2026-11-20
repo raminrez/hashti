@@ -1,4 +1,5 @@
 ---
+sourcesHash: 05d1cf74208c31bef321ffe243746fac7ff386f4e839fd75984c8c2ac82feb19
 id: menu
 description: >-
   Chooses actions and settings from a button or a context menu, with arrow
