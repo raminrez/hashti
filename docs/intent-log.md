@@ -43,14 +43,16 @@ this one.
   **I decided:** hover = `:hover` + hover-media guard (57 files win over
   link.css's one-off); deferred Theme/invalid-state/dead-tokens to the gap
   journal instead of improvising them in a survey pass
-- moved DESIGN.md to repo root, wrote the missing PRODUCT.md, archived the
-  ancestor-repo specs, added 12 design-system contracts + gap journal
-- vendored modern-web-guidance (legacy-scan: 0 findings on packages/styles)
+- moved DESIGN.md to root, wrote PRODUCT.md, archived ancestor specs, added
+  12 design-system contracts + gap journal
+- vendored modern-web-guidance (legacy-scan: 0 findings)
   **I decided:** rendered checks must assert a computed style, not just class
   names — the regression passed every cycle check invisibly
 - ran cycle 070: Theme component + useOverlayTheme — 12 overlay wrappers
   portal into the themed container; rendered proof passes
 - authored design-system contracts batch 2 (12 more components, 24 total)
+- researched harmony/harmonizer/oklch-picker: adopted APCA contrast method,
+  not the palette; added `bun run contrast` gate; fixed 2 dark pairs
 
 _Postponed: CI workflow + scheduled react-doctor until a git remote exists_
 _Postponed: handoff cleanup list — segmented-control rgba shadow, Textarea
