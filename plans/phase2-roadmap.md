@@ -10,10 +10,10 @@ back to `dev` when reviewed.
 
 | Cycle | Feature | Lane |
 | --- | --- | --- |
-| 061 | DatePicker range mode (two-end selection, range styling, two inputs) | Particle-1 |
-| 062 | Inline completion (Input/Textarea inline suggest, accept with Tab→) | Particle-2 |
-| 063 | Rating half-star masks (fractional fill via mask/clip) | Particle-3 |
-| 064 | Vertical variants (Slider, Tabs, SegmentedControl vertical modes) | Particle-4 |
+| 061 | DatePicker range mode (two-end selection, range styling, two inputs) | Particle-1 — **DONE, merged** |
+| 062 | Inline completion (Input/Textarea inline suggest, accept with Tab→) | Particle-2 — **DONE, merged** |
+| 063 | Rating half-star masks (fractional fill via mask/clip) | Particle-3 — **DONE, merged** |
+| 064 | Vertical variants (Slider, Tabs, SegmentedControl vertical modes) | Particle-4 — in flight |
 
 ## Wave 2 — surfaces & global (queued)
 
