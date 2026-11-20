@@ -103,11 +103,14 @@
   justify-items: center;
 }
 
-.hashti-toast[data-type="loading"] .hashti-toast__icons > [data-show="loading"],
 .hashti-toast[data-type="success"] .hashti-toast__icons > [data-show="success"],
 .hashti-toast[data-type="error"] .hashti-toast__icons > [data-show="error"] {
   display: grid;
   animation: hashti-toast-icon-in var(--hashti-duration-fast-01) linear;
+}
+
+.hashti-toast[data-type="loading"] .hashti-toast__icons > [data-show="loading"] {
+  display: grid;
 }
 
 @keyframes hashti-toast-icon-in {
