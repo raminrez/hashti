@@ -39,6 +39,15 @@ this one.
   `DrawerHandle` re-exported, textarea inline-completion variant
 - found why every component rendered unstyled: stylelint's autofix rewrote
   the css imports and Vite silently dropped the whole layer
+- ran a design-system improve survey (4 read-only agents): 14 findings,
+  implemented via herdr agents, merged to dev
+  **I decided:** the hover pattern is `:hover` + hover-media guard (57 files
+  win over link.css's one-off), recorded in css-conventions.md; deferred
+  Theme component / invalid-state mapping / dead-token sweep to the gap
+  journal instead of improvising them in a survey pass
+- moved DESIGN.md to repo root, wrote the missing PRODUCT.md, archived the
+  ancestor-repo specs, added 12 design-system contracts + gap journal
+- vendored modern-web-guidance (legacy-scan: 0 findings on packages/styles)
   **I decided:** rendered checks must assert a computed style, not just class
   names — the regression passed every cycle check invisibly
 
