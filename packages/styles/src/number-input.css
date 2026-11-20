@@ -1,0 +1,91 @@
+/* The root is the form group's box; the group below carries the field look. */
+.hashti-number-input {
+  inline-size: 100%;
+}
+
+.hashti-number-input-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2.25rem;
+  grid-template-rows: 1fr 1fr;
+  align-items: stretch;
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-01);
+  overflow: hidden;
+  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-number-input__control {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  min-inline-size: 0;
+  padding: 0 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--hashti-text-primary);
+  text-align: start;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.hashti-number-input__control::placeholder {
+  color: var(--hashti-text-secondary);
+  opacity: 1;
+}
+
+/* The group is the field: the ring sits on it, not the inner input. */
+.hashti-number-input__control:focus-visible {
+  outline: none;
+}
+
+.hashti-number-input-group:has(:focus-visible) {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-number-input__step {
+  grid-column: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--hashti-text-secondary);
+  cursor: pointer;
+}
+
+.hashti-number-input__step:first-of-type {
+  border-block-end: 1px solid var(--hashti-border-subtle-00);
+}
+
+@media (hover: hover) {
+  .hashti-number-input__step:hover:not([data-disabled]) {
+    background: var(--hashti-background-hover);
+    color: var(--hashti-text-primary);
+  }
+}
+
+/* Negative offset: the group clips, so the ring is drawn inside the button. */
+.hashti-number-input__step:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: -2px;
+}
+
+.hashti-number-input-group[data-readonly] {
+  border-style: dashed;
+  background: var(--hashti-layer-02);
+}
+
+.hashti-number-input-group[data-disabled] {
+  border-color: var(--hashti-border-disabled);
+  background: var(--hashti-button-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-number-input-group[data-disabled] .hashti-number-input__control,
+.hashti-number-input-group[data-disabled] .hashti-number-input__step {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
