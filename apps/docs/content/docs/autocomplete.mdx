@@ -1,0 +1,22 @@
+---
+title: Autocomplete
+description: Suggests completions while you type.
+---
+
+import { AutocompleteDemo } from '../../src/components/autocomplete-demo'
+
+## Usage
+
+<AutocompleteDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Autocomplete` | Owns the query. |
+| `AutocompleteInput` | The free-text field. |
+| `AutocompleteContent` / `AutocompleteList` | The anchored popup. |
+| `AutocompleteItem` | One suggestion. |
+| `AutocompleteEmpty` | Shows when nothing matches. |
+
+Styling lives in `@hashti/styles` under `.hashti-autocomplete*` — a field input with the combobox popup surface.
