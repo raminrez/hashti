@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Tabs as UiTabs,
   TabsIndicator as UiTabsIndicator,
@@ -9,18 +10,6 @@ import {
   TabsTab as UiTabsTab,
 } from "@ui-sdk/react/tabs"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function Tabs(props: ComponentProps<typeof UiTabs>) {
   return <UiTabs {...props} className={join("hashti-tabs", props.className)} />

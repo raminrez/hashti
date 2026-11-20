@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Command as UiCommand,
   CommandEmpty as UiCommandEmpty,
@@ -15,18 +16,6 @@ import {
 export { CommandPage, createCommandController } from "@ui-sdk/react/command"
 export { useAsyncOptions } from "@ui-sdk/react/async-options"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function Command(props: ComponentProps<typeof UiCommand>) {
   return <UiCommand {...props} className={join("hashti-command", props.className)} />

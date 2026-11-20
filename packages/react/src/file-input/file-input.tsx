@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   FileInput as UiFileInput,
   FileInputDropzone as UiFileInputDropzone,
@@ -10,18 +11,6 @@ import {
   FileInputTrigger as UiFileInputTrigger,
 } from "@ui-sdk/react/file-input"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function FileInput(props: ComponentProps<typeof UiFileInput>) {
   return <UiFileInput {...props} className={join("hashti-file-input", props.className)} />

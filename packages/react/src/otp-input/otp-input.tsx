@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   OTPInput as UiOTPInput,
   OTPInputGroup as UiOTPInputGroup,
@@ -8,18 +9,6 @@ import {
   OTPInputSlot as UiOTPInputSlot,
 } from "@ui-sdk/react/otp-input"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function OTPInput(props: ComponentProps<typeof UiOTPInput>) {
   return <UiOTPInput {...props} className={join("hashti-otp-input", props.className)} />

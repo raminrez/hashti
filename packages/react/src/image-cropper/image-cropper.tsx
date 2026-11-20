@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   ImageCropper as UiImageCropper,
   ImageCropperFlip as UiImageCropperFlip,
@@ -13,18 +14,6 @@ import {
   ImageCropperZoom as UiImageCropperZoom,
 } from "@ui-sdk/react/image-cropper"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function ImageCropper(props: ComponentProps<typeof UiImageCropper>) {
   return (

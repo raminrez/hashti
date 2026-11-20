@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Toast as UiToast,
   ToastAction as UiToastAction,
@@ -10,18 +11,6 @@ import {
   ToastTitle as UiToastTitle,
 } from "@ui-sdk/react/toast"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function ToastRegion(props: ComponentProps<typeof UiToastRegion>) {
   return <UiToastRegion {...props} className={join("hashti-toast-region", props.className)} />

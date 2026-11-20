@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Accordion as UiAccordion,
   AccordionHeader as UiAccordionHeader,
@@ -9,18 +10,6 @@ import {
   AccordionTrigger as UiAccordionTrigger,
 } from "@ui-sdk/react/accordion"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function Accordion(props: ComponentProps<typeof UiAccordion>) {
   return <UiAccordion {...props} className={join("hashti-accordion", props.className)} />

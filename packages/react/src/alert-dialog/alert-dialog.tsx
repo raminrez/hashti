@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   AlertDialog,
   AlertDialogBackdrop as UiAlertDialogBackdrop,
@@ -11,18 +12,6 @@ import {
   AlertDialogTrigger as UiAlertDialogTrigger,
 } from "@ui-sdk/react/alert-dialog"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function AlertDialogTrigger(props: ComponentProps<typeof UiAlertDialogTrigger>) {
   return (

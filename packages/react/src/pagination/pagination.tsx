@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Pagination as UiPagination,
   PaginationEllipsis as UiPaginationEllipsis,
@@ -13,18 +14,6 @@ import {
   PaginationPrevious as UiPaginationPrevious,
 } from "@ui-sdk/react/pagination"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function Pagination(props: ComponentProps<typeof UiPagination>) {
   return <UiPagination {...props} className={join("hashti-pagination", props.className)} />

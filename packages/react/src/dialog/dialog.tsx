@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Dialog,
   DialogBackdrop as UiDialogBackdrop,
@@ -11,18 +12,6 @@ import {
   DialogTrigger as UiDialogTrigger,
 } from "@ui-sdk/react/dialog"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function DialogTrigger(props: ComponentProps<typeof UiDialogTrigger>) {
   return <UiDialogTrigger {...props} className={join("hashti-dialog-trigger", props.className)} />

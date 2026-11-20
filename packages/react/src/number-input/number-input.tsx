@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   NumberInput as UiNumberInput,
   NumberInputControl as UiNumberInputControl,
@@ -9,18 +10,6 @@ import {
   NumberInputIncrement as UiNumberInputIncrement,
 } from "@ui-sdk/react/number-input"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function NumberInput(props: ComponentProps<typeof UiNumberInput>) {
   return <UiNumberInput {...props} className={join("hashti-number-input", props.className)} />

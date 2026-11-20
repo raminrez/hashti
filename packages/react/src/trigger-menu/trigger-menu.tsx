@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   TriggerMenu,
   TriggerMenuContent as UiTriggerMenuContent,
@@ -11,18 +12,6 @@ import {
   TriggerMenuStatus as UiTriggerMenuStatus,
 } from "@ui-sdk/react/trigger-menu"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 // The root renders no element of its own, so there is no class to add.
 function TriggerMenuInput(props: ComponentProps<typeof UiTriggerMenuInput>) {

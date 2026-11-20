@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Autocomplete,
   AutocompleteContent as UiAutocompleteContent,
@@ -11,18 +12,6 @@ import {
   AutocompleteList as UiAutocompleteList,
 } from "@ui-sdk/react/autocomplete"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 // The root renders no element of its own, so it is re-exported directly.
 function AutocompleteLabel(props: ComponentProps<typeof UiAutocompleteLabel>) {

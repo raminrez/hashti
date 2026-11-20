@@ -1,5 +1,6 @@
 "use client"
 
+import { join } from "@hashti/utils"
 import { Children, isValidElement, type ComponentProps, type ReactNode } from "react"
 import {
   Tree as UiTree,
@@ -9,18 +10,6 @@ import {
   TreeItemLabel as UiTreeItemLabel,
 } from "@ui-sdk/react/tree"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function Tree(props: ComponentProps<typeof UiTree>) {
   return <UiTree {...props} className={join("hashti-tree", props.className)} />

@@ -27,9 +27,6 @@ component, its parts, files, exports, and docs pages.
 - File shape: `packages/react/src/<name>/<name>.tsx` + `index.ts`, barrel
   line in `packages/react/src/index.tsx`, `packages/styles/src/<name>.css` +
   import, docs page `apps/docs/content/docs/<name>.mdx` + `meta.json` entry.
-- A new `@hashti/core` primitive only when ui-sdk ships no equivalent
-  behavior. Always include an `api` in a primitive (even `api: () => ({})`):
-  it anchors `definePrimitive`'s Options inference.
 
 ## Verification gates
 

@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Toolbar as UiToolbar,
   ToolbarButton as UiToolbarButton,
@@ -10,18 +11,6 @@ import {
   ToolbarSeparator as UiToolbarSeparator,
 } from "@ui-sdk/react/toolbar"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function Toolbar(props: ComponentProps<typeof UiToolbar>) {
   return <UiToolbar {...props} className={join("hashti-toolbar", props.className)} />

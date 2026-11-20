@@ -1,24 +1,13 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   PasswordInput as UiPasswordInput,
   PasswordInputControl as UiPasswordInputControl,
   PasswordInputToggle as UiPasswordInputToggle,
 } from "@ui-sdk/react/password-input"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function PasswordInput(props: ComponentProps<typeof UiPasswordInput>) {
   return <UiPasswordInput {...props} className={join("hashti-password-input", props.className)} />

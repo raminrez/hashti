@@ -1,14 +1,14 @@
 {
-  "name": "@hashti/core",
+  "name": "@hashti/utils",
   "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": "./src/index.ts"
   },
-  "dependencies": {
-    "@ui-sdk/core": "^0.1.0-beta.13"
-  },
   "scripts": {
     "types:check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "catalog:"
   }
 }

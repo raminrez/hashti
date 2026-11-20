@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   NavigationMenu as UiNavigationMenu,
   NavigationMenuContent as UiNavigationMenuContent,
@@ -11,18 +12,6 @@ import {
   NavigationMenuViewport as UiNavigationMenuViewport,
 } from "@ui-sdk/react/navigation-menu"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function NavigationMenu(props: ComponentProps<typeof UiNavigationMenu>) {
   return (

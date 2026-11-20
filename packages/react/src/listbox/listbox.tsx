@@ -2,6 +2,7 @@
 
 import type { ComponentProps } from "react"
 import type { ListboxProps } from "@ui-sdk/react/listbox"
+import { join } from "@hashti/utils"
 import {
   Listbox as UiListbox,
   ListboxGroup as UiListboxGroup,
@@ -11,18 +12,6 @@ import {
   ListboxSeparator as UiListboxSeparator,
 } from "@ui-sdk/react/listbox"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 // Generic, so value types survive; ComponentProps would infer {}.
 function Listbox<T = string, Multiple extends boolean | undefined = false>(

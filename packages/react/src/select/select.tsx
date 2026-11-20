@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Select,
   SelectContent as UiSelectContent,
@@ -15,18 +16,6 @@ import {
   SelectValue as UiSelectValue,
 } from "@ui-sdk/react/select"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function SelectLabel(props: ComponentProps<typeof UiSelectLabel>) {
   return <UiSelectLabel {...props} className={join("hashti-select__label", props.className)} />

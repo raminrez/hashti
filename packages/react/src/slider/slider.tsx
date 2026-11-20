@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentProps } from "react"
+import { join } from "@hashti/utils"
 import {
   Slider as UiSlider,
   SliderControl as UiSliderControl,
@@ -10,18 +11,6 @@ import {
   SliderValue as UiSliderValue,
 } from "@ui-sdk/react/slider"
 
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
 
 function Slider(props: ComponentProps<typeof UiSlider>) {
   return <UiSlider {...props} className={join("hashti-slider", props.className)} />
