@@ -57,3 +57,4 @@
 @import "./src/navigation-menu.css" layer(hashti.components);
 @import "./src/color-picker.css" layer(hashti.components);
 @import "./src/waterfall.css" layer(hashti.components);
+@import "./src/inline-completion.css" layer(hashti.components);

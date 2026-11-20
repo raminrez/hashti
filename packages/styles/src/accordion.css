@@ -27,7 +27,7 @@
   text-align: start;
 }
 
-/* Top and right borders make a caret: right-pointing closed, down when open. */
+/* The inline-end border makes a caret: pointing closed, down when open. */
 .hashti-accordion__trigger::after {
   content: "";
   flex: none;

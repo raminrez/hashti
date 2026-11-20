@@ -154,6 +154,14 @@ export {
   MenuGroup,
   MenuGroupLabel,
   MenuSeparator,
+  MenuSub,
+  MenuSubTrigger,
+  MenuSubContent,
+  MenuCheckboxItem,
+  MenuItemIndicator,
+  MenuItemIcon,
+  MenuRadioGroup,
+  MenuRadioItem,
 } from "./menu"
 
 export {
@@ -293,6 +301,9 @@ export {
   CommandGroupLabel,
   CommandSeparator,
   CommandEmpty,
+  CommandPage,
+  createCommandController,
+  useAsyncOptions,
 } from "./command"
 
 export { OTPInput, OTPInputGroup, OTPInputSeparator, OTPInputSlot } from "./otp-input"

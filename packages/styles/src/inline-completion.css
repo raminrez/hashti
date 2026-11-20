@@ -1,0 +1,25 @@
+.hashti-inline-completion {
+  position: relative;
+  display: block;
+}
+
+.hashti-inline-completion__ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: var(--hashti-control-radius);
+  padding: 0 0.75rem;
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--hashti-text-secondary);
+  white-space: pre;
+  pointer-events: none;
+}
+
+.hashti-inline-completion__typed {
+  visibility: hidden;
+}

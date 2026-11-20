@@ -122,6 +122,38 @@
   cursor: not-allowed;
 }
 
+/* Range days: edges keep the selected recipe with rounded outer corners;
+   middle days get a subtle tint, mirrored by the hover preview. */
+.hashti-calendar__day[data-range-middle] {
+  border-radius: 0;
+  background: var(--hashti-background-hover);
+  color: var(--hashti-text-primary);
+}
+
+.hashti-calendar__day[data-selected][data-range-start] {
+  border-radius: var(--hashti-border-radius-08) 0 0 var(--hashti-border-radius-08);
+}
+
+.hashti-calendar__day[data-selected][data-range-end] {
+  border-radius: 0 var(--hashti-border-radius-08) var(--hashti-border-radius-08) 0;
+}
+
+.hashti-calendar__day[data-preview][data-range-start] {
+  border-radius: var(--hashti-border-radius-08) 0 0 var(--hashti-border-radius-08);
+  background: var(--hashti-background-selected);
+  color: var(--hashti-focus);
+  font-weight: 600;
+}
+
+.hashti-calendar__day[data-preview][data-range-middle] {
+  background: var(--hashti-background-hover);
+}
+
+.hashti-calendar__day[data-preview][data-range-end] {
+  border-radius: 0 var(--hashti-border-radius-08) var(--hashti-border-radius-08) 0;
+  background: var(--hashti-background-hover);
+}
+
 .hashti-calendar__month-select,
 .hashti-calendar__year-select {
   min-block-size: 2rem;

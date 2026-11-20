@@ -80,6 +80,39 @@
   border-start-end-radius: var(--hashti-border-radius-16);
 }
 
+/* Snap points: the sheet rests on data-snap-point; data-expanded marks the
+   largest one. A partial sheet floats over content, so deepen the shadow. */
+.hashti-drawer-content[data-snap-point] {
+  transition: box-shadow var(--hashti-duration-fast-01) ease;
+}
+
+.hashti-drawer-content[data-open][data-snap-point]:not([data-expanded]) {
+  box-shadow: 0 20px 56px var(--hashti-shadow);
+}
+
+.hashti-drawer-handle {
+  flex: none;
+  inline-size: 2.5rem;
+  block-size: 0.25rem;
+  border: none;
+  padding: 0;
+  margin-block: 0.5rem;
+  border-radius: 999px;
+  background: var(--hashti-border-strong-01);
+  cursor: grab;
+}
+
+.hashti-drawer-handle:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-drawer-content[data-snap-point] {
+    transition: none;
+  }
+}
+
 .hashti-drawer__title {
   margin: 0;
   color: var(--hashti-text-primary);

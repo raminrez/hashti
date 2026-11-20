@@ -18,9 +18,30 @@
   color: var(--hashti-focus);
 }
 
-/* shortcut: partial stars keep the empty ink; half-star mask is a later recipe. */
 .hashti-rating-item[data-highlighted] {
   color: var(--hashti-focus);
+}
+
+/* Fractional fill: a second copy of the icon over the empty one, clipped to
+   --rating-fill (0-1, from ui-sdk) from the inline start. */
+.hashti-rating-item__fill {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hashti-focus);
+  clip-path: inset(0 calc((1 - var(--rating-fill, 0)) * 100%) 0 0);
+  pointer-events: none;
+}
+
+/* RTL: the fraction fills from the other side of the icon. */
+[dir="rtl"] .hashti-rating-item__fill {
+  clip-path: inset(0 0 0 calc((1 - var(--rating-fill, 0)) * 100%));
+}
+
+.hashti-rating-item[data-disabled] .hashti-rating-item__fill {
+  color: var(--hashti-text-disabled);
 }
 
 .hashti-rating-item[data-readonly] {

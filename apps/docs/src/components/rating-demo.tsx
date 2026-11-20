@@ -19,6 +19,18 @@ export function RatingDemo() {
       <Rating aria-label="Average rating" defaultValue={4} readOnly>
         <RatingItem><Star /></RatingItem>
       </Rating>
+      <Rating aria-label="Half-star rating" step={0.5} defaultValue={3.5}>
+        <RatingItem>
+          <Star />
+          <span className="hashti-rating-item__fill" aria-hidden="true"><Star /></span>
+        </RatingItem>
+      </Rating>
+      <Rating aria-label="Average rating with half stars" value={4.2} readOnly getValueLabel={(value, max) => `Rated ${value} out of ${max}`}>
+        <RatingItem>
+          <Star />
+          <span className="hashti-rating-item__fill" aria-hidden="true"><Star /></span>
+        </RatingItem>
+      </Rating>
     </div>
   )
 }

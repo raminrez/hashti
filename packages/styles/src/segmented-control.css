@@ -14,6 +14,8 @@
   position: absolute;
   z-index: -1;
   top: var(--segmented-control-indicator-top);
+  /* rtl-exception: left comes from ui-sdk's --segmented-control-indicator-left,
+     measured in physical pixels at runtime by the segmented parts. */
   left: var(--segmented-control-indicator-left);
   width: var(--segmented-control-indicator-width);
   height: var(--segmented-control-indicator-height);
@@ -26,6 +28,16 @@
     left var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
     width var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
     height var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-segmented-control[data-orientation="vertical"] {
+  flex-direction: column;
+}
+
+/* Horizontal items get their 2.125rem height by stretching; in a column
+   flex-basis 0 collapses them, so floor them at the same height instead. */
+.hashti-segmented-control[data-orientation="vertical"] .hashti-segmented-control-item {
+  min-block-size: 2.125rem;
 }
 
 .hashti-segmented-control-indicator[data-activation-direction="none"] {
