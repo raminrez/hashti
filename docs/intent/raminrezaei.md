@@ -32,7 +32,7 @@
 - handoff cleanup list done via sub-agents: shadow token, roadmap archived,
   `DrawerHandle` re-exported, textarea inline-completion variant
 - found why every component rendered unstyled: stylelint's autofix rewrote
-  the css imports to `url(…)` form and Vite silently dropped the whole layer
+  the css imports and Vite silently dropped the whole layer
   **I decided:** rendered checks must assert a computed style, not just class
   names — the regression passed every cycle check invisibly
 
