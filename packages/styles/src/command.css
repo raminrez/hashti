@@ -8,6 +8,7 @@
   border-radius: var(--hashti-popover-radius);
   background: var(--hashti-layer-01);
   box-shadow: var(--hashti-shadow-popover);
+  transform-origin: var(--transform-origin);
 }
 
 .hashti-command-input {

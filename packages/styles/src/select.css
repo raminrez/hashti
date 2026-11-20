@@ -47,6 +47,8 @@
   border-radius: var(--hashti-popover-radius);
   background: var(--hashti-layer-01);
   box-shadow: var(--hashti-shadow-popover);
+  color: var(--hashti-text-primary);
+  transform-origin: var(--transform-origin);
   transition:
     opacity var(--hashti-duration-fast-02) var(--hashti-ease-entrance),
     scale var(--hashti-duration-fast-02) var(--hashti-ease-entrance);
