@@ -262,6 +262,16 @@ export {
 } from "./command"
 
 export {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  NavigationMenuViewport,
+} from "./navigation-menu"
+
+export {
   Combobox,
   ComboboxLabel,
   ComboboxInput,
