@@ -194,3 +194,14 @@ export {
   ToolbarLink,
   ToolbarInput,
 } from "./toolbar"
+
+export {
+  Carousel,
+  CarouselViewport,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  CarouselIndicatorGroup,
+  CarouselIndicator,
+} from "./carousel"
