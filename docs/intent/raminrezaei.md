@@ -20,8 +20,8 @@
   **I decided:** react-doctor stays report-only; two findings kept with reasons
   (kbd index key on a static list, field-demo preventDefault on purpose)
 - first test suite: `join` in `@hashti/utils`
-  **why:** bun test with zero files exits 1, so the pre-push test gate could
-  never pass — wrote the test instead of weakening the gate
+  **why:** bun test with zero files exits 1 — wrote the test instead of
+  weakening the gate
 - pre-push gate: knip + jscpd new-clones vs `dev`; AGENTS.md trimmed to what
   no check enforces
 - react-doctor installed through its own installer; CI workflow kept dormant
