@@ -1,0 +1,22 @@
+---
+title: Calendar
+description: Picks dates from a month grid.
+---
+
+import { CalendarDemo } from '../../src/components/calendar-demo'
+
+## Usage
+
+<CalendarDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Calendar` | Owns the month and the selection. |
+| `CalendarHeading` / `CalendarPrevious` / `CalendarNext` | The month header. |
+| `CalendarGrid` | The weekday grid (a real table). |
+| `CalendarDay` | One pickable date. |
+| `CalendarMonthSelect` / `CalendarYearSelect` | Jump to a month/year. |
+
+Styling lives in `@hashti/styles` under `.hashti-calendar*` — an 18px panel with quiet day squares, the selected day in the selected tint.
