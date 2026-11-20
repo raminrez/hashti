@@ -54,5 +54,5 @@ Backlog variant: **cleanup** — counts are tiny, so each rule lands fixed-to-ze
   - Commands: none
   - Done when: no line restates a check that blocks; a plant of each deleted rule still fails its check
   - Depends on: steps 4 and 7
-- [ ] **11. Re-audit**: after the last step lands, or the day a git remote is added (then: CI workflow running typecheck+lint+lint:css+format:check+test becomes the deferred move-10 step, and react-doctor gets a scheduled `@latest` run). Update plan numbers, review ignore lists and rules that caught nothing.
+- [x] **11. Re-audit**: after the last step lands, or the day a git remote is added (then: CI workflow running typecheck+lint+lint:css+format:check+test becomes the deferred move-10 step, and react-doctor gets a scheduled `@latest` run). Update plan numbers, review ignore lists and rules that caught nothing.
   - Depends on: step 10
