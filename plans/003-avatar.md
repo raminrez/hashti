@@ -71,10 +71,10 @@ established file shape to multi-part components.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 No lint setup and no test runner in this repo yet — out of scope.
 
@@ -111,19 +111,19 @@ No lint setup and no test runner in this repo yet — out of scope.
 `packages/react/src/avatar/avatar.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
 import {
   Avatar as UiAvatar,
   AvatarImage as UiAvatarImage,
   AvatarFallback as UiAvatarFallback,
-} from "@ui-sdk/react/avatar"
+} from "@ui-sdk/react/avatar";
 
-type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl"
+type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl";
 
 interface AvatarProps extends ComponentProps<typeof UiAvatar> {
-  size?: AvatarSize
+  size?: AvatarSize;
 }
 
 function Avatar({ size, className, ...props }: AvatarProps) {
@@ -133,18 +133,34 @@ function Avatar({ size, className, ...props }: AvatarProps) {
       data-size={size}
       {...props}
     />
-  )
+  );
 }
 
-function AvatarImage({ className, ...props }: ComponentProps<typeof UiAvatarImage>) {
-  return <UiAvatarImage className={`hashti-avatar__image${className ? ` ${className}` : ""}`} {...props} />
+function AvatarImage({
+  className,
+  ...props
+}: ComponentProps<typeof UiAvatarImage>) {
+  return (
+    <UiAvatarImage
+      className={`hashti-avatar__image${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-function AvatarFallback({ className, ...props }: ComponentProps<typeof UiAvatarFallback>) {
-  return <UiAvatarFallback className={`hashti-avatar__fallback${className ? ` ${className}` : ""}`} {...props} />
+function AvatarFallback({
+  className,
+  ...props
+}: ComponentProps<typeof UiAvatarFallback>) {
+  return (
+    <UiAvatarFallback
+      className={`hashti-avatar__fallback${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-export { Avatar, AvatarImage, AvatarFallback, type AvatarSize }
+export { Avatar, AvatarImage, AvatarFallback, type AvatarSize };
 ```
 
 Notes:
@@ -157,13 +173,13 @@ Notes:
 `packages/react/src/avatar/index.ts`:
 
 ```ts
-export { Avatar, AvatarImage, AvatarFallback, type AvatarSize } from "./avatar"
+export { Avatar, AvatarImage, AvatarFallback, type AvatarSize } from "./avatar";
 ```
 
 `packages/react/src/index.tsx` — add at the end:
 
 ```tsx
-export { Avatar, AvatarImage, AvatarFallback } from "./avatar"
+export { Avatar, AvatarImage, AvatarFallback } from "./avatar";
 ```
 
 **Verify**: `bun run typecheck` → exit 0.
@@ -213,10 +229,18 @@ theme-dependent — root block only.)
   vertical-align: middle;
 }
 
-.hashti-avatar[data-size="xs"] { --avatar-size: 1.5rem; }
-.hashti-avatar[data-size="sm"] { --avatar-size: 2rem; }
-.hashti-avatar[data-size="lg"] { --avatar-size: 3rem; }
-.hashti-avatar[data-size="xl"] { --avatar-size: 4rem; }
+.hashti-avatar[data-size="xs"] {
+  --avatar-size: 1.5rem;
+}
+.hashti-avatar[data-size="sm"] {
+  --avatar-size: 2rem;
+}
+.hashti-avatar[data-size="lg"] {
+  --avatar-size: 3rem;
+}
+.hashti-avatar[data-size="xl"] {
+  --avatar-size: 4rem;
+}
 
 .hashti-avatar__image,
 .hashti-avatar__fallback {
@@ -260,16 +284,26 @@ title: Avatar
 description: Shows an image with a fallback while it loads or if it fails.
 ---
 
-import { Avatar, AvatarImage, AvatarFallback } from '@hashti/react'
+import { Avatar, AvatarImage, AvatarFallback } from "@hashti/react";
 
 ## Sizes
 
-<div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-  <Avatar size="xs"><AvatarFallback>XS</AvatarFallback></Avatar>
-  <Avatar size="sm"><AvatarFallback>SM</AvatarFallback></Avatar>
-  <Avatar><AvatarFallback>MD</AvatarFallback></Avatar>
-  <Avatar size="lg"><AvatarFallback>LG</AvatarFallback></Avatar>
-  <Avatar size="xl"><AvatarFallback>XL</AvatarFallback></Avatar>
+<div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+  <Avatar size="xs">
+    <AvatarFallback>XS</AvatarFallback>
+  </Avatar>
+  <Avatar size="sm">
+    <AvatarFallback>SM</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarFallback>MD</AvatarFallback>
+  </Avatar>
+  <Avatar size="lg">
+    <AvatarFallback>LG</AvatarFallback>
+  </Avatar>
+  <Avatar size="xl">
+    <AvatarFallback>XL</AvatarFallback>
+  </Avatar>
 </div>
 
 ## Image with fallback
@@ -281,10 +315,10 @@ import { Avatar, AvatarImage, AvatarFallback } from '@hashti/react'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | Root size. Default `md`. |
-| `delay` | `number` | On `AvatarFallback`: ms to wait before showing it. |
+| Prop    | Type                                   | Description                                        |
+| ------- | -------------------------------------- | -------------------------------------------------- |
+| `size`  | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | Root size. Default `md`.                           |
+| `delay` | `number`                               | On `AvatarFallback`: ms to wait before showing it. |
 
 Styling lives in `@hashti/styles` under `.hashti-avatar`, keyed off `data-size`, fully round, with initials at 40% of the avatar size.
 ```

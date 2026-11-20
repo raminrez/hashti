@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Autocomplete,
@@ -8,9 +8,9 @@ import {
   AutocompleteItem,
   AutocompleteLabel,
   AutocompleteList,
-} from "@hashti/react"
+} from "@hashti/react";
 
-const cities = ["Amsterdam", "Berlin", "Copenhagen", "Lisbon", "Paris"]
+const cities = ["Amsterdam", "Berlin", "Copenhagen", "Lisbon", "Paris"];
 
 export function AutocompleteDemo() {
   // The root renders no element, so the width lives on a wrapping div.
@@ -31,5 +31,5 @@ export function AutocompleteDemo() {
         </AutocompleteContent>
       </Autocomplete>
     </div>
-  )
+  );
 }

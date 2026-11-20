@@ -3,11 +3,11 @@ title: Button
 description: Runs an action, shows that it's working, and stays reachable when disabled.
 ---
 
-import { Button } from '@hashti/react'
+import { Button } from "@hashti/react";
 
 ## Variants
 
-<div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+<div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
   <Button>Primary</Button>
   <Button variant="secondary">Secondary</Button>
   <Button variant="tertiary">Tertiary</Button>
@@ -19,7 +19,7 @@ import { Button } from '@hashti/react'
 
 ## Sizes
 
-<div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+<div style={{ display: "flex", gap: 8, alignItems: "center" }}>
   <Button size="sm">Small</Button>
   <Button>Medium</Button>
   <Button size="lg">Large</Button>
@@ -31,11 +31,11 @@ import { Button } from '@hashti/react'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `variant` | `"primary" \| "secondary" \| "tertiary" \| "ghost" \| "danger" \| "danger-tertiary" \| "danger-ghost"` | Visual style. Default `primary`. |
-| `size` | `"sm" \| "md" \| "lg"` | Minimum height: 32/44/48px. Default `md`. |
-| `disabled` | `boolean` | Stops presses. |
-| `pendingAnnouncement` | `string` | What screen readers hear after a second of pending. |
+| Prop                  | Type                                                                                                   | Description                                         |
+| --------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
+| `variant`             | `"primary" \| "secondary" \| "tertiary" \| "ghost" \| "danger" \| "danger-tertiary" \| "danger-ghost"` | Visual style. Default `primary`.                    |
+| `size`                | `"sm" \| "md" \| "lg"`                                                                                 | Minimum height: 32/44/48px. Default `md`.           |
+| `disabled`            | `boolean`                                                                                              | Stops presses.                                      |
+| `pendingAnnouncement` | `string`                                                                                               | What screen readers hear after a second of pending. |
 
 Button owns its pending state: return a Promise from `onClick` and the button shows `data-pending`, keeps focus, and ignores further presses until it settles.

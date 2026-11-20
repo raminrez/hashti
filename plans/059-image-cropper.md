@@ -47,16 +47,16 @@ styles frame the viewport, selection, grid and handles.
 ### Design rules that bite (derived)
 
 - **Root `hashti-image-cropper`**: `display: flex; flex-direction: column;
-  gap: 0.75rem;`
+gap: 0.75rem;`
 - **Viewport `hashti-image-cropper-viewport`**: `position: relative;
-  overflow: hidden; border-radius: var(--hashti-border-radius-08);
-  background: var(--hashti-layer-02);` — size from the consumer (demo sets
+overflow: hidden; border-radius: var(--hashti-border-radius-08);
+background: var(--hashti-layer-02);` — size from the consumer (demo sets
   one).
 - **Image `hashti-image-cropper-image`**: `display: block;
-  max-inline-size: 100%;` (transform state is ui-sdk's).
+max-inline-size: 100%;` (transform state is ui-sdk's).
 - **Selection `hashti-image-cropper-selection`**: `position: absolute;
-  border: 1px solid var(--hashti-layer-01); box-shadow: 0 0 0 9999px
-  rgba(0 0 0 / …)` — NO, rgba literal is a hex-rule violation; instead use
+border: 1px solid var(--hashti-layer-01); box-shadow: 0 0 0 9999px
+rgba(0 0 0 / …)` — NO, rgba literal is a hex-rule violation; instead use
   the overlay recipe the docs suggest or a `--hashti-*` scrim token if one
   exists (check `design/tokens.css`; if none, outline the selection with a
   1px border + `outline: 9999px` trick only if a token exists — otherwise
@@ -65,9 +65,9 @@ styles frame the viewport, selection, grid and handles.
   `var(--hashti-border-subtle-00)` (ui-sdk may render the lines for you —
   check the DOM).
 - **Handle `hashti-image-cropper-handle`**: `position: absolute;
-  inline-size: 0.625rem; block-size: 0.625rem; border-radius: 50%;
-  background: var(--hashti-layer-01); border: 1px solid
-  var(--hashti-border-strong-01);` positioned per its `position` prop
+inline-size: 0.625rem; block-size: 0.625rem; border-radius: 50%;
+background: var(--hashti-layer-01); border: 1px solid
+var(--hashti-border-strong-01);` positioned per its `position` prop
   (corner/edge); `cursor` per direction (nwse/nesw-resize).
 - **Zoom/Rotate/Flip controls**: quiet icon buttons (the toolbar recipe).
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
@@ -104,7 +104,7 @@ styles frame the viewport, selection, grid and handles.
 1. **Wrappers** — `join` helper pattern per part; export all + barrel.
    Verify: typecheck exit 0.
 2. **Stylesheet** — rules above. Verify: no hex; `grep -c "data-"
-   packages/styles/src/image-cropper.css` → ≥ 3.
+packages/styles/src/image-cropper.css` → ≥ 3.
 3. **Demo + page** — viewport with a demo image (a picsum URL or an inline
    SVG data URI — pick what the docs' demo does), zoom/rotate/flip controls.
    meta.json entry. Verify: typecheck exit 0.

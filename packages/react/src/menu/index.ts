@@ -14,4 +14,4 @@ export {
   MenuItemIcon,
   MenuRadioGroup,
   MenuRadioItem,
-} from "./menu"
+} from "./menu";

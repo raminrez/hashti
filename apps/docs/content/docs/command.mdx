@@ -7,7 +7,7 @@ import {
   CommandAsyncDemo,
   CommandDemo,
   CommandPagesDemo,
-} from '../../src/components/command-demo'
+} from "../../src/components/command-demo";
 
 ## Usage
 
@@ -29,14 +29,14 @@ the list shows skeleton rows while results load.
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Command` | The palette panel; `onAction` runs the choice. |
-| `CommandInput` | The filter field. |
-| `CommandList` | The scrollable region. |
-| `CommandItem` | One command; `data-highlighted`, `data-pending`. |
-| `CommandGroup` / `CommandGroupLabel` / `CommandSeparator` | Named sets. |
-| `CommandEmpty` | Shows when nothing matches. |
-| `CommandPage` | Holds the commands for one page; `page` on an item drills in. |
+| Part                                                      | Purpose                                                       |
+| --------------------------------------------------------- | ------------------------------------------------------------- |
+| `Command`                                                 | The palette panel; `onAction` runs the choice.                |
+| `CommandInput`                                            | The filter field.                                             |
+| `CommandList`                                             | The scrollable region.                                        |
+| `CommandItem`                                             | One command; `data-highlighted`, `data-pending`.              |
+| `CommandGroup` / `CommandGroupLabel` / `CommandSeparator` | Named sets.                                                   |
+| `CommandEmpty`                                            | Shows when nothing matches.                                   |
+| `CommandPage`                                             | Holds the commands for one page; `page` on an item drills in. |
 
 Styling lives in `@hashti/styles` under `.hashti-command*` — a floating panel with a search bar on top and full-bleed menu items below.

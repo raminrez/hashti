@@ -6,4 +6,4 @@ export {
   AlertDialogTitle,
   AlertDialogDescription,
   AlertDialogClose,
-} from "./alert-dialog"
+} from "./alert-dialog";

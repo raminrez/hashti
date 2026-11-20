@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
+import { join } from "@hashti/utils";
 import {
   Calendar as UiCalendar,
   CalendarDay as UiCalendarDay,
@@ -13,23 +14,15 @@ import {
   CalendarWeekdays as UiCalendarWeekdays,
   CalendarWeeks as UiCalendarWeeks,
   CalendarYearSelect as UiCalendarYearSelect,
-} from "@ui-sdk/react/calendar"
-
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
+} from "@ui-sdk/react/calendar";
 
 function Calendar(props: ComponentProps<typeof UiCalendar>) {
-  return <UiCalendar {...props} className={join("hashti-calendar", props.className)} />
+  return (
+    <UiCalendar
+      {...props}
+      className={join("hashti-calendar", props.className)}
+    />
+  );
 }
 
 function CalendarHeading(props: ComponentProps<typeof UiCalendarHeading>) {
@@ -38,7 +31,7 @@ function CalendarHeading(props: ComponentProps<typeof UiCalendarHeading>) {
       {...props}
       className={join("hashti-calendar__heading", props.className)}
     />
-  )
+  );
 }
 
 function CalendarPrevious(props: ComponentProps<typeof UiCalendarPrevious>) {
@@ -47,7 +40,7 @@ function CalendarPrevious(props: ComponentProps<typeof UiCalendarPrevious>) {
       {...props}
       className={join("hashti-calendar__previous", props.className)}
     />
-  )
+  );
 }
 
 function CalendarNext(props: ComponentProps<typeof UiCalendarNext>) {
@@ -56,13 +49,16 @@ function CalendarNext(props: ComponentProps<typeof UiCalendarNext>) {
       {...props}
       className={join("hashti-calendar__next", props.className)}
     />
-  )
+  );
 }
 
 function CalendarGrid(props: ComponentProps<typeof UiCalendarGrid>) {
   return (
-    <UiCalendarGrid {...props} className={join("hashti-calendar__grid", props.className)} />
-  )
+    <UiCalendarGrid
+      {...props}
+      className={join("hashti-calendar__grid", props.className)}
+    />
+  );
 }
 
 function CalendarWeekdays(props: ComponentProps<typeof UiCalendarWeekdays>) {
@@ -75,7 +71,7 @@ function CalendarWeekdays(props: ComponentProps<typeof UiCalendarWeekdays>) {
           : "hashti-calendar__weekdays"
       }
     />
-  )
+  );
 }
 
 function CalendarWeekday(props: ComponentProps<typeof UiCalendarWeekday>) {
@@ -84,7 +80,7 @@ function CalendarWeekday(props: ComponentProps<typeof UiCalendarWeekday>) {
       {...props}
       className={join("hashti-calendar__weekday", props.className)}
     />
-  )
+  );
 }
 
 function CalendarWeeks(props: ComponentProps<typeof UiCalendarWeeks>) {
@@ -92,32 +88,43 @@ function CalendarWeeks(props: ComponentProps<typeof UiCalendarWeeks>) {
     <UiCalendarWeeks
       {...props}
       className={
-        props.className ? `hashti-calendar__weeks ${props.className}` : "hashti-calendar__weeks"
+        props.className
+          ? `hashti-calendar__weeks ${props.className}`
+          : "hashti-calendar__weeks"
       }
     />
-  )
+  );
 }
 
 function CalendarDay(props: ComponentProps<typeof UiCalendarDay>) {
-  return <UiCalendarDay {...props} className={join("hashti-calendar__day", props.className)} />
+  return (
+    <UiCalendarDay
+      {...props}
+      className={join("hashti-calendar__day", props.className)}
+    />
+  );
 }
 
-function CalendarMonthSelect(props: ComponentProps<typeof UiCalendarMonthSelect>) {
+function CalendarMonthSelect(
+  props: ComponentProps<typeof UiCalendarMonthSelect>,
+) {
   return (
     <UiCalendarMonthSelect
       {...props}
       className={join("hashti-calendar__month-select", props.className)}
     />
-  )
+  );
 }
 
-function CalendarYearSelect(props: ComponentProps<typeof UiCalendarYearSelect>) {
+function CalendarYearSelect(
+  props: ComponentProps<typeof UiCalendarYearSelect>,
+) {
   return (
     <UiCalendarYearSelect
       {...props}
       className={join("hashti-calendar__year-select", props.className)}
     />
-  )
+  );
 }
 
 export {
@@ -132,4 +139,4 @@ export {
   CalendarWeekdays,
   CalendarWeeks,
   CalendarYearSelect,
-}
+};

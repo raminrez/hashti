@@ -1,13 +1,37 @@
 {
   "name": "hashti-new",
   "private": true,
-  "workspaces": ["packages/*", "apps/*"],
+  "version": "0.0.0",
+  "type": "module",
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ],
+    "catalog": {
+      "react": "^19.3.1",
+      "react-dom": "^19.3.1",
+      "@types/react": "^19.3.0",
+      "@types/react-dom": "^19.3.0",
+      "typescript": "~7.0.2",
+      "@ui-sdk/react": "^0.1.0-beta.13",
+      "@ui-sdk/core": "^0.1.0-beta.13",
+      "oxlint": "^1.94.0",
+      "tsrs": "^7.1.0-beta.tsrs3"
+    }
+  },
   "scripts": {
     "dev": "bun --filter docs dev",
     "build": "bun --filter docs build",
-    "typecheck": "bun --filter '*' types:check"
+    "typecheck": "bun --filter '*' types:check",
+    "lint": "bun run --bun oxlint",
+    "lint:fix": "bun run lint --fix",
+    "format": "bun fmt",
+    "format:check": "bun fmt --check",
+    "test": "bun test"
   },
   "devDependencies": {
-    "typescript": "^7.0.2"
+    "oxlint": "catalog:",
+    "tsrs": "^7.1.0-beta.tsrs3"
   }
 }

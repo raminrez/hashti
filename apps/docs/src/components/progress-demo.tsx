@@ -1,6 +1,12 @@
-"use client"
+"use client";
 
-import { Progress, ProgressIndicator, ProgressLabel, ProgressTrack, ProgressValue } from "@hashti/react"
+import {
+  Progress,
+  ProgressIndicator,
+  ProgressLabel,
+  ProgressTrack,
+  ProgressValue,
+} from "@hashti/react";
 
 export function ProgressDemo() {
   return (
@@ -28,5 +34,5 @@ export function ProgressDemo() {
         </ProgressTrack>
       </Progress>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   ColorPicker,
@@ -9,7 +9,7 @@ import {
   ColorPickerSliderThumb,
   ColorPickerSwatches,
   ColorPickerSwatchItem,
-} from "@hashti/react"
+} from "@hashti/react";
 
 const presets = [
   "#ef4444",
@@ -20,7 +20,7 @@ const presets = [
   "#6366f1",
   "#a855f7",
   "#ec4899",
-]
+];
 
 export function ColorPickerDemo() {
   return (
@@ -38,5 +38,5 @@ export function ColorPickerDemo() {
         ))}
       </ColorPickerSwatches>
     </ColorPicker>
-  )
+  );
 }

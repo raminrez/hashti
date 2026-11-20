@@ -37,7 +37,7 @@ Inline completion is the type-ahead ghost text inside Input/Textarea.
 - Field wrapper (`hashti-input`/`hashti-textarea` root) gets
   `position: relative` (verify it doesn't already).
 - Ghost layer `hashti-inline-completion`: `position: absolute; pointer-events:
-  none; color: var(--hashti-text-secondary);` same font-size/line-height/
+none; color: var(--hashti-text-secondary);` same font-size/line-height/
   padding as the control so text overlaps exactly.
 - The suggest value renders after the typed text — the demo composes typed
   value + suggestion in the overlay; the control itself stays native.
@@ -68,7 +68,7 @@ Inline completion is the type-ahead ghost text inside Input/Textarea.
 ## Done
 
 - [ ] typecheck exit 0 · [ ] no hex · [ ] ghost text visually aligns with
-  typed text in the rendered check · [ ] commits per step
+      typed text in the rendered check · [ ] commits per step
 
 ## STOP
 

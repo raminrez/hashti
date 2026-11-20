@@ -3,4 +3,4 @@ export {
   TokenInputEditor,
   TokenInputToken,
   TokenInputTokenRemove,
-} from "./token-input"
+} from "./token-input";

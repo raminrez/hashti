@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   Command,
   CommandEmpty,
@@ -13,12 +13,15 @@ import {
   CommandSeparator,
   createCommandController,
   useAsyncOptions,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function CommandDemo() {
   return (
     <Command onAction={(v) => console.log(v)} style={{ maxWidth: 448 }}>
-      <CommandInput placeholder="Type a command or search…" aria-label="Command palette" />
+      <CommandInput
+        placeholder="Type a command or search…"
+        aria-label="Command palette"
+      />
       <CommandList>
         <CommandGroup>
           <CommandGroupLabel>File</CommandGroupLabel>
@@ -36,24 +39,24 @@ export function CommandDemo() {
       </CommandList>
       <CommandEmpty>No commands found.</CommandEmpty>
     </Command>
-  )
+  );
 }
 
 const themes = [
   { value: "light", label: "Light" },
   { value: "dark", label: "Dark" },
   { value: "system", label: "System" },
-]
+];
 
 const teams = [
   { value: "design", label: "Design" },
   { value: "engineering", label: "Engineering" },
   { value: "marketing", label: "Marketing" },
-]
+];
 
 export function CommandPagesDemo() {
-  const command = React.useState(() => createCommandController())[0]
-  const [pages, setPages] = React.useState<string[]>([])
+  const command = React.useState(() => createCommandController())[0];
+  const [pages, setPages] = React.useState<string[]>([]);
   return (
     <Command
       controller={command}
@@ -61,14 +64,16 @@ export function CommandPagesDemo() {
       onPagesChange={setPages}
       onAction={(value) => {
         if (value === "back") {
-          command.pop()
+          command.pop();
         }
       }}
       style={{ maxWidth: 448 }}
     >
       <CommandInput
         aria-label="Search commands"
-        placeholder={pages.length ? "Search… (Backspace to go back)" : "What do you need?"}
+        placeholder={
+          pages.length ? "Search… (Backspace to go back)" : "What do you need?"
+        }
       />
       <CommandEmpty>No results found.</CommandEmpty>
       <CommandList>
@@ -100,7 +105,7 @@ export function CommandPagesDemo() {
         {pages.length > 0 && <CommandItem value="back">Go back</CommandItem>}
       </CommandList>
     </Command>
-  )
+  );
 }
 
 const issues = [
@@ -112,12 +117,12 @@ const issues = [
   "Crash on upload",
   "Export to CSV",
   "Keyboard shortcuts help",
-]
+];
 
 function searchIssues(query: string, { signal }: { signal: AbortSignal }) {
   return new Promise<{ value: string; label: string }[]>((resolve, reject) => {
     const timer = setTimeout(() => {
-      const needle = query.trim().toLowerCase()
+      const needle = query.trim().toLowerCase();
       resolve(
         issues
           .filter((issue) => issue.toLowerCase().includes(needle))
@@ -125,20 +130,20 @@ function searchIssues(query: string, { signal }: { signal: AbortSignal }) {
             value: issue.toLowerCase().replaceAll(" ", "-"),
             label: issue,
           })),
-      )
-    }, 400)
+      );
+    }, 400);
     signal.addEventListener("abort", () => {
-      clearTimeout(timer)
-      reject(new DOMException("Aborted", "AbortError"))
-    })
-  })
+      clearTimeout(timer);
+      reject(new DOMException("Aborted", "AbortError"));
+    });
+  });
 }
 
 export function CommandAsyncDemo() {
   const results = useAsyncOptions(searchIssues, {
     debounce: 250,
     immediate: true,
-  })
+  });
   return (
     <Command
       filter={false}
@@ -160,11 +165,15 @@ export function CommandAsyncDemo() {
             <div key={row} className="hashti-command__skeleton-row" />
           ))}
         {results.items.map((issue) => (
-          <CommandItem key={issue.value} value={issue.value} label={issue.label}>
+          <CommandItem
+            key={issue.value}
+            value={issue.value}
+            label={issue.label}
+          >
             {issue.label}
           </CommandItem>
         ))}
       </CommandList>
     </Command>
-  )
+  );
 }

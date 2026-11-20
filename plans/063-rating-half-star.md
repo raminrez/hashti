@@ -33,7 +33,7 @@ via a mask/clip layer.
 
 - If ui-sdk exposes a per-star fill fraction variable (e.g. `--fill`), the
   half star is: filled layer `inline-size: var(--fill)` with `overflow:
-  hidden` over an empty star — the classic two-layer mask.
+hidden` over an empty star — the classic two-layer mask.
 - If it exposes only `data-half`, style half as a 50% clip
   (`clip-path: inset(0 50% 0 0)` on the filled glyph layer).
 - Hover preview states per docs.
@@ -55,7 +55,7 @@ via a mask/clip layer.
 ## Done
 
 - [ ] typecheck exit 0 · [ ] no hex · [ ] rendered check: a 3.5 rating shows
-  three full + one half + one empty · [ ] commits per step
+      three full + one half + one empty · [ ] commits per step
 
 ## STOP
 

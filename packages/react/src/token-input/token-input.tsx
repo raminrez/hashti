@@ -1,25 +1,13 @@
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
+import { join } from "@hashti/utils";
 import {
   TokenInput,
   TokenInputEditor as UiTokenInputEditor,
   TokenInputToken as UiTokenInputToken,
   TokenInputTokenRemove as UiTokenInputTokenRemove,
-} from "@ui-sdk/react/token-input"
-
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
+} from "@ui-sdk/react/token-input";
 
 // The root renders no element of its own, so it is re-exported directly.
 function TokenInputEditor(props: ComponentProps<typeof UiTokenInputEditor>) {
@@ -28,7 +16,7 @@ function TokenInputEditor(props: ComponentProps<typeof UiTokenInputEditor>) {
       {...props}
       className={join("hashti-token-input-editor", props.className)}
     />
-  )
+  );
 }
 
 function TokenInputToken(props: ComponentProps<typeof UiTokenInputToken>) {
@@ -37,7 +25,7 @@ function TokenInputToken(props: ComponentProps<typeof UiTokenInputToken>) {
       {...props}
       className={join("hashti-token-input-token", props.className)}
     />
-  )
+  );
 }
 
 function TokenInputTokenRemove(
@@ -48,12 +36,7 @@ function TokenInputTokenRemove(
       {...props}
       className={join("hashti-token-input-token-remove", props.className)}
     />
-  )
+  );
 }
 
-export {
-  TokenInput,
-  TokenInputEditor,
-  TokenInputToken,
-  TokenInputTokenRemove,
-}
+export { TokenInput, TokenInputEditor, TokenInputToken, TokenInputTokenRemove };

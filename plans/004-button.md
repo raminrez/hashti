@@ -36,16 +36,17 @@ interactive after Button copies its state recipes.
   Switch via `createParts` from `@hashti/core` primitives:
 
   ```tsx
-  import { createParts } from "@ui-sdk/react/primitive"
-  import { button, hashtiSwitch } from "@hashti/core"
+  import { createParts } from "@ui-sdk/react/primitive";
+  import { button, hashtiSwitch } from "@hashti/core";
 
-  export const { Root: Button } = createParts(button, { root: "button" })
-  export const { Root: Switch } = createParts(hashtiSwitch, { root: "button" })
+  export const { Root: Button } = createParts(button, { root: "button" });
+  export const { Root: Switch } = createParts(hashtiSwitch, { root: "button" });
   ```
 
   This cycle replaces the Button line with a real wrapper (Step 2) and
   deletes the now-unused `@hashti/core` button primitive (Step 3). The
   Switch line stays untouched.
+
 - `packages/core/src/button.ts` — skeleton primitive with
   `variant?: "solid" | "outline" | "ghost"`. Superseded: ui-sdk's button
   ships the behavior, variants are Hashti-owned presentation. Delete it.
@@ -69,8 +70,8 @@ interactive after Button copies its state recipes.
   Step 5 rewrites it.
 - `design/tokens.css` — the token source (READ-ONLY, never copied into a
   package). Structure: `@layer hashti.tokens { :root, [data-theme="light"] {
-  light } [data-theme="dark"] { dark } @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]):not([data-theme="dark"]), [data-theme="system"] { dark } } }`.
+light } [data-theme="dark"] { dark } @media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]):not([data-theme="dark"]), [data-theme="system"] { dark } } }`.
 
 ### ui-sdk Button facts (from `packages/react/node_modules/@ui-sdk/react/docs/components/button.md`)
 
@@ -93,23 +94,23 @@ interactive after Button copies its state recipes.
   `lg` 3rem/48px — as `min-block-size` so content can grow the control
   (DESIGN.md: 44px minimum for ordinary controls).
 - **Geometry** (extraction, frame base): `justify-content: center;
-  gap: 0.5rem; min-inline-size: 0; max-inline-size: 100%;
-  overflow-wrap: anywhere; padding: 0.25rem 1rem;
-  border-radius: var(--hashti-control-radius) (0.625rem/10px);
-  font-size: 0.875rem; font-weight: 500; line-height: 1.25rem`.
+gap: 0.5rem; min-inline-size: 0; max-inline-size: 100%;
+overflow-wrap: anywhere; padding: 0.25rem 1rem;
+border-radius: var(--hashti-control-radius) (0.625rem/10px);
+font-size: 0.875rem; font-weight: 500; line-height: 1.25rem`.
   Ghost: `padding-inline: 0.75rem`.
 - **Variant matrix** (rest / hover / press / disabled; ink always
   `--hashti-text-*`, surfaces `--hashti-button-*`):
 
-  | variant | rest | hover | press | disabled |
-  | --- | --- | --- | --- | --- |
-  | primary | bg `button-primary`, ink `text-on-color` | bg `button-primary-hover` | bg `button-primary-active` | bg `button-disabled`, ink `text-disabled` |
-  | secondary | bg `button-secondary`, ink `text-primary` | bg `button-secondary-hover` | bg `button-secondary-active` | as primary |
-  | tertiary | transparent, border 1px `border-strong-01`, ink `text-primary` | bg `button-tertiary-hover`, border kept | bg `button-tertiary-active` | transparent, border `border-disabled`, ink `text-disabled` |
-  | ghost | transparent, no border, ink `text-primary` | bg `background-hover` | bg `background-active` | transparent, ink `text-disabled` |
-  | danger | bg `button-danger-primary`, ink `text-on-color` | bg `button-danger-hover` | bg `button-danger-active` | as primary |
-  | danger-tertiary | transparent, ink `button-danger-secondary` | bg `button-danger-hover`, ink `text-on-color` | bg `button-danger-active` | transparent, ink `text-disabled` |
-  | danger-ghost | transparent, ink `button-danger-secondary` | bg `button-danger-hover`, ink `text-on-color` | bg `button-danger-active` | transparent, ink `text-disabled` |
+  | variant         | rest                                                           | hover                                         | press                        | disabled                                                   |
+  | --------------- | -------------------------------------------------------------- | --------------------------------------------- | ---------------------------- | ---------------------------------------------------------- |
+  | primary         | bg `button-primary`, ink `text-on-color`                       | bg `button-primary-hover`                     | bg `button-primary-active`   | bg `button-disabled`, ink `text-disabled`                  |
+  | secondary       | bg `button-secondary`, ink `text-primary`                      | bg `button-secondary-hover`                   | bg `button-secondary-active` | as primary                                                 |
+  | tertiary        | transparent, border 1px `border-strong-01`, ink `text-primary` | bg `button-tertiary-hover`, border kept       | bg `button-tertiary-active`  | transparent, border `border-disabled`, ink `text-disabled` |
+  | ghost           | transparent, no border, ink `text-primary`                     | bg `background-hover`                         | bg `background-active`       | transparent, ink `text-disabled`                           |
+  | danger          | bg `button-danger-primary`, ink `text-on-color`                | bg `button-danger-hover`                      | bg `button-danger-active`    | as primary                                                 |
+  | danger-tertiary | transparent, ink `button-danger-secondary`                     | bg `button-danger-hover`, ink `text-on-color` | bg `button-danger-active`    | transparent, ink `text-disabled`                           |
+  | danger-ghost    | transparent, ink `button-danger-secondary`                     | bg `button-danger-hover`, ink `text-on-color` | bg `button-danger-active`    | transparent, ink `text-disabled`                           |
 
 - **Press scale**: `:active` → `transform: scale(0.97)` (sm 0.98, lg 0.96);
   press transition `var(--hashti-duration-fast-01)`
@@ -131,10 +132,10 @@ interactive after Button copies its state recipes.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -181,13 +182,13 @@ interactive after Button copies its state recipes.
 3. Migrate the component stylesheets to design token names (grep each file
    for the old names; every occurrence maps as below):
 
-| old name | design name | used in |
-| --- | --- | --- |
-| `--hashti-fg` | `--hashti-text-primary` | label.css |
-| `--hashti-muted` | `--hashti-layer-accent-01` | avatar.css, switch.css |
-| `--hashti-border` | `--hashti-border-subtle-00` | switch.css |
-| `--hashti-primary` | `--hashti-support-success` | switch.css (checked track) |
-| `--hashti-ring` | `--hashti-focus` | switch.css |
+| old name           | design name                 | used in                    |
+| ------------------ | --------------------------- | -------------------------- |
+| `--hashti-fg`      | `--hashti-text-primary`     | label.css                  |
+| `--hashti-muted`   | `--hashti-layer-accent-01`  | avatar.css, switch.css     |
+| `--hashti-border`  | `--hashti-border-subtle-00` | switch.css                 |
+| `--hashti-primary` | `--hashti-support-success`  | switch.css (checked track) |
+| `--hashti-ring`    | `--hashti-focus`            | switch.css                 |
 
 4. In `switch.css` also replace the two hard-coded values (hex in component
    CSS is a bug): the thumb `background: #fff` →
@@ -205,10 +206,10 @@ interactive after Button copies its state recipes.
 `packages/react/src/button/button.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { Button as UiButton } from "@ui-sdk/react/button"
+import type { ComponentProps } from "react";
+import { Button as UiButton } from "@ui-sdk/react/button";
 
 type ButtonVariant =
   | "primary"
@@ -217,16 +218,21 @@ type ButtonVariant =
   | "ghost"
   | "danger"
   | "danger-tertiary"
-  | "danger-ghost"
+  | "danger-ghost";
 
-type ButtonSize = "sm" | "md" | "lg"
+type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonProps extends ComponentProps<typeof UiButton> {
-  variant?: ButtonVariant
-  size?: ButtonSize
+  variant?: ButtonVariant;
+  size?: ButtonSize;
 }
 
-function Button({ variant = "primary", size = "md", className, ...props }: ButtonProps) {
+function Button({
+  variant = "primary",
+  size = "md",
+  className,
+  ...props
+}: ButtonProps) {
   return (
     <UiButton
       className={`hashti-button${className ? ` ${className}` : ""}`}
@@ -234,16 +240,16 @@ function Button({ variant = "primary", size = "md", className, ...props }: Butto
       data-size={size}
       {...props}
     />
-  )
+  );
 }
 
-export { Button }
+export { Button };
 ```
 
 `packages/react/src/button/index.ts`:
 
 ```ts
-export { Button } from "./button"
+export { Button } from "./button";
 ```
 
 **Verify**: `bun run typecheck` → exit 0 (the barrel still references the
@@ -257,7 +263,7 @@ needed).
 import (keep `hashtiSwitch`), remove the `createParts` Button line, add:
 
 ```tsx
-export { Button } from "./button"
+export { Button } from "./button";
 ```
 
 Delete `packages/core/src/button.ts` and remove its export from
@@ -287,12 +293,16 @@ Whole file. The variant matrix and geometry come from the table above:
   font-weight: 500;
   line-height: 1.25rem;
   cursor: pointer;
-  transition:
-    transform var(--hashti-duration-moderate-02) cubic-bezier(0.32, 0.72, 0, 1);
+  transition: transform var(--hashti-duration-moderate-02)
+    cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-.hashti-button[data-size="sm"] { min-block-size: 2rem; }
-.hashti-button[data-size="lg"] { min-block-size: 3rem; }
+.hashti-button[data-size="sm"] {
+  min-block-size: 2rem;
+}
+.hashti-button[data-size="lg"] {
+  min-block-size: 3rem;
+}
 
 .hashti-button:focus-visible {
   outline: 2px solid var(--hashti-focus);
@@ -308,11 +318,21 @@ Whole file. The variant matrix and geometry come from the table above:
 }
 
 @media (hover: hover) {
-  .hashti-button[data-variant="primary"]:hover:not([data-disabled]) { background: var(--hashti-button-primary-hover); }
-  .hashti-button[data-variant="secondary"]:hover:not([data-disabled]) { background: var(--hashti-button-secondary-hover); }
-  .hashti-button[data-variant="tertiary"]:hover:not([data-disabled]) { background: var(--hashti-button-tertiary-hover); }
-  .hashti-button[data-variant="ghost"]:hover:not([data-disabled]) { background: var(--hashti-background-hover); }
-  .hashti-button[data-variant="danger"]:hover:not([data-disabled]) { background: var(--hashti-button-danger-hover); }
+  .hashti-button[data-variant="primary"]:hover:not([data-disabled]) {
+    background: var(--hashti-button-primary-hover);
+  }
+  .hashti-button[data-variant="secondary"]:hover:not([data-disabled]) {
+    background: var(--hashti-button-secondary-hover);
+  }
+  .hashti-button[data-variant="tertiary"]:hover:not([data-disabled]) {
+    background: var(--hashti-button-tertiary-hover);
+  }
+  .hashti-button[data-variant="ghost"]:hover:not([data-disabled]) {
+    background: var(--hashti-background-hover);
+  }
+  .hashti-button[data-variant="danger"]:hover:not([data-disabled]) {
+    background: var(--hashti-button-danger-hover);
+  }
   .hashti-button[data-variant="danger-tertiary"]:hover:not([data-disabled]),
   .hashti-button[data-variant="danger-ghost"]:hover:not([data-disabled]) {
     background: var(--hashti-button-danger-hover);
@@ -324,15 +344,21 @@ Whole file. The variant matrix and geometry come from the table above:
   transition-duration: var(--hashti-duration-fast-01);
   transform: scale(0.97);
 }
-.hashti-button[data-size="sm"]:active:not([data-disabled]) { transform: scale(0.98); }
-.hashti-button[data-size="lg"]:active:not([data-disabled]) { transform: scale(0.96); }
+.hashti-button[data-size="sm"]:active:not([data-disabled]) {
+  transform: scale(0.98);
+}
+.hashti-button[data-size="lg"]:active:not([data-disabled]) {
+  transform: scale(0.96);
+}
 
 .hashti-button[data-variant="primary"],
 .hashti-button[data-variant="danger"] {
   background: var(--hashti-button-primary);
   color: var(--hashti-text-on-color);
 }
-.hashti-button[data-variant="danger"] { background: var(--hashti-button-danger-primary); }
+.hashti-button[data-variant="danger"] {
+  background: var(--hashti-button-danger-primary);
+}
 
 .hashti-button[data-variant="secondary"] {
   background: var(--hashti-button-secondary);
@@ -356,7 +382,9 @@ Whole file. The variant matrix and geometry come from the table above:
   color: var(--hashti-button-danger-secondary);
 }
 
-.hashti-button[data-variant="ghost"] { padding-inline: 0.75rem; }
+.hashti-button[data-variant="ghost"] {
+  padding-inline: 0.75rem;
+}
 
 .hashti-button[data-variant="primary"][data-disabled],
 .hashti-button[data-variant="secondary"][data-disabled],
@@ -399,11 +427,11 @@ title: Button
 description: Runs an action, shows that it's working, and stays reachable when disabled.
 ---
 
-import { Button } from '@hashti/react'
+import { Button } from "@hashti/react";
 
 ## Variants
 
-<div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+<div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
   <Button>Primary</Button>
   <Button variant="secondary">Secondary</Button>
   <Button variant="tertiary">Tertiary</Button>
@@ -415,7 +443,7 @@ import { Button } from '@hashti/react'
 
 ## Sizes
 
-<div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+<div style={{ display: "flex", gap: 8, alignItems: "center" }}>
   <Button size="sm">Small</Button>
   <Button>Medium</Button>
   <Button size="lg">Large</Button>
@@ -427,12 +455,12 @@ import { Button } from '@hashti/react'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `variant` | `"primary" \| "secondary" \| "tertiary" \| "ghost" \| "danger" \| "danger-tertiary" \| "danger-ghost"` | Visual style. Default `primary`. |
-| `size` | `"sm" \| "md" \| "lg"` | Minimum height: 32/44/48px. Default `md`. |
-| `disabled` | `boolean` | Stops presses. |
-| `pendingAnnouncement` | `string` | What screen readers hear after a second of pending. |
+| Prop                  | Type                                                                                                   | Description                                         |
+| --------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
+| `variant`             | `"primary" \| "secondary" \| "tertiary" \| "ghost" \| "danger" \| "danger-tertiary" \| "danger-ghost"` | Visual style. Default `primary`.                    |
+| `size`                | `"sm" \| "md" \| "lg"`                                                                                 | Minimum height: 32/44/48px. Default `md`.           |
+| `disabled`            | `boolean`                                                                                              | Stops presses.                                      |
+| `pendingAnnouncement` | `string`                                                                                               | What screen readers hear after a second of pending. |
 
 Button owns its pending state: return a Promise from `onClick` and the button shows `data-pending`, keeps focus, and ignores further presses until it settles.
 ```

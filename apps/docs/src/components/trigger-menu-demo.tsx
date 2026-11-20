@@ -1,8 +1,12 @@
-"use client"
+"use client";
 
-import { TriggerMenu, TriggerMenuInput, TriggerMenuStatus } from "@hashti/react"
+import {
+  TriggerMenu,
+  TriggerMenuInput,
+  TriggerMenuStatus,
+} from "@hashti/react";
 
-const people = ["Hollis Vance", "Priya Nair", "Tom Okafor", "Lena Fischer"]
+const people = ["Hollis Vance", "Priya Nair", "Tom Okafor", "Lena Fischer"];
 
 export function TriggerMenuDemo() {
   return (
@@ -15,5 +19,5 @@ export function TriggerMenuDemo() {
         <TriggerMenuStatus className="sr-only" />
       </TriggerMenu>
     </div>
-  )
+  );
 }

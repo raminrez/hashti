@@ -6,4 +6,4 @@ export {
   NavigationMenuContent,
   NavigationMenuLink,
   NavigationMenuViewport,
-} from "./navigation-menu"
+} from "./navigation-menu";

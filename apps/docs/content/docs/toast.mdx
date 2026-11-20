@@ -3,7 +3,7 @@ title: Toast
 description: Transient feedback at the foot of the page.
 ---
 
-import { ToastDemo } from '../../src/components/toast-demo'
+import { ToastDemo } from "../../src/components/toast-demo";
 
 ## Usage
 
@@ -11,12 +11,12 @@ import { ToastDemo } from '../../src/components/toast-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `ToastRegion` | The stacked region; place once near the root. |
-| `Toast` | One toast; renders through the region's children function. |
-| `ToastTitle` / `ToastDescription` | Text; empty parts show the toast data's. |
-| `ToastClose` | Dismisses. |
+| Part                              | Purpose                                                    |
+| --------------------------------- | ---------------------------------------------------------- |
+| `ToastRegion`                     | The stacked region; place once near the root.              |
+| `Toast`                           | One toast; renders through the region's children function. |
+| `ToastTitle` / `ToastDescription` | Text; empty parts show the toast data's.                   |
+| `ToastClose`                      | Dismisses.                                                 |
 
 Call `toast()`, `toast.success`, `.warning`, `.error` from anywhere — the type drives the status surface and ink.
 

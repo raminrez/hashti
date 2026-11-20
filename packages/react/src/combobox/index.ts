@@ -9,4 +9,4 @@ export {
   ComboboxValue,
   ComboboxChip,
   ComboboxChipRemove,
-} from "./combobox"
+} from "./combobox";

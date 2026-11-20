@@ -62,15 +62,15 @@ second consumer of the group/affix recipe.
   stepper) OR inline? Old Hashti had no number-input buttons; simplest
   consistent look: BOTH buttons stacked in a column lane at the inline
   end, divider `border-inline-start: 1px solid
-  var(--hashti-border-subtle-00)`, each button `inline-size: 2.25rem;
-  flex: 1; display: inline-flex; align-items: center; justify-content:
-  center; border: none; background: transparent; color:
-  var(--hashti-text-secondary); cursor: pointer;` hover (hover:hover) →
+var(--hashti-border-subtle-00)`, each button `inline-size: 2.25rem;
+flex: 1; display: inline-flex; align-items: center; justify-content:
+center; border: none; background: transparent; color:
+var(--hashti-text-secondary); cursor: pointer;` hover (hover:hover) →
   `background: var(--hashti-background-hover); color:
-  var(--hashti-text-primary);` `:focus-visible` → 2px ring at -2px offset
+var(--hashti-text-primary);` `:focus-visible` → 2px ring at -2px offset
   (inside the clipped group — the password-input review established this).
   The lane itself: `display: flex; flex-direction: column; align-self:
-  stretch; border-inline-start: 1px solid var(--hashti-border-subtle-00);`
+stretch; border-inline-start: 1px solid var(--hashti-border-subtle-00);`
   with a 1px divider between the two buttons
   (`border-block-end` on the first).
 - **Focus on the group**: `.hashti-number-input-group:has(:focus-visible)`
@@ -82,10 +82,10 @@ second consumer of the group/affix recipe.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -121,12 +121,12 @@ second consumer of the group/affix recipe.
 `packages/react/src/number-input/number-input.tsx` — the `join` helper
 pattern (direct-re-export check on the root):
 
-| Part | Class |
-| --- | --- |
-| `NumberInput` | `hashti-number-input` (or direct re-export) |
-| `NumberInputGroup` | `hashti-number-input-group` |
-| `NumberInputControl` | `hashti-number-input__control` |
-| `NumberInputDecrement` | `hashti-number-input__step` |
+| Part                   | Class                                                                                              |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| `NumberInput`          | `hashti-number-input` (or direct re-export)                                                        |
+| `NumberInputGroup`     | `hashti-number-input-group`                                                                        |
+| `NumberInputControl`   | `hashti-number-input__control`                                                                     |
+| `NumberInputDecrement` | `hashti-number-input__step`                                                                        |
 | `NumberInputIncrement` | `hashti-number-input__step` (same class; both get `data-slot` from ui-sdk for any differentiation) |
 
 Export all five from `./number-input` and the barrel.
@@ -147,16 +147,42 @@ Export all five from `./number-input` and the barrel.
 chevron/minus glyphs:
 
 ```tsx
-"use client"
+"use client";
 
-import { Field, FieldLabel } from "@hashti/react"
-import { NumberInput, NumberInputControl, NumberInputDecrement, NumberInputGroup, NumberInputIncrement } from "@hashti/react"
+import { Field, FieldLabel } from "@hashti/react";
+import {
+  NumberInput,
+  NumberInputControl,
+  NumberInputDecrement,
+  NumberInputGroup,
+  NumberInputIncrement,
+} from "@hashti/react";
 
 function Minus() {
-  return <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8h10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+  return (
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path
+        d="M3 8h10"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
 }
 function Plus() {
-  return <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 3v10M3 8h10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+  return (
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path
+        d="M8 3v10M3 8h10"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
 }
 
 export function NumberInputDemo() {
@@ -166,12 +192,16 @@ export function NumberInputDemo() {
       <NumberInput defaultValue={1} min={1} max={99}>
         <NumberInputGroup>
           <NumberInputControl />
-          <NumberInputDecrement aria-label="Decrease"><Minus /></NumberInputDecrement>
-          <NumberInputIncrement aria-label="Increase"><Plus /></NumberInputIncrement>
+          <NumberInputDecrement aria-label="Decrease">
+            <Minus />
+          </NumberInputDecrement>
+          <NumberInputIncrement aria-label="Increase">
+            <Plus />
+          </NumberInputIncrement>
         </NumberInputGroup>
       </NumberInput>
     </Field>
-  )
+  );
 }
 ```
 
@@ -186,7 +216,7 @@ title: NumberInput
 description: Enters a precise numeric value.
 ---
 
-import { NumberInputDemo } from '../../src/components/number-input-demo'
+import { NumberInputDemo } from "../../src/components/number-input-demo";
 
 ## Usage
 
@@ -194,12 +224,12 @@ import { NumberInputDemo } from '../../src/components/number-input-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `NumberInput` | Holds the value; min/max/step. |
-| `NumberInputGroup` | The joined control. |
-| `NumberInputControl` | The native input; Enter/blur commits. |
-| `NumberInputDecrement` / `NumberInputIncrement` | Step buttons; repeat while held. |
+| Part                                            | Purpose                               |
+| ----------------------------------------------- | ------------------------------------- |
+| `NumberInput`                                   | Holds the value; min/max/step.        |
+| `NumberInputGroup`                              | The joined control.                   |
+| `NumberInputControl`                            | The native input; Enter/blur commits. |
+| `NumberInputDecrement` / `NumberInputIncrement` | Step buttons; repeat while held.      |
 
 Styling lives in `@hashti/styles` under `.hashti-number-input*` — one bordered field with a stacked stepper lane.
 ```
@@ -222,11 +252,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-number-input" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/number-input.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "number-input" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

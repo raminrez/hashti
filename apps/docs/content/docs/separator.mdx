@@ -3,17 +3,17 @@ title: Separator
 description: Divides groups of content with a horizontal or vertical line.
 ---
 
-import { Separator } from '@hashti/react'
+import { Separator } from "@hashti/react";
 
 ## Orientation
 
-<div style={{ display: 'grid', gap: 16 }}>
+<div style={{ display: "grid", gap: 16 }}>
   <p>Content above the line.</p>
   <Separator />
   <p>Content below the line.</p>
 </div>
 
-<div style={{ display: 'flex', gap: 16, alignItems: 'stretch', height: 48 }}>
+<div style={{ display: "flex", gap: 16, alignItems: "stretch", height: 48 }}>
   <span>Start</span>
   <Separator orientation="vertical" />
   <span>End</span>
@@ -21,9 +21,9 @@ import { Separator } from '@hashti/react'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `orientation` | `"horizontal" \| "vertical"` | Which way the line runs. Default `horizontal`. |
-| `decorative` | `boolean` | Hides the line from assistive technology with `role="none"`. |
+| Prop          | Type                         | Description                                                  |
+| ------------- | ---------------------------- | ------------------------------------------------------------ |
+| `orientation` | `"horizontal" \| "vertical"` | Which way the line runs. Default `horizontal`.               |
+| `decorative`  | `boolean`                    | Hides the line from assistive technology with `role="none"`. |
 
 Styling lives in `@hashti/styles` under `.hashti-separator`, keyed off `data-orientation`, with the color from `--hashti-border-subtle-00`.

@@ -1,8 +1,19 @@
-"use client"
+"use client";
 
-import { Avatar, AvatarFallback, AvatarGroup, getInitials } from "@hashti/react"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarGroup,
+  getInitials,
+} from "@hashti/react";
 
-const names = ["Hollis Vance", "Priya Nair", "Tom Okafor", "Lena Fischer", "Marco Ruiz"]
+const names = [
+  "Hollis Vance",
+  "Priya Nair",
+  "Tom Okafor",
+  "Lena Fischer",
+  "Marco Ruiz",
+];
 
 export function AvatarGroupDemo() {
   return (
@@ -22,5 +33,5 @@ export function AvatarGroupDemo() {
         ))}
       </AvatarGroup>
     </div>
-  )
+  );
 }

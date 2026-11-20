@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Switch, SwitchThumb } from "@hashti/react"
+import { Switch, SwitchThumb } from "@hashti/react";
 
 export function SwitchDemo() {
   return (
@@ -30,5 +30,5 @@ export function SwitchDemo() {
         </Switch>
       </label>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   AlertDialog,
@@ -8,7 +8,7 @@ import {
   AlertDialogDescription,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function AlertDialogDemo() {
   return (
@@ -20,7 +20,9 @@ export function AlertDialogDemo() {
         <AlertDialogDescription>
           This removes every file and comment. It cannot be undone.
         </AlertDialogDescription>
-        <div style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
+        <div
+          style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}
+        >
           <AlertDialogClose value="cancel">Cancel</AlertDialogClose>
           <AlertDialogClose value="confirm" data-danger>
             Delete
@@ -28,5 +30,5 @@ export function AlertDialogDemo() {
         </div>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }

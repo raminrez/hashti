@@ -85,10 +85,10 @@ Checkbox/Radio/Switch family.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -122,28 +122,33 @@ Checkbox/Radio/Switch family.
 `packages/react/src/input/input.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { Input as UiInput } from "@ui-sdk/react/input"
+import type { ComponentProps } from "react";
+import { Input as UiInput } from "@ui-sdk/react/input";
 
 function Input({ className, ...props }: ComponentProps<typeof UiInput>) {
-  return <UiInput className={`hashti-input${className ? ` ${className}` : ""}`} {...props} />
+  return (
+    <UiInput
+      className={`hashti-input${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-export { Input }
+export { Input };
 ```
 
 `packages/react/src/input/index.ts`:
 
 ```ts
-export { Input } from "./input"
+export { Input } from "./input";
 ```
 
 `packages/react/src/index.tsx` — add at the end:
 
 ```tsx
-export { Input } from "./input"
+export { Input } from "./input";
 ```
 
 **Verify**: `bun run typecheck` → exit 0.
@@ -163,7 +168,8 @@ export { Input } from "./input"
   color: var(--hashti-text-primary);
   font-size: 1rem;
   line-height: 1.5rem;
-  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-input::placeholder {
@@ -211,11 +217,11 @@ title: Input
 description: Enters short text, connected to your form or state.
 ---
 
-import { Input } from '@hashti/react'
+import { Input } from "@hashti/react";
 
 ## Usage
 
-<div style={{ display: 'grid', gap: 16, maxWidth: 320 }}>
+<div style={{ display: "grid", gap: 16, maxWidth: 320 }}>
   <Input aria-label="Username" placeholder="Username" />
   <Input aria-label="Website" defaultValue="hollisgrant.com" />
   <Input aria-label="Read-only" readOnly value="example.com/hollis" />

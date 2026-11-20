@@ -33,7 +33,7 @@ Command palette pages (drill-in navigation) and async result loading.
   row (back chevron-start, secondary ink, hover tint).
 - **Loading**: item skeleton rows — three shimmer rows
   (`background: var(--hashti-background-hover)` blocks, `border-radius:
-  var(--hashti-border-radius-08)`, a gentle opacity pulse keyframe,
+var(--hashti-border-radius-08)`, a gentle opacity pulse keyframe,
   reduced-motion → static 0.5 opacity).
 - **Empty**: `CommandEmpty` styling — centered, secondary ink, padding
   1rem, no border.
@@ -58,8 +58,8 @@ Command palette pages (drill-in navigation) and async result loading.
 ## Done
 
 - [ ] typecheck exit 0 · [ ] no hex · [ ] rendered check: page drill-in
-  works, async shows skeletons then results, empty state renders ·
-  [ ] commits per step
+      works, async shows skeletons then results, empty state renders ·
+      [ ] commits per step
 
 ## STOP
 

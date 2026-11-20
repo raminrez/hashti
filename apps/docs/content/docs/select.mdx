@@ -3,7 +3,7 @@ title: Select
 description: Chooses one option from a popup list.
 ---
 
-import { SelectDemo } from '../../src/components/select-demo'
+import { SelectDemo } from "../../src/components/select-demo";
 
 ## Usage
 
@@ -11,10 +11,10 @@ import { SelectDemo } from '../../src/components/select-demo'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `items` | `ListData` | Options as data; labels stay available before open. |
-| `value` / `defaultValue` | `string` | The selected value. |
-| `placeholder` | `string` | Shown while nothing is selected. |
+| Prop                     | Type       | Description                                         |
+| ------------------------ | ---------- | --------------------------------------------------- |
+| `items`                  | `ListData` | Options as data; labels stay available before open. |
+| `value` / `defaultValue` | `string`   | The selected value.                                 |
+| `placeholder`            | `string`   | Shown while nothing is selected.                    |
 
 Styling lives in `@hashti/styles` under `.hashti-select-*` — a field-style trigger, an 18px popover surface with the design shadow, items highlighted in background-hover and selected in focus blue.

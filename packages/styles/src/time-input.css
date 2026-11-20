@@ -8,7 +8,8 @@
   border-radius: var(--hashti-control-radius);
   background: var(--hashti-layer-01);
   overflow: hidden;
-  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-time-input [data-slot="time-input-segment"] {

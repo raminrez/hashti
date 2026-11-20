@@ -1,29 +1,22 @@
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
+import { join } from "@hashti/utils";
 import {
   DatePicker as UiDatePicker,
   DatePickerContent as UiDatePickerContent,
   DatePickerHint as UiDatePickerHint,
   DatePickerInput as UiDatePickerInput,
   DatePickerTrigger as UiDatePickerTrigger,
-} from "@ui-sdk/react/date-picker"
-
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
+} from "@ui-sdk/react/date-picker";
 
 function DatePicker(props: ComponentProps<typeof UiDatePicker>) {
-  return <UiDatePicker {...props} className={join("hashti-date-picker", props.className)} />
+  return (
+    <UiDatePicker
+      {...props}
+      className={join("hashti-date-picker", props.className)}
+    />
+  );
 }
 
 function DatePickerInput(props: ComponentProps<typeof UiDatePickerInput>) {
@@ -32,7 +25,7 @@ function DatePickerInput(props: ComponentProps<typeof UiDatePickerInput>) {
       {...props}
       className={join("hashti-date-picker-input", props.className)}
     />
-  )
+  );
 }
 
 function DatePickerTrigger(props: ComponentProps<typeof UiDatePickerTrigger>) {
@@ -41,7 +34,7 @@ function DatePickerTrigger(props: ComponentProps<typeof UiDatePickerTrigger>) {
       {...props}
       className={join("hashti-date-picker-trigger", props.className)}
     />
-  )
+  );
 }
 
 function DatePickerHint(props: ComponentProps<typeof UiDatePickerHint>) {
@@ -50,7 +43,7 @@ function DatePickerHint(props: ComponentProps<typeof UiDatePickerHint>) {
       {...props}
       className={join("hashti-date-picker-hint", props.className)}
     />
-  )
+  );
 }
 
 function DatePickerContent(props: ComponentProps<typeof UiDatePickerContent>) {
@@ -59,7 +52,7 @@ function DatePickerContent(props: ComponentProps<typeof UiDatePickerContent>) {
       {...props}
       className={join("hashti-date-picker-content", props.className)}
     />
-  )
+  );
 }
 
 export {
@@ -68,4 +61,4 @@ export {
   DatePickerHint,
   DatePickerInput,
   DatePickerTrigger,
-}
+};

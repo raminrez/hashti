@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Field, FieldLabel } from "@hashti/react"
-import { DateInput } from "@hashti/react"
+import { Field, FieldLabel } from "@hashti/react";
+import { DateInput } from "@hashti/react";
 
 export function DateInputDemo() {
   return (
@@ -9,5 +9,5 @@ export function DateInputDemo() {
       <FieldLabel>Delivery date</FieldLabel>
       <DateInput required />
     </Field>
-  )
+  );
 }

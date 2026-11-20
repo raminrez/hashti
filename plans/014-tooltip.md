@@ -64,10 +64,10 @@ dark in light mode. Small, but it establishes the inverse-surface recipe.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -101,11 +101,11 @@ dark in light mode. Small, but it establishes the inverse-surface recipe.
 `packages/react/src/tooltip/tooltip.tsx` — the `join` helper pattern;
 parts and classes:
 
-| Part | Class |
-| --- | --- |
-| `Tooltip` | `hashti-tooltip` (or direct re-export if the root takes no className) |
+| Part             | Class                                                                   |
+| ---------------- | ----------------------------------------------------------------------- |
+| `Tooltip`        | `hashti-tooltip` (or direct re-export if the root takes no className)   |
 | `TooltipTrigger` | `hashti-tooltip-trigger` (no styling — it wraps the consumer's control) |
-| `TooltipContent` | `hashti-tooltip-content` |
+| `TooltipContent` | `hashti-tooltip-content`                                                |
 
 Export all three from `./tooltip` and the barrel.
 
@@ -124,7 +124,8 @@ Export all three from `./tooltip` and the barrel.
   color: var(--hashti-text-inverse);
   font-size: 0.75rem;
   line-height: 1.5;
-  transition: opacity var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--hashti-duration-fast-02)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-tooltip-content[data-starting-style],
@@ -146,9 +147,9 @@ Export all three from `./tooltip` and the barrel.
 `apps/docs/src/components/tooltip-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Tooltip, TooltipContent, TooltipTrigger } from "@hashti/react"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@hashti/react";
 
 export function TooltipDemo() {
   return (
@@ -156,7 +157,7 @@ export function TooltipDemo() {
       <TooltipTrigger>Share</TooltipTrigger>
       <TooltipContent>Anyone with the link can view</TooltipContent>
     </Tooltip>
-  )
+  );
 }
 ```
 
@@ -168,7 +169,7 @@ title: Tooltip
 description: Reveals a short hint on hover and focus.
 ---
 
-import { TooltipDemo } from '../../src/components/tooltip-demo'
+import { TooltipDemo } from "../../src/components/tooltip-demo";
 
 ## Usage
 
@@ -176,11 +177,11 @@ import { TooltipDemo } from '../../src/components/tooltip-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Tooltip` | Owns the open state and the trigger relationship. |
-| `TooltipTrigger` | The control the hint describes. |
-| `TooltipContent` | The inverse hint surface; plain text only. |
+| Part             | Purpose                                           |
+| ---------------- | ------------------------------------------------- |
+| `Tooltip`        | Owns the open state and the trigger relationship. |
+| `TooltipTrigger` | The control the hint describes.                   |
+| `TooltipContent` | The inverse hint surface; plain text only.        |
 
 Styling lives in `@hashti/styles` under `.hashti-tooltip-content` — the inverse surface, 8px radius, 175ms entrance.
 ```

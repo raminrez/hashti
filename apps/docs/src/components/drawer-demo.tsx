@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Drawer,
@@ -8,8 +8,8 @@ import {
   DrawerDescription,
   DrawerTitle,
   DrawerTrigger,
-} from "@hashti/react"
-import { DrawerHandle } from "@ui-sdk/react/drawer"
+} from "@hashti/react";
+import { DrawerHandle } from "@ui-sdk/react/drawer";
 
 export function DrawerDemo() {
   return (
@@ -24,7 +24,7 @@ export function DrawerDemo() {
         <DrawerClose>Close</DrawerClose>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }
 
 const places = [
@@ -34,7 +34,7 @@ const places = [
   { name: "Mission Dolores", detail: "Landmark · 0.6 mi" },
   { name: "Ritual Coffee Roasters", detail: "Coffee · 0.7 mi" },
   { name: "Bi-Rite Creamery", detail: "Ice cream · 0.7 mi" },
-]
+];
 
 export function DrawerSnapPointsDemo() {
   return (
@@ -57,5 +57,5 @@ export function DrawerSnapPointsDemo() {
         </ul>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }

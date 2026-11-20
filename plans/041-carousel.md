@@ -50,11 +50,11 @@ indicators. Autoplay/thumbnails/progress deferred.
 ### Design rules that bite (derived; scroll-snap gallery)
 
 - **Root `hashti-carousel`**: `display: flex; flex-direction: column;
-  gap: 0.75rem;` (viewport, then controls row).
+gap: 0.75rem;` (viewport, then controls row).
 - **Viewport**: `overflow: hidden; border-radius:
-  var(--hashti-popover-radius);` (an 18px clipping gallery; scroll-snap
+var(--hashti-popover-radius);` (an 18px clipping gallery; scroll-snap
   comes from ui-sdk's inline mechanics — do not fight them; add `scroll
-  behavior` nothing). `[data-dragging]` → `cursor: grabbing;`
+behavior` nothing). `[data-dragging]` → `cursor: grabbing;`
 - **Content**: `display: flex;` — ui-sdk drives the translation/snap; do
   not set gap here unless the docs say so (slides' spacing is part of the
   snap math). If the rendered layout needs a gap, use the docs' pattern.
@@ -62,19 +62,19 @@ indicators. Autoplay/thumbnails/progress deferred.
   the docs' default). `[data-in-view]` slides are visible; content
   styling (images, cards) is the consumer's.
 - **Previous/Next**: the quiet-action square — `display: inline-flex;
-  align-items: center; justify-content: center; inline-size: 2.5rem;
-  block-size: 2.5rem; border: 1px solid var(--hashti-border-subtle-00);
-  border-radius: var(--hashti-border-radius-max); background:
-  var(--hashti-layer-01); color: var(--hashti-text-primary); cursor:
-  pointer;` hover (hover:hover, not disabled) → `background:
-  var(--hashti-background-hover);` `:focus-visible` → 2px ring @2px;
+align-items: center; justify-content: center; inline-size: 2.5rem;
+block-size: 2.5rem; border: 1px solid var(--hashti-border-subtle-00);
+border-radius: var(--hashti-border-radius-max); background:
+var(--hashti-layer-01); color: var(--hashti-text-primary); cursor:
+pointer;` hover (hover:hover, not disabled) → `background:
+var(--hashti-background-hover);` `:focus-visible` → 2px ring @2px;
   `[data-disabled]` → ink disabled, cursor not-allowed, background
   transparent.
 - **Indicator**: `inline-size: 0.375rem; block-size: 0.375rem;
-  border-radius: var(--hashti-border-radius-max); border: none;
-  background: var(--hashti-border-strong-01); cursor: pointer; padding:
-  0;` — the dot row wraps them (`display: flex; gap: 0.375rem;
-  justify-content: center;` on the indicators' parent — check how
+border-radius: var(--hashti-border-radius-max); border: none;
+background: var(--hashti-border-strong-01); cursor: pointer; padding:
+0;` — the dot row wraps them (`display: flex; gap: 0.375rem;
+justify-content: center;` on the indicators' parent — check how
   ui-sdk nests them; if the indicators mount inside a wrapper the consumer
   renders, style BOTH the wrapper class `hashti-carousel-indicators` and
   the dots).
@@ -86,10 +86,10 @@ indicators. Autoplay/thumbnails/progress deferred.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -124,15 +124,15 @@ indicators. Autoplay/thumbnails/progress deferred.
 (direct-re-export check on roots; check which parts render themselves —
 the date-input lesson):
 
-| Part | Class |
-| --- | --- |
-| `Carousel` | `hashti-carousel` |
-| `CarouselViewport` | `hashti-carousel-viewport` |
-| `CarouselContent` | `hashti-carousel-content` |
-| `CarouselItem` | `hashti-carousel-item` (or data-slot keyed if the class cannot land) |
-| `CarouselPrevious` | `hashti-carousel-arrow` (shared with Next) |
-| `CarouselNext` | `hashti-carousel-arrow` |
-| `CarouselIndicator` | `hashti-carousel-indicator` |
+| Part                | Class                                                                |
+| ------------------- | -------------------------------------------------------------------- |
+| `Carousel`          | `hashti-carousel`                                                    |
+| `CarouselViewport`  | `hashti-carousel-viewport`                                           |
+| `CarouselContent`   | `hashti-carousel-content`                                            |
+| `CarouselItem`      | `hashti-carousel-item` (or data-slot keyed if the class cannot land) |
+| `CarouselPrevious`  | `hashti-carousel-arrow` (shared with Next)                           |
+| `CarouselNext`      | `hashti-carousel-arrow`                                              |
+| `CarouselIndicator` | `hashti-carousel-indicator`                                          |
 
 Export all from `./carousel` and the barrel.
 
@@ -151,11 +151,19 @@ Export all from `./carousel` and the barrel.
 content, arrows with chevron glyphs, indicators per the docs:
 
 ```tsx
-"use client"
+"use client";
 
-import { Carousel, CarouselContent, CarouselIndicator, CarouselItem, CarouselNext, CarouselPrevious, CarouselViewport } from "@hashti/react"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselIndicator,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselViewport,
+} from "@hashti/react";
 
-const slides = ["First slide", "Second slide", "Third slide"]
+const slides = ["First slide", "Second slide", "Third slide"];
 
 export function CarouselDemo() {
   return (
@@ -164,27 +172,71 @@ export function CarouselDemo() {
         <CarouselContent>
           {slides.map((s, i) => (
             <CarouselItem key={s}>
-              <div style={{ display: "grid", placeItems: "center", blockSize: 160, background: "var(--hashti-layer-03)", borderRadius: "var(--hashti-popover-radius)", fontSize: "0.875rem" }}>
+              <div
+                style={{
+                  display: "grid",
+                  placeItems: "center",
+                  blockSize: 160,
+                  background: "var(--hashti-layer-03)",
+                  borderRadius: "var(--hashti-popover-radius)",
+                  fontSize: "0.875rem",
+                }}
+              >
                 {s} {i + 1}
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
       </CarouselViewport>
-      <div style={{ display: "flex", gap: 8, alignItems: "center", justifyContent: "center" }}>
-        <CarouselPrevious aria-label="Previous slide"><ChevLeft /></CarouselPrevious>
-        {slides.map((s, i) => <CarouselIndicator key={s} aria-label={`Go to slide ${i + 1}`} />)}
-        <CarouselNext aria-label="Next slide"><ChevRight /></CarouselNext>
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CarouselPrevious aria-label="Previous slide">
+          <ChevLeft />
+        </CarouselPrevious>
+        {slides.map((s, i) => (
+          <CarouselIndicator key={s} aria-label={`Go to slide ${i + 1}`} />
+        ))}
+        <CarouselNext aria-label="Next slide">
+          <ChevRight />
+        </CarouselNext>
       </div>
     </Carousel>
-  )
+  );
 }
 
 function ChevLeft() {
-  return <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="m10 3-5 5 5 5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  return (
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path
+        d="m10 3-5 5 5 5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }
 function ChevRight() {
-  return <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  return (
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path
+        d="m6 3 5 5-5 5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }
 ```
 
@@ -199,7 +251,7 @@ title: Carousel
 description: Pages through slides.
 ---
 
-import { CarouselDemo } from '../../src/components/carousel-demo'
+import { CarouselDemo } from "../../src/components/carousel-demo";
 
 ## Usage
 
@@ -207,14 +259,14 @@ import { CarouselDemo } from '../../src/components/carousel-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Carousel` | Owns the page. |
-| `CarouselViewport` | The clipping window; snaps slides. |
-| `CarouselContent` | The slide row. |
-| `CarouselItem` | One slide; `data-active`/`data-in-view`. |
-| `CarouselPrevious` / `CarouselNext` | The arrows; disabled at the ends. |
-| `CarouselIndicator` | One dot per page. |
+| Part                                | Purpose                                  |
+| ----------------------------------- | ---------------------------------------- |
+| `Carousel`                          | Owns the page.                           |
+| `CarouselViewport`                  | The clipping window; snaps slides.       |
+| `CarouselContent`                   | The slide row.                           |
+| `CarouselItem`                      | One slide; `data-active`/`data-in-view`. |
+| `CarouselPrevious` / `CarouselNext` | The arrows; disabled at the ends.        |
+| `CarouselIndicator`                 | One dot per page.                        |
 
 Styling lives in `@hashti/styles` under `.hashti-carousel*` — an 18px viewport, round arrows, dot indicators that grow into pills on the active page.
 ```
@@ -236,11 +288,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-carousel" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/carousel.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "carousel" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

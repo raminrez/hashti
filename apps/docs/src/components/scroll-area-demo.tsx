@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   ScrollArea,
@@ -6,7 +6,7 @@ import {
   ScrollAreaScrollbar,
   ScrollAreaThumb,
   ScrollAreaViewport,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function ScrollAreaDemo() {
   return (
@@ -21,7 +21,10 @@ export function ScrollAreaDemo() {
       <ScrollAreaViewport role="region" aria-label="Items">
         <ScrollAreaContent style={{ padding: "0.75rem" }}>
           {Array.from({ length: 30 }, (_, i) => (
-            <div key={i} style={{ padding: "0.375rem 0", fontSize: "0.875rem" }}>
+            <div
+              key={i}
+              style={{ padding: "0.375rem 0", fontSize: "0.875rem" }}
+            >
               Item {i + 1}
             </div>
           ))}
@@ -31,5 +34,5 @@ export function ScrollAreaDemo() {
         <ScrollAreaThumb />
       </ScrollAreaScrollbar>
     </ScrollArea>
-  )
+  );
 }

@@ -32,16 +32,24 @@ another element. It reuses the file shape Separator established.
   match exactly (class-only wrapper, ui-sdk component underneath):
 
   ```tsx
-  "use client"
+  "use client";
 
-  import type { ComponentProps } from "react"
-  import { Separator as UiSeparator } from "@ui-sdk/react/separator"
+  import type { ComponentProps } from "react";
+  import { Separator as UiSeparator } from "@ui-sdk/react/separator";
 
-  function Separator({ className, ...props }: ComponentProps<typeof UiSeparator>) {
-    return <UiSeparator className={`hashti-separator${className ? ` ${className}` : ""}`} {...props} />
+  function Separator({
+    className,
+    ...props
+  }: ComponentProps<typeof UiSeparator>) {
+    return (
+      <UiSeparator
+        className={`hashti-separator${className ? ` ${className}` : ""}`}
+        {...props}
+      />
+    );
   }
 
-  export { Separator }
+  export { Separator };
   ```
 
 - `packages/react/src/index.tsx` — barrel; each component adds one
@@ -76,7 +84,7 @@ another element. It reuses the file shape Separator established.
 
 - Label typography (DESIGN.md `label` role, extraction `label-01`):
   **14px / 20px line-height / weight 600** → `font-size: 0.875rem;
-  line-height: 1.25rem; font-weight: 600`.
+line-height: 1.25rem; font-weight: 600`.
 - Ink: label is primary ink → `var(--hashti-fg)`.
 - Sentence case, stable labels — copy guidance, not CSS.
 - Labels wrap: allow wrapping (default `white-space` behavior; do not set
@@ -90,10 +98,10 @@ another element. It reuses the file shape Separator established.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 No lint setup and no test runner in this repo yet — out of scope; the
 reviewer runs the rendered check.
@@ -131,16 +139,21 @@ reviewer runs the rendered check.
 `packages/react/src/label/label.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { Label as UILabel } from "@ui-sdk/react/label"
+import type { ComponentProps } from "react";
+import { Label as UILabel } from "@ui-sdk/react/label";
 
 function Label({ className, ...props }: ComponentProps<typeof UILabel>) {
-  return <UILabel className={`hashti-label${className ? ` ${className}` : ""}`} {...props} />
+  return (
+    <UILabel
+      className={`hashti-label${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-export { Label }
+export { Label };
 ```
 
 The wrapper's only job is the `hashti-label` class; `htmlFor`, children and
@@ -149,13 +162,13 @@ every other prop pass through untouched.
 `packages/react/src/label/index.ts`:
 
 ```ts
-export { Label } from "./label"
+export { Label } from "./label";
 ```
 
 `packages/react/src/index.tsx` — add at the end:
 
 ```tsx
-export { Label } from "./label"
+export { Label } from "./label";
 ```
 
 **Verify**: `bun run typecheck` → exit 0.
@@ -194,21 +207,21 @@ title: Label
 description: Names a control, and a press on the label reaches it.
 ---
 
-import { Label } from '@hashti/react'
+import { Label } from "@hashti/react";
 
 ## Usage
 
-<div style={{ display: 'grid', gap: 8 }}>
+<div style={{ display: "grid", gap: 8 }}>
   <Label htmlFor="email">Email</Label>
   <input id="email" type="email" placeholder="you@example.com" />
 </div>
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `htmlFor` | `string` | The `id` of the control the label names. |
-| `children` | `ReactNode` | The label text, or a wrapped control. |
+| Prop       | Type        | Description                              |
+| ---------- | ----------- | ---------------------------------------- |
+| `htmlFor`  | `string`    | The `id` of the control the label names. |
+| `children` | `ReactNode` | The label text, or a wrapped control.    |
 
 A press on the label focuses the control it names. Styling lives in `@hashti/styles` under `.hashti-label`, with typography from the design label role (14px/20px, weight 600).
 ```

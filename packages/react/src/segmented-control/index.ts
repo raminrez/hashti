@@ -1,1 +1,5 @@
-export { SegmentedControl, SegmentedControlIndicator, SegmentedControlItem } from "./segmented-control"
+export {
+  SegmentedControl,
+  SegmentedControlIndicator,
+  SegmentedControlItem,
+} from "./segmented-control";

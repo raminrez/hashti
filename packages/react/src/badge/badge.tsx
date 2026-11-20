@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { type ComponentPropsWithRef, type ReactNode, type Ref } from "react"
+import { type ComponentPropsWithRef, type ReactNode, type Ref } from "react";
 
 export type BadgeKind =
   | "danger"
@@ -9,7 +9,7 @@ export type BadgeKind =
   | "info"
   | "primary"
   | "neutral"
-  | "secondary"
+  | "secondary";
 
 export type BadgePlacement =
   | "top-end"
@@ -19,18 +19,21 @@ export type BadgePlacement =
   | "top-right"
   | "top-left"
   | "bottom-right"
-  | "bottom-left"
+  | "bottom-left";
 
-export interface BadgeProps extends Omit<ComponentPropsWithRef<"span">, "content"> {
-  content?: ReactNode
-  count?: ReactNode
-  maxCount?: number
-  max?: number
-  isDot?: boolean
-  kind?: BadgeKind
-  placement?: BadgePlacement
-  children?: ReactNode
-  ref?: Ref<HTMLSpanElement>
+export interface BadgeProps extends Omit<
+  ComponentPropsWithRef<"span">,
+  "content"
+> {
+  content?: ReactNode;
+  count?: ReactNode;
+  maxCount?: number;
+  max?: number;
+  isDot?: boolean;
+  kind?: BadgeKind;
+  placement?: BadgePlacement;
+  children?: ReactNode;
+  ref?: Ref<HTMLSpanElement>;
 }
 
 export function Badge({
@@ -46,11 +49,15 @@ export function Badge({
   ref,
   ...props
 }: BadgeProps) {
-  const actualContent = count ?? content
-  const actualMax = max ?? maxCount
-  let displayContent: ReactNode = actualContent
-  if (typeof actualContent === "number" && actualMax != null && actualContent > actualMax) {
-    displayContent = `${actualMax}+`
+  const actualContent = count ?? content;
+  const actualMax = max ?? maxCount;
+  let displayContent: ReactNode = actualContent;
+  if (
+    typeof actualContent === "number" &&
+    actualMax != null &&
+    actualContent > actualMax
+  ) {
+    displayContent = `${actualMax}+`;
   }
 
   const normalizedPlacement =
@@ -62,9 +69,9 @@ export function Badge({
           ? "bottom-end"
           : placement === "bottom-left"
             ? "bottom-start"
-            : placement
+            : placement;
 
-  const isDotMode = isDot || (actualContent == null && children == null)
+  const isDotMode = isDot || (actualContent == null && children == null);
 
   const badgeElement = (
     <span
@@ -78,7 +85,7 @@ export function Badge({
     >
       {!isDot && (displayContent ?? children)}
     </span>
-  )
+  );
 
   // Without content/count the children are the pill's label; with one they are
   // the thing the badge marks.
@@ -88,8 +95,8 @@ export function Badge({
         {children}
         {badgeElement}
       </span>
-    )
+    );
   }
 
-  return badgeElement
+  return badgeElement;
 }

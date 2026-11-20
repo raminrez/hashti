@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   NavigationMenu,
@@ -8,12 +8,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-} from "@hashti/react"
+} from "@hashti/react";
 
 const docsLinks = [
   { href: "#components", title: "Components", desc: "Every building block." },
   { href: "#styles", title: "Styles", desc: "Tokens and recipes." },
-]
+];
 
 export function NavigationMenuDemo() {
   return (
@@ -25,7 +25,14 @@ export function NavigationMenuDemo() {
             {docsLinks.map((l) => (
               <NavigationMenuLink key={l.href} href={l.href}>
                 <div style={{ fontWeight: 600 }}>{l.title}</div>
-                <div style={{ color: "var(--hashti-text-secondary)", fontSize: "0.8125rem" }}>{l.desc}</div>
+                <div
+                  style={{
+                    color: "var(--hashti-text-secondary)",
+                    fontSize: "0.8125rem",
+                  }}
+                >
+                  {l.desc}
+                </div>
               </NavigationMenuLink>
             ))}
           </NavigationMenuContent>
@@ -39,5 +46,5 @@ export function NavigationMenuDemo() {
       </NavigationMenuList>
       <NavigationMenuViewport />
     </NavigationMenu>
-  )
+  );
 }

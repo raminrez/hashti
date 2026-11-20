@@ -10,4 +10,4 @@ export {
   SelectItemIndicator,
   SelectSeparator,
   SelectEmpty,
-} from "./select"
+} from "./select";

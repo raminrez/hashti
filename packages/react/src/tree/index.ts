@@ -1,1 +1,7 @@
-export { Tree, TreeItem, TreeItemLabel, TreeItemIndicator, TreeGroup } from "./tree"
+export {
+  Tree,
+  TreeItem,
+  TreeItemLabel,
+  TreeItemIndicator,
+  TreeGroup,
+} from "./tree";

@@ -60,9 +60,9 @@ Facts (small — style-only):
 ### Design rules that bite
 
 - `.hashti-link`: `color: var(--hashti-link-primary); text-decoration:
-  underline; text-decoration-thickness: 0.0625em; text-underline-offset:
-  0.15em; overflow-wrap: anywhere; text-decoration-color: color-mix(in
-  srgb, currentColor 40%, transparent)` — hmm, color-mix on a token is
+underline; text-decoration-thickness: 0.0625em; text-underline-offset:
+0.15em; overflow-wrap: anywhere; text-decoration-color: color-mix(in
+srgb, currentColor 40%, transparent)` — hmm, color-mix on a token is
   fine (no hex), but simplest: skip the decoration-color line if it
   complicates; underline at reduced thickness with full ink is acceptable.
   Keep: underline 0.0625em thick, offset 0.15em.
@@ -79,10 +79,10 @@ Facts (small — style-only):
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -119,20 +119,26 @@ Facts (small — style-only):
 no ui-sdk part):
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentPropsWithRef, Ref } from "react"
+import type { ComponentPropsWithRef, Ref } from "react";
 
 export interface LinkProps extends ComponentPropsWithRef<"a"> {
-  ref?: Ref<HTMLAnchorElement>
+  ref?: Ref<HTMLAnchorElement>;
 }
 
 function Link({ className, ref, ...props }: LinkProps) {
-  const base = "hashti-link"
-  return <a {...props} ref={ref} className={className ? `${base} ${className}` : base} />
+  const base = "hashti-link";
+  return (
+    <a
+      {...props}
+      ref={ref}
+      className={className ? `${base} ${className}` : base}
+    />
+  );
 }
 
-export { Link }
+export { Link };
 ```
 
 `packages/react/src/link/index.ts` exports `Link`; add the barrel line.
@@ -152,9 +158,9 @@ no matches; `grep -c "focus-visible" packages/styles/src/link.css` → ≥ 2.
 `apps/docs/src/components/link-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Link } from "@hashti/react"
+import { Link } from "@hashti/react";
 
 export function LinkDemo() {
   return (
@@ -163,7 +169,7 @@ export function LinkDemo() {
       <Link href="#repo">repository</Link>. Already read it? The link turns{" "}
       <Link href="#visited">visited</Link> after you follow it.
     </p>
-  )
+  );
 }
 ```
 
@@ -175,7 +181,7 @@ title: Link
 description: Styles inline navigation.
 ---
 
-import { LinkDemo } from '../../src/components/link-demo'
+import { LinkDemo } from "../../src/components/link-demo";
 
 ## Usage
 
@@ -203,11 +209,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-link" packages/react/src packages/styles/src` shows
-  the component class and the stylesheet selectors
+      the component class and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/link.css` returns
-  nothing
+      nothing
 - [ ] `grep -n "link" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

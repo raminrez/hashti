@@ -55,10 +55,10 @@ recipe.
   `--hashti-border-strong-01`, control radius, layer-01, overflow hidden,
   border-color transition.
 - **Segments**: inline, no individual borders — `display: inline;
-  border: none; background: transparent; color: var(--hashti-text-primary);
-  font-size: 1rem; line-height: 1.5rem; text-align: center;
-  inline-size: auto;` width driven by content; `caret-color:
-  var(--hashti-focus)` optional (skip — keep minimal). padding `0 0.125rem`
+border: none; background: transparent; color: var(--hashti-text-primary);
+font-size: 1rem; line-height: 1.5rem; text-align: center;
+inline-size: auto;` width driven by content; `caret-color:
+var(--hashti-focus)` optional (skip — keep minimal). padding `0 0.125rem`
   per segment.
   - `[data-empty]` → `color: var(--hashti-text-secondary);` (placeholder
     text comes from ui-sdk).
@@ -76,10 +76,10 @@ recipe.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -117,9 +117,9 @@ recipe.
 (direct-re-export check on the root; ui-sdk renders the segments itself,
 so the wrapper set is likely just the root + segment):
 
-| Part | Class |
-| --- | --- |
-| `DateInput` | `hashti-date-input` |
+| Part               | Class                        |
+| ------------------ | ---------------------------- |
+| `DateInput`        | `hashti-date-input`          |
 | `DateInputSegment` | `hashti-date-input__segment` |
 
 Export what exists from `./date-input` and the barrel (quote the actual
@@ -139,10 +139,10 @@ export list if it differs).
 `apps/docs/src/components/date-input-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Field, FieldLabel } from "@hashti/react"
-import { DateInput } from "@hashti/react"
+import { Field, FieldLabel } from "@hashti/react";
+import { DateInput } from "@hashti/react";
 
 export function DateInputDemo() {
   return (
@@ -150,7 +150,7 @@ export function DateInputDemo() {
       <FieldLabel>Delivery date</FieldLabel>
       <DateInput required />
     </Field>
-  )
+  );
 }
 ```
 
@@ -164,7 +164,7 @@ title: DateInput
 description: Types a date in place, segment by segment.
 ---
 
-import { DateInputDemo } from '../../src/components/date-input-demo'
+import { DateInputDemo } from "../../src/components/date-input-demo";
 
 ## Usage
 
@@ -193,11 +193,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-date-input" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/date-input.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "date-input" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

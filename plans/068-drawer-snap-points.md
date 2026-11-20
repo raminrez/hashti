@@ -28,7 +28,7 @@ Drawers that snap to defined positions instead of fully open/closed.
 
 - **Snap affordance**: a drag handle bar at the drawer's top edge —
   `inline-size: 2.5rem; block-size: 0.25rem; border-radius: 999px;
-  background: var(--hashti-border-strong-01);` centered, margin-block
+background: var(--hashti-border-strong-01);` centered, margin-block
   0.5rem. (If ui-sdk renders its own handle part, style that; else add via
   the demo composition.)
 - **Snapped states**: per the docs' attribute (e.g. `[data-snap="0.5"]`) —
@@ -55,7 +55,7 @@ Drawers that snap to defined positions instead of fully open/closed.
 ## Done
 
 - [ ] typecheck exit 0 · [ ] no hex · [ ] rendered check: drawer snaps to
-  positions and settles smoothly · [ ] commits per step
+      positions and settles smoothly · [ ] commits per step
 
 ## STOP
 

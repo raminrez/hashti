@@ -51,17 +51,17 @@ shell. Milestone cycle: the 50th.
 - **Root `hashti-command`**: a static panel (this cycle renders it INLINE
   in the docs demo, NOT in a dialog — dialog hosting is the consumer's
   composition): `background: var(--hashti-layer-01); border: 1px solid
-  var(--hashti-border-subtle-00); border-radius:
-  var(--hashti-popover-radius); box-shadow: 0 8px 24px
-  var(--hashti-shadow); overflow: hidden; display: flex; flex-direction:
-  column; inline-size: 100%; max-inline-size: 28rem;`
+var(--hashti-border-subtle-00); border-radius:
+var(--hashti-popover-radius); box-shadow: 0 8px 24px
+var(--hashti-shadow); overflow: hidden; display: flex; flex-direction:
+column; inline-size: 100%; max-inline-size: 28rem;`
 - **Input `hashti-command-input`**: `block-size: 3rem; padding: 0
-  0.875rem; border: none; border-block-end: 1px solid
-  var(--hashti-border-subtle-00); background: transparent; color:
-  var(--hashti-text-primary); font-size: 0.875rem;` `::placeholder`
+0.875rem; border: none; border-block-end: 1px solid
+var(--hashti-border-subtle-00); background: transparent; color:
+var(--hashti-text-primary); font-size: 0.875rem;` `::placeholder`
   secondary; outline none (the panel carries the ring in a dialog).
 - **List `hashti-command-list`**: `overflow-y: auto; max-block-size:
-  16rem; padding: 0.25rem;` (the scrollable region).
+16rem; padding: 0.25rem;` (the scrollable region).
 - **Items `hashti-command-item`**: full-bleed menu item recipe — 40px,
   `0 0.625rem`, `border-radius: var(--hashti-border-radius-08);`
   highlighted → background-hover, `outline: none;` disabled ink.
@@ -76,10 +76,10 @@ shell. Milestone cycle: the 50th.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -117,16 +117,16 @@ shell. Milestone cycle: the 50th.
 (direct-re-export checks per part; data-slot keying where a class cannot
 land — the date-input lesson):
 
-| Part | Class |
-| --- | --- |
-| `Command` | `hashti-command` |
-| `CommandInput` | `hashti-command-input` |
-| `CommandList` | `hashti-command-list` |
-| `CommandItem` | `hashti-command-item` |
-| `CommandGroup` | `hashti-command-group` |
+| Part                | Class                         |
+| ------------------- | ----------------------------- |
+| `Command`           | `hashti-command`              |
+| `CommandInput`      | `hashti-command-input`        |
+| `CommandList`       | `hashti-command-list`         |
+| `CommandItem`       | `hashti-command-item`         |
+| `CommandGroup`      | `hashti-command-group`        |
 | `CommandGroupLabel` | `hashti-command__group-label` |
-| `CommandSeparator` | `hashti-command-separator` |
-| `CommandEmpty` | `hashti-command-empty` |
+| `CommandSeparator`  | `hashti-command-separator`    |
+| `CommandEmpty`      | `hashti-command-empty`        |
 
 Export all from `./command` and the barrel.
 
@@ -144,7 +144,7 @@ Export all from `./command` and the barrel.
 `apps/docs/src/components/command-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Command,
@@ -155,12 +155,15 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function CommandDemo() {
   return (
     <Command onAction={(v) => console.log(v)} style={{ maxWidth: 448 }}>
-      <CommandInput placeholder="Type a command or search…" aria-label="Command palette" />
+      <CommandInput
+        placeholder="Type a command or search…"
+        aria-label="Command palette"
+      />
       <CommandList>
         <CommandGroup>
           <CommandGroupLabel>File</CommandGroupLabel>
@@ -171,12 +174,14 @@ export function CommandDemo() {
         <CommandGroup>
           <CommandGroupLabel>Edit</CommandGroupLabel>
           <CommandItem value="undo">Undo</CommandItem>
-          <CommandItem value="disabled-one" disabled>Redo</CommandItem>
+          <CommandItem value="disabled-one" disabled>
+            Redo
+          </CommandItem>
         </CommandGroup>
       </CommandList>
       <CommandEmpty>No commands found.</CommandEmpty>
     </Command>
-  )
+  );
 }
 ```
 
@@ -190,7 +195,7 @@ title: Command
 description: Runs commands from a filtered list.
 ---
 
-import { CommandDemo } from '../../src/components/command-demo'
+import { CommandDemo } from "../../src/components/command-demo";
 
 ## Usage
 
@@ -198,14 +203,14 @@ import { CommandDemo } from '../../src/components/command-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Command` | The palette panel; `onAction` runs the choice. |
-| `CommandInput` | The filter field. |
-| `CommandList` | The scrollable region. |
-| `CommandItem` | One command; `data-highlighted`, `data-pending`. |
-| `CommandGroup` / `CommandGroupLabel` / `CommandSeparator` | Named sets. |
-| `CommandEmpty` | Shows when nothing matches. |
+| Part                                                      | Purpose                                          |
+| --------------------------------------------------------- | ------------------------------------------------ |
+| `Command`                                                 | The palette panel; `onAction` runs the choice.   |
+| `CommandInput`                                            | The filter field.                                |
+| `CommandList`                                             | The scrollable region.                           |
+| `CommandItem`                                             | One command; `data-highlighted`, `data-pending`. |
+| `CommandGroup` / `CommandGroupLabel` / `CommandSeparator` | Named sets.                                      |
+| `CommandEmpty`                                            | Shows when nothing matches.                      |
 
 Styling lives in `@hashti/styles` under `.hashti-command*` — a floating panel with a search bar on top and full-bleed menu items below.
 ```
@@ -228,11 +233,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-command" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/command.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "command" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

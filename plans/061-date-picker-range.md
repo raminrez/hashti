@@ -63,7 +63,7 @@ Range selection is the last missing DatePicker behavior.
 ## Done
 
 - [ ] typecheck exit 0 · [ ] no hex in touched css · [ ] range demo renders
-  two inputs · [ ] commits per step · [ ] no out-of-scope files
+      two inputs · [ ] commits per step · [ ] no out-of-scope files
 
 ## STOP
 

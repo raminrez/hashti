@@ -1,7 +1,7 @@
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { DefaultNotFound } from 'fumadocs-ui/layouts/home/not-found';
-import { Provider, type ProviderProps } from '@/components/provider';
-import { baseOptions } from '@/lib/layout.shared';
+import { HomeLayout } from "fumadocs-ui/layouts/home";
+import { DefaultNotFound } from "fumadocs-ui/layouts/home/not-found";
+import { Provider, type ProviderProps } from "@/components/provider";
+import { baseOptions } from "@/lib/layout.shared";
 
 /**
  * The React island of pages in the home layout, the content is passed as children.

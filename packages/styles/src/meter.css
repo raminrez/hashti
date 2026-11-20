@@ -30,7 +30,8 @@
   block-size: 100%;
   background: var(--hashti-interactive);
   border-radius: var(--hashti-border-radius-max);
-  transition: width var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width var(--hashti-duration-moderate-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-meter[data-tone="neutral"] .hashti-meter-indicator {

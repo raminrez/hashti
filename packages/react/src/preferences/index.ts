@@ -5,4 +5,4 @@ export {
   createLocalStorage,
   createPreference,
   createSessionStorage,
-} from "./preferences"
+} from "./preferences";

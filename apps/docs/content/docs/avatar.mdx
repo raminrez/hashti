@@ -3,8 +3,8 @@ title: Avatar
 description: Shows an image with a fallback while it loads or if it fails.
 ---
 
-import { AvatarDemo, AvatarImageDemo } from '../../src/components/avatar-demo'
-import { AvatarGroupDemo } from '../../src/components/avatar-group-demo'
+import { AvatarDemo, AvatarImageDemo } from "../../src/components/avatar-demo";
+import { AvatarGroupDemo } from "../../src/components/avatar-group-demo";
 
 ## Sizes
 
@@ -22,9 +22,9 @@ import { AvatarGroupDemo } from '../../src/components/avatar-group-demo'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | Root size. Default `md`. |
-| `delay` | `number` | On `AvatarFallback`: ms to wait before showing it. |
+| Prop    | Type                                   | Description                                        |
+| ------- | -------------------------------------- | -------------------------------------------------- |
+| `size`  | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | Root size. Default `md`.                           |
+| `delay` | `number`                               | On `AvatarFallback`: ms to wait before showing it. |
 
 Styling lives in `@hashti/styles` under `.hashti-avatar`, keyed off `data-size`, fully round, with initials at 40% of the avatar size.

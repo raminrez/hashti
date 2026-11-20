@@ -8,22 +8,22 @@ back to `dev` when reviewed.
 
 ## Wave 1 — form elements first (cycles 061–064)
 
-| Cycle | Feature | Lane |
-| --- | --- | --- |
-| 061 | DatePicker range mode (two-end selection, range styling, two inputs) | Particle-1 — **DONE, merged** |
-| 062 | Inline completion (Input/Textarea inline suggest, accept with Tab→) | Particle-2 — **DONE, merged** |
-| 063 | Rating half-star masks (fractional fill via mask/clip) | Particle-3 — **DONE, merged** |
-| 064 | Vertical variants (Slider, Tabs, SegmentedControl vertical modes) | Particle-4 — **DONE, merged** |
+| Cycle | Feature                                                              | Lane                          |
+| ----- | -------------------------------------------------------------------- | ----------------------------- |
+| 061   | DatePicker range mode (two-end selection, range styling, two inputs) | Particle-1 — **DONE, merged** |
+| 062   | Inline completion (Input/Textarea inline suggest, accept with Tab→)  | Particle-2 — **DONE, merged** |
+| 063   | Rating half-star masks (fractional fill via mask/clip)               | Particle-3 — **DONE, merged** |
+| 064   | Vertical variants (Slider, Tabs, SegmentedControl vertical modes)    | Particle-4 — **DONE, merged** |
 
 ## Wave 2 — surfaces & global (queued)
 
-| Cycle | Feature |
-| --- | --- |
-| 065 | Menu submenus + checkbox/radio items + icons | Particle-5 — **DONE, merged** |
-| 066 | Promise toasts (loading → success/error lifecycle) | Particle-6 — **DONE, merged** |
-| 067 | Command pages + async search | Particle-7 — **DONE, merged** |
-| 068 | Drawer snap points | Particle-8 — **DONE, merged** |
-| 069 | RTL pass (logical properties audit across all stylesheets) | Particle-8 — **DONE, merged** |
+| Cycle | Feature                                                    |
+| ----- | ---------------------------------------------------------- |
+| 065   | Menu submenus + checkbox/radio items + icons               | Particle-5 — **DONE, merged** |
+| 066   | Promise toasts (loading → success/error lifecycle)         | Particle-6 — **DONE, merged** |
+| 067   | Command pages + async search                               | Particle-7 — **DONE, merged** |
+| 068   | Drawer snap points                                         | Particle-8 — **DONE, merged** |
+| 069   | RTL pass (logical properties audit across all stylesheets) | Particle-8 — **DONE, merged** |
 
 ## Rules (unchanged from phase 1)
 

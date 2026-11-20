@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   Toast,
   ToastClose,
@@ -8,34 +8,55 @@ import {
   ToastRegion,
   ToastTitle,
   toast,
-} from "@hashti/react"
+} from "@hashti/react";
 
 function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M20 6 9 17l-5-5" />
     </svg>
-  )
+  );
 }
 
 function AlertIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <circle cx="12" cy="12" r="10" />
       <line x1="12" y1="8" x2="12" y2="12" />
       <line x1="12" y1="16" x2="12.01" y2="16" />
     </svg>
-  )
+  );
 }
 
 export function ToastDemo() {
-  const attempts = React.useRef(0)
+  const attempts = React.useRef(0);
 
   function save(): Promise<void> {
-    const succeeds = ++attempts.current % 2 === 1
+    const succeeds = ++attempts.current % 2 === 1;
     return new Promise((resolve, reject) =>
-      setTimeout(() => (succeeds ? resolve() : reject(new Error("Network error"))), 1500),
-    )
+      setTimeout(
+        () => (succeeds ? resolve() : reject(new Error("Network error"))),
+        1500,
+      ),
+    );
   }
 
   return (
@@ -44,7 +65,9 @@ export function ToastDemo() {
         type="button"
         className="hashti-button"
         data-variant="secondary"
-        onClick={() => toast("Event created", { description: "Friday at 10:00 AM" })}
+        onClick={() =>
+          toast("Event created", { description: "Friday at 10:00 AM" })
+        }
       >
         Default
       </button>
@@ -101,5 +124,5 @@ export function ToastDemo() {
         )}
       </ToastRegion>
     </div>
-  )
+  );
 }

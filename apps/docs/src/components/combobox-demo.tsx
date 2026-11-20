@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Combobox,
@@ -7,9 +7,9 @@ import {
   ComboboxItem,
   ComboboxLabel,
   ComboboxList,
-} from "@hashti/react"
+} from "@hashti/react";
 
-const roles = ["Viewer", "Editor", "Admin"]
+const roles = ["Viewer", "Editor", "Admin"];
 
 export function ComboboxDemo() {
   // The root renders no element, so the width lives on a wrapping div.
@@ -29,5 +29,5 @@ export function ComboboxDemo() {
         </ComboboxContent>
       </Combobox>
     </div>
-  )
+  );
 }

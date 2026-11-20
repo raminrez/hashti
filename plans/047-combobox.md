@@ -54,7 +54,7 @@ names.
 - **Content `hashti-combobox-content`**: Select's popup surface — 18px
   radius, layer-01, subtle border, popover shadow, 4px padding,
   `min-inline-size: var(--anchor-width)`, `max-block-size:
-  var(--available-height); overflow-y: auto`.
+var(--available-height); overflow-y: auto`.
 - **List**: `display: grid; gap: 0.125rem; padding: 0;` reset.
 - **Items**: Select's item recipe — 40px, `0 0.75rem`, 8px inner radius
   (Select items float in padding, unlike Menu's full-bleed), highlighted
@@ -65,10 +65,10 @@ names.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -106,14 +106,14 @@ names.
 (direct-re-export check on the root; check class landing per part —
 cycle-36 lesson):
 
-| Part | Class |
-| --- | --- |
-| `Combobox` | `hashti-combobox` (or direct re-export) |
-| `ComboboxLabel` | `hashti-combobox__label` |
-| `ComboboxInput` | `hashti-combobox-input` |
-| `ComboboxContent` | `hashti-combobox-content` |
-| `ComboboxList` | `hashti-combobox-list` |
-| `ComboboxItem` | `hashti-combobox-item` |
+| Part              | Class                                   |
+| ----------------- | --------------------------------------- |
+| `Combobox`        | `hashti-combobox` (or direct re-export) |
+| `ComboboxLabel`   | `hashti-combobox__label`                |
+| `ComboboxInput`   | `hashti-combobox-input`                 |
+| `ComboboxContent` | `hashti-combobox-content`               |
+| `ComboboxList`    | `hashti-combobox-list`                  |
+| `ComboboxItem`    | `hashti-combobox-item`                  |
 
 Export all from `./combobox` and the barrel.
 
@@ -132,7 +132,7 @@ Export all from `./combobox` and the barrel.
 `apps/docs/src/components/combobox-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Combobox,
@@ -141,9 +141,9 @@ import {
   ComboboxItem,
   ComboboxLabel,
   ComboboxList,
-} from "@hashti/react"
+} from "@hashti/react";
 
-const roles = ["Viewer", "Editor", "Admin"]
+const roles = ["Viewer", "Editor", "Admin"];
 
 export function ComboboxDemo() {
   return (
@@ -153,12 +153,14 @@ export function ComboboxDemo() {
       <ComboboxContent>
         <ComboboxList>
           {roles.map((r) => (
-            <ComboboxItem key={r} value={r}>{r}</ComboboxItem>
+            <ComboboxItem key={r} value={r}>
+              {r}
+            </ComboboxItem>
           ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
-  )
+  );
 }
 ```
 
@@ -173,7 +175,7 @@ title: Combobox
 description: Picks an option from a filterable list.
 ---
 
-import { ComboboxDemo } from '../../src/components/combobox-demo'
+import { ComboboxDemo } from "../../src/components/combobox-demo";
 
 ## Usage
 
@@ -181,12 +183,12 @@ import { ComboboxDemo } from '../../src/components/combobox-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Combobox` | Owns the value and filtering. |
-| `ComboboxInput` | The editable field. |
-| `ComboboxContent` / `ComboboxList` | The anchored popup. |
-| `ComboboxItem` | One option. |
+| Part                               | Purpose                       |
+| ---------------------------------- | ----------------------------- |
+| `Combobox`                         | Owns the value and filtering. |
+| `ComboboxInput`                    | The editable field.           |
+| `ComboboxContent` / `ComboboxList` | The anchored popup.           |
+| `ComboboxItem`                     | One option.                   |
 
 Styling lives in `@hashti/styles` under `.hashti-combobox*` — a field input with Select's popup surface and items.
 ```
@@ -209,11 +211,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-combobox" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/combobox.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "combobox" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

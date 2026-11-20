@@ -3,7 +3,10 @@ title: Slider
 description: Picks a value along a track.
 ---
 
-import { SliderVerticalDemo, SliderDemo } from '../../src/components/slider-demo'
+import {
+  SliderVerticalDemo,
+  SliderDemo,
+} from "../../src/components/slider-demo";
 
 ## Usage
 
@@ -17,13 +20,13 @@ Set `orientation="vertical"` and the track runs top-to-bottom — the bottom is 
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Slider` | Holds the value; a group around the thumbs. |
-| `SliderValue` | The formatted value. |
-| `SliderControl` | Where presses land; moves the nearest thumb. |
-| `SliderTrack` | The rail; the positioned box. |
-| `SliderIndicator` | Fills the track to the thumb. |
-| `SliderThumb` | What you drag; contains the accessible input. |
+| Part              | Purpose                                       |
+| ----------------- | --------------------------------------------- |
+| `Slider`          | Holds the value; a group around the thumbs.   |
+| `SliderValue`     | The formatted value.                          |
+| `SliderControl`   | Where presses land; moves the nearest thumb.  |
+| `SliderTrack`     | The rail; the positioned box.                 |
+| `SliderIndicator` | Fills the track to the thumb.                 |
+| `SliderThumb`     | What you drag; contains the accessible input. |
 
 Styling lives in `@hashti/styles` under `.hashti-slider-*` — a 4px rail with a focus-blue fill and an 18px thumb that grows on touch.

@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { Button as UiButton } from "@ui-sdk/react/button"
+import type { ComponentProps } from "react";
+import { Button as UiButton } from "@ui-sdk/react/button";
 
 type ButtonVariant =
   | "primary"
@@ -10,16 +10,21 @@ type ButtonVariant =
   | "ghost"
   | "danger"
   | "danger-tertiary"
-  | "danger-ghost"
+  | "danger-ghost";
 
-type ButtonSize = "sm" | "md" | "lg"
+type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonProps extends ComponentProps<typeof UiButton> {
-  variant?: ButtonVariant
-  size?: ButtonSize
+  variant?: ButtonVariant;
+  size?: ButtonSize;
 }
 
-function Button({ variant = "primary", size = "md", className, ...props }: ButtonProps) {
+function Button({
+  variant = "primary",
+  size = "md",
+  className,
+  ...props
+}: ButtonProps) {
   return (
     <UiButton
       className={`hashti-button${className ? ` ${className}` : ""}`}
@@ -27,7 +32,7 @@ function Button({ variant = "primary", size = "md", className, ...props }: Butto
       data-size={size}
       {...props}
     />
-  )
+  );
 }
 
-export { Button }
+export { Button };

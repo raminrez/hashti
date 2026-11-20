@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Toolbar,
@@ -7,7 +7,7 @@ import {
   ToolbarInput,
   ToolbarLink,
   ToolbarSeparator,
-} from "@hashti/react"
+} from "@hashti/react";
 
 function Icon({ d }: { d: string }) {
   return (
@@ -21,7 +21,7 @@ function Icon({ d }: { d: string }) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 export function ToolbarDemo() {
@@ -42,9 +42,13 @@ export function ToolbarDemo() {
         </ToolbarButton>
       </ToolbarGroup>
       <ToolbarSeparator />
-      <ToolbarInput placeholder="Find…" aria-label="Find" style={{ inlineSize: "8rem" }} />
+      <ToolbarInput
+        placeholder="Find…"
+        aria-label="Find"
+        style={{ inlineSize: "8rem" }}
+      />
       <ToolbarSeparator />
       <ToolbarLink href="#help">Help</ToolbarLink>
     </Toolbar>
-  )
+  );
 }

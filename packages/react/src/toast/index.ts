@@ -6,4 +6,4 @@ export {
   ToastRegion,
   ToastTitle,
   toast,
-} from "./toast"
+} from "./toast";

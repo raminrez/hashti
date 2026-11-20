@@ -1,6 +1,12 @@
-"use client"
+"use client";
 
-import { Meter, MeterIndicator, MeterLabel, MeterTrack, MeterValue } from "@hashti/react"
+import {
+  Meter,
+  MeterIndicator,
+  MeterLabel,
+  MeterTrack,
+  MeterValue,
+} from "@hashti/react";
 
 export function MeterDemo() {
   return (
@@ -23,5 +29,5 @@ export function MeterDemo() {
         </MeterTrack>
       </Meter>
     </div>
-  )
+  );
 }

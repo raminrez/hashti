@@ -1,1 +1,1 @@
-export { DateInput, DateInputSegment } from "./date-input"
+export { DateInput, DateInputSegment } from "./date-input";

@@ -1,23 +1,29 @@
-"use client"
+"use client";
 
-import { Button, Preferences, createLocalStorage, createPreference, usePreference } from "@hashti/react"
+import {
+  Button,
+  Preferences,
+  createLocalStorage,
+  createPreference,
+  usePreference,
+} from "@hashti/react";
 
 const view = createPreference({
   values: ["list", "grid"],
   defaultValue: "list",
   attribute: "data-view",
   storage: createLocalStorage("hashti-preferences-view"),
-})
+});
 
 const files = [
   { name: "Q3 roadmap.pdf", detail: "2.4 MB" },
   { name: "Launch checklist.md", detail: "12 KB" },
   { name: "Offsite photos", detail: "24 items" },
   { name: "Brand assets.zip", detail: "18 MB" },
-]
+];
 
 export function PreferencesDemo() {
-  const { value } = usePreference(view)
+  const { value } = usePreference(view);
 
   return (
     <Preferences preferences={[view]}>
@@ -35,11 +41,23 @@ export function PreferencesDemo() {
         [data-view="grid"] .preferences-demo__files { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .preferences-demo__detail { color: var(--hashti-text-secondary); font-size: 0.8125rem; }
       `}</style>
-      <div className="preferences-demo__controls" role="group" aria-label="View">
-        <Button size="sm" aria-pressed={value === "list"} onClick={() => view.set("list")}>
+      <div
+        className="preferences-demo__controls"
+        role="group"
+        aria-label="View"
+      >
+        <Button
+          size="sm"
+          aria-pressed={value === "list"}
+          onClick={() => view.set("list")}
+        >
           List
         </Button>
-        <Button size="sm" aria-pressed={value === "grid"} onClick={() => view.set("grid")}>
+        <Button
+          size="sm"
+          aria-pressed={value === "grid"}
+          onClick={() => view.set("grid")}
+        >
           Grid
         </Button>
       </div>
@@ -52,5 +70,5 @@ export function PreferencesDemo() {
         ))}
       </ul>
     </Preferences>
-  )
+  );
 }

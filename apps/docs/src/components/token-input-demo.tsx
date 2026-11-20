@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   TokenInput,
@@ -8,13 +8,13 @@ import {
   TriggerMenu,
   TriggerMenuContent,
   TriggerMenuList,
-} from "@hashti/react"
+} from "@hashti/react";
 
 const people = [
   { value: "hollis", label: "Hollis Grant" },
   { value: "ines", label: "Inès Moreau" },
   { value: "kofi", label: "Kofi Mensah" },
-]
+];
 
 export function TokenInputDemo() {
   // The root renders no element, so the width lives on a wrapping div.
@@ -36,5 +36,5 @@ export function TokenInputDemo() {
         </TriggerMenu>
       </TokenInput>
     </div>
-  )
+  );
 }

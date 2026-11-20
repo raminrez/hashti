@@ -56,27 +56,27 @@ sibling.
 
 - **Editor `hashti-token-input-editor`**: the chips container role —
   `display: flex; flex-wrap: wrap; align-items: center; gap: 0.375rem;
-  min-block-size: 2.75rem; padding: 0.3125rem 0.5rem; border: 1px solid
-  var(--hashti-border-strong-01); border-radius:
-  var(--hashti-control-radius); background: var(--hashti-layer-01);`
+min-block-size: 2.75rem; padding: 0.3125rem 0.5rem; border: 1px solid
+var(--hashti-border-strong-01); border-radius:
+var(--hashti-control-radius); background: var(--hashti-layer-01);`
   `[data-empty]` → nothing special (placeholder shows via the input).
 - **Editor's inner input**: TriggerMenu's input inside the editor must go
   borderless: `.hashti-token-input-editor .hashti-trigger-menu-input {
-  border: none; background: transparent; min-block-size: 2rem; flex: 1 1
-  4rem; padding: 0 0.25rem; }` (same pattern as combobox-chips).
+border: none; background: transparent; min-block-size: 2rem; flex: 1 1
+4rem; padding: 0 0.25rem; }` (same pattern as combobox-chips).
 - **Focus ring**: on the editor via `:has(:focus-visible)` 2px @2px (the
   group recipe).
 - **Token `hashti-token-input-token`**: the chip recipe — `display:
-  inline-flex; align-items: center; gap: 0.375rem; padding: 0.25rem
-  0.5rem; border-radius: var(--hashti-border-radius-08); background:
-  var(--hashti-background-selected); color: var(--hashti-focus);
-  font-size: 0.8125rem; font-weight: 500;`
+inline-flex; align-items: center; gap: 0.375rem; padding: 0.25rem
+0.5rem; border-radius: var(--hashti-border-radius-08); background:
+var(--hashti-background-selected); color: var(--hashti-focus);
+font-size: 0.8125rem; font-weight: 500;`
   - `[data-selected]` → darker treatment: `background:
-    var(--hashti-background-selected-hover);` (or an outline ring — pick
+var(--hashti-background-selected-hover);` (or an outline ring — pick
     the hover token; keep simple).
   - `[data-pending]` → ink `var(--hashti-text-disabled);`
   - `[data-unresolved]` → `border: 1px dashed
-    var(--hashti-support-warning);`
+var(--hashti-support-warning);`
 - **TokenRemove `hashti-token-input-token-remove`**: the chip-remove
   recipe — 1.125rem square, transparent, inherit ink, hover
   background-hover, ring 2px@2px on `:focus-visible`.
@@ -84,10 +84,10 @@ sibling.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -123,12 +123,12 @@ sibling.
 pattern (direct-re-export checks per part — check class landing against
 the rendered DOM, the date-input lesson):
 
-| Part | Class |
-| --- | --- |
-| `TokenInput` | `hashti-token-input` (or direct re-export) |
-| `TokenInputEditor` | `hashti-token-input-editor` |
-| `TokenInputToken` | `hashti-token-input-token` |
-| `TokenInputTokenRemove` | `hashti-token-input-token-remove` |
+| Part                    | Class                                      |
+| ----------------------- | ------------------------------------------ |
+| `TokenInput`            | `hashti-token-input` (or direct re-export) |
+| `TokenInputEditor`      | `hashti-token-input-editor`                |
+| `TokenInputToken`       | `hashti-token-input-token`                 |
+| `TokenInputTokenRemove` | `hashti-token-input-token-remove`          |
 
 Export all from `./token-input` and the barrel (TriggerMenu parts are
 already in the barrel for composition).
@@ -149,24 +149,36 @@ already in the barrel for composition).
 TriggerMenu per the docs' Usage section; a remove glyph inline:
 
 ```tsx
-"use client"
+"use client";
 
-import { TokenInput, TokenInputEditor, TokenInputToken, TokenInputTokenRemove } from "@hashti/react"
-import { TriggerMenu, TriggerMenuContent, TriggerMenuInput } from "@hashti/react"
+import {
+  TokenInput,
+  TokenInputEditor,
+  TokenInputToken,
+  TokenInputTokenRemove,
+} from "@hashti/react";
+import {
+  TriggerMenu,
+  TriggerMenuContent,
+  TriggerMenuInput,
+} from "@hashti/react";
 
-const people = ["Hollis Vance", "Priya Nair", "Tom Okafor"]
+const people = ["Hollis Vance", "Priya Nair", "Tom Okafor"];
 
 export function TokenInputDemo() {
   return (
     <TokenInput style={{ maxWidth: 360 }}>
       <TokenInputEditor>
         <TriggerMenu items={people}>
-          <TriggerMenuInput placeholder="Type @ to mention…" aria-label="Recipients" />
+          <TriggerMenuInput
+            placeholder="Type @ to mention…"
+            aria-label="Recipients"
+          />
           <TriggerMenuContent />
         </TriggerMenu>
       </TokenInputEditor>
     </TokenInput>
-  )
+  );
 }
 ```
 
@@ -183,7 +195,7 @@ title: TokenInput
 description: Turns typed text into removable tokens.
 ---
 
-import { TokenInputDemo } from '../../src/components/token-input-demo'
+import { TokenInputDemo } from "../../src/components/token-input-demo";
 
 ## Usage
 
@@ -212,11 +224,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-token-input" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/token-input.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "token-input" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

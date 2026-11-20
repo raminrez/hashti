@@ -5,4 +5,4 @@ export {
   PopoverTitle,
   PopoverDescription,
   PopoverClose,
-} from "./popover"
+} from "./popover";

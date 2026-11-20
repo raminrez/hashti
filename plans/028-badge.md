@@ -45,7 +45,7 @@ Read both before writing. Facts:
   normalize to the `*-end`/`*-start` names), `children?` (the thing the
   badge marks).
 - No `children` → renders a bare `<span class="hashti-badge" role="status"
-  data-kind data-placement>`. With `children` → wraps in
+data-kind data-placement>`. With `children` → wraps in
   `<span class="hashti-badge-wrapper">` (a relative positioning context)
   with the badge absolutely placed on it.
 - `isDot || content == null` → dot mode: `hashti-badge--dot` modifier class
@@ -58,33 +58,33 @@ Read both before writing. Facts:
 ### Design rules that bite (tokenize the old frame.css block)
 
 - `.hashti-badge`: inline-flex, centered, `min-inline-size: 1.125rem;
-  block-size: 1.125rem; padding: 0 0.3125rem; border-radius:
-  var(--hashti-border-radius-max); font-size: 0.6875rem; font-weight: 600;
-  line-height: 1; background: var(--hashti-support-error); color:
-  var(--hashti-text-on-color); white-space: nowrap; user-select: none;`
+block-size: 1.125rem; padding: 0 0.3125rem; border-radius:
+var(--hashti-border-radius-max); font-size: 0.6875rem; font-weight: 600;
+line-height: 1; background: var(--hashti-support-error); color:
+var(--hashti-text-on-color); white-space: nowrap; user-select: none;`
 - `.hashti-badge-wrapper`: `position: relative; display: inline-flex;`
 - Placements (wrapper > badge): `top-end` →
   `position: absolute; inset-block-start: 0; inset-inline-end: 0;
-  translate: 50% -50%;` (and `top-start`, `bottom-end`, `bottom-start`
+translate: 50% -50%;` (and `top-start`, `bottom-end`, `bottom-start`
   mirrored across the two axes); `pointer-events: none; z-index: 1;`
 - Kinds: `success` → `background: var(--hashti-support-success)`;
   `warning` → `var(--hashti-support-warning)`; `info` →
   `var(--hashti-support-info)`; `primary` → `var(--hashti-interactive)`;
   `neutral`/`secondary` → `background: var(--hashti-layer-02); color:
-  var(--hashti-text-primary); border: 1px solid
-  var(--hashti-border-subtle-00);` (map the old layer-accent to layer-02;
+var(--hashti-text-primary); border: 1px solid
+var(--hashti-border-subtle-00);` (map the old layer-accent to layer-02;
   check `design/tokens.css` for the exact token names and use what
   exists).
 - `[data-dot]`: `min-inline-size: 0.5rem; inline-size: 0.5rem;
-  block-size: 0.5rem; padding: 0;`
+block-size: 0.5rem; padding: 0;`
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -137,30 +137,49 @@ no matches; `grep -c "data-" packages/styles/src/badge.css` → ≥ 6.
 `apps/docs/src/components/badge-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Badge } from "@hashti/react"
+import { Badge } from "@hashti/react";
 
 function Bell() {
   return (
     <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true">
-      <path d="M8 2a4 4 0 0 0-4 4v3l-1 2h10l-1-2V6a4 4 0 0 0-4-4Zm-1.5 10a1.5 1.5 0 0 0 3 0" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+      <path
+        d="M8 2a4 4 0 0 0-4 4v3l-1 2h10l-1-2V6a4 4 0 0 0-4-4Zm-1.5 10a1.5 1.5 0 0 0 3 0"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinejoin="round"
+      />
     </svg>
-  )
+  );
 }
 
 export function BadgeDemo() {
   return (
-    <div style={{ display: "flex", gap: 24, alignItems: "center", flexWrap: "wrap" }}>
-      <Badge count={3}><Bell /></Badge>
-      <Badge count={150}><Bell /></Badge>
-      <Badge isDot><Bell /></Badge>
+    <div
+      style={{
+        display: "flex",
+        gap: 24,
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
+      <Badge count={3}>
+        <Bell />
+      </Badge>
+      <Badge count={150}>
+        <Bell />
+      </Badge>
+      <Badge isDot>
+        <Bell />
+      </Badge>
       <Badge kind="success">Active</Badge>
       <Badge kind="warning">Pending</Badge>
       <Badge kind="info">Beta</Badge>
       <Badge kind="neutral">Draft</Badge>
     </div>
-  )
+  );
 }
 ```
 
@@ -172,7 +191,7 @@ title: Badge
 description: Marks a count or status on content.
 ---
 
-import { BadgeDemo } from '../../src/components/badge-demo'
+import { BadgeDemo } from "../../src/components/badge-demo";
 
 ## Usage
 
@@ -180,13 +199,13 @@ import { BadgeDemo } from '../../src/components/badge-demo'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `count` / `content` | `ReactNode` | The marker; numbers clamp at `maxCount` (99 → "99+"). |
-| `isDot` | `boolean` | An 8px dot instead of content. |
-| `kind` | `danger \| success \| warning \| info \| primary \| neutral \| secondary` | The status ink. |
-| `placement` | `top-end \| top-start \| bottom-end \| bottom-start` | Where the badge sits on `children`. |
-| `children` | `ReactNode` | The content the badge marks; wraps it. |
+| Prop                | Type                                                                      | Description                                           |
+| ------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `count` / `content` | `ReactNode`                                                               | The marker; numbers clamp at `maxCount` (99 → "99+"). |
+| `isDot`             | `boolean`                                                                 | An 8px dot instead of content.                        |
+| `kind`              | `danger \| success \| warning \| info \| primary \| neutral \| secondary` | The status ink.                                       |
+| `placement`         | `top-end \| top-start \| bottom-end \| bottom-start`                      | Where the badge sits on `children`.                   |
+| `children`          | `ReactNode`                                                               | The content the badge marks; wraps it.                |
 ```
 
 `apps/docs/content/docs/meta.json` — insert `"badge"` after `"avatar"`.
@@ -206,11 +225,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-badge" packages/react/src packages/styles/src`
-  shows the component classes and the stylesheet selectors
+      shows the component classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/badge.css` returns
-  nothing
+      nothing
 - [ ] `grep -n "badge" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

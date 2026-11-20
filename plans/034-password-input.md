@@ -48,28 +48,28 @@ bordered field) — the affix recipe InputGroup and the date inputs reuse.
 ### Design rules that bite (from input.css, the group affix pattern)
 
 - **Root (the joined control)**: `display: flex; align-items: stretch;
-  inline-size: 100%; min-block-size: 2.75rem; border: 1px solid
-  var(--hashti-border-strong-01); border-radius: var(--hashti-control-radius);
-  background: var(--hashti-layer-01); overflow: hidden;
-  transition: border-color var(--hashti-duration-fast-01)
-  cubic-bezier(0.16, 1, 0.3, 1);`
+inline-size: 100%; min-block-size: 2.75rem; border: 1px solid
+var(--hashti-border-strong-01); border-radius: var(--hashti-control-radius);
+background: var(--hashti-layer-01); overflow: hidden;
+transition: border-color var(--hashti-duration-fast-01)
+cubic-bezier(0.16, 1, 0.3, 1);`
 - **Control (inner input)**: `flex: 1 1 auto; min-inline-size: 0; border:
-  none; background: transparent; padding: 0 0.75rem; color: var(--hashti-text-primary);
-  font-size: 1rem; line-height: 1.5rem;` `::placeholder` ink secondary;
+none; background: transparent; padding: 0 0.75rem; color: var(--hashti-text-primary);
+font-size: 1rem; line-height: 1.5rem;` `::placeholder` ink secondary;
   outline none (the ROOT carries focus).
 - **Focus on the root**: `.hashti-password-input:has(:focus-visible)` →
   border-color stays (per DESIGN.md the ring is the affordance) + the
   standard ring `outline: 2px solid var(--hashti-focus); outline-offset:
-  2px;` on the root (the group is the control here). Also honor
+2px;` on the root (the group is the control here). Also honor
   `[data-focus-visible]` if ui-sdk emits it on the root — include both
   selectors.
 - **Toggle**: a quiet icon button at the inline end — `display: inline-flex;
-  align-items: center; justify-content: center; inline-size: 2.75rem;
-  border: none; border-inline-start: 1px solid
-  var(--hashti-border-subtle-00); background: transparent; color:
-  var(--hashti-text-secondary); cursor: pointer;` hover (hover:hover, not
+align-items: center; justify-content: center; inline-size: 2.75rem;
+border: none; border-inline-start: 1px solid
+var(--hashti-border-subtle-00); background: transparent; color:
+var(--hashti-text-secondary); cursor: pointer;` hover (hover:hover, not
   disabled) → `background: var(--hashti-background-hover); color:
-  var(--hashti-text-primary);` `:focus-visible` → the standard ring
+var(--hashti-text-primary);` `:focus-visible` → the standard ring
   (2px/2px) — it is a real button.
 - **States (root-level, keyed on ui-sdk attributes)**:
   - `[data-disabled]` → border `var(--hashti-border-disabled)`, background
@@ -80,17 +80,17 @@ bordered field) — the affix recipe InputGroup and the date inputs reuse.
   - `[data-invalid]` on an ancestor Field — no extra rule here; input.css's
     invalid pattern is control-level. Add
     `.hashti-field:has(.hashti-password-input[data-capslock])
-    .hashti-password-input { border-color: var(--hashti-support-warning); }`?
+.hashti-password-input { border-color: var(--hashti-support-warning); }`?
     NO — keep it minimal: `[data-capslock]` → root border-color
     `var(--hashti-support-warning)` (a warning hint, no icon this cycle).
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -126,11 +126,11 @@ bordered field) — the affix recipe InputGroup and the date inputs reuse.
 `packages/react/src/password-input/password-input.tsx` — the `join`
 helper pattern (direct-re-export check on the root):
 
-| Part | Class |
-| --- | --- |
-| `PasswordInput` | `hashti-password-input` (or direct re-export) |
-| `PasswordInputControl` | `hashti-password-input__control` |
-| `PasswordInputToggle` | `hashti-password-input__toggle` |
+| Part                   | Class                                         |
+| ---------------------- | --------------------------------------------- |
+| `PasswordInput`        | `hashti-password-input` (or direct re-export) |
+| `PasswordInputControl` | `hashti-password-input__control`              |
+| `PasswordInputToggle`  | `hashti-password-input__toggle`               |
 
 Export all three from `./password-input` and the barrel.
 
@@ -151,18 +151,34 @@ above.
 icon dependency):
 
 ```tsx
-"use client"
+"use client";
 
-import { Field, FieldLabel } from "@hashti/react"
-import { PasswordInput, PasswordInputControl, PasswordInputToggle } from "@hashti/react"
+import { Field, FieldLabel } from "@hashti/react";
+import {
+  PasswordInput,
+  PasswordInputControl,
+  PasswordInputToggle,
+} from "@hashti/react";
 
 function Eye() {
   return (
     <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-      <path d="M1.5 8s2.5-4 6.5-4 6.5 4 6.5 4-2.5 4-6.5 4S1.5 8 1.5 8Z" fill="none" stroke="currentColor" strokeWidth="1.3" />
-      <circle cx="8" cy="8" r="2" fill="none" stroke="currentColor" strokeWidth="1.3" />
+      <path
+        d="M1.5 8s2.5-4 6.5-4 6.5 4 6.5 4-2.5 4-6.5 4S1.5 8 1.5 8Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+      />
+      <circle
+        cx="8"
+        cy="8"
+        r="2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+      />
     </svg>
-  )
+  );
 }
 
 export function PasswordInputDemo() {
@@ -176,7 +192,7 @@ export function PasswordInputDemo() {
         </PasswordInputToggle>
       </PasswordInput>
     </Field>
-  )
+  );
 }
 ```
 
@@ -188,7 +204,7 @@ title: PasswordInput
 description: Masks text with a visibility toggle.
 ---
 
-import { PasswordInputDemo } from '../../src/components/password-input-demo'
+import { PasswordInputDemo } from "../../src/components/password-input-demo";
 
 ## Usage
 
@@ -196,11 +212,11 @@ import { PasswordInputDemo } from '../../src/components/password-input-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `PasswordInput` | The joined control; takes form options. |
-| `PasswordInputControl` | The native input. |
-| `PasswordInputToggle` | Show/hide; `type="button"` so Enter still submits. |
+| Part                   | Purpose                                            |
+| ---------------------- | -------------------------------------------------- |
+| `PasswordInput`        | The joined control; takes form options.            |
+| `PasswordInputControl` | The native input.                                  |
+| `PasswordInputToggle`  | Show/hide; `type="button"` so Enter still submits. |
 
 Styling lives in `@hashti/styles` under `.hashti-password-input*` — one bordered field, the ring on the group, a quiet divider toggle. Caps Lock tints the border warning.
 ```
@@ -226,11 +242,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-password-input" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/password-input.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "password-input" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

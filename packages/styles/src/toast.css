@@ -40,7 +40,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hashti-toast {
-    transition: opacity var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity var(--hashti-duration-fast-02)
+      cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hashti-toast[data-starting-style],
@@ -68,7 +69,11 @@
 }
 
 /* Promise states: leading icon slot, shown via ui-sdk's data-show convention */
-.hashti-toast:is([data-type="loading"], [data-type="success"], [data-type="error"]) {
+.hashti-toast:is(
+  [data-type="loading"],
+  [data-type="success"],
+  [data-type="error"]
+) {
   grid-template-columns: auto 1fr auto;
 }
 
@@ -76,7 +81,12 @@
   display: none;
 }
 
-.hashti-toast:is([data-type="loading"], [data-type="success"], [data-type="error"]) .hashti-toast__icons {
+.hashti-toast:is(
+    [data-type="loading"],
+    [data-type="success"],
+    [data-type="error"]
+  )
+  .hashti-toast__icons {
   display: grid;
   grid-area: 1 / 1 / span 2;
   inline-size: 1rem;
@@ -84,15 +94,30 @@
   margin-block-start: 0.125rem;
 }
 
-.hashti-toast:is([data-type="loading"], [data-type="success"], [data-type="error"]) .hashti-toast__title {
+.hashti-toast:is(
+    [data-type="loading"],
+    [data-type="success"],
+    [data-type="error"]
+  )
+  .hashti-toast__title {
   grid-column: 2;
 }
 
-.hashti-toast:is([data-type="loading"], [data-type="success"], [data-type="error"]) .hashti-toast__description {
+.hashti-toast:is(
+    [data-type="loading"],
+    [data-type="success"],
+    [data-type="error"]
+  )
+  .hashti-toast__description {
   grid-column: 2 / -1;
 }
 
-.hashti-toast:is([data-type="loading"], [data-type="success"], [data-type="error"]) .hashti-toast-close {
+.hashti-toast:is(
+    [data-type="loading"],
+    [data-type="success"],
+    [data-type="error"]
+  )
+  .hashti-toast-close {
   grid-column: 3;
 }
 
@@ -109,7 +134,9 @@
   animation: hashti-toast-icon-in var(--hashti-duration-fast-01) linear;
 }
 
-.hashti-toast[data-type="loading"] .hashti-toast__icons > [data-show="loading"] {
+.hashti-toast[data-type="loading"]
+  .hashti-toast__icons
+  > [data-show="loading"] {
   display: grid;
 }
 
@@ -150,8 +177,12 @@
     opacity: 0.5;
   }
 
-  .hashti-toast[data-type="loading"] .hashti-toast__icons > [data-show="loading"],
-  .hashti-toast[data-type="success"] .hashti-toast__icons > [data-show="success"],
+  .hashti-toast[data-type="loading"]
+    .hashti-toast__icons
+    > [data-show="loading"],
+  .hashti-toast[data-type="success"]
+    .hashti-toast__icons
+    > [data-show="success"],
   .hashti-toast[data-type="error"] .hashti-toast__icons > [data-show="error"] {
     animation: none;
   }

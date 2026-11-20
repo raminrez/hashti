@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Select,
@@ -11,7 +11,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@hashti/react"
+} from "@hashti/react";
 
 function Chevron() {
   return (
@@ -25,7 +25,7 @@ function Chevron() {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 function Check() {
@@ -40,7 +40,7 @@ function Check() {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 export function SelectDemo() {
@@ -89,5 +89,5 @@ export function SelectDemo() {
         </SelectContent>
       </Select>
     </div>
-  )
+  );
 }

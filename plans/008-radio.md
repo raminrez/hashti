@@ -72,10 +72,10 @@ the group wrapper.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -112,40 +112,61 @@ the group wrapper.
 `packages/react/src/radio/radio.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
 import {
   Radio as UiRadio,
   RadioGroup as UiRadioGroup,
   RadioIndicator as UiRadioIndicator,
-} from "@ui-sdk/react/radio"
+} from "@ui-sdk/react/radio";
 
-function RadioGroup({ className, ...props }: ComponentProps<typeof UiRadioGroup>) {
-  return <UiRadioGroup className={`hashti-radio-group${className ? ` ${className}` : ""}`} {...props} />
+function RadioGroup({
+  className,
+  ...props
+}: ComponentProps<typeof UiRadioGroup>) {
+  return (
+    <UiRadioGroup
+      className={`hashti-radio-group${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
 function Radio({ className, ...props }: ComponentProps<typeof UiRadio>) {
-  return <UiRadio className={`hashti-radio${className ? ` ${className}` : ""}`} {...props} />
+  return (
+    <UiRadio
+      className={`hashti-radio${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-function RadioIndicator({ className, ...props }: ComponentProps<typeof UiRadioIndicator>) {
-  return <UiRadioIndicator className={`hashti-radio__indicator${className ? ` ${className}` : ""}`} {...props} />
+function RadioIndicator({
+  className,
+  ...props
+}: ComponentProps<typeof UiRadioIndicator>) {
+  return (
+    <UiRadioIndicator
+      className={`hashti-radio__indicator${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-export { RadioGroup, Radio, RadioIndicator }
+export { RadioGroup, Radio, RadioIndicator };
 ```
 
 `packages/react/src/radio/index.ts`:
 
 ```ts
-export { RadioGroup, Radio, RadioIndicator } from "./radio"
+export { RadioGroup, Radio, RadioIndicator } from "./radio";
 ```
 
 `packages/react/src/index.tsx` — add at the end:
 
 ```tsx
-export { RadioGroup, Radio, RadioIndicator } from "./radio"
+export { RadioGroup, Radio, RadioIndicator } from "./radio";
 ```
 
 **Verify**: `bun run typecheck` → exit 0.
@@ -193,7 +214,8 @@ export { RadioGroup, Radio, RadioIndicator } from "./radio"
   border-radius: 9999px;
   background: var(--hashti-focus);
   opacity: 0;
-  transition: opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-radio[data-checked] .hashti-radio__indicator::before {
@@ -241,9 +263,9 @@ attributes stay available for later motion refinements.)
 `apps/docs/src/components/radio-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Radio, RadioGroup, RadioIndicator } from "@hashti/react"
+import { Radio, RadioGroup, RadioIndicator } from "@hashti/react";
 
 export function RadioDemo() {
   return (
@@ -267,7 +289,7 @@ export function RadioDemo() {
         Overnight (unavailable)
       </label>
     </RadioGroup>
-  )
+  );
 }
 ```
 
@@ -279,7 +301,7 @@ title: Radio
 description: Selects one option from a group.
 ---
 
-import { RadioDemo } from '../../src/components/radio-demo'
+import { RadioDemo } from "../../src/components/radio-demo";
 
 ## Usage
 
@@ -287,10 +309,10 @@ import { RadioDemo } from '../../src/components/radio-demo'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `value` | `string` | On `Radio`: the option's value. On `RadioGroup`: the selected value. |
-| `defaultValue` | `string` | The initially selected option. |
+| Prop           | Type     | Description                                                          |
+| -------------- | -------- | -------------------------------------------------------------------- |
+| `value`        | `string` | On `Radio`: the option's value. On `RadioGroup`: the selected value. |
+| `defaultValue` | `string` | The initially selected option.                                       |
 
 Wrap each radio and its text in a `<label className="hashti-choice">`. Styling lives in `@hashti/styles` under `.hashti-radio` — an 18px round mark with a 10px dot in focus blue.
 ```

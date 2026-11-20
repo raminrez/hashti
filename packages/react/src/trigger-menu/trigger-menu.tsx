@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
+import { join } from "@hashti/utils";
 import {
   TriggerMenu,
   TriggerMenuContent as UiTriggerMenuContent,
@@ -9,20 +10,7 @@ import {
   TriggerMenuItem as UiTriggerMenuItem,
   TriggerMenuList as UiTriggerMenuList,
   TriggerMenuStatus as UiTriggerMenuStatus,
-} from "@ui-sdk/react/trigger-menu"
-
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
+} from "@ui-sdk/react/trigger-menu";
 
 // The root renders no element of its own, so there is no class to add.
 function TriggerMenuInput(props: ComponentProps<typeof UiTriggerMenuInput>) {
@@ -31,7 +19,7 @@ function TriggerMenuInput(props: ComponentProps<typeof UiTriggerMenuInput>) {
       {...props}
       className={join("hashti-trigger-menu-input", props.className)}
     />
-  )
+  );
 }
 
 function TriggerMenuStatus(props: ComponentProps<typeof UiTriggerMenuStatus>) {
@@ -40,16 +28,18 @@ function TriggerMenuStatus(props: ComponentProps<typeof UiTriggerMenuStatus>) {
       {...props}
       className={join("hashti-trigger-menu__status", props.className)}
     />
-  )
+  );
 }
 
-function TriggerMenuContent(props: ComponentProps<typeof UiTriggerMenuContent>) {
+function TriggerMenuContent(
+  props: ComponentProps<typeof UiTriggerMenuContent>,
+) {
   return (
     <UiTriggerMenuContent
       {...props}
       className={join("hashti-trigger-menu-content", props.className)}
     />
-  )
+  );
 }
 
 function TriggerMenuList(props: ComponentProps<typeof UiTriggerMenuList>) {
@@ -58,7 +48,7 @@ function TriggerMenuList(props: ComponentProps<typeof UiTriggerMenuList>) {
       {...props}
       className={join("hashti-trigger-menu-list", props.className)}
     />
-  )
+  );
 }
 
 function TriggerMenuItem(props: ComponentProps<typeof UiTriggerMenuItem>) {
@@ -67,7 +57,7 @@ function TriggerMenuItem(props: ComponentProps<typeof UiTriggerMenuItem>) {
       {...props}
       className={join("hashti-trigger-menu-item", props.className)}
     />
-  )
+  );
 }
 
 function TriggerMenuEmpty(props: ComponentProps<typeof UiTriggerMenuEmpty>) {
@@ -76,7 +66,7 @@ function TriggerMenuEmpty(props: ComponentProps<typeof UiTriggerMenuEmpty>) {
       {...props}
       className={join("hashti-trigger-menu-empty", props.className)}
     />
-  )
+  );
 }
 
 export {
@@ -87,4 +77,4 @@ export {
   TriggerMenuList,
   TriggerMenuItem,
   TriggerMenuEmpty,
-}
+};

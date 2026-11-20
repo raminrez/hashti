@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   DatePicker,
@@ -6,7 +6,7 @@ import {
   DatePickerHint,
   DatePickerInput,
   DatePickerTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function DatePickerDemo() {
   return (
@@ -27,7 +27,7 @@ export function DatePickerDemo() {
       <DatePickerHint />
       <DatePickerContent />
     </DatePicker>
-  )
+  );
 }
 
 export function DatePickerRangeDemo() {
@@ -58,5 +58,5 @@ export function DatePickerRangeDemo() {
       <DatePickerHint />
       <DatePickerContent />
     </DatePicker>
-  )
+  );
 }

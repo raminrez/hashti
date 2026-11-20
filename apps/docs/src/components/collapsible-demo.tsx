@@ -1,6 +1,10 @@
-"use client"
+"use client";
 
-import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from "@hashti/react"
+import {
+  Collapsible,
+  CollapsiblePanel,
+  CollapsibleTrigger,
+} from "@hashti/react";
 
 export function CollapsibleDemo() {
   return (
@@ -10,5 +14,5 @@ export function CollapsibleDemo() {
         Full refunds within 30 days of delivery, no questions asked.
       </CollapsiblePanel>
     </Collapsible>
-  )
+  );
 }

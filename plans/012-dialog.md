@@ -86,10 +86,10 @@ the Toast host.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -126,15 +126,15 @@ the Toast host.
 `packages/react/src/dialog/dialog.tsx` — the `join` helper pattern from
 `packages/react/src/field/field.tsx`; parts and classes:
 
-| Part | Class |
-| --- | --- |
-| `Dialog` | `hashti-dialog` (if the root takes className; otherwise direct re-export, as Select) |
-| `DialogTrigger` | `hashti-dialog-trigger` |
-| `DialogBackdrop` | `hashti-dialog-backdrop` |
-| `DialogContent` | `hashti-dialog-content` |
-| `DialogTitle` | `hashti-dialog__title` |
-| `DialogDescription` | `hashti-dialog__description` |
-| `DialogClose` | `hashti-dialog-close` |
+| Part                | Class                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------ |
+| `Dialog`            | `hashti-dialog` (if the root takes className; otherwise direct re-export, as Select) |
+| `DialogTrigger`     | `hashti-dialog-trigger`                                                              |
+| `DialogBackdrop`    | `hashti-dialog-backdrop`                                                             |
+| `DialogContent`     | `hashti-dialog-content`                                                              |
+| `DialogTitle`       | `hashti-dialog__title`                                                               |
+| `DialogDescription` | `hashti-dialog__description`                                                         |
+| `DialogClose`       | `hashti-dialog-close`                                                                |
 
 Export all seven from `./dialog` and the barrel.
 
@@ -146,20 +146,20 @@ Export all seven from `./dialog` and the barrel.
 section above. Structure:
 
 1. Trigger: a quiet action — `display: inline-flex; align-items: center;
-   gap: 0.5rem; padding: 0 0.75rem; min-block-size: 2.75rem; border: none;
-   border-radius: var(--hashti-control-radius); background: transparent;
-   color: var(--hashti-text-primary); font-size: 0.875rem; font-weight: 500;
-   cursor: pointer;` + hover background `var(--hashti-background-hover)`
+gap: 0.5rem; padding: 0 0.75rem; min-block-size: 2.75rem; border: none;
+border-radius: var(--hashti-control-radius); background: transparent;
+color: var(--hashti-text-primary); font-size: 0.875rem; font-weight: 500;
+cursor: pointer;` + hover background `var(--hashti-background-hover)`
    inside `@media (hover: hover)` guarded by `:not([data-disabled])`.
 2. Backdrop: `position: fixed; inset: 0; background:
-   var(--hashti-overlay); backdrop-filter: blur(6px);` + opacity
+var(--hashti-overlay); backdrop-filter: blur(6px);` + opacity
    transition + starting/ending styles (`opacity: 0`).
 3. Content: `position: fixed; inset: 0; margin: auto; block-size: fit-content;`
    (centered in the top layer), `max-inline-size: 32rem; inline-size:
-   calc(100% - 2rem); padding: 1.5rem; display: flex; flex-direction:
-   column; gap: 0.75rem;` surface (layer-01, subtle border, 18px radius,
+calc(100% - 2rem); padding: 1.5rem; display: flex; flex-direction:
+column; gap: 0.75rem;` surface (layer-01, subtle border, 18px radius,
    modal shadow) + transition + starting/ending styles (`opacity: 0;
-   scale(0.96)`) + reduced-motion override.
+scale(0.96)`) + reduced-motion override.
 4. Title (18px/600), description (0.875rem, secondary ink).
 5. Close: `align-self: flex-end`-friendly inline-flex ghost with the
    INSET focus ring (`outline-offset: -2px`).
@@ -175,7 +175,7 @@ auto` is the native dialog pattern), adapt and note it.
 `apps/docs/src/components/dialog-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Dialog,
@@ -185,7 +185,7 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function DialogDemo() {
   return (
@@ -200,7 +200,7 @@ export function DialogDemo() {
         <DialogClose>Close</DialogClose>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
 ```
 
@@ -212,7 +212,7 @@ title: Dialog
 description: Opens a modal surface over the page.
 ---
 
-import { DialogDemo } from '../../src/components/dialog-demo'
+import { DialogDemo } from "../../src/components/dialog-demo";
 
 ## Usage
 
@@ -220,14 +220,14 @@ import { DialogDemo } from '../../src/components/dialog-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Dialog` | Owns open state, focus trapping and dismissal. |
-| `DialogTrigger` | Opens the dialog. |
-| `DialogBackdrop` | The scrim; optional. |
-| `DialogContent` | The modal surface. |
-| `DialogTitle` / `DialogDescription` | Name and context. |
-| `DialogClose` | Dismisses; several allowed. |
+| Part                                | Purpose                                        |
+| ----------------------------------- | ---------------------------------------------- |
+| `Dialog`                            | Owns open state, focus trapping and dismissal. |
+| `DialogTrigger`                     | Opens the dialog.                              |
+| `DialogBackdrop`                    | The scrim; optional.                           |
+| `DialogContent`                     | The modal surface.                             |
+| `DialogTitle` / `DialogDescription` | Name and context.                              |
+| `DialogClose`                       | Dismisses; several allowed.                    |
 
 Styling lives in `@hashti/styles` under `.hashti-dialog-*` — an 18px surface with the modal shadow over a dimmed, blurred scrim. Escape and a press outside dismiss; the close button's focus ring is inset.
 ```

@@ -6,4 +6,4 @@ export {
   DialogTitle,
   DialogDescription,
   DialogClose,
-} from "./dialog"
+} from "./dialog";

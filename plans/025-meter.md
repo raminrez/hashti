@@ -50,7 +50,7 @@ semantics.
 ### Design rules that bite (from `design/DESIGN.md`, old implementation, status vocabulary)
 
 - **Root**: `display: flex; flex-direction: column; gap: 0.5rem;
-  inline-size: 100%;`
+inline-size: 100%;`
 - **Label**: helper typography (0.8125rem), ink
   `var(--hashti-text-primary)`, weight 500.
 - **Value**: helper typography (0.8125rem), ink
@@ -59,19 +59,19 @@ semantics.
   (root column gap handles the rows; label/value can sit in one row via
   the consumer's layout, no special CSS this cycle).
 - **Track**: `block-size: 0.5rem; inline-size: 100%; background:
-  var(--hashti-border-subtle-00); border-radius: var(--hashti-border-radius-max);
-  overflow: hidden;`
+var(--hashti-border-subtle-00); border-radius: var(--hashti-border-radius-max);
+overflow: hidden;`
 - **Indicator**: `block-size: 100%; border-radius:
-  var(--hashti-border-radius-max); background: var(--hashti-interactive);`
+var(--hashti-border-radius-max); background: var(--hashti-interactive);`
   width transition `var(--hashti-duration-moderate-01)
-  cubic-bezier(0.16, 1, 0.3, 1)`.
+cubic-bezier(0.16, 1, 0.3, 1)`.
 - **Tones by threshold** (the meter's semantic core — plain CSS, no JS):
   - Neutral (default): `var(--hashti-interactive)`.
   - `[data-theme]`-safe success/neutral/warning/danger come from the
     CONSUMER via a `data-tone` attribute on the root? NO — ui-sdk does not
     ship tone. Ship a `hashti-meter` modifier contract instead:
     `.hashti-meter[data-tone="success"] .hashti-meter-indicator →
-    var(--hashti-support-success)`, `warning → var(--hashti-support-warning)`,
+var(--hashti-support-success)`, `warning → var(--hashti-support-warning)`,
     `danger → var(--hashti-support-error)`, documented in the MDX page.
     The wrapper passes `data-tone` through from props (it is a plain
     attribute spread — allowed; class contract unchanged).
@@ -79,10 +79,10 @@ semantics.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -117,12 +117,12 @@ semantics.
 (direct-re-export check on the root). The root wrapper also forwards
 `data-tone` (it is just a spread — no computed class logic):
 
-| Part | Class |
-| --- | --- |
-| `Meter` | `hashti-meter` |
-| `MeterLabel` | `hashti-meter__label` |
-| `MeterValue` | `hashti-meter__value` |
-| `MeterTrack` | `hashti-meter-track` |
+| Part             | Class                    |
+| ---------------- | ------------------------ |
+| `Meter`          | `hashti-meter`           |
+| `MeterLabel`     | `hashti-meter__label`    |
+| `MeterValue`     | `hashti-meter__value`    |
+| `MeterTrack`     | `hashti-meter-track`     |
 | `MeterIndicator` | `hashti-meter-indicator` |
 
 Export all five from `./meter` and the barrel.
@@ -142,9 +142,15 @@ selectors count).
 `apps/docs/src/components/meter-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Meter, MeterIndicator, MeterLabel, MeterTrack, MeterValue } from "@hashti/react"
+import {
+  Meter,
+  MeterIndicator,
+  MeterLabel,
+  MeterTrack,
+  MeterValue,
+} from "@hashti/react";
 
 export function MeterDemo() {
   return (
@@ -167,7 +173,7 @@ export function MeterDemo() {
         </MeterTrack>
       </Meter>
     </div>
-  )
+  );
 }
 ```
 
@@ -179,7 +185,7 @@ title: Meter
 description: Shows a reading against a range.
 ---
 
-import { MeterDemo } from '../../src/components/meter-demo'
+import { MeterDemo } from "../../src/components/meter-demo";
 
 ## Usage
 
@@ -187,13 +193,13 @@ import { MeterDemo } from '../../src/components/meter-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Meter` | Holds the value and range; accepts `data-tone`. |
-| `MeterLabel` | Visible name (or `aria-label`). |
-| `MeterValue` | The formatted value. |
-| `MeterTrack` | The bar's size. |
-| `MeterIndicator` | The fill. |
+| Part             | Purpose                                         |
+| ---------------- | ----------------------------------------------- |
+| `Meter`          | Holds the value and range; accepts `data-tone`. |
+| `MeterLabel`     | Visible name (or `aria-label`).                 |
+| `MeterValue`     | The formatted value.                            |
+| `MeterTrack`     | The bar's size.                                 |
+| `MeterIndicator` | The fill.                                       |
 
 Pass `data-tone="success" | "warning" | "danger"` for status ink; the default fill is interactive blue.
 ```
@@ -214,11 +220,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-meter" packages/react/src packages/styles/src` shows
-  the wrapper classes and the stylesheet selectors
+      the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/meter.css` returns
-  nothing
+      nothing
 - [ ] `grep -n "meter" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

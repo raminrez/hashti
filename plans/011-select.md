@@ -80,8 +80,8 @@ highlight) that Dialog, Popover, Tooltip, Toast and Menu reuse.
 - **Entrance/exit motion**: style `data-starting-style` (opacity 0,
   `scale(0.98)`) and `data-ending-style` (same), with
   `transition: opacity var(--hashti-duration-fast-01)
-  cubic-bezier(0.16, 1, 0.3, 1), scale var(--hashti-duration-fast-01)
-  cubic-bezier(0.16, 1, 0.3, 1)`; `prefers-reduced-motion` removes travel
+cubic-bezier(0.16, 1, 0.3, 1), scale var(--hashti-duration-fast-01)
+cubic-bezier(0.16, 1, 0.3, 1)`; `prefers-reduced-motion` removes travel
   and scale (opacity only).
 - **Items**: `min-block-size: 2.5rem`, `padding: 0 0.75rem`,
   `border-radius: var(--hashti-border-radius-08)` (0.5rem — items are
@@ -108,10 +108,10 @@ highlight) that Dialog, Popover, Tooltip, Toast and Menu reuse.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -149,19 +149,19 @@ using the `join` helper pattern from `packages/react/src/field/field.tsx`
 
 Parts and classes:
 
-| Part | Class |
-| --- | --- |
-| `Select` | `hashti-select` |
-| `SelectLabel` | `hashti-select__label` |
-| `SelectTrigger` | `hashti-select-trigger` |
-| `SelectValue` | `hashti-select__value` |
-| `SelectContent` | `hashti-select-content` |
-| `SelectGroup` | `hashti-select__group` |
-| `SelectGroupLabel` | `hashti-select__group-label` |
-| `SelectItem` | `hashti-select-item` |
+| Part                  | Class                           |
+| --------------------- | ------------------------------- |
+| `Select`              | `hashti-select`                 |
+| `SelectLabel`         | `hashti-select__label`          |
+| `SelectTrigger`       | `hashti-select-trigger`         |
+| `SelectValue`         | `hashti-select__value`          |
+| `SelectContent`       | `hashti-select-content`         |
+| `SelectGroup`         | `hashti-select__group`          |
+| `SelectGroupLabel`    | `hashti-select__group-label`    |
+| `SelectItem`          | `hashti-select-item`            |
 | `SelectItemIndicator` | `hashti-select-item__indicator` |
-| `SelectSeparator` | `hashti-select-separator` |
-| `SelectEmpty` | `hashti-select-empty` |
+| `SelectSeparator`     | `hashti-select-separator`       |
+| `SelectEmpty`         | `hashti-select-empty`           |
 
 Export all eleven from `./select` and the barrel.
 
@@ -193,7 +193,7 @@ placeholder rule targets `.hashti-select-trigger[data-placeholder]
 the chevron is an inline SVG in the trigger (no icon dependency):
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Select,
@@ -202,14 +202,21 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@hashti/react"
+} from "@hashti/react";
 
 function Chevron() {
   return (
     <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-      <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="m4 6 4 4 4-4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
-  )
+  );
 }
 
 export function SelectDemo() {
@@ -245,7 +252,7 @@ export function SelectDemo() {
         </SelectContent>
       </Select>
     </div>
-  )
+  );
 }
 ```
 
@@ -261,7 +268,7 @@ title: Select
 description: Chooses one option from a popup list.
 ---
 
-import { SelectDemo } from '../../src/components/select-demo'
+import { SelectDemo } from "../../src/components/select-demo";
 
 ## Usage
 
@@ -269,11 +276,11 @@ import { SelectDemo } from '../../src/components/select-demo'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `items` | `ListData` | Options as data; labels stay available before open. |
-| `value` / `defaultValue` | `string` | The selected value. |
-| `placeholder` | `string` | Shown while nothing is selected. |
+| Prop                     | Type       | Description                                         |
+| ------------------------ | ---------- | --------------------------------------------------- |
+| `items`                  | `ListData` | Options as data; labels stay available before open. |
+| `value` / `defaultValue` | `string`   | The selected value.                                 |
+| `placeholder`            | `string`   | Shown while nothing is selected.                    |
 
 Styling lives in `@hashti/styles` under `.hashti-select-*` — a field-style trigger, an 18px popover surface with the design shadow, items highlighted in background-hover and selected in focus blue.
 ```

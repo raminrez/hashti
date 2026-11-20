@@ -1,7 +1,11 @@
-"use client"
+"use client";
 
-import { Field, FieldLabel } from "@hashti/react"
-import { PasswordInput, PasswordInputControl, PasswordInputToggle } from "@hashti/react"
+import { Field, FieldLabel } from "@hashti/react";
+import {
+  PasswordInput,
+  PasswordInputControl,
+  PasswordInputToggle,
+} from "@hashti/react";
 
 function Eye() {
   return (
@@ -12,9 +16,16 @@ function Eye() {
         stroke="currentColor"
         strokeWidth="1.3"
       />
-      <circle cx="8" cy="8" r="2" fill="none" stroke="currentColor" strokeWidth="1.3" />
+      <circle
+        cx="8"
+        cy="8"
+        r="2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+      />
     </svg>
-  )
+  );
 }
 
 export function PasswordInputDemo() {
@@ -28,5 +39,5 @@ export function PasswordInputDemo() {
         </PasswordInputToggle>
       </PasswordInput>
     </Field>
-  )
+  );
 }

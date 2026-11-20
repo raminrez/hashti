@@ -5,4 +5,4 @@ export {
   ListboxGroup,
   ListboxGroupLabel,
   ListboxSeparator,
-} from "./listbox"
+} from "./listbox";

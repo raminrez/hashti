@@ -6,68 +6,68 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 
 ## Execution order & status
 
-| Plan | Title | Priority | Effort | Depends on | Status |
-|------|-------|----------|--------|------------|--------|
-| 001  | Separator component (ui-sdk separator + Hashti styles) | P1 | S | — | DONE |
-| 002  | Label component (ui-sdk label + Hashti styles)         | P1 | S | 001 | DONE |
-| 003  | Avatar component (ui-sdk avatar + Hashti styles)       | P1 | S | 002 | DONE |
-| 004  | Button component (all variants)                        | P1 | M | 003 | DONE |
-| 005  | Input component (ui-sdk input + Hashti styles)         | P1 | M | 004 | DONE |
-| 006  | Textarea component (ui-sdk textarea + Hashti styles)   | P1 | S | 005 | DONE |
-| 007  | Checkbox component (ui-sdk checkbox + Hashti styles)   | P1 | M | 006 | DONE |
-| 008  | Radio component (ui-sdk radio + Hashti styles)         | P1 | M | 007 | DONE |
-| 009  | Switch component (ui-sdk switch + Hashti styles)       | P1 | S | 008 | DONE |
-| 010  | Field anatomy (ui-sdk field + recovery band)           | P1 | L | 009 | DONE |
-| 011  | Select component (ui-sdk select + Hashti styles)       | P1 | L | 010 | DONE |
-| 012  | Dialog component (ui-sdk dialog + Hashti styles)       | P1 | L | 011 | DONE |
-| 013  | Popover component (ui-sdk popover + Hashti styles)     | P1 | M | 012 | DONE |
-| 014  | Tooltip component (ui-sdk tooltip + Hashti styles)     | P1 | S | 013 | DONE |
-| 015  | Toast component (ui-sdk toast + Hashti styles)         | P1 | M | 014 | DONE |
-| 016  | Tabs component (ui-sdk tabs, line variant)             | P1 | M | 015 | DONE |
-| 017  | Accordion component (ui-sdk accordion + Hashti styles) | P1 | M | 016 | DONE |
-| 018  | Slider component (ui-sdk slider + Hashti styles)       | P1 | M | 017 | DONE |
-| 019  | Menu component (ui-sdk menu + Hashti styles)           | P1 | M | 018 | DONE |
-| 020  | Listbox component (ui-sdk listbox + Hashti styles)     | P1 | M | 019 | DONE |
-| 021  | Kbd component (Hashti-owned keycap glyph)              | P2 | S | 020 | DONE |
-| 022  | Toggle component (ui-sdk toggle + group)               | P1 | S | 021 | DONE |
-| 023  | Collapsible component (ui-sdk collapsible)             | P1 | S | 022 | DONE |
-| 024  | Progress component (ui-sdk progress)                   | P1 | S | 023 | DONE |
-| 025  | Meter component (ui-sdk meter)                         | P1 | S | 024 | DONE |
-| 026  | ScrollArea component (ui-sdk scroll-area)              | P1 | M | 025 | DONE |
-| 027  | HoverCard component (ui-sdk hover-card)                | P1 | S | 026 | DONE |
-| 028  | Badge component (Hashti-owned status marker)           | P2 | M | 027 | DONE |
-| 029  | Link component (Hashti-owned; also styles Button as-a) | P2 | S | 028 | DONE |
-| 030  | AvatarGroup + getInitials (Hashti-owned, wraps Avatar) | P2 | M | 029 | DONE |
-| 031  | Timeline component (ui-sdk timeline, vertical)         | P1 | M | 030 | DONE |
-| 032  | Rating component (ui-sdk rating, star fill)            | P1 | S | 031 | DONE |
-| 033  | SegmentedControl (ui-sdk segmented-control)            | P1 | M | 032 | DONE |
-| 034  | PasswordInput (ui-sdk password-input)                  | P1 | M | 033 | DONE |
-| 035  | NumberInput (ui-sdk number-input, step buttons)        | P1 | M | 034 | DONE |
-| 036  | DateInput (ui-sdk date-input, segment typing)          | P1 | M | 035 | DONE |
-| 037  | FileInput (ui-sdk file-input, dropzone + list)         | P1 | M | 036 | DONE |
-| 038  | TimeInput (ui-sdk time-input, segment typing)          | P1 | S | 037 | DONE |
-| 039  | Pagination (ui-sdk pagination)                         | P1 | M | 038 | DONE |
-| 040  | Toolbar (ui-sdk toolbar)                               | P1 | M | 039 | DONE |
-| 041  | Carousel (ui-sdk carousel)                             | P1 | M | 040 | DONE |
-| 042  | Resizable (ui-sdk resizable)                           | P1 | S | 041 | DONE |
-| 043  | AlertDialog (ui-sdk alert-dialog, confirm)             | P1 | S | 042 | DONE |
-| 044  | Drawer (ui-sdk drawer, side sheet)                     | P1 | M | 043 | DONE |
-| 045  | Menubar (ui-sdk menubar — reuses Menu styles)          | P1 | S | 044 | DONE |
-| 046  | TriggerMenu (ui-sdk trigger-menu, suggest popup)       | P1 | M | 045 | DONE |
-| 047  | Combobox (ui-sdk combobox — core single select)        | P1 | M | 046 | DONE |
-| 048  | Combobox multiple + chips (Chips, ChipRemove, value)   | P1 | M | 047 | DONE |
-| 049  | Autocomplete (ui-sdk autocomplete, suggest list)       | P1 | S | 048 | DONE |
-| 050  | Command (ui-sdk command, command palette)              | P1 | M | 049 | DONE |
-| 051  | TokenInput (ui-sdk token-input, editable tokens)       | P1 | M | 050 | DONE |
-| 052  | OTPInput (ui-sdk otp-input, one-time-code slots)        | P1 | M | 051 | DONE |
-| 053  | NavigationMenu (ui-sdk navigation-menu, viewport)       | P1 | M | 051 | DONE |
-| 054  | Calendar (ui-sdk calendar, month grid + day cells)      | P1 | M | 051 | DONE |
-| 055  | DatePicker (ui-sdk date-picker, field + calendar popup) | P1 | M | 054 | DONE |
-| 056  | ColorPicker (ui-sdk color-picker, area/sliders/swatches) | P1 | M | 054 | DONE |
-| 057  | Tree (ui-sdk tree, hierarchical rows)                   | P1 | M | 054 | DONE |
-| 058  | Waterfall (ui-sdk waterfall, chart rows/bars)           | P2 | M | 054 | DONE |
-| 059  | ImageCropper (ui-sdk image-cropper, viewport/selection) | P2 | M | 054 | DONE |
-| 060  | Preferences (ui-sdk preferences, headless store)        | P2 | S | 054 | DONE |
+| Plan | Title                                                    | Priority | Effort | Depends on | Status |
+| ---- | -------------------------------------------------------- | -------- | ------ | ---------- | ------ |
+| 001  | Separator component (ui-sdk separator + Hashti styles)   | P1       | S      | —          | DONE   |
+| 002  | Label component (ui-sdk label + Hashti styles)           | P1       | S      | 001        | DONE   |
+| 003  | Avatar component (ui-sdk avatar + Hashti styles)         | P1       | S      | 002        | DONE   |
+| 004  | Button component (all variants)                          | P1       | M      | 003        | DONE   |
+| 005  | Input component (ui-sdk input + Hashti styles)           | P1       | M      | 004        | DONE   |
+| 006  | Textarea component (ui-sdk textarea + Hashti styles)     | P1       | S      | 005        | DONE   |
+| 007  | Checkbox component (ui-sdk checkbox + Hashti styles)     | P1       | M      | 006        | DONE   |
+| 008  | Radio component (ui-sdk radio + Hashti styles)           | P1       | M      | 007        | DONE   |
+| 009  | Switch component (ui-sdk switch + Hashti styles)         | P1       | S      | 008        | DONE   |
+| 010  | Field anatomy (ui-sdk field + recovery band)             | P1       | L      | 009        | DONE   |
+| 011  | Select component (ui-sdk select + Hashti styles)         | P1       | L      | 010        | DONE   |
+| 012  | Dialog component (ui-sdk dialog + Hashti styles)         | P1       | L      | 011        | DONE   |
+| 013  | Popover component (ui-sdk popover + Hashti styles)       | P1       | M      | 012        | DONE   |
+| 014  | Tooltip component (ui-sdk tooltip + Hashti styles)       | P1       | S      | 013        | DONE   |
+| 015  | Toast component (ui-sdk toast + Hashti styles)           | P1       | M      | 014        | DONE   |
+| 016  | Tabs component (ui-sdk tabs, line variant)               | P1       | M      | 015        | DONE   |
+| 017  | Accordion component (ui-sdk accordion + Hashti styles)   | P1       | M      | 016        | DONE   |
+| 018  | Slider component (ui-sdk slider + Hashti styles)         | P1       | M      | 017        | DONE   |
+| 019  | Menu component (ui-sdk menu + Hashti styles)             | P1       | M      | 018        | DONE   |
+| 020  | Listbox component (ui-sdk listbox + Hashti styles)       | P1       | M      | 019        | DONE   |
+| 021  | Kbd component (Hashti-owned keycap glyph)                | P2       | S      | 020        | DONE   |
+| 022  | Toggle component (ui-sdk toggle + group)                 | P1       | S      | 021        | DONE   |
+| 023  | Collapsible component (ui-sdk collapsible)               | P1       | S      | 022        | DONE   |
+| 024  | Progress component (ui-sdk progress)                     | P1       | S      | 023        | DONE   |
+| 025  | Meter component (ui-sdk meter)                           | P1       | S      | 024        | DONE   |
+| 026  | ScrollArea component (ui-sdk scroll-area)                | P1       | M      | 025        | DONE   |
+| 027  | HoverCard component (ui-sdk hover-card)                  | P1       | S      | 026        | DONE   |
+| 028  | Badge component (Hashti-owned status marker)             | P2       | M      | 027        | DONE   |
+| 029  | Link component (Hashti-owned; also styles Button as-a)   | P2       | S      | 028        | DONE   |
+| 030  | AvatarGroup + getInitials (Hashti-owned, wraps Avatar)   | P2       | M      | 029        | DONE   |
+| 031  | Timeline component (ui-sdk timeline, vertical)           | P1       | M      | 030        | DONE   |
+| 032  | Rating component (ui-sdk rating, star fill)              | P1       | S      | 031        | DONE   |
+| 033  | SegmentedControl (ui-sdk segmented-control)              | P1       | M      | 032        | DONE   |
+| 034  | PasswordInput (ui-sdk password-input)                    | P1       | M      | 033        | DONE   |
+| 035  | NumberInput (ui-sdk number-input, step buttons)          | P1       | M      | 034        | DONE   |
+| 036  | DateInput (ui-sdk date-input, segment typing)            | P1       | M      | 035        | DONE   |
+| 037  | FileInput (ui-sdk file-input, dropzone + list)           | P1       | M      | 036        | DONE   |
+| 038  | TimeInput (ui-sdk time-input, segment typing)            | P1       | S      | 037        | DONE   |
+| 039  | Pagination (ui-sdk pagination)                           | P1       | M      | 038        | DONE   |
+| 040  | Toolbar (ui-sdk toolbar)                                 | P1       | M      | 039        | DONE   |
+| 041  | Carousel (ui-sdk carousel)                               | P1       | M      | 040        | DONE   |
+| 042  | Resizable (ui-sdk resizable)                             | P1       | S      | 041        | DONE   |
+| 043  | AlertDialog (ui-sdk alert-dialog, confirm)               | P1       | S      | 042        | DONE   |
+| 044  | Drawer (ui-sdk drawer, side sheet)                       | P1       | M      | 043        | DONE   |
+| 045  | Menubar (ui-sdk menubar — reuses Menu styles)            | P1       | S      | 044        | DONE   |
+| 046  | TriggerMenu (ui-sdk trigger-menu, suggest popup)         | P1       | M      | 045        | DONE   |
+| 047  | Combobox (ui-sdk combobox — core single select)          | P1       | M      | 046        | DONE   |
+| 048  | Combobox multiple + chips (Chips, ChipRemove, value)     | P1       | M      | 047        | DONE   |
+| 049  | Autocomplete (ui-sdk autocomplete, suggest list)         | P1       | S      | 048        | DONE   |
+| 050  | Command (ui-sdk command, command palette)                | P1       | M      | 049        | DONE   |
+| 051  | TokenInput (ui-sdk token-input, editable tokens)         | P1       | M      | 050        | DONE   |
+| 052  | OTPInput (ui-sdk otp-input, one-time-code slots)         | P1       | M      | 051        | DONE   |
+| 053  | NavigationMenu (ui-sdk navigation-menu, viewport)        | P1       | M      | 051        | DONE   |
+| 054  | Calendar (ui-sdk calendar, month grid + day cells)       | P1       | M      | 051        | DONE   |
+| 055  | DatePicker (ui-sdk date-picker, field + calendar popup)  | P1       | M      | 054        | DONE   |
+| 056  | ColorPicker (ui-sdk color-picker, area/sliders/swatches) | P1       | M      | 054        | DONE   |
+| 057  | Tree (ui-sdk tree, hierarchical rows)                    | P1       | M      | 054        | DONE   |
+| 058  | Waterfall (ui-sdk waterfall, chart rows/bars)            | P2       | M      | 054        | DONE   |
+| 059  | ImageCropper (ui-sdk image-cropper, viewport/selection)  | P2       | M      | 054        | DONE   |
+| 060  | Preferences (ui-sdk preferences, headless store)         | P2       | S      | 054        | DONE   |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.

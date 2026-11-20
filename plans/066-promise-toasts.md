@@ -54,7 +54,7 @@ Toasts that follow a Promise: loading → success/error states.
 ## Done
 
 - [ ] typecheck exit 0 · [ ] no hex · [ ] rendered check: pending spinner
-  spins, resolves to check or alert ink · [ ] commits per step
+      spins, resolves to check or alert ink · [ ] commits per step
 
 ## STOP
 

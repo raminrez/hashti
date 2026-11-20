@@ -7,4 +7,4 @@ export {
   CarouselNext,
   CarouselIndicatorGroup,
   CarouselIndicator,
-} from "./carousel"
+} from "./carousel";

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Pagination,
@@ -8,7 +8,7 @@ import {
   PaginationList,
   PaginationNext,
   PaginationPrevious,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function PaginationDemo() {
   return (
@@ -35,5 +35,5 @@ export function PaginationDemo() {
         )}
       </PaginationList>
     </Pagination>
-  )
+  );
 }

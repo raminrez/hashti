@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
+import { join } from "@hashti/utils";
 import {
   Autocomplete,
   AutocompleteContent as UiAutocompleteContent,
@@ -9,20 +10,7 @@ import {
   AutocompleteItem as UiAutocompleteItem,
   AutocompleteLabel as UiAutocompleteLabel,
   AutocompleteList as UiAutocompleteList,
-} from "@ui-sdk/react/autocomplete"
-
-const join = <State,>(
-  base: string,
-  className: string | ((state: State) => string | undefined) | undefined,
-): string | ((state: State) => string | undefined) => {
-  if (typeof className === "function") {
-    return (state: State) => {
-      const extra = className(state)
-      return extra ? `${base} ${extra}` : base
-    }
-  }
-  return className ? `${base} ${className}` : base
-}
+} from "@ui-sdk/react/autocomplete";
 
 // The root renders no element of its own, so it is re-exported directly.
 function AutocompleteLabel(props: ComponentProps<typeof UiAutocompleteLabel>) {
@@ -31,7 +19,7 @@ function AutocompleteLabel(props: ComponentProps<typeof UiAutocompleteLabel>) {
       {...props}
       className={join("hashti-autocomplete__label", props.className)}
     />
-  )
+  );
 }
 
 function AutocompleteInput(props: ComponentProps<typeof UiAutocompleteInput>) {
@@ -40,16 +28,18 @@ function AutocompleteInput(props: ComponentProps<typeof UiAutocompleteInput>) {
       {...props}
       className={join("hashti-autocomplete-input", props.className)}
     />
-  )
+  );
 }
 
-function AutocompleteContent(props: ComponentProps<typeof UiAutocompleteContent>) {
+function AutocompleteContent(
+  props: ComponentProps<typeof UiAutocompleteContent>,
+) {
   return (
     <UiAutocompleteContent
       {...props}
       className={join("hashti-autocomplete-content", props.className)}
     />
-  )
+  );
 }
 
 function AutocompleteList(props: ComponentProps<typeof UiAutocompleteList>) {
@@ -58,7 +48,7 @@ function AutocompleteList(props: ComponentProps<typeof UiAutocompleteList>) {
       {...props}
       className={join("hashti-autocomplete-list", props.className)}
     />
-  )
+  );
 }
 
 function AutocompleteItem(props: ComponentProps<typeof UiAutocompleteItem>) {
@@ -67,7 +57,7 @@ function AutocompleteItem(props: ComponentProps<typeof UiAutocompleteItem>) {
       {...props}
       className={join("hashti-autocomplete-item", props.className)}
     />
-  )
+  );
 }
 
 function AutocompleteEmpty(props: ComponentProps<typeof UiAutocompleteEmpty>) {
@@ -76,7 +66,7 @@ function AutocompleteEmpty(props: ComponentProps<typeof UiAutocompleteEmpty>) {
       {...props}
       className={join("hashti-autocomplete-empty", props.className)}
     />
-  )
+  );
 }
 
 export {
@@ -87,4 +77,4 @@ export {
   AutocompleteList,
   AutocompleteItem,
   AutocompleteEmpty,
-}
+};

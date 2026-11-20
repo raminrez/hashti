@@ -1,1 +1,1 @@
-export { TimeInput, TimeInputSegment } from "./time-input"
+export { TimeInput, TimeInputSegment } from "./time-input";

@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Link } from "@hashti/react"
+import { Link } from "@hashti/react";
 
 export function LinkDemo() {
   return (
@@ -9,5 +9,5 @@ export function LinkDemo() {
       <Link href="#repo">repository</Link>. Already read it? The link turns{" "}
       <Link href="#visited">visited</Link> after you follow it.
     </p>
-  )
+  );
 }

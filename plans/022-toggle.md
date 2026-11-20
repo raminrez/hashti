@@ -48,11 +48,11 @@ toolbar toggle buttons reuse.
 ### Design rules that bite (from `design/DESIGN.md`, button.css recipes)
 
 - **Toggle (single)**: an action control — `display: inline-flex;
-  align-items: center; justify-content: center; gap: 0.375rem;
-  min-block-size: 2rem; min-inline-size: 2rem; padding: 0 0.5rem;
-  border: none; border-radius: var(--hashti-control-radius);
-  background: transparent; color: var(--hashti-text-primary);
-  font-size: 0.875rem; font-weight: 500; cursor: pointer;`
+align-items: center; justify-content: center; gap: 0.375rem;
+min-block-size: 2rem; min-inline-size: 2rem; padding: 0 0.5rem;
+border: none; border-radius: var(--hashti-control-radius);
+background: transparent; color: var(--hashti-text-primary);
+font-size: 0.875rem; font-weight: 500; cursor: pointer;`
   - hover background `var(--hashti-background-hover)` inside
     `@media (hover: hover)` guarded `:not([data-pressed]):not([data-disabled])`.
   - `[data-pressed]` → background `var(--hashti-background-selected)`,
@@ -71,10 +71,10 @@ toolbar toggle buttons reuse.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -108,11 +108,11 @@ toolbar toggle buttons reuse.
 `packages/react/src/toggle/toggle.tsx` — the `join` helper pattern
 (direct-re-export check on roots that take no className):
 
-| Part | Class |
-| --- | --- |
-| `Toggle` | `hashti-toggle` |
+| Part          | Class                                       |
+| ------------- | ------------------------------------------- |
+| `Toggle`      | `hashti-toggle`                             |
 | `ToggleGroup` | `hashti-toggle-group` (or direct re-export) |
-| `ToggleIcon` | `hashti-toggle-icon` |
+| `ToggleIcon`  | `hashti-toggle-icon`                        |
 
 Export all three from `./toggle` and the barrel.
 
@@ -131,37 +131,47 @@ no matches; `grep -c "data-" packages/styles/src/toggle.css` → ≥ 4.
 (pressed/unpressed/disabled) and a two-toggle group:
 
 ```tsx
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Toggle, ToggleGroup } from "@hashti/react"
+import { useState } from "react";
+import { Toggle, ToggleGroup } from "@hashti/react";
 
 function Pin() {
   return (
     <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-      <path d="M8 1.5 10 6l4.5.5-3.3 3 .9 4.5L8 11.6 3.9 14l.9-4.5-3.3-3L6 6Z" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+      <path
+        d="M8 1.5 10 6l4.5.5-3.3 3 .9 4.5L8 11.6 3.9 14l.9-4.5-3.3-3L6 6Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinejoin="round"
+      />
     </svg>
-  )
+  );
 }
 
 export function ToggleDemo() {
-  const [single, setSingle] = useState(false)
-  const [pair, setPair] = useState<string[]>([])
+  const [single, setSingle] = useState(false);
+  const [pair, setPair] = useState<string[]>([]);
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <div style={{ display: "flex", gap: 8 }}>
         <Toggle pressed={single} onChange={setSingle} aria-label="Pin">
           <Pin /> Pin
         </Toggle>
-        <Toggle pressed={false} aria-label="Like">Like</Toggle>
-        <Toggle pressed disabled aria-label="Muted">Muted</Toggle>
+        <Toggle pressed={false} aria-label="Like">
+          Like
+        </Toggle>
+        <Toggle pressed disabled aria-label="Muted">
+          Muted
+        </Toggle>
       </div>
       <ToggleGroup value={pair} onChange={setPair} aria-label="Layers">
         <Toggle value="grid">Grid</Toggle>
         <Toggle value="rules">Rules</Toggle>
       </ToggleGroup>
     </div>
-  )
+  );
 }
 ```
 
@@ -177,7 +187,7 @@ title: Toggle
 description: A button that stays pressed.
 ---
 
-import { ToggleDemo } from '../../src/components/toggle-demo'
+import { ToggleDemo } from "../../src/components/toggle-demo";
 
 ## Usage
 
@@ -185,11 +195,11 @@ import { ToggleDemo } from '../../src/components/toggle-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Toggle` | A pressed-state button (`aria-pressed`). |
+| Part          | Purpose                                           |
+| ------------- | ------------------------------------------------- |
+| `Toggle`      | A pressed-state button (`aria-pressed`).          |
 | `ToggleGroup` | Groups toggles; the value lists the pressed ones. |
-| `ToggleIcon` | Optional icon; hidden from screen readers. |
+| `ToggleIcon`  | Optional icon; hidden from screen readers.        |
 
 Styling lives in `@hashti/styles` under `.hashti-toggle*` — quiet action, selected tint in background-selected with focus-blue ink.
 ```
@@ -211,11 +221,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-toggle" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/toggle.css` returns
-  nothing
+      nothing
 - [ ] `grep -n "toggle" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

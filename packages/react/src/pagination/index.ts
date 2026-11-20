@@ -8,4 +8,4 @@ export {
   PaginationNext,
   PaginationFirst,
   PaginationLast,
-} from "./pagination"
+} from "./pagination";

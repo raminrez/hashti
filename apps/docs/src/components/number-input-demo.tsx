@@ -1,20 +1,26 @@
-"use client"
+"use client";
 
-import { Field, FieldLabel } from "@hashti/react"
+import { Field, FieldLabel } from "@hashti/react";
 import {
   NumberInput,
   NumberInputControl,
   NumberInputDecrement,
   NumberInputGroup,
   NumberInputIncrement,
-} from "@hashti/react"
+} from "@hashti/react";
 
 function Minus() {
   return (
     <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
-      <path d="M3 8h10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path
+        d="M3 8h10"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
-  )
+  );
 }
 
 function Plus() {
@@ -28,7 +34,7 @@ function Plus() {
         strokeLinecap="round"
       />
     </svg>
-  )
+  );
 }
 
 export function NumberInputDemo() {
@@ -47,5 +53,5 @@ export function NumberInputDemo() {
         </NumberInputGroup>
       </NumberInput>
     </Field>
-  )
+  );
 }

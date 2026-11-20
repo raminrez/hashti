@@ -3,7 +3,7 @@ title: Waterfall
 description: Shows spans as bars on a shared time axis.
 ---
 
-import { WaterfallDemo } from '../../src/components/waterfall-demo'
+import { WaterfallDemo } from "../../src/components/waterfall-demo";
 
 ## Usage
 
@@ -11,15 +11,15 @@ import { WaterfallDemo } from '../../src/components/waterfall-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Waterfall` | Owns the spans, selection and expansion; a `treegrid`. |
-| `WaterfallHeaderRow` / `WaterfallColumnHeader` | The header row and its columns. |
-| `WaterfallAxis` / `WaterfallTick` / `WaterfallMark` | Round times and moments across the axis. |
-| `WaterfallRow` | One span; carries `--waterfall-start` and `--waterfall-size`. |
-| `WaterfallRowHeader` | The span's name; indented by `--waterfall-level`. |
-| `WaterfallIndicator` | The arrow that expands a span with children. |
-| `WaterfallCell` | A column of your own, like a size or status. |
-| `WaterfallBar` | The span on the time axis. |
+| Part                                                | Purpose                                                       |
+| --------------------------------------------------- | ------------------------------------------------------------- |
+| `Waterfall`                                         | Owns the spans, selection and expansion; a `treegrid`.        |
+| `WaterfallHeaderRow` / `WaterfallColumnHeader`      | The header row and its columns.                               |
+| `WaterfallAxis` / `WaterfallTick` / `WaterfallMark` | Round times and moments across the axis.                      |
+| `WaterfallRow`                                      | One span; carries `--waterfall-start` and `--waterfall-size`. |
+| `WaterfallRowHeader`                                | The span's name; indented by `--waterfall-level`.             |
+| `WaterfallIndicator`                                | The arrow that expands a span with children.                  |
+| `WaterfallCell`                                     | A column of your own, like a size or status.                  |
+| `WaterfallBar`                                      | The span on the time axis.                                    |
 
 Styling lives in `@hashti/styles` under `.hashti-waterfall*` — a bordered panel, hairline row rules, tinted bars placed from the row's geometry variables, and a selected row that deepens its bar.

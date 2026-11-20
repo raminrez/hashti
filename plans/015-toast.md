@@ -53,7 +53,7 @@ notifications and alerts come later if asked).
 ### Design rules that bite (from `design/DESIGN.md`, `design/extraction/`)
 
 - **Region**: `position: fixed; inset-block-end: 1rem; inset-inline-end:
-  1rem; display: grid; gap: 0.5rem; inline-size: 22rem;` (bottom-end,
+1rem; display: grid; gap: 0.5rem; inline-size: 22rem;` (bottom-end,
   stacked, newest first — ui-sdk order).
 - **Toast surface**: `var(--hashti-layer-01)` background, 1px
   `var(--hashti-border-subtle-00)` border,
@@ -91,10 +91,10 @@ notifications and alerts come later if asked).
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -130,14 +130,14 @@ notifications and alerts come later if asked).
 classes (apply the direct-re-export check to `ToastRegion` and `Toast`
 roots — they may take no className):
 
-| Part | Class |
-| --- | --- |
-| `ToastRegion` | `hashti-toast-region` (or direct re-export) |
-| `Toast` | `hashti-toast` (or direct re-export) |
-| `ToastTitle` | `hashti-toast__title` |
-| `ToastDescription` | `hashti-toast__description` |
-| `ToastAction` | `hashti-toast-action` |
-| `ToastClose` | `hashti-toast-close` |
+| Part               | Class                                       |
+| ------------------ | ------------------------------------------- |
+| `ToastRegion`      | `hashti-toast-region` (or direct re-export) |
+| `Toast`            | `hashti-toast` (or direct re-export)        |
+| `ToastTitle`       | `hashti-toast__title`                       |
+| `ToastDescription` | `hashti-toast__description`                 |
+| `ToastAction`      | `hashti-toast-action`                       |
+| `ToastClose`       | `hashti-toast-close`                        |
 
 Also re-export `toast` (the imperative API) from the same module if
 `@ui-sdk/react/toast` exports it — check the dist exports; if `toast` comes
@@ -161,27 +161,52 @@ close button, motion (starting/ending + reduced-motion override).
 `apps/docs/src/components/toast-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Toast, ToastClose, ToastDescription, ToastRegion, ToastTitle, toast } from "@hashti/react"
+import {
+  Toast,
+  ToastClose,
+  ToastDescription,
+  ToastRegion,
+  ToastTitle,
+  toast,
+} from "@hashti/react";
 
 export function ToastDemo() {
   return (
     <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-      <button type="button" className="hashti-button" data-variant="secondary"
-        onClick={() => toast("Event created", { description: "Friday at 10:00 AM" })}>
+      <button
+        type="button"
+        className="hashti-button"
+        data-variant="secondary"
+        onClick={() =>
+          toast("Event created", { description: "Friday at 10:00 AM" })
+        }
+      >
         Default
       </button>
-      <button type="button" className="hashti-button" data-variant="secondary"
-        onClick={() => toast.success("Saved")}>
+      <button
+        type="button"
+        className="hashti-button"
+        data-variant="secondary"
+        onClick={() => toast.success("Saved")}
+      >
         Success
       </button>
-      <button type="button" className="hashti-button" data-variant="secondary"
-        onClick={() => toast.warning("Storage almost full")}>
+      <button
+        type="button"
+        className="hashti-button"
+        data-variant="secondary"
+        onClick={() => toast.warning("Storage almost full")}
+      >
         Warning
       </button>
-      <button type="button" className="hashti-button" data-variant="danger"
-        onClick={() => toast.error("Couldn't save. Try again.")}>
+      <button
+        type="button"
+        className="hashti-button"
+        data-variant="danger"
+        onClick={() => toast.error("Couldn't save. Try again.")}
+      >
         Error
       </button>
       <ToastRegion>
@@ -194,7 +219,7 @@ export function ToastDemo() {
         )}
       </ToastRegion>
     </div>
-  )
+  );
 }
 ```
 
@@ -206,7 +231,7 @@ title: Toast
 description: Transient feedback at the foot of the page.
 ---
 
-import { ToastDemo } from '../../src/components/toast-demo'
+import { ToastDemo } from "../../src/components/toast-demo";
 
 ## Usage
 
@@ -214,12 +239,12 @@ import { ToastDemo } from '../../src/components/toast-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `ToastRegion` | The stacked region; place once near the root. |
-| `Toast` | One toast; renders through the region's children function. |
-| `ToastTitle` / `ToastDescription` | Text; empty parts show the toast data's. |
-| `ToastClose` | Dismisses. |
+| Part                              | Purpose                                                    |
+| --------------------------------- | ---------------------------------------------------------- |
+| `ToastRegion`                     | The stacked region; place once near the root.              |
+| `Toast`                           | One toast; renders through the region's children function. |
+| `ToastTitle` / `ToastDescription` | Text; empty parts show the toast data's.                   |
+| `ToastClose`                      | Dismisses.                                                 |
 
 Call `toast()`, `toast.success`, `.warning`, `.error` from anywhere — the type drives the status surface and ink.
 ```

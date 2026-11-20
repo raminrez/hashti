@@ -4,4 +4,4 @@ export {
   ScrollAreaContent,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
-} from "./scroll-area"
+} from "./scroll-area";
