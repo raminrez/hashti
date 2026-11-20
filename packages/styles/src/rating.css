@@ -23,7 +23,7 @@
 }
 
 /* Fractional fill: a second copy of the icon over the empty one, clipped to
-   --rating-fill (0-1, from ui-sdk) from the right. */
+   --rating-fill (0-1, from ui-sdk) from the inline start. */
 .hashti-rating-item__fill {
   position: absolute;
   inset: 0;
@@ -33,6 +33,11 @@
   color: var(--hashti-focus);
   clip-path: inset(0 calc((1 - var(--rating-fill, 0)) * 100%) 0 0);
   pointer-events: none;
+}
+
+/* RTL: the fraction fills from the other side of the icon. */
+[dir="rtl"] .hashti-rating-item__fill {
+  clip-path: inset(0 0 0 calc((1 - var(--rating-fill, 0)) * 100%));
 }
 
 .hashti-rating-item[data-disabled] .hashti-rating-item__fill {

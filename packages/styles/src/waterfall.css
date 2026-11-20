@@ -41,6 +41,7 @@
   inset-inline-start: var(--waterfall-tick);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  /* centers the label over its position; symmetric in both directions */
   transform: translateX(-50%);
 }
 
