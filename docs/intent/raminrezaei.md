@@ -34,7 +34,7 @@
 - found why every component rendered unstyled: stylelint's autofix rewrote
   the css imports and Vite silently dropped the whole layer
 - ran a design-system improve survey (4 read-only agents): 14 findings,
-  implemented via herdr agents on two improve branches, merged to dev
+  implemented via herdr agents, merged to dev
   **I decided:** the hover pattern is `:hover` + hover-media guard (57 files
   win over link.css's one-off), recorded in css-conventions.md; deferred
   Theme component / invalid-state mapping / dead-token sweep to the gap
