@@ -1,1 +1,8 @@
-export { Preferences, usePreference } from "./preferences"
+export {
+  Preferences,
+  usePreference,
+  createCookieStorage,
+  createLocalStorage,
+  createPreference,
+  createSessionStorage,
+} from "./preferences"
