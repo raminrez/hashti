@@ -51,7 +51,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 041  | Carousel (ui-sdk carousel)                             | P1 | M | 040 | DONE |
 | 042  | Resizable (ui-sdk resizable)                           | P1 | S | 041 | DONE |
 | 043  | AlertDialog (ui-sdk alert-dialog, confirm)             | P1 | S | 042 | DONE |
-| 044  | Drawer (ui-sdk drawer, side sheet)                     | P1 | M | 043 | IN PROGRESS |
+| 044  | Drawer (ui-sdk drawer, side sheet)                     | P1 | M | 043 | DONE |
+| 045  | Menubar (ui-sdk menubar — reuses Menu styles)          | P1 | S | 044 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
