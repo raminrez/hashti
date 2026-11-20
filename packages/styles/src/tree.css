@@ -57,7 +57,7 @@
   outline-offset: var(--hashti-focus-offset);
 }
 
-/* Top and inline-end borders make a caret: right-pointing closed, down when open. */
+/* The inline-end border makes a caret: pointing closed, down when open. */
 .hashti-tree-item-indicator {
   display: inline-flex;
   flex: none;

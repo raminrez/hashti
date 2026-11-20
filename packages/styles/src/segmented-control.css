@@ -14,6 +14,8 @@
   position: absolute;
   z-index: -1;
   top: var(--segmented-control-indicator-top);
+  /* rtl-exception: left comes from ui-sdk's --segmented-control-indicator-left,
+     measured in physical pixels at runtime by the segmented parts. */
   left: var(--segmented-control-indicator-left);
   width: var(--segmented-control-indicator-width);
   height: var(--segmented-control-indicator-height);
