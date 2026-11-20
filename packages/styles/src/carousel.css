@@ -1,0 +1,77 @@
+.hashti-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ui-sdk writes the scrolling styles inline; this only shapes the gallery. */
+.hashti-carousel-viewport {
+  overflow: hidden;
+  border-radius: var(--hashti-popover-radius);
+}
+
+.hashti-carousel-viewport[data-dragging] {
+  cursor: grabbing;
+}
+
+.hashti-carousel-content {
+  display: flex;
+}
+
+.hashti-carousel-item {
+  flex: 0 0 100%;
+  min-inline-size: 0;
+}
+
+.hashti-carousel-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border: 1px solid var(--hashti-border-subtle-00);
+  border-radius: var(--hashti-border-radius-max);
+  background: var(--hashti-layer-01);
+  color: var(--hashti-text-primary);
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hashti-carousel-arrow:hover:not([data-disabled]) {
+    background: var(--hashti-background-hover);
+  }
+}
+
+.hashti-carousel-arrow[data-disabled] {
+  border-color: transparent;
+  background: transparent;
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.hashti-carousel-indicator {
+  inline-size: 0.375rem;
+  block-size: 0.375rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--hashti-border-radius-max);
+  background: var(--hashti-border-strong-01);
+  cursor: pointer;
+}
+
+.hashti-carousel-indicator[data-selected] {
+  inline-size: 1rem;
+  background: var(--hashti-focus);
+}
+
+.hashti-carousel-arrow:focus-visible,
+.hashti-carousel-indicator:focus-visible {
+  outline: var(--hashti-focus-width) solid var(--hashti-focus);
+  outline-offset: var(--hashti-focus-offset);
+}

@@ -1,5 +1,5 @@
 {
   "title": "Hashti",
   "defaultOpen": true,
-  "pages": ["index", "avatar", "badge", "accordion", "button", "checkbox", "collapsible", "date-input", "dialog", "field", "file-input", "hover-card", "input", "kbd", "label", "link", "listbox", "menu", "meter", "number-input", "pagination", "password-input", "popover", "progress", "radio", "rating", "scroll-area", "segmented-control", "select", "separator", "slider", "switch", "tabs", "timeline", "toolbar", "textarea", "time-input", "toast", "tooltip", "toggle"]
+  "pages": ["index", "avatar", "badge", "accordion", "button", "carousel", "checkbox", "collapsible", "date-input", "dialog", "field", "file-input", "hover-card", "input", "kbd", "label", "link", "listbox", "menu", "meter", "number-input", "pagination", "password-input", "popover", "progress", "radio", "rating", "scroll-area", "segmented-control", "select", "separator", "slider", "switch", "tabs", "timeline", "toolbar", "textarea", "time-input", "toast", "tooltip", "toggle"]
 }
