@@ -51,3 +51,4 @@
 @import "./src/autocomplete.css" layer(hashti.components);
 @import "./src/command.css" layer(hashti.components);
 @import "./src/token-input.css" layer(hashti.components);
+@import "./src/color-picker.css" layer(hashti.components);
