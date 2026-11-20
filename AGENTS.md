@@ -35,8 +35,11 @@ component, its parts, files, exports, and docs pages.
   `types:check` script).
 - `bun install` before typecheck in a fresh worktree (no `node_modules`).
 - Rendered check per component on its docs page: class names present
-  (`document.querySelectorAll("[class*='hashti-']")`), both themes, keyboard
-  walk-through where the component is interactive.
+  (`document.querySelectorAll("[class*='hashti-']")`) AND a computed style
+  asserted (e.g. `getComputedStyle(input).borderWidth !== "0px"`) —
+  class-presence alone passes even when every `hashti-*` style is dropped (the
+  `import-notation` regression shipped invisible for a day). Both themes,
+  keyboard walk-through where the component is interactive.
 - **Compound parts in docs pages**: Astro/MDX renders each React component
   child as its own React root, so ui-sdk's context-bound parts (image inside
   Avatar, items inside Select, …) cannot be composed directly in MDX — the

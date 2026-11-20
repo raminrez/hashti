@@ -35,6 +35,16 @@ this one.
   **why:** the installer's script drops the release-age and privacy flags the
   root script carries
 - merged the anti-slop branch to dev, 12 commits
+- handoff cleanup list done via sub-agents: segmented-control shadow token,
+  phase-2 roadmap archived, `DrawerHandle` wrapped + re-exported, textarea
+  inline-completion variant (ghost geometry matched to the textarea box)
+- found why every component was rendering unstyled: the `lint:css` setup's
+  stylelint autofix had rewritten `@import "…"` to `@import url(…)` and Vite
+  silently dropped the whole `@hashti/styles` layer
+  **I decided:** rendered checks must assert a computed style, not just class
+  names — the regression passed every cycle check invisibly
+  **promise:** `packages/styles/index.css` keeps string `@import` notation
+  (`import-notation: "string"` is pinned in stylelint.config.mjs)
 
 _Postponed: CI workflow + scheduled react-doctor until a git remote exists_
 _Postponed: handoff cleanup list — segmented-control rgba shadow, Textarea
