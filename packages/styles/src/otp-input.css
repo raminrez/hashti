@@ -1,9 +1,10 @@
 /* The native input is absolutely positioned over the slots by ui-sdk, so the
-   root anchors it. */
+   root anchors it. Groups and separators are direct children, so they lay out
+   in one row. */
 .hashti-otp-input {
   position: relative;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -43,7 +44,8 @@
   border-color: var(--hashti-support-success);
 }
 
-.hashti-otp-input-slot[data-active] {
+/* Same specificity as the complete rule above, so the active slot keeps focus blue. */
+.hashti-otp-input .hashti-otp-input-slot[data-active] {
   border-color: var(--hashti-focus);
 }
 
