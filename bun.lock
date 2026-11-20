@@ -5,9 +5,10 @@
     "": {
       "name": "hashti-new",
       "devDependencies": {
+        "husky": "catalog:",
         "oxlint": "catalog:",
-        "stylelint": "^18.1.0",
-        "stylelint-config-standard": "^41.1.0",
+        "stylelint": "catalog:",
+        "stylelint-config-standard": "catalog:",
         "tsrs": "^7.1.0-beta.tsrs3",
       },
     },
@@ -70,9 +71,12 @@
     "@types/react-dom": "^19.3.0",
     "@ui-sdk/core": "^0.1.0-beta.13",
     "@ui-sdk/react": "^0.1.0-beta.13",
+    "husky": "^9.1.7",
     "oxlint": "^1.94.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "stylelint": "^18.1.0",
+    "stylelint-config-standard": "^41.1.0",
     "tsrs": "^7.1.0-beta.tsrs3",
     "typescript": "~7.0.2",
   },
@@ -710,6 +714,8 @@
     "html-void-elements": ["html-void-elements@3.0.0", "", {}, "sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg=="],
 
     "http-cache-semantics": ["http-cache-semantics@4.3.0", "", {}, "sha512-M5t5LlJpS1UHMjvwRQVdFHvPISGeLAxNcrWuJkeGh0KxsqCHZ1O3NXZU/8x7cD0BDcGW8kapxMKTvwlqrNkHkA=="],
+
+    "husky": ["husky@9.1.7", "", { "bin": { "husky": "bin.js" } }, "sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA=="],
 
     "ignore": ["ignore@7.0.16", "", {}, "sha512-52N+Y4HRMOJmbLmr+DqO4iSRyyB7N52gm7PWCT6h0p978+oKbqHCB7gIJIwZvBUsjlSdWbrBFqUSmIFNZMpn0A=="],
 

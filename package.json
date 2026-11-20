@@ -19,7 +19,8 @@
       "oxlint": "^1.94.0",
       "tsrs": "^7.1.0-beta.tsrs3",
       "stylelint": "^18.1.0",
-      "stylelint-config-standard": "^41.1.0"
+      "stylelint-config-standard": "^41.1.0",
+      "husky": "^9.1.7"
     }
   },
   "scripts": {
@@ -31,12 +32,14 @@
     "format": "bun fmt",
     "format:check": "bun fmt --check",
     "test": "bun test",
-    "lint:css": "stylelint \"packages/styles/**/*.css\""
+    "lint:css": "stylelint \"packages/styles/**/*.css\"",
+    "prepare": "husky"
   },
   "devDependencies": {
     "oxlint": "catalog:",
     "stylelint": "catalog:",
     "stylelint-config-standard": "catalog:",
-    "tsrs": "^7.1.0-beta.tsrs3"
+    "tsrs": "^7.1.0-beta.tsrs3",
+    "husky": "catalog:"
   }
 }
