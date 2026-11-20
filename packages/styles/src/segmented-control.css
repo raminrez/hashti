@@ -22,11 +22,7 @@
   height: var(--segmented-control-indicator-height);
   border-radius: calc(var(--hashti-control-radius) - 0.1875rem);
   background: var(--hashti-layer-01);
-
-  /* small elevation stack, no single token */
-  box-shadow:
-    0 1px 3px rgb(0 0 0 / 12%),
-    0 1px 2px rgb(0 0 0 / 8%);
+  box-shadow: 0 1px 3px var(--hashti-shadow);
   transition:
     top var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
     left var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
