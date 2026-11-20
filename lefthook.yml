@@ -1,23 +1,66 @@
-# Pre-commit: check only what changed. Commands run piped (sequential) so
-# formatting settles before the linters read the files.
+# Bypass everything once: LEFTHOOK=0 git commit …
+# Bypass one command locally: see lefthook-local.yml (untracked).
+
 pre-commit:
+  # Merge/rebase commits (dev → main merges, etc.) skip the gates.
+  skip:
+    - merge
+    - rebase
+  # Sequential where order matters, parallel where it doesn't:
+  # format first, then linters + typechecks concurrently.
   piped: true
-  commands:
-    format:
-      # bun fmt restages what it changes.
+  jobs:
+    - name: format
       run: bun fmt --staged
-    oxlint:
-      glob: "*.{js,cjs,mjs,ts,tsx,jsx}"
-      run: bunx oxlint {staged_files}
-    stylelint:
-      glob: "*.css"
-      run: bunx stylelint {staged_files}
-    typecheck-utils:
-      glob: "packages/utils/**/*.{ts,tsx,json}"
-      run: bun --filter utils types:check
-    typecheck-react:
-      glob: "packages/react/**/*.{ts,tsx,json}"
-      run: bun --filter react types:check
-    typecheck-docs:
-      glob: "apps/docs/**/*.{ts,tsx,json,mdx}"
-      run: bun --filter docs types:check
+    - group:
+        parallel: true
+        jobs:
+          - name: oxlint
+            glob: "*.{js,cjs,mjs,ts,tsx,jsx}"
+            run: bunx oxlint {staged_files}
+          - name: stylelint
+            glob: "*.css"
+            run: bunx stylelint {staged_files}
+          - name: typecheck-utils
+            glob: "packages/utils/**/*.{ts,tsx,json}"
+            run: bun --filter utils types:check
+          - name: typecheck-react
+            glob: "packages/react/**/*.{ts,tsx,json}"
+            run: bun --filter react types:check
+          - name: typecheck-docs
+            glob: "apps/docs/**/*.{ts,tsx,json,mdx}"
+            run: bun --filter docs types:check
+
+# After a merge/pull, refresh deps when the lockfile moved. This replaces the
+# "merge a dep-adding branch, then bun install on the target" chore.
+post-merge:
+  commands:
+    bun-install:
+      run: |
+        if git diff-tree -r --name-only ORIG_HEAD HEAD 2>/dev/null | grep -q '^bun.lock$'; then
+          bun install
+        fi
+
+pre-push:
+  # Full gates: everything CI would run. Pre-commit stays staged-only and fast.
+  commands:
+    typecheck:
+      run: bun run typecheck
+    lint-js:
+      run: bunx oxlint
+    lint-css:
+      run: bun run lint:css
+    test:
+      run: bun test
+    protect-main:
+      run: |
+        branch="$(git rev-parse --abbrev-ref HEAD)"
+        case "$branch" in
+          main|master)
+            if [ "$ALLOW_PUSH_TO_MAIN" != "1" ]; then
+              echo "Refusing direct push from protected branch '$branch'." >&2
+              echo "Push a feature branch, or set ALLOW_PUSH_TO_MAIN=1 to override." >&2
+              exit 1
+            fi
+            ;;
+        esac
