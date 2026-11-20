@@ -8,6 +8,7 @@ import {
   MenuGroup as UiMenuGroup,
   MenuGroupLabel as UiMenuGroupLabel,
   MenuItem as UiMenuItem,
+  MenuItemIcon as UiMenuItemIcon,
   MenuItemIndicator as UiMenuItemIndicator,
   MenuRadioGroup as UiMenuRadioGroup,
   MenuRadioItem as UiMenuRadioItem,
@@ -95,6 +96,10 @@ function MenuRadioItem(props: ComponentProps<typeof UiMenuRadioItem>) {
   )
 }
 
+function MenuItemIcon(props: ComponentProps<typeof UiMenuItemIcon>) {
+  return <UiMenuItemIcon {...props} className={join("hashti-menu-item-icon", props.className)} />
+}
+
 export {
   Menu,
   MenuTrigger,
@@ -108,6 +113,7 @@ export {
   MenuSubContent,
   MenuCheckboxItem,
   MenuItemIndicator,
+  MenuItemIcon,
   UiMenuRadioGroup as MenuRadioGroup,
   MenuRadioItem,
 }

@@ -7,6 +7,7 @@ import {
   MenuGroup,
   MenuGroupLabel,
   MenuItem,
+  MenuItemIcon,
   MenuItemIndicator,
   MenuRadioGroup,
   MenuRadioItem,
@@ -33,6 +34,28 @@ function CheckGlyph() {
   )
 }
 
+function LinkGlyph() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true" fill="none">
+      <path
+        d="M6.5 9.5 9.5 6.5M7 4.5 8.8 2.7a2.5 2.5 0 0 1 3.5 3.5L10.5 8M9 11.5 7.2 13.3a2.5 2.5 0 0 1-3.5-3.5L5.5 8"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
+
+function MailGlyph() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true" fill="none">
+      <rect x="2" y="3.5" width="12" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
+      <path d="m2.5 5 5.5 4 5.5-4" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  )
+}
+
 export function MenuDemo() {
   return (
     <Menu onAction={(value) => console.log(value)}>
@@ -47,8 +70,18 @@ export function MenuDemo() {
             <ChevronGlyph />
           </MenuSubTrigger>
           <MenuSubContent>
-            <MenuItem value="copy-link">Copy link</MenuItem>
-            <MenuItem value="email">Email</MenuItem>
+            <MenuItem value="copy-link">
+              <MenuItemIcon>
+                <LinkGlyph />
+              </MenuItemIcon>
+              Copy link
+            </MenuItem>
+            <MenuItem value="email">
+              <MenuItemIcon>
+                <MailGlyph />
+              </MenuItemIcon>
+              Email
+            </MenuItem>
           </MenuSubContent>
         </MenuSub>
         <MenuSeparator />
@@ -57,8 +90,7 @@ export function MenuDemo() {
             <CheckGlyph />
           </MenuItemIndicator>
           Status bar
-        </MenuCheckboxItem>
-        <MenuCheckboxItem value="minimap">
+        </MenuCheckboxItem>        <MenuCheckboxItem value="minimap">
           <MenuItemIndicator keepMounted>
             <CheckGlyph />
           </MenuItemIndicator>

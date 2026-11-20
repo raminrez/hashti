@@ -149,6 +149,24 @@
   opacity: 1;
 }
 
+.hashti-menu-item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 1rem;
+  color: var(--hashti-text-secondary);
+}
+
+.hashti-menu-item-icon > svg {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.hashti-menu-item-icon[data-mirror] > svg {
+  transform: scaleX(-1);
+}
+
 .hashti-menu__group-label {
   padding: 0.375rem 0.75rem 0.25rem;
   color: var(--hashti-text-secondary);
