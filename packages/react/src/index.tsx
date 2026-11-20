@@ -205,3 +205,5 @@ export {
   CarouselIndicatorGroup,
   CarouselIndicator,
 } from "./carousel"
+
+export { Resizable, ResizablePanel, ResizableHandle } from "./resizable"
