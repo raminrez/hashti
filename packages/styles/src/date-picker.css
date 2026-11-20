@@ -1,0 +1,209 @@
+.hashti-date-picker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/* Field anatomy: input and trigger sit on one line. */
+.hashti-date-picker__field {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.hashti-date-picker-input {
+  flex: 1;
+  min-inline-size: 0;
+  block-size: 2.75rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-01);
+  color: var(--hashti-text-primary);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-date-picker-input::placeholder {
+  color: var(--hashti-text-secondary);
+}
+
+.hashti-date-picker-input:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-date-picker-input[data-invalid] {
+  border-color: var(--hashti-support-error);
+}
+
+.hashti-date-picker-input[data-disabled] {
+  border-color: var(--hashti-border-disabled);
+  background: var(--hashti-button-disabled);
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-date-picker-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--hashti-control-radius);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  cursor: pointer;
+}
+
+.hashti-date-picker-trigger svg {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+}
+
+@media (hover: hover) {
+  .hashti-date-picker-trigger:not([data-disabled]):hover {
+    background: var(--hashti-background-hover);
+  }
+}
+
+.hashti-date-picker-trigger:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-date-picker-trigger[data-open] {
+  background: var(--hashti-background-selected);
+}
+
+.hashti-date-picker-trigger[data-disabled] {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-date-picker-hint {
+  color: var(--hashti-text-secondary);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.hashti-date-picker-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  inline-size: fit-content;
+  padding: 0.5rem;
+  border: 1px solid var(--hashti-border-subtle-00);
+  border-radius: var(--hashti-popover-radius);
+  background: var(--hashti-layer-01);
+  box-shadow: 0 8px 24px var(--hashti-shadow);
+  color: var(--hashti-text-primary);
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+    scale var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-date-picker-content[data-starting-style],
+.hashti-date-picker-content[data-ending-style] {
+  opacity: 0;
+  scale: 0.98;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-date-picker-content {
+    transition: opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hashti-date-picker-content[data-starting-style],
+  .hashti-date-picker-content[data-ending-style] {
+    scale: none;
+  }
+}
+
+/* The empty content renders ui-sdk's own calendar; give it the Hashti look. */
+.hashti-date-picker-content [data-slot="calendar"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.hashti-date-picker-content [data-slot="calendar-previous"],
+.hashti-date-picker-content [data-slot="calendar-next"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border: none;
+  border-radius: var(--hashti-control-radius);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  cursor: pointer;
+}
+
+.hashti-date-picker-content [data-slot="calendar-previous"]:hover:not([data-disabled]),
+.hashti-date-picker-content [data-slot="calendar-next"]:hover:not([data-disabled]) {
+  background: var(--hashti-background-hover);
+}
+
+.hashti-date-picker-content [data-slot="calendar-heading"] {
+  flex: 1;
+  margin: 0;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.hashti-date-picker-content [data-slot="calendar-grid"] {
+  border-collapse: collapse;
+  inline-size: 100%;
+  table-layout: fixed;
+}
+
+.hashti-date-picker-content [data-slot="calendar-weekday"] {
+  padding-block: 0.375rem 0.25rem;
+  color: var(--hashti-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"] {
+  padding: 0;
+  border: none;
+  border-radius: var(--hashti-border-radius-08);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  cursor: pointer;
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"]:hover:not([data-selected]):not([data-disabled]) {
+  background: var(--hashti-background-hover);
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"][data-selected] {
+  background: var(--hashti-background-selected);
+  color: var(--hashti-focus);
+  font-weight: 600;
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"][data-today] {
+  font-weight: 700;
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"][data-outside] {
+  color: var(--hashti-text-secondary);
+}
