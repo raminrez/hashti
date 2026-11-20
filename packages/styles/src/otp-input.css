@@ -34,7 +34,7 @@
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   transition: border-color var(--hashti-duration-fast-01)
-    cubic-bezier(0.16, 1, 0.3, 1);
+    var(--hashti-ease-entrance);
 }
 
 .hashti-otp-input-slot[data-filled] {

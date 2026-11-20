@@ -9,7 +9,7 @@
   font-size: 1rem;
   line-height: 1.5rem;
   transition: border-color var(--hashti-duration-fast-01)
-    cubic-bezier(0.16, 1, 0.3, 1);
+    var(--hashti-ease-entrance);
 }
 
 .hashti-autocomplete-input::placeholder {
@@ -50,8 +50,8 @@
   box-shadow: var(--hashti-shadow-popover);
   transform-origin: var(--transform-origin);
   transition:
-    opacity var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1),
-    scale var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1);
+    opacity var(--hashti-duration-fast-02) var(--hashti-ease-entrance),
+    scale var(--hashti-duration-fast-02) var(--hashti-ease-entrance);
 }
 
 .hashti-autocomplete-content[data-starting-style],
@@ -63,7 +63,7 @@
 @media (prefers-reduced-motion: reduce) {
   .hashti-autocomplete-content {
     transition: opacity var(--hashti-duration-fast-02)
-      cubic-bezier(0.16, 1, 0.3, 1);
+      var(--hashti-ease-entrance);
   }
 
   .hashti-autocomplete-content[data-starting-style],

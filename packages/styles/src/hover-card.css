@@ -12,8 +12,8 @@
   color: var(--hashti-text-primary);
   transform-origin: var(--transform-origin);
   transition:
-    opacity var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1),
-    scale var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1);
+    opacity var(--hashti-duration-fast-02) var(--hashti-ease-entrance),
+    scale var(--hashti-duration-fast-02) var(--hashti-ease-entrance);
 }
 
 .hashti-hover-card-content[data-starting-style],
@@ -25,7 +25,7 @@
 @media (prefers-reduced-motion: reduce) {
   .hashti-hover-card-content {
     transition: opacity var(--hashti-duration-fast-02)
-      cubic-bezier(0.16, 1, 0.3, 1);
+      var(--hashti-ease-entrance);
   }
 
   .hashti-hover-card-content[data-starting-style],

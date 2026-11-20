@@ -22,9 +22,9 @@
   cursor: pointer;
   transition:
     background-color var(--hashti-duration-fast-01)
-      cubic-bezier(0.16, 1, 0.3, 1),
-    border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
-    transform var(--hashti-duration-fast-01) cubic-bezier(0.32, 0.72, 0, 1);
+      var(--hashti-ease-entrance),
+    border-color var(--hashti-duration-fast-01) var(--hashti-ease-entrance),
+    transform var(--hashti-duration-fast-01) var(--hashti-ease-press);
 }
 
 .hashti-checkbox[data-checked],

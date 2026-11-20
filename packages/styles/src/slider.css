@@ -44,8 +44,8 @@
   background: var(--hashti-layer-01);
   cursor: grab;
   transition:
-    inline-size var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
-    block-size var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+    inline-size var(--hashti-duration-fast-01) var(--hashti-ease-entrance),
+    block-size var(--hashti-duration-fast-01) var(--hashti-ease-entrance);
 }
 
 .hashti-slider-thumb:hover,

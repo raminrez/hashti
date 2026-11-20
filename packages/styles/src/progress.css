@@ -31,13 +31,13 @@
   background: var(--hashti-interactive);
   border-radius: var(--hashti-border-radius-max);
   transition: width var(--hashti-duration-moderate-01)
-    cubic-bezier(0.16, 1, 0.3, 1);
+    var(--hashti-ease-entrance);
 }
 
 .hashti-progress-track[data-indeterminate] .hashti-progress-indicator,
 .hashti-progress-indicator[data-indeterminate] {
   inline-size: 40%;
-  animation: hashti-progress-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite
+  animation: hashti-progress-slide 1.2s var(--hashti-ease-entrance) infinite
     alternate;
 }
 

@@ -35,7 +35,7 @@
   background: var(--hashti-overlay);
   backdrop-filter: blur(6px);
   transition: opacity var(--hashti-duration-moderate-02)
-    cubic-bezier(0.16, 1, 0.3, 1);
+    var(--hashti-ease-entrance);
 }
 
 .hashti-alert-dialog-backdrop[data-starting-style],
@@ -60,8 +60,8 @@
   box-shadow: var(--hashti-shadow-modal);
   color: var(--hashti-text-primary);
   transition:
-    opacity var(--hashti-duration-moderate-02) cubic-bezier(0.16, 1, 0.3, 1),
-    scale var(--hashti-duration-moderate-02) cubic-bezier(0.16, 1, 0.3, 1);
+    opacity var(--hashti-duration-moderate-02) var(--hashti-ease-entrance),
+    scale var(--hashti-duration-moderate-02) var(--hashti-ease-entrance);
 }
 
 .hashti-alert-dialog-content[data-starting-style],
@@ -73,7 +73,7 @@
 @media (prefers-reduced-motion: reduce) {
   .hashti-alert-dialog-content {
     transition: opacity var(--hashti-duration-moderate-02)
-      cubic-bezier(0.16, 1, 0.3, 1);
+      var(--hashti-ease-entrance);
   }
 
   .hashti-alert-dialog-content[data-starting-style],
