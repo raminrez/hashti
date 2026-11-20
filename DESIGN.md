@@ -226,10 +226,10 @@ internationalization, and customization, and the
 
 The appearance is described here; per-component behavior lives in the
 specification. Per-component stylesheets follow the
-[CSS conventions](docs/css-conventions.md): cascade order `hashti.tokens →
-hashti.reset → hashti.components → hashti.themes → hashti.accessibility`, BEM
-hooks (`hashti-<block>__<element>--<modifier>`), RAC classes always preserved,
-and state expressed as `data-*` attributes (`data-variant`, `data-size`,
+[CSS conventions](design/css-conventions.md): a two-layer cascade
+(`hashti.tokens` → `hashti.components`), `hashti-<block>` class hooks with
+modifiers expressed only as attributes, ui-sdk's `data-slot` preserved, and
+state expressed as `data-*` attributes (`data-variant`, `data-size`,
 `data-kind`, `data-hovered`, `data-focus-visible`, `data-selected`,
 `data-invalid`, `data-pending`, …) rather than re-implemented pseudo-classes.
 The [Impeccable sidecar](.impeccable/design.json) adds motion, depth,

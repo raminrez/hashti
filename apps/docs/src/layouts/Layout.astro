@@ -11,9 +11,10 @@ interface Props {
 const { title, description, image } = Astro.props;
 ---
 
-<!-- data-theme="light" pins Hashti tokens to the site's light theme until a
-     theme toggle lands; without it, dark-mode OSes resolve dark token values
-     on this light page. -->
+<!-- Hashti tokens key on data-theme (light, dark, system). Fumadocs' toggle
+     only flips class="dark" on <html>, so this script mirrors the class onto
+     data-theme; the observer keeps it in sync across toggles and client-side
+     navigations. -->
 <html lang="en" data-theme="light" transition:animate="none">
   <head>
     <meta charset="utf-8" />
@@ -23,6 +24,20 @@ const { title, description, image } = Astro.props;
     {description && <meta name="description" content={description} />}
     {image && <meta property="og:image" content={image} />}
     <ClientRouter />
+    <script is:inline>
+      const root = document.documentElement;
+      const syncTheme = () => {
+        root.dataset.theme = root.classList.contains("dark") ? "dark" : "light";
+      };
+      syncTheme();
+      // Re-runs on view-transition navigation; replace the old observer so
+      // they don't pile up.
+      window.__hashtiThemeSync?.disconnect();
+      window.__hashtiThemeSync = new MutationObserver(syncTheme).observe(
+        root,
+        { attributes: true, attributeFilter: ["class"] },
+      );
+    </script>
   </head>
   <body class="flex flex-col min-h-screen">
     <slot />

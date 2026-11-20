@@ -11,12 +11,13 @@ import { ToastDemo } from "../../src/components/toast-demo";
 
 ## Parts
 
-| Part                              | Purpose                                                    |
-| --------------------------------- | ---------------------------------------------------------- |
-| `ToastRegion`                     | The stacked region; place once near the root.              |
-| `Toast`                           | One toast; renders through the region's children function. |
-| `ToastTitle` / `ToastDescription` | Text; empty parts show the toast data's.                   |
-| `ToastClose`                      | Dismisses.                                                 |
+| Part                              | Purpose                                                                                                          |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ToastRegion`                     | The stacked region; place once near the root.                                                                    |
+| `Toast`                           | One toast; renders through the region's children function.                                                       |
+| `ToastTitle` / `ToastDescription` | Text; empty parts show the toast data's.                                                                         |
+| `ToastClose`                      | Dismisses.                                                                                                       |
+| `ToastAction`                     | An extra button; `onAction` runs instead of the toast's own action, and `dismiss` (default true) also dismisses. |
 
 Call `toast()`, `toast.success`, `.warning`, `.error` from anywhere — the type drives the status surface and ink.
 

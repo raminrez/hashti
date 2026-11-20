@@ -1,110 +1,109 @@
 # CSS conventions
 
 The rules this stylesheet follows, and the shape new component CSS must take. They come from the
-Modern Web Guidance `css` guide (retrieved 2026-11-13), the React Aria styling docs, and what this
-codebase already does. `bun test tests/unit/css-architecture.test.ts` enforces the mechanical parts.
+React Aria styling docs and what this codebase already does. The visual specification itself lives
+in [DESIGN.md](../DESIGN.md) at the repo root; this file is about how CSS is organised.
 
-## Layers, in this order
+## Two layers
 
-`styles.css` declares the layer order once and every stylesheet contributes to it.
+`packages/styles/index.css` is the entry stylesheet. It declares the layer order on line 1 and
+assigns every stylesheet to a layer at import time:
 
-| Layer                   | Owner                 | Contains                                                                                             |
-| ----------------------- | --------------------- | ---------------------------------------------------------------------------------------------------- |
-| `hashti.reset`          | `styles.css`          | box-sizing, font inheritance, selection, `[hidden]`. Theme-root scoping only — no bare `*` selector. |
-| `hashti.themes`         | `frame.css`           | Frame tokens per theme, inside `@scope (theme) to (theme)`.                                          |
-| `hashti.components`     | component stylesheets | Everything a component looks like.                                                                   |
-| `hashti.motion`         | `frame.css`           | Entry/exit keyframes and reduced-motion overrides.                                                   |
-| `hashti.coarse`         | `frame.css`           | Pointer: coarse adjustments (44px targets).                                                          |
-| `hashti.dark-elevation` | `frame.css`           | The few places dark mode needs different depth, not different ink.                                   |
-| `hashti.accessibility`  | `frame.css`           | Reduced motion, forced colours, screen-reader-only helpers.                                          |
+```css
+@layer hashti.tokens, hashti.components;
 
-Never add a layer without adding it to that ordered list first. `!important` is not a layer.
+@import "../../design/tokens.css" layer(hashti.tokens);
+@import "./src/button.css" layer(hashti.components);
+```
 
-The order statement must be the **first** thing in the entry stylesheet. `styles.css` imports
-`layers.css` on line 1 for that reason: a component file that opens `@layer hashti.components`
-before the statement defines the order instead, and the reset ends up outranking components (this
-happened, and cost a week of tooltip-contrast confusion before anyone noticed).
+| Layer               | Owner                            | Contains                                                |
+| ------------------- | -------------------------------- | ------------------------------------------------------- |
+| `hashti.tokens`     | `design/tokens.css` (generated)  | `--hashti-*` custom properties, per `data-theme` value. |
+| `hashti.components` | `packages/styles/src/<name>.css` | Everything a component looks like.                      |
 
-A portal that carries `data-theme` itself is both the `@scope` root and the `to (...)` limit,
-so scoped theme rules never reach it. Declare the few properties such a surface needs (surface and
-inverse ink) unscoped, from tokens, as the tooltip does.
+Two layers are all the shipped cascade needs: tokens lose to components by construction, and
+theme switching happens inside `hashti.tokens` on `[data-theme="light|dark|system"]`, so there is
+no separate themes layer to order.
+
+Planned future layers (reset, motion, coarse pointers, dark elevation, accessibility) exist as an
+idea for when `frame.css`-era concerns return; add them to the line-1 order statement first if one
+ever ships. Never add a layer without adding it to that ordered list first. `!important` is not a
+layer.
 
 ## One file per component
 
-Component styling lives in `packages/react/src/components/<name>/<name>.css` and must be imported
-from `styles.css`. A stylesheet that nothing imports is invisible, which is how eight of them rotted
-in place until the 2026-11 review deleted them.
+Component styling lives in `packages/styles/src/<name>.css` and must be imported from
+`packages/styles/index.css` under `hashti.components`. A stylesheet that nothing imports is
+invisible.
 
-Shared parts that several components need (the field anatomy, the popover surface) stay in
-`frame.css` under `hashti.themes` with the same `@scope` wrapper.
+## Class contract
 
-## Selectors express intent
+`hashti-<block>` for the component root and simple parts, `hashti-<block>__<element>` for the
+elements of a compound part. Every part also carries ui-sdk's `data-slot`, which is additive and
+never renamed.
 
-- Style the component's own class. Do not style `react-aria-*` classes from a component file; those
-  belong to the theme layer, and a wrapper that overrides `className` deletes them (see AGENTS.md).
-- Use `:is()` / `:where()` instead of duplicating a rule for variants or states.
-- Exclude instead of overriding: `[data-hovered]:not([data-disabled])`, not a second rule that
-  undoes hover. Order must not change the result.
-- Physical properties only when the value should not flip: `left`/`right` in a full-bleed overlay is
-  fine; `padding-left` on a field is not.
-- No new global resets. If a reset is unavoidable, scope it to `[data-theme]` and a specific
-  element type.
-
-## States and variants are attributes
-
-Every part exposes its variant on the DOM, and CSS keys on that attribute:
+Modifiers are attributes, never class suffixes. There is no `hashti-button--primary`:
 
 ```
-data-variant="primary|secondary|ghost|danger"   data-size="sm|md|lg"   data-kind="info|success|warning|error"
+data-variant="primary|secondary|tertiary|ghost|danger"   data-size="sm|md|lg"   data-kind="info|success|warning|error"
 ```
 
-React Aria supplies the interaction states (`data-hovered`, `data-pressed`, `data-focus-visible`,
-`data-selected`, `data-disabled`, `data-entering`/`data-exiting`). Do not re-implement them with
-CSS pseudo-classes.
+## Styling state
 
-Keyboard focus is the only thing that paints a ring, always `2px` at `2px` offset (action controls
-`3px`), and never as a `box-shadow` glow.
+State comes in two kinds, and the stylesheet keys on both where both exist:
+
+- **ui-sdk data attributes** — React Aria supplies `data-hovered`, `data-pressed`,
+  `data-focus-visible`, `data-selected`, `data-disabled`, `data-open`, `data-invalid`,
+  `data-pending`, `data-entering`/`data-exiting`. Do not re-implement them with CSS pseudo-classes.
+- **Plain pseudo-classes** — shipped _alongside_ the attributes so the class contract also works
+  without a runtime (a future Vue/Svelte wrapper or plain HTML).
+
+The shipped pattern for hover on interactive controls guards the pseudo-class so touch devices
+never get sticky hover paint, with the attribute additive:
+
+```css
+@media (hover: hover) {
+  .hashti-button[data-variant="primary"]:hover:not([data-disabled]) { … }
+}
+```
+
+`link.css` ships both forms unguarded (`:is(:hover, :active)` plus `[data-hovered]`/
+`[data-pressed]`) because a link's hover feedback is text decoration, not a fill.
+
+Keyboard focus is the only thing that paints a ring, always on `:focus-visible` /
+`[data-focus-visible]`, `2px` at `2px` offset (action controls `3px`), and never as a `box-shadow`
+glow.
+
+Composite group controls — a wrapper whose whole surface answers while an inner control holds
+keyboard focus — use `:has(:focus-visible)`. `password-input`, `number-input`, `otp-input`,
+`combobox`, and `slider` are the reference (`password-input` scopes its `:has` to the control's
+class, the others use the bare pseudo-class).
 
 ## Values come from tokens
 
-- Colours, spacing, radii, durations and type roles are `var(--hashti-*)`. A hex value in a
-  component stylesheet is a bug unless it is the documented fallback for a legacy theme.
+- Colours, spacing, radii, durations and type roles are `var(--hashti-*)`. A raw non-color value in
+  a component stylesheet is a bug; a hex value is a bug unless it is a documented legacy fallback.
+- Component CSS may target only `hashti-*` class names and ui-sdk's data attributes (`data-open`,
+  `data-selected`, `data-highlighted`, `data-invalid`, …) and `data-slot`. No React DOM specifics,
+  no inline-style contracts, no JS-in-CSS coupling — `@hashti/styles` must stay usable verbatim by
+  future Vue/Svelte packages.
 - Durations come from the ladder: `--hashti-duration-fast-01` (130ms), `fast-02` (175),
   `moderate-01` (230), `moderate-02` (310), `slow-01` (410), `slow-02` (730).
-- A token is one kind of value. `--hashti-shadow` is a colour, so it may only appear _inside_ a
-  shadow (`0 8px 24px var(--hashti-shadow)`), never as the whole value — dark overlays lost their
-  shadow that way once.
 
-## Anatomy hooks
-
-Compound parts carry a stable slot name in addition to their class:
-
-```
-data-slot="root" | "label" | "control" | "description" | "error" | "item" | "icon" | "close"
-```
+## Consumers styling our parts
 
 Consumers style `[data-slot="…"]` when they need anatomy without depending on our class names.
 `data-slot` is additive: it never replaces a class.
 
-## Migrating a component out of the monolith
+## Known proposal: invalid state keys on `data-invalid` only
 
-`frame.css` still carries most component rules inside `hashti.themes`. Moving one component at a
-time is safe if the enclosing wrappers come along, because layer order and `@scope` proximity decide
-the cascade, not file order:
-
-1. Cut the component's rule blocks out of `frame.css` (they live inside
-   `@layer hashti.themes { @scope (theme) to (theme) { … } }`).
-2. Paste them into `components/<name>/<name>.css` inside the _same two wrappers_.
-3. Confirm the stylesheet is imported by `styles.css` (the guard test enforces this).
-4. Verify: the component's computed colours, radius, spacing and focus ring must be unchanged. Tag
-   was migrated this way — background, 28px pill, 24px remove target and the 2px/3px action ring all
-   measured identical before and after.
-
-Once migrated, the same selector must not survive in `frame.css` or `styles.css`; that duplication is
-what made the 2026-11 review expensive.
+CSS should key invalid state on `[data-invalid]` only. Wrappers own the mapping from
+`aria-invalid` to `data-invalid`, so a plain HTML consumer sets one attribute and both the
+a11y tree and the stylesheet agree. Deferred: the React wrappers don't do this mapping yet, and
+adding it is React work, not CSS work. Until then component CSS keys on whatever ui-sdk emits.
 
 ## Status
 
-Migrated: `tag`. Deleted as dead (no renderer): `autocomplete`, `preview-trigger`, `list-box`,
-`command-palette`, `table`, `sheet` stylesheets. Remaining components still take their rules from
-`frame.css`; the guard test keeps new debt from appearing while they move.
+Every shipped component has its stylesheet in `packages/styles/src/` and is imported from
+`packages/styles/index.css`. `design/tokens.css` is generated — edit
+`packages/tokens/src/frame.ts` and rebuild, never the output.
