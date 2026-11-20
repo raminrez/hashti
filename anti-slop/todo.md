@@ -4,7 +4,7 @@ The rollout steps of [plan.md](plan.md), one PR each, in order. The anti-slop-ro
 
 Backlog variant: **cleanup** — counts are tiny, so each rule lands fixed-to-zero and promoted to `error` in the same PR; the rollout ends with no rule at `warn`. There is no CI: the pre-push lefthook hook is the gate.
 
-- [ ] **1. Commit the plan and wire the detectors as commands**: make the audit's numbers reproducible.
+- [x] **1. Commit the plan and wire the detectors as commands**: make the audit's numbers reproducible.
   - Changes: commit `anti-slop/plan.md` + `anti-slop/todo.md`; `knip.jsonc` (or the `knip` block in root `package.json`): add MDX entry/parse config so `apps/docs/content/docs/**/*.mdx` imports count (kills the 57 demo false positives + 2 dependency false positives), ignore `.agents/`, `.claude/`, `design/`; add root scripts `deadcode` (`bunx knip`), `duplicates` (`bunx jscpd` with `--ignore` for `.agents/**`, `.claude/**`, `design/tokens.css`, minimum-tokens tuned so the real codebase reads clean), `doctor` (`npx -y --min-release-age=7 react-doctor@latest --no-telemetry --no-supply-chain`); list the three commands in AGENTS.md.
   - Commands: `bun run deadcode`, `bun run duplicates`, `bun run doctor`
   - Done when: knip reports only the 13 intentional public-API type exports (+ a named ignore for each), jscpd reports 0 real-code clones, react-doctor reports its 3 warnings; all three commands recorded in AGENTS.md
