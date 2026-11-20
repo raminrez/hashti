@@ -13,17 +13,17 @@ back to `dev` when reviewed.
 | 061 | DatePicker range mode (two-end selection, range styling, two inputs) | Particle-1 — **DONE, merged** |
 | 062 | Inline completion (Input/Textarea inline suggest, accept with Tab→) | Particle-2 — **DONE, merged** |
 | 063 | Rating half-star masks (fractional fill via mask/clip) | Particle-3 — **DONE, merged** |
-| 064 | Vertical variants (Slider, Tabs, SegmentedControl vertical modes) | Particle-4 — in flight |
+| 064 | Vertical variants (Slider, Tabs, SegmentedControl vertical modes) | Particle-4 — **DONE, merged** |
 
 ## Wave 2 — surfaces & global (queued)
 
 | Cycle | Feature |
 | --- | --- |
-| 065 | Menu submenus + checkbox/radio items + icons |
-| 066 | Promise toasts (loading → success/error lifecycle) |
-| 067 | Command pages + async search |
-| 068 | Drawer snap points |
-| 069 | RTL pass (logical properties audit across all stylesheets) |
+| 065 | Menu submenus + checkbox/radio items + icons | in flight |
+| 066 | Promise toasts (loading → success/error lifecycle) | **DONE, merged** |
+| 067 | Command pages + async search | **DONE, merged** |
+| 068 | Drawer snap points | in flight |
+| 069 | RTL pass (logical properties audit across all stylesheets) | planned — SOLO after 065+068 merge |
 
 ## Rules (unchanged from phase 1)
 
