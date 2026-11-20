@@ -50,6 +50,9 @@ this one.
 - vendored modern-web-guidance (legacy-scan: 0 findings on packages/styles)
   **I decided:** rendered checks must assert a computed style, not just class
   names — the regression passed every cycle check invisibly
+- ran cycle 070: Theme component + useOverlayTheme, 12 overlay wrappers now
+  portal into the themed container — dark-in-light rendered proof passes
+- authored design-system contracts batch 2 (12 more components, 24 total)
 
 _Postponed: CI workflow + scheduled react-doctor until a git remote exists_
 _Postponed: handoff cleanup list — segmented-control rgba shadow, Textarea
