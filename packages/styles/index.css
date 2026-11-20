@@ -54,3 +54,4 @@
 @import "./src/token-input.css" layer(hashti.components);
 @import "./src/navigation-menu.css" layer(hashti.components);
 @import "./src/color-picker.css" layer(hashti.components);
+@import "./src/waterfall.css" layer(hashti.components);
