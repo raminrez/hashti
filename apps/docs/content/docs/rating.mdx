@@ -1,0 +1,19 @@
+---
+title: Rating
+description: Picks a star score.
+---
+
+import { RatingDemo } from '../../src/components/rating-demo'
+
+## Usage
+
+<RatingDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Rating` | Holds the score; radios over the stars. |
+| `RatingItem` | One star; `data-filled`/`data-partial`/`data-highlighted` paint it. |
+
+Styling lives in `@hashti/styles` under `.hashti-rating*` — gray empty stars, selection-blue filled and previewed. Half-star masking is a later recipe.

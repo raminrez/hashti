@@ -1,0 +1,39 @@
+.hashti-rating {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.hashti-rating-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  color: var(--hashti-border-strong-01);
+  cursor: pointer;
+}
+
+.hashti-rating-item[data-filled] {
+  color: var(--hashti-focus);
+}
+
+/* shortcut: partial stars keep the empty ink; half-star mask is a later recipe. */
+.hashti-rating-item[data-highlighted] {
+  color: var(--hashti-focus);
+}
+
+.hashti-rating-item[data-readonly] {
+  cursor: default;
+}
+
+.hashti-rating-item[data-disabled] {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+/* The radio overlays the icon; the ring paints around the badge. */
+.hashti-rating-item :focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}

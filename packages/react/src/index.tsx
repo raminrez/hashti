@@ -129,6 +129,8 @@ export {
   TimelineDescription,
 } from "./timeline"
 
+export { Rating, RatingItem } from "./rating"
+
 export {
   Select,
   SelectLabel,
