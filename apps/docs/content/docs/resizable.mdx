@@ -1,0 +1,20 @@
+---
+title: Resizable
+description: Splits space with draggable panels.
+---
+
+import { ResizableDemo } from '../../src/components/resizable-demo'
+
+## Usage
+
+<ResizableDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Resizable` | The group; give it a size. |
+| `ResizablePanel` | One share of the space. |
+| `ResizableHandle` | The drag grip between panels. |
+
+Styling lives in `@hashti/styles` under `.hashti-resizable*` — a subtle grip that darkens on hover and turns focus-blue while dragging.
