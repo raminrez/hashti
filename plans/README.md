@@ -57,7 +57,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 047  | Combobox (ui-sdk combobox — core single select)        | P1 | M | 046 | DONE |
 | 048  | Combobox multiple + chips (Chips, ChipRemove, value)   | P1 | M | 047 | DONE |
 | 049  | Autocomplete (ui-sdk autocomplete, suggest list)       | P1 | S | 048 | DONE |
-| 050  | Command (ui-sdk command, command palette)              | P1 | M | 049 | IN PROGRESS |
+| 050  | Command (ui-sdk command, command palette)              | P1 | M | 049 | DONE |
+| 051  | TokenInput (ui-sdk token-input, editable tokens)       | P1 | M | 050 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
