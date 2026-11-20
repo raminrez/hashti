@@ -227,3 +227,5 @@ export {
 } from "./carousel"
 
 export { Resizable, ResizablePanel, ResizableHandle } from "./resizable"
+
+export { Menubar } from "./menubar"
