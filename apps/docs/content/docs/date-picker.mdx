@@ -3,11 +3,20 @@ title: DatePicker
 description: Types a date or picks it from a calendar popup.
 ---
 
-import { DatePickerDemo } from '../../src/components/date-picker-demo'
+import { DatePickerDemo, DatePickerRangeDemo } from '../../src/components/date-picker-demo'
 
 ## Usage
 
 <DatePickerDemo client:load />
+
+## Range
+
+Set `mode="range"` to pick a start and an end date. The picker renders an input
+for each end, separated by a dash, and the calendar previews the range as you
+hover before the end is chosen.
+
+<DatePickerRangeDemo client:load />
+
 
 ## Parts
 

@@ -86,6 +86,44 @@
   cursor: not-allowed;
 }
 
+/* Range: two inputs with a dash between them. */
+.hashti-date-picker__separator {
+  flex: none;
+  color: var(--hashti-text-secondary);
+}
+
+/* Range days: edges keep the selected recipe with rounded outer corners;
+   middle days get a subtle tint, mirrored by the hover preview. */
+.hashti-date-picker-content [data-slot="calendar-day"][data-range-middle] {
+  border-radius: 0;
+  background: var(--hashti-background-hover);
+  color: var(--hashti-text-primary);
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"][data-selected][data-range-start] {
+  border-radius: var(--hashti-border-radius-08) 0 0 var(--hashti-border-radius-08);
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"][data-selected][data-range-end] {
+  border-radius: 0 var(--hashti-border-radius-08) var(--hashti-border-radius-08) 0;
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"][data-preview][data-range-start] {
+  border-radius: var(--hashti-border-radius-08) 0 0 var(--hashti-border-radius-08);
+  background: var(--hashti-background-selected);
+  color: var(--hashti-focus);
+  font-weight: 600;
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"][data-preview][data-range-middle] {
+  background: var(--hashti-background-hover);
+}
+
+.hashti-date-picker-content [data-slot="calendar-day"][data-preview][data-range-end] {
+  border-radius: 0 var(--hashti-border-radius-08) var(--hashti-border-radius-08) 0;
+  background: var(--hashti-background-hover);
+}
+
 .hashti-date-picker-hint {
   color: var(--hashti-text-secondary);
   font-size: 0.75rem;
