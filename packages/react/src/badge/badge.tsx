@@ -36,6 +36,21 @@ export interface BadgeProps extends Omit<
   ref?: Ref<HTMLSpanElement>;
 }
 
+function normalizePlacement(placement: BadgePlacement) {
+  switch (placement) {
+    case "top-right":
+      return "top-end";
+    case "top-left":
+      return "top-start";
+    case "bottom-right":
+      return "bottom-end";
+    case "bottom-left":
+      return "bottom-start";
+    default:
+      return placement;
+  }
+}
+
 export function Badge({
   content,
   count,
@@ -60,16 +75,7 @@ export function Badge({
     displayContent = `${actualMax}+`;
   }
 
-  const normalizedPlacement =
-    placement === "top-right"
-      ? "top-end"
-      : placement === "top-left"
-        ? "top-start"
-        : placement === "bottom-right"
-          ? "bottom-end"
-          : placement === "bottom-left"
-            ? "bottom-start"
-            : placement;
+  const normalizedPlacement = normalizePlacement(placement);
 
   const isDotMode = isDot || (actualContent == null && children == null);
 
