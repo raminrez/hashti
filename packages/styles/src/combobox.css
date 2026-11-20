@@ -50,8 +50,8 @@
   box-shadow: var(--hashti-shadow-popover);
   transform-origin: var(--transform-origin);
   transition:
-    opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
-    scale var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+    opacity var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1),
+    scale var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-combobox-content[data-starting-style],
@@ -62,7 +62,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hashti-combobox-content {
-    transition: opacity var(--hashti-duration-fast-01)
+    transition: opacity var(--hashti-duration-fast-02)
       cubic-bezier(0.16, 1, 0.3, 1);
   }
 

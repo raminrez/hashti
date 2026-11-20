@@ -41,8 +41,8 @@
   color: var(--hashti-text-primary);
   transform-origin: var(--transform-origin);
   transition:
-    opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
-    scale var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+    opacity var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1),
+    scale var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-menu-content[data-starting-style],
@@ -53,7 +53,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hashti-menu-content {
-    transition: opacity var(--hashti-duration-fast-01)
+    transition: opacity var(--hashti-duration-fast-02)
       cubic-bezier(0.16, 1, 0.3, 1);
   }
 
