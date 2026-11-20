@@ -26,6 +26,14 @@ export {
 
 export { DateInput, DateInputSegment } from "./date-input"
 
+export {
+  DatePicker,
+  DatePickerContent,
+  DatePickerHint,
+  DatePickerInput,
+  DatePickerTrigger,
+} from "./date-picker"
+
 export { TimeInput, TimeInputSegment } from "./time-input"
 
 export {
