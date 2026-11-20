@@ -1,0 +1,28 @@
+---
+title: Inline completion
+description: Ghost-text type-ahead inside an Input.
+---
+
+import { InlineCompletionDemo } from '../../src/components/inline-completion-demo'
+
+## Usage
+
+<InlineCompletionDemo client:load />
+
+Type a letter or two — the rest of the first matching suggestion appears as
+ghost text after the caret. Press Tab or Right Arrow (at the end of the text)
+to accept it; keep typing to narrow the match.
+
+## Notes
+
+- ui-sdk ships inline completion as the `inlineComplete` behavior of
+  [Autocomplete](/docs/autocomplete) (popup-based). This page composes the
+  suggestion at the demo level over a plain `Input` and styles only the ghost
+  layer — `hashti-inline-completion` (positioned wrapper) and
+  `hashti-inline-completion__ghost` (overlay sharing the control's font,
+  padding and radius).
+- The input itself stays native: the overlay renders `typed value + suggestion`
+  with the typed part hidden, so alignment is pure CSS (no per-render inline
+  styles).
+- Colors come from tokens only (`--hashti-text-secondary`,
+  `--hashti-control-radius`).
