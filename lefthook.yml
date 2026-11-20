@@ -28,10 +28,10 @@ pre-commit:
             run: bunx stylelint {staged_files}
           - name: typecheck-utils
             glob: "packages/utils/**/*.{ts,tsx,json}"
-            run: bun --filter utils types:check
+            run: bun --filter '@hashti/utils' types:check
           - name: typecheck-react
             glob: "packages/react/**/*.{ts,tsx,json}"
-            run: bun --filter react types:check
+            run: bun --filter '@hashti/react' types:check
           - name: typecheck-docs
             glob: "apps/docs/**/*.{ts,tsx,json,mdx}"
             run: bun --filter docs types:check

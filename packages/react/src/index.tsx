@@ -15,8 +15,10 @@ export {
   AvatarGroup,
   getInitials,
 } from "./avatar";
+export type { AvatarSize, AvatarGroupProps } from "./avatar";
 
 export { Badge } from "./badge";
+export type { BadgeKind, BadgePlacement, BadgeProps } from "./badge";
 
 export { Input } from "./input";
 
@@ -56,8 +58,10 @@ export {
 } from "./file-input";
 
 export { Kbd } from "./kbd";
+export type { KbdProps } from "./kbd";
 
 export { Link } from "./link";
+export type { LinkProps } from "./link";
 
 export { Textarea } from "./textarea";
 export { Toggle, ToggleGroup, ToggleIcon } from "./toggle";

@@ -1,0 +1,16 @@
+{
+  "path": ["packages", "apps"],
+  "format": ["typescript", "javascript"],
+  "ignore": [
+    "**/*.test.*",
+    "**/*.spec.*",
+    "**/fixtures/**",
+    "**/generated/**",
+    "**/.agents/**",
+    "**/.claude/**",
+    "**/node_modules/**"
+  ],
+  "minLines": 6,
+  "minTokens": 40,
+  "reporters": ["console"]
+}
