@@ -137,7 +137,7 @@
   inline-size: 0.625rem;
   block-size: 0.125rem;
   border-radius: 9999px;
-  background: currentColor;
+  background: currentcolor;
 }
 
 .hashti-menu-radio-item .hashti-menu-item-indicator::before {

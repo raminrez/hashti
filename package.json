@@ -17,7 +17,9 @@
       "@ui-sdk/react": "^0.1.0-beta.13",
       "@ui-sdk/core": "^0.1.0-beta.13",
       "oxlint": "^1.94.0",
-      "tsrs": "^7.1.0-beta.tsrs3"
+      "tsrs": "^7.1.0-beta.tsrs3",
+      "stylelint": "^18.1.0",
+      "stylelint-config-standard": "^41.1.0"
     }
   },
   "scripts": {
@@ -28,10 +30,13 @@
     "lint:fix": "bun run lint --fix",
     "format": "bun fmt",
     "format:check": "bun fmt --check",
-    "test": "bun test"
+    "test": "bun test",
+    "lint:css": "stylelint \"packages/styles/**/*.css\""
   },
   "devDependencies": {
     "oxlint": "catalog:",
+    "stylelint": "catalog:",
+    "stylelint-config-standard": "catalog:",
     "tsrs": "^7.1.0-beta.tsrs3"
   }
 }

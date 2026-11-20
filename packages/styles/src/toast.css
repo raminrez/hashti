@@ -22,6 +22,7 @@
   border: 1px solid var(--hashti-border-subtle-00);
   border-radius: var(--hashti-border-radius-16);
   background: var(--hashti-layer-01);
+
   /* shadow stack from DESIGN.md */
   box-shadow:
     0 10px 30px rgb(0 0 0 / 12%),

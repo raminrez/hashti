@@ -20,6 +20,7 @@
   box-sizing: border-box;
   border: 1px solid var(--hashti-layer-01);
   border-radius: var(--hashti-border-radius-08);
+
   /* Dims everything outside the crop. */
   box-shadow: 0 0 0 9999px var(--hashti-overlay);
 }

@@ -16,12 +16,15 @@
 .hashti-avatar[data-size="xs"] {
   --avatar-size: 1.5rem;
 }
+
 .hashti-avatar[data-size="sm"] {
   --avatar-size: 2rem;
 }
+
 .hashti-avatar[data-size="lg"] {
   --avatar-size: 3rem;
 }
+
 .hashti-avatar[data-size="xl"] {
   --avatar-size: 4rem;
 }
@@ -59,12 +62,15 @@
 .hashti-avatar-group[data-size="xs"] {
   --avatar-size: 1.5rem;
 }
+
 .hashti-avatar-group[data-size="sm"] {
   --avatar-size: 2rem;
 }
+
 .hashti-avatar-group[data-size="lg"] {
   --avatar-size: 3rem;
 }
+
 .hashti-avatar-group[data-size="xl"] {
   --avatar-size: 4rem;
 }

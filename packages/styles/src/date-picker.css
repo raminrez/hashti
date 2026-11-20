@@ -242,7 +242,7 @@
 }
 
 .hashti-date-picker-content
-  [data-slot="calendar-day"]:hover:not([data-selected]):not([data-disabled]) {
+  [data-slot="calendar-day"]:hover:not([data-selected], [data-disabled]) {
   background: var(--hashti-background-hover);
 }
 

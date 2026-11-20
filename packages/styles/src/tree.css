@@ -46,7 +46,7 @@
 }
 
 @media (hover: hover) {
-  .hashti-tree-item-label:hover:not([data-selected]):not([data-disabled]) {
+  .hashti-tree-item-label:hover:not([data-selected], [data-disabled]) {
     background: var(--hashti-background-hover);
   }
 }
@@ -71,8 +71,8 @@
   content: "";
   inline-size: 0.375rem;
   block-size: 0.375rem;
-  border-block-start: 1px solid currentColor;
-  border-inline-end: 1px solid currentColor;
+  border-block-start: 1px solid currentcolor;
+  border-inline-end: 1px solid currentcolor;
   rotate: 45deg;
   transition: rotate var(--hashti-duration-fast-01)
     cubic-bezier(0.16, 1, 0.3, 1);
