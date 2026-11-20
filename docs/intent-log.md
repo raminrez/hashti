@@ -33,11 +33,10 @@ this one.
 - react-doctor installed through its own installer; CI workflow kept dormant
   **why:** the installer's script drops the release-age and privacy flags the
   root script carries
-- merged the anti-slop branch to dev, 12 commits
+- merged anti-slop branch to dev, 12 commits
 - handoff cleanup list done via sub-agents: shadow token, roadmap archived,
   `DrawerHandle` re-exported, textarea inline-completion variant
-- found why every component rendered unstyled: stylelint's autofix rewrote
-  the css imports and Vite silently dropped the whole layer
+- found unstyled components: stylelint rewrote css imports, Vite dropped layer
 - ran a design-system improve survey (4 read-only agents): 14 findings,
   implemented via herdr agents, merged to dev
   **I decided:** hover = `:hover` + hover-media guard (57 files win over
