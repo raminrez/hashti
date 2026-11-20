@@ -343,3 +343,5 @@ export {
   WaterfallCell,
   WaterfallBar,
 } from "./waterfall"
+
+export { Tree, TreeItem, TreeItemLabel, TreeItemIndicator, TreeGroup } from "./tree"
