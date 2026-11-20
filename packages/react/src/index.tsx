@@ -76,6 +76,18 @@ export {
   PopoverClose,
 } from "./popover"
 
+export {
+  Pagination,
+  PaginationList,
+  PaginationItem,
+  PaginationLink,
+  PaginationEllipsis,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationFirst,
+  PaginationLast,
+} from "./pagination"
+
 export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip"
 
 export { HoverCard, HoverCardTrigger, HoverCardContent } from "./hover-card"
