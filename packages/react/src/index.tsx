@@ -24,6 +24,8 @@ export {
   NumberInputIncrement,
 } from "./number-input"
 
+export { DateInput, DateInputSegment } from "./date-input"
+
 export { Kbd } from "./kbd"
 
 export { Link } from "./link"
