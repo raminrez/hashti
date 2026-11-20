@@ -293,6 +293,9 @@ export {
   CommandGroupLabel,
   CommandSeparator,
   CommandEmpty,
+  CommandPage,
+  createCommandController,
+  useAsyncOptions,
 } from "./command"
 
 export { OTPInput, OTPInputGroup, OTPInputSeparator, OTPInputSlot } from "./otp-input"

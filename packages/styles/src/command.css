@@ -78,9 +78,60 @@
 }
 
 .hashti-command-empty {
-  padding: 0.5rem 0.75rem;
+  padding: 1rem;
   color: var(--hashti-text-secondary);
   font-size: 0.8125rem;
   line-height: 1.25rem;
   text-align: center;
+}
+
+.hashti-command__skeleton-row {
+  block-size: 2rem;
+  margin: 0.25rem 0.5rem;
+  border-radius: var(--hashti-border-radius-08);
+  background: var(--hashti-background-hover);
+  animation: hashti-command-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.hashti-command__skeleton-row:nth-of-type(2) {
+  animation-delay: 0.15s;
+}
+
+.hashti-command__skeleton-row:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes hashti-command-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-command__skeleton-row {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+/* spinner shown in a pending command's leading slot; icon shape lives in the demo */
+.hashti-command-item[data-pending] [data-slot="spinner"] {
+  animation: hashti-command-spin 1s linear infinite;
+}
+
+@keyframes hashti-command-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-command-item[data-pending] [data-slot="spinner"] {
+    animation: none;
+  }
 }
