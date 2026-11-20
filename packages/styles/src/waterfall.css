@@ -33,7 +33,9 @@
   block-size: 1rem;
 }
 
-.hashti-waterfall__tick {
+.hashti-waterfall__tick,
+/* The axis renders its own ticks when none are passed, so they carry no class. */
+.hashti-waterfall [data-slot="waterfall-tick"] {
   position: absolute;
   inset-block-start: 0;
   inset-inline-start: var(--waterfall-tick);
