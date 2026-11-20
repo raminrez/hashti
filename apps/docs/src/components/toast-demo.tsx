@@ -10,7 +10,7 @@ import {
   toast,
 } from "@hashti/react"
 
-function CheckIcon(props) {
+function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
       <path d="M20 6 9 17l-5-5" />
@@ -18,7 +18,7 @@ function CheckIcon(props) {
   )
 }
 
-function AlertIcon(props) {
+function AlertIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
       <circle cx="12" cy="12" r="10" />
