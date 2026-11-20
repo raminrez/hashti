@@ -22,7 +22,6 @@
         "@fumadocs/astro": "0.3.0",
         "@hashti/react": "workspace:*",
         "@hashti/styles": "workspace:*",
-        "@ui-sdk/react": "catalog:",
         "astro": "^7.4.10",
         "fumadocs-core": "16.19.4",
         "fumadocs-ui": "npm:@fumadocs/base-ui@16.19.4",

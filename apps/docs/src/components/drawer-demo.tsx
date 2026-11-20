@@ -6,10 +6,10 @@ import {
   DrawerClose,
   DrawerContent,
   DrawerDescription,
+  DrawerHandle,
   DrawerTitle,
   DrawerTrigger,
 } from "@hashti/react";
-import { DrawerHandle } from "@ui-sdk/react/drawer";
 
 export function DrawerDemo() {
   return (
@@ -42,7 +42,7 @@ export function DrawerSnapPointsDemo() {
       <DrawerTrigger>Find a place</DrawerTrigger>
       <DrawerBackdrop />
       <DrawerContent style={{ blockSize: "calc(100dvh - 3rem)" }}>
-        <DrawerHandle className="hashti-drawer-handle" aria-label="Resize" />
+        <DrawerHandle aria-label="Resize" />
         <DrawerTitle>Places nearby</DrawerTitle>
         <DrawerDescription>
           Drag the drawer, or press the handle, to see more.

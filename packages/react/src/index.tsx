@@ -110,6 +110,7 @@ export {
   DrawerContent,
   DrawerTitle,
   DrawerDescription,
+  DrawerHandle,
   DrawerClose,
 } from "./drawer";
 

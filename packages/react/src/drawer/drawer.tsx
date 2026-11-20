@@ -8,6 +8,7 @@ import {
   DrawerClose as UiDrawerClose,
   DrawerContent as UiDrawerContent,
   DrawerDescription as UiDrawerDescription,
+  DrawerHandle as UiDrawerHandle,
   DrawerTitle as UiDrawerTitle,
   DrawerTrigger as UiDrawerTrigger,
 } from "@ui-sdk/react/drawer";
@@ -57,6 +58,15 @@ function DrawerDescription(props: ComponentProps<typeof UiDrawerDescription>) {
   );
 }
 
+function DrawerHandle(props: ComponentProps<typeof UiDrawerHandle>) {
+  return (
+    <UiDrawerHandle
+      {...props}
+      className={join("hashti-drawer-handle", props.className)}
+    />
+  );
+}
+
 function DrawerClose(props: ComponentProps<typeof UiDrawerClose>) {
   return (
     <UiDrawerClose
@@ -73,5 +83,6 @@ export {
   DrawerContent,
   DrawerTitle,
   DrawerDescription,
+  DrawerHandle,
   DrawerClose,
 };
