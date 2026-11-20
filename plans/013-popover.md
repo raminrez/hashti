@@ -77,10 +77,10 @@ and Hover Card copy this shape.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -116,14 +116,14 @@ and Hover Card copy this shape.
 `packages/react/src/popover/popover.tsx` — the `join` helper pattern from
 `packages/react/src/field/field.tsx`; parts and classes:
 
-| Part | Class |
-| --- | --- |
-| `Popover` | `hashti-popover` (or direct re-export if the root takes no className — same check as Select/Dialog) |
-| `PopoverTrigger` | `hashti-popover-trigger` |
-| `PopoverContent` | `hashti-popover-content` |
-| `PopoverTitle` | `hashti-popover__title` |
-| `PopoverDescription` | `hashti-popover__description` |
-| `PopoverClose` | `hashti-popover-close` |
+| Part                 | Class                                                                                               |
+| -------------------- | --------------------------------------------------------------------------------------------------- |
+| `Popover`            | `hashti-popover` (or direct re-export if the root takes no className — same check as Select/Dialog) |
+| `PopoverTrigger`     | `hashti-popover-trigger`                                                                            |
+| `PopoverContent`     | `hashti-popover-content`                                                                            |
+| `PopoverTitle`       | `hashti-popover__title`                                                                             |
+| `PopoverDescription` | `hashti-popover__description`                                                                       |
+| `PopoverClose`       | `hashti-popover-close`                                                                              |
 
 Export all six from `./popover` and the barrel.
 
@@ -144,7 +144,7 @@ fast-01 duration.
 `apps/docs/src/components/popover-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Popover,
@@ -153,7 +153,7 @@ import {
   PopoverDescription,
   PopoverTitle,
   PopoverTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function PopoverDemo() {
   return (
@@ -167,7 +167,7 @@ export function PopoverDemo() {
         <PopoverClose>Done</PopoverClose>
       </PopoverContent>
     </Popover>
-  )
+  );
 }
 ```
 
@@ -179,7 +179,7 @@ title: Popover
 description: Opens an anchored surface beside its trigger.
 ---
 
-import { PopoverDemo } from '../../src/components/popover-demo'
+import { PopoverDemo } from "../../src/components/popover-demo";
 
 ## Usage
 
@@ -187,13 +187,13 @@ import { PopoverDemo } from '../../src/components/popover-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Popover` | Owns open state, placement and dismissal. |
-| `PopoverTrigger` | Opens the popover. |
-| `PopoverContent` | The anchored surface; flips away from edges. |
-| `PopoverTitle` / `PopoverDescription` | Name and context. |
-| `PopoverClose` | Dismisses; several allowed. |
+| Part                                  | Purpose                                      |
+| ------------------------------------- | -------------------------------------------- |
+| `Popover`                             | Owns open state, placement and dismissal.    |
+| `PopoverTrigger`                      | Opens the popover.                           |
+| `PopoverContent`                      | The anchored surface; flips away from edges. |
+| `PopoverTitle` / `PopoverDescription` | Name and context.                            |
+| `PopoverClose`                        | Dismisses; several allowed.                  |
 
 Styling lives in `@hashti/styles` under `.hashti-popover-*` — an 18px surface with the popover shadow, placed by ui-sdk with flip.
 ```

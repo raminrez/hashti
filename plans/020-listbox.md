@@ -62,13 +62,13 @@ visible inline surface.
 
 - **Surface (inline)**: same recipe as the menu popup but in flow —
   background `var(--hashti-layer-01)`, border `1px solid
-  var(--hashti-border-subtle-00)`, `border-radius: var(--hashti-popover-radius)`
+var(--hashti-border-subtle-00)`, `border-radius: var(--hashti-popover-radius)`
   (18px), `padding: 0` (zero-padding rule applies to listbox surfaces),
   NO shadow (inline surfaces don't float), `max-block-size` +
   `overflow-y: auto` for long lists (use `max-block-size: 20rem` — no
   `--available-height` here, that variable only exists on popups).
 - **Items**: full-bleed like menu items — `min-block-size: 2.5rem;
-  padding: 0 0.75rem; display: flex; align-items: center; gap: 0.5rem;`
+padding: 0 0.75rem; display: flex; align-items: center; gap: 0.5rem;`
   text 0.875rem/400 ink `var(--hashti-text-primary)`, `cursor: default`,
   `outline: none` (review finding from cycle 19 — the highlight is the
   focus indicator; do NOT ship the browser default outline).
@@ -91,10 +91,10 @@ visible inline surface.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -129,14 +129,14 @@ visible inline surface.
 `packages/react/src/listbox/listbox.tsx` — the `join` helper pattern;
 parts and classes (direct-re-export check on the Listbox root):
 
-| Part | Class |
-| --- | --- |
-| `Listbox` | `hashti-listbox` (or direct re-export if the root takes no className) |
-| `ListboxItem` | `hashti-listbox-item` |
-| `ListboxItemIndicator` | `hashti-listbox-item__indicator` |
-| `ListboxGroup` | `hashti-listbox-group` |
-| `ListboxGroupLabel` | `hashti-listbox__group-label` |
-| `ListboxSeparator` | `hashti-listbox-separator` |
+| Part                   | Class                                                                 |
+| ---------------------- | --------------------------------------------------------------------- |
+| `Listbox`              | `hashti-listbox` (or direct re-export if the root takes no className) |
+| `ListboxItem`          | `hashti-listbox-item`                                                 |
+| `ListboxItemIndicator` | `hashti-listbox-item__indicator`                                      |
+| `ListboxGroup`         | `hashti-listbox-group`                                                |
+| `ListboxGroupLabel`    | `hashti-listbox__group-label`                                         |
+| `ListboxSeparator`     | `hashti-listbox-separator`                                            |
 
 Export all six from `./listbox` and the barrel.
 
@@ -157,39 +157,52 @@ separator, group label.
 `apps/docs/src/components/listbox-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import {
-  Listbox,
-  ListboxItem,
-  ListboxItemIndicator,
-} from "@hashti/react"
+import { Listbox, ListboxItem, ListboxItemIndicator } from "@hashti/react";
 
 function Check() {
   return (
     <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-      <path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="m3.5 8.5 3 3 6-7"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
-  )
+  );
 }
 
 export function ListboxDemo() {
   return (
-    <Listbox aria-label="Toppings" defaultValue="basil" style={{ maxWidth: 280 }}>
+    <Listbox
+      aria-label="Toppings"
+      defaultValue="basil"
+      style={{ maxWidth: 280 }}
+    >
       <ListboxItem value="basil">
         Basil
-        <ListboxItemIndicator><Check /></ListboxItemIndicator>
+        <ListboxItemIndicator>
+          <Check />
+        </ListboxItemIndicator>
       </ListboxItem>
       <ListboxItem value="olive">
         Olive
-        <ListboxItemIndicator><Check /></ListboxItemIndicator>
+        <ListboxItemIndicator>
+          <Check />
+        </ListboxItemIndicator>
       </ListboxItem>
       <ListboxItem value="mushroom">
         Mushroom
-        <ListboxItemIndicator><Check /></ListboxItemIndicator>
+        <ListboxItemIndicator>
+          <Check />
+        </ListboxItemIndicator>
       </ListboxItem>
     </Listbox>
-  )
+  );
 }
 ```
 
@@ -201,7 +214,7 @@ title: Listbox
 description: Selects one option from a visible list.
 ---
 
-import { ListboxDemo } from '../../src/components/listbox-demo'
+import { ListboxDemo } from "../../src/components/listbox-demo";
 
 ## Usage
 
@@ -209,13 +222,13 @@ import { ListboxDemo } from '../../src/components/listbox-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Listbox` | Owns the selected value; name it with `aria-label` or a Field label. |
-| `ListboxItem` | One option; a unique `value`. |
-| `ListboxItemIndicator` | Shows its content on the selected option. |
-| `ListboxGroup` / `ListboxGroupLabel` | Groups related options. |
-| `ListboxSeparator` | Divides options. |
+| Part                                 | Purpose                                                              |
+| ------------------------------------ | -------------------------------------------------------------------- |
+| `Listbox`                            | Owns the selected value; name it with `aria-label` or a Field label. |
+| `ListboxItem`                        | One option; a unique `value`.                                        |
+| `ListboxItemIndicator`               | Shows its content on the selected option.                            |
+| `ListboxGroup` / `ListboxGroupLabel` | Groups related options.                                              |
+| `ListboxSeparator`                   | Divides options.                                                     |
 
 Styling lives in `@hashti/styles` under `.hashti-listbox-*` — an 18px inline surface with full-bleed items, highlight on focus and a focus-blue check on the selection.
 ```
@@ -237,11 +250,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-listbox" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/listbox.css` returns
-  nothing
+      nothing
 - [ ] `grep -n "listbox" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

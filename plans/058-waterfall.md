@@ -42,13 +42,13 @@ frame rows, headers, bars and the axis.
 ### Design rules that bite (derived)
 
 - **Root `hashti-waterfall`**: `display: flex; flex-direction: column;
-  font-size: 0.8125rem; border: 1px solid
-  var(--hashti-border-subtle-00); border-radius:
-  var(--hashti-popover-radius); overflow: hidden; background:
-  var(--hashti-layer-01);`
+font-size: 0.8125rem; border: 1px solid
+var(--hashti-border-subtle-00); border-radius:
+var(--hashti-popover-radius); overflow: hidden; background:
+var(--hashti-layer-01);`
 - **Header row `hashti-waterfall-header-row`**: `display: grid;` (columns
   per the docs' structure), secondary ink, `border-block-end: 1px solid
-  var(--hashti-border-subtle-00);`
+var(--hashti-border-subtle-00);`
 - **Column header `hashti-waterfall-column-header`**: centered tick labels,
   `padding: 0.375rem 0.25rem; color: var(--hashti-text-secondary);`
 - **Row `hashti-waterfall-row`**: `display: grid; align-items: center;`
@@ -60,11 +60,11 @@ frame rows, headers, bars and the axis.
   (`border-inline-start: 1px solid var(--hashti-border-subtle-00);`) if the
   docs render column boundaries.
 - **Bar `hashti-waterfall-bar`**: `position: absolute; block-size: 1.25rem;
-  border-radius: var(--hashti-border-radius-08); background:
-  var(--hashti-background-selected);` placement per the docs' variables;
+border-radius: var(--hashti-border-radius-08); background:
+var(--hashti-background-selected);` placement per the docs' variables;
   `[data-` states per docs (e.g. done/failed variants if any).
 - **Indicator `hashti-waterfall-indicator`**: the "now" line — `inline-size:
-  1px; background: var(--hashti-focus);`
+1px; background: var(--hashti-focus);`
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
 
 ## Commands
@@ -100,7 +100,7 @@ frame rows, headers, bars and the axis.
 1. **Wrappers** — `join` helper pattern per part; export all + barrel.
    Verify: typecheck exit 0.
 2. **Stylesheet** — rules above. Verify: no hex; `grep -c "data-"
-   packages/styles/src/waterfall.css` → ≥ 3.
+packages/styles/src/waterfall.css` → ≥ 3.
 3. **Demo + page** — small 3-row waterfall per the docs' Usage; note
    deviations and the geometry variable names in your report. meta.json
    entry. Verify: typecheck exit 0.

@@ -1,6 +1,12 @@
-"use client"
+"use client";
 
-import { Field, FieldDescription, FieldError, FieldLabel, Input } from "@hashti/react"
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+  Input,
+} from "@hashti/react";
 
 export function FieldDemo() {
   return (
@@ -13,7 +19,9 @@ export function FieldDemo() {
         <FieldDescription>We'll send you a confirmation link.</FieldDescription>
         <Input type="email" required placeholder="hollis@example.com" />
         <FieldError match="valueMissing">Enter your email address.</FieldError>
-        <FieldError match="typeMismatch">Enter an email address like hollis@example.com.</FieldError>
+        <FieldError match="typeMismatch">
+          Enter an email address like hollis@example.com.
+        </FieldError>
       </Field>
       <Field name="website">
         <FieldLabel>Website</FieldLabel>
@@ -24,5 +32,5 @@ export function FieldDemo() {
         Subscribe
       </button>
     </form>
-  )
+  );
 }

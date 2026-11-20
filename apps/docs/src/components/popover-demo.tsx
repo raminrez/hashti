@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Popover,
@@ -7,7 +7,7 @@ import {
   PopoverDescription,
   PopoverTitle,
   PopoverTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function PopoverDemo() {
   return (
@@ -21,5 +21,5 @@ export function PopoverDemo() {
         <PopoverClose>Done</PopoverClose>
       </PopoverContent>
     </Popover>
-  )
+  );
 }

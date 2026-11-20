@@ -1,5 +1,5 @@
-import type { APIRoute, GetStaticPaths } from 'astro';
-import { docsLlms } from '@/lib/source';
+import type { APIRoute, GetStaticPaths } from "astro";
+import { docsLlms } from "@/lib/source";
 
 export const prerender = true;
 
@@ -10,4 +10,5 @@ export const getStaticPaths = (async () => {
   return paths;
 }) satisfies GetStaticPaths;
 
-export const GET: APIRoute = async ({ params }) => (await docsLlms.serve(`/${params.path}`))!;
+export const GET: APIRoute = async ({ params }) =>
+  (await docsLlms.serve(`/${params.path}`))!;

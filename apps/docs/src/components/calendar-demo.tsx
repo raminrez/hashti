@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Calendar,
@@ -10,7 +10,7 @@ import {
   CalendarWeekday,
   CalendarWeekdays,
   CalendarWeeks,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function CalendarDemo() {
   return (
@@ -21,9 +21,13 @@ export function CalendarDemo() {
         <CalendarNext />
       </div>
       <CalendarGrid>
-        <CalendarWeekdays>{(index) => <CalendarWeekday index={index} />}</CalendarWeekdays>
-        <CalendarWeeks>{(cell) => <CalendarDay value={cell.date} />}</CalendarWeeks>
+        <CalendarWeekdays>
+          {(index) => <CalendarWeekday index={index} />}
+        </CalendarWeekdays>
+        <CalendarWeeks>
+          {(cell) => <CalendarDay value={cell.date} />}
+        </CalendarWeeks>
       </CalendarGrid>
     </Calendar>
-  )
+  );
 }

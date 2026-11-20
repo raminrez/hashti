@@ -54,25 +54,25 @@ container IS the field.
 
 - **Chips container `hashti-combobox-chips`**: the field becomes a
   WRAPPING box — `display: flex; flex-wrap: wrap; gap: 0.375rem;
-  align-items: center; min-block-size: 2.75rem; padding: 0.3125rem
-  0.5rem;` (the padding from input.css's 0.75rem shrinks — chips carry
+align-items: center; min-block-size: 2.75rem; padding: 0.3125rem
+0.5rem;` (the padding from input.css's 0.75rem shrinks — chips carry
   their own height); take over the bordered-control role: `border: 1px
-  solid var(--hashti-border-strong-01); border-radius:
-  var(--hashti-control-radius); background: var(--hashti-layer-01);` —
+solid var(--hashti-border-strong-01); border-radius:
+var(--hashti-control-radius); background: var(--hashti-layer-01);` —
   and SUPPRESS the input's own border when it lives inside the chips
   container: `.hashti-combobox-chips .hashti-combobox-input { border:
-  none; background: transparent; min-block-size: 2rem; flex: 1 1 4rem;
-  padding: 0 0.25rem; }`.
+none; background: transparent; min-block-size: 2rem; flex: 1 1 4rem;
+padding: 0 0.25rem; }`.
 - **Chip `hashti-combobox-chip`**: `display: inline-flex; align-items:
-  center; gap: 0.375rem; padding: 0.25rem 0.5rem; border-radius:
-  var(--hashti-border-radius-08); background:
-  var(--hashti-background-selected); color: var(--hashti-focus);
-  font-size: 0.8125rem; font-weight: 500; line-height: 1.25rem;`
+center; gap: 0.375rem; padding: 0.25rem 0.5rem; border-radius:
+var(--hashti-border-radius-08); background:
+var(--hashti-background-selected); color: var(--hashti-focus);
+font-size: 0.8125rem; font-weight: 500; line-height: 1.25rem;`
   (the selected tint pair from Toggle's pressed state).
 - **ChipRemove `hashti-combobox-chip-remove`**: `display: inline-flex;
-  align-items: center; justify-content: center; inline-size: 1.125rem;
-  border: none; background: transparent; color: inherit; cursor: pointer;
-  padding: 0; border-radius: var(--hashti-border-radius-04);` hover →
+align-items: center; justify-content: center; inline-size: 1.125rem;
+border: none; background: transparent; color: inherit; cursor: pointer;
+padding: 0; border-radius: var(--hashti-border-radius-04);` hover →
   `background: var(--hashti-background-hover);` `:focus-visible` → 2px
   ring @2px.
 - **Focus/invalid inheritance**: the chips container is the field —
@@ -83,10 +83,10 @@ container IS the field.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -121,12 +121,12 @@ Add wrappers for `ComboboxChips`, `ComboboxValue` (likely a direct
 re-export — render-function part), `ComboboxChip`,
 `ComboboxChipRemove`:
 
-| Part | Class |
-| --- | --- |
-| `ComboboxChips` | `hashti-combobox-chips` |
-| `ComboboxValue` | (direct re-export — render function) |
-| `ComboboxChip` | `hashti-combobox-chip` |
-| `ComboboxChipRemove` | `hashti-combobox-chip-remove` |
+| Part                 | Class                                |
+| -------------------- | ------------------------------------ |
+| `ComboboxChips`      | `hashti-combobox-chips`              |
+| `ComboboxValue`      | (direct re-export — render function) |
+| `ComboboxChip`       | `hashti-combobox-chip`               |
+| `ComboboxChipRemove` | `hashti-combobox-chip-remove`        |
 
 **Verify**: `bun run typecheck` → exit 0.
 
@@ -160,7 +160,7 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -c "hashti-combobox-chip" packages/styles/src/combobox.css`
-  → ≥ 3
+      → ≥ 3
 - [ ] No hex in combobox.css
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step

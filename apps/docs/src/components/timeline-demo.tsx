@@ -1,13 +1,41 @@
-"use client"
+"use client";
 
-import { Timeline, TimelineConnector, TimelineDescription, TimelineItem, TimelineMarker, TimelineTime, TimelineTitle } from "@hashti/react"
+import {
+  Timeline,
+  TimelineConnector,
+  TimelineDescription,
+  TimelineItem,
+  TimelineMarker,
+  TimelineTime,
+  TimelineTitle,
+} from "@hashti/react";
 
 const events = [
-  { title: "Order placed", time: "09:12", desc: "We received your order.", status: "complete" },
-  { title: "Payment confirmed", time: "09:13", desc: "Card charged successfully.", status: "complete" },
-  { title: "Shipped", time: "14:40", desc: "Your parcel left the warehouse.", status: "current" },
-  { title: "Out for delivery", time: "Tomorrow", desc: "Expected before 18:00.", status: "upcoming" },
-] as const
+  {
+    title: "Order placed",
+    time: "09:12",
+    desc: "We received your order.",
+    status: "complete",
+  },
+  {
+    title: "Payment confirmed",
+    time: "09:13",
+    desc: "Card charged successfully.",
+    status: "complete",
+  },
+  {
+    title: "Shipped",
+    time: "14:40",
+    desc: "Your parcel left the warehouse.",
+    status: "current",
+  },
+  {
+    title: "Out for delivery",
+    time: "Tomorrow",
+    desc: "Expected before 18:00.",
+    status: "upcoming",
+  },
+] as const;
 
 export function TimelineDemo() {
   return (
@@ -22,5 +50,5 @@ export function TimelineDemo() {
         </TimelineItem>
       ))}
     </Timeline>
-  )
+  );
 }

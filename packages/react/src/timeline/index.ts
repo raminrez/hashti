@@ -6,4 +6,4 @@ export {
   TimelineTitle,
   TimelineTime,
   TimelineDescription,
-} from "./timeline"
+} from "./timeline";

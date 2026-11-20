@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { join } from "@hashti/utils"
+import type { ComponentProps } from "react";
+import { join } from "@hashti/utils";
 import {
   ImageCropper as UiImageCropper,
   ImageCropperFlip as UiImageCropperFlip,
@@ -12,8 +12,7 @@ import {
   ImageCropperSelection as UiImageCropperSelection,
   ImageCropperViewport as UiImageCropperViewport,
   ImageCropperZoom as UiImageCropperZoom,
-} from "@ui-sdk/react/image-cropper"
-
+} from "@ui-sdk/react/image-cropper";
 
 function ImageCropper(props: ComponentProps<typeof UiImageCropper>) {
   return (
@@ -21,16 +20,18 @@ function ImageCropper(props: ComponentProps<typeof UiImageCropper>) {
       {...props}
       className={join("hashti-image-cropper", props.className)}
     />
-  )
+  );
 }
 
-function ImageCropperViewport(props: ComponentProps<typeof UiImageCropperViewport>) {
+function ImageCropperViewport(
+  props: ComponentProps<typeof UiImageCropperViewport>,
+) {
   return (
     <UiImageCropperViewport
       {...props}
       className={join("hashti-image-cropper-viewport", props.className)}
     />
-  )
+  );
 }
 
 function ImageCropperImage(props: ComponentProps<typeof UiImageCropperImage>) {
@@ -39,16 +40,18 @@ function ImageCropperImage(props: ComponentProps<typeof UiImageCropperImage>) {
       {...props}
       className={join("hashti-image-cropper-image", props.className)}
     />
-  )
+  );
 }
 
-function ImageCropperSelection(props: ComponentProps<typeof UiImageCropperSelection>) {
+function ImageCropperSelection(
+  props: ComponentProps<typeof UiImageCropperSelection>,
+) {
   return (
     <UiImageCropperSelection
       {...props}
       className={join("hashti-image-cropper-selection", props.className)}
     />
-  )
+  );
 }
 
 function ImageCropperGrid(props: ComponentProps<typeof UiImageCropperGrid>) {
@@ -57,16 +60,18 @@ function ImageCropperGrid(props: ComponentProps<typeof UiImageCropperGrid>) {
       {...props}
       className={join("hashti-image-cropper-grid", props.className)}
     />
-  )
+  );
 }
 
-function ImageCropperHandle(props: ComponentProps<typeof UiImageCropperHandle>) {
+function ImageCropperHandle(
+  props: ComponentProps<typeof UiImageCropperHandle>,
+) {
   return (
     <UiImageCropperHandle
       {...props}
       className={join("hashti-image-cropper-handle", props.className)}
     />
-  )
+  );
 }
 
 function ImageCropperZoom(props: ComponentProps<typeof UiImageCropperZoom>) {
@@ -75,16 +80,18 @@ function ImageCropperZoom(props: ComponentProps<typeof UiImageCropperZoom>) {
       {...props}
       className={join("hashti-image-cropper-zoom", props.className)}
     />
-  )
+  );
 }
 
-function ImageCropperRotate(props: ComponentProps<typeof UiImageCropperRotate>) {
+function ImageCropperRotate(
+  props: ComponentProps<typeof UiImageCropperRotate>,
+) {
   return (
     <UiImageCropperRotate
       {...props}
       className={join("hashti-image-cropper-rotate", props.className)}
     />
-  )
+  );
 }
 
 function ImageCropperFlip(props: ComponentProps<typeof UiImageCropperFlip>) {
@@ -93,7 +100,7 @@ function ImageCropperFlip(props: ComponentProps<typeof UiImageCropperFlip>) {
       {...props}
       className={join("hashti-image-cropper-flip", props.className)}
     />
-  )
+  );
 }
 
 export {
@@ -106,4 +113,4 @@ export {
   ImageCropperSelection,
   ImageCropperViewport,
   ImageCropperZoom,
-}
+};

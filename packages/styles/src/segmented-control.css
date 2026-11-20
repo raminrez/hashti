@@ -22,7 +22,9 @@
   border-radius: calc(var(--hashti-control-radius) - 0.1875rem);
   background: var(--hashti-layer-01);
   /* small elevation stack, no single token */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.08);
   transition:
     top var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
     left var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
@@ -36,7 +38,8 @@
 
 /* Horizontal items get their 2.125rem height by stretching; in a column
    flex-basis 0 collapses them, so floor them at the same height instead. */
-.hashti-segmented-control[data-orientation="vertical"] .hashti-segmented-control-item {
+.hashti-segmented-control[data-orientation="vertical"]
+  .hashti-segmented-control-item {
   min-block-size: 2.125rem;
 }
 
@@ -69,7 +72,9 @@
 }
 
 @media (hover: hover) {
-  .hashti-segmented-control-item:hover:not([data-checked]):not([data-disabled]) {
+  .hashti-segmented-control-item:hover:not([data-checked]):not(
+      [data-disabled]
+    ) {
     color: var(--hashti-text-primary);
   }
 }

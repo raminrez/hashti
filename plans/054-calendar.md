@@ -51,9 +51,9 @@ Calendar + popover.
 ### Design rules that bite (derived)
 
 - **Root `hashti-calendar`**: `display: flex; flex-direction: column;
-  gap: 0.75rem; padding: 0.75rem; background: var(--hashti-layer-01);
-  border: 1px solid var(--hashti-border-subtle-00); border-radius:
-  var(--hashti-popover-radius);` (an 18px panel — it hosts the picker
+gap: 0.75rem; padding: 0.75rem; background: var(--hashti-layer-01);
+border: 1px solid var(--hashti-border-subtle-00); border-radius:
+var(--hashti-popover-radius);` (an 18px panel — it hosts the picker
   popup later).
 - **Heading/controls row**: heading centered; Previous/Next as the quiet
   icon squares (2.5rem, control radius, transparent, hover
@@ -65,16 +65,16 @@ Calendar + popover.
 - **Weekday header**: helper typography (0.75rem), ink
   `var(--hashti-text-secondary)`, weight 500, centered.
 - **Day cell (button)**: `display: inline-flex; align-items: center;
-  justify-content: center; inline-size: 2.25rem; block-size: 2.25rem;
-  border: none; border-radius: var(--hashti-border-radius-08);
-  background: transparent; color: var(--hashti-text-primary);
-  font-size: 0.8125rem; font-variant-numeric: tabular-nums; cursor:
-  pointer;`
+justify-content: center; inline-size: 2.25rem; block-size: 2.25rem;
+border: none; border-radius: var(--hashti-border-radius-08);
+background: transparent; color: var(--hashti-text-primary);
+font-size: 0.8125rem; font-variant-numeric: tabular-nums; cursor:
+pointer;`
   - hover (hover:hover, not selected/disabled) → background-hover.
   - selected/today/outside states — READ `CalendarDay`'s attribute list
     in the docs and style: today = outline ring or bold; outside-month =
     secondary ink; selected = `background:
-    var(--hashti-background-selected); color: var(--hashti-focus);` (the
+var(--hashti-background-selected); color: var(--hashti-focus);` (the
     selection pair).
   - `[data-disabled]` → disabled ink, not-allowed.
 - **Month/Year selects**: the `hashti-select-trigger` recipe at compact
@@ -85,10 +85,10 @@ Calendar + popover.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -145,12 +145,12 @@ structure), or the expanded form if the docs' Usage shows one; adapt prop
 names to the docs and note deviations:
 
 ```tsx
-"use client"
+"use client";
 
-import { Calendar } from "@hashti/react"
+import { Calendar } from "@hashti/react";
 
 export function CalendarDemo() {
-  return <Calendar aria-label="Pick a date" style={{ maxWidth: 320 }} />
+  return <Calendar aria-label="Pick a date" style={{ maxWidth: 320 }} />;
 }
 ```
 
@@ -162,7 +162,7 @@ title: Calendar
 description: Picks dates from a month grid.
 ---
 
-import { CalendarDemo } from '../../src/components/calendar-demo'
+import { CalendarDemo } from "../../src/components/calendar-demo";
 
 ## Usage
 
@@ -170,13 +170,13 @@ import { CalendarDemo } from '../../src/components/calendar-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Calendar` | Owns the month and the selection. |
-| `CalendarHeading` / `CalendarPrevious` / `CalendarNext` | The month header. |
-| `CalendarGrid` | The weekday grid (a real table). |
-| `CalendarDay` | One pickable date. |
-| `CalendarMonthSelect` / `CalendarYearSelect` | Jump to a month/year. |
+| Part                                                    | Purpose                           |
+| ------------------------------------------------------- | --------------------------------- |
+| `Calendar`                                              | Owns the month and the selection. |
+| `CalendarHeading` / `CalendarPrevious` / `CalendarNext` | The month header.                 |
+| `CalendarGrid`                                          | The weekday grid (a real table).  |
+| `CalendarDay`                                           | One pickable date.                |
+| `CalendarMonthSelect` / `CalendarYearSelect`            | Jump to a month/year.             |
 
 Styling lives in `@hashti/styles` under `.hashti-calendar*` — an 18px panel with quiet day squares, the selected day in the selected tint.
 ```
@@ -198,11 +198,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-calendar" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/calendar.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "calendar" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

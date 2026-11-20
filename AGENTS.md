@@ -60,6 +60,7 @@ component, its parts, files, exports, and docs pages.
 
 `@hashti/styles` must be usable verbatim by future Vue/Svelte/… packages.
 Component CSS therefore targets ONLY:
+
 - `hashti-*` class names (the class contract), and
 - ui-sdk's data attributes (`data-open`, `data-selected`, `data-highlighted`,
   `data-invalid`, …) and `data-slot`.

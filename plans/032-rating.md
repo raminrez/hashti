@@ -49,7 +49,7 @@ paints it.
 
 - **Root**: `display: inline-flex; gap: 0.25rem;`
 - **Item (icon lane)**: `inline-size: 1.5rem; block-size: 1.5rem;
-  display: inline-flex; align-items: center; justify-content: center;`
+display: inline-flex; align-items: center; justify-content: center;`
   ink `var(--hashti-border-strong-01)` (the empty star's gray), cursor
   pointer.
   - `[data-filled]` → ink `var(--hashti-icon-selected, var(--hashti-focus))`
@@ -75,10 +75,10 @@ paints it.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -112,9 +112,9 @@ paints it.
 `packages/react/src/rating/rating.tsx` — the `join` helper pattern
 (direct-re-export check on the root):
 
-| Part | Class |
-| --- | --- |
-| `Rating` | `hashti-rating` |
+| Part         | Class                |
+| ------------ | -------------------- |
+| `Rating`     | `hashti-rating`      |
 | `RatingItem` | `hashti-rating-item` |
 
 Export both from `./rating` and the barrel.
@@ -134,29 +134,39 @@ Export both from `./rating` and the barrel.
 dependency), read-only + interactive:
 
 ```tsx
-"use client"
+"use client";
 
-import { Rating, RatingItem } from "@hashti/react"
+import { Rating, RatingItem } from "@hashti/react";
 
 function Star() {
   return (
     <svg viewBox="0 0 16 16" width="24" height="24" aria-hidden="true">
-      <path d="M8 1.5 10 6l4.5.5-3.3 3 .9 4.5L8 11.6 3.9 14l.9-4.5-3.3-3L6 6Z" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />
+      <path
+        d="M8 1.5 10 6l4.5.5-3.3 3 .9 4.5L8 11.6 3.9 14l.9-4.5-3.3-3L6 6Z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
     </svg>
-  )
+  );
 }
 
 export function RatingDemo() {
   return (
     <div style={{ display: "grid", gap: 16 }}>
       <Rating aria-label="Your rating" defaultValue={3}>
-        <RatingItem><Star /></RatingItem>
+        <RatingItem>
+          <Star />
+        </RatingItem>
       </Rating>
       <Rating aria-label="Average rating" defaultValue={4} readOnly>
-        <RatingItem><Star /></RatingItem>
+        <RatingItem>
+          <Star />
+        </RatingItem>
       </Rating>
     </div>
-  )
+  );
 }
 ```
 
@@ -171,7 +181,7 @@ title: Rating
 description: Picks a star score.
 ---
 
-import { RatingDemo } from '../../src/components/rating-demo'
+import { RatingDemo } from "../../src/components/rating-demo";
 
 ## Usage
 
@@ -179,9 +189,9 @@ import { RatingDemo } from '../../src/components/rating-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Rating` | Holds the score; radios over the stars. |
+| Part         | Purpose                                                             |
+| ------------ | ------------------------------------------------------------------- |
+| `Rating`     | Holds the score; radios over the stars.                             |
 | `RatingItem` | One star; `data-filled`/`data-partial`/`data-highlighted` paint it. |
 
 Styling lives in `@hashti/styles` under `.hashti-rating*` — gray empty stars, selection-blue filled and previewed. Half-star masking is a later recipe.
@@ -204,11 +214,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-rating" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/rating.css` returns
-  nothing
+      nothing
 - [ ] `grep -n "rating" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

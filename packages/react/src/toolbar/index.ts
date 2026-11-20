@@ -5,4 +5,4 @@ export {
   ToolbarSeparator,
   ToolbarLink,
   ToolbarInput,
-} from "./toolbar"
+} from "./toolbar";

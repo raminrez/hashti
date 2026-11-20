@@ -24,7 +24,8 @@
   font: inherit;
   font-size: 1rem;
   line-height: 1.5rem;
-  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-date-picker-input::placeholder {
@@ -100,27 +101,36 @@
   color: var(--hashti-text-primary);
 }
 
-.hashti-date-picker-content [data-slot="calendar-day"][data-selected][data-range-start] {
-  border-radius: var(--hashti-border-radius-08) 0 0 var(--hashti-border-radius-08);
+.hashti-date-picker-content
+  [data-slot="calendar-day"][data-selected][data-range-start] {
+  border-radius: var(--hashti-border-radius-08) 0 0
+    var(--hashti-border-radius-08);
 }
 
-.hashti-date-picker-content [data-slot="calendar-day"][data-selected][data-range-end] {
-  border-radius: 0 var(--hashti-border-radius-08) var(--hashti-border-radius-08) 0;
+.hashti-date-picker-content
+  [data-slot="calendar-day"][data-selected][data-range-end] {
+  border-radius: 0 var(--hashti-border-radius-08) var(--hashti-border-radius-08)
+    0;
 }
 
-.hashti-date-picker-content [data-slot="calendar-day"][data-preview][data-range-start] {
-  border-radius: var(--hashti-border-radius-08) 0 0 var(--hashti-border-radius-08);
+.hashti-date-picker-content
+  [data-slot="calendar-day"][data-preview][data-range-start] {
+  border-radius: var(--hashti-border-radius-08) 0 0
+    var(--hashti-border-radius-08);
   background: var(--hashti-background-selected);
   color: var(--hashti-focus);
   font-weight: 600;
 }
 
-.hashti-date-picker-content [data-slot="calendar-day"][data-preview][data-range-middle] {
+.hashti-date-picker-content
+  [data-slot="calendar-day"][data-preview][data-range-middle] {
   background: var(--hashti-background-hover);
 }
 
-.hashti-date-picker-content [data-slot="calendar-day"][data-preview][data-range-end] {
-  border-radius: 0 var(--hashti-border-radius-08) var(--hashti-border-radius-08) 0;
+.hashti-date-picker-content
+  [data-slot="calendar-day"][data-preview][data-range-end] {
+  border-radius: 0 var(--hashti-border-radius-08) var(--hashti-border-radius-08)
+    0;
   background: var(--hashti-background-hover);
 }
 
@@ -155,7 +165,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hashti-date-picker-content {
-    transition: opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity var(--hashti-duration-fast-01)
+      cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hashti-date-picker-content[data-starting-style],
@@ -185,8 +196,10 @@
   cursor: pointer;
 }
 
-.hashti-date-picker-content [data-slot="calendar-previous"]:hover:not([data-disabled]),
-.hashti-date-picker-content [data-slot="calendar-next"]:hover:not([data-disabled]) {
+.hashti-date-picker-content
+  [data-slot="calendar-previous"]:hover:not([data-disabled]),
+.hashti-date-picker-content
+  [data-slot="calendar-next"]:hover:not([data-disabled]) {
   background: var(--hashti-background-hover);
 }
 
@@ -228,7 +241,8 @@
   cursor: pointer;
 }
 
-.hashti-date-picker-content [data-slot="calendar-day"]:hover:not([data-selected]):not([data-disabled]) {
+.hashti-date-picker-content
+  [data-slot="calendar-day"]:hover:not([data-selected]):not([data-disabled]) {
   background: var(--hashti-background-hover);
 }
 

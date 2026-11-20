@@ -3,7 +3,7 @@ title: Tree
 description: Browses a hierarchy of rows with expandable branches.
 ---
 
-import { TreeDemo } from '../../src/components/tree-demo'
+import { TreeDemo } from "../../src/components/tree-demo";
 
 ## Usage
 
@@ -11,12 +11,12 @@ import { TreeDemo } from '../../src/components/tree-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Tree` | Owns selection and which branches are expanded. |
-| `TreeItem` | One row; give each a unique `value`. |
-| `TreeItemLabel` | The row's text and its indicator. |
+| Part                | Purpose                                          |
+| ------------------- | ------------------------------------------------ |
+| `Tree`              | Owns selection and which branches are expanded.  |
+| `TreeItem`          | One row; give each a unique `value`.             |
+| `TreeItemLabel`     | The row's text and its indicator.                |
 | `TreeItemIndicator` | The chevron that expands and collapses a branch. |
-| `TreeGroup` | A branch's children. |
+| `TreeGroup`         | A branch's children.                             |
 
 Styling lives in `@hashti/styles` under `.hashti-tree*` — indented rows from `--tree-level`, selected rows in the selected tint, and a chevron that turns down when its branch opens.

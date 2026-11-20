@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Menu,
@@ -16,22 +16,26 @@ import {
   MenuSubContent,
   MenuSubTrigger,
   MenuTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 function ChevronGlyph() {
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true" fill="none">
       <path d="m4.5 3 3 3-3 3" stroke="currentColor" strokeWidth="1.5" />
     </svg>
-  )
+  );
 }
 
 function CheckGlyph() {
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true" fill="none">
-      <path d="m2.5 6.5 2.5 2.5 4.5-6" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="m2.5 6.5 2.5 2.5 4.5-6"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
     </svg>
-  )
+  );
 }
 
 function LinkGlyph() {
@@ -44,16 +48,24 @@ function LinkGlyph() {
         strokeLinecap="round"
       />
     </svg>
-  )
+  );
 }
 
 function MailGlyph() {
   return (
     <svg viewBox="0 0 16 16" aria-hidden="true" fill="none">
-      <rect x="2" y="3.5" width="12" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
+      <rect
+        x="2"
+        y="3.5"
+        width="12"
+        height="9"
+        rx="1.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
       <path d="m2.5 5 5.5 4 5.5-4" stroke="currentColor" strokeWidth="1.5" />
     </svg>
-  )
+  );
 }
 
 export function MenuDemo() {
@@ -93,7 +105,8 @@ export function MenuDemo() {
         </MenuCheckboxItem>
         <MenuItem value="find" shortcut="mod+f">
           Find…
-        </MenuItem>        <MenuCheckboxItem value="minimap">
+        </MenuItem>{" "}
+        <MenuCheckboxItem value="minimap">
           <MenuItemIndicator keepMounted>
             <CheckGlyph />
           </MenuItemIndicator>
@@ -117,5 +130,5 @@ export function MenuDemo() {
         </MenuGroup>
       </MenuContent>
     </Menu>
-  )
+  );
 }

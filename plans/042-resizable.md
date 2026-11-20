@@ -43,20 +43,20 @@ surface: the group lays out, the handle is the only styled interaction.
 ### Design rules that bite (derived)
 
 - **Group `hashti-resizable`**: `display: flex; overflow: hidden;
-  border-radius: var(--hashti-border-radius-08);` (the size comes from
+border-radius: var(--hashti-border-radius-08);` (the size comes from
   the consumer; the demo sets block-size + inline-size). Vertical
   orientation deferred — the row layout only this cycle.
 - **Panel `hashti-resizable-panel`**: `min-inline-size: 0; overflow:
-  hidden;` (content clips; the panel's own surface styling is the
+hidden;` (content clips; the panel's own surface styling is the
   consumer's).
 - **Handle `hashti-resizable-handle`**: a 2px grip lane with a wider hit
   area — `position: relative; flex: 0 0 0.25rem; display: flex;
-  align-items: center; justify-content: center; background: transparent;
-  cursor: col-resize; touch-action: none;` the visible grip is a
+align-items: center; justify-content: center; background: transparent;
+cursor: col-resize; touch-action: none;` the visible grip is a
   `::after` — `inline-size: 0.25rem; block-size: 2rem; border-radius:
-  var(--hashti-border-radius-max); background:
-  var(--hashti-border-strong-01); transition: background
-  var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);`
+var(--hashti-border-radius-max); background:
+var(--hashti-border-strong-01); transition: background
+var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);`
   - `[data-hovering]` → `::after` background
     `var(--hashti-border-subtle-inverse, var(--hashti-text-secondary))`.
   - `[data-dragging]` → `::after` background `var(--hashti-focus);` and
@@ -68,10 +68,10 @@ surface: the group lays out, the handle is the only styled interaction.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -106,10 +106,10 @@ surface: the group lays out, the handle is the only styled interaction.
 `packages/react/src/resizable/resizable.tsx` — the `join` helper pattern
 (direct-re-export check on the root):
 
-| Part | Class |
-| --- | --- |
-| `Resizable` | `hashti-resizable` |
-| `ResizablePanel` | `hashti-resizable-panel` |
+| Part              | Class                     |
+| ----------------- | ------------------------- |
+| `Resizable`       | `hashti-resizable`        |
+| `ResizablePanel`  | `hashti-resizable-panel`  |
 | `ResizableHandle` | `hashti-resizable-handle` |
 
 Export all three from `./resizable` and the barrel.
@@ -129,22 +129,37 @@ Export all three from `./resizable` and the barrel.
 `apps/docs/src/components/resizable-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Resizable, ResizableHandle, ResizablePanel } from "@hashti/react"
+import { Resizable, ResizableHandle, ResizablePanel } from "@hashti/react";
 
 export function ResizableDemo() {
   return (
-    <Resizable aria-label="Workspace" style={{ inlineSize: "100%", maxInlineSize: 640, blockSize: "12rem" }}>
-      <ResizablePanel style={{ background: "var(--hashti-layer-02)", padding: "0.75rem", fontSize: "0.875rem" }}>
+    <Resizable
+      aria-label="Workspace"
+      style={{ inlineSize: "100%", maxInlineSize: 640, blockSize: "12rem" }}
+    >
+      <ResizablePanel
+        style={{
+          background: "var(--hashti-layer-02)",
+          padding: "0.75rem",
+          fontSize: "0.875rem",
+        }}
+      >
         Files
       </ResizablePanel>
       <ResizableHandle aria-label="Resize files" />
-      <ResizablePanel style={{ background: "var(--hashti-layer-01)", padding: "0.75rem", fontSize: "0.875rem" }}>
+      <ResizablePanel
+        style={{
+          background: "var(--hashti-layer-01)",
+          padding: "0.75rem",
+          fontSize: "0.875rem",
+        }}
+      >
         Editor
       </ResizablePanel>
     </Resizable>
-  )
+  );
 }
 ```
 
@@ -156,7 +171,7 @@ title: Resizable
 description: Splits space with draggable panels.
 ---
 
-import { ResizableDemo } from '../../src/components/resizable-demo'
+import { ResizableDemo } from "../../src/components/resizable-demo";
 
 ## Usage
 
@@ -164,10 +179,10 @@ import { ResizableDemo } from '../../src/components/resizable-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Resizable` | The group; give it a size. |
-| `ResizablePanel` | One share of the space. |
+| Part              | Purpose                       |
+| ----------------- | ----------------------------- |
+| `Resizable`       | The group; give it a size.    |
+| `ResizablePanel`  | One share of the space.       |
 | `ResizableHandle` | The drag grip between panels. |
 
 Styling lives in `@hashti/styles` under `.hashti-resizable*` — a subtle grip that darkens on hover and turns focus-blue while dragging.
@@ -191,11 +206,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-resizable" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/resizable.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "resizable" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

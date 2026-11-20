@@ -53,18 +53,18 @@ the danger Close accent. It completes the modal pair.
 - **Close buttons**: `align-self: flex-start` row at the end — the answers
   are a row: wrap closes in a consumer layout; style each close as a
   BUTTON-SIZE action, not the ghost icon: `display: inline-flex;
-  align-items: center; justify-content: center; padding: 0 1rem;
-  min-block-size: 2.5rem; border-radius: var(--hashti-control-radius);
-  border: 1px solid var(--hashti-border-strong-01); background:
-  var(--hashti-layer-01); color: var(--hashti-text-primary);
-  font-size: 0.875rem; font-weight: 500; cursor: pointer;`
+align-items: center; justify-content: center; padding: 0 1rem;
+min-block-size: 2.5rem; border-radius: var(--hashti-control-radius);
+border: 1px solid var(--hashti-border-strong-01); background:
+var(--hashti-layer-01); color: var(--hashti-text-primary);
+font-size: 0.875rem; font-weight: 500; cursor: pointer;`
   - `[data-variant]` is NOT ui-sdk's contract — the agreeing answer
     (`value="confirm"`) gets the danger treatment via the demo passing
     `className`? NO — simplest: style every AlertDialogClose the same
     (neutral secondary), and let the DEMO mark the confirm answer with
     `data-danger` attribute (plain attribute pass-through) →
     `.hashti-alert-dialog-close[data-danger] { border-color: var(--hashti-support-error);
-    color: var(--hashti-support-error); }` hover → tinted background
+color: var(--hashti-support-error); }` hover → tinted background
     `var(--hashti-notification-background-error)`. Document the attribute
     in the MDX.
   - `:focus-visible` → the INSET ring (2px @-2px — the overlay close
@@ -73,10 +73,10 @@ the danger Close accent. It completes the modal pair.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -111,15 +111,15 @@ the danger Close accent. It completes the modal pair.
 pattern (direct-re-export check on the root; the Dialog precedent
 applies):
 
-| Part | Class |
-| --- | --- |
-| `AlertDialog` | `hashti-alert-dialog` (or direct re-export) |
-| `AlertDialogTrigger` | `hashti-alert-dialog-trigger` |
-| `AlertDialogBackdrop` | `hashti-alert-dialog-backdrop` |
-| `AlertDialogContent` | `hashti-alert-dialog-content` |
-| `AlertDialogTitle` | `hashti-alert-dialog__title` |
-| `AlertDialogDescription` | `hashti-alert-dialog__description` |
-| `AlertDialogClose` | `hashti-alert-dialog-close` |
+| Part                     | Class                                       |
+| ------------------------ | ------------------------------------------- |
+| `AlertDialog`            | `hashti-alert-dialog` (or direct re-export) |
+| `AlertDialogTrigger`     | `hashti-alert-dialog-trigger`               |
+| `AlertDialogBackdrop`    | `hashti-alert-dialog-backdrop`              |
+| `AlertDialogContent`     | `hashti-alert-dialog-content`               |
+| `AlertDialogTitle`       | `hashti-alert-dialog__title`                |
+| `AlertDialogDescription` | `hashti-alert-dialog__description`          |
+| `AlertDialogClose`       | `hashti-alert-dialog-close`                 |
 
 Export all seven from `./alert-dialog` and the barrel.
 
@@ -138,7 +138,7 @@ Export all seven from `./alert-dialog` and the barrel.
 `apps/docs/src/components/alert-dialog-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   AlertDialog,
@@ -148,7 +148,7 @@ import {
   AlertDialogDescription,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function AlertDialogDemo() {
   return (
@@ -161,10 +161,12 @@ export function AlertDialogDemo() {
           This removes every file and comment. It cannot be undone.
         </AlertDialogDescription>
         <AlertDialogClose value="cancel">Cancel</AlertDialogClose>
-        <AlertDialogClose value="confirm" data-danger>Delete</AlertDialogClose>
+        <AlertDialogClose value="confirm" data-danger>
+          Delete
+        </AlertDialogClose>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }
 ```
 
@@ -179,7 +181,7 @@ title: AlertDialog
 description: Asks a question that needs an explicit answer.
 ---
 
-import { AlertDialogDemo } from '../../src/components/alert-dialog-demo'
+import { AlertDialogDemo } from "../../src/components/alert-dialog-demo";
 
 ## Usage
 
@@ -187,14 +189,14 @@ import { AlertDialogDemo } from '../../src/components/alert-dialog-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `AlertDialog` | Owns the open state; only a Close part answers. |
-| `AlertDialogTrigger` | Opens the dialog. |
-| `AlertDialogBackdrop` | The scrim. |
-| `AlertDialogContent` | The modal surface. |
-| `AlertDialogTitle` / `AlertDialogDescription` | The question and context. |
-| `AlertDialogClose` | One answer; `value="confirm"` is the agreeing one, `data-danger` marks destructive ink. |
+| Part                                          | Purpose                                                                                 |
+| --------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `AlertDialog`                                 | Owns the open state; only a Close part answers.                                         |
+| `AlertDialogTrigger`                          | Opens the dialog.                                                                       |
+| `AlertDialogBackdrop`                         | The scrim.                                                                              |
+| `AlertDialogContent`                          | The modal surface.                                                                      |
+| `AlertDialogTitle` / `AlertDialogDescription` | The question and context.                                                               |
+| `AlertDialogClose`                            | One answer; `value="confirm"` is the agreeing one, `data-danger` marks destructive ink. |
 
 Styling lives in `@hashti/styles` under `.hashti-alert-dialog*` — the dialog surface with answer buttons; the destructive answer carries error ink. Escape does not dismiss.
 ```
@@ -217,11 +219,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-alert-dialog" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/alert-dialog.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "alert-dialog" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

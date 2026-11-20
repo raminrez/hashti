@@ -48,29 +48,29 @@ recipes; only the BAR itself is new styling.
 ### Design rules that bite
 
 - **Bar `hashti-menubar`**: a quiet row — `display: inline-flex;
-  align-items: center; gap: 0.125rem; padding: 0.1875rem; border: 1px
-  solid var(--hashti-border-subtle-00); border-radius:
-  var(--hashti-control-radius); background: var(--hashti-layer-02);`
+align-items: center; gap: 0.125rem; padding: 0.1875rem; border: 1px
+solid var(--hashti-border-subtle-00); border-radius:
+var(--hashti-control-radius); background: var(--hashti-layer-02);`
 - The MenuTriggers INSIDE the bar need bar-scoped compactness — menu.css's
   trigger is 44px tall (a page-level quiet action); a menubar trigger is
   a compact row entry: `.hashti-menubar .hashti-menu-trigger {
-  min-block-size: 2rem; padding: 0 0.625rem; border-radius: calc(var(--hashti-control-radius) - 0.1875rem); }`
+min-block-size: 2rem; padding: 0 0.625rem; border-radius: calc(var(--hashti-control-radius) - 0.1875rem); }`
   — an override scoped by the bar's class (same pattern the segmented
   control uses for items).
 - `data-open` on a trigger (menu.css already has trigger states? check —
   if menu.css styles `[data-open]` on the trigger, the bar inherits it;
   if not, add `.hashti-menubar .hashti-menu-trigger[data-open] {
-  background: var(--hashti-background-hover); }`).
+background: var(--hashti-background-hover); }`).
 - Everything else (content, items, highlight) comes from menu.css
   untouched.
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -107,8 +107,8 @@ recipes; only the BAR itself is new styling.
 re-export the Menu parts consumers need from `@hashti/react` (they are
 already in the barrel — just wrap the bar):
 
-| Part | Class |
-| --- | --- |
+| Part      | Class                                                                         |
+| --------- | ----------------------------------------------------------------------------- |
 | `Menubar` | `hashti-menubar` (or direct re-export if the root takes no className — check) |
 
 Export `Menubar` from `./menubar` and the barrel.
@@ -129,10 +129,16 @@ scoped trigger overrides only).
 `apps/docs/src/components/menubar-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Menubar } from "@hashti/react"
-import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from "@hashti/react"
+import { Menubar } from "@hashti/react";
+import {
+  Menu,
+  MenuContent,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "@hashti/react";
 
 export function MenubarDemo() {
   return (
@@ -161,7 +167,7 @@ export function MenubarDemo() {
         </MenuContent>
       </Menu>
     </Menubar>
-  )
+  );
 }
 ```
 
@@ -173,7 +179,7 @@ title: Menubar
 description: A bar of app menus.
 ---
 
-import { MenubarDemo } from '../../src/components/menubar-demo'
+import { MenubarDemo } from "../../src/components/menubar-demo";
 
 ## Usage
 
@@ -201,11 +207,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-menubar" packages/react/src packages/styles/src`
-  shows the bar class and the scoped selectors
+      shows the bar class and the scoped selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/menubar.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "menubar" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

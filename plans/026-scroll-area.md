@@ -57,25 +57,25 @@ command palettes, preference panes) sits inside later.
   the consumer — inline style or their layout; the demo sets
   `block-size: 12rem`).
 - **Viewport**: `inline-size: 100%; block-size: 100%; overflow-y: auto;
-  overflow-x: hidden; overscroll-behavior: contain;` (+ `scrollbar-width:
-  none` and `::-webkit-scrollbar { display: none; }` so the native bar
+overflow-x: hidden; overscroll-behavior: contain;` (+ `scrollbar-width:
+none` and `::-webkit-scrollbar { display: none; }` so the native bar
   never doubles with the styled one — ui-sdk may already hide it; verify
   in the rendered page and only add if needed).
 - **Scrollbar (vertical)**: `position: absolute; inset-block: 0.25rem;
-  inset-inline-end: 0.25rem; inline-size: 0.375rem;` — a slim floating
+inset-inline-end: 0.25rem; inline-size: 0.375rem;` — a slim floating
   rail, invisible until `data-visible`:
   `opacity: 0; transition: opacity var(--hashti-duration-fast-02)
-  cubic-bezier(0.16, 1, 0.3, 1); [data-visible] { opacity: 1; }`.
+cubic-bezier(0.16, 1, 0.3, 1); [data-visible] { opacity: 1; }`.
 - **Thumb (vertical)**: `inline-size: 100%;` the LENGTH reads
   `var(--scroll-area-thumb-height)` and the POSITION reads
   `var(--scroll-area-thumb-offset)` via `translate` — copy the docs'
   pattern exactly:
   `block-size: var(--scroll-area-thumb-height); translate: 0
-  var(--scroll-area-thumb-offset);` background
+var(--scroll-area-thumb-offset);` background
   `var(--hashti-border-strong-01)`, border-radius
   `var(--hashti-border-radius-max)`, `min-block-size: 1.5rem;`
   `[data-dragging]` → background `var(--hashti-border-subtle-inverse,
-  var(--hashti-text-secondary))` — pick
+var(--hashti-text-secondary))` — pick
   `var(--hashti-border-subtle-01)`-or-darker; simplest: darker on drag via
   `var(--hashti-text-secondary)`.
 - **Horizontal scrollbar**: mirror the vertical with
@@ -85,10 +85,10 @@ command palettes, preference panes) sits inside later.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -122,13 +122,13 @@ command palettes, preference panes) sits inside later.
 `packages/react/src/scroll-area/scroll-area.tsx` — the `join` helper
 pattern (direct-re-export check on roots):
 
-| Part | Class |
-| --- | --- |
-| `ScrollArea` | `hashti-scroll-area` |
-| `ScrollAreaViewport` | `hashti-scroll-area-viewport` |
-| `ScrollAreaContent` | `hashti-scroll-area-content` |
+| Part                  | Class                          |
+| --------------------- | ------------------------------ |
+| `ScrollArea`          | `hashti-scroll-area`           |
+| `ScrollAreaViewport`  | `hashti-scroll-area-viewport`  |
+| `ScrollAreaContent`   | `hashti-scroll-area-content`   |
 | `ScrollAreaScrollbar` | `hashti-scroll-area-scrollbar` |
-| `ScrollAreaThumb` | `hashti-scroll-area-thumb` |
+| `ScrollAreaThumb`     | `hashti-scroll-area-thumb`     |
 
 Export all five from `./scroll-area` and the barrel.
 
@@ -148,17 +148,33 @@ Export all five from `./scroll-area` and the barrel.
 long list:
 
 ```tsx
-"use client"
+"use client";
 
-import { ScrollArea, ScrollAreaContent, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from "@hashti/react"
+import {
+  ScrollArea,
+  ScrollAreaContent,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+  ScrollAreaViewport,
+} from "@hashti/react";
 
 export function ScrollAreaDemo() {
   return (
-    <ScrollArea style={{ blockHeight: "12rem", maxWidth: 320, border: "1px solid var(--hashti-border-subtle-00)", borderRadius: "var(--hashti-popover-radius)" }}>
+    <ScrollArea
+      style={{
+        blockHeight: "12rem",
+        maxWidth: 320,
+        border: "1px solid var(--hashti-border-subtle-00)",
+        borderRadius: "var(--hashti-popover-radius)",
+      }}
+    >
       <ScrollAreaViewport>
         <ScrollAreaContent style={{ padding: "0.75rem" }}>
           {Array.from({ length: 30 }, (_, i) => (
-            <div key={i} style={{ padding: "0.375rem 0", fontSize: "0.875rem" }}>
+            <div
+              key={i}
+              style={{ padding: "0.375rem 0", fontSize: "0.875rem" }}
+            >
               Item {i + 1}
             </div>
           ))}
@@ -168,7 +184,7 @@ export function ScrollAreaDemo() {
         <ScrollAreaThumb />
       </ScrollAreaScrollbar>
     </ScrollArea>
-  )
+  );
 }
 ```
 
@@ -183,7 +199,7 @@ title: ScrollArea
 description: Scrolls content with a styled scrollbar.
 ---
 
-import { ScrollAreaDemo } from '../../src/components/scroll-area-demo'
+import { ScrollAreaDemo } from "../../src/components/scroll-area-demo";
 
 ## Usage
 
@@ -191,13 +207,13 @@ import { ScrollAreaDemo } from '../../src/components/scroll-area-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `ScrollArea` | The sized, clipping box. |
-| `ScrollAreaViewport` | The real scroller. |
-| `ScrollAreaContent` | The content wrapper. |
+| Part                  | Purpose                                   |
+| --------------------- | ----------------------------------------- |
+| `ScrollArea`          | The sized, clipping box.                  |
+| `ScrollAreaViewport`  | The real scroller.                        |
+| `ScrollAreaContent`   | The content wrapper.                      |
 | `ScrollAreaScrollbar` | One per axis; shows under `data-visible`. |
-| `ScrollAreaThumb` | Sizes and moves itself. |
+| `ScrollAreaThumb`     | Sizes and moves itself.                   |
 
 Styling lives in `@hashti/styles` under `.hashti-scroll-area*` — a slim floating rail with a strong-border thumb.
 ```
@@ -220,11 +236,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-scroll-area" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/scroll-area.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "scroll-area" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

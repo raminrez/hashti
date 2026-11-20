@@ -52,46 +52,46 @@ reuses Popover/Menu surface recipes in a nav pattern.
 ### Design rules that bite (Popover surface in a nav row)
 
 - **Root `hashti-navigation-menu`**: `position: relative; display:
-  inline-flex; justify-content: center;` (the viewport anchors inside).
+inline-flex; justify-content: center;` (the viewport anchors inside).
 - **List `hashti-navigation-menu-list`**: `display: flex; gap: 0.25rem;
-  align-items: center;`
+align-items: center;`
 - **Item `hashti-navigation-menu-item`**: wrapper only (`display: flex;
-  position: relative;`).
+position: relative;`).
 - **Trigger `hashti-navigation-menu-trigger`**: the quiet-action recipe —
   `display: inline-flex; align-items: center; gap: 0.375rem; padding: 0
-  0.625rem; min-block-size: 2.25rem; border: none; border-radius:
-  var(--hashti-control-radius); background: transparent; color:
-  var(--hashti-text-primary); font-size: 0.875rem; font-weight: 500;
-  cursor: pointer;` hover (hover:hover) → background-hover;
+0.625rem; min-block-size: 2.25rem; border: none; border-radius:
+var(--hashti-control-radius); background: transparent; color:
+var(--hashti-text-primary); font-size: 0.875rem; font-weight: 500;
+cursor: pointer;` hover (hover:hover) → background-hover;
   `:focus-visible` → 2px ring @2px; active/open state per docs
   (`[data-open]` → background-hover like a pressed tab).
 - **Content `hashti-navigation-menu-content`**: the popover surface
   recipe — `background: var(--hashti-layer-01); border: 1px solid
-  var(--hashti-border-subtle-00); border-radius:
-  var(--hashti-popover-radius); box-shadow: 0 8px 24px
-  var(--hashti-shadow); padding: 0.75rem;` motion via
+var(--hashti-border-subtle-00); border-radius:
+var(--hashti-popover-radius); box-shadow: 0 8px 24px
+var(--hashti-shadow); padding: 0.75rem;` motion via
   starting/ending styles (opacity + scale 0.98, fast-01,
   transform-origin from `--transform-origin` if exposed; reduced-motion →
   opacity only).
 - **Link `hashti-navigation-menu-link`**: `display: block; padding:
-  0.5rem; border-radius: var(--hashti-border-radius-08); color:
-  var(--hashti-text-primary); font-size: 0.875rem; text-decoration:
-  none;` hover → background-hover.
+0.5rem; border-radius: var(--hashti-border-radius-08); color:
+var(--hashti-text-primary); font-size: 0.875rem; text-decoration:
+none;` hover → background-hover.
 - **Viewport `hashti-navigation-menu-viewport`**: `position: absolute;
-  background: var(--hashti-layer-01); border: 1px solid
-  var(--hashti-border-subtle-00); border-radius:
-  var(--hashti-popover-radius); box-shadow: 0 8px 24px
-  var(--hashti-shadow); overflow: hidden;` sized by `width:
-  var(--viewport-width); height: var(--viewport-height);` — CHECK the
+background: var(--hashti-layer-01); border: 1px solid
+var(--hashti-border-subtle-00); border-radius:
+var(--hashti-popover-radius); box-shadow: 0 8px 24px
+var(--hashti-shadow); overflow: hidden;` sized by `width:
+var(--viewport-width); height: var(--viewport-height);` — CHECK the
   docs' exact variable names/positions and follow.
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -127,14 +127,14 @@ reuses Popover/Menu surface recipes in a nav pattern.
 helper pattern (direct-re-export checks per part; verify class landing in
 the rendered DOM — the date-input lesson):
 
-| Part | Class |
-| --- | --- |
-| `NavigationMenu` | `hashti-navigation-menu` |
-| `NavigationMenuList` | `hashti-navigation-menu-list` |
-| `NavigationMenuItem` | `hashti-navigation-menu-item` |
-| `NavigationMenuTrigger` | `hashti-navigation-menu-trigger` |
-| `NavigationMenuContent` | `hashti-navigation-menu-content` |
-| `NavigationMenuLink` | `hashti-navigation-menu-link` |
+| Part                     | Class                             |
+| ------------------------ | --------------------------------- |
+| `NavigationMenu`         | `hashti-navigation-menu`          |
+| `NavigationMenuList`     | `hashti-navigation-menu-list`     |
+| `NavigationMenuItem`     | `hashti-navigation-menu-item`     |
+| `NavigationMenuTrigger`  | `hashti-navigation-menu-trigger`  |
+| `NavigationMenuContent`  | `hashti-navigation-menu-content`  |
+| `NavigationMenuLink`     | `hashti-navigation-menu-link`     |
 | `NavigationMenuViewport` | `hashti-navigation-menu-viewport` |
 
 Export all from `./navigation-menu` and the barrel.
@@ -157,7 +157,7 @@ small link panels (follow the docs' Usage structure; the trigger opens a
 panel of links):
 
 ```tsx
-"use client"
+"use client";
 
 import {
   NavigationMenu,
@@ -167,12 +167,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-} from "@hashti/react"
+} from "@hashti/react";
 
 const docsLinks = [
   { href: "#components", title: "Components", desc: "Every building block." },
   { href: "#styles", title: "Styles", desc: "Tokens and recipes." },
-]
+];
 
 export function NavigationMenuDemo() {
   return (
@@ -184,7 +184,14 @@ export function NavigationMenuDemo() {
             {docsLinks.map((l) => (
               <NavigationMenuLink key={l.href} href={l.href}>
                 <div style={{ fontWeight: 600 }}>{l.title}</div>
-                <div style={{ color: "var(--hashti-text-secondary)", fontSize: "0.8125rem" }}>{l.desc}</div>
+                <div
+                  style={{
+                    color: "var(--hashti-text-secondary)",
+                    fontSize: "0.8125rem",
+                  }}
+                >
+                  {l.desc}
+                </div>
               </NavigationMenuLink>
             ))}
           </NavigationMenuContent>
@@ -198,7 +205,7 @@ export function NavigationMenuDemo() {
       </NavigationMenuList>
       <NavigationMenuViewport />
     </NavigationMenu>
-  )
+  );
 }
 ```
 
@@ -210,7 +217,7 @@ title: NavigationMenu
 description: Opens link panels from a nav row.
 ---
 
-import { NavigationMenuDemo } from '../../src/components/navigation-menu-demo'
+import { NavigationMenuDemo } from "../../src/components/navigation-menu-demo";
 
 ## Usage
 
@@ -218,13 +225,13 @@ import { NavigationMenuDemo } from '../../src/components/navigation-menu-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `NavigationMenu` | Owns the open item. |
-| `NavigationMenuList` / `NavigationMenuItem` | The trigger row. |
-| `NavigationMenuTrigger` | One disclosure button. |
-| `NavigationMenuContent` / `NavigationMenuLink` | The panel of links. |
-| `NavigationMenuViewport` | The shared panel surface that follows. |
+| Part                                           | Purpose                                |
+| ---------------------------------------------- | -------------------------------------- |
+| `NavigationMenu`                               | Owns the open item.                    |
+| `NavigationMenuList` / `NavigationMenuItem`    | The trigger row.                       |
+| `NavigationMenuTrigger`                        | One disclosure button.                 |
+| `NavigationMenuContent` / `NavigationMenuLink` | The panel of links.                    |
+| `NavigationMenuViewport`                       | The shared panel surface that follows. |
 
 Styling lives in `@hashti/styles` under `.hashti-navigation-menu*` — quiet triggers with the popover surface and a viewport that follows the open panel's size.
 ```
@@ -247,11 +254,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-navigation-menu" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/navigation-menu.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "navigation-menu" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

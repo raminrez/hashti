@@ -3,7 +3,7 @@ title: Popover
 description: Opens an anchored surface beside its trigger.
 ---
 
-import { PopoverDemo } from '../../src/components/popover-demo'
+import { PopoverDemo } from "../../src/components/popover-demo";
 
 ## Usage
 
@@ -11,12 +11,12 @@ import { PopoverDemo } from '../../src/components/popover-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Popover` | Owns open state, placement and dismissal. |
-| `PopoverTrigger` | Opens the popover. |
-| `PopoverContent` | The anchored surface; flips away from edges. |
-| `PopoverTitle` / `PopoverDescription` | Name and context. |
-| `PopoverClose` | Dismisses; several allowed. |
+| Part                                  | Purpose                                      |
+| ------------------------------------- | -------------------------------------------- |
+| `Popover`                             | Owns open state, placement and dismissal.    |
+| `PopoverTrigger`                      | Opens the popover.                           |
+| `PopoverContent`                      | The anchored surface; flips away from edges. |
+| `PopoverTitle` / `PopoverDescription` | Name and context.                            |
+| `PopoverClose`                        | Dismisses; several allowed.                  |
 
 Styling lives in `@hashti/styles` under `.hashti-popover-*` — an 18px surface with the popover shadow, placed by ui-sdk with flip.

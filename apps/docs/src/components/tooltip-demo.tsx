@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Tooltip, TooltipContent, TooltipTrigger } from "@hashti/react"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@hashti/react";
 
 export function TooltipDemo() {
   return (
@@ -8,5 +8,5 @@ export function TooltipDemo() {
       <TooltipTrigger>Share</TooltipTrigger>
       <TooltipContent>Anyone with the link can view</TooltipContent>
     </Tooltip>
-  )
+  );
 }

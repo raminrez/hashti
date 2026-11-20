@@ -76,10 +76,10 @@ recipe that Radio and Switch reuse.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -114,34 +114,48 @@ recipe that Radio and Switch reuse.
 `packages/react/src/checkbox/checkbox.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { Checkbox as UiCheckbox, CheckboxIndicator as UiCheckboxIndicator } from "@ui-sdk/react/checkbox"
+import type { ComponentProps } from "react";
+import {
+  Checkbox as UiCheckbox,
+  CheckboxIndicator as UiCheckboxIndicator,
+} from "@ui-sdk/react/checkbox";
 
 function Checkbox({ className, ...props }: ComponentProps<typeof UiCheckbox>) {
-  return <UiCheckbox className={`hashti-checkbox${className ? ` ${className}` : ""}`} {...props} />
-}
-
-function CheckboxIndicator({ className, ...props }: ComponentProps<typeof UiCheckboxIndicator>) {
   return (
-    <UiCheckboxIndicator className={`hashti-checkbox__indicator${className ? ` ${className}` : ""}`} {...props} />
-  )
+    <UiCheckbox
+      className={`hashti-checkbox${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-export { Checkbox, CheckboxIndicator }
+function CheckboxIndicator({
+  className,
+  ...props
+}: ComponentProps<typeof UiCheckboxIndicator>) {
+  return (
+    <UiCheckboxIndicator
+      className={`hashti-checkbox__indicator${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
+}
+
+export { Checkbox, CheckboxIndicator };
 ```
 
 `packages/react/src/checkbox/index.ts`:
 
 ```ts
-export { Checkbox, CheckboxIndicator } from "./checkbox"
+export { Checkbox, CheckboxIndicator } from "./checkbox";
 ```
 
 `packages/react/src/index.tsx` — add at the end:
 
 ```tsx
-export { Checkbox, CheckboxIndicator } from "./checkbox"
+export { Checkbox, CheckboxIndicator } from "./checkbox";
 ```
 
 **Verify**: `bun run typecheck` → exit 0.
@@ -174,7 +188,8 @@ export { Checkbox, CheckboxIndicator } from "./checkbox"
   color: var(--hashti-icon-on-color);
   cursor: pointer;
   transition:
-    background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+    background-color var(--hashti-duration-fast-01)
+      cubic-bezier(0.16, 1, 0.3, 1),
     border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
     transform var(--hashti-duration-fast-01) cubic-bezier(0.32, 0.72, 0, 1);
 }
@@ -232,16 +247,23 @@ React tree (the Astro rule). Rows use the `hashti-choice` label class. The
 check glyph is an inline SVG (no icon dependency):
 
 ```tsx
-"use client"
+"use client";
 
-import { Checkbox, CheckboxIndicator } from "@hashti/react"
+import { Checkbox, CheckboxIndicator } from "@hashti/react";
 
 function CheckGlyph() {
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true">
-      <path d="M2 6.5 4.5 9 10 3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M2 6.5 4.5 9 10 3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
-  )
+  );
 }
 
 export function CheckboxDemo() {
@@ -280,7 +302,7 @@ export function CheckboxDemo() {
         Managed by your organization
       </label>
     </div>
-  )
+  );
 }
 ```
 
@@ -296,7 +318,7 @@ title: Checkbox
 description: Ticks independent choices, including the mixed state.
 ---
 
-import { CheckboxDemo } from '../../src/components/checkbox-demo'
+import { CheckboxDemo } from "../../src/components/checkbox-demo";
 
 ## Usage
 
@@ -304,10 +326,10 @@ import { CheckboxDemo } from '../../src/components/checkbox-demo'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
+| Prop                         | Type                         | Description                                              |
+| ---------------------------- | ---------------------------- | -------------------------------------------------------- |
 | `checked` / `defaultChecked` | `boolean \| "indeterminate"` | The state; `"indeterminate"` marks a partly checked set. |
-| `disabled` | `boolean` | Stops presses and dims the mark. |
+| `disabled`                   | `boolean`                    | Stops presses and dims the mark.                         |
 
 Wrap the checkbox and its text in a `<label className="hashti-choice">` — the row is the 44px hit target, the mark is 18px. Styling lives in `@hashti/styles` under `.hashti-checkbox`, selected fill in focus blue.
 ```

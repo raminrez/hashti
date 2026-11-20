@@ -10,4 +10,4 @@ export {
   CommandPage,
   createCommandController,
   useAsyncOptions,
-} from "./command"
+} from "./command";

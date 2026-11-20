@@ -53,20 +53,20 @@ corners ONLY).
 - **Content (the sheet)**: size it; the demo sets
   `inline-size: 20rem; block-size: 100dvh` for a `side="end"` right
   sheet. Surface: `background: var(--hashti-layer-01); border: 1px solid
-  var(--hashti-border-subtle-00); box-shadow: 0 16px 48px
-  var(--hashti-shadow);` (the modal shadow), `padding: 1.5rem; display:
-  flex; flex-direction: column; gap: 0.75rem;`
+var(--hashti-border-subtle-00); box-shadow: 0 16px 48px
+var(--hashti-shadow);` (the modal shadow), `padding: 1.5rem; display:
+flex; flex-direction: column; gap: 0.75rem;`
 - **Corners — side-aware, the DESIGN.md rule**: 16px corners that
   FLATTEN against their edge:
   - `[data-side="end"]` / `right`: `border-start-start-radius:
-    var(--hashti-border-radius-16); border-end-start-radius:
-    var(--hashti-border-radius-16);` (left corners 16px, right corners 0
+var(--hashti-border-radius-16); border-end-start-radius:
+var(--hashti-border-radius-16);` (left corners 16px, right corners 0
     — flush with the edge).
   - `[data-side="start"]` / `left`: mirrored.
   - `[data-side="top"]`: bottom corners 16px; `[data-side="bottom"]`:
     top corners 16px.
-  (16px = `var(--hashti-border-radius-16)`. Use the side-aware logical
-  property pairs above; keep it to the four side selectors.)
+    (16px = `var(--hashti-border-radius-16)`. Use the side-aware logical
+    property pairs above; keep it to the four side selectors.)
 - **Backdrop**: `background: var(--hashti-overlay);` — NO blur (DESIGN.md
   gives dialogs the blur; drawers slide fast — keep parity with Dialog's
   blur only if trivial; choose: include `backdrop-filter: blur(6px)` for
@@ -81,10 +81,10 @@ corners ONLY).
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -120,15 +120,15 @@ corners ONLY).
 (direct-re-export check on the root and any self-rendering part — the
 date-input lesson; quote the DOM if a class cannot land):
 
-| Part | Class |
-| --- | --- |
-| `Drawer` | `hashti-drawer` (or direct re-export) |
-| `DrawerTrigger` | `hashti-drawer-trigger` |
-| `DrawerBackdrop` | `hashti-drawer-backdrop` |
-| `DrawerContent` | `hashti-drawer-content` |
-| `DrawerTitle` | `hashti-drawer__title` |
-| `DrawerDescription` | `hashti-drawer__description` |
-| `DrawerClose` | `hashti-drawer-close` |
+| Part                | Class                                 |
+| ------------------- | ------------------------------------- |
+| `Drawer`            | `hashti-drawer` (or direct re-export) |
+| `DrawerTrigger`     | `hashti-drawer-trigger`               |
+| `DrawerBackdrop`    | `hashti-drawer-backdrop`              |
+| `DrawerContent`     | `hashti-drawer-content`               |
+| `DrawerTitle`       | `hashti-drawer__title`                |
+| `DrawerDescription` | `hashti-drawer__description`          |
+| `DrawerClose`       | `hashti-drawer-close`                 |
 
 Export all seven from `./drawer` and the barrel.
 
@@ -149,7 +149,7 @@ the drawer drives them.
 `apps/docs/src/components/drawer-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Drawer,
@@ -159,7 +159,7 @@ import {
   DrawerDescription,
   DrawerTitle,
   DrawerTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function DrawerDemo() {
   return (
@@ -174,7 +174,7 @@ export function DrawerDemo() {
         <DrawerClose>Close</DrawerClose>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }
 ```
 
@@ -189,7 +189,7 @@ title: Drawer
 description: Slides a sheet in from an edge.
 ---
 
-import { DrawerDemo } from '../../src/components/drawer-demo'
+import { DrawerDemo } from "../../src/components/drawer-demo";
 
 ## Usage
 
@@ -197,13 +197,13 @@ import { DrawerDemo } from '../../src/components/drawer-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Drawer` | Owns the open state. |
-| `DrawerTrigger` | Opens the drawer. |
-| `DrawerBackdrop` | The scrim. |
-| `DrawerContent` | The sheet; size it, the drawer places and moves it. |
-| `DrawerTitle` / `DrawerDescription` / `DrawerClose` | Content and dismissal. |
+| Part                                                | Purpose                                             |
+| --------------------------------------------------- | --------------------------------------------------- |
+| `Drawer`                                            | Owns the open state.                                |
+| `DrawerTrigger`                                     | Opens the drawer.                                   |
+| `DrawerBackdrop`                                    | The scrim.                                          |
+| `DrawerContent`                                     | The sheet; size it, the drawer places and moves it. |
+| `DrawerTitle` / `DrawerDescription` / `DrawerClose` | Content and dismissal.                              |
 
 Styling lives in `@hashti/styles` under `.hashti-drawer*` — a full-travel sheet with 16px corners that flatten against their edge and the modal shadow. Snap points and drag handles are later recipes.
 ```
@@ -225,11 +225,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-drawer" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/drawer.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "drawer" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

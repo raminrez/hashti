@@ -51,20 +51,20 @@ selected tab and follows it. The segmented-control family reuses it.
 ### Design rules that bite (from `design/DESIGN.md`, `design/extraction/` — line variant)
 
 - **List**: `display: flex; gap: 0.25rem; position: relative;
-  border-block-end: 1px solid var(--hashti-border-subtle-00);`
+border-block-end: 1px solid var(--hashti-border-subtle-00);`
 - **Tab**: quiet action — `padding: 0.5rem 0.75rem;
-  min-block-size: 2.75rem; border: none; background: transparent;
-  border-radius: var(--hashti-control-radius) var(--hashti-control-radius) 0 0;`
+min-block-size: 2.75rem; border: none; background: transparent;
+border-radius: var(--hashti-control-radius) var(--hashti-control-radius) 0 0;`
   (top corners only — the line runs along the bottom), font
   0.875rem/500, ink `var(--hashti-text-secondary)`; `[data-selected]` → ink
   `var(--hashti-text-primary)`; hover background `var(--hashti-background-hover)`
   inside `(hover: hover)`, guarded `:not([data-selected]):not([data-disabled])`;
   `[data-disabled]` → ink `var(--hashti-text-disabled)`, cursor not-allowed.
 - **Indicator**: the moving line — `position: absolute; block-size: 2px;
-  background: var(--hashti-focus); border-radius: 9999px;` positioned from
+background: var(--hashti-focus); border-radius: 9999px;` positioned from
   the ui-sdk variables; transition
   `top/left/width/height var(--hashti-duration-moderate-01)
-  cubic-bezier(0.16, 1, 0.3, 1)`; `[data-activation-direction="none"]` →
+cubic-bezier(0.16, 1, 0.3, 1)`; `[data-activation-direction="none"]` →
   `transition: none`.
 - **Panel**: `padding-block: 0.75rem;` ink default; fade via
   `data-starting-style`/`data-ending-style` → `opacity: 0` with
@@ -75,10 +75,10 @@ selected tab and follows it. The segmented-control family reuses it.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -113,13 +113,13 @@ selected tab and follows it. The segmented-control family reuses it.
 `packages/react/src/tabs/tabs.tsx` — the `join` helper pattern; parts and
 classes (apply the direct-re-export check to roots that take no className):
 
-| Part | Class |
-| --- | --- |
-| `Tabs` | `hashti-tabs` (or direct re-export) |
-| `TabsList` | `hashti-tabs-list` |
-| `TabsTab` | `hashti-tabs-tab` |
-| `TabsIndicator` | `hashti-tabs-indicator` |
-| `TabsPanel` | `hashti-tabs-panel` |
+| Part            | Class                               |
+| --------------- | ----------------------------------- |
+| `Tabs`          | `hashti-tabs` (or direct re-export) |
+| `TabsList`      | `hashti-tabs-list`                  |
+| `TabsTab`       | `hashti-tabs-tab`                   |
+| `TabsIndicator` | `hashti-tabs-indicator`             |
+| `TabsPanel`     | `hashti-tabs-panel`                 |
 
 Export all five from `./tabs` and the barrel.
 
@@ -138,9 +138,15 @@ line with the ladder transition and the `none` skip), panel (+ fade).
 `apps/docs/src/components/tabs-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Tabs, TabsIndicator, TabsList, TabsPanel, TabsTab } from "@hashti/react"
+import {
+  Tabs,
+  TabsIndicator,
+  TabsList,
+  TabsPanel,
+  TabsTab,
+} from "@hashti/react";
 
 export function TabsDemo() {
   return (
@@ -153,9 +159,11 @@ export function TabsDemo() {
       </TabsList>
       <TabsPanel value="overview">The project at a glance.</TabsPanel>
       <TabsPanel value="activity">Recent changes and comments.</TabsPanel>
-      <TabsPanel value="settings">Notifications, access and integrations.</TabsPanel>
+      <TabsPanel value="settings">
+        Notifications, access and integrations.
+      </TabsPanel>
     </Tabs>
-  )
+  );
 }
 ```
 
@@ -167,7 +175,7 @@ title: Tabs
 description: Switches between panels of related content.
 ---
 
-import { TabsDemo } from '../../src/components/tabs-demo'
+import { TabsDemo } from "../../src/components/tabs-demo";
 
 ## Usage
 
@@ -175,13 +183,13 @@ import { TabsDemo } from '../../src/components/tabs-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Tabs` | Owns the selected value and arrow-key movement. |
-| `TabsList` | The tab row; give it an accessible name. |
-| `TabsTab` | One tab; shares its `value` with its panel. |
-| `TabsIndicator` | The line that follows the selection. |
-| `TabsPanel` | The content a tab reveals. |
+| Part            | Purpose                                         |
+| --------------- | ----------------------------------------------- |
+| `Tabs`          | Owns the selected value and arrow-key movement. |
+| `TabsList`      | The tab row; give it an accessible name.        |
+| `TabsTab`       | One tab; shares its `value` with its panel.     |
+| `TabsIndicator` | The line that follows the selection.            |
+| `TabsPanel`     | The content a tab reveals.                      |
 
 Styling lives in `@hashti/styles` under `.hashti-tabs-*` — the line variant: a subtle rule under the row and a focus-blue indicator that follows the selection.
 ```

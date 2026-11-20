@@ -4,4 +4,4 @@ export {
   AccordionHeader,
   AccordionTrigger,
   AccordionPanel,
-} from "./accordion"
+} from "./accordion";

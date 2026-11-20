@@ -3,7 +3,7 @@ title: Timeline
 description: Lists events along a line.
 ---
 
-import { TimelineDemo } from '../../src/components/timeline-demo'
+import { TimelineDemo } from "../../src/components/timeline-demo";
 
 ## Usage
 
@@ -11,12 +11,12 @@ import { TimelineDemo } from '../../src/components/timeline-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Timeline` | The event rail. |
-| `TimelineItem` | One event; a `status` of complete/current/upcoming. |
-| `TimelineMarker` | The dot. |
-| `TimelineConnector` | The line to the next event. |
-| `TimelineTitle` / `TimelineTime` / `TimelineDescription` | The event's content. |
+| Part                                                     | Purpose                                             |
+| -------------------------------------------------------- | --------------------------------------------------- |
+| `Timeline`                                               | The event rail.                                     |
+| `TimelineItem`                                           | One event; a `status` of complete/current/upcoming. |
+| `TimelineMarker`                                         | The dot.                                            |
+| `TimelineConnector`                                      | The line to the next event.                         |
+| `TimelineTitle` / `TimelineTime` / `TimelineDescription` | The event's content.                                |
 
 Styling lives in `@hashti/styles` under `.hashti-timeline*` — a subtle connector line, gray dots, blue current with a light halo, green complete.

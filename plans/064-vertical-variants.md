@@ -53,7 +53,7 @@ Vertical orientation for the three orientation-bearing controls.
 ## Steps (parallelizable: one sub-agent per component)
 
 1. Docs recon for all three (orientation attribute names + geometry
-   variables). 
+   variables).
 2. Per component: vertical CSS + demo example + docs line. Typecheck after
    each.
 3. Final typecheck + rendered pass.
@@ -61,8 +61,8 @@ Vertical orientation for the three orientation-bearing controls.
 ## Done
 
 - [ ] typecheck exit 0 · [ ] no hex · [ ] rendered check: each vertical
-  variant lays out top-to-bottom with correct indicator/thumb geometry ·
-  [ ] commits per step (or per sub-agent merge)
+      variant lays out top-to-bottom with correct indicator/thumb geometry ·
+      [ ] commits per step (or per sub-agent merge)
 
 ## STOP
 

@@ -3,7 +3,7 @@ title: Pagination
 description: Moves between pages of results.
 ---
 
-import { PaginationDemo } from '../../src/components/pagination-demo'
+import { PaginationDemo } from "../../src/components/pagination-demo";
 
 ## Usage
 
@@ -11,12 +11,12 @@ import { PaginationDemo } from '../../src/components/pagination-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Pagination` | Owns the page; `pageCount` says how many, `defaultPage` where it starts. |
-| `PaginationList` / `PaginationItem` | The nav list and its rows. |
-| `PaginationLink` | One page; `data-current` on the active one. |
-| `PaginationEllipsis` | A gap. |
-| `PaginationPrevious` / `PaginationNext` / `PaginationFirst` / `PaginationLast` | Steps; `data-disabled` at their end. |
+| Part                                                                           | Purpose                                                                  |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `Pagination`                                                                   | Owns the page; `pageCount` says how many, `defaultPage` where it starts. |
+| `PaginationList` / `PaginationItem`                                            | The nav list and its rows.                                               |
+| `PaginationLink`                                                               | One page; `data-current` on the active one.                              |
+| `PaginationEllipsis`                                                           | A gap.                                                                   |
+| `PaginationPrevious` / `PaginationNext` / `PaginationFirst` / `PaginationLast` | Steps; `data-disabled` at their end.                                     |
 
 Styling lives in `@hashti/styles` under `.hashti-pagination*` — quiet squares, the current page in the selected tint with focus-blue ink.

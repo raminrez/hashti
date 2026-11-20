@@ -45,25 +45,25 @@ selection. Depth styling keys off `data-level`, not nested selectors.
 ### Design rules that bite (derived)
 
 - **Root `hashti-tree`**: `display: flex; flex-direction: column; gap:
-  0.125rem; font-size: 0.875rem;`
+0.125rem; font-size: 0.875rem;`
 - **Item `hashti-tree-item`**: `display: flex; align-items: center;
-  gap: 0.375rem; min-block-size: 2rem; padding: 0 0.5rem;
-  border-radius: var(--hashti-border-radius-08); cursor: pointer;`
+gap: 0.375rem; min-block-size: 2rem; padding: 0 0.5rem;
+border-radius: var(--hashti-border-radius-08); cursor: pointer;`
   - Indent: `padding-inline-start: calc((var(--tree-level, 1) - 1) * 1.25rem
-    + 0.5rem);` (frame-agnostic: uses ui-sdk's own `--tree-level`).
+    - 0.5rem);`(frame-agnostic: uses ui-sdk's own`--tree-level`).
   - `[data-selected]` → `background: var(--hashti-background-selected);`
   - `[data-current]` → font-weight 600.
   - `[data-disabled]` → disabled ink, not-allowed.
   - hover (hover:hover, not selected/disabled) → background-hover.
 - **Label `hashti-tree-item-label`**: `display: flex; align-items: center;
-  gap: 0.375rem; flex: 1; min-inline-size: 0;` truncate long names.
+gap: 0.375rem; flex: 1; min-inline-size: 0;` truncate long names.
 - **Indicator `hashti-tree-item-indicator`**: the disclosure chevron —
   `inline-size: 1rem; transition: transform var(--hashti-duration-fast-01)
-  cubic-bezier(0.16, 1, 0.3, 1);` `[data-expanded] > * &` or per the
+cubic-bezier(0.16, 1, 0.3, 1);` `[data-expanded] > * &` or per the
   rendered DOM: rotate 90° when expanded (check what carries the state —
   style from the item's `[data-expanded]` down to the indicator class).
 - **Group `hashti-tree-group`**: `display: flex; flex-direction: column;
-  gap: 0.125rem;` collapsed state per ui-sdk (`data-expanded` on the item —
+gap: 0.125rem;` collapsed state per ui-sdk (`data-expanded` on the item —
   verify what hides the group; if ui-sdk renders `hidden`, don't fight it).
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
 
@@ -102,7 +102,7 @@ loading/failed data-attributes defaults, drag-and-drop; lint/test infra.
 1. **Wrappers** — `join` helper pattern per part; export all + barrel.
    Verify: typecheck exit 0.
 2. **Stylesheet** — rules above. Verify: no hex; `grep -c "data-"
-   packages/styles/src/tree.css` → ≥ 5.
+packages/styles/src/tree.css` → ≥ 5.
 3. **Demo + page** — two-level tree (a branch with children + a leaf), per
    the docs' Usage. meta.json entry. Verify: typecheck exit 0.
 

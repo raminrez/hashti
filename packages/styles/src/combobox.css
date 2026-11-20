@@ -8,7 +8,8 @@
   color: var(--hashti-text-primary);
   font-size: 1rem;
   line-height: 1.5rem;
-  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-combobox-input::placeholder {
@@ -61,7 +62,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hashti-combobox-content {
-    transition: opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity var(--hashti-duration-fast-01)
+      cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hashti-combobox-content[data-starting-style],
@@ -132,7 +134,8 @@
   color: var(--hashti-text-primary);
   font-size: 1rem;
   line-height: 1.5rem;
-  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-combobox-chips:has(:focus-visible) {

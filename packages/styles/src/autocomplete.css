@@ -8,7 +8,8 @@
   color: var(--hashti-text-primary);
   font-size: 1rem;
   line-height: 1.5rem;
-  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-autocomplete-input::placeholder {
@@ -61,7 +62,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hashti-autocomplete-content {
-    transition: opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity var(--hashti-duration-fast-01)
+      cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hashti-autocomplete-content[data-starting-style],

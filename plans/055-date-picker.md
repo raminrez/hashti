@@ -43,14 +43,14 @@ DatePicker is Calendar + field + popup — the payoff of cycle 54.
 ### Design rules that bite (derived)
 
 - **Root `hashti-date-picker`**: `position: relative; display: flex;
-  flex-direction: column; gap: 0.375rem;` — field anatomy wrapper.
+flex-direction: column; gap: 0.375rem;` — field anatomy wrapper.
 - **Input `hashti-date-picker-input`**: reuse the `hashti-date-input`
   control recipe (border, radius, layer, focus ring via `:focus-visible`,
   `[data-invalid]` → the danger recipe, `[data-disabled]` → disabled ink).
 - **Trigger `hashti-date-picker-trigger`**: quiet icon square at the field's
   end — `display: inline-flex; align-items: center; justify-content:
-  center; inline-size: 2.25rem; border: none; background: transparent;
-  cursor: pointer;` hover → background-hover; `[data-open]` → pressed tint.
+center; inline-size: 2.25rem; border: none; background: transparent;
+cursor: pointer;` hover → background-hover; `[data-open]` → pressed tint.
 - **Hint `hashti-date-picker-hint`**: the field-hint typography (0.75rem,
   secondary ink).
 - **Content `hashti-date-picker-content`**: the popover surface recipe
@@ -93,8 +93,8 @@ lint/test infra.
    rendered DOM; key on data-slot where ui-sdk renders the part itself).
    Export all from `./date-picker` + barrel. Verify: typecheck exit 0.
 2. **Stylesheet** — rules above. Verify: `grep -nE "#[0-9a-fA-F]{3,8}"
-   packages/styles/src/date-picker.css` → nothing; `grep -c "data-"
-   packages/styles/src/date-picker.css` → ≥ 6.
+packages/styles/src/date-picker.css` → nothing; `grep -c "data-"
+packages/styles/src/date-picker.css` → ≥ 6.
 3. **Demo + page** — demo composes `DatePickerInput`, `DatePickerTrigger`,
    `DatePickerContent` (empty content = default Calendar). Note prop
    deviations from the plan. meta.json entry. Verify: typecheck exit 0.

@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Radio, RadioGroup, RadioIndicator } from "@hashti/react"
+import { Radio, RadioGroup, RadioIndicator } from "@hashti/react";
 
 export function RadioDemo() {
   return (
@@ -24,5 +24,5 @@ export function RadioDemo() {
         Overnight (unavailable)
       </label>
     </RadioGroup>
-  )
+  );
 }

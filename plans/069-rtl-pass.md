@@ -63,8 +63,8 @@ block-size, inline-size widths), ui-sdk-provided CSS variables
 ## Done
 
 - [ ] typecheck exit 0 after every batch · [ ] grep above returns zero
-  physical direction hits (or documented exceptions) · [ ] RTL screenshots
-  verified on 6 pages · [ ] commits per batch
+      physical direction hits (or documented exceptions) · [ ] RTL screenshots
+      verified on 6 pages · [ ] commits per batch
 
 ## STOP
 

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Dialog,
@@ -8,7 +8,7 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function DialogDemo() {
   return (
@@ -23,5 +23,5 @@ export function DialogDemo() {
         <DialogClose>Close</DialogClose>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

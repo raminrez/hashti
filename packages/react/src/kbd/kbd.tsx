@@ -1,11 +1,16 @@
-"use client"
+"use client";
 
-import { useState, type ComponentPropsWithRef, type ReactNode, type Ref } from "react"
+import {
+  useState,
+  type ComponentPropsWithRef,
+  type ReactNode,
+  type Ref,
+} from "react";
 
 export interface KbdProps extends ComponentPropsWithRef<"kbd"> {
-  keys?: string | string[]
-  children?: ReactNode
-  ref?: Ref<HTMLElement>
+  keys?: string | string[];
+  children?: ReactNode;
+  ref?: Ref<HTMLElement>;
 }
 
 const MAC_SYMBOLS: Record<string, string> = {
@@ -30,7 +35,7 @@ const MAC_SYMBOLS: Record<string, string> = {
   down: "↓",
   left: "←",
   right: "→",
-}
+};
 
 const WIN_SYMBOLS: Record<string, string> = {
   command: "Ctrl",
@@ -54,14 +59,14 @@ const WIN_SYMBOLS: Record<string, string> = {
   down: "↓",
   left: "←",
   right: "→",
-}
+};
 
 function formatKey(key: string, isMac: boolean): string {
-  const normalized = key.trim().toLowerCase()
-  const map = isMac ? MAC_SYMBOLS : WIN_SYMBOLS
-  if (map[normalized]) return map[normalized]
-  if (normalized.length === 1) return normalized.toUpperCase()
-  return key
+  const normalized = key.trim().toLowerCase();
+  const map = isMac ? MAC_SYMBOLS : WIN_SYMBOLS;
+  if (map[normalized]) return map[normalized];
+  if (normalized.length === 1) return normalized.toUpperCase();
+  return key;
 }
 
 // SSR renders Mac symbols; acceptable for a presentational keycap.
@@ -69,20 +74,24 @@ export function Kbd({ keys, children, className, ref, ...props }: KbdProps) {
   const [isMac] = useState(() => {
     if (typeof navigator !== "undefined") {
       const platform =
-        (navigator as unknown as { userAgentData?: { platform?: string } }).userAgentData
-          ?.platform ??
+        (navigator as unknown as { userAgentData?: { platform?: string } })
+          .userAgentData?.platform ??
         navigator.platform ??
-        navigator.userAgent
-      return /mac|iphone|ipad|ipod/i.test(platform)
+        navigator.userAgent;
+      return /mac|iphone|ipad|ipod/i.test(platform);
     }
-    return true
-  })
+    return true;
+  });
 
-  const keyList = keys ? (Array.isArray(keys) ? keys : [keys]) : null
-  const base = "hashti-kbd"
+  const keyList = keys ? (Array.isArray(keys) ? keys : [keys]) : null;
+  const base = "hashti-kbd";
 
   return (
-    <kbd {...props} ref={ref} className={className ? `${base} ${className}` : base}>
+    <kbd
+      {...props}
+      ref={ref}
+      className={className ? `${base} ${className}` : base}
+    >
       {keyList
         ? keyList.map((k, i) => (
             <span key={i} className="hashti-kbd-key">
@@ -91,5 +100,5 @@ export function Kbd({ keys, children, className, ref, ...props }: KbdProps) {
           ))
         : children}
     </kbd>
-  )
+  );
 }

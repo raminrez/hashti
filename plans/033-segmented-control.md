@@ -49,10 +49,10 @@ segments instead of under them.
 ### Design rules that bite (from the old content-switcher, tokenized)
 
 - **Control (the joined well)**: `display: inline-flex; padding: 0.1875rem;
-  gap: 0.125rem; min-block-size: 2.5rem; background:
-  var(--hashti-layer-03); border: 1px solid var(--hashti-border-subtle-00);
-  border-radius: var(--hashti-control-radius); position: relative;
-  isolation: isolate;`
+gap: 0.125rem; min-block-size: 2.5rem; background:
+var(--hashti-layer-03); border: 1px solid var(--hashti-border-subtle-00);
+border-radius: var(--hashti-control-radius); position: relative;
+isolation: isolate;`
 - **Indicator (the sliding chip)**: absolute, `z-index: -1` (behind
   items), positioned from the four ui-sdk variables,
   `background: var(--hashti-layer-01); border-radius: calc(var(--hashti-control-radius) - 0.1875rem);`
@@ -63,10 +63,10 @@ segments instead of under them.
   `var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1)`,
   `[data-activation-direction="none"] { transition: none; }`.
 - **Items**: `flex: 1 1 0; min-inline-size: 0; display: inline-flex;
-  align-items: center; justify-content: center; padding: 0 0.75rem;
-  border: none; background: transparent; color: var(--hashti-text-secondary);
-  font-size: 0.875rem; font-weight: 500; cursor: pointer;
-  white-space: nowrap;` (items stretch equally; text truncates with
+align-items: center; justify-content: center; padding: 0 0.75rem;
+border: none; background: transparent; color: var(--hashti-text-secondary);
+font-size: 0.875rem; font-weight: 500; cursor: pointer;
+white-space: nowrap;` (items stretch equally; text truncates with
   ellipsis if narrow).
   - `[data-checked]` → color `var(--hashti-text-primary); font-weight: 600;`
   - hover (unchecked, `(hover: hover)`) → color darkens only — no
@@ -80,10 +80,10 @@ segments instead of under them.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -117,11 +117,11 @@ segments instead of under them.
 `packages/react/src/segmented-control/segmented-control.tsx` — the `join`
 helper pattern (direct-re-export check on the root):
 
-| Part | Class |
-| --- | --- |
-| `SegmentedControl` | `hashti-segmented-control` |
+| Part                        | Class                                |
+| --------------------------- | ------------------------------------ |
+| `SegmentedControl`          | `hashti-segmented-control`           |
 | `SegmentedControlIndicator` | `hashti-segmented-control-indicator` |
-| `SegmentedControlItem` | `hashti-segmented-control-item` |
+| `SegmentedControlItem`      | `hashti-segmented-control-item`      |
 
 Export all three from `./segmented-control` and the barrel.
 
@@ -142,21 +142,30 @@ the element).
 `apps/docs/src/components/segmented-control-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { useState } from "react"
-import { SegmentedControl, SegmentedControlIndicator, SegmentedControlItem } from "@hashti/react"
+import { useState } from "react";
+import {
+  SegmentedControl,
+  SegmentedControlIndicator,
+  SegmentedControlItem,
+} from "@hashti/react";
 
 export function SegmentedControlDemo() {
-  const [view, setView] = useState("day")
+  const [view, setView] = useState("day");
   return (
-    <SegmentedControl value={view} onChange={setView} aria-label="Calendar view" style={{ width: 320 }}>
+    <SegmentedControl
+      value={view}
+      onChange={setView}
+      aria-label="Calendar view"
+      style={{ width: 320 }}
+    >
       <SegmentedControlIndicator />
       <SegmentedControlItem value="day">Day</SegmentedControlItem>
       <SegmentedControlItem value="week">Week</SegmentedControlItem>
       <SegmentedControlItem value="month">Month</SegmentedControlItem>
     </SegmentedControl>
-  )
+  );
 }
 ```
 
@@ -171,7 +180,7 @@ title: SegmentedControl
 description: Switches between exclusive views.
 ---
 
-import { SegmentedControlDemo } from '../../src/components/segmented-control-demo'
+import { SegmentedControlDemo } from "../../src/components/segmented-control-demo";
 
 ## Usage
 
@@ -179,11 +188,11 @@ import { SegmentedControlDemo } from '../../src/components/segmented-control-dem
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `SegmentedControl` | The radiogroup well. |
+| Part                        | Purpose                                       |
+| --------------------------- | --------------------------------------------- |
+| `SegmentedControl`          | The radiogroup well.                          |
 | `SegmentedControlIndicator` | The chip that slides behind the checked item. |
-| `SegmentedControlItem` | One exclusive choice. |
+| `SegmentedControlItem`      | One exclusive choice.                         |
 
 Styling lives in `@hashti/styles` under `.hashti-segmented-control*` — a layered well with a sliding white chip and inset focus rings.
 ```
@@ -207,11 +216,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-segmented-control" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/segmented-control.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "segmented" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

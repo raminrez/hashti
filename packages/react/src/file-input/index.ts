@@ -5,4 +5,4 @@ export {
   FileInputList,
   FileInputItem,
   FileInputItemRemove,
-} from "./file-input"
+} from "./file-input";

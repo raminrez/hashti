@@ -3,7 +3,7 @@ title: Dialog
 description: Opens a modal surface over the page.
 ---
 
-import { DialogDemo } from '../../src/components/dialog-demo'
+import { DialogDemo } from "../../src/components/dialog-demo";
 
 ## Usage
 
@@ -11,13 +11,13 @@ import { DialogDemo } from '../../src/components/dialog-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Dialog` | Owns open state, focus trapping and dismissal. |
-| `DialogTrigger` | Opens the dialog. |
-| `DialogBackdrop` | The scrim; optional. |
-| `DialogContent` | The modal surface. |
-| `DialogTitle` / `DialogDescription` | Name and context. |
-| `DialogClose` | Dismisses; several allowed. |
+| Part                                | Purpose                                        |
+| ----------------------------------- | ---------------------------------------------- |
+| `Dialog`                            | Owns open state, focus trapping and dismissal. |
+| `DialogTrigger`                     | Opens the dialog.                              |
+| `DialogBackdrop`                    | The scrim; optional.                           |
+| `DialogContent`                     | The modal surface.                             |
+| `DialogTitle` / `DialogDescription` | Name and context.                              |
+| `DialogClose`                       | Dismisses; several allowed.                    |
 
 Styling lives in `@hashti/styles` under `.hashti-dialog-*` — an 18px surface with the modal shadow over a dimmed, blurred scrim. Escape and a press outside dismiss; the close button's focus ring is inset.

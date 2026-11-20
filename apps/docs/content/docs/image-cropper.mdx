@@ -3,7 +3,7 @@ title: ImageCropper
 description: Chooses the part of an image to keep, with a draggable crop box.
 ---
 
-import { ImageCropperDemo } from '../../src/components/image-cropper-demo'
+import { ImageCropperDemo } from "../../src/components/image-cropper-demo";
 
 ## Usage
 
@@ -11,14 +11,14 @@ import { ImageCropperDemo } from '../../src/components/image-cropper-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `ImageCropper` | Owns the crop and the image source. |
-| `ImageCropperViewport` | The measured area the image shows in. |
-| `ImageCropperImage` | The turned and flipped image. |
-| `ImageCropperSelection` | The crop box; drag it or move it with the arrow keys. |
-| `ImageCropperGrid` | Third lines inside the selection, shown while dragging. |
-| `ImageCropperHandle` | Resizes the selection from one `position`, like `"se"`. |
-| `ImageCropperZoom` / `ImageCropperRotate` / `ImageCropperFlip` | Quiet controls under the viewport. |
+| Part                                                           | Purpose                                                 |
+| -------------------------------------------------------------- | ------------------------------------------------------- |
+| `ImageCropper`                                                 | Owns the crop and the image source.                     |
+| `ImageCropperViewport`                                         | The measured area the image shows in.                   |
+| `ImageCropperImage`                                            | The turned and flipped image.                           |
+| `ImageCropperSelection`                                        | The crop box; drag it or move it with the arrow keys.   |
+| `ImageCropperGrid`                                             | Third lines inside the selection, shown while dragging. |
+| `ImageCropperHandle`                                           | Resizes the selection from one `position`, like `"se"`. |
+| `ImageCropperZoom` / `ImageCropperRotate` / `ImageCropperFlip` | Quiet controls under the viewport.                      |
 
 The selection is dimmed outside with `--hashti-overlay`, and its pixel geometry comes from ui-sdk as inline styles. Styling lives in `@hashti/styles` under `.hashti-image-cropper*`.

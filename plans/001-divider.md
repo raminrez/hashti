@@ -37,14 +37,14 @@ The repo is a bun workspace monorepo (`packages/*`, `apps/*`):
   (16 lines). This is the wrapper exemplar to match:
 
   ```tsx
-  "use client"
+  "use client";
 
-  import { createParts } from "@ui-sdk/react/primitive"
-  import { button, hashtiSwitch } from "@hashti/core"
+  import { createParts } from "@ui-sdk/react/primitive";
+  import { button, hashtiSwitch } from "@hashti/core";
 
-  export const { Root: Button } = createParts(button, { root: "button" })
+  export const { Root: Button } = createParts(button, { root: "button" });
 
-  export const { Root: Switch } = createParts(hashtiSwitch, { root: "button" })
+  export const { Root: Switch } = createParts(hashtiSwitch, { root: "button" });
   ```
 
 - `packages/core/src/button.ts` — exemplar of a Hashti-owned primitive
@@ -116,11 +116,11 @@ Use the **ready-made component**: `import { Separator } from "@ui-sdk/react/sepa
 
 ## Commands you will need
 
-| Purpose   | Command                                        | Expected on success            |
-| --------- | ---------------------------------------------- | ------------------------------ |
-| Install   | `bun install`                                  | exit 0                         |
+| Purpose   | Command                                         | Expected on success           |
+| --------- | ----------------------------------------------- | ----------------------------- |
+| Install   | `bun install`                                   | exit 0                        |
 | Typecheck | `bun run typecheck` (root; runs all workspaces) | exit 0, no errors             |
-| Docs sync | `cd apps/docs && bun run types:check`          | exit 0 (included in root run)  |
+| Docs sync | `cd apps/docs && bun run types:check`           | exit 0 (included in root run) |
 
 There is **no lint setup and no test runner** in this repo yet — out of scope
 for this plan; the reviewer runs the rendered check instead.
@@ -164,16 +164,21 @@ The scripts exist and `bun run typecheck` passes. Skip to Step 2.
 `packages/react/src/divider/divider.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { Separator } from "@ui-sdk/react/separator"
+import type { ComponentProps } from "react";
+import { Separator } from "@ui-sdk/react/separator";
 
 function Divider({ className, ...props }: ComponentProps<typeof Separator>) {
-  return <Separator className={`hashti-divider${className ? ` ${className}` : ""}`} {...props} />
+  return (
+    <Separator
+      className={`hashti-divider${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-export { Divider }
+export { Divider };
 ```
 
 Notes:
@@ -185,18 +190,18 @@ Notes:
 - If `ComponentProps<typeof Separator>` does not resolve (check what
   `@ui-sdk/react/separator` exports — a part, not a plain component), fall
   back to `ComponentProps<"div"> & { orientation?: "horizontal" | "vertical";
-  decorative?: boolean }` and keep it compiling under `strict`.
+decorative?: boolean }` and keep it compiling under `strict`.
 
 `packages/react/src/divider/index.ts`:
 
 ```ts
-export { Divider } from "./divider"
+export { Divider } from "./divider";
 ```
 
 `packages/react/src/index.tsx` — add at the end:
 
 ```tsx
-export { Divider } from "./divider"
+export { Divider } from "./divider";
 ```
 
 **Verify**: `bun run typecheck` → exit 0.
@@ -263,17 +268,17 @@ title: Divider
 description: Divides groups of content with a horizontal or vertical line.
 ---
 
-import { Divider } from '@hashti/react'
+import { Divider } from "@hashti/react";
 
 ## Orientation
 
-<div style={{ display: 'grid', gap: 16 }}>
+<div style={{ display: "grid", gap: 16 }}>
   <p>Content above the line.</p>
   <Divider />
   <p>Content below the line.</p>
 </div>
 
-<div style={{ display: 'flex', gap: 16, alignItems: 'stretch', height: 48 }}>
+<div style={{ display: "flex", gap: 16, alignItems: "stretch", height: 48 }}>
   <span>Start</span>
   <Divider orientation="vertical" />
   <span>End</span>
@@ -281,10 +286,10 @@ import { Divider } from '@hashti/react'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `orientation` | `"horizontal" \| "vertical"` | Which way the line runs. Default `horizontal`. |
-| `decorative` | `boolean` | Hides the line from assistive technology with `role="none"`. |
+| Prop          | Type                         | Description                                                  |
+| ------------- | ---------------------------- | ------------------------------------------------------------ |
+| `orientation` | `"horizontal" \| "vertical"` | Which way the line runs. Default `horizontal`.               |
+| `decorative`  | `boolean`                    | Hides the line from assistive technology with `role="none"`. |
 
 Styling lives in `@hashti/styles` under `.hashti-divider`, keyed off `data-orientation`, with the color from `--hashti-border-subtle-00`.
 ```

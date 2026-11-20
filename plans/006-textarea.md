@@ -61,10 +61,10 @@ Textarea completes the text-entry family. It reuses Input's control recipes
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -97,28 +97,33 @@ Textarea completes the text-entry family. It reuses Input's control recipes
 `packages/react/src/textarea/textarea.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { Textarea as UiTextarea } from "@ui-sdk/react/textarea"
+import type { ComponentProps } from "react";
+import { Textarea as UiTextarea } from "@ui-sdk/react/textarea";
 
 function Textarea({ className, ...props }: ComponentProps<typeof UiTextarea>) {
-  return <UiTextarea className={`hashti-textarea${className ? ` ${className}` : ""}`} {...props} />
+  return (
+    <UiTextarea
+      className={`hashti-textarea${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-export { Textarea }
+export { Textarea };
 ```
 
 `packages/react/src/textarea/index.ts`:
 
 ```ts
-export { Textarea } from "./textarea"
+export { Textarea } from "./textarea";
 ```
 
 `packages/react/src/index.tsx` — add at the end:
 
 ```tsx
-export { Textarea } from "./textarea"
+export { Textarea } from "./textarea";
 ```
 
 **Verify**: `bun run typecheck` → exit 0.
@@ -139,7 +144,8 @@ export { Textarea } from "./textarea"
   font-size: 1rem;
   line-height: 1.5rem;
   resize: vertical;
-  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-textarea::placeholder {
@@ -187,13 +193,22 @@ title: Textarea
 description: Enters multiple lines of text, connected to your form or state.
 ---
 
-import { Textarea } from '@hashti/react'
+import { Textarea } from "@hashti/react";
 
 ## Usage
 
-<div style={{ display: 'grid', gap: 16, maxWidth: 320 }}>
-  <Textarea aria-label="Message" placeholder="Type your message here…" rows={4} />
-  <Textarea aria-label="Notes" defaultValue="Read-only notes." readOnly rows={2} />
+<div style={{ display: "grid", gap: 16, maxWidth: 320 }}>
+  <Textarea
+    aria-label="Message"
+    placeholder="Type your message here…"
+    rows={4}
+  />
+  <Textarea
+    aria-label="Notes"
+    defaultValue="Read-only notes."
+    readOnly
+    rows={2}
+  />
   <Textarea aria-label="Locked" disabled defaultValue="Locked value" rows={2} />
 </div>
 

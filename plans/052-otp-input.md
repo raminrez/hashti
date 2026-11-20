@@ -54,25 +54,25 @@ a presentation layer.
 ### Design rules that bite (derived)
 
 - **Root `hashti-otp-input`**: `display: flex; flex-direction: column;
-  gap: 0.5rem;` — hosts the visually-hidden native input (ui-sdk
+gap: 0.5rem;` — hosts the visually-hidden native input (ui-sdk
   renders it; keep it functional: DO NOT `display: none` it — visually
   hidden via the ui-sdk's own class; check what it renders and don't
   fight it).
 - **Group `hashti-otp-input-group`**: `display: flex; gap: 0.375rem;
-  align-items: center;`
+align-items: center;`
 - **Slot `hashti-otp-input-slot`**: a control box — `display: flex;
-  align-items: center; justify-content: center; inline-size: 2.5rem;
-  block-size: 2.75rem; border: 1px solid var(--hashti-border-strong-01);
-  border-radius: var(--hashti-control-radius); background:
-  var(--hashti-layer-01); color: var(--hashti-text-primary);
-  font-size: 1.125rem; font-weight: 500; font-variant-numeric:
-  tabular-nums; transition: border-color var(--hashti-duration-fast-01)
-  cubic-bezier(0.16, 1, 0.3, 1);`
+align-items: center; justify-content: center; inline-size: 2.5rem;
+block-size: 2.75rem; border: 1px solid var(--hashti-border-strong-01);
+border-radius: var(--hashti-control-radius); background:
+var(--hashti-layer-01); color: var(--hashti-text-primary);
+font-size: 1.125rem; font-weight: 500; font-variant-numeric:
+tabular-nums; transition: border-color var(--hashti-duration-fast-01)
+cubic-bezier(0.16, 1, 0.3, 1);`
   - `[data-active]` → `border-color: var(--hashti-focus);`
   - `[data-filled]` → `border-color: var(--hashti-border-subtle-01);`
   - `[data-fake-caret]` → the blinking caret: an `::after` — `content:
-    ''; inline-size: 1px; block-size: 1.25rem; background:
-    var(--hashti-text-primary);` with a blink animation
+''; inline-size: 1px; block-size: 1.25rem; background:
+var(--hashti-text-primary);` with a blink animation
     (`@keyframes` opacity 1↔0, 1s steps — the classic caret blink),
     `@media (prefers-reduced-motion: reduce)` → static.
 - **Separator `hashti-otp-input-separator`**: `inline-size: 0.5rem;`
@@ -84,10 +84,10 @@ a presentation layer.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -122,12 +122,12 @@ a presentation layer.
 (direct-re-export checks; check class landing against the rendered DOM —
 the date-input lesson; key on data-slot where needed):
 
-| Part | Class |
-| --- | --- |
-| `OTPInput` | `hashti-otp-input` (or direct re-export) |
-| `OTPInputGroup` | `hashti-otp-input-group` |
-| `OTPInputSlot` | `hashti-otp-input-slot` |
-| `OTPInputSeparator` | `hashti-otp-input-separator` |
+| Part                | Class                                    |
+| ------------------- | ---------------------------------------- |
+| `OTPInput`          | `hashti-otp-input` (or direct re-export) |
+| `OTPInputGroup`     | `hashti-otp-input-group`                 |
+| `OTPInputSlot`      | `hashti-otp-input-slot`                  |
+| `OTPInputSeparator` | `hashti-otp-input-separator`             |
 
 Export all from `./otp-input` and the barrel.
 
@@ -147,22 +147,35 @@ Export all from `./otp-input` and the barrel.
 after 3:
 
 ```tsx
-"use client"
+"use client";
 
-import { OTPInput, OTPInputGroup, OTPInputSeparator, OTPInputSlot } from "@hashti/react"
+import {
+  OTPInput,
+  OTPInputGroup,
+  OTPInputSeparator,
+  OTPInputSlot,
+} from "@hashti/react";
 
 export function OTPInputDemo() {
   return (
-    <OTPInput length={6} aria-label="Verification code" onChange={(v) => console.log(v)}>
+    <OTPInput
+      length={6}
+      aria-label="Verification code"
+      onChange={(v) => console.log(v)}
+    >
       <OTPInputGroup>
-        {[0, 1, 2].map((i) => <OTPInputSlot key={i} index={i} />)}
+        {[0, 1, 2].map((i) => (
+          <OTPInputSlot key={i} index={i} />
+        ))}
       </OTPInputGroup>
       <OTPInputSeparator>–</OTPInputSeparator>
       <OTPInputGroup>
-        {[3, 4, 5].map((i) => <OTPInputSlot key={i} index={i} />)}
+        {[3, 4, 5].map((i) => (
+          <OTPInputSlot key={i} index={i} />
+        ))}
       </OTPInputGroup>
     </OTPInput>
-  )
+  );
 }
 ```
 
@@ -176,7 +189,7 @@ title: OTPInput
 description: Enters a one-time code across slots.
 ---
 
-import { OTPInputDemo } from '../../src/components/otp-input-demo'
+import { OTPInputDemo } from "../../src/components/otp-input-demo";
 
 ## Usage
 
@@ -184,12 +197,12 @@ import { OTPInputDemo } from '../../src/components/otp-input-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `OTPInput` | One native input behind the slots. |
-| `OTPInputGroup` | A run of slots. |
-| `OTPInputSlot` | One character box; `data-active`, `data-fake-caret`. |
-| `OTPInputSeparator` | A visual break between groups. |
+| Part                | Purpose                                              |
+| ------------------- | ---------------------------------------------------- |
+| `OTPInput`          | One native input behind the slots.                   |
+| `OTPInputGroup`     | A run of slots.                                      |
+| `OTPInputSlot`      | One character box; `data-active`, `data-fake-caret`. |
+| `OTPInputSeparator` | A visual break between groups.                       |
 
 Styling lives in `@hashti/styles` under `.hashti-otp-input*` — control boxes with a focus-blue active slot and a blinking fake caret.
 ```
@@ -211,11 +224,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-otp-input" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/otp-input.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "otp-input" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

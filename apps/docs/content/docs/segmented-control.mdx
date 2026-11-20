@@ -3,7 +3,10 @@ title: SegmentedControl
 description: Switches between exclusive views.
 ---
 
-import { SegmentedControlVerticalDemo, SegmentedControlDemo } from '../../src/components/segmented-control-demo'
+import {
+  SegmentedControlVerticalDemo,
+  SegmentedControlDemo,
+} from "../../src/components/segmented-control-demo";
 
 ## Usage
 
@@ -17,10 +20,10 @@ Set `orientation="vertical"` to stack the items; the chip slides between them.
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `SegmentedControl` | The radiogroup well. |
+| Part                        | Purpose                                       |
+| --------------------------- | --------------------------------------------- |
+| `SegmentedControl`          | The radiogroup well.                          |
 | `SegmentedControlIndicator` | The chip that slides behind the checked item. |
-| `SegmentedControlItem` | One exclusive choice. |
+| `SegmentedControlItem`      | One exclusive choice.                         |
 
 Styling lives in `@hashti/styles` under `.hashti-segmented-control*` — a layered well with a sliding white chip and inset focus rings.

@@ -47,14 +47,14 @@ reuses its track/indicator recipe next cycle.
 ### Design rules that bite (from `design/DESIGN.md`, old implementation)
 
 - **Root**: `display: flex; flex-direction: column; gap: 0.5rem;
-  inline-size: 100%;`
+inline-size: 100%;`
 - **Label**: helper typography (0.8125rem), ink
   `var(--hashti-text-primary)`, weight 500.
 - **Track**: `block-size: 0.5rem; inline-size: 100%; background:
-  var(--hashti-border-subtle-00); border-radius: var(--hashti-border-radius-max);
-  overflow: hidden;`
+var(--hashti-border-subtle-00); border-radius: var(--hashti-border-radius-max);
+overflow: hidden;`
 - **Indicator**: `block-size: 100%; background: var(--hashti-interactive);
-  border-radius: var(--hashti-border-radius-max);` width transition
+border-radius: var(--hashti-border-radius-max);` width transition
   `var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1)` —
   but ONLY while progressing; keep the transition on the indicator
   generally (inline width changes animate; the initial paint starts at
@@ -73,10 +73,10 @@ reuses its track/indicator recipe next cycle.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -110,12 +110,12 @@ reuses its track/indicator recipe next cycle.
 `packages/react/src/progress/progress.tsx` — the `join` helper pattern
 (direct-re-export check on the root):
 
-| Part | Class |
-| --- | --- |
-| `Progress` | `hashti-progress` |
-| `ProgressLabel` | `hashti-progress__label` |
-| `ProgressValue` | `hashti-progress__value` |
-| `ProgressTrack` | `hashti-progress-track` |
+| Part                | Class                       |
+| ------------------- | --------------------------- |
+| `Progress`          | `hashti-progress`           |
+| `ProgressLabel`     | `hashti-progress__label`    |
+| `ProgressValue`     | `hashti-progress__value`    |
+| `ProgressTrack`     | `hashti-progress-track`     |
 | `ProgressIndicator` | `hashti-progress-indicator` |
 
 Export all five from `./progress` and the barrel.
@@ -136,9 +136,15 @@ reduced-motion, complete).
 `apps/docs/src/components/progress-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Progress, ProgressIndicator, ProgressLabel, ProgressTrack, ProgressValue } from "@hashti/react"
+import {
+  Progress,
+  ProgressIndicator,
+  ProgressLabel,
+  ProgressTrack,
+  ProgressValue,
+} from "@hashti/react";
 
 export function ProgressDemo() {
   return (
@@ -166,7 +172,7 @@ export function ProgressDemo() {
         </ProgressTrack>
       </Progress>
     </div>
-  )
+  );
 }
 ```
 
@@ -178,7 +184,7 @@ title: Progress
 description: Shows how far a task has gone.
 ---
 
-import { ProgressDemo } from '../../src/components/progress-demo'
+import { ProgressDemo } from "../../src/components/progress-demo";
 
 ## Usage
 
@@ -186,13 +192,13 @@ import { ProgressDemo } from '../../src/components/progress-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Progress` | Holds the value and range. |
-| `ProgressLabel` | Visible name (or `aria-label`). |
-| `ProgressValue` | The formatted value. |
-| `ProgressTrack` | The bar's size. |
-| `ProgressIndicator` | The fill. |
+| Part                | Purpose                         |
+| ------------------- | ------------------------------- |
+| `Progress`          | Holds the value and range.      |
+| `ProgressLabel`     | Visible name (or `aria-label`). |
+| `ProgressValue`     | The formatted value.            |
+| `ProgressTrack`     | The bar's size.                 |
+| `ProgressIndicator` | The fill.                       |
 
 Styling lives in `@hashti/styles` under `.hashti-progress*` — a 8px rounded track, interactive-blue fill, an indeterminate slide, and green when complete.
 ```
@@ -214,11 +220,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-progress" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/progress.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "progress" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

@@ -1,6 +1,11 @@
-"use client"
+"use client";
 
-import { OTPInput, OTPInputGroup, OTPInputSeparator, OTPInputSlot } from "@hashti/react"
+import {
+  OTPInput,
+  OTPInputGroup,
+  OTPInputSeparator,
+  OTPInputSlot,
+} from "@hashti/react";
 
 export function OTPInputDemo() {
   return (
@@ -17,5 +22,5 @@ export function OTPInputDemo() {
         ))}
       </OTPInputGroup>
     </OTPInput>
-  )
+  );
 }

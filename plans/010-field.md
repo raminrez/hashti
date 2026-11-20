@@ -100,10 +100,10 @@ and Switch. After this cycle every form control integrates with validation.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -141,9 +141,9 @@ and Switch. After this cycle every form control integrates with validation.
 class-only:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
+import type { ComponentProps } from "react";
 import {
   Field as UiField,
   FieldControl as UiFieldControl,
@@ -153,44 +153,90 @@ import {
   FieldLabel as UiFieldLabel,
   FieldLegend as UiFieldLegend,
   FieldSet as UiFieldSet,
-} from "@ui-sdk/react/field"
+} from "@ui-sdk/react/field";
 
 const join = (base: string, className: string | undefined) =>
-  className ? `${base} ${className}` : base
+  className ? `${base} ${className}` : base;
 
 function Field(props: ComponentProps<typeof UiField>) {
-  return <UiField {...props} className={join("hashti-field", props.className)} />
+  return (
+    <UiField {...props} className={join("hashti-field", props.className)} />
+  );
 }
 
 function FieldLabel(props: ComponentProps<typeof UiFieldLabel>) {
-  return <UiFieldLabel {...props} className={join("hashti-field__label", props.className)} />
+  return (
+    <UiFieldLabel
+      {...props}
+      className={join("hashti-field__label", props.className)}
+    />
+  );
 }
 
 function FieldControl(props: ComponentProps<typeof UiFieldControl>) {
-  return <UiFieldControl {...props} className={join("hashti-field__control", props.className)} />
+  return (
+    <UiFieldControl
+      {...props}
+      className={join("hashti-field__control", props.className)}
+    />
+  );
 }
 
 function FieldDescription(props: ComponentProps<typeof UiFieldDescription>) {
-  return <UiFieldDescription {...props} className={join("hashti-field__description", props.className)} />
+  return (
+    <UiFieldDescription
+      {...props}
+      className={join("hashti-field__description", props.className)}
+    />
+  );
 }
 
 function FieldError(props: ComponentProps<typeof UiFieldError>) {
-  return <UiFieldError {...props} className={join("hashti-field__error", props.className)} />
+  return (
+    <UiFieldError
+      {...props}
+      className={join("hashti-field__error", props.className)}
+    />
+  );
 }
 
 function FieldSet(props: ComponentProps<typeof UiFieldSet>) {
-  return <UiFieldSet {...props} className={join("hashti-field-set", props.className)} />
+  return (
+    <UiFieldSet
+      {...props}
+      className={join("hashti-field-set", props.className)}
+    />
+  );
 }
 
 function FieldLegend(props: ComponentProps<typeof UiFieldLegend>) {
-  return <UiFieldLegend {...props} className={join("hashti-field__legend", props.className)} />
+  return (
+    <UiFieldLegend
+      {...props}
+      className={join("hashti-field__legend", props.className)}
+    />
+  );
 }
 
 function FieldGroup(props: ComponentProps<typeof UiFieldGroup>) {
-  return <UiFieldGroup {...props} className={join("hashti-field-group", props.className)} />
+  return (
+    <UiFieldGroup
+      {...props}
+      className={join("hashti-field-group", props.className)}
+    />
+  );
 }
 
-export { Field, FieldLabel, FieldControl, FieldDescription, FieldError, FieldSet, FieldLegend, FieldGroup }
+export {
+  Field,
+  FieldLabel,
+  FieldControl,
+  FieldDescription,
+  FieldError,
+  FieldSet,
+  FieldLegend,
+  FieldGroup,
+};
 ```
 
 (The `join` helper is local to this file — the other wrappers use the
@@ -209,7 +255,7 @@ export {
   FieldSet,
   FieldLegend,
   FieldGroup,
-} from "./field"
+} from "./field";
 ```
 
 `packages/react/src/index.tsx` — add at the end:
@@ -224,7 +270,7 @@ export {
   FieldSet,
   FieldLegend,
   FieldGroup,
-} from "./field"
+} from "./field";
 ```
 
 **Verify**: `bun run typecheck` → exit 0.
@@ -343,10 +389,10 @@ submit-triggered validation error, so the demo is a small form (compound
 parts compose in ONE React tree):
 
 ```tsx
-"use client"
+"use client";
 
-import { Field, FieldDescription, FieldError, FieldLabel } from "@hashti/react"
-import { Input } from "@hashti/react"
+import { Field, FieldDescription, FieldError, FieldLabel } from "@hashti/react";
+import { Input } from "@hashti/react";
 
 export function FieldDemo() {
   return (
@@ -359,7 +405,9 @@ export function FieldDemo() {
         <Input type="email" required placeholder="hollis@example.com" />
         <FieldDescription>We'll send you a confirmation link.</FieldDescription>
         <FieldError match="valueMissing">Enter your email address.</FieldError>
-        <FieldError match="typeMismatch">Enter an email address like hollis@example.com.</FieldError>
+        <FieldError match="typeMismatch">
+          Enter an email address like hollis@example.com.
+        </FieldError>
       </Field>
       <Field name="website">
         <FieldLabel>Website</FieldLabel>
@@ -370,7 +418,7 @@ export function FieldDemo() {
         Subscribe
       </button>
     </form>
-  )
+  );
 }
 ```
 
@@ -385,7 +433,7 @@ title: Field
 description: Labels, describes and validates a control.
 ---
 
-import { FieldDemo } from '../../src/components/field-demo'
+import { FieldDemo } from "../../src/components/field-demo";
 
 ## Usage
 
@@ -395,14 +443,14 @@ Press Subscribe with an empty or malformed email to see the recovery band:
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Field` | Owns the name, validation state and wiring. |
-| `FieldLabel` | Names the control; turns error ink when invalid. |
-| `FieldDescription` | Guidance; stays visible while an error shows. |
-| `FieldError` | The recovery band; renders while the field is invalid. |
-| `FieldControl` | Wires a control ui-sdk doesn't ship. |
-| `FieldSet` / `FieldLegend` / `FieldGroup` | Group related fields. |
+| Part                                      | Purpose                                                |
+| ----------------------------------------- | ------------------------------------------------------ |
+| `Field`                                   | Owns the name, validation state and wiring.            |
+| `FieldLabel`                              | Names the control; turns error ink when invalid.       |
+| `FieldDescription`                        | Guidance; stays visible while an error shows.          |
+| `FieldError`                              | The recovery band; renders while the field is invalid. |
+| `FieldControl`                            | Wires a control ui-sdk doesn't ship.                   |
+| `FieldSet` / `FieldLegend` / `FieldGroup` | Group related fields.                                  |
 
 The recovery band sits 1px under the control, tightens the control's lower corners to 3px, and carries the error ink. Guidance never hides while an error shows.
 ```

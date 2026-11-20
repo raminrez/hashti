@@ -62,7 +62,7 @@ text field. It's the interaction Combobox/Command build on.
   copy menu.css's content rule (18px, zero padding, popover shadow,
   anchor width NOT needed — the popup floats at the caret; use a sensible
   `min-inline-size: 12rem; max-block-size: var(--available-height);
-  overflow-y: auto` — `--available-height` exists here like Select).
+overflow-y: auto` — `--available-height` exists here like Select).
 - **Items**: menu.css's item recipe via data-slot keying
   (`[data-slot='trigger-menu-item']`) if the class cannot land — CHECK
   the rendered DOM first and prefer the wrapper class when it does land.
@@ -75,10 +75,10 @@ text field. It's the interaction Combobox/Command build on.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -115,15 +115,15 @@ text field. It's the interaction Combobox/Command build on.
 pattern (direct-re-export check on the root; verify per-part class
 landing):
 
-| Part | Class |
-| --- | --- |
-| `TriggerMenu` | `hashti-trigger-menu` (or direct re-export) |
-| `TriggerMenuInput` | `hashti-trigger-menu-input` |
-| `TriggerMenuStatus` | `hashti-trigger-menu__status` |
-| `TriggerMenuContent` | `hashti-trigger-menu-content` |
-| `TriggerMenuList` | `hashti-trigger-menu-list` |
-| `TriggerMenuItem` | `hashti-trigger-menu-item` (or data-slot keyed) |
-| `TriggerMenuEmpty` | `hashti-trigger-menu-empty` (or data-slot keyed) |
+| Part                 | Class                                            |
+| -------------------- | ------------------------------------------------ |
+| `TriggerMenu`        | `hashti-trigger-menu` (or direct re-export)      |
+| `TriggerMenuInput`   | `hashti-trigger-menu-input`                      |
+| `TriggerMenuStatus`  | `hashti-trigger-menu__status`                    |
+| `TriggerMenuContent` | `hashti-trigger-menu-content`                    |
+| `TriggerMenuList`    | `hashti-trigger-menu-list`                       |
+| `TriggerMenuItem`    | `hashti-trigger-menu-item` (or data-slot keyed)  |
+| `TriggerMenuEmpty`   | `hashti-trigger-menu-empty` (or data-slot keyed) |
 
 Export all from `./trigger-menu` and the barrel.
 
@@ -144,19 +144,26 @@ way).
 `apps/docs/src/components/trigger-menu-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { TriggerMenu, TriggerMenuContent, TriggerMenuInput } from "@hashti/react"
+import {
+  TriggerMenu,
+  TriggerMenuContent,
+  TriggerMenuInput,
+} from "@hashti/react";
 
-const people = ["Hollis Vance", "Priya Nair", "Tom Okafor", "Lena Fischer"]
+const people = ["Hollis Vance", "Priya Nair", "Tom Okafor", "Lena Fischer"];
 
 export function TriggerMenuDemo() {
   return (
     <TriggerMenu items={people} style={{ maxWidth: 320 }}>
-      <TriggerMenuInput placeholder="Mention someone with @…" aria-label="Message" />
+      <TriggerMenuInput
+        placeholder="Mention someone with @…"
+        aria-label="Message"
+      />
       <TriggerMenuContent />
     </TriggerMenu>
-  )
+  );
 }
 ```
 
@@ -172,7 +179,7 @@ title: TriggerMenu
 description: Suggests items as you type a trigger.
 ---
 
-import { TriggerMenuDemo } from '../../src/components/trigger-menu-demo'
+import { TriggerMenuDemo } from "../../src/components/trigger-menu-demo";
 
 ## Usage
 
@@ -201,11 +208,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-trigger-menu" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/trigger-menu.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "trigger-menu" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

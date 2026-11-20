@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Accordion,
@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function AccordionDemo() {
   return (
@@ -21,7 +21,9 @@ export function AccordionDemo() {
         <AccordionHeader>
           <AccordionTrigger>Returns</AccordionTrigger>
         </AccordionHeader>
-        <AccordionPanel>Free returns within 30 days of delivery.</AccordionPanel>
+        <AccordionPanel>
+          Free returns within 30 days of delivery.
+        </AccordionPanel>
       </AccordionItem>
       <AccordionItem value="warranty">
         <AccordionHeader>
@@ -30,5 +32,5 @@ export function AccordionDemo() {
         <AccordionPanel>Two years, covering parts and labor.</AccordionPanel>
       </AccordionItem>
     </Accordion>
-  )
+  );
 }

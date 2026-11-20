@@ -1,1 +1,1 @@
-export { Resizable, ResizablePanel, ResizableHandle } from "./resizable"
+export { Resizable, ResizablePanel, ResizableHandle } from "./resizable";

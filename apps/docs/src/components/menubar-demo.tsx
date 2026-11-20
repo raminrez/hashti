@@ -1,6 +1,13 @@
-"use client"
+"use client";
 
-import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger, Menubar } from "@hashti/react"
+import {
+  Menu,
+  MenuContent,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+  Menubar,
+} from "@hashti/react";
 
 export function MenubarDemo() {
   return (
@@ -29,5 +36,5 @@ export function MenubarDemo() {
         </MenuContent>
       </Menu>
     </Menubar>
-  )
+  );
 }

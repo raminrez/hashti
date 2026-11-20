@@ -67,7 +67,7 @@ submenus and checkbox/radio menus hang off it later.
 - **Trigger**: the quiet-action recipe from popover.css (transparent, 44px
   row, control radius, hover inside `(hover: hover)`).
 - **Items**: FULL-BLEED (zero surface padding) — `min-block-size: 2.5rem;
-  padding: 0 0.75rem; display: flex; align-items: center;` text
+padding: 0 0.75rem; display: flex; align-items: center;` text
   0.875rem/400 ink `var(--hashti-text-primary)`, `cursor: default`.
   - `[data-highlighted]` → background `var(--hashti-background-hover)`.
   - `[data-disabled]` → ink `var(--hashti-text-disabled)`, no highlight.
@@ -91,10 +91,10 @@ submenus and checkbox/radio menus hang off it later.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -130,15 +130,15 @@ submenus and checkbox/radio menus hang off it later.
 `packages/react/src/field/field.tsx`; parts and classes (direct-re-export
 check on the Menu root):
 
-| Part | Class |
-| --- | --- |
-| `Menu` | `hashti-menu` (or direct re-export if the root takes no className — same check as Select/Dialog/Popover) |
-| `MenuTrigger` | `hashti-menu-trigger` |
-| `MenuContent` | `hashti-menu-content` |
-| `MenuItem` | `hashti-menu-item` |
-| `MenuGroup` | `hashti-menu-group` |
-| `MenuGroupLabel` | `hashti-menu__group-label` |
-| `MenuSeparator` | `hashti-menu-separator` |
+| Part             | Class                                                                                                    |
+| ---------------- | -------------------------------------------------------------------------------------------------------- |
+| `Menu`           | `hashti-menu` (or direct re-export if the root takes no className — same check as Select/Dialog/Popover) |
+| `MenuTrigger`    | `hashti-menu-trigger`                                                                                    |
+| `MenuContent`    | `hashti-menu-content`                                                                                    |
+| `MenuItem`       | `hashti-menu-item`                                                                                       |
+| `MenuGroup`      | `hashti-menu-group`                                                                                      |
+| `MenuGroupLabel` | `hashti-menu__group-label`                                                                               |
+| `MenuSeparator`  | `hashti-menu-separator`                                                                                  |
 
 Export all seven from `./menu` and the barrel.
 
@@ -159,7 +159,7 @@ matches; `grep -c "data-" packages/styles/src/menu.css` → ≥ 6.
 `apps/docs/src/components/menu-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Menu,
@@ -169,7 +169,7 @@ import {
   MenuItem,
   MenuSeparator,
   MenuTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function MenuDemo() {
   return (
@@ -186,7 +186,7 @@ export function MenuDemo() {
         </MenuGroup>
       </MenuContent>
     </Menu>
-  )
+  );
 }
 ```
 
@@ -198,7 +198,7 @@ title: Menu
 description: Opens a list of actions beside its trigger.
 ---
 
-import { MenuDemo } from '../../src/components/menu-demo'
+import { MenuDemo } from "../../src/components/menu-demo";
 
 ## Usage
 
@@ -206,14 +206,14 @@ import { MenuDemo } from '../../src/components/menu-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Menu` | Owns the open state and `onAction`. |
-| `MenuTrigger` | Opens the menu. |
-| `MenuContent` | The actions surface; flips away from edges. |
-| `MenuItem` | One action; a `value` for `onAction`. |
-| `MenuGroup` / `MenuGroupLabel` | Groups related actions. |
-| `MenuSeparator` | Divides items without a focus stop. |
+| Part                           | Purpose                                     |
+| ------------------------------ | ------------------------------------------- |
+| `Menu`                         | Owns the open state and `onAction`.         |
+| `MenuTrigger`                  | Opens the menu.                             |
+| `MenuContent`                  | The actions surface; flips away from edges. |
+| `MenuItem`                     | One action; a `value` for `onAction`.       |
+| `MenuGroup` / `MenuGroupLabel` | Groups related actions.                     |
+| `MenuSeparator`                | Divides items without a focus stop.         |
 
 Styling lives in `@hashti/styles` under `.hashti-menu-*` — an 18px zero-padding surface with full-bleed items, highlighted in background-hover.
 ```
@@ -236,11 +236,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-menu" packages/react/src packages/styles/src` shows
-  the wrapper classes and the stylesheet selectors
+      the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/menu.css` returns
-  nothing
+      nothing
 - [ ] `grep -n "menu" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

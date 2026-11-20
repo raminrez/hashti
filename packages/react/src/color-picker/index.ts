@@ -11,4 +11,4 @@ export {
   ColorPickerInput,
   ColorPickerChannelInput,
   ColorPickerEyeDropper,
-} from "./color-picker"
+} from "./color-picker";

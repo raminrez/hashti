@@ -44,41 +44,41 @@ and inputs.
 ### Design rules that bite (quiet-action vocabulary)
 
 - **Root `hashti-toolbar`**: `display: flex; align-items: center;
-  gap: 0.25rem; padding: 0.25rem; border: 1px solid
-  var(--hashti-border-subtle-00); border-radius:
-  var(--hashti-control-radius); background: var(--hashti-layer-02);`
+gap: 0.25rem; padding: 0.25rem; border: 1px solid
+var(--hashti-border-subtle-00); border-radius:
+var(--hashti-control-radius); background: var(--hashti-layer-02);`
   (a quiet well like the segmented-control's, no inner chip).
 - **Button `hashti-toolbar-button`**: the quiet-action recipe —
   `display: inline-flex; align-items: center; justify-content: center;
-  gap: 0.375rem; min-block-size: 2.25rem; padding: 0 0.625rem;
-  border: none; border-radius: calc(var(--hashti-control-radius) - 0.25rem);
-  background: transparent; color: var(--hashti-text-primary);
-  font-size: 0.875rem; font-weight: 500; cursor: pointer;`
+gap: 0.375rem; min-block-size: 2.25rem; padding: 0 0.625rem;
+border: none; border-radius: calc(var(--hashti-control-radius) - 0.25rem);
+background: transparent; color: var(--hashti-text-primary);
+font-size: 0.875rem; font-weight: 500; cursor: pointer;`
   hover (hover:hover, not disabled) → `background:
-  var(--hashti-background-hover);` `:focus-visible` → 2px ring @-2px
+var(--hashti-background-hover);` `:focus-visible` → 2px ring @-2px
   (inset — the well clips, per the password-input review precedent);
   `[data-disabled]` → ink disabled, cursor not-allowed.
 - **Group `hashti-toolbar-group`**: `display: flex; gap: 0.125rem;`
   (tighter than the root gap — a named set).
 - **Separator `hashti-toolbar-separator`**: `align-self: stretch;
-  inline-size: 1px; background: var(--hashti-border-subtle-00); margin:
-  0.25rem 0.125rem;` (horizontal orientation; vertical deferred).
+inline-size: 1px; background: var(--hashti-border-subtle-00); margin:
+0.25rem 0.125rem;` (horizontal orientation; vertical deferred).
 - **Link `hashti-toolbar-link`**: the button box + `color:
-  var(--hashti-link-primary); text-decoration: none;` hover → underline.
+var(--hashti-link-primary); text-decoration: none;` hover → underline.
 - **Input `hashti-toolbar-input`**: reuse the date-input group recipe's
   inner-input look in miniature: `block-size: 2.25rem; padding: 0
-  0.5rem; border: none; background: transparent; color: var(--hashti-text-primary);
-  font-size: 0.875rem;` `::placeholder` secondary; outline none (ring on
+0.5rem; border: none; background: transparent; color: var(--hashti-text-primary);
+font-size: 0.875rem;` `::placeholder` secondary; outline none (ring on
   the toolbar? no — give the input its own inset ring on `:focus-visible`:
   2px @-2px with `border-radius: inherit`).
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -113,14 +113,14 @@ and inputs.
 `packages/react/src/toolbar/toolbar.tsx` — the `join` helper pattern
 (direct-re-export check on roots):
 
-| Part | Class |
-| --- | --- |
-| `Toolbar` | `hashti-toolbar` |
-| `ToolbarButton` | `hashti-toolbar-button` |
-| `ToolbarGroup` | `hashti-toolbar-group` |
+| Part               | Class                      |
+| ------------------ | -------------------------- |
+| `Toolbar`          | `hashti-toolbar`           |
+| `ToolbarButton`    | `hashti-toolbar-button`    |
+| `ToolbarGroup`     | `hashti-toolbar-group`     |
 | `ToolbarSeparator` | `hashti-toolbar-separator` |
-| `ToolbarLink` | `hashti-toolbar-link` |
-| `ToolbarInput` | `hashti-toolbar-input` |
+| `ToolbarLink`      | `hashti-toolbar-link`      |
+| `ToolbarInput`     | `hashti-toolbar-input`     |
 
 Export all six from `./toolbar` and the barrel.
 
@@ -138,29 +138,59 @@ Export all six from `./toolbar` and the barrel.
 `apps/docs/src/components/toolbar-demo.tsx` — inline SVG glyphs:
 
 ```tsx
-"use client"
+"use client";
 
-import { Toolbar, ToolbarButton, ToolbarGroup, ToolbarInput, ToolbarLink, ToolbarSeparator } from "@hashti/react"
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarGroup,
+  ToolbarInput,
+  ToolbarLink,
+  ToolbarSeparator,
+} from "@hashti/react";
 
 function Icon({ d }: { d: string }) {
-  return <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d={d} fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  return (
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path
+        d={d}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }
 
 export function ToolbarDemo() {
   return (
     <Toolbar aria-label="Document tools">
-      <ToolbarButton aria-label="Bold"><Icon d="M4 3h5a2.5 2.5 0 0 1 0 5H4Zm0 5h6a2.5 2.5 0 0 1 0 5H4Z" /></ToolbarButton>
-      <ToolbarButton aria-label="Italic"><Icon d="M10 3H7m2 0-3 10m1 0H4" /></ToolbarButton>
+      <ToolbarButton aria-label="Bold">
+        <Icon d="M4 3h5a2.5 2.5 0 0 1 0 5H4Zm0 5h6a2.5 2.5 0 0 1 0 5H4Z" />
+      </ToolbarButton>
+      <ToolbarButton aria-label="Italic">
+        <Icon d="M10 3H7m2 0-3 10m1 0H4" />
+      </ToolbarButton>
       <ToolbarGroup aria-label="Align">
-        <ToolbarButton aria-label="Align left"><Icon d="M3 4h10M3 8h6M3 12h8" /></ToolbarButton>
-        <ToolbarButton aria-label="Align center"><Icon d="M3 4h10M5 8h6M4 12h8" /></ToolbarButton>
+        <ToolbarButton aria-label="Align left">
+          <Icon d="M3 4h10M3 8h6M3 12h8" />
+        </ToolbarButton>
+        <ToolbarButton aria-label="Align center">
+          <Icon d="M3 4h10M5 8h6M4 12h8" />
+        </ToolbarButton>
       </ToolbarGroup>
       <ToolbarSeparator />
-      <ToolbarInput placeholder="Find…" aria-label="Find" style={{ inlineSize: "8rem" }} />
+      <ToolbarInput
+        placeholder="Find…"
+        aria-label="Find"
+        style={{ inlineSize: "8rem" }}
+      />
       <ToolbarSeparator />
       <ToolbarLink href="#help">Help</ToolbarLink>
     </Toolbar>
-  )
+  );
 }
 ```
 
@@ -172,7 +202,7 @@ title: Toolbar
 description: Groups document actions in a row.
 ---
 
-import { ToolbarDemo } from '../../src/components/toolbar-demo'
+import { ToolbarDemo } from "../../src/components/toolbar-demo";
 
 ## Usage
 
@@ -180,14 +210,14 @@ import { ToolbarDemo } from '../../src/components/toolbar-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Toolbar` | The action well. |
-| `ToolbarButton` | One action; menu/select triggers join through it. |
-| `ToolbarGroup` | A named related set. |
-| `ToolbarSeparator` | Divides sets. |
-| `ToolbarLink` | A navigation action. |
-| `ToolbarInput` | An inline field. |
+| Part               | Purpose                                           |
+| ------------------ | ------------------------------------------------- |
+| `Toolbar`          | The action well.                                  |
+| `ToolbarButton`    | One action; menu/select triggers join through it. |
+| `ToolbarGroup`     | A named related set.                              |
+| `ToolbarSeparator` | Divides sets.                                     |
+| `ToolbarLink`      | A navigation action.                              |
+| `ToolbarInput`     | An inline field.                                  |
 
 Styling lives in `@hashti/styles` under `.hashti-toolbar*` — a quiet well, inset focus rings, dividers between sets.
 ```
@@ -209,11 +239,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-toolbar" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/toolbar.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "toolbar" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

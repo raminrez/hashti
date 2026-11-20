@@ -4,4 +4,4 @@ export {
   NumberInputDecrement,
   NumberInputGroup,
   NumberInputIncrement,
-} from "./number-input"
+} from "./number-input";

@@ -6,4 +6,4 @@ export {
   TriggerMenuList,
   TriggerMenuItem,
   TriggerMenuEmpty,
-} from "./trigger-menu"
+} from "./trigger-menu";

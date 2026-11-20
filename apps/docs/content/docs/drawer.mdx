@@ -3,7 +3,10 @@ title: Drawer
 description: Slides a sheet in from an edge.
 ---
 
-import { DrawerDemo, DrawerSnapPointsDemo } from '../../src/components/drawer-demo'
+import {
+  DrawerDemo,
+  DrawerSnapPointsDemo,
+} from "../../src/components/drawer-demo";
 
 ## Usage
 
@@ -11,14 +14,14 @@ import { DrawerDemo, DrawerSnapPointsDemo } from '../../src/components/drawer-de
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Drawer` | Owns the open state; takes `snapPoints` and `defaultSnapPoint`. |
-| `DrawerTrigger` | Opens the drawer. |
-| `DrawerBackdrop` | The scrim. |
-| `DrawerContent` | The sheet; size it, the drawer places and moves it. |
-| `DrawerHandle` | The drag handle; pressing it steps to the next larger snap point, then wraps to the smallest. |
-| `DrawerTitle` / `DrawerDescription` / `DrawerClose` | Content and dismissal. |
+| Part                                                | Purpose                                                                                       |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `Drawer`                                            | Owns the open state; takes `snapPoints` and `defaultSnapPoint`.                               |
+| `DrawerTrigger`                                     | Opens the drawer.                                                                             |
+| `DrawerBackdrop`                                    | The scrim.                                                                                    |
+| `DrawerContent`                                     | The sheet; size it, the drawer places and moves it.                                           |
+| `DrawerHandle`                                      | The drag handle; pressing it steps to the next larger snap point, then wraps to the smallest. |
+| `DrawerTitle` / `DrawerDescription` / `DrawerClose` | Content and dismissal.                                                                        |
 
 Styling lives in `@hashti/styles` under `.hashti-drawer*` — a full-travel sheet with 16px corners that flatten against their edge and the modal shadow.
 

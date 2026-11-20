@@ -49,9 +49,9 @@ pointer pause instead of a press. Completes the anchored-overlay family.
 
 - **Surface**: copy popover.css's content recipe — background
   `var(--hashti-layer-01)`, border `1px solid
-  var(--hashti-border-subtle-00)`, `border-radius:
-  var(--hashti-popover-radius)`, shadow `0 8px 24px
-  var(--hashti-shadow)`, `padding: 0.75rem`, `max-inline-size: 18rem`
+var(--hashti-border-subtle-00)`, `border-radius:
+var(--hashti-popover-radius)`, shadow `0 8px 24px
+var(--hashti-shadow)`, `padding: 0.75rem`, `max-inline-size: 18rem`
   (cards are wider than popovers' 16rem but not dialog-wide).
 - **Motion**: starting/ending → `opacity: 0; scale(0.98)`,
   `transform-origin: var(--transform-origin)`, transition
@@ -63,10 +63,10 @@ pointer pause instead of a press. Completes the anchored-overlay family.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -101,11 +101,11 @@ pointer pause instead of a press. Completes the anchored-overlay family.
 `packages/react/src/hover-card/hover-card.tsx` — the `join` helper pattern
 (direct-re-export check on the root):
 
-| Part | Class |
-| --- | --- |
-| `HoverCard` | `hashti-hover-card` (or direct re-export) |
+| Part               | Class                                        |
+| ------------------ | -------------------------------------------- |
+| `HoverCard`        | `hashti-hover-card` (or direct re-export)    |
 | `HoverCardTrigger` | `hashti-hover-card-trigger` (class, no rule) |
-| `HoverCardContent` | `hashti-hover-card-content` |
+| `HoverCardContent` | `hashti-hover-card-content`                  |
 
 Export all three from `./hover-card` and the barrel.
 
@@ -123,10 +123,10 @@ Export all three from `./hover-card` and the barrel.
 `apps/docs/src/components/hover-card-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Avatar } from "@hashti/react"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@hashti/react"
+import { Avatar } from "@hashti/react";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@hashti/react";
 
 export function HoverCardDemo() {
   return (
@@ -136,18 +136,31 @@ export function HoverCardDemo() {
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
           <Avatar initials="HV" />
           <div>
-            <div style={{ fontWeight: 600, fontSize: "0.875rem" }}>Hollis Vance</div>
-            <div style={{ fontSize: "0.8125rem", color: "var(--hashti-text-secondary)" }}>
+            <div style={{ fontWeight: 600, fontSize: "0.875rem" }}>
+              Hollis Vance
+            </div>
+            <div
+              style={{
+                fontSize: "0.8125rem",
+                color: "var(--hashti-text-secondary)",
+              }}
+            >
               Design systems lead
             </div>
           </div>
         </div>
-        <p style={{ margin: 0, fontSize: "0.8125rem", color: "var(--hashti-text-secondary)" }}>
+        <p
+          style={{
+            margin: 0,
+            fontSize: "0.8125rem",
+            color: "var(--hashti-text-secondary)",
+          }}
+        >
           Builds the component library and the tokens behind it.
         </p>
       </HoverCardContent>
     </HoverCard>
-  )
+  );
 }
 ```
 
@@ -163,7 +176,7 @@ title: HoverCard
 description: Previews a link's target on pause.
 ---
 
-import { HoverCardDemo } from '../../src/components/hover-card-demo'
+import { HoverCardDemo } from "../../src/components/hover-card-demo";
 
 ## Usage
 
@@ -171,11 +184,11 @@ import { HoverCardDemo } from '../../src/components/hover-card-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `HoverCard` | Owns the open state and delays. |
-| `HoverCardTrigger` | The link (an `<a href>`). |
-| `HoverCardContent` | The preview surface. |
+| Part               | Purpose                         |
+| ------------------ | ------------------------------- |
+| `HoverCard`        | Owns the open state and delays. |
+| `HoverCardTrigger` | The link (an `<a href>`).       |
+| `HoverCardContent` | The preview surface.            |
 
 Styling lives in `@hashti/styles` under `.hashti-hover-card-content` — the popover surface at hover timing. Keep the content reachable from the link target: touch users may never see it.
 ```
@@ -203,11 +216,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-hover-card" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/hover-card.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "hover-card" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

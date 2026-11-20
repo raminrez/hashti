@@ -45,22 +45,22 @@ exposes the paint through CSS variables — our styles frame them.
 ### Design rules that bite (derived)
 
 - **Root `hashti-color-picker`**: `display: flex; flex-direction: column;
-  gap: 0.75rem; inline-size: 16rem;`
+gap: 0.75rem; inline-size: 16rem;`
 - **Area `hashti-color-picker-area`**: `position: relative; block-size:
-  10rem; border-radius: var(--hashti-border-radius-08); overflow: hidden;`
+10rem; border-radius: var(--hashti-border-radius-08); overflow: hidden;`
   (canvas paints via `--color-area-background`).
 - **Area thumb / slider thumb**: `position: absolute; inline-size: 1rem;
-  block-size: 1rem; border-radius: 50%; border: 2px solid
-  var(--hashti-layer-01); box-shadow: 0 0 0 1px
-  var(--hashti-border-strong-01); background: var(--color-picker-color);
-  transform: translate(-50%, -50%);` (thumb centered on the point).
+block-size: 1rem; border-radius: 50%; border: 2px solid
+var(--hashti-layer-01); box-shadow: 0 0 0 1px
+var(--hashti-border-strong-01); background: var(--color-picker-color);
+transform: translate(-50%, -50%);` (thumb centered on the point).
 - **Slider `hashti-color-picker-slider`**: the slider track recipe —
   `position: relative; block-size: 0.75rem; border-radius: 999px;`
   background from `--color-slider-background`; thumb rides it.
 - **Swatch `hashti-color-picker-swatch`**: `inline-size: 1.75rem;
-  block-size: 1.75rem; border-radius: var(--hashti-border-radius-08);
-  background: var(--color-picker-color); border: 1px solid
-  var(--hashti-border-subtle-00); cursor: pointer;` selected state per docs.
+block-size: 1.75rem; border-radius: var(--hashti-border-radius-08);
+background: var(--color-picker-color); border: 1px solid
+var(--hashti-border-subtle-00); cursor: pointer;` selected state per docs.
 - **Swatches row**: `display: flex; gap: 0.375rem; flex-wrap: wrap;`
 - **Inputs** (`hashti-color-picker-input`,
   `hashti-color-picker-channel-input`): the `hashti-input` control recipe at
@@ -100,7 +100,7 @@ exposes the paint through CSS variables — our styles frame them.
 1. **Wrappers** — `join` helper pattern per part; export all + barrel.
    Verify: typecheck exit 0.
 2. **Stylesheet** — rules above. Verify: no hex; `grep -c "data-"
-   packages/styles/src/color-picker.css` → ≥ 4.
+packages/styles/src/color-picker.css` → ≥ 4.
 3. **Demo + page** — demo with area, hue slider, hex input, a swatches row
    (follow the docs' Usage structure; note deviations). meta.json entry.
    Verify: typecheck exit 0.

@@ -65,7 +65,7 @@ Menu depth (submenus), item types (checkbox/radio), icons and shortcuts.
 ## Done
 
 - [ ] typecheck exit 0 · [ ] no hex in touched css · [ ] rendered checks
-  above pass · [ ] commits per step
+      above pass · [ ] commits per step
 
 ## STOP
 

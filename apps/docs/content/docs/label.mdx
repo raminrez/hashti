@@ -3,20 +3,20 @@ title: Label
 description: Names a control, and a press on the label reaches it.
 ---
 
-import { Label } from '@hashti/react'
+import { Label } from "@hashti/react";
 
 ## Usage
 
-<div style={{ display: 'grid', gap: 8 }}>
+<div style={{ display: "grid", gap: 8 }}>
   <Label htmlFor="email">Email</Label>
   <input id="email" type="email" placeholder="you@example.com" />
 </div>
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `htmlFor` | `string` | The `id` of the control the label names. |
-| `children` | `ReactNode` | The label text, or a wrapped control. |
+| Prop       | Type        | Description                              |
+| ---------- | ----------- | ---------------------------------------- |
+| `htmlFor`  | `string`    | The `id` of the control the label names. |
+| `children` | `ReactNode` | The label text, or a wrapped control.    |
 
 A press on the label focuses the control it names. Styling lives in `@hashti/styles` under `.hashti-label`, with typography from the design label role (14px/20px, weight 600).

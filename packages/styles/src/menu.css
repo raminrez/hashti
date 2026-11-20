@@ -53,7 +53,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hashti-menu-content {
-    transition: opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity var(--hashti-duration-fast-01)
+      cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hashti-menu-content[data-starting-style],
@@ -124,11 +125,14 @@
   opacity: 0;
 }
 
-.hashti-menu-checkbox-item .hashti-menu-item-indicator[data-indeterminate] > svg {
+.hashti-menu-checkbox-item
+  .hashti-menu-item-indicator[data-indeterminate]
+  > svg {
   display: none;
 }
 
-.hashti-menu-checkbox-item .hashti-menu-item-indicator[data-indeterminate]::before {
+.hashti-menu-checkbox-item
+  .hashti-menu-item-indicator[data-indeterminate]::before {
   content: "";
   inline-size: 0.625rem;
   block-size: 0.125rem;

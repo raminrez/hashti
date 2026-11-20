@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Tree,
@@ -6,7 +6,7 @@ import {
   TreeItem,
   TreeItemIndicator,
   TreeItemLabel,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function TreeDemo() {
   return (
@@ -34,5 +34,5 @@ export function TreeDemo() {
         <TreeItemLabel>package.json</TreeItemLabel>
       </TreeItem>
     </Tree>
-  )
+  );
 }

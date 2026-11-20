@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "workspaces": {
-    "packages": ["packages/*", "apps/*"],
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ],
     "catalog": {
       "react": "^19.3.1",
       "react-dom": "^19.3.1",

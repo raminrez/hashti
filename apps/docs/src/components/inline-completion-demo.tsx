@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Input } from "@hashti/react"
-import { useState, type KeyboardEvent } from "react"
+import { Input } from "@hashti/react";
+import { useState, type KeyboardEvent } from "react";
 
 const colors = [
   "Amber",
@@ -19,32 +19,33 @@ const colors = [
   "Red",
   "Teal",
   "Yellow",
-]
+];
 
 export function InlineCompletionDemo() {
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState("");
 
   const rest =
     value === ""
       ? ""
-      : (colors.find(
-          (c) =>
-            c.toLowerCase().startsWith(value.toLowerCase()) &&
-            c.toLowerCase() !== value.toLowerCase(),
-        ) ?? "")
-          .slice(value.length)
+      : (
+          colors.find(
+            (c) =>
+              c.toLowerCase().startsWith(value.toLowerCase()) &&
+              c.toLowerCase() !== value.toLowerCase(),
+          ) ?? ""
+        ).slice(value.length);
 
   function accept() {
-    if (rest) setValue(value + rest)
+    if (rest) setValue(value + rest);
   }
 
   function onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
-    if (!rest) return
+    if (!rest) return;
     const atEnd =
-      (event.target as HTMLInputElement).selectionStart === value.length
+      (event.target as HTMLInputElement).selectionStart === value.length;
     if (event.key === "Tab" || (event.key === "ArrowRight" && atEnd)) {
-      event.preventDefault()
-      accept()
+      event.preventDefault();
+      accept();
     }
   }
 
@@ -64,5 +65,5 @@ export function InlineCompletionDemo() {
         </div>
       ) : null}
     </div>
-  )
+  );
 }

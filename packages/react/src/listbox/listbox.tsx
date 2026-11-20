@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import type { ListboxProps } from "@ui-sdk/react/listbox"
-import { join } from "@hashti/utils"
+import type { ComponentProps } from "react";
+import type { ListboxProps } from "@ui-sdk/react/listbox";
+import { join } from "@hashti/utils";
 import {
   Listbox as UiListbox,
   ListboxGroup as UiListboxGroup,
@@ -10,8 +10,7 @@ import {
   ListboxItem as UiListboxItem,
   ListboxItemIndicator as UiListboxItemIndicator,
   ListboxSeparator as UiListboxSeparator,
-} from "@ui-sdk/react/listbox"
-
+} from "@ui-sdk/react/listbox";
 
 // Generic, so value types survive; ComponentProps would infer {}.
 function Listbox<T = string, Multiple extends boolean | undefined = false>(
@@ -23,24 +22,36 @@ function Listbox<T = string, Multiple extends boolean | undefined = false>(
       {...(props as ListboxProps<T, false>)}
       className={join("hashti-listbox", props.className)}
     />
-  )
+  );
 }
 
 function ListboxItem(props: ComponentProps<typeof UiListboxItem>) {
-  return <UiListboxItem {...props} className={join("hashti-listbox-item", props.className)} />
+  return (
+    <UiListboxItem
+      {...props}
+      className={join("hashti-listbox-item", props.className)}
+    />
+  );
 }
 
-function ListboxItemIndicator(props: ComponentProps<typeof UiListboxItemIndicator>) {
+function ListboxItemIndicator(
+  props: ComponentProps<typeof UiListboxItemIndicator>,
+) {
   return (
     <UiListboxItemIndicator
       {...props}
       className={join("hashti-listbox-item__indicator", props.className)}
     />
-  )
+  );
 }
 
 function ListboxGroup(props: ComponentProps<typeof UiListboxGroup>) {
-  return <UiListboxGroup {...props} className={join("hashti-listbox-group", props.className)} />
+  return (
+    <UiListboxGroup
+      {...props}
+      className={join("hashti-listbox-group", props.className)}
+    />
+  );
 }
 
 function ListboxGroupLabel(props: ComponentProps<typeof UiListboxGroupLabel>) {
@@ -49,7 +60,7 @@ function ListboxGroupLabel(props: ComponentProps<typeof UiListboxGroupLabel>) {
       {...props}
       className={join("hashti-listbox__group-label", props.className)}
     />
-  )
+  );
 }
 
 function ListboxSeparator(props: ComponentProps<typeof UiListboxSeparator>) {
@@ -58,7 +69,7 @@ function ListboxSeparator(props: ComponentProps<typeof UiListboxSeparator>) {
       {...props}
       className={join("hashti-listbox-separator", props.className)}
     />
-  )
+  );
 }
 
 export {
@@ -68,4 +79,4 @@ export {
   ListboxGroup,
   ListboxGroupLabel,
   ListboxSeparator,
-}
+};

@@ -10,4 +10,4 @@ export {
   WaterfallIndicator,
   WaterfallCell,
   WaterfallBar,
-} from "./waterfall"
+} from "./waterfall";

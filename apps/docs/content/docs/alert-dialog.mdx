@@ -3,7 +3,7 @@ title: AlertDialog
 description: Asks a question that needs an explicit answer.
 ---
 
-import { AlertDialogDemo } from '../../src/components/alert-dialog-demo'
+import { AlertDialogDemo } from "../../src/components/alert-dialog-demo";
 
 ## Usage
 
@@ -11,13 +11,13 @@ import { AlertDialogDemo } from '../../src/components/alert-dialog-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `AlertDialog` | Owns the open state; only a Close part answers. |
-| `AlertDialogTrigger` | Opens the dialog. |
-| `AlertDialogBackdrop` | The scrim. |
-| `AlertDialogContent` | The modal surface. |
-| `AlertDialogTitle` / `AlertDialogDescription` | The question and context. |
-| `AlertDialogClose` | One answer; `value="confirm"` is the agreeing one, `data-danger` marks destructive ink. |
+| Part                                          | Purpose                                                                                 |
+| --------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `AlertDialog`                                 | Owns the open state; only a Close part answers.                                         |
+| `AlertDialogTrigger`                          | Opens the dialog.                                                                       |
+| `AlertDialogBackdrop`                         | The scrim.                                                                              |
+| `AlertDialogContent`                          | The modal surface.                                                                      |
+| `AlertDialogTitle` / `AlertDialogDescription` | The question and context.                                                               |
+| `AlertDialogClose`                            | One answer; `value="confirm"` is the agreeing one, `data-danger` marks destructive ink. |
 
 Styling lives in `@hashti/styles` under `.hashti-alert-dialog*` — the dialog surface with answer buttons; the destructive answer carries error ink. An outside press does not dismiss it; Escape does, and any Close part answers.

@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { join } from "@hashti/utils"
+import type { ComponentProps } from "react";
+import { join } from "@hashti/utils";
 import {
   Combobox,
   ComboboxChip as UiComboboxChip,
@@ -13,8 +13,7 @@ import {
   ComboboxLabel as UiComboboxLabel,
   ComboboxList as UiComboboxList,
   ComboboxValue,
-} from "@ui-sdk/react/combobox"
-
+} from "@ui-sdk/react/combobox";
 
 // The root renders no element of its own, so it is re-exported directly.
 function ComboboxLabel(props: ComponentProps<typeof UiComboboxLabel>) {
@@ -23,7 +22,7 @@ function ComboboxLabel(props: ComponentProps<typeof UiComboboxLabel>) {
       {...props}
       className={join("hashti-combobox__label", props.className)}
     />
-  )
+  );
 }
 
 function ComboboxInput(props: ComponentProps<typeof UiComboboxInput>) {
@@ -32,7 +31,7 @@ function ComboboxInput(props: ComponentProps<typeof UiComboboxInput>) {
       {...props}
       className={join("hashti-combobox-input", props.className)}
     />
-  )
+  );
 }
 
 function ComboboxContent(props: ComponentProps<typeof UiComboboxContent>) {
@@ -41,7 +40,7 @@ function ComboboxContent(props: ComponentProps<typeof UiComboboxContent>) {
       {...props}
       className={join("hashti-combobox-content", props.className)}
     />
-  )
+  );
 }
 
 function ComboboxList(props: ComponentProps<typeof UiComboboxList>) {
@@ -50,17 +49,19 @@ function ComboboxList(props: ComponentProps<typeof UiComboboxList>) {
       {...props}
       className={join("hashti-combobox-list", props.className)}
     />
-  )
+  );
 }
 
 // Generic, so value types survive; ComponentProps would infer {}.
-function ComboboxItem<T = string>(props: ComponentProps<typeof UiComboboxItem<T>>) {
+function ComboboxItem<T = string>(
+  props: ComponentProps<typeof UiComboboxItem<T>>,
+) {
   return (
     <UiComboboxItem
       {...props}
       className={join("hashti-combobox-item", props.className)}
     />
-  )
+  );
 }
 
 function ComboboxChips(props: ComponentProps<typeof UiComboboxChips>) {
@@ -69,7 +70,7 @@ function ComboboxChips(props: ComponentProps<typeof UiComboboxChips>) {
       {...props}
       className={join("hashti-combobox-chips", props.className)}
     />
-  )
+  );
 }
 
 function ComboboxChip<T = string>(
@@ -80,16 +81,18 @@ function ComboboxChip<T = string>(
       {...props}
       className={join("hashti-combobox-chip", props.className)}
     />
-  )
+  );
 }
 
-function ComboboxChipRemove(props: ComponentProps<typeof UiComboboxChipRemove>) {
+function ComboboxChipRemove(
+  props: ComponentProps<typeof UiComboboxChipRemove>,
+) {
   return (
     <UiComboboxChipRemove
       {...props}
       className={join("hashti-combobox-chip-remove", props.className)}
     />
-  )
+  );
 }
 
 export {
@@ -104,4 +107,4 @@ export {
   ComboboxValue,
   ComboboxChip,
   ComboboxChipRemove,
-}
+};

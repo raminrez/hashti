@@ -64,7 +64,7 @@ Read both before writing. Facts:
 
 - The group sets `--avatar-size` per size prop via a `data-size` attribute
   on the group (`xs → 1.5rem, sm → 2rem, md → 2.5rem, lg → 3rem, xl →
-  4rem` — READ `packages/styles/src/avatar.css` for the exact per-size
+4rem` — READ `packages/styles/src/avatar.css` for the exact per-size
   values Hashti already uses and mirror them; do not invent new sizes).
 - Overlap: `margin-inline-start: calc(var(--avatar-size, 2.5rem) * -0.25)`
   on `.hashti-avatar-group > .hashti-avatar:not(:first-child)` and on the
@@ -74,8 +74,8 @@ Read both before writing. Facts:
   2px literal is geometry, allowed; `var(--hashti-background)` supplies
   the color).
 - Count chip: `background: var(--hashti-layer-02); color:
-  var(--hashti-text-secondary); border-radius: var(--hashti-border-radius-max);
-  inline-size/block-size: var(--hashti-avatar-size, 2.5rem)` (use the
+var(--hashti-text-secondary); border-radius: var(--hashti-border-radius-max);
+inline-size/block-size: var(--hashti-avatar-size, 2.5rem)` (use the
   variable name avatar.css already defines for sizes; check it).
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
 - RTL: negative margin-inline-start is direction-aware already (logical
@@ -83,10 +83,10 @@ Read both before writing. Facts:
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -144,11 +144,22 @@ avatar.css uses>`), stack rings, count chip.
 `apps/docs/src/components/avatar-group-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Avatar, AvatarFallback, AvatarGroup, getInitials } from "@hashti/react"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarGroup,
+  getInitials,
+} from "@hashti/react";
 
-const names = ["Hollis Vance", "Priya Nair", "Tom Okafor", "Lena Fischer", "Marco Ruiz"]
+const names = [
+  "Hollis Vance",
+  "Priya Nair",
+  "Tom Okafor",
+  "Lena Fischer",
+  "Marco Ruiz",
+];
 
 export function AvatarGroupDemo() {
   return (
@@ -168,7 +179,7 @@ export function AvatarGroupDemo() {
         ))}
       </AvatarGroup>
     </div>
-  )
+  );
 }
 ```
 
@@ -200,9 +211,9 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-avatar-group" packages/react/src packages/styles/src`
-  shows the classes and the selectors
+      shows the classes and the selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/avatar.css` returns
-  nothing
+      nothing
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

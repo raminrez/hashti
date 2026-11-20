@@ -1,13 +1,20 @@
-"use client"
+"use client";
 
-import { Checkbox, CheckboxIndicator } from "@hashti/react"
+import { Checkbox, CheckboxIndicator } from "@hashti/react";
 
 function CheckGlyph() {
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true">
-      <path d="M2 6.5 4.5 9 10 3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M2 6.5 4.5 9 10 3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
-  )
+  );
 }
 
 export function CheckboxDemo() {
@@ -46,5 +53,5 @@ export function CheckboxDemo() {
         Managed by your organization
       </label>
     </div>
-  )
+  );
 }

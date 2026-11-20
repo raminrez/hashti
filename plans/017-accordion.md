@@ -51,13 +51,13 @@ or grid-rows trick) is the recipe Collapsible and Disclosure reuse.
 ### Design rules that bite (from `design/DESIGN.md`, `design/css-conventions.md`)
 
 - **Item**: separated rows — `border-block-end: 1px solid
-  var(--hashti-border-subtle-00)` between items (a divider list, not
+var(--hashti-border-subtle-00)` between items (a divider list, not
   bordered boxes).
 - **Trigger**: a full-width quiet action — `display: flex;
-  align-items: center; justify-content: space-between; gap: 0.5rem;
-  min-block-size: 2.75rem; padding: 0.25rem 0; border: none;
-  background: transparent; font-size: 0.875rem; font-weight: 600;
-  color: var(--hashti-text-primary); cursor: pointer; text-align: start;`
+align-items: center; justify-content: space-between; gap: 0.5rem;
+min-block-size: 2.75rem; padding: 0.25rem 0; border: none;
+background: transparent; font-size: 0.875rem; font-weight: 600;
+color: var(--hashti-text-primary); cursor: pointer; text-align: start;`
   hover background NONE (rows are full-bleed; hover would paint the whole
   row — keep the ink change only: `[data-open]` ink stays primary, closed
   hover ink darkens is unnecessary — no hover rule).
@@ -70,7 +70,7 @@ or grid-rows trick) is the recipe Collapsible and Disclosure reuse.
 - **Panel**: `padding-block: 0 0.75rem;` ink body (0.875rem, text-primary
   at 400); animate open/close with the grid-rows trick:
   `display: grid; grid-template-rows: 0fr; transition: grid-template-rows
-  var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);` and
+var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);` and
   `[data-open] { grid-template-rows: 1fr; }` with an inner
   `overflow: hidden` wrapper — BUT ui-sdk unmounts/hides the panel itself;
   check whether the panel stays mounted with `data-closed` (the docs' Keep
@@ -84,10 +84,10 @@ or grid-rows trick) is the recipe Collapsible and Disclosure reuse.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -121,13 +121,13 @@ or grid-rows trick) is the recipe Collapsible and Disclosure reuse.
 `packages/react/src/accordion/accordion.tsx` — the `join` helper pattern;
 parts and classes (direct-re-export check on the Accordion root):
 
-| Part | Class |
-| --- | --- |
-| `Accordion` | `hashti-accordion` (or direct re-export) |
-| `AccordionItem` | `hashti-accordion__item` |
-| `AccordionHeader` | `hashti-accordion__header` |
-| `AccordionTrigger` | `hashti-accordion__trigger` |
-| `AccordionPanel` | `hashti-accordion__panel` |
+| Part               | Class                                    |
+| ------------------ | ---------------------------------------- |
+| `Accordion`        | `hashti-accordion` (or direct re-export) |
+| `AccordionItem`    | `hashti-accordion__item`                 |
+| `AccordionHeader`  | `hashti-accordion__header`               |
+| `AccordionTrigger` | `hashti-accordion__trigger`              |
+| `AccordionPanel`   | `hashti-accordion__panel`                |
 
 Export all five from `./accordion` and the barrel.
 
@@ -149,7 +149,7 @@ trigger focus ring (3px offset).
 common default) with three items:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Accordion,
@@ -157,7 +157,7 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionTrigger,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function AccordionDemo() {
   return (
@@ -172,7 +172,9 @@ export function AccordionDemo() {
         <AccordionHeader>
           <AccordionTrigger>Returns</AccordionTrigger>
         </AccordionHeader>
-        <AccordionPanel>Free returns within 30 days of delivery.</AccordionPanel>
+        <AccordionPanel>
+          Free returns within 30 days of delivery.
+        </AccordionPanel>
       </AccordionItem>
       <AccordionItem value="warranty">
         <AccordionHeader>
@@ -181,7 +183,7 @@ export function AccordionDemo() {
         <AccordionPanel>Two years, covering parts and labor.</AccordionPanel>
       </AccordionItem>
     </Accordion>
-  )
+  );
 }
 ```
 
@@ -196,7 +198,7 @@ title: Accordion
 description: Opens and closes stacked disclosure rows.
 ---
 
-import { AccordionDemo } from '../../src/components/accordion-demo'
+import { AccordionDemo } from "../../src/components/accordion-demo";
 
 ## Usage
 
@@ -204,13 +206,13 @@ import { AccordionDemo } from '../../src/components/accordion-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Accordion` | Owns the open values. |
-| `AccordionItem` | One disclosure row; a unique `value`. |
-| `AccordionHeader` | The heading wrapper (`h3` by default). |
+| Part               | Purpose                                   |
+| ------------------ | ----------------------------------------- |
+| `Accordion`        | Owns the open values.                     |
+| `AccordionItem`    | One disclosure row; a unique `value`.     |
+| `AccordionHeader`  | The heading wrapper (`h3` by default).    |
 | `AccordionTrigger` | The full-width row button with the caret. |
-| `AccordionPanel` | The content the trigger reveals. |
+| `AccordionPanel`   | The content the trigger reveals.          |
 
 Styling lives in `@hashti/styles` under `.hashti-accordion*` — divider rows, a rotating caret, and animated panels.
 ```

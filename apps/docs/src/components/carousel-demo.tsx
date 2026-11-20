@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Carousel,
@@ -9,9 +9,9 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselViewport,
-} from "@hashti/react"
+} from "@hashti/react";
 
-const slides = ["First slide", "Second slide", "Third slide"]
+const slides = ["First slide", "Second slide", "Third slide"];
 
 export function CarouselDemo() {
   return (
@@ -36,13 +36,24 @@ export function CarouselDemo() {
           ))}
         </CarouselContent>
       </CarouselViewport>
-      <div style={{ display: "flex", gap: 8, alignItems: "center", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <CarouselPrevious aria-label="Previous slide">
           <ChevLeft />
         </CarouselPrevious>
         <CarouselIndicatorGroup aria-label="Choose a slide">
           {slides.map((s, i) => (
-            <CarouselIndicator key={s} page={i + 1} aria-label={`Go to slide ${i + 1}`} />
+            <CarouselIndicator
+              key={s}
+              page={i + 1}
+              aria-label={`Go to slide ${i + 1}`}
+            />
           ))}
         </CarouselIndicatorGroup>
         <CarouselNext aria-label="Next slide">
@@ -50,7 +61,7 @@ export function CarouselDemo() {
         </CarouselNext>
       </div>
     </Carousel>
-  )
+  );
 }
 
 function ChevLeft() {
@@ -65,7 +76,7 @@ function ChevLeft() {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 function ChevRight() {
@@ -80,5 +91,5 @@ function ChevRight() {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }

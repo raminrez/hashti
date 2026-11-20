@@ -56,10 +56,10 @@ segment contract with `hour/minute/second/dayPeriod` types.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -108,10 +108,10 @@ wrappers (root + segment; verify the export list).
 `apps/docs/src/components/time-input-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Field, FieldLabel } from "@hashti/react"
-import { TimeInput } from "@hashti/react"
+import { Field, FieldLabel } from "@hashti/react";
+import { TimeInput } from "@hashti/react";
 
 export function TimeInputDemo() {
   return (
@@ -119,7 +119,7 @@ export function TimeInputDemo() {
       <FieldLabel>Reminder time</FieldLabel>
       <TimeInput required />
     </Field>
-  )
+  );
 }
 ```
 
@@ -131,7 +131,7 @@ title: TimeInput
 description: Types a time in place, segment by segment.
 ---
 
-import { TimeInputDemo } from '../../src/components/time-input-demo'
+import { TimeInputDemo } from "../../src/components/time-input-demo";
 
 ## Usage
 
@@ -159,11 +159,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-time-input" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/time-input.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "time-input" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

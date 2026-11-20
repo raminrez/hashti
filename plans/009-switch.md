@@ -82,10 +82,10 @@ geometry.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -123,15 +123,18 @@ geometry.
 `packages/react/src/switch/switch.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import type { ComponentProps } from "react"
-import { Switch as UiSwitch, SwitchThumb as UiSwitchThumb } from "@ui-sdk/react/switch"
+import type { ComponentProps } from "react";
+import {
+  Switch as UiSwitch,
+  SwitchThumb as UiSwitchThumb,
+} from "@ui-sdk/react/switch";
 
-type SwitchSize = "sm" | "md"
+type SwitchSize = "sm" | "md";
 
 interface SwitchProps extends ComponentProps<typeof UiSwitch> {
-  size?: SwitchSize
+  size?: SwitchSize;
 }
 
 function Switch({ size, className, ...props }: SwitchProps) {
@@ -141,20 +144,28 @@ function Switch({ size, className, ...props }: SwitchProps) {
       data-size={size}
       {...props}
     />
-  )
+  );
 }
 
-function SwitchThumb({ className, ...props }: ComponentProps<typeof UiSwitchThumb>) {
-  return <UiSwitchThumb className={`hashti-switch__thumb${className ? ` ${className}` : ""}`} {...props} />
+function SwitchThumb({
+  className,
+  ...props
+}: ComponentProps<typeof UiSwitchThumb>) {
+  return (
+    <UiSwitchThumb
+      className={`hashti-switch__thumb${className ? ` ${className}` : ""}`}
+      {...props}
+    />
+  );
 }
 
-export { Switch, SwitchThumb }
+export { Switch, SwitchThumb };
 ```
 
 `packages/react/src/switch/index.ts`:
 
 ```ts
-export { Switch, SwitchThumb } from "./switch"
+export { Switch, SwitchThumb } from "./switch";
 ```
 
 **Verify**: `bun run typecheck` → exit 0 (the barrel still references the
@@ -176,7 +187,8 @@ Whole file:
   border-radius: 9999px;
   background: var(--hashti-layer-accent-01);
   cursor: pointer;
-  transition: background-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-switch[data-size="sm"] {
@@ -213,7 +225,8 @@ Whole file:
   translate: 0 -50%;
   position: absolute;
   top: 50%;
-  transition: translate var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: translate var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-switch[data-size="sm"] .hashti-switch__thumb {
@@ -260,7 +273,7 @@ but ensure it reads `@import "./src/switch.css" layer(hashti.components);`
 import and the `Switch` line it produced; add:
 
 ```tsx
-export { Switch, SwitchThumb } from "./switch"
+export { Switch, SwitchThumb } from "./switch";
 ```
 
 Delete `packages/core/src/switch.ts`. In `packages/core/src/index.ts`
@@ -278,9 +291,9 @@ replace the export with a placeholder comment:
 `apps/docs/src/components/switch-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Switch, SwitchThumb } from "@hashti/react"
+import { Switch, SwitchThumb } from "@hashti/react";
 
 export function SwitchDemo() {
   return (
@@ -310,7 +323,7 @@ export function SwitchDemo() {
         </Switch>
       </label>
     </div>
-  )
+  );
 }
 ```
 
@@ -322,7 +335,7 @@ title: Switch
 description: Toggles a setting on or off.
 ---
 
-import { SwitchDemo } from '../../src/components/switch-demo'
+import { SwitchDemo } from "../../src/components/switch-demo";
 
 ## Usage
 
@@ -330,10 +343,10 @@ import { SwitchDemo } from '../../src/components/switch-demo'
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `checked` / `defaultChecked` | `boolean` | The state. |
-| `size` | `"sm" \| "md"` | Track size: 34×18 or 44×24. Default `md`. |
+| Prop                         | Type           | Description                               |
+| ---------------------------- | -------------- | ----------------------------------------- |
+| `checked` / `defaultChecked` | `boolean`      | The state.                                |
+| `size`                       | `"sm" \| "md"` | Track size: 34×18 or 44×24. Default `md`. |
 
 Wrap the switch and its text in a `<label className="hashti-choice">`. Styling lives in `@hashti/styles` under `.hashti-switch` — a 44×24 full-round track, 20px thumb sliding to the inline end, checked fill in the design's toggle-on color.
 ```

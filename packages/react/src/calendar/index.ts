@@ -10,4 +10,4 @@ export {
   CalendarWeekdays,
   CalendarWeeks,
   CalendarYearSelect,
-} from "./calendar"
+} from "./calendar";

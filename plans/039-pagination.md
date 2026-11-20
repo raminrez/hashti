@@ -49,19 +49,19 @@ gaps. Pure button/link styling on a quiet scale.
 - **Root `hashti-pagination`**: `display: flex; justify-content: center;`
   (or the consumer lays it out).
 - **List**: `display: flex; gap: 0.25rem; margin: 0; padding: 0;
-  list-style: none; align-items: center;` (reset the ul).
+list-style: none; align-items: center;` (reset the ul).
 - **Item**: `display: flex;` (wrapper only).
 - **Link (page)**: `display: inline-flex; align-items: center;
-  justify-content: center; min-inline-size: 2.5rem; block-size: 2.5rem;
-  padding: 0 0.5rem; border: none; border-radius:
-  var(--hashti-control-radius); background: transparent; color:
-  var(--hashti-text-secondary); font-size: 0.875rem; font-weight: 500;
-  text-decoration: none; cursor: pointer; font-variant-numeric:
-  tabular-nums;`
+justify-content: center; min-inline-size: 2.5rem; block-size: 2.5rem;
+padding: 0 0.5rem; border: none; border-radius:
+var(--hashti-control-radius); background: transparent; color:
+var(--hashti-text-secondary); font-size: 0.875rem; font-weight: 500;
+text-decoration: none; cursor: pointer; font-variant-numeric:
+tabular-nums;`
   - hover (hover:hover, not current) → `background:
-    var(--hashti-background-hover); color: var(--hashti-text-primary);`
+var(--hashti-background-hover); color: var(--hashti-text-primary);`
   - `[data-current]` → `background: var(--hashti-background-selected);
-    color: var(--hashti-focus); font-weight: 600;` (the selected recipe —
+color: var(--hashti-focus); font-weight: 600;` (the selected recipe —
     same pair as Toggle's pressed state).
   - `:focus-visible` → 2px ring @2px.
 - **Steps (First/Previous/Next/Last)**: same box as links (2.5rem
@@ -70,16 +70,16 @@ gaps. Pure button/link styling on a quiet scale.
   `var(--hashti-text-disabled)`, background transparent, cursor
   not-allowed.
 - **Ellipsis**: `inline-size: 2.5rem; display: inline-flex; align-items:
-  center; justify-content: center; color: var(--hashti-text-secondary);`
+center; justify-content: center; color: var(--hashti-text-secondary);`
   no cursor.
 - Colours only via `var(--hashti-*)`; a hex in component CSS is a bug.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -114,13 +114,13 @@ gaps. Pure button/link styling on a quiet scale.
 (direct-re-export check on roots; watch for the date-input lesson — check
 which parts render themselves):
 
-| Part | Class |
-| --- | --- |
-| `Pagination` | `hashti-pagination` (or direct re-export) |
-| `PaginationList` | `hashti-pagination-list` |
-| `PaginationItem` | `hashti-pagination__item` |
-| `PaginationLink` | `hashti-pagination-link` |
-| `PaginationEllipsis` | `hashti-pagination-ellipsis` |
+| Part                                                                           | Class                                        |
+| ------------------------------------------------------------------------------ | -------------------------------------------- |
+| `Pagination`                                                                   | `hashti-pagination` (or direct re-export)    |
+| `PaginationList`                                                               | `hashti-pagination-list`                     |
+| `PaginationItem`                                                               | `hashti-pagination__item`                    |
+| `PaginationLink`                                                               | `hashti-pagination-link`                     |
+| `PaginationEllipsis`                                                           | `hashti-pagination-ellipsis`                 |
 | `PaginationPrevious` / `PaginationNext` / `PaginationFirst` / `PaginationLast` | `hashti-pagination-step` (shared step class) |
 
 Export all from `./pagination` and the barrel.
@@ -140,7 +140,7 @@ Export all from `./pagination` and the barrel.
 `apps/docs/src/components/pagination-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Pagination,
@@ -150,26 +150,44 @@ import {
   PaginationList,
   PaginationNext,
   PaginationPrevious,
-} from "@hashti/react"
+} from "@hashti/react";
 
 export function PaginationDemo() {
   return (
-    <Pagination items={[1, 2, "ellipsis-start", 5, 6, 7, "ellipsis-end", 10]} defaultValue={6} aria-label="Results pages">
+    <Pagination
+      items={[1, 2, "ellipsis-start", 5, 6, 7, "ellipsis-end", 10]}
+      defaultValue={6}
+      aria-label="Results pages"
+    >
       <PaginationList>
-        <PaginationItem><PaginationPrevious aria-label="Previous page" /></PaginationItem>
+        <PaginationItem>
+          <PaginationPrevious aria-label="Previous page" />
+        </PaginationItem>
         {[1, 2].map((p) => (
-          <PaginationItem key={p}><PaginationLink page={p} /></PaginationItem>
+          <PaginationItem key={p}>
+            <PaginationLink page={p} />
+          </PaginationItem>
         ))}
-        <PaginationItem><PaginationEllipsis /></PaginationItem>
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
         {[5, 6, 7].map((p) => (
-          <PaginationItem key={p}><PaginationLink page={p} /></PaginationItem>
+          <PaginationItem key={p}>
+            <PaginationLink page={p} />
+          </PaginationItem>
         ))}
-        <PaginationItem><PaginationEllipsis /></PaginationItem>
-        <PaginationItem><PaginationLink page={10} /></PaginationItem>
-        <PaginationItem><PaginationNext aria-label="Next page" /></PaginationItem>
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink page={10} />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext aria-label="Next page" />
+        </PaginationItem>
       </PaginationList>
     </Pagination>
-  )
+  );
 }
 ```
 
@@ -185,7 +203,7 @@ title: Pagination
 description: Moves between pages of results.
 ---
 
-import { PaginationDemo } from '../../src/components/pagination-demo'
+import { PaginationDemo } from "../../src/components/pagination-demo";
 
 ## Usage
 
@@ -193,13 +211,13 @@ import { PaginationDemo } from '../../src/components/pagination-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Pagination` | Owns the page; `items` lists pages and gaps. |
-| `PaginationList` / `PaginationItem` | The nav list and its rows. |
-| `PaginationLink` | One page; `data-current` on the active one. |
-| `PaginationEllipsis` | A gap. |
-| `PaginationPrevious` / `PaginationNext` / `PaginationFirst` / `PaginationLast` | Steps; `data-disabled` at their end. |
+| Part                                                                           | Purpose                                      |
+| ------------------------------------------------------------------------------ | -------------------------------------------- |
+| `Pagination`                                                                   | Owns the page; `items` lists pages and gaps. |
+| `PaginationList` / `PaginationItem`                                            | The nav list and its rows.                   |
+| `PaginationLink`                                                               | One page; `data-current` on the active one.  |
+| `PaginationEllipsis`                                                           | A gap.                                       |
+| `PaginationPrevious` / `PaginationNext` / `PaginationFirst` / `PaginationLast` | Steps; `data-disabled` at their end.         |
 
 Styling lives in `@hashti/styles` under `.hashti-pagination*` — quiet squares, the current page in the selected tint with focus-blue ink.
 ```
@@ -222,11 +240,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-pagination" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/pagination.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "pagination" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

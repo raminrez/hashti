@@ -55,10 +55,10 @@ item recipes as Combobox; the value is text, not an option reference.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -94,15 +94,15 @@ item recipes as Combobox; the value is text, not an option reference.
 pattern (direct-re-export checks per part; the combobox precedent
 applies):
 
-| Part | Class |
-| --- | --- |
-| `Autocomplete` | `hashti-autocomplete` (or direct re-export) |
-| `AutocompleteLabel` | `hashti-autocomplete__label` |
-| `AutocompleteInput` | `hashti-autocomplete-input` |
-| `AutocompleteContent` | `hashti-autocomplete-content` |
-| `AutocompleteList` | `hashti-autocomplete-list` |
-| `AutocompleteItem` | `hashti-autocomplete-item` |
-| `AutocompleteEmpty` | `hashti-autocomplete-empty` |
+| Part                  | Class                                       |
+| --------------------- | ------------------------------------------- |
+| `Autocomplete`        | `hashti-autocomplete` (or direct re-export) |
+| `AutocompleteLabel`   | `hashti-autocomplete__label`                |
+| `AutocompleteInput`   | `hashti-autocomplete-input`                 |
+| `AutocompleteContent` | `hashti-autocomplete-content`               |
+| `AutocompleteList`    | `hashti-autocomplete-list`                  |
+| `AutocompleteItem`    | `hashti-autocomplete-item`                  |
+| `AutocompleteEmpty`   | `hashti-autocomplete-empty`                 |
 
 Export all from `./autocomplete` and the barrel.
 
@@ -121,7 +121,7 @@ Export all from `./autocomplete` and the barrel.
 `apps/docs/src/components/autocomplete-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
 import {
   Autocomplete,
@@ -131,9 +131,9 @@ import {
   AutocompleteItem,
   AutocompleteLabel,
   AutocompleteList,
-} from "@hashti/react"
+} from "@hashti/react";
 
-const cities = ["Amsterdam", "Berlin", "Copenhagen", "Lisbon", "Paris"]
+const cities = ["Amsterdam", "Berlin", "Copenhagen", "Lisbon", "Paris"];
 
 export function AutocompleteDemo() {
   return (
@@ -143,13 +143,15 @@ export function AutocompleteDemo() {
       <AutocompleteContent>
         <AutocompleteList>
           {cities.map((c) => (
-            <AutocompleteItem key={c} value={c}>{c}</AutocompleteItem>
+            <AutocompleteItem key={c} value={c}>
+              {c}
+            </AutocompleteItem>
           ))}
         </AutocompleteList>
         <AutocompleteEmpty>No city matches.</AutocompleteEmpty>
       </AutocompleteContent>
     </Autocomplete>
-  )
+  );
 }
 ```
 
@@ -161,7 +163,7 @@ title: Autocomplete
 description: Suggests completions while you type.
 ---
 
-import { AutocompleteDemo } from '../../src/components/autocomplete-demo'
+import { AutocompleteDemo } from "../../src/components/autocomplete-demo";
 
 ## Usage
 
@@ -169,13 +171,13 @@ import { AutocompleteDemo } from '../../src/components/autocomplete-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Autocomplete` | Owns the query. |
-| `AutocompleteInput` | The free-text field. |
-| `AutocompleteContent` / `AutocompleteList` | The anchored popup. |
-| `AutocompleteItem` | One suggestion. |
-| `AutocompleteEmpty` | Shows when nothing matches. |
+| Part                                       | Purpose                     |
+| ------------------------------------------ | --------------------------- |
+| `Autocomplete`                             | Owns the query.             |
+| `AutocompleteInput`                        | The free-text field.        |
+| `AutocompleteContent` / `AutocompleteList` | The anchored popup.         |
+| `AutocompleteItem`                         | One suggestion.             |
+| `AutocompleteEmpty`                        | Shows when nothing matches. |
 
 Styling lives in `@hashti/styles` under `.hashti-autocomplete*` — a field input with the combobox popup surface.
 ```
@@ -198,11 +200,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-autocomplete" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/autocomplete.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "autocomplete" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

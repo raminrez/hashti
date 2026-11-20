@@ -3,7 +3,7 @@ title: Preferences
 description: Applies user preferences to data attributes so styles can follow them.
 ---
 
-import { PreferencesDemo } from '../../src/components/preferences-demo'
+import { PreferencesDemo } from "../../src/components/preferences-demo";
 
 ## Usage
 
@@ -13,28 +13,28 @@ Choose Grid to lay the files out in two columns; the choice is saved and comes b
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Preferences` | Puts each preference on a `data-*` attribute of a `display: contents` wrapper. |
-| `usePreference` | Reads a preference's current value and re-renders on change. |
-| `createPreference` | Defines the attribute, its allowed values and the default. |
-| `createLocalStorage` / `createSessionStorage` / `createCookieStorage` | Keep the value between visits or for the session. |
+| Part                                                                  | Purpose                                                                        |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `Preferences`                                                         | Puts each preference on a `data-*` attribute of a `display: contents` wrapper. |
+| `usePreference`                                                       | Reads a preference's current value and re-renders on change.                   |
+| `createPreference`                                                    | Defines the attribute, its allowed values and the default.                     |
+| `createLocalStorage` / `createSessionStorage` / `createCookieStorage` | Keep the value between visits or for the session.                              |
 
 ```tsx
-import { Preferences, createPreference, usePreference } from "@hashti/react"
+import { Preferences, createPreference, usePreference } from "@hashti/react";
 
 const view = createPreference({
   values: ["list", "grid"],
   defaultValue: "list",
   attribute: "data-view",
-})
+});
 
 function FileList() {
   return (
     <Preferences preferences={[view]}>
       <ul className="files">…</ul>
     </Preferences>
-  )
+  );
 }
 ```
 

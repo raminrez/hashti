@@ -50,21 +50,21 @@ and the design vocabulary.
 - **Root**: `display: flex; flex-direction: column; gap: 1rem;` (vertical
   only this cycle; horizontal styling deferred).
 - **Item**: `display: grid; grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr; column-gap: 0.75rem;` — marker column +
+grid-template-rows: auto 1fr; column-gap: 0.75rem;` — marker column +
   content column; the connector spans the marker column's second row.
   (Adapt to ui-sdk's actual DOM if it differs — the docs' Usage example
   shows the intended arrangement; keep the visual contract below.)
 - **Marker (dot)**: `inline-size: 0.625rem; block-size: 0.625rem;
-  border-radius: var(--hashti-border-radius-max); background:
-  var(--hashti-border-strong-01);` — an 10px dot in the marker column,
+border-radius: var(--hashti-border-radius-max); background:
+var(--hashti-border-strong-01);` — an 10px dot in the marker column,
   `margin-block-start: 0.3125rem` to align with the title's cap height.
   - `[data-current]` → `background: var(--hashti-focus); box-shadow: 0 0
-    0 0.1875rem var(--hashti-background-selected);` (the current dot is
+0 0.1875rem var(--hashti-background-selected);` (the current dot is
     blue with a light-blue halo).
   - `[data-complete]` → `background: var(--hashti-support-success);`
   - `[data-upcoming]` → default (strong border gray).
 - **Connector**: `inline-size: 1px; min-block-size: 1rem; align-self:
-  stretch; background: var(--hashti-border-subtle-00);` — runs from the
+stretch; background: var(--hashti-border-subtle-00);` — runs from the
   dot down to the next item's dot; `[data-last]` items hide their
   connector (`display: none` via the item's data-last on the connector's
   parent — read how ui-sdk exposes it and adapt).
@@ -80,10 +80,10 @@ and the design vocabulary.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -118,14 +118,14 @@ and the design vocabulary.
 `packages/react/src/timeline/timeline.tsx` — the `join` helper pattern
 (direct-re-export check on the root):
 
-| Part | Class |
-| --- | --- |
-| `Timeline` | `hashti-timeline` |
-| `TimelineItem` | `hashti-timeline__item` |
-| `TimelineMarker` | `hashti-timeline__marker` |
-| `TimelineConnector` | `hashti-timeline__connector` |
-| `TimelineTitle` | `hashti-timeline__title` |
-| `TimelineTime` | `hashti-timeline__time` |
+| Part                  | Class                          |
+| --------------------- | ------------------------------ |
+| `Timeline`            | `hashti-timeline`              |
+| `TimelineItem`        | `hashti-timeline__item`        |
+| `TimelineMarker`      | `hashti-timeline__marker`      |
+| `TimelineConnector`   | `hashti-timeline__connector`   |
+| `TimelineTitle`       | `hashti-timeline__title`       |
+| `TimelineTime`        | `hashti-timeline__time`        |
 | `TimelineDescription` | `hashti-timeline__description` |
 
 Export all seven from `./timeline` and the barrel.
@@ -145,16 +145,44 @@ adapted to ui-sdk's actual DOM structure.
 `apps/docs/src/components/timeline-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Timeline, TimelineConnector, TimelineDescription, TimelineItem, TimelineMarker, TimelineTime, TimelineTitle } from "@hashti/react"
+import {
+  Timeline,
+  TimelineConnector,
+  TimelineDescription,
+  TimelineItem,
+  TimelineMarker,
+  TimelineTime,
+  TimelineTitle,
+} from "@hashti/react";
 
 const events = [
-  { title: "Order placed", time: "09:12", desc: "We received your order.", status: "complete" },
-  { title: "Payment confirmed", time: "09:13", desc: "Card charged successfully.", status: "complete" },
-  { title: "Shipped", time: "14:40", desc: "Your parcel left the warehouse.", status: "current" },
-  { title: "Out for delivery", time: "Tomorrow", desc: "Expected before 18:00.", status: "upcoming" },
-] as const
+  {
+    title: "Order placed",
+    time: "09:12",
+    desc: "We received your order.",
+    status: "complete",
+  },
+  {
+    title: "Payment confirmed",
+    time: "09:13",
+    desc: "Card charged successfully.",
+    status: "complete",
+  },
+  {
+    title: "Shipped",
+    time: "14:40",
+    desc: "Your parcel left the warehouse.",
+    status: "current",
+  },
+  {
+    title: "Out for delivery",
+    time: "Tomorrow",
+    desc: "Expected before 18:00.",
+    status: "upcoming",
+  },
+] as const;
 
 export function TimelineDemo() {
   return (
@@ -169,7 +197,7 @@ export function TimelineDemo() {
         </TimelineItem>
       ))}
     </Timeline>
-  )
+  );
 }
 ```
 
@@ -184,7 +212,7 @@ title: Timeline
 description: Lists events along a line.
 ---
 
-import { TimelineDemo } from '../../src/components/timeline-demo'
+import { TimelineDemo } from "../../src/components/timeline-demo";
 
 ## Usage
 
@@ -192,13 +220,13 @@ import { TimelineDemo } from '../../src/components/timeline-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Timeline` | The event rail. |
-| `TimelineItem` | One event; a `status` of complete/current/upcoming. |
-| `TimelineMarker` | The dot. |
-| `TimelineConnector` | The line to the next event. |
-| `TimelineTitle` / `TimelineTime` / `TimelineDescription` | The event's content. |
+| Part                                                     | Purpose                                             |
+| -------------------------------------------------------- | --------------------------------------------------- |
+| `Timeline`                                               | The event rail.                                     |
+| `TimelineItem`                                           | One event; a `status` of complete/current/upcoming. |
+| `TimelineMarker`                                         | The dot.                                            |
+| `TimelineConnector`                                      | The line to the next event.                         |
+| `TimelineTitle` / `TimelineTime` / `TimelineDescription` | The event's content.                                |
 
 Styling lives in `@hashti/styles` under `.hashti-timeline*` — a subtle connector line, gray dots, blue current with a light halo, green complete.
 ```
@@ -221,11 +249,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-timeline" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/timeline.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "timeline" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

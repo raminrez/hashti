@@ -51,15 +51,15 @@ list). It reuses the accordion's height-animation recipe verbatim.
 
 - **Trigger**: the accordion trigger recipe without the row context —
   `display: flex; align-items: center; gap: 0.5rem; min-block-size: 2.75rem;
-  padding: 0.25rem 0; border: none; background: transparent; font-size:
-  0.875rem; font-weight: 600; color: var(--hashti-text-primary); cursor:
-  pointer; text-align: start;` + CSS-drawn caret on `::after` (0.375rem
+padding: 0.25rem 0; border: none; background: transparent; font-size:
+0.875rem; font-weight: 600; color: var(--hashti-text-primary); cursor:
+pointer; text-align: start;` + CSS-drawn caret on `::after` (0.375rem
   square, border chevron in `currentColor`, rotates 90° on
   `[data-open]`, transition on rotate `var(--hashti-duration-fast-01)
-  cubic-bezier(0.16, 1, 0.3, 1)`).
+cubic-bezier(0.16, 1, 0.3, 1)`).
 - **Panel**: `block-size: var(--collapsible-panel-height); overflow:
-  hidden; transition: block-size var(--hashti-duration-moderate-01)
-  cubic-bezier(0.16, 1, 0.3, 1);` and
+hidden; transition: block-size var(--hashti-duration-moderate-01)
+cubic-bezier(0.16, 1, 0.3, 1);` and
   `:is([data-starting-style], [data-ending-style]) { block-size: 0; }`
   (use the ui-sdk docs' exact mechanism; physical `height` is fine if
   `block-size` fights the variable — note which you shipped).
@@ -71,10 +71,10 @@ list). It reuses the accordion's height-animation recipe verbatim.
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -107,11 +107,11 @@ list). It reuses the accordion's height-animation recipe verbatim.
 `packages/react/src/collapsible/collapsible.tsx` — the `join` helper
 pattern (direct-re-export check on the root):
 
-| Part | Class |
-| --- | --- |
-| `Collapsible` | `hashti-collapsible` |
+| Part                 | Class                         |
+| -------------------- | ----------------------------- |
+| `Collapsible`        | `hashti-collapsible`          |
 | `CollapsibleTrigger` | `hashti-collapsible__trigger` |
-| `CollapsiblePanel` | `hashti-collapsible__panel` |
+| `CollapsiblePanel`   | `hashti-collapsible__panel`   |
 
 Export all three from `./collapsible` and the barrel.
 
@@ -129,9 +129,13 @@ Export all three from `./collapsible` and the barrel.
 `apps/docs/src/components/collapsible-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Collapsible, CollapsiblePanel, CollapsibleTrigger } from "@hashti/react"
+import {
+  Collapsible,
+  CollapsiblePanel,
+  CollapsibleTrigger,
+} from "@hashti/react";
 
 export function CollapsibleDemo() {
   return (
@@ -141,7 +145,7 @@ export function CollapsibleDemo() {
         Full refunds within 30 days of delivery, no questions asked.
       </CollapsiblePanel>
     </Collapsible>
-  )
+  );
 }
 ```
 
@@ -153,7 +157,7 @@ title: Collapsible
 description: Reveals content behind a trigger.
 ---
 
-import { CollapsibleDemo } from '../../src/components/collapsible-demo'
+import { CollapsibleDemo } from "../../src/components/collapsible-demo";
 
 ## Usage
 
@@ -161,11 +165,11 @@ import { CollapsibleDemo } from '../../src/components/collapsible-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Collapsible` | Owns the open state. |
+| Part                 | Purpose                               |
+| -------------------- | ------------------------------------- |
+| `Collapsible`        | Owns the open state.                  |
 | `CollapsibleTrigger` | The disclosure button with the caret. |
-| `CollapsiblePanel` | The animated content. |
+| `CollapsiblePanel`   | The animated content.                 |
 
 Styling lives in `@hashti/styles` under `.hashti-collapsible*` — a quiet trigger with a rotating caret and a height-animated panel.
 ```
@@ -188,11 +192,11 @@ Machine-checkable. ALL must hold:
 
 - [ ] `bun run typecheck` exits 0 from the repo root
 - [ ] `grep -rn "hashti-collapsible" packages/react/src packages/styles/src`
-  shows the wrapper classes and the stylesheet selectors
+      shows the wrapper classes and the stylesheet selectors
 - [ ] `grep -nE "#[0-9a-fA-F]{3,8}" packages/styles/src/collapsible.css`
-  returns nothing
+      returns nothing
 - [ ] `grep -n "collapsible" packages/styles/index.css apps/docs/content/docs/meta.json`
-  shows the import and the page entry
+      shows the import and the page entry
 - [ ] `git status --porcelain` lists no files outside the in-scope list
 - [ ] Work committed on the worktree branch, one commit per step
 

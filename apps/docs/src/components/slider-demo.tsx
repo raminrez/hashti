@@ -1,6 +1,13 @@
-"use client"
+"use client";
 
-import { Slider, SliderControl, SliderIndicator, SliderThumb, SliderTrack, SliderValue } from "@hashti/react"
+import {
+  Slider,
+  SliderControl,
+  SliderIndicator,
+  SliderThumb,
+  SliderTrack,
+  SliderValue,
+} from "@hashti/react";
 
 export function SliderDemo() {
   return (
@@ -13,7 +20,7 @@ export function SliderDemo() {
         </SliderTrack>
       </SliderControl>
     </Slider>
-  )
+  );
 }
 
 export function SliderVerticalDemo() {
@@ -39,5 +46,5 @@ export function SliderVerticalDemo() {
         </Slider>
       ))}
     </div>
-  )
+  );
 }

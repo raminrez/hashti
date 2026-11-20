@@ -4,12 +4,12 @@ Framework-agnostic component library built on [ui-sdk](https://ui-sdk.dev), with
 
 ## Packages
 
-| Package | Purpose |
-| --- | --- |
-| `@hashti/react` | React wrappers (parts, classes) composing `@ui-sdk/react` |
+| Package          | Purpose                                                                               |
+| ---------------- | ------------------------------------------------------------------------------------- |
+| `@hashti/react`  | React wrappers (parts, classes) composing `@ui-sdk/react`                             |
 | `@hashti/styles` | Native CSS: design tokens + component styles keyed off `data-slot` / state attributes |
-| `@hashti/react` | React adapter rendering the core primitives via `@ui-sdk/react` |
-| `apps/docs` | Fumadocs documentation site (Astro + React islands) |
+| `@hashti/react`  | React adapter rendering the core primitives via `@ui-sdk/react`                       |
+| `apps/docs`      | Fumadocs documentation site (Astro + React islands)                                   |
 
 ## Develop
 

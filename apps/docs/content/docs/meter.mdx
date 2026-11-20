@@ -3,7 +3,7 @@ title: Meter
 description: Shows a reading against a range.
 ---
 
-import { MeterDemo } from '../../src/components/meter-demo'
+import { MeterDemo } from "../../src/components/meter-demo";
 
 ## Usage
 
@@ -11,12 +11,12 @@ import { MeterDemo } from '../../src/components/meter-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Meter` | Holds the value and range; accepts `data-tone`. |
-| `MeterLabel` | Visible name (or `aria-label`). |
-| `MeterValue` | The formatted value. |
-| `MeterTrack` | The bar's size. |
-| `MeterIndicator` | The fill. |
+| Part             | Purpose                                         |
+| ---------------- | ----------------------------------------------- |
+| `Meter`          | Holds the value and range; accepts `data-tone`. |
+| `MeterLabel`     | Visible name (or `aria-label`).                 |
+| `MeterValue`     | The formatted value.                            |
+| `MeterTrack`     | The bar's size.                                 |
+| `MeterIndicator` | The fill.                                       |
 
 Pass `data-tone="success" | "warning" | "danger"` for status ink; the default fill is interactive blue.

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Waterfall,
@@ -8,13 +8,13 @@ import {
   WaterfallHeaderRow,
   WaterfallRow,
   WaterfallRowHeader,
-} from "@hashti/react"
+} from "@hashti/react";
 
 const requests = [
   { value: "document", label: "/", start: 0, duration: 182 },
   { value: "styles", label: "app.css", start: 190, duration: 96 },
   { value: "script", label: "app.js", start: 192, duration: 410 },
-]
+];
 
 export function WaterfallDemo() {
   return (
@@ -32,5 +32,5 @@ export function WaterfallDemo() {
         </WaterfallRow>
       ))}
     </Waterfall>
-  )
+  );
 }

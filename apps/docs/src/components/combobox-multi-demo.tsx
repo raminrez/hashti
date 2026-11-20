@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Combobox,
@@ -11,11 +11,11 @@ import {
   ComboboxLabel,
   ComboboxList,
   ComboboxValue,
-} from "@hashti/react"
+} from "@hashti/react";
 
-const skills = ["TypeScript", "React", "CSS", "Accessibility", "Testing"]
+const skills = ["TypeScript", "React", "CSS", "Accessibility", "Testing"];
 
-const label = (value: string) => value
+const label = (value: string) => value;
 
 function XIcon() {
   return (
@@ -27,7 +27,7 @@ function XIcon() {
         strokeLinecap="round"
       />
     </svg>
-  )
+  );
 }
 
 export function ComboboxMultiDemo() {
@@ -64,5 +64,5 @@ export function ComboboxMultiDemo() {
         </ComboboxContent>
       </Combobox>
     </div>
-  )
+  );
 }

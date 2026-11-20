@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Field, FieldLabel } from "@hashti/react"
-import { TimeInput } from "@hashti/react"
+import { Field, FieldLabel } from "@hashti/react";
+import { TimeInput } from "@hashti/react";
 
 export function TimeInputDemo() {
   return (
@@ -9,5 +9,5 @@ export function TimeInputDemo() {
       <FieldLabel>Reminder time</FieldLabel>
       <TimeInput required />
     </Field>
-  )
+  );
 }

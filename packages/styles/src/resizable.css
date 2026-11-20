@@ -26,7 +26,8 @@
   block-size: 2rem;
   border-radius: var(--hashti-border-radius-max);
   background: var(--hashti-border-strong-01);
-  transition: background var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background var(--hashti-duration-fast-01)
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hashti-resizable-handle[data-hovering]::after {

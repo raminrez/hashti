@@ -8,4 +8,4 @@ export {
   ImageCropperSelection,
   ImageCropperViewport,
   ImageCropperZoom,
-} from "./image-cropper"
+} from "./image-cropper";

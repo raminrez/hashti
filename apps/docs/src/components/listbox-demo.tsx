@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Listbox, ListboxItem, ListboxItemIndicator } from "@hashti/react"
+import { Listbox, ListboxItem, ListboxItemIndicator } from "@hashti/react";
 
 function Check() {
   return (
@@ -14,12 +14,16 @@ function Check() {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 export function ListboxDemo() {
   return (
-    <Listbox aria-label="Toppings" defaultValue="basil" style={{ maxWidth: 280 }}>
+    <Listbox
+      aria-label="Toppings"
+      defaultValue="basil"
+      style={{ maxWidth: 280 }}
+    >
       <ListboxItem value="basil">
         Basil
         <ListboxItemIndicator>
@@ -39,5 +43,5 @@ export function ListboxDemo() {
         </ListboxItemIndicator>
       </ListboxItem>
     </Listbox>
-  )
+  );
 }

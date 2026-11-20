@@ -6,4 +6,4 @@ export {
   AutocompleteList,
   AutocompleteItem,
   AutocompleteEmpty,
-} from "./autocomplete"
+} from "./autocomplete";

@@ -49,7 +49,7 @@ area is deliberately larger than its painted mark (design-system rule).
 ### Design rules that bite (from `design/DESIGN.md`, old implementation, `design-system.md`)
 
 - **Control (hit area)**: `block-size: 2rem; display: flex; align-items:
-  center; position: relative; inline-size: 100%;` — the hit area is
+center; position: relative; inline-size: 100%;` — the hit area is
   deliberately taller than the rail (hit target ≠ painted mark).
 - **Track (rail)**: `block-size: 0.25rem` (4px), full width, full-round,
   background `var(--hashti-border-subtle-00)`, `overflow: hidden` not
@@ -58,7 +58,7 @@ area is deliberately larger than its painted mark (design-system rule).
   `var(--hashti-focus)` (selection blue).
 - **Thumb**: `inline-size: 1.125rem; block-size: 1.125rem;` full-round,
   `background: var(--hashti-layer-01)`, `border: 1px solid
-  var(--hashti-border-strong-01)`, `cursor: grab`;
+var(--hashti-border-strong-01)`, `cursor: grab`;
   `[data-dragging]` → `cursor: grabbing`; grows to `1.25rem` on
   `:hover`/`[data-dragging]`/`:has(:focus-visible)` (the old measured
   grow-on-touch behavior).
@@ -72,10 +72,10 @@ area is deliberately larger than its painted mark (design-system rule).
 
 ## Commands you will need
 
-| Purpose   | Command               | Expected on success |
-| --------- | --------------------- | ------------------- |
-| Install   | `bun install`         | exit 0              |
-| Typecheck | `bun run typecheck`   | exit 0, no errors   |
+| Purpose   | Command             | Expected on success |
+| --------- | ------------------- | ------------------- |
+| Install   | `bun install`       | exit 0              |
+| Typecheck | `bun run typecheck` | exit 0, no errors   |
 
 ## Scope
 
@@ -110,14 +110,14 @@ area is deliberately larger than its painted mark (design-system rule).
 `packages/react/src/slider/slider.tsx` — the `join` helper pattern; parts
 and classes (direct-re-export check on the Slider root):
 
-| Part | Class |
-| --- | --- |
-| `Slider` | `hashti-slider` (or direct re-export) |
-| `SliderValue` | `hashti-slider__value` |
-| `SliderControl` | `hashti-slider-control` |
-| `SliderTrack` | `hashti-slider-track` |
-| `SliderIndicator` | `hashti-slider-indicator` |
-| `SliderThumb` | `hashti-slider-thumb` |
+| Part              | Class                                 |
+| ----------------- | ------------------------------------- |
+| `Slider`          | `hashti-slider` (or direct re-export) |
+| `SliderValue`     | `hashti-slider__value`                |
+| `SliderControl`   | `hashti-slider-control`               |
+| `SliderTrack`     | `hashti-slider-track`                 |
+| `SliderIndicator` | `hashti-slider-indicator`             |
+| `SliderThumb`     | `hashti-slider-thumb`                 |
 
 Export all six from `./slider` and the barrel.
 
@@ -137,9 +137,16 @@ disabled.
 `apps/docs/src/components/slider-demo.tsx`:
 
 ```tsx
-"use client"
+"use client";
 
-import { Slider, SliderControl, SliderIndicator, SliderThumb, SliderTrack, SliderValue } from "@hashti/react"
+import {
+  Slider,
+  SliderControl,
+  SliderIndicator,
+  SliderThumb,
+  SliderTrack,
+  SliderValue,
+} from "@hashti/react";
 
 export function SliderDemo() {
   return (
@@ -152,7 +159,7 @@ export function SliderDemo() {
         </SliderTrack>
       </SliderControl>
     </Slider>
-  )
+  );
 }
 ```
 
@@ -164,7 +171,7 @@ title: Slider
 description: Picks a value along a track.
 ---
 
-import { SliderDemo } from '../../src/components/slider-demo'
+import { SliderDemo } from "../../src/components/slider-demo";
 
 ## Usage
 
@@ -172,14 +179,14 @@ import { SliderDemo } from '../../src/components/slider-demo'
 
 ## Parts
 
-| Part | Purpose |
-| --- | --- |
-| `Slider` | Holds the value; a group around the thumbs. |
-| `SliderValue` | The formatted value. |
-| `SliderControl` | Where presses land; moves the nearest thumb. |
-| `SliderTrack` | The rail; the positioned box. |
-| `SliderIndicator` | Fills the track to the thumb. |
-| `SliderThumb` | What you drag; contains the accessible input. |
+| Part              | Purpose                                       |
+| ----------------- | --------------------------------------------- |
+| `Slider`          | Holds the value; a group around the thumbs.   |
+| `SliderValue`     | The formatted value.                          |
+| `SliderControl`   | Where presses land; moves the nearest thumb.  |
+| `SliderTrack`     | The rail; the positioned box.                 |
+| `SliderIndicator` | Fills the track to the thumb.                 |
+| `SliderThumb`     | What you drag; contains the accessible input. |
 
 Styling lives in `@hashti/styles` under `.hashti-slider-*` — a 4px rail with a focus-blue fill and an 18px thumb that grows on touch.
 ```
