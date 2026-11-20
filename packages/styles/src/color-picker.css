@@ -111,9 +111,11 @@
   cursor: pointer;
 }
 
-.hashti-color-picker-eye-dropper:hover {
-  background: var(--hashti-layer-accent-01);
-  color: var(--hashti-text-primary);
+@media (hover: hover) {
+  .hashti-color-picker-eye-dropper:hover {
+    background: var(--hashti-layer-accent-01);
+    color: var(--hashti-text-primary);
+  }
 }
 
 .hashti-color-picker-eye-dropper:focus-visible {

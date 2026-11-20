@@ -74,8 +74,10 @@
   cursor: pointer;
 }
 
-.hashti-token-input-token-remove:hover {
-  background: var(--hashti-background-hover);
+@media (hover: hover) {
+  .hashti-token-input-token-remove:hover {
+    background: var(--hashti-background-hover);
+  }
 }
 
 .hashti-token-input-token-remove:focus-visible {

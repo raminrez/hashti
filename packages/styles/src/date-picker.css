@@ -196,11 +196,13 @@
   cursor: pointer;
 }
 
-.hashti-date-picker-content
-  [data-slot="calendar-previous"]:hover:not([data-disabled]),
-.hashti-date-picker-content
-  [data-slot="calendar-next"]:hover:not([data-disabled]) {
-  background: var(--hashti-background-hover);
+@media (hover: hover) {
+  .hashti-date-picker-content
+    [data-slot="calendar-previous"]:hover:not([data-disabled]),
+  .hashti-date-picker-content
+    [data-slot="calendar-next"]:hover:not([data-disabled]) {
+    background: var(--hashti-background-hover);
+  }
 }
 
 .hashti-date-picker-content [data-slot="calendar-heading"] {
@@ -241,9 +243,11 @@
   cursor: pointer;
 }
 
-.hashti-date-picker-content
-  [data-slot="calendar-day"]:hover:not([data-selected], [data-disabled]) {
-  background: var(--hashti-background-hover);
+@media (hover: hover) {
+  .hashti-date-picker-content
+    [data-slot="calendar-day"]:hover:not([data-selected], [data-disabled]) {
+    background: var(--hashti-background-hover);
+  }
 }
 
 .hashti-date-picker-content [data-slot="calendar-day"][data-selected] {

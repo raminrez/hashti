@@ -194,8 +194,10 @@
   cursor: pointer;
 }
 
-.hashti-combobox-chip-remove:hover {
-  background: var(--hashti-background-hover);
+@media (hover: hover) {
+  .hashti-combobox-chip-remove:hover {
+    background: var(--hashti-background-hover);
+  }
 }
 
 .hashti-combobox-chip-remove:focus-visible {

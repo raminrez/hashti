@@ -48,7 +48,13 @@
     block-size var(--hashti-duration-fast-01) var(--hashti-ease-entrance);
 }
 
-.hashti-slider-thumb:hover,
+@media (hover: hover) {
+  .hashti-slider-thumb:hover {
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+  }
+}
+
 .hashti-slider-thumb[data-dragging],
 .hashti-slider-thumb:has(:focus-visible) {
   inline-size: 1.25rem;
