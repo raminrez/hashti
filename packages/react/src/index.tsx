@@ -26,6 +26,8 @@ export {
 
 export { DateInput, DateInputSegment } from "./date-input"
 
+export { TimeInput, TimeInputSegment } from "./time-input"
+
 export {
   FileInput,
   FileInputTrigger,
