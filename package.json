@@ -40,15 +40,29 @@
     "duplicates": "jscpd && jscpd --config .jscpd.markup.json",
     "duplicates:new": "jscpd --baseline-from-ref dev --fail-on-new-clones && jscpd --config .jscpd.markup.json --baseline-from-ref dev --fail-on-new-clones",
     "react-doctor": "npx -y --min-release-age=7 react-doctor@latest --no-telemetry --no-supply-chain",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "latest",
+    "@storybook/addon-a11y": "^10.6.8",
+    "@storybook/addon-docs": "^10.6.8",
+    "@storybook/addon-mcp": "^10.6.8",
+    "@storybook/addon-themes": "^10.6.8",
+    "@storybook/addon-vitest": "^10.6.8",
+    "@storybook/react-vite": "^10.6.8",
+    "@vitest/browser-playwright": "latest",
+    "@vitest/coverage-v8": "latest",
+    "jscpd": "catalog:",
+    "knip": "catalog:",
     "lefthook": "catalog:",
     "oxlint": "catalog:",
+    "playwright": "latest",
+    "storybook": "^10.6.8",
     "stylelint": "catalog:",
     "stylelint-config-standard": "catalog:",
     "tsrs": "catalog:",
-    "knip": "catalog:",
-    "jscpd": "catalog:"
+    "vitest": "latest"
   }
 }

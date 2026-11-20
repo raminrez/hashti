@@ -6,3 +6,6 @@ dist/
 .DS_Store
 .worktrees/
 pnpm-workspace.yaml
+
+*storybook.log
+storybook-static
