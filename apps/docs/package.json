@@ -16,6 +16,7 @@
     "@hashti/core": "workspace:*",
     "@hashti/react": "workspace:*",
     "@hashti/styles": "workspace:*",
+    "@ui-sdk/react": "^0.1.0-beta.13",
     "@fumadocs/astro": "0.3.0",
     "astro": "^7.4.10",
     "fumadocs-core": "16.19.4",

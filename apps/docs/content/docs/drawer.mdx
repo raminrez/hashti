@@ -3,7 +3,7 @@ title: Drawer
 description: Slides a sheet in from an edge.
 ---
 
-import { DrawerDemo } from '../../src/components/drawer-demo'
+import { DrawerDemo, DrawerSnapPointsDemo } from '../../src/components/drawer-demo'
 
 ## Usage
 
@@ -13,10 +13,23 @@ import { DrawerDemo } from '../../src/components/drawer-demo'
 
 | Part | Purpose |
 | --- | --- |
-| `Drawer` | Owns the open state. |
+| `Drawer` | Owns the open state; takes `snapPoints` and `defaultSnapPoint`. |
 | `DrawerTrigger` | Opens the drawer. |
 | `DrawerBackdrop` | The scrim. |
 | `DrawerContent` | The sheet; size it, the drawer places and moves it. |
+| `DrawerHandle` | The drag handle; pressing it steps to the next larger snap point, then wraps to the smallest. |
 | `DrawerTitle` / `DrawerDescription` / `DrawerClose` | Content and dismissal. |
 
-Styling lives in `@hashti/styles` under `.hashti-drawer*` — a full-travel sheet with 16px corners that flatten against their edge and the modal shadow. Snap points and drag handles are later recipes.
+Styling lives in `@hashti/styles` under `.hashti-drawer*` — a full-travel sheet with 16px corners that flatten against their edge and the modal shadow.
+
+## Snap points
+
+Pass `snapPoints` — fractions of the screen up to `1`, pixels above 1, `"20rem"`, `"50%"`, or `"content"` for the sheet's own size. The drawer opens at the first (or `defaultSnapPoint`) and settles on another after a drag; a fast fling can skip intermediate points.
+
+While the sheet rests on a snap point it reports `data-snap-point` on the content (the value as written, like `0.5`) and `data-expanded` at the largest one. Styles add the handle bar and deepen the shadow while a partial sheet floats over content; the full-height sheet keeps the modal shadow.
+
+Compose the ui-sdk `DrawerHandle` with the `hashti-drawer-handle` class:
+
+<DrawerSnapPointsDemo client:load />
+
+Keyboard: Tab to the handle, then arrow keys along the drawer's axis move one point, Home and End jump to the ends.
