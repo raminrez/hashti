@@ -3,11 +3,29 @@ title: Command
 description: Runs commands from a filtered list.
 ---
 
-import { CommandDemo } from '../../src/components/command-demo'
+import {
+  CommandAsyncDemo,
+  CommandDemo,
+  CommandPagesDemo,
+} from '../../src/components/command-demo'
 
 ## Usage
 
 <CommandDemo client:load />
+
+## Pages
+
+Set an item's `page` prop to drill into a `CommandPage`; Backspace in an empty
+search, or a command that calls `pop()` on a controller, goes back.
+
+<CommandPagesDemo client:load />
+
+## Async results
+
+With `filter={false}`, `status`, and `onQueryChange` fed by `useAsyncOptions`,
+the list shows skeleton rows while results load.
+
+<CommandAsyncDemo client:load />
 
 ## Parts
 
@@ -19,5 +37,6 @@ import { CommandDemo } from '../../src/components/command-demo'
 | `CommandItem` | One command; `data-highlighted`, `data-pending`. |
 | `CommandGroup` / `CommandGroupLabel` / `CommandSeparator` | Named sets. |
 | `CommandEmpty` | Shows when nothing matches. |
+| `CommandPage` | Holds the commands for one page; `page` on an item drills in. |
 
 Styling lives in `@hashti/styles` under `.hashti-command*` — a floating panel with a search bar on top and full-bleed menu items below.

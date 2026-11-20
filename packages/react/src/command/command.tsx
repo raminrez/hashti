@@ -12,6 +12,9 @@ import {
   CommandSeparator as UiCommandSeparator,
 } from "@ui-sdk/react/command"
 
+export { CommandPage, createCommandController } from "@ui-sdk/react/command"
+export { useAsyncOptions } from "@ui-sdk/react/async-options"
+
 const join = <State,>(
   base: string,
   className: string | ((state: State) => string | undefined) | undefined,
