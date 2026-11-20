@@ -1,0 +1,16 @@
+---
+title: TriggerMenu
+description: Suggests items as you type a trigger.
+---
+
+import { TriggerMenuDemo } from '../../src/components/trigger-menu-demo'
+
+## Usage
+
+<TriggerMenuDemo client:load />
+
+## Notes
+
+Type `@` to open the suggest popup; arrow keys highlight, Enter picks, focus stays in the field. Styling lives in `@hashti/styles` under `.hashti-trigger-menu*` — a field input with the menu popup at the caret.
+
+The demo passes the suggestions as data (`triggers={[{ char: "@", items }]}`), so ui-sdk renders the popup, list and items itself; those parts carry no wrapper class and are styled through their `data-slot`.
