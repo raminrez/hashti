@@ -1,0 +1,24 @@
+---
+title: Carousel
+description: Pages through slides.
+---
+
+import { CarouselDemo } from '../../src/components/carousel-demo'
+
+## Usage
+
+<CarouselDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Carousel` | Owns the page. |
+| `CarouselViewport` | The clipping window; snaps slides. |
+| `CarouselContent` | The slide row. |
+| `CarouselItem` | One slide; `data-active`/`data-in-view`. |
+| `CarouselPrevious` / `CarouselNext` | The arrows; disabled at the ends. |
+| `CarouselIndicatorGroup` | The indicator row, a tablist. |
+| `CarouselIndicator` | One dot per page; `data-selected` on the current one. |
+
+Styling lives in `@hashti/styles` under `.hashti-carousel*` — an 18px viewport, round arrows, dot indicators that grow into pills on the active page.
