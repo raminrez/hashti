@@ -38,7 +38,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 028  | Badge component (Hashti-owned status marker)           | P2 | M | 027 | DONE |
 | 029  | Link component (Hashti-owned; also styles Button as-a) | P2 | S | 028 | DONE |
 | 030  | AvatarGroup + getInitials (Hashti-owned, wraps Avatar) | P2 | M | 029 | DONE |
-| 031  | Timeline component (ui-sdk timeline, vertical)         | P1 | M | 030 | IN PROGRESS |
+| 031  | Timeline component (ui-sdk timeline, vertical)         | P1 | M | 030 | DONE |
+| 032  | Rating component (ui-sdk rating, star fill)            | P1 | S | 031 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
