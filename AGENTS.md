@@ -1,7 +1,20 @@
 # Hashti-new: standing program rules
 
 Component build-out program. One component per cycle, simplest first. Each
-cycle: plan → executor in an isolated worktree → review → merge on main.
+cycle: plan → executor in an isolated worktree → review → merge on dev.
+
+## Branching and identity
+
+- All work happens on `dev`: feature/cycle branches cut FROM `dev`, merged
+  back TO `dev`. `dev` merges to `main` only when every gate is green and the
+  user approves. Never commit directly to `main` (lefthook's protect-main
+  gate enforces this on push; `ALLOW_PUSH_TO_MAIN=1` only for approved
+  dev→main merges).
+- This repo's commits use the personal identity:
+  `Ramin Rezaei <ramin12207@gmail.com>` (set in local git config; push auth
+  goes through the `github-raminrez` SSH alias, never the akonil key).
+- Remote: `origin` = github.com/raminrez/hashti (old project preserved under
+  `archive/*` branches).
 
 ## Naming rule (applies to every component)
 
