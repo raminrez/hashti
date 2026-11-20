@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { join } from "@hashti/utils";
 import {
-  Dialog,
+  Dialog as UiDialog,
   DialogBackdrop as UiDialogBackdrop,
   DialogClose as UiDialogClose,
   DialogContent as UiDialogContent,
@@ -11,6 +11,12 @@ import {
   DialogTitle as UiDialogTitle,
   DialogTrigger as UiDialogTrigger,
 } from "@ui-sdk/react/dialog";
+import { useOverlayTheme } from "../theme";
+
+function Dialog(props: ComponentProps<typeof UiDialog>) {
+  const theme = useOverlayTheme();
+  return <UiDialog container={theme?.container} {...props} />;
+}
 
 function DialogTrigger(props: ComponentProps<typeof UiDialogTrigger>) {
   return (

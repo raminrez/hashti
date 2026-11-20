@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { join } from "@hashti/utils";
 import {
-  Combobox,
+  Combobox as UiCombobox,
   ComboboxChip as UiComboboxChip,
   ComboboxChipRemove as UiComboboxChipRemove,
   ComboboxChips as UiComboboxChips,
@@ -13,9 +13,18 @@ import {
   ComboboxLabel as UiComboboxLabel,
   ComboboxList as UiComboboxList,
   ComboboxValue,
+  type ComboboxProps,
 } from "@ui-sdk/react/combobox";
+import { useOverlayTheme } from "../theme";
 
-// The root renders no element of its own, so it is re-exported directly.
+function Combobox<T = string, Multiple extends boolean | undefined = false>(
+  props: ComboboxProps<T, Multiple>,
+) {
+  const theme = useOverlayTheme();
+  return <UiCombobox<T, Multiple> container={theme?.container} {...props} />;
+}
+
+// The root renders no element of its own; the wrapper only injects container.
 function ComboboxLabel(props: ComponentProps<typeof UiComboboxLabel>) {
   return (
     <UiComboboxLabel

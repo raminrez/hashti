@@ -1,0 +1,28 @@
+---
+title: Theme
+description: Scopes tokens to a subtree, through overlay portals.
+---
+
+import { ThemeDemo } from "../../src/components/theme-demo";
+
+## Usage
+
+<ThemeDemo client:load />
+
+`Theme` renders a `hashti-theme` div carrying `data-theme` (`light`, `dark`,
+or `system`, which follows `prefers-color-scheme`). Overlays rendered inside
+it — Dialog, Popover, Select, Menu, Tooltip and the rest — portal into the
+same div instead of `document.body`, so they keep the subtree's tokens, text
+direction, and language even when they leave the DOM position.
+
+## Props
+
+| Prop    | Type                            | Default    | Purpose                                             |
+| ------- | ------------------------------- | ---------- | --------------------------------------------------- |
+| `theme` | `"light" \| "dark" \| "system"` | `"system"` | Which token set the subtree resolves to.            |
+| `dir`   | `"ltr" \| "rtl"`                | —          | Text direction, carried through overlay portals.    |
+| `lang`  | `string`                        | —          | Document language, carried through overlay portals. |
+
+Any other div prop (`className`, `style`, handlers) forwards to the div. The
+dark block above holds a Dialog: the document is light, but the dialog opens
+with dark surfaces because it portals into the themed container.

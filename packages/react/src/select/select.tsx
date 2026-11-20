@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { join } from "@hashti/utils";
 import {
-  Select,
+  Select as UiSelect,
   SelectContent as UiSelectContent,
   SelectEmpty as UiSelectEmpty,
   SelectGroup as UiSelectGroup,
@@ -14,7 +14,16 @@ import {
   SelectSeparator as UiSelectSeparator,
   SelectTrigger as UiSelectTrigger,
   SelectValue as UiSelectValue,
+  type SelectProps,
 } from "@ui-sdk/react/select";
+import { useOverlayTheme } from "../theme";
+
+function Select<T = string, Multiple extends boolean | undefined = false>(
+  props: SelectProps<T, Multiple>,
+) {
+  const theme = useOverlayTheme();
+  return <UiSelect<T, Multiple> container={theme?.container} {...props} />;
+}
 
 function SelectLabel(props: ComponentProps<typeof UiSelectLabel>) {
   return (

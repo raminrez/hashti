@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { join } from "@hashti/utils";
 import {
-  Autocomplete,
+  Autocomplete as UiAutocomplete,
   AutocompleteContent as UiAutocompleteContent,
   AutocompleteEmpty as UiAutocompleteEmpty,
   AutocompleteInput as UiAutocompleteInput,
@@ -11,8 +11,14 @@ import {
   AutocompleteLabel as UiAutocompleteLabel,
   AutocompleteList as UiAutocompleteList,
 } from "@ui-sdk/react/autocomplete";
+import { useOverlayTheme } from "../theme";
 
-// The root renders no element of its own, so it is re-exported directly.
+function Autocomplete(props: ComponentProps<typeof UiAutocomplete>) {
+  const theme = useOverlayTheme();
+  return <UiAutocomplete container={theme?.container} {...props} />;
+}
+
+// The root renders no element of its own; the wrapper only injects container.
 function AutocompleteLabel(props: ComponentProps<typeof UiAutocompleteLabel>) {
   return (
     <UiAutocompleteLabel

@@ -10,7 +10,17 @@ neither blocks work nor authorises repairs; system work goes to craft.
   `data-theme|useTheme|appearanceClassName` → zero. Expected: a Theme
   mechanism in `@hashti/react` carrying `data-theme`, layer, `dir`, `lang`
   through portals. Next step: design and ship a Theme wrapper as its own
-  cycle. Status: open (2026-11-20).
+  cycle. Status: resolved (2026-11-20, cycle 070). Shipped shape:
+  `Theme` renders `.hashti-theme[data-theme]` (theme prop `light|dark|system`,
+  system resolves via `prefers-color-scheme` with a change listener; SSR
+  renders light) and provides `{ container }` through context;
+  `useOverlayTheme()` exposes it to wrappers. The 12 overlay wrappers
+  (dialog, alert-dialog, drawer, popover, menu, select, combobox,
+  autocomplete, tooltip, hover-card, date-picker, navigation-menu) pass it as
+  their root part's `container`, and ui-sdk portals content, backdrop, and
+  viewport into it. `dir`/`lang` are plain div props on the same container;
+  there is no separate layer concept to carry (tokens key on `[data-theme]`
+  directly).
 - **G2 — Invalid state keyed four ways.** CSS queries `aria-invalid`
   (input.css, textarea.css), `data-invalid` (date-input, time-input,
   date-picker, switch, field), `:has(.hashti-field__error)` (field.css).

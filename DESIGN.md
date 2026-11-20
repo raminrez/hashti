@@ -208,8 +208,9 @@ document default. There is no separate tokens package in this tree; edit
 
 The full catalog ships as `@hashti/react` (wrappers over ui-sdk parts) with
 styles in `@hashti/styles`; all 54 ui-sdk components shipped in cycles
-001–069, and phase-2 advanced behaviors are complete
-([archived roadmap](plans/phase2-roadmap.md)). Per-component behavior and
+001–069, phase-2 advanced behaviors are complete
+([archived roadmap](plans/phase2-roadmap.md)), and `Theme` — Hashti-original,
+cycle 070 — scopes tokens to a subtree and carries overlay portals. Per-component behavior and
 accessibility requirements are described here; per-component appearance lives
 in the stylesheets, which follow the
 [CSS conventions](design/css-conventions.md): cascade order
@@ -442,7 +443,9 @@ modals take the modal shadow, 18px corners, and the 50% scrim (xs–lg widths,
 against their edge, full-height or full-width travel, and bidirectional
 mirroring so `end` slides from the left in RTL and from the right in LTR. Theme,
 locale, keyboard direction, focus return, and the close order must all survive
-the portal (`useOverlayTheme` carries `data-theme`, layer, `dir`, `lang`).
+the portal (`Theme` renders the themed container and `useOverlayTheme` hands
+it to the wrappers as the overlays' portal target, carrying `data-theme`,
+`dir`, `lang`).
 Escape dismisses inner-first (a Select closes before its Dialog), and focus
 returns to the trigger.
 

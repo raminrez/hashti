@@ -3,10 +3,16 @@
 import type { ComponentProps } from "react";
 import { join } from "@hashti/utils";
 import {
-  Tooltip,
+  Tooltip as UiTooltip,
   TooltipContent as UiTooltipContent,
   TooltipTrigger as UiTooltipTrigger,
 } from "@ui-sdk/react/tooltip";
+import { useOverlayTheme } from "../theme";
+
+function Tooltip(props: ComponentProps<typeof UiTooltip>) {
+  const theme = useOverlayTheme();
+  return <UiTooltip container={theme?.container} {...props} />;
+}
 
 function TooltipTrigger(props: ComponentProps<typeof UiTooltipTrigger>) {
   return (
