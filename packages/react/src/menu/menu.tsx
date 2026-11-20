@@ -8,6 +8,9 @@ import {
   MenuGroupLabel as UiMenuGroupLabel,
   MenuItem as UiMenuItem,
   MenuSeparator as UiMenuSeparator,
+  MenuSub as UiMenuSub,
+  MenuSubContent as UiMenuSubContent,
+  MenuSubTrigger as UiMenuSubTrigger,
   MenuTrigger as UiMenuTrigger,
 } from "@ui-sdk/react/menu"
 
@@ -48,4 +51,28 @@ function MenuSeparator(props: ComponentProps<typeof UiMenuSeparator>) {
   return <UiMenuSeparator {...props} className={join("hashti-menu-separator", props.className)} />
 }
 
-export { Menu, MenuTrigger, MenuContent, MenuItem, MenuGroup, MenuGroupLabel, MenuSeparator }
+function MenuSubTrigger(props: ComponentProps<typeof UiMenuSubTrigger>) {
+  return (
+    <UiMenuSubTrigger
+      {...props}
+      className={join("hashti-menu-item hashti-menu-sub-trigger", props.className)}
+    />
+  )
+}
+
+function MenuSubContent(props: ComponentProps<typeof UiMenuSubContent>) {
+  return <UiMenuSubContent {...props} className={join("hashti-menu-content", props.className)} />
+}
+
+export {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuSeparator,
+  UiMenuSub as MenuSub,
+  MenuSubTrigger,
+  MenuSubContent,
+}

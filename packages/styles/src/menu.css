@@ -94,6 +94,18 @@
   background: var(--hashti-border-subtle-00);
 }
 
+.hashti-menu-sub-trigger > svg {
+  flex-shrink: 0;
+  inline-size: 1rem;
+  block-size: 1rem;
+  margin-inline-start: auto;
+  color: var(--hashti-text-secondary);
+}
+
+.hashti-menu-sub-trigger[data-open] {
+  background: var(--hashti-background-selected);
+}
+
 .hashti-menu__group-label {
   padding: 0.375rem 0.75rem 0.25rem;
   color: var(--hashti-text-secondary);

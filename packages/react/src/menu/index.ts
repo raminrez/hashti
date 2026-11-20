@@ -6,4 +6,7 @@ export {
   MenuGroup,
   MenuGroupLabel,
   MenuSeparator,
+  MenuSub,
+  MenuSubTrigger,
+  MenuSubContent,
 } from "./menu"
