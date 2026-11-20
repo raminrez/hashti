@@ -60,7 +60,7 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 050  | Command (ui-sdk command, command palette)              | P1 | M | 049 | DONE |
 | 051  | TokenInput (ui-sdk token-input, editable tokens)       | P1 | M | 050 | DONE |
 | 052  | OTPInput (ui-sdk otp-input, one-time-code slots)        | P1 | M | 051 | DONE |
-| 053  | NavigationMenu (ui-sdk navigation-menu, viewport)       | P1 | M | 051 | IN PROGRESS |
+| 053  | NavigationMenu (ui-sdk navigation-menu, viewport)       | P1 | M | 051 | DONE |
 | 054  | Calendar (ui-sdk calendar, month grid + day cells)      | P1 | M | 051 | DONE |
 | 055  | DatePicker (ui-sdk date-picker, field + calendar popup) | P1 | M | 054 | IN PROGRESS |
 | 056  | ColorPicker (ui-sdk color-picker, area/sliders/swatches) | P1 | M | 054 | IN PROGRESS |
