@@ -44,6 +44,20 @@ export { Link } from "./link"
 export { Textarea } from "./textarea"
 export { Toggle, ToggleGroup, ToggleIcon } from "./toggle"
 export { Checkbox, CheckboxIndicator } from "./checkbox"
+
+export {
+  Calendar,
+  CalendarDay,
+  CalendarGrid,
+  CalendarHeading,
+  CalendarMonthSelect,
+  CalendarNext,
+  CalendarPrevious,
+  CalendarWeekday,
+  CalendarWeekdays,
+  CalendarWeeks,
+  CalendarYearSelect,
+} from "./calendar"
 export { RadioGroup, Radio, RadioIndicator } from "./radio"
 
 export {
