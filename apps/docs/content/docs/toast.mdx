@@ -19,3 +19,9 @@ import { ToastDemo } from '../../src/components/toast-demo'
 | `ToastClose` | Dismisses. |
 
 Call `toast()`, `toast.success`, `.warning`, `.error` from anywhere — the type drives the status surface and ink.
+
+## Promise
+
+`toast.promise(work, { loading, success, error })` shows a loading toast, then rewrites the same toast when the promise resolves or rejects. Press **Promise** above: Saving changes… becomes Changes saved; press again for the error.
+
+Give the toast's children state icons marked with `data-show` — the icon matching the current state (`loading`, `success`, `error`) shows with a quick fade while the others stay hidden. `loading` renders the built-in spinner when you give the slot a `hashti-toast__spinner` element.
