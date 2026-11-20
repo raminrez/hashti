@@ -14,6 +14,8 @@ export { Badge } from "./badge"
 
 export { Input } from "./input"
 
+export { PasswordInput, PasswordInputControl, PasswordInputToggle } from "./password-input"
+
 export { Kbd } from "./kbd"
 
 export { Link } from "./link"

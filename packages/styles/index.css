@@ -7,6 +7,7 @@
 @import "./src/avatar.css" layer(hashti.components);
 @import "./src/badge.css" layer(hashti.components);
 @import "./src/input.css" layer(hashti.components);
+@import "./src/password-input.css" layer(hashti.components);
 @import "./src/textarea.css" layer(hashti.components);
 @import "./src/checkbox.css" layer(hashti.components);
 @import "./src/radio.css" layer(hashti.components);
