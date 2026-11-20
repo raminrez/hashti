@@ -31,3 +31,4 @@
 @import "./src/link.css" layer(hashti.components);
 @import "./src/timeline.css" layer(hashti.components);
 @import "./src/rating.css" layer(hashti.components);
+@import "./src/segmented-control.css" layer(hashti.components);
