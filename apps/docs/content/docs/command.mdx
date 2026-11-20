@@ -1,0 +1,23 @@
+---
+title: Command
+description: Runs commands from a filtered list.
+---
+
+import { CommandDemo } from '../../src/components/command-demo'
+
+## Usage
+
+<CommandDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Command` | The palette panel; `onAction` runs the choice. |
+| `CommandInput` | The filter field. |
+| `CommandList` | The scrollable region. |
+| `CommandItem` | One command; `data-highlighted`, `data-pending`. |
+| `CommandGroup` / `CommandGroupLabel` / `CommandSeparator` | Named sets. |
+| `CommandEmpty` | Shows when nothing matches. |
+
+Styling lives in `@hashti/styles` under `.hashti-command*` — a floating panel with a search bar on top and full-bleed menu items below.
