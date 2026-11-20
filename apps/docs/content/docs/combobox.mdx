@@ -1,9 +1,10 @@
 ---
 title: Combobox
-description: Picks an option from a filterable list.
+description: Picks one or several options from a filterable list.
 ---
 
 import { ComboboxDemo } from '../../src/components/combobox-demo'
+import { ComboboxMultiDemo } from '../../src/components/combobox-multi-demo'
 
 ## Usage
 
@@ -17,5 +18,17 @@ import { ComboboxDemo } from '../../src/components/combobox-demo'
 | `ComboboxInput` | The editable field. |
 | `ComboboxContent` / `ComboboxList` | The anchored popup. |
 | `ComboboxItem` | One option. |
+| `ComboboxChips` | The field for a multiple selection: the chips and the input. |
+| `ComboboxValue` | Renders the selected values (a chip per value). |
+| `ComboboxChip` | One selected value. |
+| `ComboboxChipRemove` | The button that removes its chip. |
 
 Styling lives in `@hashti/styles` under `.hashti-combobox*` — a field input with Select's popup surface and items.
+
+## Multiple
+
+Add `multiple` and the value becomes a list. Choosing an option toggles it, keeps the list open and clears the query. `ComboboxChips` wraps `ComboboxValue` and the input, and the container becomes the field itself: it grows and wraps as chips are added.
+
+<ComboboxMultiDemo client:load />
+
+Press Backspace in an empty input to remove the last chip; arrow keys move between chips. Each chip's remove button takes its own `aria-label`.
