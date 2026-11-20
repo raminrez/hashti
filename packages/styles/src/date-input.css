@@ -1,0 +1,63 @@
+.hashti-date-input {
+  display: flex;
+  align-items: center;
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-01);
+  overflow: hidden;
+  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-date-input__segment {
+  display: inline;
+  padding: 0 0.125rem;
+  border: none;
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-align: center;
+  inline-size: auto;
+}
+
+.hashti-date-input__segment[data-empty] {
+  color: var(--hashti-text-secondary);
+}
+
+.hashti-date-input__segment[data-type="literal"] {
+  color: var(--hashti-text-secondary);
+  pointer-events: none;
+}
+
+/* The root is the field: the ring sits on it, not the segments. */
+.hashti-date-input__segment:focus-visible {
+  outline: none;
+}
+
+.hashti-date-input:has(.hashti-date-input__segment:focus-visible) {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-date-input[data-readonly] {
+  border-style: dashed;
+  background: var(--hashti-layer-02);
+}
+
+.hashti-date-input[data-invalid] {
+  border-color: var(--hashti-support-error);
+}
+
+.hashti-date-input[data-disabled] {
+  border-color: var(--hashti-border-disabled);
+  background: var(--hashti-button-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-date-input[data-disabled] .hashti-date-input__segment {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
