@@ -1,0 +1,22 @@
+---
+title: DatePicker
+description: Types a date or picks it from a calendar popup.
+---
+
+import { DatePickerDemo } from '../../src/components/date-picker-demo'
+
+## Usage
+
+<DatePickerDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `DatePicker` | Owns the value, the shown month and the popup state. |
+| `DatePickerInput` | The text field; parses a typed date on Enter or blur. |
+| `DatePickerTrigger` | The icon button that opens the calendar. |
+| `DatePickerHint` | Shows the expected input format. |
+| `DatePickerContent` | The popup; empty, it renders a Calendar. |
+
+Styling lives in `@hashti/styles` under `.hashti-date-picker*` — one bordered field with a quiet calendar button, and a popover panel holding the month grid.

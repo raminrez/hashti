@@ -16,6 +16,7 @@
     "command",
     "combobox",
     "date-input",
+    "date-picker",
     "dialog",
     "drawer",
     "field",
