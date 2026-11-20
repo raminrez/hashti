@@ -22,7 +22,6 @@
   border: 1px solid var(--hashti-border-subtle-00);
   border-radius: var(--hashti-control-radius);
   background: var(--hashti-layer-01);
-
   box-shadow: var(--hashti-shadow-toast);
   color: var(--hashti-text-primary);
   transition:
