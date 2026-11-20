@@ -8,10 +8,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "lib": [
-      "ES2023",
-      "DOM"
-    ],
+    "lib": ["ES2023", "DOM"],
     "moduleDetection": "force",
     "allowImportingTsExtensions": true,
     "allowArbitraryExtensions": true,
