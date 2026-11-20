@@ -135,6 +135,18 @@ export { Tooltip, TooltipTrigger, TooltipContent } from "./tooltip"
 export { HoverCard, HoverCardTrigger, HoverCardContent } from "./hover-card"
 
 export {
+  ImageCropper,
+  ImageCropperFlip,
+  ImageCropperGrid,
+  ImageCropperHandle,
+  ImageCropperImage,
+  ImageCropperRotate,
+  ImageCropperSelection,
+  ImageCropperViewport,
+  ImageCropperZoom,
+} from "./image-cropper"
+
+export {
   Menu,
   MenuTrigger,
   MenuContent,
