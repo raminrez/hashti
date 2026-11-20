@@ -1,0 +1,23 @@
+# Pre-commit: check only what changed. Commands run piped (sequential) so
+# formatting settles before the linters read the files.
+pre-commit:
+  piped: true
+  commands:
+    format:
+      # bun fmt restages what it changes.
+      run: bun fmt --staged
+    oxlint:
+      glob: "*.{js,cjs,mjs,ts,tsx,jsx}"
+      run: bunx oxlint {staged_files}
+    stylelint:
+      glob: "*.css"
+      run: bunx stylelint {staged_files}
+    typecheck-utils:
+      glob: "packages/utils/**/*.{ts,tsx,json}"
+      run: bun --filter utils types:check
+    typecheck-react:
+      glob: "packages/react/**/*.{ts,tsx,json}"
+      run: bun --filter react types:check
+    typecheck-docs:
+      glob: "apps/docs/**/*.{ts,tsx,json,mdx}"
+      run: bun --filter docs types:check
