@@ -12,6 +12,7 @@ storiesLocation: colocated
 - [x] `sb-inventory` — done; `.storybook/project-inventory.json` + component-usage + component-pages; ProjectInventory wrapper scaffolded.
 - [x] `sb-health` — done; `.storybook/design-system-health.json` written (0 errors / 9 warnings / 433 info); DesignSystemHealth wrapper scaffolded; vendored script patched for BSD-grep `--` bug.
 - [x] `sb-flows` — next.
-- [x] `sb-stories` — batches A (16) + B (16) in progress/parallel branches
-- [ ] `sb-wrappers` — next
+- [x] `sb-stories` — batch A (16 core) + batch B (16 more), 32 total
+- [x] `sb-wrappers` — ProjectInventory / DesignSystemHealth / AppFlowGraph / JourneyGraph scaffolded
+- [ ] `sb-audit` — next
 - [ ] `sb-audit`
