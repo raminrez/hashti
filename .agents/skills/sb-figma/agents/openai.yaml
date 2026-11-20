@@ -1,0 +1,18 @@
+interface:
+  display_name: Storybook CSF3 — Figma
+  short_description: "The Figma↔Storybook bridge, both directions, via the native Figma MCP. design→code: map foundation tokens (color/spacing/type) from Figma variables with design↔code parity + drift, and deliver approved Figma components (extract → build → embed), authoring stories via sb-stories' rules. code→design: build Code Connect mappings from components + stories + token parity + usage so Figma Dev Mode shows the real code. Use for 'sync my Figma tokens', 'map Figma variables to my design system', 'deliver this approved Figma design', 'check design↔code token parity', 'connect my components to Figma / code connect'. NOT for prototyping/iterating an undecided design (that's sb-explore)."
+  default_prompt: |
+    Bridge an APPROVED Figma design and production Storybook, both directions (exploration is sb-explore).
+    Check Preconditions first (plan/seat; whoami on access or rate-limit errors); capture every MCP output (Job 0).
+    Job 1 (tokens): read every variable mode with use_figma + references/read-figma-variables.js (load figma-use
+    first), or fall back to get_variable_defs on a node; pull-figma-variables.mjs → build-token-parity.mjs
+    compares Figma's default mode with the :root theme and Dark with the .dark theme; report drift per mode.
+    Job 2 (components): load figma-design-to-code, then get_design_context (code + screenshot) → download_assets →
+    reuse mapped/existing components → build with tokens only (stop and ask if a value has no token) → author
+    the story with sb-stories' rules → stamp node-id + parameters.design → validate light/dark/mobile.
+    Job 3 (code→design): whoami (Org/Enterprise) → get_code_connect_suggestions → get_context_for_code_connect →
+    build-code-connect.mjs --file <FILE_KEY> writes the exact send_code_connect_mappings input → confirm with
+    the user → send. Writes to Figma are opt-in: use_figma by default, generate_figma_design only to capture a
+    story page the first time. Ask for the Figma file URL and the token CSS path if not given.
+policy:
+  allow_implicit_invocation: true

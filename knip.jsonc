@@ -1,0 +1,22 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  // Vendored agent-skill assets; not project code, never shipped.
+  "ignore": ["**/.agents/**"],
+  "ignoreDependencies": [
+    // oxlint's type-aware backend (tsgolint) — a runtime binary, never imported
+    "tsrs",
+  ],
+  "ignoreIssues": {
+    // Root devDependencies reference the catalog for shared version pinning;
+    // knip's catalog plugin only counts member-workspace references.
+    "package.json": ["catalog"],
+  },
+  "workspaces": {
+    "packages/react": {},
+    "packages/utils": {},
+    "packages/styles": {},
+    "apps/docs": {
+      "entry": ["src/**/*.astro", "src/**/*.ts", "src/**/*.tsx"],
+    },
+  },
+}

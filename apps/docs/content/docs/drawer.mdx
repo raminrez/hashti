@@ -31,7 +31,7 @@ Pass `snapPoints` — fractions of the screen up to `1`, pixels above 1, `"20rem
 
 While the sheet rests on a snap point it reports `data-snap-point` on the content (the value as written, like `0.5`) and `data-expanded` at the largest one. Styles add the handle bar and deepen the shadow while a partial sheet floats over content; the full-height sheet keeps the modal shadow.
 
-Compose the ui-sdk `DrawerHandle` with the `hashti-drawer-handle` class:
+The wrapper adds the `hashti-drawer-handle` class; place it inside `DrawerContent`:
 
 <DrawerSnapPointsDemo client:load />
 

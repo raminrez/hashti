@@ -33,7 +33,7 @@
 }
 
 @media (hover: hover) {
-  .hashti-tabs-tab:hover:not([data-selected]):not([data-disabled]) {
+  .hashti-tabs-tab:hover:not([data-selected], [data-disabled]) {
     background: var(--hashti-background-hover);
   }
 }
@@ -51,6 +51,7 @@
 .hashti-tabs-indicator {
   position: absolute;
   top: calc(var(--active-tab-top) + var(--active-tab-height) - 2px);
+
   /* rtl-exception: left is set by ui-sdk's --active-tab-left, measured in
      physical pixels at runtime by the tab parts; the variable already
      follows the active tab's rendered position. */
@@ -60,9 +61,9 @@
   border-radius: 9999px;
   background: var(--hashti-focus);
   transition:
-    top var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    left var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    inline-size var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+    top var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    left var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    inline-size var(--hashti-duration-moderate-01) var(--hashti-ease-entrance);
 }
 
 .hashti-tabs-indicator[data-activation-direction="none"] {
@@ -71,14 +72,15 @@
 
 .hashti-tabs-indicator[data-orientation="vertical"] {
   top: var(--active-tab-top);
+
   /* rtl-exception: same ui-sdk-measured variable as the horizontal rule. */
   left: calc(var(--active-tab-left) + var(--active-tab-width) - 2px);
   inline-size: 2px;
   block-size: var(--active-tab-height);
   transition:
-    top var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    left var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    block-size var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+    top var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    left var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    block-size var(--hashti-duration-moderate-01) var(--hashti-ease-entrance);
 }
 
 .hashti-tabs-panel {
@@ -86,7 +88,7 @@
   color: var(--hashti-text-primary);
   font-size: 0.875rem;
   transition: opacity var(--hashti-duration-fast-01)
-    cubic-bezier(0.16, 1, 0.3, 1);
+    var(--hashti-ease-entrance);
 }
 
 .hashti-tabs-panel[data-starting-style],

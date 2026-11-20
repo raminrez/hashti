@@ -6,6 +6,7 @@
   border-radius: var(--hashti-popover-radius);
   background: var(--hashti-layer-01);
   color: var(--hashti-text-primary);
+  transform-origin: var(--transform-origin);
 }
 
 .hashti-listbox-item {

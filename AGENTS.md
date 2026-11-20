@@ -23,7 +23,8 @@ component, its parts, files, exports, and docs pages.
   (or the ready-made component), add the Hashti class name, nothing else.
 - All styles live in `@hashti/styles`, one file per component, imported from
   `packages/styles/index.css` under `hashti.components`. Tokens only
-  (`var(--hashti-*)`); a hex value in component CSS is a bug.
+  (`var(--hashti-*)`) — no check sees raw non-color values yet, so this stays
+  a convention.
 - File shape: `packages/react/src/<name>/<name>.tsx` + `index.ts`, barrel
   line in `packages/react/src/index.tsx`, `packages/styles/src/<name>.css` +
   import, docs page `apps/docs/content/docs/<name>.mdx` + `meta.json` entry.
@@ -34,8 +35,11 @@ component, its parts, files, exports, and docs pages.
   `types:check` script).
 - `bun install` before typecheck in a fresh worktree (no `node_modules`).
 - Rendered check per component on its docs page: class names present
-  (`document.querySelectorAll("[class*='hashti-']")`), both themes, keyboard
-  walk-through where the component is interactive.
+  (`document.querySelectorAll("[class*='hashti-']")`) AND a computed style
+  asserted (e.g. `getComputedStyle(input).borderWidth !== "0px"`) —
+  class-presence alone passes even when every `hashti-*` style is dropped (the
+  `import-notation` regression shipped invisible for a day). Both themes,
+  keyboard walk-through where the component is interactive.
 - **Compound parts in docs pages**: Astro/MDX renders each React component
   child as its own React root, so ui-sdk's context-bound parts (image inside
   Avatar, items inside Select, …) cannot be composed directly in MDX — the
@@ -43,7 +47,6 @@ component, its parts, files, exports, and docs pages.
   Put the composition in a single React demo component under
   `apps/docs/src/components/` and render that from the MDX page with
   `client:load`.
-- No lint setup yet — not a gate until it exists.
 
 ## Executor workflow
 
@@ -65,7 +68,33 @@ Component CSS therefore targets ONLY:
 - ui-sdk's data attributes (`data-open`, `data-selected`, `data-highlighted`,
   `data-invalid`, …) and `data-slot`.
 
-Never: React DOM specifics, `:has(react-…)`, inline-style contracts the
-wrapper must compute per-render, or JS-in-CSS coupling. Anything that needs
+Never: React DOM specifics, inline-style contracts the wrapper must compute
+per-render, or JS-in-CSS coupling. Anything that needs
 a runtime value comes from a ui-sdk CSS variable (like `--anchor-width`,
 `--active-tab-*`) or a `--hashti-*` token.
+
+## Anti-slop checks
+
+Rolled out step by step from `anti-slop/todo.md`; the reasoning is in
+`anti-slop/plan.md`.
+
+- Fix what a check finds; don't silence it. No new `!`, `as any`,
+  `@ts-expect-error`, or disable comments to get a check green.
+- Every ignore entry (knip `ignore`, jscpd `ignore`, lint `overrides`, a
+  disable comment) carries a comment saying why. Review the lists when they
+  grow: each entry is code a detector was told not to look at.
+- A lint message says what failed, why the rule exists, and what to do instead.
+- After fixing a bug, or a regression a review catches, suggest the lint rule
+  or test that would have caught it (the incident, what it matches, its
+  message), or say why no check can. Write it only when asked.
+- Scores (react-doctor) are diagnostics, not targets. Don't change code to
+  move a number.
+
+Commands:
+
+- `bun run deadcode`: knip — unused files, exports, dependencies. Zero is the
+  baseline; keep it there.
+- `bun run duplicates`: jscpd, logic (strict) + markup (loose). Report-only
+  until its gate lands.
+- `bun run react-doctor`: React-specific scan (effects, state, hydration).
+  Report-only; fix findings in code already being touched.

@@ -1,7 +1,7 @@
 "use client";
 
-import { Input } from "@hashti/react";
-import { useState, type KeyboardEvent } from "react";
+import { Input, Textarea } from "@hashti/react";
+import { useRef, useState, type KeyboardEvent, type UIEvent } from "react";
 
 const colors = [
   "Amber",
@@ -21,8 +21,9 @@ const colors = [
   "Yellow",
 ];
 
-export function InlineCompletionDemo() {
+function CompletionDemo({ multiline = false }: { multiline?: boolean }) {
   const [value, setValue] = useState("");
+  const ghostRef = useRef<HTMLDivElement>(null);
 
   const rest =
     value === ""
@@ -39,11 +40,14 @@ export function InlineCompletionDemo() {
     if (rest) setValue(value + rest);
   }
 
-  function onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+  function onKeyDown(
+    event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
     if (!rest) return;
     const target = event.target;
     const atEnd =
-      target instanceof HTMLInputElement &&
+      (target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement) &&
       target.selectionStart === value.length;
     if (event.key === "Tab" || (event.key === "ArrowRight" && atEnd)) {
       event.preventDefault();
@@ -51,21 +55,55 @@ export function InlineCompletionDemo() {
     }
   }
 
+  // Keep the ghost's scroll offset in step with the textarea's.
+  function syncScroll(event: UIEvent<HTMLTextAreaElement>) {
+    if (ghostRef.current) {
+      ghostRef.current.scrollTop = event.currentTarget.scrollTop;
+    }
+  }
+
   return (
-    <div className="hashti-inline-completion">
-      <Input
-        value={value}
-        onValueChange={setValue}
-        onKeyDown={onKeyDown}
-        placeholder="Try “te”…"
-        aria-label="Color with inline completion"
-      />
+    <div
+      className="hashti-inline-completion"
+      data-multiline={multiline ? "true" : undefined}
+    >
+      {multiline ? (
+        <Textarea
+          value={value}
+          onValueChange={setValue}
+          onKeyDown={onKeyDown}
+          onScroll={syncScroll}
+          placeholder="Try “te”…"
+          aria-label="Color with inline completion (textarea)"
+        />
+      ) : (
+        <Input
+          value={value}
+          onValueChange={setValue}
+          onKeyDown={onKeyDown}
+          placeholder="Try “te”…"
+          aria-label="Color with inline completion"
+        />
+      )}
       {rest ? (
-        <div className="hashti-inline-completion__ghost" aria-hidden="true">
+        <div
+          ref={ghostRef}
+          className="hashti-inline-completion__ghost"
+          aria-hidden="true"
+        >
           <span className="hashti-inline-completion__typed">{value}</span>
           {rest}
         </div>
       ) : null}
+    </div>
+  );
+}
+
+export function InlineCompletionDemo() {
+  return (
+    <div>
+      <CompletionDemo />
+      <CompletionDemo multiline />
     </div>
   );
 }

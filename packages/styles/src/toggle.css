@@ -21,7 +21,7 @@
 }
 
 @media (hover: hover) {
-  .hashti-toggle:hover:not([data-pressed]):not([data-disabled]) {
+  .hashti-toggle:hover:not([data-pressed], [data-disabled]) {
     background: var(--hashti-background-hover);
   }
 }

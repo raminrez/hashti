@@ -61,6 +61,8 @@
     ".research/**",
     ".tools/**",
     ".taste-skill/**",
-    "test-results/**"
+    "test-results/**",
+    ".agents",
+    ".claude"
   ]
 }

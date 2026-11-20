@@ -1,5 +1,12 @@
 # Hashti design system
 
+> **ARCHIVED 2026-11-20.** This specification was imported from an ancestor
+> repo (`hashti-next`) and describes an implementation shape that no longer
+> exists (packages/tokens, Storybook, verification harness). The visual
+> authority is now [DESIGN.md](../DESIGN.md) at the repo root; component
+> behavior requirements here are aspirational targets, not statements about
+> shipped code. Treat implementation-status claims below as stale.
+
 **6 November 2026 · Frame specification · code-first.** Frame is Hashti's selected
 visual direction. This specification defines how that direction becomes a usable,
 accessible, internationalized, and customizable component system. The
@@ -11,7 +18,7 @@ Figma last**.
 
 | Artifact                                                    | Responsibility                                                             |
 | ----------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [PRODUCT.md](../PRODUCT.md)                                 | People, goals, constraints, and selected direction                         |
+| [PRODUCT.md](PRODUCT.md)                                    | People, goals, constraints, and selected direction                         |
 | [DESIGN.md](../DESIGN.md)                                   | Frame's visual language and measured values                                |
 | This specification                                          | Component, interaction, content, inclusion, and customization requirements |
 | [Library plan](component-library-plan.md)                   | Dependencies, implementation order, acceptance conditions, and migration   |

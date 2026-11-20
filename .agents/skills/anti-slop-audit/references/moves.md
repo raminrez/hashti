@@ -1,0 +1,208 @@
+# The moves, and how to judge each one
+
+The moves come from [Yuri Mikhin](https://github.com/mikhin)'s [10 anti-AI slop moves for frontend projects going faster than humans can review](https://evilmartians.com/chronicles/ten-anti-ai-slop-moves-for-frontend-projects-going-faster-than-humans-can-review); "the post" below means that article.
+
+One section per move. Each says what it catches, when it fits, what "done" looks like, how to read the probe's numbers, and what it costs. react-doctor is listed last: a React-only extra, not one of the ten moves.
+
+Statuses for the plan: **done** (in place and enforced), **partial** (in place but not enforced, or only some of it), **missing**, **n/a** (doesn't fit this project, with the reason).
+
+## Read the stack first
+
+The tools change with the stack. Take each dimension from the probe's Stack section, not from assumptions, and write it into the plan's **Stack** section so every rollout step picks the same tools. When the probe lists two (a migration, a monorepo), plan for the one the surviving code uses and name both.
+
+| Dimension       | Variants                                                                                    | Probe                                    | What it changes                                                                                                                   |
+| --------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| UI framework    | React with Vite, Next, React Router, Expo, or Astro islands; none (a NestJS API, a library) | `stack.react`, `stack.frameworks`        | react-doctor and the effects rules apply only with React; SSR and islands frameworks have legitimate after-mount effects (move 3) |
+| Language        | TypeScript, JavaScript                                                                      | `stack.typescript`                       | move 2 needs TypeScript; a JavaScript project gets `checkJs` with JSDoc types, or move 2 is n/a with that reason                  |
+| Linter          | ESLint, oxlint, Biome, none                                                                 | `stack.linters`                          | how a rule set goes in (the rollout recipe's **Adapting to the stack**). The probe measures with oxlint whichever it is           |
+| Unit tests      | Vitest, Jest, Mocha, `node:test`, Bun, none                                                 | `stack.unitTests`                        | the test lint rules (move 3), the Stryker runner (move 7), the mock-drift check (move 8)                                          |
+| E2E             | Playwright, Cypress, none                                                                   | `stack.e2e`                              | the e2e lint plugin (move 3)                                                                                                      |
+| API             | OpenAPI spec, GraphQL, tRPC, third-party only, none                                         | `stack.api`                              | move 1's generator, or **done**, or **n/a**                                                                                       |
+| Package manager | npm, pnpm, yarn, bun; monorepo or not                                                       | `stack.packageManager`, `stack.monorepo` | every command and CI setup step; per-package configs in a monorepo                                                                |
+| Git hooks       | lefthook, husky with lint-staged or nano-staged, simple-git-hooks, none                     | `stack.gitHooks`                         | where the pre-commit checks go                                                                                                    |
+| Agents          | Claude Code, Cursor, Codex, Copilot, Gemini CLI, …                                          | `stack.agentFiles`, `stack.agentHooks`   | the rules file to edit, and which agents an after-turn hook covers (move 6)                                                       |
+| CI              | GitHub Actions, GitLab CI, other, none                                                      | `stack.ci.files`                         | the syntax of every CI step; without CI, the hooks are the gate                                                                   |
+
+## Variants
+
+Four choices have two reasonable answers each. Neither is wrong: they trade rollout time against how much old code gets fixed and how hard a check blocks. Option 1 is what the article recommends and what the plan takes unless the team chose otherwise; the plan's **Variants** table records the choice with both sides' cost, the report asks about it, and the rollout follows it. Skip a choice that doesn't apply (no React, no mutation step, the flag already on).
+
+| Choice                           | Option 1                                                                                                                                                                                                                                        | Option 2                                                                                                                                                                                                                                                      |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Lint backlog**                 | **Gradual.** New rules go in as warnings on changed files; old code stays as-is. A warning that catches a real bug becomes an error; one that's only noise for a month is turned off. No cleanup PRs: the backlog shrinks as files get touched. | **Cleanup.** A small count is fixed and made an error in the PR that adds the rule. A large one gets cleanup PRs to zero, then promotion, so the config ends with no `warn`. More PRs up front; no unrelated PR inherits an old warning in a file it touches. |
+| **Mutation testing in CI**       | **Required.** In the branch's required checks, with no failure threshold: it fails only when Stryker breaks, so nobody can skip it and it never blocks on a score.                                                                              | **Report-only.** Non-blocking and outside the required checks, so a slow run never holds a PR. The survivors still land as a PR comment.                                                                                                                      |
+| **`exactOptionalPropertyTypes`** | **Always on,** with `noUncheckedIndexedAccess`; split by directory when the count is large.                                                                                                                                                     | **Count-gated.** On only when the count is small or the code is mostly domain logic; otherwise skipped with the reason, since React props and framework types make it noisy.                                                                                  |
+| **react-doctor** (React only)    | **Report.** An optional project scan or agent skill: a command and a scheduled report, no gate.                                                                                                                                                 | **Gated.** Errors are mandatory: cleanup steps, then a gate on errors in the agent hook and PR CI. Whether warnings block is a second question.                                                                                                               |
+
+Give each side's cost in this repo's numbers: warning-level hits and the files they sit in, the mutation run's seconds on a typical diff, the flag's new errors, react-doctor's error count.
+
+Contents: [1 Contract](#1-api-contract) · [2 Strict TS](#2-strict-typescript) · [3 Linter as filter](#3-linter-as-a-behavior-filter) · [4 Boundaries](#4-layer-boundaries) · [5 Scar rules](#5-scar-rules) · [6 Rules in front of the model](#6-rules-in-front-of-the-model) · [7 Mutation testing](#7-mutation-testing) · [8 Dead code](#8-dead-code) · [9 Duplicates](#9-duplicates) · [10 CI gate](#10-ci-gate) · [react-doctor](#react-doctor)
+
+## 1. API contract
+
+**Catches** fields that don't exist (`user.fullName` when the API sends `firstName`): the most recognizable AI defect in frontend code.
+
+**Fits when** the frontend talks to an HTTP API with a spec (OpenAPI) that the backend keeps current, or one could exist. GraphQL with codegen and tRPC already give the same guarantee: mark those **done**.
+
+**Skip when** there's no API the team controls or no spec coming (a static site, a pure third-party SDK consumer). Say so and move on.
+
+**Probe:** `stack.api.specs`, `stack.api.tooling`, `signals.fetchCalls`/`axiosCalls`. Hand-written `fetch` calls plus a spec but no generator = **missing** with high value. A generator but hand-written types next to it = **partial**.
+
+**Done looks like:** types, client, and Zod schemas generated from the spec (Hey API, or the generator the project already has: orval, `openapi-typescript`), the generated folder excluded from review and lint, and a CI step that regenerates and fails on a diff.
+
+**Cost:** one PR to wire the generator, then a migration of call sites that can be split by feature.
+
+## 2. Strict TypeScript
+
+**Catches** confident assumptions: `arr[0]` treated as defined, optional props treated as present.
+
+**Fits** every TypeScript project. A JavaScript project can get most of it through `checkJs` and JSDoc types; if the team won't, mark it **n/a** and say so.
+
+**Probe:** `tsc.enabled`, `tsc.flags.*.newErrors`, `tsc.flags.*.byDir`. Read the counts this way:
+
+- **`strict` off:** that's the first PR, before anything else in this move. TypeScript 6 turns it on by default, so a config without it is strict unless it sets `"strict": false`.
+- **Near-zero counts** (a fresh project): turn every flag on in one PR. That never gets cheaper.
+- **`noUncheckedIndexedAccess`:** usually worth it. Under ~150 new errors is one PR; above that, one PR per top directory. Before calling an error a crash, check what the call site guarantees: an array that's never empty there makes it a type fix, not a bug.
+- **`exactOptionalPropertyTypes`:** a variant (**Variants**). Always on: with `noUncheckedIndexedAccess`, split by directory when the count is large. Count-gated: only when the count is small or the code is mostly domain logic, since it's noisier with React props and framework types. Give the count either way.
+- **Framework files:** the probe's `note` says when tsc can't see `.astro`/`.vue`/`.svelte` files. The real count is higher, and the framework's checker (`astro check`, `vue-tsc`, `svelte-check`) must also pass.
+
+**Ordering trap:** fixing `noUncheckedIndexedAccess` errors tempts an agent to paste `!` everywhere. Put the `no-non-null-assertion` lint rule (move 3) in an earlier PR so that shortcut fails.
+
+## 3. Linter as a behavior filter
+
+A preset someone else wrote goes in as a batch; it needs no incident behind it. The probe runs every candidate rule as a warning through oxlint, whatever linter the project uses, so the counts are comparable across projects.
+
+| Rule set                                                  | What it catches                                                                                   | Probe field       | How to judge                                                                                                                                                                                                                                                                                                                                                |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sonarjs (recommended)                                     | cognitive complexity, identical branches, nested conditionals, duplicated literals, risky regexes | `lint.sonarjs`    | The heavy lifter. Look past the total: `cognitive-complexity`, `no-nested-conditional`, `no-identical-functions`, `super-linear-regex` are signal; `os-command-from-path`, `pseudo-random`, `no-hardcoded-ip` in build scripts are usually noise and get turned off for those paths.                                                                        |
+| react-you-might-not-need-an-effect                        | effects used for derived state, prop sync, event handling: the most frequent AI edit in React     | `lint.effects`    | Compare with `signals.useEffect`. SSR/islands frameworks (Astro, Next) have legitimate "set state after mount" effects to avoid hydration mismatches. If the project disables `react/set-state-in-effect` or documents a hydration pattern, expect `no-initialize-state` hits to be partly intentional: triage a sample before recommending it as an error. |
+| vitest/jest `expect-expect`, `no-focused-tests`           | tests with no assertion, forgotten `.only`                                                        | `lint.tests`      | Cheap, near-zero noise.                                                                                                                                                                                                                                                                                                                                     |
+| eslint-plugin-playwright (Cypress: eslint-plugin-cypress) | conditionals in tests, missing `await` on assertions, `.only`, fixed timeouts                     | `lint.playwright` | Cheap if e2e exists. The probe measures Playwright only.                                                                                                                                                                                                                                                                                                    |
+| jsx-a11y                                                  | what a screenshot can't show                                                                      | `lint.jsxA11y`    | Often already on.                                                                                                                                                                                                                                                                                                                                           |
+| `no-explicit-any`                                         | escape hatches                                                                                    | `lint.native`     | Error if the count is small; a warning with a burn-down if large.                                                                                                                                                                                                                                                                                           |
+| `no-non-null-assertion`                                   | "trust me, it's not null"                                                                         | `lint.native`     | Usually small; make it an error early (see move 2).                                                                                                                                                                                                                                                                                                         |
+| `consistent-type-definitions`                             | `type`/`interface` flip-flopping                                                                  | `lint.native`     | Style; autofixable in ESLint; cheap.                                                                                                                                                                                                                                                                                                                        |
+| `explicit-module-boundary-types`                          | inferred return types on exports                                                                  | `lint.native`     | Often hundreds of hits. Recommend only when the count is manageable; otherwise skip and say why.                                                                                                                                                                                                                                                            |
+| filename matches export, imports through aliases          | makes dead-code tools trustworthy                                                                 | read the tree     | Only where the project already uses aliases. Don't impose aliases on a relative-import codebase just for this.                                                                                                                                                                                                                                              |
+
+**How "warnings that only changed files must pass" works**, so plans say it the same way every time: the hooks that lint changed files (pre-commit and the agent hook) treat warnings as errors (`oxlint --deny-warnings`, `eslint --max-warnings=0`, `stylelint --max-warnings 0`). CI's full run prints warnings without failing. Promotion to error is what makes CI enforce a rule everywhere.
+
+**oxlint can't extend an ESLint plugin's preset.** Adopting "sonarjs recommended" through `jsPlugins` means listing the rules. The probe's generated config (`lint.config` in probe.json) already has the list, without the rules for libraries the project doesn't depend on (`lint.sonarjs.leftOutForStack`). Before counting a sonarjs rule as covered by a native one, check the native rule is on: `no-useless-assignment`, which stands in for `no-dead-store`, isn't in `correctness` (the rollout recipe's section 3 has the pairs).
+
+**Zero hits can mean a rule is inert.** oxlint gives JS plugins no type information, so a rule that needs types may never fire. `lint.typeAware.silent` lists the flagged rules that found nothing here. Don't count one as cheap to make an error, or as coverage the plan provides, until a plant fires it.
+
+**Template files:** oxlint reads only the script part of `.astro`/`.vue`/`.svelte`, so anything used only in the template looks unused. The probe already turns off `sonarjs/unused-import` there. If other rules cluster on template files, suspect the same cause before counting them.
+
+## 4. Layer boundaries
+
+**Catches** architectural drift toward "the GitHub average": a service importing a component, a design system that knows about the API, mocks in production code.
+
+**Fits when** the source tree has recognizable layers (`stack.topLevelSourceDirs`) and the project is past prototype stage.
+
+**Probe:** `stack.boundaryTooling`, `lint.native['import/no-cycle']`, `stack.topLevelSourceDirs`, and any layer rules stated in the agent/convention files.
+
+**Recommend a small set**, 3–5 rules, each traceable to the project's own docs or incidents. The usual ones: one-way dependencies (UI → services, never back); utilities/types/config free of domain code; design system isolated from state and API; mocks out of production; routes map to pages and nothing else. A server-only module (Node APIs, secrets) reachable from client code is a strong candidate wherever the framework mixes server and client code. List those modules by walking the import graph up from the direct readers of `process.env`, `child_process`, `fs`, and `crypto`, not by grep alone, which misses modules that reach them through another import. The durable form of the rule is a folder: the plan moves the server-only modules into one and bans the folder, because a name list goes stale with the next util. Every rule's message says where the import should go instead.
+
+**Cost:** the config PR, plus fixing existing violations and import cycles.
+
+## 5. Scar rules
+
+**What a scar is:** a bug the project already shipped, encoded as a lint rule so it can't ship again. An example: a service rounded hours, the formatter rounded again, and 26h15m showed as 26h18m. The rule bans `Math.round`/`toFixed` in what services return, and its message tells that story. The second kind of custom rule is a **default override**: it cancels a default the model brings from a million other repos when the common way is wrong in this codebase.
+
+**The test:** a scar names its incident; a default override names the measured cost of the default it cancels (bytes shipped, renders, a timing on a realistic input). If you can name neither, don't propose it.
+
+**How to mine candidates** from the probe's `scars` section:
+
+1. **Fix and revert commits:** for each plausible one, read the diff (`git show <sha> --stat`, then the relevant hunk). Keep it only if the mistake is visible in syntax: a call, an import, a property, a pattern a linter can match. "Fix typo" or "fix layout on Safari" via CSS values usually isn't.
+2. **Prohibition lines** in AGENTS.md, CLAUDE.md, CONVENTIONS, or Cursor rules ("never X", "don't Y", "use A instead of B"). Each one that's machine-checkable is prose doing a linter's job.
+3. **Repeated review comments**, if the user can point you to them.
+
+**Replay the incident.** Run the proposed rule against the file as it was before the fix (`git show <sha>^:<path> > /tmp/x.ts`, then lint it with the rule in a scratch config). A rule that fires on the original bug and is quiet on today's code is the strongest case a plan can make.
+
+**Aim at the next incident, not only the last one.** When a tool or a habit produced the bug (a design tool's export, a copied snippet), the candidate covers everything that source produces, not only the files the fix touched.
+
+**For each candidate, record:** the incident (commit sha or doc line), what the rule matches, its count today (labeled an upper bound when it comes from grep rather than the rule), the message (what failed, why, what to do instead), and where it belongs: the linter (JS/TS), the style linter (CSS), or a unit test (files no import reaches: SVGs, images, content data). Propose 2–5, best first. The plan lists them; the rollout PR implements the ones the user keeps.
+
+## 6. Rules in front of the model
+
+**Catches** nothing by itself. It lowers the frequency of mistakes while the agent works. Prevention is probabilistic, so this never replaces a check.
+
+**Done looks like:**
+
+- **An agent rules file** (AGENTS.md or CLAUDE.md) listing the check commands and the project's conventions, and no line that restates a check: once a linter enforces a rule, the prose copy only competes for attention. The plan's last step trims those.
+- **Hooks that run the linter on changed files.** A pre-commit hook covers every agent that commits, and humans too. An after-turn agent hook catches the mistake while the agent can still fix it: Claude Code's `Stop` hook exiting 2, or the equivalent in the agent the team uses. Wire one script into each agent that has such a hook. Agents without one get the pre-commit hook only.
+
+**Probe:** `stack.agentFiles`, `stack.agentHooks` (Claude Code's hooks and a Cursor `hooks.json`), `stack.gitHooks`. A rules file without a hook is **partial**: the hook is what turns the rules from advice into a feedback loop. `scars.ruleLines` lists the file's prohibitions; the ones an existing check already enforces are the trim step's first candidates.
+
+## 7. Mutation testing
+
+**Catches** tests that run code without checking it: shape instead of content, unverified snapshots, assertions that repeat the implementation, tests of the mock.
+
+**Fits when** there's a unit-test suite worth trusting (`repo.testFiles`), a Stryker runner for it (`mutation.strykerRunnerAvailable`: Vitest, Jest, Mocha, Jasmine, Karma), and pure logic worth mutating.
+
+**Without a dedicated runner** (`node:test`, Bun), Stryker's command runner reruns its command once per mutant, with no per-test coverage and no incremental mode. Pointed at the module's sibling tests rather than the suite, it costs mutants × those tests' time, so a narrow `mutate` scope (one pure-logic module) stays affordable.
+
+**The best moment is authoring time.** An agent rule, "after writing tests for a pure module, run mutation on it and kill each survivor or say why it's equivalent", reaches more modules than a CI scope does, since few PRs touch the tested logic.
+
+**Skip or defer when** there are only a handful of tests and no pure logic worth protecting. Say what would change the verdict ("revisit when the suite moves to Vitest or passes N files").
+
+**Rollout notes for the plan:** incremental mode (dedicated runners only); on PRs mutate only changed files; report surviving mutants as a PR comment; **no failure threshold**. The score is a detector, not a KPI. Whether the PR job is required or report-only is a variant (**Variants**): give the run's time on a typical diff.
+
+## 8. Dead code
+
+**Catches** unused files, exports, and dependencies: AI adds far more readily than it deletes.
+
+**Probe:** `knip.*`. Read it carefully before quoting it:
+
+- **Without a project knip config,** knip uses defaults. Content folders loaded by glob (Markdown/MDX collections, CMS fixtures), framework entry points it doesn't know, and scripts run by path all show up as unused. The probe splits unused files into non-code (almost always false positives) and code.
+- **Verify code files before calling them dead:** grep for the file's basename and its export names. Check each "unused dependency" for string references in config files (`astro.config.*`, `vite.config.*`, `next.config.*`, `babel`/`postcss` configs) and in scripts outside `src/`.
+- **Report three numbers:** what raw knip says, what's verifiably dead, and what needs config (entries, ignores) to stop being noise. The plan's config is `knip.jsonc`, so every entry and ignore can carry its reason.
+
+**The probe sorts knip's unused exports** by what a grep finds:
+
+- `testsOnly`: fix the test entries, not the code.
+- `fileLocal`: drop the `export`.
+- `noReferences`: likely dead.
+- `nameElsewhere`: the name appears in another file, maybe as a different symbol; read it.
+- `default`: usually a duplicate of a named export.
+
+**Custom detectors are optional,** for gaps knip leaves in this project:
+
+- **A reachability walk from entry points** pays off when knip can't see the real graph: unusual aliases, a generated client, design-system conventions, files loaded by glob. With correct entries, knip's unused-files list already is reachability.
+- **The mock drift check** (`vi.mock()` or `jest.mock()`) applies only when `signals.viMock` or `signals.jestMock` > 0.
+
+Recommend each only with the reason it applies here. Each one the plan keeps needs a test that proves it finds a planted dead file or mock.
+
+## 9. Duplicates
+
+**Catches** second implementations: writing a new helper is cheaper for a model than finding the old one, and the copies drift.
+
+**Probe:** `jscpd.logic` (ts/js), `jscpd.components` (tsx/jsx), `jscpd.styles` (css/scss). Judge them separately: repeated JSX and CSS can be intentional, repeated business logic is a maintenance risk. In React code, hooks and handlers live in `.tsx`, so read the largest component clones for logic too. Name the two or three clones worth merging.
+
+**Done looks like:** logic and markup checked as separate jscpd runs, with stricter minimums for logic. The gate fails on _new_ clones only (`--baseline-from-ref <base> --fail-on-new-clones`, jscpd 5.4+), so the existing backlog doesn't block anyone. At zero clones, a plain run with `"threshold": 0` is the gate, and it's fast enough for pre-commit. A triage script that groups clones by fragment helps only with a big backlog (dozens of logic clones or more).
+
+**Limit:** plain jscpd finds textual similarity only, and two independent implementations of one rule look different. jscpd 5.4's experimental `--semantic` mode compares function embeddings with a local 548 MB model. Offer semantic as an occasional report, not a gate, and say it needs a one-time model download.
+
+## 10. CI gate
+
+**A check is mandatory only when CI blocks the branch.** A named step per check (format+lint, typecheck, unit tests, mutation on the PR diff, build), and deploys depend on the jobs.
+
+**Probe:** `stack.ci.checks` against the project's scripts, and `scripts.notInCi`. A check that exists as a script but not in CI is a cheap, high-value gap: put it early in the plan. So is each `scars.runWhen` line ("run `<cmd>` when touching X"): it becomes a CI step filtered on what the command reads, since the line's trigger list drifts.
+
+**Gates on new checks come last:** a rule or detector gets its CI gate only after its count reaches zero, or after it has a ratchet baseline. Otherwise people work around the check instead of fixing what it finds.
+
+## react-doctor
+
+**What it is:** React-specific analysis (effects, state, hydration, performance, security) with a score. It scans the whole project or only changed files, and its errors are mostly real bugs: missing effect cleanup, leaked observers, unsafe patterns.
+
+**Recommend it for every React project.** How hard to enforce it is a variant (**Variants**). Report: a command and a scheduled full run, no gate. Gated: a PR CI job that blocks on errors, plus the agent hook, with its severity split setting the rollout:
+
+- **Errors are mandatory, cleanup first.** The plan fixes all of them, then gates the hook and CI with `--blocking error`. Gating earlier hands the backlog to whoever next touches a file with an old error.
+- **Whether warnings block is the team's choice.** By default they're reported but don't block. The report asks; if yes, the plan adds a warnings cleanup step (split by rule group if it gets long), then the gate with `--blocking warning`.
+
+**Probe:** `doctor.*`. `bySeverity.error` sizes the cleanup, so list the errors in the plan; `bySeverity.warning` sizes the cleanup if warnings will block. Before counting, remove what's intentional:
+
+- **Build-time scripts:** eval and import-metadata findings are usually intentional. Exclude those paths rather than count them.
+- **Hydration gates in SSR and islands frameworks:** react-doctor's state and hydration rules misfire on the "set state after mount" gate, as the effects plugin does (move 3). If the project documents that pattern, those hits are config, not cleanup.
+
+**Notes for the plan:** the rollout recipe has the setup (never `react-doctor install`; always `npx` with the release-age gate and the privacy flags). `react-doctor design` runs the UI design rules a full scan leaves out: an opt-in extra, not counted in the cleanup.

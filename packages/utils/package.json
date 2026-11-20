@@ -9,6 +9,7 @@
     "types:check": "tsc --noEmit"
   },
   "devDependencies": {
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "bun-types": "catalog:"
   }
 }

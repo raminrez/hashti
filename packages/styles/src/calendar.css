@@ -92,7 +92,7 @@
 }
 
 @media (hover: hover) {
-  .hashti-calendar__day:hover:not([data-selected]):not([data-disabled]) {
+  .hashti-calendar__day:hover:not([data-selected], [data-disabled]) {
     background: var(--hashti-background-hover);
   }
 }

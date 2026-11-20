@@ -14,6 +14,7 @@
   position: absolute;
   z-index: -1;
   top: var(--segmented-control-indicator-top);
+
   /* rtl-exception: left comes from ui-sdk's --segmented-control-indicator-left,
      measured in physical pixels at runtime by the segmented parts. */
   left: var(--segmented-control-indicator-left);
@@ -21,15 +22,12 @@
   height: var(--segmented-control-indicator-height);
   border-radius: calc(var(--hashti-control-radius) - 0.1875rem);
   background: var(--hashti-layer-01);
-  /* small elevation stack, no single token */
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px var(--hashti-shadow);
   transition:
-    top var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    left var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    width var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    height var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+    top var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    left var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    width var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    height var(--hashti-duration-moderate-01) var(--hashti-ease-entrance);
 }
 
 .hashti-segmented-control[data-orientation="vertical"] {
@@ -72,9 +70,7 @@
 }
 
 @media (hover: hover) {
-  .hashti-segmented-control-item:hover:not([data-checked]):not(
-      [data-disabled]
-    ) {
+  .hashti-segmented-control-item:hover:not([data-checked], [data-disabled]) {
     color: var(--hashti-text-primary);
   }
 }

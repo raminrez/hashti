@@ -23,3 +23,13 @@
 .hashti-inline-completion__typed {
   visibility: hidden;
 }
+
+/* Textarea variant: ghost must match the textarea's padding, top alignment,
+   soft wrapping and scroll offset (synced via onScroll in the demo). */
+.hashti-inline-completion[data-multiline="true"]
+  .hashti-inline-completion__ghost {
+  align-items: flex-start;
+  padding: 0.5rem 0.75rem;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}

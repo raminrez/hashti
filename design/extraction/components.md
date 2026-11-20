@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-11-20 — imported from ancestor repo (hashti-next); describes an implementation shape (packages/tokens, Storybook, docs/verification.md) that no longer exists here. Treat as historical record.**
+
 # Hashti React — component extraction report
 
 Scope read: `packages/react/src/{frame.css,layers.css,relay.css,styles.css,theme.tsx,utils.ts,index.ts}`,

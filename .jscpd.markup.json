@@ -1,0 +1,15 @@
+{
+  "path": ["packages", "apps"],
+  "format": ["tsx", "jsx", "css", "scss"],
+  "ignore": [
+    "**/*.test.*",
+    "**/generated/**",
+    "**/.agents/**",
+    "**/.claude/**",
+    "**/node_modules/**",
+    "**/design/tokens.css"
+  ],
+  "minLines": 15,
+  "minTokens": 100,
+  "reporters": ["console"]
+}
