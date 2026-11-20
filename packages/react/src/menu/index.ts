@@ -6,4 +6,12 @@ export {
   MenuGroup,
   MenuGroupLabel,
   MenuSeparator,
+  MenuSub,
+  MenuSubTrigger,
+  MenuSubContent,
+  MenuCheckboxItem,
+  MenuItemIndicator,
+  MenuItemIcon,
+  MenuRadioGroup,
+  MenuRadioItem,
 } from "./menu"
