@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T19:29:20Z",
+  "generatedAt": "2026-11-20T21:57:45.940Z",
   "components": {
     "AccordionDemo": {
       "callSites": 0,
@@ -7,7 +7,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/accordion",
+          "title": "Accordion",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "AlertDialogDemo": {
       "callSites": 0,
@@ -15,7 +22,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/alert-dialog",
+          "title": "AlertDialog",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "AutocompleteDemo": {
       "callSites": 0,
@@ -23,7 +37,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/autocomplete",
+          "title": "Autocomplete",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "AvatarDemo": {
       "callSites": 0,
@@ -31,7 +52,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/avatar",
+          "title": "Avatar",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "AvatarGroupDemo": {
       "callSites": 0,
@@ -39,7 +67,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/avatar",
+          "title": "Avatar",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "Badge": {
       "callSites": 0,
@@ -47,7 +82,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": [],
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ],
       "tokens": [
         "--hashti-border-radius-max",
         "--hashti-border-subtle-00",
@@ -67,7 +109,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "CalendarDemo": {
       "callSites": 0,
@@ -75,7 +124,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/calendar",
+          "title": "Calendar",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "CarouselDemo": {
       "callSites": 0,
@@ -83,7 +139,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": [],
+      "pages": [
+        {
+          "path": "/docs/carousel",
+          "title": "Carousel",
+          "role": "public",
+          "storyId": null
+        }
+      ],
       "tokens": ["--hashti-layer-03", "--hashti-popover-radius"]
     },
     "CheckboxDemo": {
@@ -92,7 +155,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/checkbox",
+          "title": "Checkbox",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "CollapsibleDemo": {
       "callSites": 0,
@@ -100,7 +170,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/collapsible",
+          "title": "Collapsible",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "ColorPickerDemo": {
       "callSites": 0,
@@ -108,7 +185,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/color-picker",
+          "title": "ColorPicker",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "ComboboxDemo": {
       "callSites": 0,
@@ -116,7 +200,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/combobox",
+          "title": "Combobox",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "ComboboxMultiDemo": {
       "callSites": 0,
@@ -124,7 +215,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/combobox",
+          "title": "Combobox",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "CommandDemo": {
       "callSites": 0,
@@ -132,7 +230,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/command",
+          "title": "Command",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "DateInputDemo": {
       "callSites": 0,
@@ -140,7 +245,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/date-input",
+          "title": "DateInput",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "DatePickerDemo": {
       "callSites": 0,
@@ -148,7 +260,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/date-picker",
+          "title": "DatePicker",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "DialogDemo": {
       "callSites": 0,
@@ -156,7 +275,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/dialog",
+          "title": "Dialog",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "Docs": {
       "callSites": 0,
@@ -164,7 +290,374 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": ["Provider"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs",
+          "title": "Hashti",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/accordion",
+          "title": "Accordion",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/alert-dialog",
+          "title": "AlertDialog",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/autocomplete",
+          "title": "Autocomplete",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/avatar",
+          "title": "Avatar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/button",
+          "title": "Button",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/calendar",
+          "title": "Calendar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/carousel",
+          "title": "Carousel",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/checkbox",
+          "title": "Checkbox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/collapsible",
+          "title": "Collapsible",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/color-picker",
+          "title": "ColorPicker",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/combobox",
+          "title": "Combobox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/command",
+          "title": "Command",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/date-input",
+          "title": "DateInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/date-picker",
+          "title": "DatePicker",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/dialog",
+          "title": "Dialog",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/drawer",
+          "title": "Drawer",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/field",
+          "title": "Field",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/file-input",
+          "title": "FileInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/hover-card",
+          "title": "HoverCard",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/image-cropper",
+          "title": "ImageCropper",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/inline-completion",
+          "title": "Inline completion",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/input",
+          "title": "Input",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/label",
+          "title": "Label",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/link",
+          "title": "Link",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/listbox",
+          "title": "Listbox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/menu",
+          "title": "Menu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/menubar",
+          "title": "Menubar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/meter",
+          "title": "Meter",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/navigation-menu",
+          "title": "NavigationMenu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/number-input",
+          "title": "NumberInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/otp-input",
+          "title": "OTPInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/pagination",
+          "title": "Pagination",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/password-input",
+          "title": "PasswordInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/popover",
+          "title": "Popover",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/preferences",
+          "title": "Preferences",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/progress",
+          "title": "Progress",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/radio",
+          "title": "Radio",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/rating",
+          "title": "Rating",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/resizable",
+          "title": "Resizable",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/scroll-area",
+          "title": "ScrollArea",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/segmented-control",
+          "title": "SegmentedControl",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/select",
+          "title": "Select",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/separator",
+          "title": "Separator",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/slider",
+          "title": "Slider",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/switch",
+          "title": "Switch",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tabs",
+          "title": "Tabs",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/textarea",
+          "title": "Textarea",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/theme",
+          "title": "Theme",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/time-input",
+          "title": "TimeInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/timeline",
+          "title": "Timeline",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toast",
+          "title": "Toast",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toggle",
+          "title": "Toggle",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/token-input",
+          "title": "TokenInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toolbar",
+          "title": "Toolbar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tooltip",
+          "title": "Tooltip",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tree",
+          "title": "Tree",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/trigger-menu",
+          "title": "TriggerMenu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/waterfall",
+          "title": "Waterfall",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "DrawerDemo": {
       "callSites": 0,
@@ -172,7 +665,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/drawer",
+          "title": "Drawer",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "FieldDemo": {
       "callSites": 0,
@@ -180,7 +680,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/field",
+          "title": "Field",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "FileInputDemo": {
       "callSites": 0,
@@ -188,7 +695,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/file-input",
+          "title": "FileInput",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "Home": {
       "callSites": 1,
@@ -196,7 +710,20 @@
       "declaredButUnused": 0,
       "parents": ["Home"],
       "children": ["Home", "Provider"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/",
+          "title": "Hashti",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/404",
+          "title": "Not found",
+          "role": "system",
+          "storyId": null
+        }
+      ]
     },
     "HoverCardDemo": {
       "callSites": 0,
@@ -204,7 +731,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": [],
+      "pages": [
+        {
+          "path": "/docs/hover-card",
+          "title": "HoverCard",
+          "role": "public",
+          "storyId": null
+        }
+      ],
       "tokens": ["--hashti-text-secondary"]
     },
     "ImageCropperDemo": {
@@ -213,7 +747,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/image-cropper",
+          "title": "ImageCropper",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "Kbd": {
       "callSites": 0,
@@ -221,7 +762,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": [],
+      "pages": [
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        }
+      ],
       "tokens": [
         "--hashti-border-radius-04",
         "--hashti-border-strong-01",
@@ -236,7 +784,14 @@
       "declaredButUnused": 0,
       "parents": [],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/menu",
+          "title": "Menu",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "Provider": {
       "callSites": 2,
@@ -244,7 +799,374 @@
       "declaredButUnused": 0,
       "parents": ["Docs", "Home"],
       "children": [],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs",
+          "title": "Hashti",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/accordion",
+          "title": "Accordion",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/alert-dialog",
+          "title": "AlertDialog",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/autocomplete",
+          "title": "Autocomplete",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/avatar",
+          "title": "Avatar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/button",
+          "title": "Button",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/calendar",
+          "title": "Calendar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/carousel",
+          "title": "Carousel",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/checkbox",
+          "title": "Checkbox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/collapsible",
+          "title": "Collapsible",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/color-picker",
+          "title": "ColorPicker",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/combobox",
+          "title": "Combobox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/command",
+          "title": "Command",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/date-input",
+          "title": "DateInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/date-picker",
+          "title": "DatePicker",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/dialog",
+          "title": "Dialog",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/drawer",
+          "title": "Drawer",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/field",
+          "title": "Field",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/file-input",
+          "title": "FileInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/hover-card",
+          "title": "HoverCard",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/image-cropper",
+          "title": "ImageCropper",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/inline-completion",
+          "title": "Inline completion",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/input",
+          "title": "Input",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/label",
+          "title": "Label",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/link",
+          "title": "Link",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/listbox",
+          "title": "Listbox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/menu",
+          "title": "Menu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/menubar",
+          "title": "Menubar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/meter",
+          "title": "Meter",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/navigation-menu",
+          "title": "NavigationMenu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/number-input",
+          "title": "NumberInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/otp-input",
+          "title": "OTPInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/pagination",
+          "title": "Pagination",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/password-input",
+          "title": "PasswordInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/popover",
+          "title": "Popover",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/preferences",
+          "title": "Preferences",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/progress",
+          "title": "Progress",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/radio",
+          "title": "Radio",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/rating",
+          "title": "Rating",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/resizable",
+          "title": "Resizable",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/scroll-area",
+          "title": "ScrollArea",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/segmented-control",
+          "title": "SegmentedControl",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/select",
+          "title": "Select",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/separator",
+          "title": "Separator",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/slider",
+          "title": "Slider",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/switch",
+          "title": "Switch",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tabs",
+          "title": "Tabs",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/textarea",
+          "title": "Textarea",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/theme",
+          "title": "Theme",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/time-input",
+          "title": "TimeInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/timeline",
+          "title": "Timeline",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toast",
+          "title": "Toast",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toggle",
+          "title": "Toggle",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/token-input",
+          "title": "TokenInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toolbar",
+          "title": "Toolbar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tooltip",
+          "title": "Tooltip",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tree",
+          "title": "Tree",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/trigger-menu",
+          "title": "TriggerMenu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/waterfall",
+          "title": "Waterfall",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "Search": {
       "callSites": 0,
@@ -304,7 +1226,14 @@
       "category": "color",
       "count": 35,
       "components": ["Kbd"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-border-strong-02": {
       "category": "color",
@@ -322,7 +1251,14 @@
       "category": "color",
       "count": 54,
       "components": ["Badge", "PreferencesDemo", "ScrollAreaDemo"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-border-subtle-01": {
       "category": "color",
@@ -478,25 +1414,53 @@
       "category": "color",
       "count": 5,
       "components": ["Badge"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-layer-01": {
       "category": "color",
       "count": 49,
       "components": ["Kbd", "ResizableDemo"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-layer-02": {
       "category": "color",
       "count": 12,
       "components": ["Badge", "ResizableDemo"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-layer-03": {
       "category": "color",
       "count": 3,
       "components": ["CarouselDemo"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/carousel",
+          "title": "Carousel",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-layer-accent-01": {
       "category": "color",
@@ -688,25 +1652,53 @@
       "category": "color",
       "count": 15,
       "components": ["Badge"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-support-info": {
       "category": "color",
       "count": 1,
       "components": ["Badge"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-support-success": {
       "category": "color",
       "count": 10,
       "components": ["Badge"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-support-warning": {
       "category": "color",
       "count": 6,
       "components": ["Badge"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-text-disabled": {
       "category": "color",
@@ -730,19 +1722,46 @@
       "category": "color",
       "count": 3,
       "components": ["Badge"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-text-primary": {
       "category": "color",
       "count": 99,
       "components": ["Badge", "Kbd"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-text-secondary": {
       "category": "color",
       "count": 73,
       "components": ["HoverCardDemo", "NavigationMenuDemo", "PreferencesDemo"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/hover-card",
+          "title": "HoverCard",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--avatar-size": {
       "category": "other",
@@ -760,7 +1779,14 @@
       "category": "other",
       "count": 4,
       "components": ["Kbd"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-border-radius-08": {
       "category": "other",
@@ -784,7 +1810,14 @@
       "category": "other",
       "count": 12,
       "components": ["Badge"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-border-radius-recovery": {
       "category": "other",
@@ -856,13 +1889,27 @@
       "category": "other",
       "count": 1,
       "components": ["Kbd"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-popover-radius": {
       "category": "other",
       "count": 19,
       "components": ["CarouselDemo", "ScrollAreaDemo"],
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/carousel",
+          "title": "Carousel",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "--hashti-shadow-modal": {
       "category": "other",
@@ -887,7 +1934,14 @@
     "apps/docs/src/components/alert-dialog-demo.tsx": {
       "component": "AlertDialogDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/alert-dialog",
+          "title": "AlertDialog",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/pages/api/search.ts": {
       "component": "Search",
@@ -897,7 +1951,14 @@
     "apps/docs/src/components/calendar-demo.tsx": {
       "component": "CalendarDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/calendar",
+          "title": "Calendar",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/pages/[...path].ts": {
       "component": "[Path]",
@@ -907,7 +1968,14 @@
     "apps/docs/src/components/carousel-demo.tsx": {
       "component": "CarouselDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/carousel",
+          "title": "Carousel",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/navigation-menu-demo.tsx": {
       "component": "NavigationMenuDemo",
@@ -917,47 +1985,110 @@
     "apps/docs/src/components/collapsible-demo.tsx": {
       "component": "CollapsibleDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/collapsible",
+          "title": "Collapsible",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/combobox-multi-demo.tsx": {
       "component": "ComboboxMultiDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/combobox",
+          "title": "Combobox",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/field-demo.tsx": {
       "component": "FieldDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/field",
+          "title": "Field",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "packages/styles/src/badge.css": {
       "component": "Badge",
       "kind": "app",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/file-input-demo.tsx": {
       "component": "FileInputDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/file-input",
+          "title": "FileInput",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/drawer-demo.tsx": {
       "component": "DrawerDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/drawer",
+          "title": "Drawer",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/date-picker-demo.tsx": {
       "component": "DatePickerDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/date-picker",
+          "title": "DatePicker",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/hover-card-demo.tsx": {
       "component": "HoverCardDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/hover-card",
+          "title": "HoverCard",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "packages/react/src/badge/badge.tsx": {
       "component": "Badge",
       "kind": "app",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/scroll-area-demo.tsx": {
       "component": "ScrollAreaDemo",
@@ -967,17 +2098,398 @@
     "apps/docs/src/components/docs.tsx": {
       "component": "Docs",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs",
+          "title": "Hashti",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/accordion",
+          "title": "Accordion",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/alert-dialog",
+          "title": "AlertDialog",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/autocomplete",
+          "title": "Autocomplete",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/avatar",
+          "title": "Avatar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/button",
+          "title": "Button",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/calendar",
+          "title": "Calendar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/carousel",
+          "title": "Carousel",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/checkbox",
+          "title": "Checkbox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/collapsible",
+          "title": "Collapsible",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/color-picker",
+          "title": "ColorPicker",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/combobox",
+          "title": "Combobox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/command",
+          "title": "Command",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/date-input",
+          "title": "DateInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/date-picker",
+          "title": "DatePicker",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/dialog",
+          "title": "Dialog",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/drawer",
+          "title": "Drawer",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/field",
+          "title": "Field",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/file-input",
+          "title": "FileInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/hover-card",
+          "title": "HoverCard",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/image-cropper",
+          "title": "ImageCropper",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/inline-completion",
+          "title": "Inline completion",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/input",
+          "title": "Input",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/label",
+          "title": "Label",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/link",
+          "title": "Link",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/listbox",
+          "title": "Listbox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/menu",
+          "title": "Menu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/menubar",
+          "title": "Menubar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/meter",
+          "title": "Meter",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/navigation-menu",
+          "title": "NavigationMenu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/number-input",
+          "title": "NumberInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/otp-input",
+          "title": "OTPInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/pagination",
+          "title": "Pagination",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/password-input",
+          "title": "PasswordInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/popover",
+          "title": "Popover",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/preferences",
+          "title": "Preferences",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/progress",
+          "title": "Progress",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/radio",
+          "title": "Radio",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/rating",
+          "title": "Rating",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/resizable",
+          "title": "Resizable",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/scroll-area",
+          "title": "ScrollArea",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/segmented-control",
+          "title": "SegmentedControl",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/select",
+          "title": "Select",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/separator",
+          "title": "Separator",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/slider",
+          "title": "Slider",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/switch",
+          "title": "Switch",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tabs",
+          "title": "Tabs",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/textarea",
+          "title": "Textarea",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/theme",
+          "title": "Theme",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/time-input",
+          "title": "TimeInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/timeline",
+          "title": "Timeline",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toast",
+          "title": "Toast",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toggle",
+          "title": "Toggle",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/token-input",
+          "title": "TokenInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toolbar",
+          "title": "Toolbar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tooltip",
+          "title": "Tooltip",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tree",
+          "title": "Tree",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/trigger-menu",
+          "title": "TriggerMenu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/waterfall",
+          "title": "Waterfall",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/combobox-demo.tsx": {
       "component": "ComboboxDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/combobox",
+          "title": "Combobox",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/image-cropper-demo.tsx": {
       "component": "ImageCropperDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/image-cropper",
+          "title": "ImageCropper",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/resizable-demo.tsx": {
       "component": "ResizableDemo",
@@ -987,12 +2499,26 @@
     "apps/docs/src/components/dialog-demo.tsx": {
       "component": "DialogDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/dialog",
+          "title": "Dialog",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "packages/react/src/kbd/kbd.tsx": {
       "component": "Kbd",
       "kind": "app",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/preferences-demo.tsx": {
       "component": "PreferencesDemo",
@@ -1002,71 +2528,530 @@
     "apps/docs/src/components/avatar-group-demo.tsx": {
       "component": "AvatarGroupDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/avatar",
+          "title": "Avatar",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/autocomplete-demo.tsx": {
       "component": "AutocompleteDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/autocomplete",
+          "title": "Autocomplete",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/avatar-demo.tsx": {
       "component": "AvatarDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/avatar",
+          "title": "Avatar",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/badge-demo.tsx": {
       "component": "BadgeDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/date-input-demo.tsx": {
       "component": "DateInputDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/date-input",
+          "title": "DateInput",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/provider.tsx": {
       "component": "Provider",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs",
+          "title": "Hashti",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/accordion",
+          "title": "Accordion",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/alert-dialog",
+          "title": "AlertDialog",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/autocomplete",
+          "title": "Autocomplete",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/avatar",
+          "title": "Avatar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/badge",
+          "title": "Badge",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/button",
+          "title": "Button",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/calendar",
+          "title": "Calendar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/carousel",
+          "title": "Carousel",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/checkbox",
+          "title": "Checkbox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/collapsible",
+          "title": "Collapsible",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/color-picker",
+          "title": "ColorPicker",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/combobox",
+          "title": "Combobox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/command",
+          "title": "Command",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/date-input",
+          "title": "DateInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/date-picker",
+          "title": "DatePicker",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/dialog",
+          "title": "Dialog",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/drawer",
+          "title": "Drawer",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/field",
+          "title": "Field",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/file-input",
+          "title": "FileInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/hover-card",
+          "title": "HoverCard",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/image-cropper",
+          "title": "ImageCropper",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/inline-completion",
+          "title": "Inline completion",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/input",
+          "title": "Input",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/label",
+          "title": "Label",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/link",
+          "title": "Link",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/listbox",
+          "title": "Listbox",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/menu",
+          "title": "Menu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/menubar",
+          "title": "Menubar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/meter",
+          "title": "Meter",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/navigation-menu",
+          "title": "NavigationMenu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/number-input",
+          "title": "NumberInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/otp-input",
+          "title": "OTPInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/pagination",
+          "title": "Pagination",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/password-input",
+          "title": "PasswordInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/popover",
+          "title": "Popover",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/preferences",
+          "title": "Preferences",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/progress",
+          "title": "Progress",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/radio",
+          "title": "Radio",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/rating",
+          "title": "Rating",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/resizable",
+          "title": "Resizable",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/scroll-area",
+          "title": "ScrollArea",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/segmented-control",
+          "title": "SegmentedControl",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/select",
+          "title": "Select",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/separator",
+          "title": "Separator",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/slider",
+          "title": "Slider",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/switch",
+          "title": "Switch",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tabs",
+          "title": "Tabs",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/textarea",
+          "title": "Textarea",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/theme",
+          "title": "Theme",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/time-input",
+          "title": "TimeInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/timeline",
+          "title": "Timeline",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toast",
+          "title": "Toast",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toggle",
+          "title": "Toggle",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/token-input",
+          "title": "TokenInput",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/toolbar",
+          "title": "Toolbar",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tooltip",
+          "title": "Tooltip",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/tree",
+          "title": "Tree",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/trigger-menu",
+          "title": "TriggerMenu",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/docs/waterfall",
+          "title": "Waterfall",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/command-demo.tsx": {
       "component": "CommandDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/command",
+          "title": "Command",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/color-picker-demo.tsx": {
       "component": "ColorPickerDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/color-picker",
+          "title": "ColorPicker",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/accordion-demo.tsx": {
       "component": "AccordionDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/accordion",
+          "title": "Accordion",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/checkbox-demo.tsx": {
       "component": "CheckboxDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/checkbox",
+          "title": "Checkbox",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/menu-demo.tsx": {
       "component": "MenuDemo",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/menu",
+          "title": "Menu",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     },
     "apps/docs/src/components/home.tsx": {
       "component": "Home",
       "kind": "component",
-      "pages": []
+      "pages": [
+        {
+          "path": "/",
+          "title": "Hashti",
+          "role": "public",
+          "storyId": null
+        },
+        {
+          "path": "/404",
+          "title": "Not found",
+          "role": "system",
+          "storyId": null
+        }
+      ]
     },
     "packages/styles/src/kbd.css": {
       "component": "Kbd",
       "kind": "app",
-      "pages": []
+      "pages": [
+        {
+          "path": "/docs/kbd",
+          "title": "Kbd",
+          "role": "public",
+          "storyId": null
+        }
+      ]
     }
   },
   "meta": {
     "componentCount": 30,
-    "note": "Composed from component-usage.json + project-inventory.json + flows.json. Static graph \u2014 barrel/dynamic/aliased imports may under-link; verify load-bearing edges against source."
+    "note": "Component graph from sb-inventory; `pages` resolved by .storybook/scripts/extract-app-graph.mjs from the Astro/fumadocs routes (MDX imports + demo islands). Static import analysis — dynamic/aliased imports may under-link.",
+    "flowsExtractor": ".storybook/scripts/extract-app-graph.mjs",
+    "routeCount": 63
   }
 }
