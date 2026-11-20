@@ -251,6 +251,17 @@ export {
 } from "./autocomplete"
 
 export {
+  Command,
+  CommandInput,
+  CommandList,
+  CommandItem,
+  CommandGroup,
+  CommandGroupLabel,
+  CommandSeparator,
+  CommandEmpty,
+} from "./command"
+
+export {
   Combobox,
   ComboboxLabel,
   ComboboxInput,

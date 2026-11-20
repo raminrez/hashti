@@ -47,3 +47,4 @@
 @import "./src/trigger-menu.css" layer(hashti.components);
 @import "./src/combobox.css" layer(hashti.components);
 @import "./src/autocomplete.css" layer(hashti.components);
+@import "./src/command.css" layer(hashti.components);
