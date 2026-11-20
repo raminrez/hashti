@@ -32,6 +32,12 @@
   flex-direction: column;
 }
 
+/* Horizontal items get their 2.125rem height by stretching; in a column
+   flex-basis 0 collapses them, so floor them at the same height instead. */
+.hashti-segmented-control[data-orientation="vertical"] .hashti-segmented-control-item {
+  min-block-size: 2.125rem;
+}
+
 .hashti-segmented-control-indicator[data-activation-direction="none"] {
   transition: none;
 }
