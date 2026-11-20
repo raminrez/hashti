@@ -41,8 +41,10 @@ export function InlineCompletionDemo() {
 
   function onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (!rest) return;
+    const target = event.target;
     const atEnd =
-      (event.target as HTMLInputElement).selectionStart === value.length;
+      target instanceof HTMLInputElement &&
+      target.selectionStart === value.length;
     if (event.key === "Tab" || (event.key === "ArrowRight" && atEnd)) {
       event.preventDefault();
       accept();

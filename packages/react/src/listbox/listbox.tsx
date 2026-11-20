@@ -19,7 +19,8 @@ function Listbox<T = string, Multiple extends boolean | undefined = false>(
   // Cast: spreading a conditional multiple-value union into the generic root breaks inference.
   return (
     <UiListbox
-      {...(props as ListboxProps<T, false>)}
+      // oxlint-disable-next-line typescript/no-unsafe-type-assertion
+      {...(props as ListboxProps<T>)}
       className={join("hashti-listbox", props.className)}
     />
   );

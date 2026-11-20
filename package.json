@@ -16,7 +16,8 @@
       "typescript": "~7.0.2",
       "@ui-sdk/react": "^0.1.0-beta.13",
       "@ui-sdk/core": "^0.1.0-beta.13",
-      "oxlint": "1.91.0"
+      "oxlint": "^1.94.0",
+      "tsrs": "^7.1.0-beta.tsrs3"
     }
   },
   "scripts": {
@@ -30,6 +31,7 @@
     "test": "bun test"
   },
   "devDependencies": {
-    "oxlint": "catalog:"
+    "oxlint": "catalog:",
+    "tsrs": "^7.1.0-beta.tsrs3"
   }
 }

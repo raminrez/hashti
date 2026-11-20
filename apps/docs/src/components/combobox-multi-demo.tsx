@@ -39,6 +39,8 @@ export function ComboboxMultiDemo() {
         <ComboboxChips>
           <ComboboxValue>
             {(state) =>
+              // Multiple mode guarantees string values; the generic value type is unknown.
+              // oxlint-disable-next-line typescript/no-unsafe-type-assertion
               (state.value as string[]).map((value, index) => (
                 <ComboboxChip key={value} value={value}>
                   {state.labels[index]}

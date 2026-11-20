@@ -2,18 +2,34 @@
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["unicorn", "typescript", "oxc", "react", "jsx-a11y"],
   "categories": {
-    "correctness": "error"
+    "correctness": "error",
+    "suspicious": "error"
   },
   "rules": {
-    "eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+    "eslint/no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true
+      }
+    ],
     "react/rules-of-hooks": "error",
     "jsx-a11y/anchor-has-content": "off",
     "jsx-a11y/no-noninteractive-tabindex": [
       "error",
-      { "tags": ["pre"], "roles": ["tabpanel", "region"] }
+      {
+        "tags": ["pre"],
+        "roles": ["tabpanel", "region"]
+      }
     ],
-    "jsx-a11y/no-redundant-roles": ["error", { "table": ["table"] }],
-    "jsx-a11y/prefer-tag-over-role": "off"
+    "jsx-a11y/no-redundant-roles": [
+      "error",
+      {
+        "table": ["table"]
+      }
+    ],
+    "jsx-a11y/prefer-tag-over-role": "off",
+    "react/react-in-jsx-scope": "off",
+    "typescript/restrict-template-expressions": "off"
   },
   "settings": {
     "jsx-a11y": {
@@ -32,7 +48,10 @@
     }
   },
   "options": {
-    "maxWarnings": 0
+    "maxWarnings": 0,
+    "typeAware": true,
+    "typeCheck": true,
+    "reportUnusedDisableDirectives": "error"
   },
   "ignorePatterns": [
     "**/node_modules/**",

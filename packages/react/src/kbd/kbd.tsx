@@ -74,6 +74,7 @@ export function Kbd({ keys, children, className, ref, ...props }: KbdProps) {
   const [isMac] = useState(() => {
     if (typeof navigator !== "undefined") {
       const platform =
+        // oxlint-disable-next-line typescript/no-unsafe-type-assertion
         (navigator as unknown as { userAgentData?: { platform?: string } })
           .userAgentData?.platform ??
         navigator.platform ??

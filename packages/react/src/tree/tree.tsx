@@ -31,6 +31,8 @@ function hasGroup(
     (child) =>
       isValidElement(child) &&
       (child.type === TreeGroup ||
+        // React 19 types props as unknown; every valid child here is a TreeGroup or a row.
+        // oxlint-disable-next-line typescript/no-unsafe-type-assertion
         hasGroup((child.props as { children?: ReactNode }).children)),
   );
 }
