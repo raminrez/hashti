@@ -1,0 +1,21 @@
+---
+title: Combobox
+description: Picks an option from a filterable list.
+---
+
+import { ComboboxDemo } from '../../src/components/combobox-demo'
+
+## Usage
+
+<ComboboxDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Combobox` | Owns the value and filtering. |
+| `ComboboxInput` | The editable field. |
+| `ComboboxContent` / `ComboboxList` | The anchored popup. |
+| `ComboboxItem` | One option. |
+
+Styling lives in `@hashti/styles` under `.hashti-combobox*` — a field input with Select's popup surface and items.
