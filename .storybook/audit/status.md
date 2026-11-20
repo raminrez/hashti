@@ -14,5 +14,5 @@ storiesLocation: colocated
 - [x] `sb-flows` — next.
 - [x] `sb-stories` — batch A (16 core) + batch B (16 more), 32 total
 - [x] `sb-wrappers` — ProjectInventory / DesignSystemHealth / AppFlowGraph / JourneyGraph scaffolded
-- [ ] `sb-audit` — next
+- [x] `sb-audit` — drift/controls/app-graph survey clean; periodic gate ready
 - [ ] `sb-audit`

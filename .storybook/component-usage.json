@@ -18,7 +18,7 @@
   },
   "pages": {},
   "meta": {
-    "generatedAt": "2026-11-20T22:59:08+03:30",
+    "generatedAt": "2026-11-21T02:13:57+03:30",
     "componentsScanned": 98,
     "componentsUsed": 2,
     "note": "static call-site analysis; {...spread}/dynamic values counted as exprCount, not resolved"
