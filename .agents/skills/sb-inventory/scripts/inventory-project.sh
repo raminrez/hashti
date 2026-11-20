@@ -200,7 +200,8 @@ while IFS= read -r file; do
   # Sibling files within the same directory DO count as usage (typical for
   # composite components: course-builder/<file> imported by course-builder/<other>).
   importers=$(grep -rlE "from[[:space:]]+['\"][^'\"]*${name}(\.tsx?)?['\"]" \
-    "${SCAN_PATHS[@]}" --include="*.ts" --include="*.tsx" 2>/dev/null \
+    "${SCAN_PATHS[@]}" --include="*.ts" --include="*.tsx" \
+    --include="*.mdx" --include="*.astro" 2>/dev/null \
     | grep -vF "$file" \
     | grep -v "\.stories\.\|\.test\.\|\.spec\." \
     | wc -l | tr -d ' ')

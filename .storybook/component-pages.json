@@ -1,0 +1,1072 @@
+{
+  "generatedAt": "2026-11-20T19:29:20Z",
+  "components": {
+    "AccordionDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "AlertDialogDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "AutocompleteDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "AvatarDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "AvatarGroupDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "Badge": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": [],
+      "tokens": [
+        "--hashti-border-radius-max",
+        "--hashti-border-subtle-00",
+        "--hashti-interactive",
+        "--hashti-layer-02",
+        "--hashti-support-error",
+        "--hashti-support-info",
+        "--hashti-support-success",
+        "--hashti-support-warning",
+        "--hashti-text-on-color",
+        "--hashti-text-primary"
+      ]
+    },
+    "BadgeDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "CalendarDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "CarouselDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": [],
+      "tokens": ["--hashti-layer-03", "--hashti-popover-radius"]
+    },
+    "CheckboxDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "CollapsibleDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "ColorPickerDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "ComboboxDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "ComboboxMultiDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "CommandDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "DateInputDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "DatePickerDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "DialogDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "Docs": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": ["Provider"],
+      "pages": []
+    },
+    "DrawerDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "FieldDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "FileInputDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "Home": {
+      "callSites": 1,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": ["Home"],
+      "children": ["Home", "Provider"],
+      "pages": []
+    },
+    "HoverCardDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": [],
+      "tokens": ["--hashti-text-secondary"]
+    },
+    "ImageCropperDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "Kbd": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": [],
+      "tokens": [
+        "--hashti-border-radius-04",
+        "--hashti-border-strong-01",
+        "--hashti-label-01-font-size",
+        "--hashti-layer-01",
+        "--hashti-text-primary"
+      ]
+    },
+    "MenuDemo": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "Provider": {
+      "callSites": 2,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": ["Docs", "Home"],
+      "children": [],
+      "pages": []
+    },
+    "Search": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    },
+    "[Path]": {
+      "callSites": 0,
+      "props": 0,
+      "declaredButUnused": 0,
+      "parents": [],
+      "children": [],
+      "pages": []
+    }
+  },
+  "tokens": {
+    "--hashti-background": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-background-hover": {
+      "category": "color",
+      "count": 49,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-background-inverse": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-background-selected": {
+      "category": "color",
+      "count": 15,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-background-selected-hover": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-disabled": {
+      "category": "color",
+      "count": 22,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-strong-01": {
+      "category": "color",
+      "count": 35,
+      "components": ["Kbd"],
+      "pages": []
+    },
+    "--hashti-border-strong-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-strong-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-subtle-00": {
+      "category": "color",
+      "count": 54,
+      "components": ["Badge", "PreferencesDemo", "ScrollAreaDemo"],
+      "pages": []
+    },
+    "--hashti-border-subtle-01": {
+      "category": "color",
+      "count": 2,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-subtle-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-subtle-selected-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-subtle-selected-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-subtle-selected-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-tile-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-tile-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-tile-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-button-danger-hover": {
+      "category": "color",
+      "count": 2,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-button-danger-primary": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-button-danger-secondary": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-button-disabled": {
+      "category": "color",
+      "count": 20,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-button-primary": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-button-primary-hover": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-button-secondary": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-button-secondary-hover": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-button-tertiary-hover": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-field-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-field-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-field-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-field-hover-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-field-hover-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-field-hover-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-focus": {
+      "category": "color",
+      "count": 91,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-icon-on-color": {
+      "category": "color",
+      "count": 3,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-interactive": {
+      "category": "color",
+      "count": 5,
+      "components": ["Badge"],
+      "pages": []
+    },
+    "--hashti-layer-01": {
+      "category": "color",
+      "count": 49,
+      "components": ["Kbd", "ResizableDemo"],
+      "pages": []
+    },
+    "--hashti-layer-02": {
+      "category": "color",
+      "count": 12,
+      "components": ["Badge", "ResizableDemo"],
+      "pages": []
+    },
+    "--hashti-layer-03": {
+      "category": "color",
+      "count": 3,
+      "components": ["CarouselDemo"],
+      "pages": []
+    },
+    "--hashti-layer-accent-01": {
+      "category": "color",
+      "count": 6,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-accent-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-accent-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-accent-active-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-accent-active-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-accent-active-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-accent-hover-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-accent-hover-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-accent-hover-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-active-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-active-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-active-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-background-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-background-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-background-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-hover-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-hover-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-hover-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-selected-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-selected-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-selected-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-selected-hover-01": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-selected-hover-02": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-layer-selected-hover-03": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-link-primary": {
+      "category": "color",
+      "count": 2,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-link-visited": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-notification-background-error": {
+      "category": "color",
+      "count": 3,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-notification-background-success": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-notification-background-warning": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-overlay": {
+      "category": "color",
+      "count": 4,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-shadow": {
+      "category": "color",
+      "count": 3,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-support-error": {
+      "category": "color",
+      "count": 15,
+      "components": ["Badge"],
+      "pages": []
+    },
+    "--hashti-support-info": {
+      "category": "color",
+      "count": 1,
+      "components": ["Badge"],
+      "pages": []
+    },
+    "--hashti-support-success": {
+      "category": "color",
+      "count": 10,
+      "components": ["Badge"],
+      "pages": []
+    },
+    "--hashti-support-warning": {
+      "category": "color",
+      "count": 6,
+      "components": ["Badge"],
+      "pages": []
+    },
+    "--hashti-text-disabled": {
+      "category": "color",
+      "count": 63,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-text-error": {
+      "category": "color",
+      "count": 5,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-text-inverse": {
+      "category": "color",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-text-on-color": {
+      "category": "color",
+      "count": 3,
+      "components": ["Badge"],
+      "pages": []
+    },
+    "--hashti-text-primary": {
+      "category": "color",
+      "count": 99,
+      "components": ["Badge", "Kbd"],
+      "pages": []
+    },
+    "--hashti-text-secondary": {
+      "category": "color",
+      "count": 73,
+      "components": ["HoverCardDemo", "NavigationMenuDemo", "PreferencesDemo"],
+      "pages": []
+    },
+    "--avatar-size": {
+      "category": "other",
+      "count": 7,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-body-compact-01-font-size": {
+      "category": "other",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-radius-04": {
+      "category": "other",
+      "count": 4,
+      "components": ["Kbd"],
+      "pages": []
+    },
+    "--hashti-border-radius-08": {
+      "category": "other",
+      "count": 37,
+      "components": ["PreferencesDemo"],
+      "pages": []
+    },
+    "--hashti-border-radius-16": {
+      "category": "other",
+      "count": 8,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-radius-mark": {
+      "category": "other",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-border-radius-max": {
+      "category": "other",
+      "count": 12,
+      "components": ["Badge"],
+      "pages": []
+    },
+    "--hashti-border-radius-recovery": {
+      "category": "other",
+      "count": 4,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-control-radius": {
+      "category": "other",
+      "count": 52,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-duration-fast-01": {
+      "category": "other",
+      "count": 42,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-duration-fast-02": {
+      "category": "other",
+      "count": 31,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-duration-moderate-01": {
+      "category": "other",
+      "count": 17,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-duration-moderate-02": {
+      "category": "other",
+      "count": 9,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-duration-slow-02": {
+      "category": "other",
+      "count": 1,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-ease-entrance": {
+      "category": "other",
+      "count": 91,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-ease-press": {
+      "category": "other",
+      "count": 3,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-focus-offset": {
+      "category": "other",
+      "count": 3,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-focus-width": {
+      "category": "other",
+      "count": 3,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-label-01-font-size": {
+      "category": "other",
+      "count": 1,
+      "components": ["Kbd"],
+      "pages": []
+    },
+    "--hashti-popover-radius": {
+      "category": "other",
+      "count": 19,
+      "components": ["CarouselDemo", "ScrollAreaDemo"],
+      "pages": []
+    },
+    "--hashti-shadow-modal": {
+      "category": "other",
+      "count": 4,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-shadow-popover": {
+      "category": "other",
+      "count": 11,
+      "components": [],
+      "pages": []
+    },
+    "--hashti-waterfall-columns": {
+      "category": "other",
+      "count": 2,
+      "components": [],
+      "pages": []
+    }
+  },
+  "fileIndex": {
+    "apps/docs/src/components/alert-dialog-demo.tsx": {
+      "component": "AlertDialogDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/pages/api/search.ts": {
+      "component": "Search",
+      "kind": "page",
+      "pages": []
+    },
+    "apps/docs/src/components/calendar-demo.tsx": {
+      "component": "CalendarDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/pages/[...path].ts": {
+      "component": "[Path]",
+      "kind": "page",
+      "pages": []
+    },
+    "apps/docs/src/components/carousel-demo.tsx": {
+      "component": "CarouselDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/navigation-menu-demo.tsx": {
+      "component": "NavigationMenuDemo",
+      "kind": "primitive",
+      "pages": []
+    },
+    "apps/docs/src/components/collapsible-demo.tsx": {
+      "component": "CollapsibleDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/combobox-multi-demo.tsx": {
+      "component": "ComboboxMultiDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/field-demo.tsx": {
+      "component": "FieldDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "packages/styles/src/badge.css": {
+      "component": "Badge",
+      "kind": "app",
+      "pages": []
+    },
+    "apps/docs/src/components/file-input-demo.tsx": {
+      "component": "FileInputDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/drawer-demo.tsx": {
+      "component": "DrawerDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/date-picker-demo.tsx": {
+      "component": "DatePickerDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/hover-card-demo.tsx": {
+      "component": "HoverCardDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "packages/react/src/badge/badge.tsx": {
+      "component": "Badge",
+      "kind": "app",
+      "pages": []
+    },
+    "apps/docs/src/components/scroll-area-demo.tsx": {
+      "component": "ScrollAreaDemo",
+      "kind": "primitive",
+      "pages": []
+    },
+    "apps/docs/src/components/docs.tsx": {
+      "component": "Docs",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/combobox-demo.tsx": {
+      "component": "ComboboxDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/image-cropper-demo.tsx": {
+      "component": "ImageCropperDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/resizable-demo.tsx": {
+      "component": "ResizableDemo",
+      "kind": "primitive",
+      "pages": []
+    },
+    "apps/docs/src/components/dialog-demo.tsx": {
+      "component": "DialogDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "packages/react/src/kbd/kbd.tsx": {
+      "component": "Kbd",
+      "kind": "app",
+      "pages": []
+    },
+    "apps/docs/src/components/preferences-demo.tsx": {
+      "component": "PreferencesDemo",
+      "kind": "primitive",
+      "pages": []
+    },
+    "apps/docs/src/components/avatar-group-demo.tsx": {
+      "component": "AvatarGroupDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/autocomplete-demo.tsx": {
+      "component": "AutocompleteDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/avatar-demo.tsx": {
+      "component": "AvatarDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/badge-demo.tsx": {
+      "component": "BadgeDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/date-input-demo.tsx": {
+      "component": "DateInputDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/provider.tsx": {
+      "component": "Provider",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/command-demo.tsx": {
+      "component": "CommandDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/color-picker-demo.tsx": {
+      "component": "ColorPickerDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/accordion-demo.tsx": {
+      "component": "AccordionDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/checkbox-demo.tsx": {
+      "component": "CheckboxDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/menu-demo.tsx": {
+      "component": "MenuDemo",
+      "kind": "component",
+      "pages": []
+    },
+    "apps/docs/src/components/home.tsx": {
+      "component": "Home",
+      "kind": "component",
+      "pages": []
+    },
+    "packages/styles/src/kbd.css": {
+      "component": "Kbd",
+      "kind": "app",
+      "pages": []
+    }
+  },
+  "meta": {
+    "componentCount": 30,
+    "note": "Composed from component-usage.json + project-inventory.json + flows.json. Static graph \u2014 barrel/dynamic/aliased imports may under-link; verify load-bearing edges against source."
+  }
+}

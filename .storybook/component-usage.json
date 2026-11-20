@@ -1,0 +1,26 @@
+{
+  "components": {
+    "Home": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/home.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Provider": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/docs.tsx",
+        "apps/docs/src/components/home.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    }
+  },
+  "pages": {},
+  "meta": {
+    "generatedAt": "2026-11-20T22:59:08+03:30",
+    "componentsScanned": 98,
+    "componentsUsed": 2,
+    "note": "static call-site analysis; {...spread}/dynamic values counted as exprCount, not resolved"
+  }
+}
