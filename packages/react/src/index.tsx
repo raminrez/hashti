@@ -419,3 +419,5 @@ export {
   createPreference,
   createSessionStorage,
 } from "./preferences";
+
+export { Theme, useOverlayTheme } from "./theme";
