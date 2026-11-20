@@ -1,0 +1,14 @@
+---
+title: TokenInput
+description: Turns typed text into removable tokens.
+---
+
+import { TokenInputDemo } from '../../src/components/token-input-demo'
+
+## Usage
+
+<TokenInputDemo client:load />
+
+## Notes
+
+Compose with TriggerMenu as a sibling of the editor: type `@` to open the suggest popup, pick, and the value becomes a token. `renderToken` builds each token's markup with `TokenInputToken` and `TokenInputTokenRemove`.

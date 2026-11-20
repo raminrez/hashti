@@ -1,0 +1,88 @@
+/* The editor is the field and carries the control chrome. */
+.hashti-token-input-editor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  min-block-size: 2.75rem;
+  padding: 0.3125rem 0.5rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-01);
+  color: var(--hashti-text-primary);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The editor is the focusable element itself; :has covers a focused token part. */
+.hashti-token-input-editor:focus-visible,
+.hashti-token-input-editor:has(:focus-visible) {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+/* The editor owns its content, so the placeholder is its own pseudo-element. */
+.hashti-token-input-editor[data-empty]::before {
+  content: attr(aria-placeholder);
+  color: var(--hashti-text-secondary);
+}
+
+.hashti-token-input-editor[data-disabled] {
+  border-color: var(--hashti-border-disabled);
+  background: var(--hashti-button-disabled);
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-token-input-token {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--hashti-border-radius-08);
+  background: var(--hashti-background-selected);
+  color: var(--hashti-focus);
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.hashti-token-input-token[data-selected] {
+  background: var(--hashti-background-selected-hover);
+}
+
+.hashti-token-input-token[data-pending] {
+  color: var(--hashti-text-disabled);
+}
+
+.hashti-token-input-token[data-unresolved] {
+  border: 1px dashed var(--hashti-support-warning);
+}
+
+.hashti-token-input-token-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.125rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--hashti-border-radius-04);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.hashti-token-input-token-remove:hover {
+  background: var(--hashti-background-hover);
+}
+
+.hashti-token-input-token-remove:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-token-input-token-remove[data-disabled] {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
