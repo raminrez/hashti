@@ -11,7 +11,7 @@ Figma last**.
 
 | Artifact                                                    | Responsibility                                                             |
 | ----------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [PRODUCT.md](../PRODUCT.md)                                 | People, goals, constraints, and selected direction                         |
+| [PRODUCT.md](PRODUCT.md)                                    | People, goals, constraints, and selected direction                         |
 | [DESIGN.md](../DESIGN.md)                                   | Frame's visual language and measured values                                |
 | This specification                                          | Component, interaction, content, inclusion, and customization requirements |
 | [Library plan](component-library-plan.md)                   | Dependencies, implementation order, acceptance conditions, and migration   |

@@ -199,7 +199,7 @@ consistent relationships between type, borders, spacing, and corners.
 - Presses answer with ink and a slight scale, never with delayed feedback.
 
 **Authority and scope · 19 November 2026.** Frame is the selected direction in
-[PRODUCT.md](PRODUCT.md). The authored values live in
+[PRODUCT.md](design/PRODUCT.md). The authored values live in
 [`packages/tokens/src/frame.ts`](packages/tokens/src/frame.ts), with their
 [public mapping](packages/tokens/README.md); the reusable appearance lives in
 [`packages/react/src/frame.css`](packages/react/src/frame.css), scoped

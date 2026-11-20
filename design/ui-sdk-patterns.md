@@ -5,7 +5,7 @@ The bridge between `design/` (Hashti) and the installed `@ui-sdk/react` /
 library: every behavior below is either a ui-sdk API quoted from
 `node_modules/@ui-sdk/react/docs/`, or work Hashti owns.
 
-Read with: `design/DESIGN.md` (visual authority), `design/design-system.md`
+Read with: `DESIGN.md` (repo root, visual authority), `design/design-system.md`
 (interaction contracts), `design/css-conventions.md` (CSS shape),
 `node_modules/@ui-sdk/react/docs/llms.txt` (ui-sdk ground truth).
 
