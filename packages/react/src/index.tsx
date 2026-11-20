@@ -239,3 +239,12 @@ export {
   TriggerMenuItem,
   TriggerMenuEmpty,
 } from "./trigger-menu"
+
+export {
+  Combobox,
+  ComboboxLabel,
+  ComboboxInput,
+  ComboboxContent,
+  ComboboxList,
+  ComboboxItem,
+} from "./combobox"
