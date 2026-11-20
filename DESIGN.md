@@ -229,6 +229,16 @@ CSS variable names. Each light role has a separately authored dark counterpart.
 Every role maps to a public `--hashti-*` token in
 [`design/tokens.css`](design/tokens.css).
 
+**Contrast policy · 20 November 2026.** Every foreground/background pair the
+stylesheets actually compose must pass WCAG 2.x AA and the APCA
+recommendation for its role (body text Lc ≥ 75, content text Lc ≥ 60,
+non-text UI Lc ≥ 30). The pairs are audited by
+`bun run contrast` (`design-system/scripts/contrast-audit.mjs`), which parses
+both theme blocks of `tokens.css` and fails on any regression — run it after
+any token value change. The methodology follows the
+[Harmony palette](https://github.com/evilmartians/harmony): equal contrast per
+role, mirrored light/dark pairs; the palette itself stays Hashti-authored.
+
 ### Primary
 
 **Ink action** is the filled primary control in light mode. **Light action**

@@ -38,17 +38,19 @@
     "lint:css": "stylelint \"packages/styles/**/*.css\"",
     "deadcode": "knip",
     "duplicates": "jscpd && jscpd --config .jscpd.markup.json",
+    "contrast": "node design-system/scripts/contrast-audit.mjs",
     "duplicates:new": "jscpd --baseline-from-ref dev --fail-on-new-clones && jscpd --config .jscpd.markup.json --baseline-from-ref dev --fail-on-new-clones",
     "react-doctor": "npx -y --min-release-age=7 react-doctor@latest --no-telemetry --no-supply-chain",
     "prepare": "lefthook install"
   },
   "devDependencies": {
+    "apca-w3": "^0.1.9",
+    "jscpd": "catalog:",
+    "knip": "catalog:",
     "lefthook": "catalog:",
     "oxlint": "catalog:",
     "stylelint": "catalog:",
     "stylelint-config-standard": "catalog:",
-    "tsrs": "catalog:",
-    "knip": "catalog:",
-    "jscpd": "catalog:"
+    "tsrs": "catalog:"
   }
 }

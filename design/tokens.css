@@ -1,8 +1,9 @@
 /* Hashti design tokens.
- * Regenerate with: bun run build:tokens
  *
  * One theme, three modes: light (the :root default), dark, and system
  * (follows prefers-color-scheme until an explicit data-theme wins).
+ * Values are hand-authored; `bun run contrast` audits every
+ * foreground/background pair the stylesheets compose.
  */
 @layer hashti.tokens {
   :root {
@@ -629,8 +630,8 @@
     --hashti-button-danger-secondary: #ffacb3;
     --hashti-button-disabled: #2c2f38;
     --hashti-button-primary: #f1f2f6;
-    --hashti-button-primary-active: #b6bfd2;
-    --hashti-button-primary-hover: #d2d7e4;
+    --hashti-button-primary-active: #ccd2df;
+    --hashti-button-primary-hover: #d6dae3;
     --hashti-button-secondary: #2c2f38;
     --hashti-button-secondary-active: #515765;
     --hashti-button-secondary-hover: #3e424d;
@@ -888,7 +889,7 @@
     --hashti-tag-hover-teal: #007070;
     --hashti-tag-hover-warm-gray: #696363;
     --hashti-text-disabled: #7d8493;
-    --hashti-text-error: #ffacb3;
+    --hashti-text-error: #ffc9cd;
     --hashti-text-helper: #b1b6c3;
     --hashti-text-inverse: #22242a;
     --hashti-text-on-color: #22242a;
@@ -995,8 +996,8 @@
       --hashti-button-danger-secondary: #ffacb3;
       --hashti-button-disabled: #2c2f38;
       --hashti-button-primary: #f1f2f6;
-      --hashti-button-primary-active: #b6bfd2;
-      --hashti-button-primary-hover: #d2d7e4;
+      --hashti-button-primary-active: #ccd2df;
+      --hashti-button-primary-hover: #d6dae3;
       --hashti-button-secondary: #2c2f38;
       --hashti-button-secondary-active: #515765;
       --hashti-button-secondary-hover: #3e424d;
@@ -1254,7 +1255,7 @@
       --hashti-tag-hover-teal: #007070;
       --hashti-tag-hover-warm-gray: #696363;
       --hashti-text-disabled: #7d8493;
-      --hashti-text-error: #ffacb3;
+      --hashti-text-error: #ffc9cd;
       --hashti-text-helper: #b1b6c3;
       --hashti-text-inverse: #22242a;
       --hashti-text-on-color: #22242a;
