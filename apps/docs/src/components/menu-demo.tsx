@@ -90,7 +90,10 @@ export function MenuDemo() {
             <CheckGlyph />
           </MenuItemIndicator>
           Status bar
-        </MenuCheckboxItem>        <MenuCheckboxItem value="minimap">
+        </MenuCheckboxItem>
+        <MenuItem value="find" shortcut="mod+f">
+          Find…
+        </MenuItem>        <MenuCheckboxItem value="minimap">
           <MenuItemIndicator keepMounted>
             <CheckGlyph />
           </MenuItemIndicator>
