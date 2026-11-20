@@ -16,7 +16,12 @@ pre-commit:
         parallel: true
         jobs:
           - name: oxlint
+            # Vendored skill assets are oxlint-ignored; passing them anyway
+            # makes oxlint exit 1 ("no files to lint").
             glob: "*.{js,cjs,mjs,ts,tsx,jsx}"
+            exclude:
+              - .agents/**
+              - .claude/**
             run: bunx oxlint {staged_files}
           - name: stylelint
             glob: "*.css"

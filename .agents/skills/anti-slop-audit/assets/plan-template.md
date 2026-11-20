@@ -1,0 +1,78 @@
+# Anti-slop plan: <project>
+
+Audited <YYYY-MM-DD> with the anti-slop-audit skill, based on [Yuri Mikhin](https://github.com/mikhin)'s [10 anti-AI slop moves for frontend projects going faster than humans can review](https://evilmartians.com/chronicles/ten-anti-ai-slop-moves-for-frontend-projects-going-faster-than-humans-can-review). The numbers below come from that run. Each rollout step measures again before it starts. The steps themselves are in [todo.md](todo.md).
+
+## Fit
+
+<Two to four sentences. How long the code will live, who reads it, what a bug costs, and so how much of this the project needs.>
+
+## Stack
+
+<One line per dimension of moves.md's stack table, as the probe found it: framework, language, linter, unit tests, e2e, API, package manager, git hooks, agents, CI. Rollout steps pick their tools from here.>
+
+## Variants
+
+The four choices from moves.md, **Variants**. Rollout steps follow the side chosen here. <Drop the rows that don't apply.>
+
+| Point                        | Chosen                                                                                        | Why, in this repo's numbers |
+| ---------------------------- | --------------------------------------------------------------------------------------------- | --------------------------- |
+| Lint backlog                 | <gradual: warnings on changed files, old code as-is / cleanup: fixed to zero, no `warn` left> |                             |
+| Mutation testing in CI       | <required, no threshold / report-only>                                                        |                             |
+| `exactOptionalPropertyTypes` | <always on / count-gated>                                                                     |                             |
+| react-doctor                 | <report: command and scheduled run / gated: errors block>                                     |                             |
+
+<Option 1 is the default; mark a row the team hasn't confirmed.>
+
+## Assumptions
+
+<Anything the audit couldn't confirm from the repo and nobody was around to answer: branch protection, a rule disabled on purpose, whether a hook runs for every agent. One line each, so the team can correct them before step 1.>
+
+## Where the project stands
+
+One line per cell: the headline number and the verdict. Details go in the notes below.
+
+| #   | Move                        | Status | Measured | Verdict |
+| --- | --------------------------- | ------ | -------- | ------- |
+| 1   | API contract                |        |          |         |
+| 2   | Strict TypeScript           |        |          |         |
+| 3   | Linter as a behavior filter |        |          |         |
+| 4   | Layer boundaries            |        |          |         |
+| 5   | Scar rules                  |        |          |         |
+| 6   | Rules in front of the model |        |          |         |
+| 7   | Mutation testing            |        |          |         |
+| 8   | Dead code                   |        |          |         |
+| 9   | Duplicates                  |        |          |         |
+| 10  | CI gate                     |        |          |         |
+| +   | react-doctor                |        |          |         |
+
+<Then a short section per move that needs one: what adopting it would catch here, what it costs, which false positives were removed and how, what was verified by hand, and what would change a skip.>
+
+<In move 3's section, one line: the oxlint the probe ran and the one installed in the project (`lint.oxlint`). When the installed one is older, the lint step runs the plugins on it before wiring.>
+
+<Also in move 3's section: every rule the project's lint config already sets to `warn`, each with the step that promotes it or why it's skipped.>
+
+## When checks run
+
+Seconds are from the audit run; CI-only jobs (e2e) from recent CI runs. Each rollout step wires its check where this table puts it, times it again with the installed tool, and moves it to the next moment if it's now over budget.
+
+| Moment                                         | Budget                 | Checks (seconds here) |
+| ---------------------------------------------- | ---------------------- | --------------------- |
+| Agent turn: after-turn hook (<agents covered>) | ~30 s total            |                       |
+| Pre-commit                                     | ~10 s                  |                       |
+| <PR CI, or push CI and why>                    | <slowest existing job> |                       |
+| Scheduled: <weekly or monthly>, read by <who>  | none                   | <or "none: why">      |
+| Re-audit                                       |                        | <when>                |
+
+## Scar rule candidates
+
+| Incident or measured cost                                      | What the rule matches | Hits now (grep: an upper bound) | Message (what failed, why, what instead) |
+| -------------------------------------------------------------- | --------------------- | ------------------------------- | ---------------------------------------- |
+| <commit sha, doc line, or the cost a default override cancels> |                       |                                 |                                          |
+
+## Skipped
+
+- **<Move>:** <reason>. Revisit when <condition>.
+
+## Log
+
+<Rollout steps append here: date, step, branch or PR, numbers before → after, and anything that changed the plan.>

@@ -1,0 +1,159 @@
+{
+  "version": 2,
+  "skills": {
+    "anti-slop-audit": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "4cb480f107bb56e76f76ce45d645723eddc313bd2d5295517eaaf2b3c76bbbae",
+      "wellKnownDigest": "sha256:44e8cfea48d8bb0e18834c42191de1a89e68ce4b21b023153f783a5cf616cfee"
+    },
+    "anti-slop-rollout": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "d2884d5f653869268e37e6f90d3a6bf9bacdbb542a017f9e1e5d475d4e0ae057",
+      "wellKnownDigest": "sha256:a277b967645f2bb9d7f87daf1dbfe5d0ad6b7c2176f8eac40aa8458dd6e8ac77"
+    },
+    "design-system": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "02e154b3d9d2d9656a39ab7b051eabf184bd82fceff3b850f98e0df7c6239b5d",
+      "wellKnownDigest": "sha256:6b334245d059524178e421c519ddc7ce0f733ad201d39dc628fd36e751abd8bf"
+    },
+    "good-readme": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "d44286925cd572f1a009ba54e6d4c33821028a67aede20c152234319fc37863a",
+      "wellKnownDigest": "sha256:bc1b83a4d6981a3d6ecbbc7937cfc8af7b27a744fe1496ebe7ad913ba522a689"
+    },
+    "intent-log": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "4a2605d6e82b1be90e48e0510d30319973b0552c4dbb63abfd0109e1fceb9bc3",
+      "wellKnownDigest": "sha256:1c801cb8de051f1b8d5d0882ed1df5fab41aab353a58fa1a4d011ee7ca27579d"
+    },
+    "llms-visibility": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "93f303064323c2da9e1d46b9a913cdc9194f65eb27b99e9ed78ee72dac2d6add",
+      "wellKnownDigest": "sha256:e9f5b007bff5a80f16bd62b117bd7970f2f03066e54246e10a57cc2508dc3fa7"
+    },
+    "nanotags-components": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "4ee8e4c470dd75e764d15ddba712f7bf48d51f82f1270f1162524ece612f9b65",
+      "wellKnownDigest": "sha256:5c11fa8f2f19b711712572f0d8d6f4d663aa3bfd9e4b47181b717ec91ee3ac6c"
+    },
+    "sb-audit": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "491f70a464716223e3d17635dc006ec2b098226776ce3be6e703fc3533e58a2c",
+      "wellKnownDigest": "sha256:b6d146a73ed1990eaf38208d935398187cd60a42f499d99bcdefecb2573555aa"
+    },
+    "sb-explore": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "dae595efbabd38cb8e939c70d3cd936885fc378f8ed5d1ea953d521f2b5fad09",
+      "wellKnownDigest": "sha256:b553e4dc261e8317049f59c370a2c67f9714f5985715b7dd63c57cbc685202b5"
+    },
+    "sb-figma": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "52286e934f1d6942f994b53526dc3da7763ed7f8006cb0ebeee7e164d7bc7de4",
+      "wellKnownDigest": "sha256:2ee69c110057ff784ef232a9705521f13d821bd9b988a72fe5c8d142de5b9fd5"
+    },
+    "sb-flows": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "14daa8d6d1059c6e25cf044d44dac5d258fd64ebedf16c96877df0fbddc7a784",
+      "wellKnownDigest": "sha256:93dfb0226da845221b7e4fb82f61d4e5b2c33c6ab7179f083c9be2345bf0e522"
+    },
+    "sb-health": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "353992b92636fb1dff43c97eb43093ed8fa59a54bb51d5e12b0e0cfb0832d2a2",
+      "wellKnownDigest": "sha256:6a9d029c445587a67a1d308d39b7f9d96ec3a6fc68087f8b350548f844ef7131"
+    },
+    "sb-hub": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "8f3c4ff00627dcd195761f0860d808b1ffc07c1e3453d25e1a6733d21d80b943",
+      "wellKnownDigest": "sha256:c8f3a951f01b8be9878b859853882fb8cc1c11ec2cd2c7991500f3eda7d9c78e"
+    },
+    "sb-inventory": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "a085114f9d10e2b4de3623aa709d4f12cc424180add92851e1439c63b1c468c6",
+      "wellKnownDigest": "sha256:4c5760aaf3d1786a2d53184a7ece6cac99307dba316536799973a1386bf4f031"
+    },
+    "sb-setup": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "9f1feb537db86355618a92cb7f1d8dbf9ba600ef35e55bf82d858049d99eec32",
+      "wellKnownDigest": "sha256:13ac4e68eef5ea8e83a25ec3b3eb7c70ddf398420eb66ce4539c8d4764e6b24a"
+    },
+    "sb-ship": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "f21c424cf11656fb5b3cfdaaae4ef5c7e752f1e435bb4ee03833d4c1f2a509a0",
+      "wellKnownDigest": "sha256:0184d3703602fff990926b45657cf22b2495b68a1a4535603a917c291d5f1c7a"
+    },
+    "sb-stories": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "39705f96cafcb0a67d67fd0b37d4c8f5ebbed27127d7b0991d37410223a649db",
+      "wellKnownDigest": "sha256:06ae35c42582a72e68c0fe153e7836c458d10f31d75098f71f694a921e5f245d"
+    },
+    "sb-wrappers": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "a043012f40a9c70d5680e3de6b7407ac1f62523828d9cdf9979a06193b1a589c",
+      "wellKnownDigest": "sha256:25cd36dbf8f08b962f7ace166fe66302acae8285700d9167a803ccf2eb315253"
+    },
+    "secure-npm-package": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "684e160d1faef694b396e372fc80f9c2d7be2e0dadeebd62524a6bd05f53bf5d",
+      "wellKnownDigest": "sha256:be13b3eca87450497cbfe98a8bf0dcd6bcde2930fed5a0f30724abd56f485fa7"
+    },
+    "skills-visibility": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "f2eb704bc389224752781cfdfc44641c7fbb341deda62e39537278756a7b7f25",
+      "wellKnownDigest": "sha256:781e3943b0c63f92ac8cde7e5753fb62654cffbf10eeb13aea8c66894bff1de7"
+    },
+    "tailwind-best-practices": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "f1629459a009acb1faff4f1dda8ad5896ca037d0f952af42d71ed5708cc51d51",
+      "wellKnownDigest": "sha256:1cb2e2ceaafc70d76aa967d6b0ee5af88f7a540119af9c64164be968bba53cfa"
+    },
+    "web-video": {
+      "source": "evilmartians.com",
+      "sourceUrl": "https://evilmartians.com",
+      "sourceType": "well-known",
+      "computedHash": "58acf81af383549e10638fe23b28c88808b4ab4e20edbc272326a03fab343b86",
+      "wellKnownDigest": "sha256:74f64efd78b896546aafc632fa68fd00433902b3adad432e23e81b590f4d701f"
+    }
+  }
+}
