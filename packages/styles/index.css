@@ -20,6 +20,7 @@
 @import "./src/select.css" layer(hashti.components);
 @import "./src/dialog.css" layer(hashti.components);
 @import "./src/alert-dialog.css" layer(hashti.components);
+@import "./src/drawer.css" layer(hashti.components);
 @import "./src/popover.css" layer(hashti.components);
 @import "./src/tooltip.css" layer(hashti.components);
 @import "./src/toast.css" layer(hashti.components);

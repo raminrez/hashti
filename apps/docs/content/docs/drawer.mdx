@@ -1,0 +1,22 @@
+---
+title: Drawer
+description: Slides a sheet in from an edge.
+---
+
+import { DrawerDemo } from '../../src/components/drawer-demo'
+
+## Usage
+
+<DrawerDemo client:load />
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Drawer` | Owns the open state. |
+| `DrawerTrigger` | Opens the drawer. |
+| `DrawerBackdrop` | The scrim. |
+| `DrawerContent` | The sheet; size it, the drawer places and moves it. |
+| `DrawerTitle` / `DrawerDescription` / `DrawerClose` | Content and dismissal. |
+
+Styling lives in `@hashti/styles` under `.hashti-drawer*` — a full-travel sheet with 16px corners that flatten against their edge and the modal shadow. Snap points and drag handles are later recipes.

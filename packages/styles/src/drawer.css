@@ -1,0 +1,130 @@
+.hashti-drawer-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  min-block-size: 2.75rem;
+  border: none;
+  border-radius: var(--hashti-control-radius);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hashti-drawer-trigger:not([data-disabled]):hover {
+    background: var(--hashti-background-hover);
+  }
+}
+
+.hashti-drawer-trigger:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-drawer-trigger[data-disabled] {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+/* The drawer manages the backdrop's opacity; only the colour is styled here. */
+.hashti-drawer-backdrop {
+  background: var(--hashti-overlay);
+  backdrop-filter: blur(6px);
+}
+
+.hashti-drawer-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid var(--hashti-border-subtle-00);
+  background: var(--hashti-layer-01);
+  box-shadow: 0 16px 48px var(--hashti-shadow);
+  color: var(--hashti-text-primary);
+}
+
+/* Size and corners only; the drawer positions and moves the sheet. */
+.hashti-drawer-content[data-side="right"],
+.hashti-drawer-content[data-side="left"] {
+  block-size: 100dvh;
+  max-block-size: 100dvh;
+}
+
+.hashti-drawer-content[data-side="top"],
+.hashti-drawer-content[data-side="bottom"] {
+  inline-size: 100%;
+  max-inline-size: 100%;
+}
+
+/* Corners flatten against the edge the sheet comes from. */
+.hashti-drawer-content[data-side="right"] {
+  border-start-start-radius: var(--hashti-border-radius-16);
+  border-end-start-radius: var(--hashti-border-radius-16);
+}
+
+.hashti-drawer-content[data-side="left"] {
+  border-start-end-radius: var(--hashti-border-radius-16);
+  border-end-end-radius: var(--hashti-border-radius-16);
+}
+
+.hashti-drawer-content[data-side="top"] {
+  border-end-start-radius: var(--hashti-border-radius-16);
+  border-end-end-radius: var(--hashti-border-radius-16);
+}
+
+.hashti-drawer-content[data-side="bottom"] {
+  border-start-start-radius: var(--hashti-border-radius-16);
+  border-start-end-radius: var(--hashti-border-radius-16);
+}
+
+.hashti-drawer__title {
+  margin: 0;
+  color: var(--hashti-text-primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.hashti-drawer__description {
+  margin: 0;
+  color: var(--hashti-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.hashti-drawer-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0 0.75rem;
+  min-block-size: 2.25rem;
+  border: none;
+  border-radius: var(--hashti-control-radius);
+  background: transparent;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hashti-drawer-close:hover {
+    background: var(--hashti-background-hover);
+  }
+}
+
+.hashti-drawer-close:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: -2px;
+}
+
+.hashti-drawer-close[data-pending] {
+  color: var(--hashti-text-disabled);
+  cursor: progress;
+}
