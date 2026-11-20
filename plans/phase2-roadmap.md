@@ -19,11 +19,11 @@ back to `dev` when reviewed.
 
 | Cycle | Feature |
 | --- | --- |
-| 065 | Menu submenus + checkbox/radio items + icons | in flight |
-| 066 | Promise toasts (loading → success/error lifecycle) | **DONE, merged** |
-| 067 | Command pages + async search | **DONE, merged** |
-| 068 | Drawer snap points | in flight |
-| 069 | RTL pass (logical properties audit across all stylesheets) | planned — SOLO after 065+068 merge |
+| 065 | Menu submenus + checkbox/radio items + icons | Particle-5 — **DONE, merged** |
+| 066 | Promise toasts (loading → success/error lifecycle) | Particle-6 — **DONE, merged** |
+| 067 | Command pages + async search | Particle-7 — **DONE, merged** |
+| 068 | Drawer snap points | Particle-8 — **DONE, merged** |
+| 069 | RTL pass (logical properties audit across all stylesheets) | **in flight — Particle-8 lane, branch `particle/069-rtl-pass`** |
 
 ## Rules (unchanged from phase 1)
 

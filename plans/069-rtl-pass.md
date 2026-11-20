@@ -1,18 +1,19 @@
 # Plan 069: RTL pass — logical properties audit across all stylesheets
 
 > **Executor instructions**: Execute step by step, verify every gate, COMMIT
-> ON EVERY STEP. This cycle runs SOLO on the `dev` branch — no parallel
-> lanes. Do not update `plans/README.md`.
+> ON EVERY STEP. This cycle runs SOLO on branch `particle/069-rtl-pass` cut
+> from `dev` (no other lanes in parallel). Do not update `plans/README.md`.
 >
-> **Drift check first**: `git status --short` — dev must be clean before
-> starting; never push.
+> **Drift check first**: `git log --oneline -1` — the branch must start at
+> dev's tip before any commit.
 
 ## Status
 
 - **Priority**: P1 · **Effort**: L · **Risk**: MED (touches every stylesheet;
   mechanical but high blast radius)
 - **Depends on**: waves 1+2 (061–068) all merged to dev
-- **Lane**: SOLO on dev (no worktree, no branch — dev itself)
+- **Lane**: Particle-8 worktree, branch `particle/069-rtl-pass` (cut from
+  dev) — still solo: no other lane runs during it
 
 ## Why
 
