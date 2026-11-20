@@ -39,7 +39,7 @@ Backlog variant: **cleanup** — counts are tiny, so each rule lands fixed-to-ze
   - Commands: `bun run lint`
   - Done when: each adopted rule at `error` with 0 hits; a planted hit fails lint
   - Depends on: step 6
-- [ ] **8. Fix the 3 react-doctor warnings** (badge, kbd, docs components — read each before fixing; report variant, no gate): verify each is real, fix or document why not.
+- [x] **8. Fix the 3 react-doctor warnings** (badge, kbd, docs components — read each before fixing; report variant, no gate): verify each is real, fix or document why not.
   - Changes: the named components
   - Commands: `bun run doctor`
   - Done when: `bun run doctor` reports 0 findings, or the Log names each kept finding with its reason
