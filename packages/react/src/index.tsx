@@ -241,6 +241,16 @@ export {
 } from "./trigger-menu"
 
 export {
+  Autocomplete,
+  AutocompleteLabel,
+  AutocompleteInput,
+  AutocompleteContent,
+  AutocompleteList,
+  AutocompleteItem,
+  AutocompleteEmpty,
+} from "./autocomplete"
+
+export {
   Combobox,
   ComboboxLabel,
   ComboboxInput,
