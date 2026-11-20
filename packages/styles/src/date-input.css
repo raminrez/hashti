@@ -9,7 +9,7 @@
   background: var(--hashti-layer-01);
   overflow: hidden;
   transition: border-color var(--hashti-duration-fast-01)
-    cubic-bezier(0.16, 1, 0.3, 1);
+    var(--hashti-ease-entrance);
 }
 
 .hashti-date-input [data-slot="date-input-segment"] {

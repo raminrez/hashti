@@ -16,7 +16,7 @@
   line-height: 1.25rem;
   cursor: pointer;
   transition: transform var(--hashti-duration-moderate-02)
-    cubic-bezier(0.32, 0.72, 0, 1);
+    var(--hashti-ease-press);
 }
 
 .hashti-button[data-size="sm"] {
@@ -136,4 +136,14 @@
 .hashti-button[data-variant="danger-ghost"][data-disabled] {
   background: transparent;
   color: var(--hashti-text-disabled);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-button {
+    transition: none;
+  }
+
+  .hashti-button:active:not([data-disabled]) {
+    transform: none;
+  }
 }

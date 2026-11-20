@@ -37,7 +37,7 @@
   border-inline-end: 1px solid currentcolor;
   rotate: 45deg;
   transition: rotate var(--hashti-duration-fast-01)
-    cubic-bezier(0.16, 1, 0.3, 1);
+    var(--hashti-ease-entrance);
 }
 
 .hashti-accordion__trigger[data-open]::after {
@@ -67,7 +67,7 @@
   font-size: 0.875rem;
   font-weight: 400;
   transition: block-size var(--hashti-duration-moderate-01)
-    cubic-bezier(0.16, 1, 0.3, 1);
+    var(--hashti-ease-entrance);
 }
 
 .hashti-accordion__panel[data-starting-style] {

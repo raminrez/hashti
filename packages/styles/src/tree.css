@@ -75,7 +75,7 @@
   border-inline-end: 1px solid currentcolor;
   rotate: 45deg;
   transition: rotate var(--hashti-duration-fast-01)
-    cubic-bezier(0.16, 1, 0.3, 1);
+    var(--hashti-ease-entrance);
 }
 
 .hashti-tree-item-indicator[data-expanded]::after {

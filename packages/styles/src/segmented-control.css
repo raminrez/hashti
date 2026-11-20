@@ -24,10 +24,10 @@
   background: var(--hashti-layer-01);
   box-shadow: 0 1px 3px var(--hashti-shadow);
   transition:
-    top var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    left var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    width var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
-    height var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1);
+    top var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    left var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    width var(--hashti-duration-moderate-01) var(--hashti-ease-entrance),
+    height var(--hashti-duration-moderate-01) var(--hashti-ease-entrance);
 }
 
 .hashti-segmented-control[data-orientation="vertical"] {

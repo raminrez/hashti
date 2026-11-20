@@ -202,10 +202,12 @@
     --hashti-duration-slow-02: 730ms;
     --hashti-ease-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
     --hashti-ease-standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+    --hashti-ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
     --hashti-ease-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
     --hashti-ease-entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
     --hashti-ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
     --hashti-ease-exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
+    --hashti-ease-press: cubic-bezier(0.32, 0.72, 0, 1);
   }
   :root,
   [data-theme="light"] {
@@ -366,6 +368,10 @@
     --hashti-notification-background-warning: #fff0ce;
     --hashti-overlay: rgb(18 22 32 / 50%);
     --hashti-shadow: rgb(0 0 0 / 14%);
+    --hashti-shadow-modal: 0 16px 48px var(--hashti-shadow);
+    --hashti-shadow-popover: 0 8px 24px var(--hashti-shadow);
+    --hashti-shadow-toast:
+      0 10px 30px rgb(0 0 0 / 12%), 0 2px 8px rgb(0 0 0 / 6%);
     --hashti-skeleton-background: #e8e8e8;
     --hashti-skeleton-element: #c6c6c6;
     --hashti-status-accessibility-background: #ffffff;
@@ -724,6 +730,12 @@
     --hashti-notification-background-warning: #3e3321;
     --hashti-overlay: rgb(18 22 32 / 50%);
     --hashti-shadow: rgb(0 0 0 / 14%);
+    --hashti-shadow-modal:
+      0 16px 48px rgb(0 0 0 / 50%), inset 0 0 1px 0 rgba(255, 255, 255, 0.2);
+    --hashti-shadow-popover:
+      0 8px 24px rgb(0 0 0 / 50%), inset 0 0 1px 0 rgba(255, 255, 255, 0.2);
+    --hashti-shadow-toast:
+      0 10px 30px rgb(0 0 0 / 50%), 0 2px 8px rgb(0 0 0 / 50%);
     --hashti-skeleton-background: #292929;
     --hashti-skeleton-element: #393939;
     --hashti-status-accessibility-background: #161616;
@@ -1084,6 +1096,12 @@
       --hashti-notification-background-warning: #3e3321;
       --hashti-overlay: rgb(18 22 32 / 50%);
       --hashti-shadow: rgb(0 0 0 / 14%);
+      --hashti-shadow-modal:
+        0 16px 48px rgb(0 0 0 / 50%), inset 0 0 1px 0 rgba(255, 255, 255, 0.2);
+      --hashti-shadow-popover:
+        0 8px 24px rgb(0 0 0 / 50%), inset 0 0 1px 0 rgba(255, 255, 255, 0.2);
+      --hashti-shadow-toast:
+        0 10px 30px rgb(0 0 0 / 50%), 0 2px 8px rgb(0 0 0 / 50%);
       --hashti-skeleton-background: #292929;
       --hashti-skeleton-element: #393939;
       --hashti-status-accessibility-background: #161616;

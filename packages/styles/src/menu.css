@@ -21,7 +21,7 @@
 
 .hashti-menu-trigger:focus-visible {
   outline: 2px solid var(--hashti-focus);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 .hashti-menu-trigger[data-disabled] {
@@ -37,12 +37,12 @@
   border: 1px solid var(--hashti-border-subtle-00);
   border-radius: var(--hashti-popover-radius);
   background: var(--hashti-layer-01);
-  box-shadow: 0 8px 24px var(--hashti-shadow);
+  box-shadow: var(--hashti-shadow-popover);
   color: var(--hashti-text-primary);
   transform-origin: var(--transform-origin);
   transition:
-    opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
-    scale var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+    opacity var(--hashti-duration-fast-02) var(--hashti-ease-entrance),
+    scale var(--hashti-duration-fast-02) var(--hashti-ease-entrance);
 }
 
 .hashti-menu-content[data-starting-style],
@@ -53,8 +53,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hashti-menu-content {
-    transition: opacity var(--hashti-duration-fast-01)
-      cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity var(--hashti-duration-fast-02)
+      var(--hashti-ease-entrance);
   }
 
   .hashti-menu-content[data-starting-style],
