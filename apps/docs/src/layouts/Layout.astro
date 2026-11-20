@@ -30,13 +30,15 @@ const { title, description, image } = Astro.props;
         root.dataset.theme = root.classList.contains("dark") ? "dark" : "light";
       };
       syncTheme();
-      // Re-runs on view-transition navigation; replace the old observer so
-      // they don't pile up.
-      window.__hashtiThemeSync?.disconnect();
-      window.__hashtiThemeSync = new MutationObserver(syncTheme).observe(
-        root,
-        { attributes: true, attributeFilter: ["class"] },
-      );
+      // The script re-runs on view-transition navigation, but <html> (and so
+      // the first observer) survives it — install exactly one.
+      if (!root.dataset.hashtiThemeSync) {
+        root.dataset.hashtiThemeSync = "on";
+        new MutationObserver(syncTheme).observe(root, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
     </script>
   </head>
   <body class="flex flex-col min-h-screen">
