@@ -5,4 +5,8 @@ export {
   ComboboxContent,
   ComboboxList,
   ComboboxItem,
+  ComboboxChips,
+  ComboboxValue,
+  ComboboxChip,
+  ComboboxChipRemove,
 } from "./combobox"
