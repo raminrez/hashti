@@ -4,9 +4,11 @@ import type { ComponentProps } from "react"
 import {
   Menu,
   MenuContent as UiMenuContent,
+  MenuCheckboxItem as UiMenuCheckboxItem,
   MenuGroup as UiMenuGroup,
   MenuGroupLabel as UiMenuGroupLabel,
   MenuItem as UiMenuItem,
+  MenuItemIndicator as UiMenuItemIndicator,
   MenuSeparator as UiMenuSeparator,
   MenuSub as UiMenuSub,
   MenuSubContent as UiMenuSubContent,
@@ -64,6 +66,24 @@ function MenuSubContent(props: ComponentProps<typeof UiMenuSubContent>) {
   return <UiMenuSubContent {...props} className={join("hashti-menu-content", props.className)} />
 }
 
+function MenuCheckboxItem(props: ComponentProps<typeof UiMenuCheckboxItem>) {
+  return (
+    <UiMenuCheckboxItem
+      {...props}
+      className={join("hashti-menu-item hashti-menu-checkbox-item", props.className)}
+    />
+  )
+}
+
+function MenuItemIndicator(props: ComponentProps<typeof UiMenuItemIndicator>) {
+  return (
+    <UiMenuItemIndicator
+      {...props}
+      className={join("hashti-menu-item-indicator", props.className)}
+    />
+  )
+}
+
 export {
   Menu,
   MenuTrigger,
@@ -75,4 +95,6 @@ export {
   UiMenuSub as MenuSub,
   MenuSubTrigger,
   MenuSubContent,
+  MenuCheckboxItem,
+  MenuItemIndicator,
 }

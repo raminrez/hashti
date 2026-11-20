@@ -157,6 +157,8 @@ export {
   MenuSub,
   MenuSubTrigger,
   MenuSubContent,
+  MenuCheckboxItem,
+  MenuItemIndicator,
 } from "./menu"
 
 export {
