@@ -10,6 +10,12 @@ export default {
     "**/dist/**",
   ],
   rules: {
+    // stylelint-config-standard defaults to import-notation: "url", whose
+    // autofix rewrote @import "x.css" to @import url("x.css") in index.css —
+    // Vite's postcss-import then dropped every hashti layer import in dev
+    // (empty stylesheet, all components unstyled). String notation inlines
+    // correctly, so pin it here.
+    "import-notation": "string",
     // "A hex in component CSS is a bug" — values come from tokens.
     "color-no-hex": true,
     // Physical left/right breaks RTL; the 069 RTL audit found the codebase
