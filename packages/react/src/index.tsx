@@ -120,6 +120,16 @@ export {
 } from "./scroll-area"
 
 export {
+  Timeline,
+  TimelineItem,
+  TimelineMarker,
+  TimelineConnector,
+  TimelineTitle,
+  TimelineTime,
+  TimelineDescription,
+} from "./timeline"
+
+export {
   Select,
   SelectLabel,
   SelectTrigger,
