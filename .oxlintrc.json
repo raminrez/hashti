@@ -62,6 +62,7 @@
     ".tools/**",
     ".taste-skill/**",
     "test-results/**",
-    ".agents"
+    ".agents",
+    ".claude"
   ]
 }
