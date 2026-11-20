@@ -1,0 +1,29 @@
+---
+title: ColorPicker
+description: Picks a color from an area, sliders and presets.
+---
+
+import { ColorPickerDemo } from '../../src/components/color-picker-demo'
+
+## Usage
+
+<ColorPickerDemo client:load />
+
+Drag across the area or the hue slider, type a CSS color into the field, or pick a preset.
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `ColorPicker` | Holds the value; a group around the parts. |
+| `ColorPickerArea` | Edits two channels; painted by `--color-area-background`. |
+| `ColorPickerAreaCanvas` | Paints the area where no gradient can (OKLCH). |
+| `ColorPickerAreaThumb` | Shows where the color sits in the area. |
+| `ColorPickerSlider` / `ColorPickerSliderThumb` | One channel along a track. |
+| `ColorPickerInput` | Reads any CSS color on Enter or blur. |
+| `ColorPickerChannelInput` | Edits one channel as a number. |
+| `ColorPickerSwatch` | Fills itself with the current color. |
+| `ColorPickerSwatches` / `ColorPickerSwatchItem` | A row of preset colors. |
+| `ColorPickerEyeDropper` | Picks from the screen where the browser can. |
+
+Styling lives in `@hashti/styles` under `.hashti-color-picker*` — a 16rem column: a 10rem rounded area, a 12px hue rail, compact fields and 28px presets filled from `--color-picker-color`.
