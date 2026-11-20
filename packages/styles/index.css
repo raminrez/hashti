@@ -32,6 +32,7 @@
 @import "./src/scroll-area.css" layer(hashti.components);
 @import "./src/slider.css" layer(hashti.components);
 @import "./src/menu.css" layer(hashti.components);
+@import "./src/menubar.css" layer(hashti.components);
 @import "./src/listbox.css" layer(hashti.components);
 @import "./src/kbd.css" layer(hashti.components);
 @import "./src/toggle.css" layer(hashti.components);
