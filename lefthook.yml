@@ -57,6 +57,10 @@ pre-push:
       run: bun run lint:css
     test:
       run: bun test
+    deadcode:
+      run: bun run deadcode
+    duplicates:
+      run: bun run duplicates:new
     protect-main:
       run: |
         branch="$(git rev-parse --abbrev-ref HEAD)"
