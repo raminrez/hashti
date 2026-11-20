@@ -132,6 +132,12 @@ export {
 export { Rating, RatingItem } from "./rating"
 
 export {
+  SegmentedControl,
+  SegmentedControlIndicator,
+  SegmentedControlItem,
+} from "./segmented-control"
+
+export {
   Select,
   SelectLabel,
   SelectTrigger,
