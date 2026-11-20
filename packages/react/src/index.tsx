@@ -345,3 +345,5 @@ export {
 } from "./waterfall"
 
 export { Tree, TreeItem, TreeItemLabel, TreeItemIndicator, TreeGroup } from "./tree"
+
+export { Preferences, usePreference } from "./preferences"
