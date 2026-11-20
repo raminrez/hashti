@@ -39,7 +39,7 @@
   border: 1px solid var(--hashti-border-subtle-00);
   border-radius: var(--hashti-popover-radius);
   background: var(--hashti-layer-01);
-  box-shadow: 0 8px 24px var(--hashti-shadow);
+  box-shadow: var(--hashti-shadow-popover);
   color: var(--hashti-text-primary);
   transform-origin: var(--transform-origin);
   transition:

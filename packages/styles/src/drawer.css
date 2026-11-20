@@ -42,7 +42,7 @@
   gap: 0.75rem;
   border: 1px solid var(--hashti-border-subtle-00);
   background: var(--hashti-layer-01);
-  box-shadow: 0 16px 48px var(--hashti-shadow);
+  box-shadow: var(--hashti-shadow-modal);
   color: var(--hashti-text-primary);
 }
 
@@ -87,7 +87,7 @@
 }
 
 .hashti-drawer-content[data-open][data-snap-point]:not([data-expanded]) {
-  box-shadow: 0 20px 56px var(--hashti-shadow);
+  box-shadow: var(--hashti-shadow-modal);
 }
 
 .hashti-drawer-handle {

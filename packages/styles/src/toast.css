@@ -23,10 +23,7 @@
   border-radius: var(--hashti-border-radius-16);
   background: var(--hashti-layer-01);
 
-  /* shadow stack from DESIGN.md */
-  box-shadow:
-    0 10px 30px rgb(0 0 0 / 12%),
-    0 2px 8px rgb(0 0 0 / 6%);
+  box-shadow: var(--hashti-shadow-toast);
   color: var(--hashti-text-primary);
   transition:
     opacity var(--hashti-duration-fast-02) cubic-bezier(0.16, 1, 0.3, 1),

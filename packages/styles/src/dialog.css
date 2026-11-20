@@ -57,7 +57,7 @@
   border: 1px solid var(--hashti-border-subtle-00);
   border-radius: var(--hashti-popover-radius);
   background: var(--hashti-layer-01);
-  box-shadow: 0 16px 48px var(--hashti-shadow);
+  box-shadow: var(--hashti-shadow-modal);
   color: var(--hashti-text-primary);
   transition:
     opacity var(--hashti-duration-moderate-01) cubic-bezier(0.16, 1, 0.3, 1),
