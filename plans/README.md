@@ -58,7 +58,14 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 048  | Combobox multiple + chips (Chips, ChipRemove, value)   | P1 | M | 047 | DONE |
 | 049  | Autocomplete (ui-sdk autocomplete, suggest list)       | P1 | S | 048 | DONE |
 | 050  | Command (ui-sdk command, command palette)              | P1 | M | 049 | DONE |
-| 051  | TokenInput (ui-sdk token-input, editable tokens)       | P1 | M | 050 | IN PROGRESS |
+| 051  | TokenInput (ui-sdk token-input, editable tokens)       | P1 | M | 050 | DONE |
+| 052  | OTPInput (ui-sdk otp-input, one-time-code slots)        | P1 | M | 051 | DONE |
+| 053  | NavigationMenu (ui-sdk navigation-menu, viewport)       | P1 | M | 051 | IN PROGRESS |
+| 054  | Calendar (ui-sdk calendar, month grid + day cells)      | P1 | M | 051 | DONE |
+| 055  | DatePicker (ui-sdk date-picker, field + calendar popup) | P1 | M | 054 | IN PROGRESS |
+| 056  | ColorPicker (ui-sdk color-picker, area/sliders/swatches) | P1 | M | 054 | IN PROGRESS |
+| 057  | Tree (ui-sdk tree, hierarchical rows)                   | P1 | M | 054 | IN PROGRESS |
+| 058  | Waterfall (ui-sdk waterfall, chart rows/bars)           | P2 | M | 054 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
