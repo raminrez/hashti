@@ -23,7 +23,7 @@ back to `dev` when reviewed.
 | 066 | Promise toasts (loading → success/error lifecycle) | Particle-6 — **DONE, merged** |
 | 067 | Command pages + async search | Particle-7 — **DONE, merged** |
 | 068 | Drawer snap points | Particle-8 — **DONE, merged** |
-| 069 | RTL pass (logical properties audit across all stylesheets) | **in flight — Particle-8 lane, branch `particle/069-rtl-pass`** |
+| 069 | RTL pass (logical properties audit across all stylesheets) | Particle-8 — **DONE, merged** |
 
 ## Rules (unchanged from phase 1)
 
