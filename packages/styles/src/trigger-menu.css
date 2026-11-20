@@ -1,0 +1,97 @@
+.hashti-trigger-menu-input {
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-01);
+  color: var(--hashti-text-primary);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-trigger-menu-input::placeholder {
+  color: var(--hashti-text-secondary);
+  opacity: 1;
+}
+
+/* The ring is the open affordance: the border does not change with data-open. */
+.hashti-trigger-menu-input:focus-visible {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-trigger-menu-input[data-disabled] {
+  border-color: var(--hashti-border-disabled);
+  background: var(--hashti-button-disabled);
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+/* The popup floats at the caret, so it keeps its own width instead of the anchor's. */
+[data-slot="trigger-menu-content"] {
+  min-inline-size: 12rem;
+  max-block-size: var(--available-height);
+  overflow-y: auto;
+  padding: 0;
+  border: 1px solid var(--hashti-border-subtle-00);
+  border-radius: var(--hashti-popover-radius);
+  background: var(--hashti-layer-01);
+  box-shadow: 0 8px 24px var(--hashti-shadow);
+  color: var(--hashti-text-primary);
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1),
+    scale var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-slot="trigger-menu-content"][data-starting-style],
+[data-slot="trigger-menu-content"][data-ending-style] {
+  opacity: 0;
+  scale: 0.98;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-slot="trigger-menu-content"] {
+    transition: opacity var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-slot="trigger-menu-content"][data-starting-style],
+  [data-slot="trigger-menu-content"][data-ending-style] {
+    scale: none;
+  }
+}
+
+[data-slot="trigger-menu-item"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-block-size: 2.5rem;
+  padding: 0 0.75rem;
+  color: var(--hashti-text-primary);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  cursor: default;
+  outline: none;
+}
+
+[data-slot="trigger-menu-item"][data-highlighted] {
+  background: var(--hashti-background-hover);
+}
+
+[data-slot="trigger-menu-item"][data-disabled] {
+  color: var(--hashti-text-disabled);
+}
+
+[data-slot="trigger-menu-item"][data-disabled][data-highlighted] {
+  background: none;
+}
+
+[data-slot="trigger-menu-empty"] {
+  padding: 0.5rem 0.75rem;
+  color: var(--hashti-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}

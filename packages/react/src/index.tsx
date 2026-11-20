@@ -229,3 +229,13 @@ export {
 export { Resizable, ResizablePanel, ResizableHandle } from "./resizable"
 
 export { Menubar } from "./menubar"
+
+export {
+  TriggerMenu,
+  TriggerMenuInput,
+  TriggerMenuStatus,
+  TriggerMenuContent,
+  TriggerMenuList,
+  TriggerMenuItem,
+  TriggerMenuEmpty,
+} from "./trigger-menu"
