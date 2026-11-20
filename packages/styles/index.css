@@ -9,6 +9,7 @@
 @import "./src/input.css" layer(hashti.components);
 @import "./src/password-input.css" layer(hashti.components);
 @import "./src/number-input.css" layer(hashti.components);
+@import "./src/otp-input.css" layer(hashti.components);
 @import "./src/date-input.css" layer(hashti.components);
 @import "./src/time-input.css" layer(hashti.components);
 @import "./src/pagination.css" layer(hashti.components);

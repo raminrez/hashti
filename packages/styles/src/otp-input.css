@@ -1,0 +1,85 @@
+/* The native input is absolutely positioned over the slots by ui-sdk, so the
+   root anchors it. */
+.hashti-otp-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hashti-otp-input:has(:focus-visible) {
+  outline: 2px solid var(--hashti-focus);
+  outline-offset: 2px;
+}
+
+.hashti-otp-input-group {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.hashti-otp-input-slot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.5rem;
+  block-size: 2.75rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: var(--hashti-control-radius);
+  background: var(--hashti-layer-01);
+  color: var(--hashti-text-primary);
+  font-size: 1.125rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  transition: border-color var(--hashti-duration-fast-01) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hashti-otp-input-slot[data-filled] {
+  border-color: var(--hashti-border-subtle-01);
+}
+
+.hashti-otp-input[data-complete] .hashti-otp-input-slot {
+  border-color: var(--hashti-support-success);
+}
+
+.hashti-otp-input-slot[data-active] {
+  border-color: var(--hashti-focus);
+}
+
+.hashti-otp-input-slot[data-fake-caret]::after {
+  content: "";
+  inline-size: 1px;
+  block-size: 1.25rem;
+  background: var(--hashti-text-primary);
+  animation: hashti-otp-caret-blink 1s steps(1, end) infinite;
+}
+
+@keyframes hashti-otp-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-otp-input-slot[data-fake-caret]::after {
+    animation: none;
+  }
+}
+
+.hashti-otp-input-separator {
+  inline-size: 0.5rem;
+  text-align: center;
+  color: var(--hashti-text-secondary);
+}
+
+.hashti-otp-input[data-disabled] .hashti-otp-input-slot {
+  border-color: var(--hashti-border-disabled);
+  background: var(--hashti-button-disabled);
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-otp-input[data-disabled] .hashti-otp-input-separator {
+  color: var(--hashti-text-disabled);
+}
