@@ -2,3 +2,4 @@
 // Re-run the scaffolder to regenerate after adding/removing wrappers.
 
 export * from "./ProjectInventory";
+export * from "./DesignSystemHealth";

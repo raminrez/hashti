@@ -10,8 +10,8 @@ storiesLocation: colocated
 
 - [x] `sb-setup` — Storybook 10.6.8 installed with bun; native setup prompt run; preview aligned to Hashti tokens/theme; CssCheck story added.
 - [x] `sb-inventory` — done; `.storybook/project-inventory.json` + component-usage + component-pages; ProjectInventory wrapper scaffolded.
-- [ ] `sb-health` — next: no `.storybook/design-system-health.json` yet.
-- [ ] `sb-flows`
+- [x] `sb-health` — done; `.storybook/design-system-health.json` written (0 errors / 9 warnings / 433 info); DesignSystemHealth wrapper scaffolded; vendored script patched for BSD-grep `--` bug.
+- [ ] `sb-flows` — next.
 - [ ] `sb-stories <Component>`
 - [ ] `sb-wrappers`
 - [ ] `sb-audit`
