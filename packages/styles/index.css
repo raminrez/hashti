@@ -40,3 +40,4 @@
 @import "./src/segmented-control.css" layer(hashti.components);
 @import "./src/toolbar.css" layer(hashti.components);
 @import "./src/carousel.css" layer(hashti.components);
+@import "./src/resizable.css" layer(hashti.components);
