@@ -198,42 +198,26 @@ consistent relationships between type, borders, spacing, and corners.
 - The same visual language in light and dark themes.
 - Presses answer with ink and a slight scale, never with delayed feedback.
 
-**Authority and scope · 19 November 2026.** Frame is the selected direction in
-[PRODUCT.md](design/PRODUCT.md). The authored values live in
-[`packages/tokens/src/frame.ts`](packages/tokens/src/frame.ts), with their
-[public mapping](packages/tokens/README.md); the reusable appearance lives in
-[`packages/react/src/frame.css`](packages/react/src/frame.css), scoped
-`@layer hashti.themes { @scope ([data-theme]) }`
-so it beats the component layer and cannot leak into a nested theme. Every token
-reaches consumers as a `--hashti-<token-name>` custom property; themes switch on
-`data-theme`, and `light` is the document default. Both
-`tokens.css` and `tokens.json` are generated — edit `src/*.ts` and rebuild; they
-are outputs, not a second place to invent values.
+**Authority and scope · 20 November 2026, reconciled to current tree.** Frame is
+the design direction recorded here. The authored token values live in
+[`design/tokens.css`](design/tokens.css); every token reaches consumers as a
+`--hashti-<token-name>` custom property; themes switch on `data-theme`
+(`light`, `dark`, `system` following `prefers-color-scheme`), and `light` is the
+document default. There is no separate tokens package in this tree; edit
+`design/tokens.css` directly.
 
-Phase 1 (tokens, themes, cascade layers, 44px controls, `Theme
-appearanceClassName`) and the first Phase 2 batches are complete: Button/Link,
-TextField/TextArea/NumberField/SearchField/Form on the shared field-anatomy
-module, appearance-only field status, and Checkbox/Radio/Switch. All fourteen
-slice entries (`button, link, text-input, text-area, number-input, search,
-checkbox, radio-button, toggle, dropdown, form, modal, popover, tooltip`) ship
-as components; rendered acceptance for Select, Modal/Dialog, Popover, and
-Tooltip remains, followed by the Phase 3–5 families and the docs website. The
-[Phase 1 evidence](docs/verification.md#frame-phase-1) and the dated
-[verification entries](docs/verification.md) record each proof. The
-[system specification](docs/design-system.md) covers behavior, accessibility,
-internationalization, and customization, and the
-[library plan](docs/component-library-plan.md) orders the remaining work.
-
-The appearance is described here; per-component behavior lives in the
-specification. Per-component stylesheets follow the
-[CSS conventions](docs/css-conventions.md): cascade order `hashti.tokens →
-hashti.reset → hashti.components → hashti.themes → hashti.accessibility`, BEM
-hooks (`hashti-<block>__<element>--<modifier>`), RAC classes always preserved,
-and state expressed as `data-*` attributes (`data-variant`, `data-size`,
-`data-kind`, `data-hovered`, `data-focus-visible`, `data-selected`,
-`data-invalid`, `data-pending`, …) rather than re-implemented pseudo-classes.
-The [Impeccable sidecar](.impeccable/design.json) adds motion, depth,
-narrative, and self-contained visual previews. Figma is the final handoff from
+The full catalog ships as `@hashti/react` (wrappers over ui-sdk parts) with
+styles in `@hashti/styles`; all 54 ui-sdk components shipped in cycles
+001–069, and phase-2 advanced behaviors are complete
+([archived roadmap](plans/phase2-roadmap.md)). Per-component behavior and
+accessibility requirements are described here; per-component appearance lives
+in the stylesheets, which follow the
+[CSS conventions](design/css-conventions.md): cascade order
+`hashti.tokens → hashti.components`, class hooks
+(`hashti-<block>__<element>`), modifiers only via attributes, `data-slot` is
+ui-sdk's and is never renamed, and ui-sdk's `data-*` attributes express state
+(`data-open`, `data-selected`, `data-hovered`, `data-focus-visible`,
+`data-invalid`, `data-pending`, …). Figma is a later handoff from
 the completed code-based system.
 
 ## Colors
@@ -241,8 +225,8 @@ the completed code-based system.
 The palette is a cool neutral foundation with small, purposeful areas of color.
 Frontmatter names describe this visual specification; they are not new exported
 CSS variable names. Each light role has a separately authored dark counterpart.
-Every role maps to public `--hashti-*` tokens per the
-[tokens README](packages/tokens/README.md).
+Every role maps to a public `--hashti-*` token in
+[`design/tokens.css`](design/tokens.css).
 
 ### Primary
 
