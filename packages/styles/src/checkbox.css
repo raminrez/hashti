@@ -63,3 +63,16 @@
   inline-size: 0.75rem;
   block-size: 0.75rem;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-checkbox {
+    transition:
+      background-color var(--hashti-duration-fast-01)
+        var(--hashti-ease-entrance),
+      border-color var(--hashti-duration-fast-01) var(--hashti-ease-entrance);
+  }
+
+  .hashti-checkbox:active:not([data-disabled]) {
+    transform: none;
+  }
+}

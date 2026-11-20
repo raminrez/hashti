@@ -137,3 +137,13 @@
   background: transparent;
   color: var(--hashti-text-disabled);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-button {
+    transition: none;
+  }
+
+  .hashti-button:active:not([data-disabled]) {
+    transform: none;
+  }
+}

@@ -66,3 +66,14 @@
 .hashti-choice:has(.hashti-radio[data-disabled]) {
   cursor: not-allowed;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .hashti-radio {
+    transition: border-color var(--hashti-duration-fast-01)
+      var(--hashti-ease-entrance);
+  }
+
+  .hashti-radio:active:not([data-disabled]) {
+    transform: none;
+  }
+}
