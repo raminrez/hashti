@@ -29,3 +29,4 @@
 @import "./src/toggle.css" layer(hashti.components);
 @import "./src/hover-card.css" layer(hashti.components);
 @import "./src/link.css" layer(hashti.components);
+@import "./src/timeline.css" layer(hashti.components);
