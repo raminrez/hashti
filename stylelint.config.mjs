@@ -12,6 +12,32 @@ export default {
   rules: {
     // "A hex in component CSS is a bug" — values come from tokens.
     "color-no-hex": true,
+    // Physical left/right breaks RTL; the 069 RTL audit found the codebase
+    // already logical-property clean. Use margin-inline-*/padding-inline-*.
+    "property-disallowed-list": [
+      ["margin-left", "margin-right", "padding-left", "padding-right"],
+      {
+        message:
+          'Physical "margin-left"/"margin-right"/"padding-left"/"padding-right" break RTL (the codebase is logical-property clean by audit). Use "margin-inline-start"/"margin-inline-end"/"padding-inline-start"/"padding-inline-end".',
+      },
+    ],
+    // text-align: left/right are physical too; start/end respect direction.
+    "declaration-property-value-disallowed-list": [
+      { "text-align": ["/^(left|right)$/"] },
+      {
+        message:
+          'Physical "text-align: left/right" breaks RTL. Use "text-align: start"/"text-align: end".',
+      },
+    ],
+    // Styles bind via hashti-* classes and ui-sdk data attributes only —
+    // never React DOM specifics like :has(react-…).
+    "selector-disallowed-list": [
+      "/:has\\([^)]*react/i",
+      {
+        message:
+          'Styles must bind via "hashti-*" classes and ui-sdk data attributes only, not React DOM selectors.',
+      },
+    ],
     // Class contract: hashti-<block> / hashti-<block>__<element>.
     "selector-class-pattern": "^hashti-",
     "keyframes-name-pattern": "^hashti-",
