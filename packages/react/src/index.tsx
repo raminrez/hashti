@@ -58,6 +58,16 @@ export {
 } from "./field"
 
 export {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogBackdrop,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogClose,
+} from "./alert-dialog"
+
+export {
   Dialog,
   DialogTrigger,
   DialogBackdrop,
