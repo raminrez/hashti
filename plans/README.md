@@ -66,6 +66,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 056  | ColorPicker (ui-sdk color-picker, area/sliders/swatches) | P1 | M | 054 | DONE |
 | 057  | Tree (ui-sdk tree, hierarchical rows)                   | P1 | M | 054 | DONE |
 | 058  | Waterfall (ui-sdk waterfall, chart rows/bars)           | P2 | M | 054 | DONE |
+| 059  | ImageCropper (ui-sdk image-cropper, viewport/selection) | P2 | M | 054 | IN PROGRESS |
+| 060  | Preferences (ui-sdk preferences, headless store)        | P2 | S | 054 | DONE |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
