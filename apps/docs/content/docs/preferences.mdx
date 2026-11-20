@@ -1,0 +1,48 @@
+---
+title: Preferences
+description: Applies user preferences to data attributes so styles can follow them.
+---
+
+import { PreferencesDemo } from '../../src/components/preferences-demo'
+
+## Usage
+
+<PreferencesDemo client:load />
+
+Choose Grid to lay the files out in two columns; the choice is saved and comes back on reload. No Hashti box or stylesheet is involved: `Preferences` renders `display: contents`, so only your own attribute selectors decide the look.
+
+## Parts
+
+| Part | Purpose |
+| --- | --- |
+| `Preferences` | Puts each preference on a `data-*` attribute of a `display: contents` wrapper. |
+| `usePreference` | Reads a preference's current value and re-renders on change. |
+| `createPreference` | Defines the attribute, its allowed values and the default. |
+| `createLocalStorage` / `createSessionStorage` / `createCookieStorage` | Keep the value between visits or for the session. |
+
+```tsx
+import { Preferences, createPreference, usePreference } from "@hashti/react"
+
+const view = createPreference({
+  values: ["list", "grid"],
+  defaultValue: "list",
+  attribute: "data-view",
+})
+
+function FileList() {
+  return (
+    <Preferences preferences={[view]}>
+      <ul className="files">…</ul>
+    </Preferences>
+  )
+}
+```
+
+```css
+[data-view="grid"] .files {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+```
+
+Hashti re-exports the creators from `@ui-sdk/core`, so everything comes from `@hashti/react`. Add `storage: createLocalStorage("my-view")` to keep the choice; set `global: true` to put the attribute on `<html>` for page-wide styles; pass `nonce` when a Content Security Policy requires it.
