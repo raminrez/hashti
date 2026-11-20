@@ -42,7 +42,8 @@ Each executor: read the plan fully before starting, honor its STOP conditions.
 | 032  | Rating component (ui-sdk rating, star fill)            | P1 | S | 031 | DONE |
 | 033  | SegmentedControl (ui-sdk segmented-control)            | P1 | M | 032 | DONE |
 | 034  | PasswordInput (ui-sdk password-input)                  | P1 | M | 033 | DONE |
-| 035  | NumberInput (ui-sdk number-input, step buttons)        | P1 | M | 034 | IN PROGRESS |
+| 035  | NumberInput (ui-sdk number-input, step buttons)        | P1 | M | 034 | DONE |
+| 036  | DateInput (ui-sdk date-input, segment typing)          | P1 | M | 035 | IN PROGRESS |
 
 **Reassessment checkpoint 2 (post-cycle-20)** — ui-sdk ships 54 components;
 20 styled. Full roadmap in "Reassessed order v2" below.
