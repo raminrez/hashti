@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fireEvent, waitFor } from "storybook/test";
 import { CompletionDemo } from "../../apps/docs/src/components/inline-completion-demo";
 
@@ -25,19 +24,18 @@ const meta = {
       />
     </div>
   ),
-} satisfies Meta;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const SyncsWithTextarea: Story = {
+export const SyncsWithTextarea = {
   // Regression: the ghost copied the textarea's scrollTop but the demo's
   // suggestions never overflowed, so the copy was unverified. A flex ghost
   // also laid the typed part and the suggestion side by side instead of
   // flowing them as one paragraph. Both are checked here.
   play: async ({ canvasElement }) => {
     const textarea = canvasElement.querySelector("textarea");
-    const ghost = canvasElement.querySelector<HTMLElement>(
+    const ghost = canvasElement.querySelector(
       ".hashti-inline-completion__ghost",
     );
     await expect(textarea).not.toBeNull();
@@ -55,9 +53,7 @@ export const SyncsWithTextarea: Story = {
     // The hidden typed part of the ghost must occupy the same number of lines
     // as the textarea's own text, otherwise every scroll offset shows a
     // different line in the ghost than after the caret.
-    const typed = ghost.querySelector<HTMLElement>(
-      ".hashti-inline-completion__typed",
-    );
+    const typed = ghost.querySelector(".hashti-inline-completion__typed");
     await expect(typed).not.toBeNull();
     if (!typed) return;
     const ghostLines = typed.getBoundingClientRect().height / lineHeight;
