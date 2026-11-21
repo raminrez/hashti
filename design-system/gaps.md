@@ -51,11 +51,21 @@ neither blocks work nor authorises repairs; system work goes to craft.
   dialog closes at 36px, menubar triggers at 32px, segmented-control 40px —
   interactive controls below the 44px minimum with no `sm` mapping. Expected:
   explicit compact tier documented in DESIGN.md, or sizes mapped to the
+<<<<<<< HEAD
   32/44/48 ladder. A before/after decision aid now exists — Storybook story
   `Foundations/G5 Control Heights` on branch `research/g5-height-showcase`
   (Storybook-only scoped overrides, no component CSS touched). Decision still
   pending. Status: open (2026-11-20), showcase added (2026-11-21).
-- **G6 — Textarea ghost scroll-sync unverified.** inline-completion demo
+- **G6 — Textarea ghost scroll-sync unverified.** The inline-completion demo
   copies scrollTop on scroll, but the demo's suggestions never overflow the
-  textarea, so scroll sync is unverified at runtime. Expected: end-to-end
-  proof with overflowing content. Status: open (2026-11-20).
+  textarea, so scroll sync was unverified at runtime. Verified 2026-11-21
+  with a 40-line story (`.storybook/stories/InlineCompletionScroll.stories.tsx`)
+  whose play function scrolls the textarea to 240 and back and asserts the
+  ghost follows. Two real bugs surfaced: the ghost was `display: flex`, so
+  the typed span and suggestion were separate flex items (ghost 3880px tall
+  vs textarea 1960px); and the content-box textarea was wider than the
+  ghost's border box and reserved a scrollbar the ghost did not (client widths
+  318px vs 329px). Fixed in `inline-completion.css`: block ghost,
+  border-box control inside the wrapper, `scrollbar-gutter: stable` on both.
+  Ghost and textarea now share clientWidth 303 and line counts within 1.5
+  lines. Status: resolved (2026-11-21).

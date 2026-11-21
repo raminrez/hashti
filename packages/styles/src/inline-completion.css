@@ -3,6 +3,14 @@
   display: block;
 }
 
+/* The ghost covers the wrapper's border box, so the control has to fill that
+   same box: with the default content-box its padding and border make it
+   wider than the wrapper, and the ghost wraps its text earlier. */
+.hashti-inline-completion .hashti-input,
+.hashti-inline-completion .hashti-textarea {
+  box-sizing: border-box;
+}
+
 .hashti-inline-completion__ghost {
   position: absolute;
   inset: 0;
@@ -25,10 +33,21 @@
 }
 
 /* Textarea variant: ghost must match the textarea's padding, top alignment,
-   soft wrapping and scroll offset (synced via onScroll in the demo). */
+   soft wrapping and scroll offset (synced via onScroll in the demo). Block,
+   not flex: the typed span and the suggestion must flow as one paragraph,
+   or the suggestion starts beside the typed text instead of after it and
+   every line wraps at a different place than in the textarea. Both boxes
+   reserve the scrollbar gutter because the ghost never shows a scrollbar:
+   without it the textarea wraps 17px earlier once it overflows. */
+.hashti-inline-completion[data-multiline="true"] .hashti-textarea,
 .hashti-inline-completion[data-multiline="true"]
   .hashti-inline-completion__ghost {
-  align-items: flex-start;
+  scrollbar-gutter: stable;
+}
+
+.hashti-inline-completion[data-multiline="true"]
+  .hashti-inline-completion__ghost {
+  display: block;
   padding: 0.5rem 0.75rem;
   white-space: pre-wrap;
   overflow-wrap: break-word;

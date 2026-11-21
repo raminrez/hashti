@@ -23,6 +23,13 @@ const config = {
     getAbsolutePath("@storybook/addon-themes"),
   ],
   framework: getAbsolutePath("@storybook/react-vite"),
+
+  // Stories under .storybook/stories import docs demos, and apps/docs inherits
+  // Astro's jsx: "preserve". React stories need JSX transformed, not preserved.
+  viteFinal: async (viteConfig) => {
+    viteConfig.esbuild = { ...viteConfig.esbuild, jsx: "automatic" };
+    return viteConfig;
+  },
 };
 
 export default config;
