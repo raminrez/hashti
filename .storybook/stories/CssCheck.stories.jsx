@@ -24,8 +24,9 @@ export const StylesLoaded = {
     // Font regression: nothing set a font, so body fell back to Times and
     // form controls showed the browser default (Arial) — mixed fonts on one
     // component. base.css must keep applying the token and inheriting it.
-    await expect(getComputedStyle(document.body).fontFamily).not.toMatch(
-      /Times|serif/i,
+    // A generic `serif` check would also match the intended "sans-serif".
+    await expect(getComputedStyle(document.body).fontFamily).toMatch(
+      /^ui-sans-serif\b/,
     );
     await expect(style.fontFamily).toBe(
       getComputedStyle(document.body).fontFamily,
