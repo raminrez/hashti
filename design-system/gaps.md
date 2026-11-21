@@ -51,10 +51,12 @@ neither blocks work nor authorises repairs; system work goes to craft.
   dialog closes at 36px, menubar triggers at 32px, segmented-control 40px —
   interactive controls below the 44px minimum with no `sm` mapping. Expected:
   explicit compact tier documented in DESIGN.md, or sizes mapped to the
-  32/44/48 ladder. A before/after decision aid now exists — Storybook story
-  `Foundations/G5 Control Heights` on branch `research/g5-height-showcase`
-  (Storybook-only scoped overrides, no component CSS touched). Decision still
-  pending. Status: open (2026-11-20), showcase added (2026-11-21).
+  32/44/48 ladder. A before/after showcase (Storybook `Foundations/G5 Control
+Heights`, story-only overrides) measured all six offenders; decided
+  2026-11-21: keep the shipped heights — 44px read too tall on toolbar and
+  menubar surfaces, a 32px-everywhere tier was not useful. The tier is now
+  documented in DESIGN.md (Components → Actions → Control height tier).
+  Status: resolved by decision (2026-11-21).
 - **G6 — Textarea ghost scroll-sync unverified.** The inline-completion demo
   copies scrollTop on scroll, but the demo's suggestions never overflow the
   textarea, so scroll sync was unverified at runtime. Verified 2026-11-21

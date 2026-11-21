@@ -398,6 +398,17 @@ a square hit target equal to the control height plus a meaningful accessible
 name. Pending actions hide their label, show a spinner in the action's ink, and
 prevent repeat activation.
 
+#### Control height tier (decided 2026-11-21)
+
+The shipped heights are intentional, not an oversight. Standard controls
+(buttons, inputs, overlay closes) sit at 36px; dense navigational surfaces
+(menubar triggers) at 32px; segmented-control items at 40px inside a 48px
+root. The 44px ladder was evaluated against a before/after showcase and
+rejected: 44px made toolbar and menubar surfaces visibly too tall, and a
+32px-everywhere compact tier erased the distinction the current heights
+already draw. Toolbars, menubars, and overlay headers are the dense contexts
+that justify the smaller targets; forms keep the taller standard controls.
+
 ### Fields and recovery
 
 The visible label remains above the control, with guidance directly beneath it —
