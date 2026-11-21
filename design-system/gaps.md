@@ -51,7 +51,6 @@ neither blocks work nor authorises repairs; system work goes to craft.
   dialog closes at 36px, menubar triggers at 32px, segmented-control 40px —
   interactive controls below the 44px minimum with no `sm` mapping. Expected:
   explicit compact tier documented in DESIGN.md, or sizes mapped to the
-<<<<<<< HEAD
   32/44/48 ladder. A before/after decision aid now exists — Storybook story
   `Foundations/G5 Control Heights` on branch `research/g5-height-showcase`
   (Storybook-only scoped overrides, no component CSS touched). Decision still
