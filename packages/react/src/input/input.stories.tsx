@@ -46,3 +46,9 @@ export const ReadOnly: Story = {
 export const Disabled: Story = {
   args: { disabled: true, defaultValue: "Locked value" },
 };
+
+// Standalone (no Field): the wrapper mirrors aria-invalid onto data-invalid.
+export const Invalid: Story = {
+  args: { defaultValue: "No email address" },
+  render: (args) => <Input {...args} aria-label="Email" aria-invalid="true" />,
+};

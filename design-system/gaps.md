@@ -21,12 +21,14 @@ neither blocks work nor authorises repairs; system work goes to craft.
   viewport into it. `dir`/`lang` are plain div props on the same container;
   there is no separate layer concept to carry (tokens key on `[data-theme]`
   directly).
-- **G2 — Invalid state keyed four ways.** CSS queries `aria-invalid`
+- **G2 — Invalid state keyed four ways.** CSS queried `aria-invalid`
   (input.css, textarea.css), `data-invalid` (date-input, time-input,
   date-picker, switch, field), `:has(.hashti-field__error)` (field.css).
-  Expected: CSS keys `data-invalid` only; wrappers map `aria-invalid` to
-  `data-invalid`. Needs React wrapper work (outside improve scope). Status:
-  open (2026-11-20).
+  Shipped: CSS keys `data-invalid` only. `Input`/`Textarea` wrappers mirror a
+  passed `aria-invalid` onto `data-invalid` (so standalone invalid controls
+  style), and `field.css` keys the field's `data-invalid` — ui-sdk puts it on
+  the control inside the field (field.md, `useFieldControl`). Status: resolved
+  (2026-11-21).
 - **G3 — Hover pattern split.** 57 files use `:hover` (5 were unguarded;
   guards fixed 2026-11-20); link.css keys `data-hovered`. Decision made
   2026-11-20 (css-conventions.md): `:hover` + hover-media guard is the
