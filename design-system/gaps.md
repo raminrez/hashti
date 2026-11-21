@@ -35,8 +35,16 @@ neither blocks work nor authorises repairs; system work goes to craft.
 - **G4 — Dead tokens.** ~474 of 535 tokens in design/tokens.css are
   unreferenced (syntax/tag/chat families, type roles, numeric spacing ladder).
   Expected: either migrate components onto named type/spacing roles or prune.
-  Needs a plan before deletion; do not mass-delete. Status: open
-  (2026-11-20).
+  Needs a plan before deletion; do not mass-delete. Status: resolved
+  (2026-11-21, cycle g4-prune-tokens). Pruned by reference: 455 of the 538
+  declared tokens removed (syntax, tag, chat, AI, type/fluid type roles,
+  numeric spacing + container ladder, layer/field/border alias families,
+  status/support extras); 83 kept — token totals 538 → 83. Seven tokens
+  (`border-strong`, `border-subtle`, `field`, `icon-interactive`,
+  `link-primary-hover`, `overlay-radius`, `size-md`) kept because plans/ and
+  design/extraction/ prose name them; `text-helper`, `text-placeholder`,
+  `button-primary-active`, `border-subtle-03` kept because
+  design-system/scripts/contrast-audit.mjs pairs them.
 - **G5 — Off-ladder control heights.** toolbar buttons and drawer/popover/
   dialog closes at 36px, menubar triggers at 32px, segmented-control 40px —
   interactive controls below the 44px minimum with no `sm` mapping. Expected:
