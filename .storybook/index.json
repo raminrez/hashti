@@ -1,0 +1,15 @@
+{
+  "v": 5,
+  "entries": {
+    "setup-csscheck--styles-loaded": {
+      "type": "story",
+      "subtype": "story",
+      "id": "setup-csscheck--styles-loaded",
+      "name": "Styles Loaded",
+      "title": "Setup/CssCheck",
+      "importPath": "./.storybook/stories/CssCheck.stories.jsx",
+      "tags": ["dev", "test", "manifest", "play-fn"],
+      "exportName": "StylesLoaded"
+    }
+  }
+}

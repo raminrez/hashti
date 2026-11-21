@@ -1,6 +1,7 @@
 @layer hashti.tokens, hashti.components;
 
 @import "../../design/tokens.css" layer(hashti.tokens);
+@import "./src/base.css" layer(hashti.tokens);
 @import "./src/button.css" layer(hashti.components);
 @import "./src/switch.css" layer(hashti.components);
 @import "./src/separator.css" layer(hashti.components);

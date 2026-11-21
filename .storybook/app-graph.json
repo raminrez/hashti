@@ -1,0 +1,3133 @@
+{
+  "generatedAt": "2026-11-20T21:57:45.940Z",
+  "extractor": ".storybook/scripts/extract-app-graph.mjs",
+  "lanes": ["public", "system"],
+  "metadata": {
+    "app": "Hashti docs site — Astro file routes + fumadocs content collection",
+    "routesSource": "apps/docs/content/docs/meta.json#pages (ordered) + apps/docs/src/pages/*.astro",
+    "navSource": "apps/docs/src/components/docs.tsx (fumadocs DocsLayout sidebar + DocsPage footer)",
+    "roles": "none in source — every docs page is public; 404 sits in the system lane",
+    "notScreens": [
+      "apps/docs/src/pages/api/search.ts",
+      "apps/docs/src/pages/og/docs/[...slug]/image.webp.ts",
+      "apps/docs/src/pages/[...path].ts (llms markdown endpoints)"
+    ],
+    "coverage": "no page-level stories exist yet, so every node is coverage:none with storyId:null"
+  },
+  "stats": {
+    "routes": 63,
+    "navCallSites": 184,
+    "navEdges": 123,
+    "hierarchyEdges": 61,
+    "backEdges": 0,
+    "backByVia": {},
+    "backCallSites": 0,
+    "ctaLabels": 123,
+    "labelFallbacks": 0,
+    "dynamicCallSites": 0,
+    "unresolvedEdges": 0,
+    "unresolvedBack": 0,
+    "byAttribution": {
+      "page": 2,
+      "persistent-nav": 60,
+      "pagination": 60,
+      "page-body": 1,
+      "route-hierarchy": 61
+    }
+  },
+  "nodes": [
+    {
+      "id": "/",
+      "key": "home",
+      "label": "Hashti",
+      "role": "public",
+      "page": "Home",
+      "storyId": null,
+      "coverage": "none",
+      "group": "root",
+      "order": 0,
+      "entry": true
+    },
+    {
+      "id": "/docs",
+      "key": "index",
+      "label": "Hashti",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/",
+      "group": "docs",
+      "order": 1,
+      "entry": true
+    },
+    {
+      "id": "/docs/accordion",
+      "key": "accordion",
+      "label": "Accordion",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 2
+    },
+    {
+      "id": "/docs/alert-dialog",
+      "key": "alert-dialog",
+      "label": "AlertDialog",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 3
+    },
+    {
+      "id": "/docs/autocomplete",
+      "key": "autocomplete",
+      "label": "Autocomplete",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 4
+    },
+    {
+      "id": "/docs/avatar",
+      "key": "avatar",
+      "label": "Avatar",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 5
+    },
+    {
+      "id": "/docs/badge",
+      "key": "badge",
+      "label": "Badge",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 6
+    },
+    {
+      "id": "/docs/button",
+      "key": "button",
+      "label": "Button",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 7
+    },
+    {
+      "id": "/docs/calendar",
+      "key": "calendar",
+      "label": "Calendar",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 8
+    },
+    {
+      "id": "/docs/carousel",
+      "key": "carousel",
+      "label": "Carousel",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 9
+    },
+    {
+      "id": "/docs/checkbox",
+      "key": "checkbox",
+      "label": "Checkbox",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 10
+    },
+    {
+      "id": "/docs/collapsible",
+      "key": "collapsible",
+      "label": "Collapsible",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 11
+    },
+    {
+      "id": "/docs/color-picker",
+      "key": "color-picker",
+      "label": "ColorPicker",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 12
+    },
+    {
+      "id": "/docs/combobox",
+      "key": "combobox",
+      "label": "Combobox",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 13
+    },
+    {
+      "id": "/docs/command",
+      "key": "command",
+      "label": "Command",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 14
+    },
+    {
+      "id": "/docs/date-input",
+      "key": "date-input",
+      "label": "DateInput",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 15
+    },
+    {
+      "id": "/docs/date-picker",
+      "key": "date-picker",
+      "label": "DatePicker",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 16
+    },
+    {
+      "id": "/docs/dialog",
+      "key": "dialog",
+      "label": "Dialog",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 17
+    },
+    {
+      "id": "/docs/drawer",
+      "key": "drawer",
+      "label": "Drawer",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 18
+    },
+    {
+      "id": "/docs/field",
+      "key": "field",
+      "label": "Field",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 19
+    },
+    {
+      "id": "/docs/file-input",
+      "key": "file-input",
+      "label": "FileInput",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 20
+    },
+    {
+      "id": "/docs/hover-card",
+      "key": "hover-card",
+      "label": "HoverCard",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 21
+    },
+    {
+      "id": "/docs/image-cropper",
+      "key": "image-cropper",
+      "label": "ImageCropper",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 22
+    },
+    {
+      "id": "/docs/inline-completion",
+      "key": "inline-completion",
+      "label": "Inline completion",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 23
+    },
+    {
+      "id": "/docs/input",
+      "key": "input",
+      "label": "Input",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 24
+    },
+    {
+      "id": "/docs/kbd",
+      "key": "kbd",
+      "label": "Kbd",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 25
+    },
+    {
+      "id": "/docs/label",
+      "key": "label",
+      "label": "Label",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 26
+    },
+    {
+      "id": "/docs/link",
+      "key": "link",
+      "label": "Link",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 27
+    },
+    {
+      "id": "/docs/listbox",
+      "key": "listbox",
+      "label": "Listbox",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 28
+    },
+    {
+      "id": "/docs/menu",
+      "key": "menu",
+      "label": "Menu",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 29
+    },
+    {
+      "id": "/docs/menubar",
+      "key": "menubar",
+      "label": "Menubar",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 30
+    },
+    {
+      "id": "/docs/meter",
+      "key": "meter",
+      "label": "Meter",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 31
+    },
+    {
+      "id": "/docs/navigation-menu",
+      "key": "navigation-menu",
+      "label": "NavigationMenu",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 32
+    },
+    {
+      "id": "/docs/number-input",
+      "key": "number-input",
+      "label": "NumberInput",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 33
+    },
+    {
+      "id": "/docs/otp-input",
+      "key": "otp-input",
+      "label": "OTPInput",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 34
+    },
+    {
+      "id": "/docs/pagination",
+      "key": "pagination",
+      "label": "Pagination",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 35
+    },
+    {
+      "id": "/docs/password-input",
+      "key": "password-input",
+      "label": "PasswordInput",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 36
+    },
+    {
+      "id": "/docs/popover",
+      "key": "popover",
+      "label": "Popover",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 37
+    },
+    {
+      "id": "/docs/preferences",
+      "key": "preferences",
+      "label": "Preferences",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 38
+    },
+    {
+      "id": "/docs/progress",
+      "key": "progress",
+      "label": "Progress",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 39
+    },
+    {
+      "id": "/docs/radio",
+      "key": "radio",
+      "label": "Radio",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 40
+    },
+    {
+      "id": "/docs/rating",
+      "key": "rating",
+      "label": "Rating",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 41
+    },
+    {
+      "id": "/docs/resizable",
+      "key": "resizable",
+      "label": "Resizable",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 42
+    },
+    {
+      "id": "/docs/scroll-area",
+      "key": "scroll-area",
+      "label": "ScrollArea",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 43
+    },
+    {
+      "id": "/docs/segmented-control",
+      "key": "segmented-control",
+      "label": "SegmentedControl",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 44
+    },
+    {
+      "id": "/docs/select",
+      "key": "select",
+      "label": "Select",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 45
+    },
+    {
+      "id": "/docs/separator",
+      "key": "separator",
+      "label": "Separator",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 46
+    },
+    {
+      "id": "/docs/slider",
+      "key": "slider",
+      "label": "Slider",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 47
+    },
+    {
+      "id": "/docs/switch",
+      "key": "switch",
+      "label": "Switch",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 48
+    },
+    {
+      "id": "/docs/tabs",
+      "key": "tabs",
+      "label": "Tabs",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 49
+    },
+    {
+      "id": "/docs/textarea",
+      "key": "textarea",
+      "label": "Textarea",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 50
+    },
+    {
+      "id": "/docs/theme",
+      "key": "theme",
+      "label": "Theme",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 51
+    },
+    {
+      "id": "/docs/time-input",
+      "key": "time-input",
+      "label": "TimeInput",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 52
+    },
+    {
+      "id": "/docs/timeline",
+      "key": "timeline",
+      "label": "Timeline",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 53
+    },
+    {
+      "id": "/docs/toast",
+      "key": "toast",
+      "label": "Toast",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 54
+    },
+    {
+      "id": "/docs/toggle",
+      "key": "toggle",
+      "label": "Toggle",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 55
+    },
+    {
+      "id": "/docs/token-input",
+      "key": "token-input",
+      "label": "TokenInput",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 56
+    },
+    {
+      "id": "/docs/toolbar",
+      "key": "toolbar",
+      "label": "Toolbar",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 57
+    },
+    {
+      "id": "/docs/tooltip",
+      "key": "tooltip",
+      "label": "Tooltip",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 58
+    },
+    {
+      "id": "/docs/tree",
+      "key": "tree",
+      "label": "Tree",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 59
+    },
+    {
+      "id": "/docs/trigger-menu",
+      "key": "trigger-menu",
+      "label": "TriggerMenu",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 60
+    },
+    {
+      "id": "/docs/waterfall",
+      "key": "waterfall",
+      "label": "Waterfall",
+      "role": "public",
+      "page": "Docs",
+      "storyId": null,
+      "coverage": "none",
+      "parent": "/docs",
+      "group": "docs",
+      "order": 61
+    },
+    {
+      "id": "/404",
+      "key": "404",
+      "label": "Not found",
+      "role": "system",
+      "page": "NotFound",
+      "storyId": null,
+      "coverage": "none",
+      "group": "system",
+      "order": 62
+    }
+  ],
+  "edges": [
+    {
+      "from": "/",
+      "to": "/docs",
+      "kind": "link",
+      "label": "Open Docs",
+      "verb": "a href",
+      "source": "index.astro",
+      "attribution": "page",
+      "provenance": ["apps/docs/src/pages/index.astro:14 (a href)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/404",
+      "to": "/",
+      "kind": "link",
+      "label": "Back to Home",
+      "verb": "DefaultNotFound",
+      "source": "home.tsx",
+      "attribution": "page",
+      "provenance": ["apps/docs/src/components/home.tsx:20 (DefaultNotFound)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/accordion",
+      "kind": "nav",
+      "label": "Accordion",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/alert-dialog",
+      "kind": "nav",
+      "label": "AlertDialog",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/autocomplete",
+      "kind": "nav",
+      "label": "Autocomplete",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/avatar",
+      "kind": "nav",
+      "label": "Avatar",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/badge",
+      "kind": "nav",
+      "label": "Badge",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/button",
+      "kind": "nav",
+      "label": "Button",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/calendar",
+      "kind": "nav",
+      "label": "Calendar",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/carousel",
+      "kind": "nav",
+      "label": "Carousel",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/checkbox",
+      "kind": "nav",
+      "label": "Checkbox",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/collapsible",
+      "kind": "nav",
+      "label": "Collapsible",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/color-picker",
+      "kind": "nav",
+      "label": "ColorPicker",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/combobox",
+      "kind": "nav",
+      "label": "Combobox",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/command",
+      "kind": "nav",
+      "label": "Command",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/date-input",
+      "kind": "nav",
+      "label": "DateInput",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/date-picker",
+      "kind": "nav",
+      "label": "DatePicker",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/dialog",
+      "kind": "nav",
+      "label": "Dialog",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/drawer",
+      "kind": "nav",
+      "label": "Drawer",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/field",
+      "kind": "nav",
+      "label": "Field",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/file-input",
+      "kind": "nav",
+      "label": "FileInput",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/hover-card",
+      "kind": "nav",
+      "label": "HoverCard",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/image-cropper",
+      "kind": "nav",
+      "label": "ImageCropper",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/inline-completion",
+      "kind": "nav",
+      "label": "Inline completion",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/input",
+      "kind": "nav",
+      "label": "Input",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/kbd",
+      "kind": "nav",
+      "label": "Kbd",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/label",
+      "kind": "nav",
+      "label": "Label",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/link",
+      "kind": "nav",
+      "label": "Link",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/listbox",
+      "kind": "nav",
+      "label": "Listbox",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/menu",
+      "kind": "nav",
+      "label": "Menu",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/menubar",
+      "kind": "nav",
+      "label": "Menubar",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/meter",
+      "kind": "nav",
+      "label": "Meter",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/navigation-menu",
+      "kind": "nav",
+      "label": "NavigationMenu",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/number-input",
+      "kind": "nav",
+      "label": "NumberInput",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/otp-input",
+      "kind": "nav",
+      "label": "OTPInput",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/pagination",
+      "kind": "nav",
+      "label": "Pagination",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/password-input",
+      "kind": "nav",
+      "label": "PasswordInput",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/popover",
+      "kind": "nav",
+      "label": "Popover",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/preferences",
+      "kind": "nav",
+      "label": "Preferences",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/progress",
+      "kind": "nav",
+      "label": "Progress",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/radio",
+      "kind": "nav",
+      "label": "Radio",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/rating",
+      "kind": "nav",
+      "label": "Rating",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/resizable",
+      "kind": "nav",
+      "label": "Resizable",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/scroll-area",
+      "kind": "nav",
+      "label": "ScrollArea",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/segmented-control",
+      "kind": "nav",
+      "label": "SegmentedControl",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/select",
+      "kind": "nav",
+      "label": "Select",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/separator",
+      "kind": "nav",
+      "label": "Separator",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/slider",
+      "kind": "nav",
+      "label": "Slider",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/switch",
+      "kind": "nav",
+      "label": "Switch",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/tabs",
+      "kind": "nav",
+      "label": "Tabs",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/textarea",
+      "kind": "nav",
+      "label": "Textarea",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/theme",
+      "kind": "nav",
+      "label": "Theme",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/time-input",
+      "kind": "nav",
+      "label": "TimeInput",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/timeline",
+      "kind": "nav",
+      "label": "Timeline",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/toast",
+      "kind": "nav",
+      "label": "Toast",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/toggle",
+      "kind": "nav",
+      "label": "Toggle",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/token-input",
+      "kind": "nav",
+      "label": "TokenInput",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/toolbar",
+      "kind": "nav",
+      "label": "Toolbar",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/tooltip",
+      "kind": "nav",
+      "label": "Tooltip",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/tree",
+      "kind": "nav",
+      "label": "Tree",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/trigger-menu",
+      "kind": "nav",
+      "label": "TriggerMenu",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/waterfall",
+      "kind": "nav",
+      "label": "Waterfall",
+      "verb": "DocsLayout tree",
+      "source": "docs-sidebar",
+      "attribution": "persistent-nav",
+      "provenance": ["apps/docs/src/components/docs.tsx:43 (DocsLayout tree)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/accordion",
+      "kind": "link",
+      "label": "Accordion",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/accordion",
+      "to": "/docs/alert-dialog",
+      "kind": "link",
+      "label": "AlertDialog",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/alert-dialog",
+      "to": "/docs/autocomplete",
+      "kind": "link",
+      "label": "Autocomplete",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/autocomplete",
+      "to": "/docs/avatar",
+      "kind": "link",
+      "label": "Avatar",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/avatar",
+      "to": "/docs/badge",
+      "kind": "link",
+      "label": "Badge",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/badge",
+      "to": "/docs/button",
+      "kind": "link",
+      "label": "Button",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/button",
+      "to": "/docs/calendar",
+      "kind": "link",
+      "label": "Calendar",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/calendar",
+      "to": "/docs/carousel",
+      "kind": "link",
+      "label": "Carousel",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/carousel",
+      "to": "/docs/checkbox",
+      "kind": "link",
+      "label": "Checkbox",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/checkbox",
+      "to": "/docs/collapsible",
+      "kind": "link",
+      "label": "Collapsible",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/collapsible",
+      "to": "/docs/color-picker",
+      "kind": "link",
+      "label": "ColorPicker",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/color-picker",
+      "to": "/docs/combobox",
+      "kind": "link",
+      "label": "Combobox",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/combobox",
+      "to": "/docs/command",
+      "kind": "link",
+      "label": "Command",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/command",
+      "to": "/docs/date-input",
+      "kind": "link",
+      "label": "DateInput",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/date-input",
+      "to": "/docs/date-picker",
+      "kind": "link",
+      "label": "DatePicker",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/date-picker",
+      "to": "/docs/dialog",
+      "kind": "link",
+      "label": "Dialog",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/dialog",
+      "to": "/docs/drawer",
+      "kind": "link",
+      "label": "Drawer",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/drawer",
+      "to": "/docs/field",
+      "kind": "link",
+      "label": "Field",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/field",
+      "to": "/docs/file-input",
+      "kind": "link",
+      "label": "FileInput",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/file-input",
+      "to": "/docs/hover-card",
+      "kind": "link",
+      "label": "HoverCard",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/hover-card",
+      "to": "/docs/image-cropper",
+      "kind": "link",
+      "label": "ImageCropper",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/image-cropper",
+      "to": "/docs/inline-completion",
+      "kind": "link",
+      "label": "Inline completion",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/inline-completion",
+      "to": "/docs/input",
+      "kind": "link",
+      "label": "Input",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/input",
+      "to": "/docs/kbd",
+      "kind": "link",
+      "label": "Kbd",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/kbd",
+      "to": "/docs/label",
+      "kind": "link",
+      "label": "Label",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/label",
+      "to": "/docs/link",
+      "kind": "link",
+      "label": "Link",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/link",
+      "to": "/docs/listbox",
+      "kind": "link",
+      "label": "Listbox",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/listbox",
+      "to": "/docs/menu",
+      "kind": "link",
+      "label": "Menu",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/menu",
+      "to": "/docs/menubar",
+      "kind": "link",
+      "label": "Menubar",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/menubar",
+      "to": "/docs/meter",
+      "kind": "link",
+      "label": "Meter",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/meter",
+      "to": "/docs/navigation-menu",
+      "kind": "link",
+      "label": "NavigationMenu",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/navigation-menu",
+      "to": "/docs/number-input",
+      "kind": "link",
+      "label": "NumberInput",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/number-input",
+      "to": "/docs/otp-input",
+      "kind": "link",
+      "label": "OTPInput",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/otp-input",
+      "to": "/docs/pagination",
+      "kind": "link",
+      "label": "Pagination",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/pagination",
+      "to": "/docs/password-input",
+      "kind": "link",
+      "label": "PasswordInput",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/password-input",
+      "to": "/docs/popover",
+      "kind": "link",
+      "label": "Popover",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/popover",
+      "to": "/docs/preferences",
+      "kind": "link",
+      "label": "Preferences",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/preferences",
+      "to": "/docs/progress",
+      "kind": "link",
+      "label": "Progress",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/progress",
+      "to": "/docs/radio",
+      "kind": "link",
+      "label": "Radio",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/radio",
+      "to": "/docs/rating",
+      "kind": "link",
+      "label": "Rating",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/rating",
+      "to": "/docs/resizable",
+      "kind": "link",
+      "label": "Resizable",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/resizable",
+      "to": "/docs/scroll-area",
+      "kind": "link",
+      "label": "ScrollArea",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/scroll-area",
+      "to": "/docs/segmented-control",
+      "kind": "link",
+      "label": "SegmentedControl",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/segmented-control",
+      "to": "/docs/select",
+      "kind": "link",
+      "label": "Select",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/select",
+      "to": "/docs/separator",
+      "kind": "link",
+      "label": "Separator",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/separator",
+      "to": "/docs/slider",
+      "kind": "link",
+      "label": "Slider",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/slider",
+      "to": "/docs/switch",
+      "kind": "link",
+      "label": "Switch",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/switch",
+      "to": "/docs/tabs",
+      "kind": "link",
+      "label": "Tabs",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/tabs",
+      "to": "/docs/textarea",
+      "kind": "link",
+      "label": "Textarea",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/textarea",
+      "to": "/docs/theme",
+      "kind": "link",
+      "label": "Theme",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/theme",
+      "to": "/docs/time-input",
+      "kind": "link",
+      "label": "TimeInput",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/time-input",
+      "to": "/docs/timeline",
+      "kind": "link",
+      "label": "Timeline",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/timeline",
+      "to": "/docs/toast",
+      "kind": "link",
+      "label": "Toast",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/toast",
+      "to": "/docs/toggle",
+      "kind": "link",
+      "label": "Toggle",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/toggle",
+      "to": "/docs/token-input",
+      "kind": "link",
+      "label": "TokenInput",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/token-input",
+      "to": "/docs/toolbar",
+      "kind": "link",
+      "label": "Toolbar",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/toolbar",
+      "to": "/docs/tooltip",
+      "kind": "link",
+      "label": "Tooltip",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/tooltip",
+      "to": "/docs/tree",
+      "kind": "link",
+      "label": "Tree",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/tree",
+      "to": "/docs/trigger-menu",
+      "kind": "link",
+      "label": "TriggerMenu",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/trigger-menu",
+      "to": "/docs/waterfall",
+      "kind": "link",
+      "label": "Waterfall",
+      "verb": "DocsPage footer",
+      "source": "docs-footer",
+      "attribution": "pagination",
+      "provenance": ["apps/docs/src/components/docs.tsx:44 (DocsPage footer)"],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/docs/inline-completion",
+      "to": "/docs/autocomplete",
+      "kind": "link",
+      "label": "Autocomplete",
+      "verb": "mdx link",
+      "source": "inline-completion",
+      "attribution": "page-body",
+      "provenance": [
+        "apps/docs/content/docs/inline-completion.mdx:19 (mdx link)"
+      ],
+      "labelVia": "cta",
+      "count": 1
+    },
+    {
+      "from": "/",
+      "to": "/docs",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/accordion",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/alert-dialog",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/autocomplete",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/avatar",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/badge",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/button",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/calendar",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/carousel",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/checkbox",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/collapsible",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/color-picker",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/combobox",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/command",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/date-input",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/date-picker",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/dialog",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/drawer",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/field",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/file-input",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/hover-card",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/image-cropper",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/inline-completion",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/input",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/kbd",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/label",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/link",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/listbox",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/menu",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/menubar",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/meter",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/navigation-menu",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/number-input",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/otp-input",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/pagination",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/password-input",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/popover",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/preferences",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/progress",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/radio",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/rating",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/resizable",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/scroll-area",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/segmented-control",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/select",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/separator",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/slider",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/switch",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/tabs",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/textarea",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/theme",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/time-input",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/timeline",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/toast",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/toggle",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/token-input",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/toolbar",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/tooltip",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/tree",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/trigger-menu",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    },
+    {
+      "from": "/docs",
+      "to": "/docs/waterfall",
+      "kind": "subroute",
+      "label": "sub-route",
+      "verb": "sub-route",
+      "source": "apps/docs/content/docs/meta.json",
+      "attribution": "route-hierarchy",
+      "provenance": [
+        "apps/docs/src/pages/docs/[...slug].astro (Astro catch-all)"
+      ],
+      "labelVia": "structural",
+      "count": 1
+    }
+  ],
+  "dynamicCallSites": [],
+  "unresolvedEdges": [],
+  "unresolvedBack": []
+}
