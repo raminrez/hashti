@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T19:28:05Z",
+  "generatedAt": "2026-11-21T07:47:17Z",
   "ranBy": "raminrezaei",
   "libraries": {
     "react": true,
@@ -19,7 +19,7 @@
       "tailwind-v4": 0,
       "shadcn": 0,
       "dtcg": 0,
-      "css-vars": 195
+      "css-vars": 18
     }
   },
   "components": {
@@ -230,9 +230,9 @@
     ],
     "storyCoverage": {
       "real": 61,
-      "storyFiles": 1,
+      "storyFiles": 2,
       "withColocatedStory": 0,
-      "withStory": 0,
+      "withStory": 1,
       "needsCount": 61,
       "needsStory": [
         "accordion-demo",
@@ -287,278 +287,36 @@
         "tabs-demo"
       ],
       "source": "storybook-index",
-      "registeredStories": 1,
+      "registeredStories": 116,
       "withRegisteredStory": 0
     }
   },
   "tokens": {
-    "totalDeclared": 535,
-    "usedCount": 103,
-    "orphanCount": 432,
+    "totalDeclared": 84,
+    "usedCount": 72,
+    "orphanCount": 12,
     "orphan": [
-      "--hashti-ai-aura-end",
-      "--hashti-ai-aura-hover-background",
-      "--hashti-ai-aura-hover-end",
-      "--hashti-ai-aura-hover-start",
-      "--hashti-ai-aura-start",
-      "--hashti-ai-aura-start-sm",
-      "--hashti-ai-border-end",
-      "--hashti-ai-border-start",
-      "--hashti-ai-border-strong",
-      "--hashti-ai-drop-shadow",
-      "--hashti-ai-gradient-end",
-      "--hashti-ai-gradient-start",
-      "--hashti-ai-inner-shadow",
-      "--hashti-ai-overlay",
-      "--hashti-ai-popover-background",
-      "--hashti-ai-popover-caret-bottom",
-      "--hashti-ai-popover-caret-bottom-background",
-      "--hashti-ai-popover-caret-bottom-background-actions",
-      "--hashti-ai-popover-caret-center",
-      "--hashti-ai-popover-shadow-outer-01",
-      "--hashti-ai-popover-shadow-outer-02",
-      "--hashti-ai-skeleton-background",
-      "--hashti-ai-skeleton-element-background",
-      "--hashti-background-active",
-      "--hashti-background-brand",
-      "--hashti-background-inverse-hover",
-      "--hashti-border-interactive",
-      "--hashti-border-inverse",
       "--hashti-border-strong",
-      "--hashti-border-subtle"
+      "--hashti-border-subtle",
+      "--hashti-border-subtle-03",
+      "--hashti-button-primary-active",
+      "--hashti-field",
+      "--hashti-icon-interactive",
+      "--hashti-link-primary-hover",
+      "--hashti-text-helper",
+      "--hashti-text-placeholder",
+      "--hashti-overlay-radius",
+      "--hashti-size-md",
+      "--removed-body-scroll-bar-size"
     ],
     "map": [
-      {
-        "token": "--hashti-ai-aura-end",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:214"
-      },
-      {
-        "token": "--hashti-ai-aura-hover-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:215"
-      },
-      {
-        "token": "--hashti-ai-aura-hover-end",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:216"
-      },
-      {
-        "token": "--hashti-ai-aura-hover-start",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:217"
-      },
-      {
-        "token": "--hashti-ai-aura-start",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:218"
-      },
-      {
-        "token": "--hashti-ai-aura-start-sm",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:219"
-      },
-      {
-        "token": "--hashti-ai-border-end",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:220"
-      },
-      {
-        "token": "--hashti-ai-border-start",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:221"
-      },
-      {
-        "token": "--hashti-ai-border-strong",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:222"
-      },
-      {
-        "token": "--hashti-ai-drop-shadow",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:223"
-      },
-      {
-        "token": "--hashti-ai-gradient-end",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:571"
-      },
-      {
-        "token": "--hashti-ai-gradient-start",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:570"
-      },
-      {
-        "token": "--hashti-ai-inner-shadow",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:224"
-      },
-      {
-        "token": "--hashti-ai-overlay",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:225"
-      },
-      {
-        "token": "--hashti-ai-popover-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:226"
-      },
-      {
-        "token": "--hashti-ai-popover-caret-bottom",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:227"
-      },
-      {
-        "token": "--hashti-ai-popover-caret-bottom-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:228"
-      },
-      {
-        "token": "--hashti-ai-popover-caret-bottom-background-actions",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:229"
-      },
-      {
-        "token": "--hashti-ai-popover-caret-center",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:230"
-      },
-      {
-        "token": "--hashti-ai-popover-shadow-outer-01",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:231"
-      },
-      {
-        "token": "--hashti-ai-popover-shadow-outer-02",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:232"
-      },
-      {
-        "token": "--hashti-ai-skeleton-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:233"
-      },
-      {
-        "token": "--hashti-ai-skeleton-element-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:234"
-      },
-      {
-        "token": "--hashti-background-active",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:236"
-      },
-      {
-        "token": "--hashti-background-brand",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:237"
-      },
-      {
-        "token": "--hashti-background-inverse-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:240"
-      },
-      {
-        "token": "--hashti-border-interactive",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:244"
-      },
-      {
-        "token": "--hashti-border-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:245"
-      },
       {
         "token": "--hashti-border-strong",
         "category": "color",
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:1326",
+        "declaredIn": "design/tokens.css:268",
         "aliasOf": "--hashti-border-strong-01"
       },
       {
@@ -567,7 +325,7 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:1325",
+        "declaredIn": "design/tokens.css:267",
         "aliasOf": "--hashti-border-subtle-00"
       },
       {
@@ -576,33 +334,7 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:252"
-      },
-      {
-        "token": "--hashti-border-subtle-selected",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1328",
-        "aliasOf": "--hashti-border-subtle-selected-01"
-      },
-      {
-        "token": "--hashti-border-tile",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1327",
-        "aliasOf": "--hashti-border-tile-01"
-      },
-      {
-        "token": "--hashti-button-danger-active",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:259"
+        "declaredIn": "design/tokens.css:44"
       },
       {
         "token": "--hashti-button-primary-active",
@@ -610,231 +342,7 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:265"
-      },
-      {
-        "token": "--hashti-button-secondary-active",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:268"
-      },
-      {
-        "token": "--hashti-button-separator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:270"
-      },
-      {
-        "token": "--hashti-button-tertiary",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:271"
-      },
-      {
-        "token": "--hashti-button-tertiary-active",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:272"
-      },
-      {
-        "token": "--hashti-chat-avatar-agent",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:274"
-      },
-      {
-        "token": "--hashti-chat-avatar-bot",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:275"
-      },
-      {
-        "token": "--hashti-chat-avatar-user",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:276"
-      },
-      {
-        "token": "--hashti-chat-bubble-agent",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:277"
-      },
-      {
-        "token": "--hashti-chat-bubble-agent-text",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:278"
-      },
-      {
-        "token": "--hashti-chat-bubble-border",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:279"
-      },
-      {
-        "token": "--hashti-chat-bubble-user",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:280"
-      },
-      {
-        "token": "--hashti-chat-bubble-user-text",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:281"
-      },
-      {
-        "token": "--hashti-chat-button",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:282"
-      },
-      {
-        "token": "--hashti-chat-button-active",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:283"
-      },
-      {
-        "token": "--hashti-chat-button-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:284"
-      },
-      {
-        "token": "--hashti-chat-button-selected",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:285"
-      },
-      {
-        "token": "--hashti-chat-button-text-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:286"
-      },
-      {
-        "token": "--hashti-chat-button-text-selected",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:287"
-      },
-      {
-        "token": "--hashti-chat-header-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:288"
-      },
-      {
-        "token": "--hashti-chat-header-text",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:289"
-      },
-      {
-        "token": "--hashti-chat-prompt-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:290"
-      },
-      {
-        "token": "--hashti-chat-prompt-border-end",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:291"
-      },
-      {
-        "token": "--hashti-chat-prompt-border-start",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:292"
-      },
-      {
-        "token": "--hashti-chat-prompt-text",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:293"
-      },
-      {
-        "token": "--hashti-chat-shell-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:294"
-      },
-      {
-        "token": "--hashti-content-switcher-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:296"
-      },
-      {
-        "token": "--hashti-content-switcher-background-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:297"
-      },
-      {
-        "token": "--hashti-content-switcher-selected",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:298"
+        "declaredIn": "design/tokens.css:50"
       },
       {
         "token": "--hashti-field",
@@ -842,49 +350,8 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:1323",
+        "declaredIn": "design/tokens.css:266",
         "aliasOf": "--hashti-field-01"
-      },
-      {
-        "token": "--hashti-field-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1324",
-        "aliasOf": "--hashti-field-hover-01"
-      },
-      {
-        "token": "--hashti-focus-inset",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:306"
-      },
-      {
-        "token": "--hashti-focus-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:307"
-      },
-      {
-        "token": "--hashti-highlight",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:308"
-      },
-      {
-        "token": "--hashti-icon-disabled",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:309"
       },
       {
         "token": "--hashti-icon-interactive",
@@ -892,168 +359,7 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:310"
-      },
-      {
-        "token": "--hashti-icon-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:311"
-      },
-      {
-        "token": "--hashti-icon-on-color-disabled",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:313"
-      },
-      {
-        "token": "--hashti-icon-primary",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:314"
-      },
-      {
-        "token": "--hashti-icon-secondary",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:315"
-      },
-      {
-        "token": "--hashti-layer",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1314",
-        "aliasOf": "--hashti-layer-01"
-      },
-      {
-        "token": "--hashti-layer-accent",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1320",
-        "aliasOf": "--hashti-layer-accent-01"
-      },
-      {
-        "token": "--hashti-layer-accent-active",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1322",
-        "aliasOf": "--hashti-layer-accent-active-01"
-      },
-      {
-        "token": "--hashti-layer-accent-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1321",
-        "aliasOf": "--hashti-layer-accent-hover-01"
-      },
-      {
-        "token": "--hashti-layer-active",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1317",
-        "aliasOf": "--hashti-layer-active-01"
-      },
-      {
-        "token": "--hashti-layer-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1315",
-        "aliasOf": "--hashti-layer-background-01"
-      },
-      {
-        "token": "--hashti-layer-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1316",
-        "aliasOf": "--hashti-layer-hover-01"
-      },
-      {
-        "token": "--hashti-layer-selected",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1318",
-        "aliasOf": "--hashti-layer-selected-01"
-      },
-      {
-        "token": "--hashti-layer-selected-disabled",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:341"
-      },
-      {
-        "token": "--hashti-layer-selected-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:1319",
-        "aliasOf": "--hashti-layer-selected-hover-01"
-      },
-      {
-        "token": "--hashti-layer-selected-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:345"
-      },
-      {
-        "token": "--hashti-link-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:346"
-      },
-      {
-        "token": "--hashti-link-inverse-active",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:347"
-      },
-      {
-        "token": "--hashti-link-inverse-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:348"
-      },
-      {
-        "token": "--hashti-link-inverse-visited",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:349"
+        "declaredIn": "design/tokens.css:59"
       },
       {
         "token": "--hashti-link-primary-hover",
@@ -1061,1247 +367,7 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:351"
-      },
-      {
-        "token": "--hashti-link-secondary",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:352"
-      },
-      {
-        "token": "--hashti-notification-action-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:354"
-      },
-      {
-        "token": "--hashti-notification-action-tertiary-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:355"
-      },
-      {
-        "token": "--hashti-notification-action-tertiary-inverse-active",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:356"
-      },
-      {
-        "token": "--hashti-notification-action-tertiary-inverse-hover",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:357"
-      },
-      {
-        "token": "--hashti-notification-action-tertiary-inverse-text",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:358"
-      },
-      {
-        "token": "--hashti-notification-action-tertiary-inverse-text-on-color-disabled",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:359"
-      },
-      {
-        "token": "--hashti-notification-background-info",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:366"
-      },
-      {
-        "token": "--hashti-skeleton-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:375"
-      },
-      {
-        "token": "--hashti-skeleton-element",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:376"
-      },
-      {
-        "token": "--hashti-status-accessibility-background",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:377"
-      },
-      {
-        "token": "--hashti-status-blue",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:378"
-      },
-      {
-        "token": "--hashti-status-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:379"
-      },
-      {
-        "token": "--hashti-status-green",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:380"
-      },
-      {
-        "token": "--hashti-status-orange",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:381"
-      },
-      {
-        "token": "--hashti-status-orange-outline",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:382"
-      },
-      {
-        "token": "--hashti-status-purple",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:383"
-      },
-      {
-        "token": "--hashti-status-red",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:384"
-      },
-      {
-        "token": "--hashti-status-yellow",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:385"
-      },
-      {
-        "token": "--hashti-status-yellow-outline",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:386"
-      },
-      {
-        "token": "--hashti-support-caution-major",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:387"
-      },
-      {
-        "token": "--hashti-support-caution-minor",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:388"
-      },
-      {
-        "token": "--hashti-support-caution-undefined",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:389"
-      },
-      {
-        "token": "--hashti-support-error-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:391"
-      },
-      {
-        "token": "--hashti-support-info-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:393"
-      },
-      {
-        "token": "--hashti-support-success-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:395"
-      },
-      {
-        "token": "--hashti-support-warning-inverse",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:397"
-      },
-      {
-        "token": "--hashti-syntax-angle-bracket",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:398"
-      },
-      {
-        "token": "--hashti-syntax-annotation",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:399"
-      },
-      {
-        "token": "--hashti-syntax-arithmetic-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:400"
-      },
-      {
-        "token": "--hashti-syntax-atom",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:401"
-      },
-      {
-        "token": "--hashti-syntax-attribute",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:402"
-      },
-      {
-        "token": "--hashti-syntax-attribute-name",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:403"
-      },
-      {
-        "token": "--hashti-syntax-attribute-value",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:404"
-      },
-      {
-        "token": "--hashti-syntax-bitwise-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:405"
-      },
-      {
-        "token": "--hashti-syntax-block-comment",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:406"
-      },
-      {
-        "token": "--hashti-syntax-bool",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:407"
-      },
-      {
-        "token": "--hashti-syntax-brace",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:408"
-      },
-      {
-        "token": "--hashti-syntax-bracket",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:409"
-      },
-      {
-        "token": "--hashti-syntax-character",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:410"
-      },
-      {
-        "token": "--hashti-syntax-class-name",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:411"
-      },
-      {
-        "token": "--hashti-syntax-color",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:412"
-      },
-      {
-        "token": "--hashti-syntax-comment",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:413"
-      },
-      {
-        "token": "--hashti-syntax-compare-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:414"
-      },
-      {
-        "token": "--hashti-syntax-constant",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:415"
-      },
-      {
-        "token": "--hashti-syntax-content",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:416"
-      },
-      {
-        "token": "--hashti-syntax-content-separator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:417"
-      },
-      {
-        "token": "--hashti-syntax-control-keyword",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:418"
-      },
-      {
-        "token": "--hashti-syntax-control-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:419"
-      },
-      {
-        "token": "--hashti-syntax-definition",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:420"
-      },
-      {
-        "token": "--hashti-syntax-definition-keyword",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:421"
-      },
-      {
-        "token": "--hashti-syntax-definition-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:422"
-      },
-      {
-        "token": "--hashti-syntax-deleted",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:423"
-      },
-      {
-        "token": "--hashti-syntax-deref-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:424"
-      },
-      {
-        "token": "--hashti-syntax-doc-comment",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:425"
-      },
-      {
-        "token": "--hashti-syntax-doc-string",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:426"
-      },
-      {
-        "token": "--hashti-syntax-document-meta",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:427"
-      },
-      {
-        "token": "--hashti-syntax-emphasis",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:428"
-      },
-      {
-        "token": "--hashti-syntax-escape",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:429"
-      },
-      {
-        "token": "--hashti-syntax-float",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:430"
-      },
-      {
-        "token": "--hashti-syntax-function",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:431"
-      },
-      {
-        "token": "--hashti-syntax-heading",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:432"
-      },
-      {
-        "token": "--hashti-syntax-heading-1",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:433"
-      },
-      {
-        "token": "--hashti-syntax-heading-2",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:434"
-      },
-      {
-        "token": "--hashti-syntax-heading-3",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:435"
-      },
-      {
-        "token": "--hashti-syntax-heading-4",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:436"
-      },
-      {
-        "token": "--hashti-syntax-heading-5",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:437"
-      },
-      {
-        "token": "--hashti-syntax-heading-6",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:438"
-      },
-      {
-        "token": "--hashti-syntax-inserted",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:439"
-      },
-      {
-        "token": "--hashti-syntax-integer",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:440"
-      },
-      {
-        "token": "--hashti-syntax-invalid",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:441"
-      },
-      {
-        "token": "--hashti-syntax-keyword",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:442"
-      },
-      {
-        "token": "--hashti-syntax-label-name",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:443"
-      },
-      {
-        "token": "--hashti-syntax-line-comment",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:444"
-      },
-      {
-        "token": "--hashti-syntax-link",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:445"
-      },
-      {
-        "token": "--hashti-syntax-list",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:446"
-      },
-      {
-        "token": "--hashti-syntax-literal",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:447"
-      },
-      {
-        "token": "--hashti-syntax-local",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:448"
-      },
-      {
-        "token": "--hashti-syntax-logic-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:449"
-      },
-      {
-        "token": "--hashti-syntax-macro-name",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:450"
-      },
-      {
-        "token": "--hashti-syntax-meta",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:451"
-      },
-      {
-        "token": "--hashti-syntax-modifier",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:452"
-      },
-      {
-        "token": "--hashti-syntax-module-keyword",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:453"
-      },
-      {
-        "token": "--hashti-syntax-monospace",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:454"
-      },
-      {
-        "token": "--hashti-syntax-name",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:455"
-      },
-      {
-        "token": "--hashti-syntax-namespace",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:456"
-      },
-      {
-        "token": "--hashti-syntax-null",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:457"
-      },
-      {
-        "token": "--hashti-syntax-number",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:458"
-      },
-      {
-        "token": "--hashti-syntax-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:459"
-      },
-      {
-        "token": "--hashti-syntax-operator-keyword",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:460"
-      },
-      {
-        "token": "--hashti-syntax-paren",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:461"
-      },
-      {
-        "token": "--hashti-syntax-processing-instruction",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:462"
-      },
-      {
-        "token": "--hashti-syntax-property-name",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:463"
-      },
-      {
-        "token": "--hashti-syntax-punctuation",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:464"
-      },
-      {
-        "token": "--hashti-syntax-quote",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:465"
-      },
-      {
-        "token": "--hashti-syntax-regexp",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:466"
-      },
-      {
-        "token": "--hashti-syntax-self",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:467"
-      },
-      {
-        "token": "--hashti-syntax-separator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:468"
-      },
-      {
-        "token": "--hashti-syntax-special",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:469"
-      },
-      {
-        "token": "--hashti-syntax-special-string",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:470"
-      },
-      {
-        "token": "--hashti-syntax-square-bracket",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:471"
-      },
-      {
-        "token": "--hashti-syntax-standard",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:472"
-      },
-      {
-        "token": "--hashti-syntax-strikethrough",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:473"
-      },
-      {
-        "token": "--hashti-syntax-string",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:474"
-      },
-      {
-        "token": "--hashti-syntax-strong",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:475"
-      },
-      {
-        "token": "--hashti-syntax-tag",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:476"
-      },
-      {
-        "token": "--hashti-syntax-tag-name",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:477"
-      },
-      {
-        "token": "--hashti-syntax-type",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:478"
-      },
-      {
-        "token": "--hashti-syntax-type-name",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:479"
-      },
-      {
-        "token": "--hashti-syntax-type-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:480"
-      },
-      {
-        "token": "--hashti-syntax-unit",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:481"
-      },
-      {
-        "token": "--hashti-syntax-update-operator",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:482"
-      },
-      {
-        "token": "--hashti-syntax-url",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:483"
-      },
-      {
-        "token": "--hashti-syntax-variable",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:484"
-      },
-      {
-        "token": "--hashti-syntax-variable-name",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:485"
-      },
-      {
-        "token": "--hashti-tag-background-blue",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:486"
-      },
-      {
-        "token": "--hashti-tag-background-cool-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:487"
-      },
-      {
-        "token": "--hashti-tag-background-cyan",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:488"
-      },
-      {
-        "token": "--hashti-tag-background-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:489"
-      },
-      {
-        "token": "--hashti-tag-background-green",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:490"
-      },
-      {
-        "token": "--hashti-tag-background-magenta",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:491"
-      },
-      {
-        "token": "--hashti-tag-background-purple",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:492"
-      },
-      {
-        "token": "--hashti-tag-background-red",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:493"
-      },
-      {
-        "token": "--hashti-tag-background-teal",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:494"
-      },
-      {
-        "token": "--hashti-tag-background-warm-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:495"
-      },
-      {
-        "token": "--hashti-tag-border-blue",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:496"
-      },
-      {
-        "token": "--hashti-tag-border-cool-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:497"
-      },
-      {
-        "token": "--hashti-tag-border-cyan",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:498"
-      },
-      {
-        "token": "--hashti-tag-border-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:499"
-      },
-      {
-        "token": "--hashti-tag-border-green",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:500"
-      },
-      {
-        "token": "--hashti-tag-border-magenta",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:501"
-      },
-      {
-        "token": "--hashti-tag-border-purple",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:502"
-      },
-      {
-        "token": "--hashti-tag-border-red",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:503"
-      },
-      {
-        "token": "--hashti-tag-border-teal",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:504"
-      },
-      {
-        "token": "--hashti-tag-border-warm-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:505"
-      },
-      {
-        "token": "--hashti-tag-color-blue",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:506"
-      },
-      {
-        "token": "--hashti-tag-color-cool-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:507"
-      },
-      {
-        "token": "--hashti-tag-color-cyan",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:508"
-      },
-      {
-        "token": "--hashti-tag-color-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:509"
-      },
-      {
-        "token": "--hashti-tag-color-green",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:510"
-      },
-      {
-        "token": "--hashti-tag-color-magenta",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:511"
-      },
-      {
-        "token": "--hashti-tag-color-purple",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:512"
-      },
-      {
-        "token": "--hashti-tag-color-red",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:513"
-      },
-      {
-        "token": "--hashti-tag-color-teal",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:514"
-      },
-      {
-        "token": "--hashti-tag-color-warm-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:515"
-      },
-      {
-        "token": "--hashti-tag-hover-blue",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:516"
-      },
-      {
-        "token": "--hashti-tag-hover-cool-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:517"
-      },
-      {
-        "token": "--hashti-tag-hover-cyan",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:518"
-      },
-      {
-        "token": "--hashti-tag-hover-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:519"
-      },
-      {
-        "token": "--hashti-tag-hover-green",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:520"
-      },
-      {
-        "token": "--hashti-tag-hover-magenta",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:521"
-      },
-      {
-        "token": "--hashti-tag-hover-purple",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:522"
-      },
-      {
-        "token": "--hashti-tag-hover-red",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:523"
-      },
-      {
-        "token": "--hashti-tag-hover-teal",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:524"
-      },
-      {
-        "token": "--hashti-tag-hover-warm-gray",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:525"
+        "declaredIn": "design/tokens.css:67"
       },
       {
         "token": "--hashti-text-helper",
@@ -2309,15 +375,7 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:528"
-      },
-      {
-        "token": "--hashti-text-on-color-disabled",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:531"
+        "declaredIn": "design/tokens.css:84"
       },
       {
         "token": "--hashti-text-placeholder",
@@ -2325,15 +383,7 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:532"
-      },
-      {
-        "token": "--hashti-toggle-off",
-        "category": "color",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:535"
+        "declaredIn": "design/tokens.css:87"
       },
       {
         "token": "--hashti-background",
@@ -2341,7 +391,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/avatar.css"],
-        "declaredIn": "design/tokens.css:235"
+        "declaredIn": "design/tokens.css:32"
       },
       {
         "token": "--hashti-background-hover",
@@ -2379,7 +429,7 @@
           "packages/styles/src/trigger-menu.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:238"
+        "declaredIn": "design/tokens.css:33"
       },
       {
         "token": "--hashti-background-inverse",
@@ -2387,7 +437,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/tooltip.css"],
-        "declaredIn": "design/tokens.css:239"
+        "declaredIn": "design/tokens.css:34"
       },
       {
         "token": "--hashti-background-selected",
@@ -2407,7 +457,7 @@
           "packages/styles/src/tree.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:241"
+        "declaredIn": "design/tokens.css:35"
       },
       {
         "token": "--hashti-background-selected-hover",
@@ -2415,7 +465,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/token-input.css"],
-        "declaredIn": "design/tokens.css:242"
+        "declaredIn": "design/tokens.css:36"
       },
       {
         "token": "--hashti-border-disabled",
@@ -2444,7 +494,7 @@
           "packages/styles/src/token-input.css",
           "packages/styles/src/trigger-menu.css"
         ],
-        "declaredIn": "design/tokens.css:243"
+        "declaredIn": "design/tokens.css:37"
       },
       {
         "token": "--hashti-border-strong-01",
@@ -2484,7 +534,7 @@
           "packages/styles/src/trigger-menu.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:246"
+        "declaredIn": "design/tokens.css:38"
       },
       {
         "token": "--hashti-border-strong-02",
@@ -2492,7 +542,7 @@
         "status": "used",
         "count": 1,
         "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:247"
+        "declaredIn": "design/tokens.css:39"
       },
       {
         "token": "--hashti-border-strong-03",
@@ -2500,7 +550,7 @@
         "status": "used",
         "count": 1,
         "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:248"
+        "declaredIn": "design/tokens.css:40"
       },
       {
         "token": "--hashti-border-subtle-00",
@@ -2546,7 +596,7 @@
           "packages/styles/src/trigger-menu.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:249"
+        "declaredIn": "design/tokens.css:41"
       },
       {
         "token": "--hashti-border-subtle-01",
@@ -2554,7 +604,7 @@
         "status": "used",
         "count": 2,
         "files": ["design/tokens.css", "packages/styles/src/otp-input.css"],
-        "declaredIn": "design/tokens.css:250"
+        "declaredIn": "design/tokens.css:42"
       },
       {
         "token": "--hashti-border-subtle-02",
@@ -2562,55 +612,7 @@
         "status": "used",
         "count": 1,
         "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:251"
-      },
-      {
-        "token": "--hashti-border-subtle-selected-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:253"
-      },
-      {
-        "token": "--hashti-border-subtle-selected-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:254"
-      },
-      {
-        "token": "--hashti-border-subtle-selected-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:255"
-      },
-      {
-        "token": "--hashti-border-tile-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:256"
-      },
-      {
-        "token": "--hashti-border-tile-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:257"
-      },
-      {
-        "token": "--hashti-border-tile-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:258"
+        "declaredIn": "design/tokens.css:43"
       },
       {
         "token": "--hashti-button-danger-hover",
@@ -2618,7 +620,7 @@
         "status": "used",
         "count": 2,
         "files": ["packages/styles/src/button.css"],
-        "declaredIn": "design/tokens.css:260"
+        "declaredIn": "design/tokens.css:45"
       },
       {
         "token": "--hashti-button-danger-primary",
@@ -2626,7 +628,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/button.css"],
-        "declaredIn": "design/tokens.css:261"
+        "declaredIn": "design/tokens.css:46"
       },
       {
         "token": "--hashti-button-danger-secondary",
@@ -2634,7 +636,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/button.css"],
-        "declaredIn": "design/tokens.css:262"
+        "declaredIn": "design/tokens.css:47"
       },
       {
         "token": "--hashti-button-disabled",
@@ -2661,7 +663,7 @@
           "packages/styles/src/token-input.css",
           "packages/styles/src/trigger-menu.css"
         ],
-        "declaredIn": "design/tokens.css:263"
+        "declaredIn": "design/tokens.css:48"
       },
       {
         "token": "--hashti-button-primary",
@@ -2669,7 +671,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/button.css"],
-        "declaredIn": "design/tokens.css:264"
+        "declaredIn": "design/tokens.css:49"
       },
       {
         "token": "--hashti-button-primary-hover",
@@ -2677,7 +679,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/button.css"],
-        "declaredIn": "design/tokens.css:266"
+        "declaredIn": "design/tokens.css:51"
       },
       {
         "token": "--hashti-button-secondary",
@@ -2685,7 +687,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/button.css"],
-        "declaredIn": "design/tokens.css:267"
+        "declaredIn": "design/tokens.css:52"
       },
       {
         "token": "--hashti-button-secondary-hover",
@@ -2693,7 +695,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/button.css"],
-        "declaredIn": "design/tokens.css:269"
+        "declaredIn": "design/tokens.css:53"
       },
       {
         "token": "--hashti-button-tertiary-hover",
@@ -2701,7 +703,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/button.css"],
-        "declaredIn": "design/tokens.css:273"
+        "declaredIn": "design/tokens.css:54"
       },
       {
         "token": "--hashti-field-01",
@@ -2709,7 +711,7 @@
         "status": "used",
         "count": 1,
         "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:299"
+        "declaredIn": "design/tokens.css:55"
       },
       {
         "token": "--hashti-field-02",
@@ -2717,7 +719,7 @@
         "status": "used",
         "count": 1,
         "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:300"
+        "declaredIn": "design/tokens.css:56"
       },
       {
         "token": "--hashti-field-03",
@@ -2725,31 +727,7 @@
         "status": "used",
         "count": 1,
         "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:301"
-      },
-      {
-        "token": "--hashti-field-hover-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:302"
-      },
-      {
-        "token": "--hashti-field-hover-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:303"
-      },
-      {
-        "token": "--hashti-field-hover-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:304"
+        "declaredIn": "design/tokens.css:57"
       },
       {
         "token": "--hashti-focus",
@@ -2802,7 +780,7 @@
           "packages/styles/src/trigger-menu.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:305"
+        "declaredIn": "design/tokens.css:58"
       },
       {
         "token": "--hashti-icon-on-color",
@@ -2814,7 +792,7 @@
           "packages/styles/src/menu.css",
           "packages/styles/src/switch.css"
         ],
-        "declaredIn": "design/tokens.css:312"
+        "declaredIn": "design/tokens.css:60"
       },
       {
         "token": "--hashti-interactive",
@@ -2827,16 +805,15 @@
           "packages/styles/src/progress.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:316"
+        "declaredIn": "design/tokens.css:61"
       },
       {
         "token": "--hashti-layer-01",
         "category": "color",
         "status": "used",
-        "count": 49,
+        "count": 48,
         "files": [
           "apps/docs/src/components/resizable-demo.tsx",
-          "design/tokens.css",
           "packages/styles/src/alert-dialog.css",
           "packages/styles/src/autocomplete.css",
           "packages/styles/src/calendar.css",
@@ -2872,16 +849,15 @@
           "packages/styles/src/trigger-menu.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:317"
+        "declaredIn": "design/tokens.css:62"
       },
       {
         "token": "--hashti-layer-02",
         "category": "color",
         "status": "used",
-        "count": 12,
+        "count": 11,
         "files": [
           "apps/docs/src/components/resizable-demo.tsx",
-          "design/tokens.css",
           "packages/styles/src/avatar.css",
           "packages/styles/src/badge.css",
           "packages/styles/src/date-input.css",
@@ -2893,218 +869,32 @@
           "packages/styles/src/time-input.css",
           "packages/styles/src/toolbar.css"
         ],
-        "declaredIn": "design/tokens.css:318"
+        "declaredIn": "design/tokens.css:63"
       },
       {
         "token": "--hashti-layer-03",
         "category": "color",
         "status": "used",
-        "count": 3,
+        "count": 2,
         "files": [
           "apps/docs/src/components/carousel-demo.tsx",
-          "design/tokens.css",
           "packages/styles/src/segmented-control.css"
         ],
-        "declaredIn": "design/tokens.css:319"
+        "declaredIn": "design/tokens.css:64"
       },
       {
         "token": "--hashti-layer-accent-01",
         "category": "color",
         "status": "used",
-        "count": 6,
+        "count": 5,
         "files": [
-          "design/tokens.css",
           "packages/styles/src/avatar.css",
           "packages/styles/src/color-picker.css",
           "packages/styles/src/input.css",
           "packages/styles/src/switch.css",
           "packages/styles/src/textarea.css"
         ],
-        "declaredIn": "design/tokens.css:320"
-      },
-      {
-        "token": "--hashti-layer-accent-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:321"
-      },
-      {
-        "token": "--hashti-layer-accent-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:322"
-      },
-      {
-        "token": "--hashti-layer-accent-active-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:323"
-      },
-      {
-        "token": "--hashti-layer-accent-active-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:324"
-      },
-      {
-        "token": "--hashti-layer-accent-active-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:325"
-      },
-      {
-        "token": "--hashti-layer-accent-hover-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:326"
-      },
-      {
-        "token": "--hashti-layer-accent-hover-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:327"
-      },
-      {
-        "token": "--hashti-layer-accent-hover-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:328"
-      },
-      {
-        "token": "--hashti-layer-active-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:329"
-      },
-      {
-        "token": "--hashti-layer-active-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:330"
-      },
-      {
-        "token": "--hashti-layer-active-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:331"
-      },
-      {
-        "token": "--hashti-layer-background-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:332"
-      },
-      {
-        "token": "--hashti-layer-background-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:333"
-      },
-      {
-        "token": "--hashti-layer-background-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:334"
-      },
-      {
-        "token": "--hashti-layer-hover-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:335"
-      },
-      {
-        "token": "--hashti-layer-hover-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:336"
-      },
-      {
-        "token": "--hashti-layer-hover-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:337"
-      },
-      {
-        "token": "--hashti-layer-selected-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:338"
-      },
-      {
-        "token": "--hashti-layer-selected-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:339"
-      },
-      {
-        "token": "--hashti-layer-selected-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:340"
-      },
-      {
-        "token": "--hashti-layer-selected-hover-01",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:342"
-      },
-      {
-        "token": "--hashti-layer-selected-hover-02",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:343"
-      },
-      {
-        "token": "--hashti-layer-selected-hover-03",
-        "category": "color",
-        "status": "used",
-        "count": 1,
-        "files": ["design/tokens.css"],
-        "declaredIn": "design/tokens.css:344"
+        "declaredIn": "design/tokens.css:65"
       },
       {
         "token": "--hashti-link-primary",
@@ -3115,7 +905,7 @@
           "packages/styles/src/link.css",
           "packages/styles/src/toolbar.css"
         ],
-        "declaredIn": "design/tokens.css:350"
+        "declaredIn": "design/tokens.css:66"
       },
       {
         "token": "--hashti-link-visited",
@@ -3123,7 +913,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/link.css"],
-        "declaredIn": "design/tokens.css:353"
+        "declaredIn": "design/tokens.css:68"
       },
       {
         "token": "--hashti-notification-background-error",
@@ -3135,7 +925,7 @@
           "packages/styles/src/field.css",
           "packages/styles/src/toast.css"
         ],
-        "declaredIn": "design/tokens.css:365"
+        "declaredIn": "design/tokens.css:69"
       },
       {
         "token": "--hashti-notification-background-success",
@@ -3143,7 +933,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/toast.css"],
-        "declaredIn": "design/tokens.css:367"
+        "declaredIn": "design/tokens.css:70"
       },
       {
         "token": "--hashti-notification-background-warning",
@@ -3151,7 +941,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/toast.css"],
-        "declaredIn": "design/tokens.css:368"
+        "declaredIn": "design/tokens.css:71"
       },
       {
         "token": "--hashti-overlay",
@@ -3164,7 +954,7 @@
           "packages/styles/src/drawer.css",
           "packages/styles/src/image-cropper.css"
         ],
-        "declaredIn": "design/tokens.css:369"
+        "declaredIn": "design/tokens.css:72"
       },
       {
         "token": "--hashti-shadow",
@@ -3175,7 +965,7 @@
           "design/tokens.css",
           "packages/styles/src/segmented-control.css"
         ],
-        "declaredIn": "design/tokens.css:370"
+        "declaredIn": "design/tokens.css:73"
       },
       {
         "token": "--hashti-support-error",
@@ -3196,7 +986,7 @@
           "packages/styles/src/time-input.css",
           "packages/styles/src/toast.css"
         ],
-        "declaredIn": "design/tokens.css:390"
+        "declaredIn": "design/tokens.css:78"
       },
       {
         "token": "--hashti-support-info",
@@ -3204,7 +994,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/badge.css"],
-        "declaredIn": "design/tokens.css:392"
+        "declaredIn": "design/tokens.css:79"
       },
       {
         "token": "--hashti-support-success",
@@ -3221,7 +1011,7 @@
           "packages/styles/src/timeline.css",
           "packages/styles/src/toast.css"
         ],
-        "declaredIn": "design/tokens.css:394"
+        "declaredIn": "design/tokens.css:80"
       },
       {
         "token": "--hashti-support-warning",
@@ -3235,7 +1025,7 @@
           "packages/styles/src/toast.css",
           "packages/styles/src/token-input.css"
         ],
-        "declaredIn": "design/tokens.css:396"
+        "declaredIn": "design/tokens.css:81"
       },
       {
         "token": "--hashti-text-disabled",
@@ -3283,7 +1073,7 @@
           "packages/styles/src/tree.css",
           "packages/styles/src/trigger-menu.css"
         ],
-        "declaredIn": "design/tokens.css:526"
+        "declaredIn": "design/tokens.css:82"
       },
       {
         "token": "--hashti-text-error",
@@ -3295,7 +1085,7 @@
           "packages/styles/src/toast.css",
           "packages/styles/src/tree.css"
         ],
-        "declaredIn": "design/tokens.css:527"
+        "declaredIn": "design/tokens.css:83"
       },
       {
         "token": "--hashti-text-inverse",
@@ -3303,7 +1093,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/tooltip.css"],
-        "declaredIn": "design/tokens.css:529"
+        "declaredIn": "design/tokens.css:85"
       },
       {
         "token": "--hashti-text-on-color",
@@ -3314,7 +1104,7 @@
           "packages/styles/src/badge.css",
           "packages/styles/src/button.css"
         ],
-        "declaredIn": "design/tokens.css:530"
+        "declaredIn": "design/tokens.css:86"
       },
       {
         "token": "--hashti-text-primary",
@@ -3368,7 +1158,7 @@
           "packages/styles/src/trigger-menu.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:533"
+        "declaredIn": "design/tokens.css:88"
       },
       {
         "token": "--hashti-text-secondary",
@@ -3420,1303 +1210,7 @@
           "packages/styles/src/trigger-menu.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:534"
-      },
-      {
-        "token": "--hashti-body-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:45"
-      },
-      {
-        "token": "--hashti-body-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:46"
-      },
-      {
-        "token": "--hashti-body-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:48"
-      },
-      {
-        "token": "--hashti-body-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:47"
-      },
-      {
-        "token": "--hashti-body-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:49"
-      },
-      {
-        "token": "--hashti-body-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:50"
-      },
-      {
-        "token": "--hashti-body-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:52"
-      },
-      {
-        "token": "--hashti-body-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:51"
-      },
-      {
-        "token": "--hashti-body-compact-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:54"
-      },
-      {
-        "token": "--hashti-body-compact-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:56"
-      },
-      {
-        "token": "--hashti-body-compact-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:55"
-      },
-      {
-        "token": "--hashti-body-compact-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:57"
-      },
-      {
-        "token": "--hashti-body-compact-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:58"
-      },
-      {
-        "token": "--hashti-body-compact-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:60"
-      },
-      {
-        "token": "--hashti-body-compact-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:59"
-      },
-      {
-        "token": "--hashti-border-radius-00",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:12"
-      },
-      {
-        "token": "--hashti-border-radius-02",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:13"
-      },
-      {
-        "token": "--hashti-border-radius-24",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:19"
-      },
-      {
-        "token": "--hashti-code-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:64"
-      },
-      {
-        "token": "--hashti-code-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:65"
-      },
-      {
-        "token": "--hashti-code-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:67"
-      },
-      {
-        "token": "--hashti-code-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:66"
-      },
-      {
-        "token": "--hashti-code-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:71"
-      },
-      {
-        "token": "--hashti-code-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:72"
-      },
-      {
-        "token": "--hashti-code-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:74"
-      },
-      {
-        "token": "--hashti-code-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:73"
-      },
-      {
-        "token": "--hashti-color-scheme",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:295"
-      },
-      {
-        "token": "--hashti-container-01",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:21"
-      },
-      {
-        "token": "--hashti-container-02",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:22"
-      },
-      {
-        "token": "--hashti-container-03",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:23"
-      },
-      {
-        "token": "--hashti-container-04",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:24"
-      },
-      {
-        "token": "--hashti-container-05",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:25"
-      },
-      {
-        "token": "--hashti-display-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:75"
-      },
-      {
-        "token": "--hashti-display-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:76"
-      },
-      {
-        "token": "--hashti-display-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:78"
-      },
-      {
-        "token": "--hashti-display-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:77"
-      },
-      {
-        "token": "--hashti-display-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:79"
-      },
-      {
-        "token": "--hashti-display-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:80"
-      },
-      {
-        "token": "--hashti-display-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:82"
-      },
-      {
-        "token": "--hashti-display-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:81"
-      },
-      {
-        "token": "--hashti-display-03-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:83"
-      },
-      {
-        "token": "--hashti-display-03-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:84"
-      },
-      {
-        "token": "--hashti-display-03-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:86"
-      },
-      {
-        "token": "--hashti-display-03-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:85"
-      },
-      {
-        "token": "--hashti-display-04-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:87"
-      },
-      {
-        "token": "--hashti-display-04-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:88"
-      },
-      {
-        "token": "--hashti-display-04-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:90"
-      },
-      {
-        "token": "--hashti-display-04-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
         "declaredIn": "design/tokens.css:89"
-      },
-      {
-        "token": "--hashti-duration-slow-01",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:201"
-      },
-      {
-        "token": "--hashti-ease-entrance-expressive",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:207"
-      },
-      {
-        "token": "--hashti-ease-entrance-productive",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:206"
-      },
-      {
-        "token": "--hashti-ease-exit-expressive",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:209"
-      },
-      {
-        "token": "--hashti-ease-exit-productive",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:208"
-      },
-      {
-        "token": "--hashti-ease-standard-expressive",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:204"
-      },
-      {
-        "token": "--hashti-ease-standard-productive",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:203"
-      },
-      {
-        "token": "--hashti-fluid-display-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:91"
-      },
-      {
-        "token": "--hashti-fluid-display-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:92"
-      },
-      {
-        "token": "--hashti-fluid-display-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:94"
-      },
-      {
-        "token": "--hashti-fluid-display-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:93"
-      },
-      {
-        "token": "--hashti-fluid-display-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:95"
-      },
-      {
-        "token": "--hashti-fluid-display-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:96"
-      },
-      {
-        "token": "--hashti-fluid-display-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:98"
-      },
-      {
-        "token": "--hashti-fluid-display-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:97"
-      },
-      {
-        "token": "--hashti-fluid-display-03-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:99"
-      },
-      {
-        "token": "--hashti-fluid-display-03-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:100"
-      },
-      {
-        "token": "--hashti-fluid-display-03-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:102"
-      },
-      {
-        "token": "--hashti-fluid-display-03-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:101"
-      },
-      {
-        "token": "--hashti-fluid-display-04-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:103"
-      },
-      {
-        "token": "--hashti-fluid-display-04-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:104"
-      },
-      {
-        "token": "--hashti-fluid-display-04-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:106"
-      },
-      {
-        "token": "--hashti-fluid-display-04-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:105"
-      },
-      {
-        "token": "--hashti-fluid-heading-03-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:107"
-      },
-      {
-        "token": "--hashti-fluid-heading-03-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:108"
-      },
-      {
-        "token": "--hashti-fluid-heading-03-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:110"
-      },
-      {
-        "token": "--hashti-fluid-heading-03-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:109"
-      },
-      {
-        "token": "--hashti-fluid-heading-04-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:111"
-      },
-      {
-        "token": "--hashti-fluid-heading-04-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:112"
-      },
-      {
-        "token": "--hashti-fluid-heading-04-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:114"
-      },
-      {
-        "token": "--hashti-fluid-heading-04-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:113"
-      },
-      {
-        "token": "--hashti-fluid-heading-05-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:115"
-      },
-      {
-        "token": "--hashti-fluid-heading-05-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:116"
-      },
-      {
-        "token": "--hashti-fluid-heading-05-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:118"
-      },
-      {
-        "token": "--hashti-fluid-heading-05-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:117"
-      },
-      {
-        "token": "--hashti-fluid-heading-06-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:119"
-      },
-      {
-        "token": "--hashti-fluid-heading-06-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:120"
-      },
-      {
-        "token": "--hashti-fluid-heading-06-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:122"
-      },
-      {
-        "token": "--hashti-fluid-heading-06-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:121"
-      },
-      {
-        "token": "--hashti-fluid-paragraph-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:123"
-      },
-      {
-        "token": "--hashti-fluid-paragraph-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:124"
-      },
-      {
-        "token": "--hashti-fluid-paragraph-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:126"
-      },
-      {
-        "token": "--hashti-fluid-paragraph-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:125"
-      },
-      {
-        "token": "--hashti-fluid-quotation-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:129"
-      },
-      {
-        "token": "--hashti-fluid-quotation-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:130"
-      },
-      {
-        "token": "--hashti-fluid-quotation-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:132"
-      },
-      {
-        "token": "--hashti-fluid-quotation-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:131"
-      },
-      {
-        "token": "--hashti-fluid-quotation-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:135"
-      },
-      {
-        "token": "--hashti-fluid-quotation-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:136"
-      },
-      {
-        "token": "--hashti-fluid-quotation-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:138"
-      },
-      {
-        "token": "--hashti-fluid-quotation-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:137"
-      },
-      {
-        "token": "--hashti-font-sans",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:9"
-      },
-      {
-        "token": "--hashti-group-radius",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:573"
-      },
-      {
-        "token": "--hashti-heading-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:139"
-      },
-      {
-        "token": "--hashti-heading-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:140"
-      },
-      {
-        "token": "--hashti-heading-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:142"
-      },
-      {
-        "token": "--hashti-heading-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:141"
-      },
-      {
-        "token": "--hashti-heading-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:143"
-      },
-      {
-        "token": "--hashti-heading-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:144"
-      },
-      {
-        "token": "--hashti-heading-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:146"
-      },
-      {
-        "token": "--hashti-heading-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:145"
-      },
-      {
-        "token": "--hashti-heading-03-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:147"
-      },
-      {
-        "token": "--hashti-heading-03-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:148"
-      },
-      {
-        "token": "--hashti-heading-03-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:150"
-      },
-      {
-        "token": "--hashti-heading-03-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:149"
-      },
-      {
-        "token": "--hashti-heading-04-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:151"
-      },
-      {
-        "token": "--hashti-heading-04-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:152"
-      },
-      {
-        "token": "--hashti-heading-04-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:154"
-      },
-      {
-        "token": "--hashti-heading-04-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:153"
-      },
-      {
-        "token": "--hashti-heading-05-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:155"
-      },
-      {
-        "token": "--hashti-heading-05-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:156"
-      },
-      {
-        "token": "--hashti-heading-05-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:158"
-      },
-      {
-        "token": "--hashti-heading-05-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:157"
-      },
-      {
-        "token": "--hashti-heading-06-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:159"
-      },
-      {
-        "token": "--hashti-heading-06-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:160"
-      },
-      {
-        "token": "--hashti-heading-06-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:162"
-      },
-      {
-        "token": "--hashti-heading-06-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:161"
-      },
-      {
-        "token": "--hashti-heading-07-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:163"
-      },
-      {
-        "token": "--hashti-heading-07-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:164"
-      },
-      {
-        "token": "--hashti-heading-07-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:166"
-      },
-      {
-        "token": "--hashti-heading-07-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:165"
-      },
-      {
-        "token": "--hashti-heading-compact-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:167"
-      },
-      {
-        "token": "--hashti-heading-compact-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:168"
-      },
-      {
-        "token": "--hashti-heading-compact-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:170"
-      },
-      {
-        "token": "--hashti-heading-compact-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:169"
-      },
-      {
-        "token": "--hashti-heading-compact-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:171"
-      },
-      {
-        "token": "--hashti-heading-compact-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:172"
-      },
-      {
-        "token": "--hashti-heading-compact-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:174"
-      },
-      {
-        "token": "--hashti-heading-compact-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:173"
-      },
-      {
-        "token": "--hashti-headline-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:566"
-      },
-      {
-        "token": "--hashti-headline-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:567"
-      },
-      {
-        "token": "--hashti-headline-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:569"
-      },
-      {
-        "token": "--hashti-headline-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:568"
-      },
-      {
-        "token": "--hashti-helper-text-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:175"
-      },
-      {
-        "token": "--hashti-helper-text-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:177"
-      },
-      {
-        "token": "--hashti-helper-text-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:176"
-      },
-      {
-        "token": "--hashti-helper-text-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:178"
-      },
-      {
-        "token": "--hashti-helper-text-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:180"
-      },
-      {
-        "token": "--hashti-helper-text-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:179"
-      },
-      {
-        "token": "--hashti-label-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:182"
-      },
-      {
-        "token": "--hashti-label-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:184"
-      },
-      {
-        "token": "--hashti-label-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:183"
-      },
-      {
-        "token": "--hashti-label-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:185"
-      },
-      {
-        "token": "--hashti-label-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:186"
-      },
-      {
-        "token": "--hashti-label-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:188"
-      },
-      {
-        "token": "--hashti-label-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:187"
-      },
-      {
-        "token": "--hashti-legal-01-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:189"
-      },
-      {
-        "token": "--hashti-legal-01-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:190"
-      },
-      {
-        "token": "--hashti-legal-01-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:192"
-      },
-      {
-        "token": "--hashti-legal-01-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:191"
-      },
-      {
-        "token": "--hashti-legal-02-font-size",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:193"
-      },
-      {
-        "token": "--hashti-legal-02-font-weight",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:194"
-      },
-      {
-        "token": "--hashti-legal-02-letter-spacing",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:196"
-      },
-      {
-        "token": "--hashti-legal-02-line-height",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:195"
       },
       {
         "token": "--hashti-overlay-radius",
@@ -4724,23 +1218,7 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:575"
-      },
-      {
-        "token": "--hashti-size-2xl",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:26"
-      },
-      {
-        "token": "--hashti-size-lg",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:27"
+        "declaredIn": "design/tokens.css:101"
       },
       {
         "token": "--hashti-size-md",
@@ -4748,135 +1226,7 @@
         "status": "orphan",
         "count": 0,
         "files": [],
-        "declaredIn": "design/tokens.css:28"
-      },
-      {
-        "token": "--hashti-size-sm",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:29"
-      },
-      {
-        "token": "--hashti-size-xl",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:30"
-      },
-      {
-        "token": "--hashti-size-xs",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:31"
-      },
-      {
-        "token": "--hashti-spacing-01",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:32"
-      },
-      {
-        "token": "--hashti-spacing-02",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:33"
-      },
-      {
-        "token": "--hashti-spacing-03",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:34"
-      },
-      {
-        "token": "--hashti-spacing-04",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:35"
-      },
-      {
-        "token": "--hashti-spacing-05",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:36"
-      },
-      {
-        "token": "--hashti-spacing-06",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:37"
-      },
-      {
-        "token": "--hashti-spacing-07",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:38"
-      },
-      {
-        "token": "--hashti-spacing-08",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:39"
-      },
-      {
-        "token": "--hashti-spacing-09",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:40"
-      },
-      {
-        "token": "--hashti-spacing-10",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:41"
-      },
-      {
-        "token": "--hashti-spacing-11",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:42"
-      },
-      {
-        "token": "--hashti-spacing-12",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:43"
-      },
-      {
-        "token": "--hashti-spacing-13",
-        "category": "other",
-        "status": "orphan",
-        "count": 0,
-        "files": [],
-        "declaredIn": "design/tokens.css:44"
+        "declaredIn": "design/tokens.css:19"
       },
       {
         "token": "--removed-body-scroll-bar-size",
@@ -4900,7 +1250,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/avatar.css"],
-        "declaredIn": "design/tokens.css:53"
+        "declaredIn": "design/tokens.css:20"
       },
       {
         "token": "--hashti-border-radius-04",
@@ -4913,7 +1263,7 @@
           "packages/styles/src/kbd.css",
           "packages/styles/src/token-input.css"
         ],
-        "declaredIn": "design/tokens.css:14"
+        "declaredIn": "design/tokens.css:13"
       },
       {
         "token": "--hashti-border-radius-08",
@@ -4938,7 +1288,7 @@
           "packages/styles/src/tree.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:15"
+        "declaredIn": "design/tokens.css:14"
       },
       {
         "token": "--hashti-border-radius-16",
@@ -4946,7 +1296,7 @@
         "status": "used",
         "count": 8,
         "files": ["packages/styles/src/drawer.css"],
-        "declaredIn": "design/tokens.css:18"
+        "declaredIn": "design/tokens.css:17"
       },
       {
         "token": "--hashti-border-radius-mark",
@@ -4954,7 +1304,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/checkbox.css"],
-        "declaredIn": "design/tokens.css:16"
+        "declaredIn": "design/tokens.css:15"
       },
       {
         "token": "--hashti-border-radius-max",
@@ -4971,7 +1321,7 @@
           "packages/styles/src/scroll-area.css",
           "packages/styles/src/timeline.css"
         ],
-        "declaredIn": "design/tokens.css:20"
+        "declaredIn": "design/tokens.css:18"
       },
       {
         "token": "--hashti-border-radius-recovery",
@@ -4979,7 +1329,7 @@
         "status": "used",
         "count": 4,
         "files": ["packages/styles/src/field.css"],
-        "declaredIn": "design/tokens.css:17"
+        "declaredIn": "design/tokens.css:16"
       },
       {
         "token": "--hashti-control-radius",
@@ -5020,7 +1370,7 @@
           "packages/styles/src/toolbar.css",
           "packages/styles/src/trigger-menu.css"
         ],
-        "declaredIn": "design/tokens.css:572"
+        "declaredIn": "design/tokens.css:99"
       },
       {
         "token": "--hashti-duration-fast-01",
@@ -5056,7 +1406,7 @@
           "packages/styles/src/trigger-menu.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:197"
+        "declaredIn": "design/tokens.css:22"
       },
       {
         "token": "--hashti-duration-fast-02",
@@ -5076,7 +1426,7 @@
           "packages/styles/src/tooltip.css",
           "packages/styles/src/trigger-menu.css"
         ],
-        "declaredIn": "design/tokens.css:198"
+        "declaredIn": "design/tokens.css:23"
       },
       {
         "token": "--hashti-duration-moderate-01",
@@ -5092,7 +1442,7 @@
           "packages/styles/src/tabs.css",
           "packages/styles/src/toast.css"
         ],
-        "declaredIn": "design/tokens.css:199"
+        "declaredIn": "design/tokens.css:24"
       },
       {
         "token": "--hashti-duration-moderate-02",
@@ -5104,7 +1454,7 @@
           "packages/styles/src/button.css",
           "packages/styles/src/dialog.css"
         ],
-        "declaredIn": "design/tokens.css:200"
+        "declaredIn": "design/tokens.css:25"
       },
       {
         "token": "--hashti-duration-slow-02",
@@ -5112,7 +1462,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/toast.css"],
-        "declaredIn": "design/tokens.css:202"
+        "declaredIn": "design/tokens.css:26"
       },
       {
         "token": "--hashti-ease-entrance",
@@ -5156,7 +1506,7 @@
           "packages/styles/src/tree.css",
           "packages/styles/src/trigger-menu.css"
         ],
-        "declaredIn": "design/tokens.css:205"
+        "declaredIn": "design/tokens.css:27"
       },
       {
         "token": "--hashti-ease-press",
@@ -5168,7 +1518,7 @@
           "packages/styles/src/checkbox.css",
           "packages/styles/src/radio.css"
         ],
-        "declaredIn": "design/tokens.css:210"
+        "declaredIn": "design/tokens.css:28"
       },
       {
         "token": "--hashti-focus-offset",
@@ -5180,7 +1530,7 @@
           "packages/styles/src/resizable.css",
           "packages/styles/src/tree.css"
         ],
-        "declaredIn": "design/tokens.css:577"
+        "declaredIn": "design/tokens.css:103"
       },
       {
         "token": "--hashti-focus-width",
@@ -5192,7 +1542,15 @@
           "packages/styles/src/resizable.css",
           "packages/styles/src/tree.css"
         ],
-        "declaredIn": "design/tokens.css:576"
+        "declaredIn": "design/tokens.css:102"
+      },
+      {
+        "token": "--hashti-font-sans",
+        "category": "other",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/base.css"],
+        "declaredIn": "design/tokens.css:10"
       },
       {
         "token": "--hashti-label-01-font-size",
@@ -5200,7 +1558,7 @@
         "status": "used",
         "count": 1,
         "files": ["packages/styles/src/kbd.css"],
-        "declaredIn": "design/tokens.css:181"
+        "declaredIn": "design/tokens.css:21"
       },
       {
         "token": "--hashti-popover-radius",
@@ -5227,7 +1585,7 @@
           "packages/styles/src/trigger-menu.css",
           "packages/styles/src/waterfall.css"
         ],
-        "declaredIn": "design/tokens.css:574"
+        "declaredIn": "design/tokens.css:100"
       },
       {
         "token": "--hashti-shadow-modal",
@@ -5239,7 +1597,7 @@
           "packages/styles/src/dialog.css",
           "packages/styles/src/drawer.css"
         ],
-        "declaredIn": "design/tokens.css:371"
+        "declaredIn": "design/tokens.css:74"
       },
       {
         "token": "--hashti-shadow-popover",
@@ -5258,7 +1616,7 @@
           "packages/styles/src/select.css",
           "packages/styles/src/trigger-menu.css"
         ],
-        "declaredIn": "design/tokens.css:372"
+        "declaredIn": "design/tokens.css:75"
       },
       {
         "token": "--hashti-waterfall-columns",
