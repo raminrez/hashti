@@ -9,10 +9,12 @@ import {
   FileInputTrigger,
 } from "./file-input";
 
-// Demo files only: the trigger opens a real file picker, which a story cannot drive.
+// Real File objects keep the list state honest: FileInputList renders one item per file.
 const files = [
-  { name: "q3-roadmap.pdf", size: 2_400_000 },
-  { name: "launch-checklist.md", size: 12_000 },
+  new File(["Q3 roadmap"], "q3-roadmap.pdf", { type: "application/pdf" }),
+  new File(["Launch checklist"], "launch-checklist.md", {
+    type: "text/markdown",
+  }),
 ];
 
 const meta = {
@@ -21,10 +23,12 @@ const meta = {
   parameters: { layout: "centered" },
   tags: ["autodocs"],
   args: {
-    multiple: false,
+    defaultValue: files,
+    multiple: true,
     disabled: false,
   },
   argTypes: {
+    defaultValue: { table: { disable: true } },
     multiple: { control: "boolean", table: { category: "Behavior" } },
     accept: { control: "text", table: { category: "Validation" } },
     maxFiles: { control: "number", table: { category: "Validation" } },
@@ -39,14 +43,16 @@ const meta = {
         Drop files here or paste from the clipboard
       </FileInputDropzone>
       <FileInputList aria-label="Files">
-        {files.map((file) => (
-          <FileInputItem key={file.name} aria-label={file.name}>
-            <span>{file.name}</span>
-            <FileInputItemRemove aria-label={`Remove ${file.name}`}>
-              ×
-            </FileInputItemRemove>
-          </FileInputItem>
-        ))}
+        <FileInputItem>
+          {({ file }) => (
+            <>
+              <span>{file.name}</span>
+              <FileInputItemRemove aria-label={`Remove ${file.name}`}>
+                ×
+              </FileInputItemRemove>
+            </>
+          )}
+        </FileInputItem>
       </FileInputList>
     </FileInput>
   ),
@@ -57,8 +63,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-export const Multiple: Story = {
-  args: { multiple: true },
+export const Empty: Story = {
+  args: { defaultValue: [] },
 };
 
 export const Disabled: Story = {
