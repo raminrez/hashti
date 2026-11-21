@@ -14,8 +14,6 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  // Bun's isolated node_modules symlinks must stay as-is for the browser test server.
-  resolve: { preserveSymlinks: true },
   test: {
     projects: [
       {

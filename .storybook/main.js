@@ -27,7 +27,9 @@ const config = {
   // Stories under .storybook/stories import docs demos, and apps/docs inherits
   // Astro's jsx: "preserve". React stories need JSX transformed, not preserved.
   viteFinal: async (viteConfig) => {
-    viteConfig.esbuild = { ...viteConfig.esbuild, jsx: "automatic" };
+    // Vite 8 transforms with oxc and ignores the deprecated esbuild option, so
+    // set the JSX runtime where it is actually read.
+    viteConfig.oxc = { ...viteConfig.oxc, jsx: { runtime: "automatic" } };
     return viteConfig;
   },
 };
