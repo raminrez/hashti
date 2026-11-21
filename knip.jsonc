@@ -12,6 +12,9 @@
   "ignoreDependencies": [
     // oxlint's type-aware backend (tsgolint) — a runtime binary, never imported
     "tsrs",
+    // Ambient Bun/Node types for scripts/tsconfig.json; referenced only from
+    // tsconfig `types`, so knip sees no import.
+    "bun-types",
   ],
   "ignoreIssues": {
     // Root devDependencies reference the catalog for shared version pinning;
@@ -19,6 +22,8 @@
     "package.json": ["catalog"],
   },
   "workspaces": {
+    // Repo-level scripts (deps:check, …) run via package.json scripts, never imported.
+    ".": { "entry": ["scripts/*.ts"] },
     "packages/react": {},
     "packages/utils": {},
     "packages/styles": {},
