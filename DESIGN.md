@@ -8,10 +8,8 @@ colors:
   on-action-light: "#ffffff"
   secondary-light: "#eef1f6"
   secondary-hover-light: "#dde1e8"
-  secondary-active-light: "#cbd2dc"
   focus-light: "#365ccb"
   selected-light: "#e7edff"
-  info-surface-light: "#edf2ff"
   canvas-light: "#f5f6f8"
   surface-light: "#ffffff"
   raised-light: "#eef1f6"
@@ -21,24 +19,19 @@ colors:
   control-border-light: "#7f8795"
   error-light: "#aa2735"
   error-hover-light: "#91212d"
-  error-active-light: "#771b25"
   error-surface-light: "#ffe8eb"
   warning-light: "#75500d"
   warning-surface-light: "#fff0ce"
   success-light: "#246343"
   success-surface-light: "#e1f2e8"
-  ai-start-light: "#5b3fc4"
-  ai-end-light: "#8b3fb0"
   action-dark: "#f1f2f6"
-  action-hover-dark: "#d2d7e4"
-  action-active-dark: "#b6bfd2"
+  action-hover-dark: "#d6dae3"
+  action-active-dark: "#ccd2df"
   on-action-dark: "#22242a"
   secondary-dark: "#2c2f38"
   secondary-hover-dark: "#3e424d"
-  secondary-active-dark: "#515765"
   focus-dark: "#a9bdff"
   selected-dark: "#333f62"
-  info-surface-dark: "#2c354e"
   canvas-dark: "#18191d"
   surface-dark: "#22242a"
   raised-dark: "#2c2f38"
@@ -48,14 +41,11 @@ colors:
   control-border-dark: "#7d8493"
   error-dark: "#ffacb3"
   error-hover-dark: "#ffb8be"
-  error-active-dark: "#ffc5ca"
   error-surface-dark: "#452830"
   warning-dark: "#e7c383"
   warning-surface-dark: "#3e3321"
   success-dark: "#a4d9b8"
   success-surface-dark: "#203a2b"
-  ai-start-dark: "#c4b0ff"
-  ai-end-dark: "#e6b3e0"
 typography:
   headline:
     fontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
@@ -251,8 +241,7 @@ support it.
 ### Focus and selection
 
 **Focus blue** identifies keyboard location, selected choices, current navigation,
-and links. Selected surfaces support the indicator; they do not replace it. The
-lighter information surface is for relevant supporting content.
+and links. Selected surfaces support the indicator; they do not replace it.
 
 **The Separate Signals Rule.** Focus, selection, current location, validation, and
 destructive intent must remain distinguishable when they occur together. Error
@@ -271,15 +260,9 @@ Higher layers saturate deliberately: layer 1 = surface, layer 2 = raised, layer
 
 Use the error, warning, and success foreground/surface pairs with explicit text
 and, when helpful, a small icon. Red means a problem or destructive intent; amber
-means attention; green confirms a result. Danger actions carry hover
-(`error-hover`) and active (`error-active`) steps. Success is feedback, not a
-decoration on every completed input. Test the actual pairing after customization.
-
-### AI accents
-
-A purple gradient (`ai-start` → `ai-end`) marks AI-generated content and the AI
-label's revert chip. It is decorative-only territory: never an action, focus, or
-status color.
+means attention; green confirms a result. Danger actions carry a hover step
+(`error-hover`). Success is feedback, not a decoration on every completed input.
+Test the actual pairing after customization.
 
 ## Typography
 
