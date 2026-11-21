@@ -36,8 +36,7 @@
   border-radius: 9999px;
   background: var(--hashti-focus);
   opacity: 0;
-  transition: opacity var(--hashti-duration-fast-01)
-    var(--hashti-ease-entrance);
+  transition: opacity var(--hashti-duration-fast-01) var(--hashti-ease-entrance);
 }
 
 .hashti-radio[data-checked] .hashti-radio__indicator::before {
