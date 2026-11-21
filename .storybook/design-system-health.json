@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T07:47:35Z",
+  "generatedAt": "2026-11-21T20:15:07Z",
   "ranBy": "raminrezaei",
   "findings": [
     {
@@ -176,96 +176,12 @@
       "message": "DESIGN.md present \u2014 a claim about the visual identity, NOT ground truth (it drifts/lies like AGENTS.md). Cross-checked below; deep-audit or regenerate it with the design-md skill.",
       "file": "./DESIGN.md",
       "fix": "Audit DESIGN.md against code with the design-md skill"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #2c354e but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #515765 but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #5b3fc4 but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #771b25 but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #8b3fb0 but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #b6bfd2 but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #c4b0ff but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #cbd2dc but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #d2d7e4 but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #e6b3e0 but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #edf2ff but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
-    },
-    {
-      "kind": "design-md-drift",
-      "severity": "warning",
-      "message": "DESIGN.md claims color #ffc5ca but no CSS token declares it \u2014 the brief has drifted from (or never matched) the code",
-      "file": "./DESIGN.md",
-      "fix": "Reconcile: fix DESIGN.md with the design-md skill, or add the token"
     }
   ],
   "summary": {
-    "total": 34,
+    "total": 22,
     "errors": 0,
-    "warnings": 21,
+    "warnings": 9,
     "info": 13,
     "checksRun": [
       "raw-color",
