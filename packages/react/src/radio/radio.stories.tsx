@@ -63,7 +63,23 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Selected: Story = {};
+export const Selected: Story = {
+  // Regression: the indicator collapsed to 4px as a flex item and squeezed
+  // the checked dot into a vertical pill. The dot must stay a 10px circle.
+  play: async ({ canvasElement }) => {
+    const { expect } = await import("storybook/test");
+    const indicator = canvasElement.querySelector(
+      ".hashti-radio[data-checked] .hashti-radio__indicator",
+    );
+    if (!indicator) {
+      await expect(indicator).not.toBeNull();
+      return;
+    }
+    const dot = getComputedStyle(indicator, "::before");
+    await expect(dot.inlineSize).toBe("10px");
+    await expect(dot.blockSize).toBe("10px");
+  },
+};
 
 export const NothingSelected: Story = {
   args: { value: null },

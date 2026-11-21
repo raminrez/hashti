@@ -21,23 +21,25 @@
 }
 
 .hashti-radio__indicator {
-  display: inline-flex;
+  /* Absolute, not a sized flex item: inline-size 100% collapsed to 4px in the
+     inline-flex parent and squeezed the dot into a vertical pill. */
+  position: absolute;
+  inset: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  inline-size: 100%;
-  block-size: 100%;
   border-radius: inherit;
 }
 
 .hashti-radio__indicator::before {
   content: "";
+  flex: none;
   inline-size: 0.625rem;
   block-size: 0.625rem;
   border-radius: 9999px;
   background: var(--hashti-focus);
   opacity: 0;
-  transition: opacity var(--hashti-duration-fast-01)
-    var(--hashti-ease-entrance);
+  transition: opacity var(--hashti-duration-fast-01) var(--hashti-ease-entrance);
 }
 
 .hashti-radio[data-checked] .hashti-radio__indicator::before {
