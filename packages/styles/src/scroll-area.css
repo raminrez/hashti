@@ -14,8 +14,7 @@
 .hashti-scroll-area-scrollbar {
   position: absolute;
   opacity: 0;
-  transition: opacity var(--hashti-duration-fast-02)
-    var(--hashti-ease-entrance);
+  transition: opacity var(--hashti-duration-fast-02) var(--hashti-ease-entrance);
 }
 
 .hashti-scroll-area-scrollbar[data-visible] {

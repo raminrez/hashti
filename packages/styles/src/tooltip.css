@@ -6,8 +6,7 @@
   color: var(--hashti-text-inverse);
   font-size: 0.75rem;
   line-height: 1.5;
-  transition: opacity var(--hashti-duration-fast-02)
-    var(--hashti-ease-entrance);
+  transition: opacity var(--hashti-duration-fast-02) var(--hashti-ease-entrance);
 }
 
 .hashti-tooltip-content[data-starting-style],
