@@ -48,7 +48,7 @@ All props forward to ui-sdk's `Textarea`; the wrapper adds no options.
 ui-sdk sets `data-filled`, `data-disabled`, `data-readonly`, `data-required`
 (`data-slot="textarea"`). `packages/styles/src/textarea.css` keys:
 
-- `[aria-invalid="true"]` — error border (same `aria-invalid` keying as input.css; see gap G2 in `design-system/gaps.md`).
+- `[data-invalid]` — error border (same keying as input.css: ui-sdk sets it inside an invalid Field, the wrapper mirrors a standalone `aria-invalid`).
 - `[data-readonly]` — dashed border and accent background; `[data-disabled]` — disabled colors and cursor.
 - `:focus-visible` outline; `::placeholder` in secondary text color; `resize: vertical` and a 5rem minimum height from the stylesheet.
 

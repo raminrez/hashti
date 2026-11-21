@@ -47,7 +47,7 @@ All props forward to ui-sdk's `Input`; the wrapper adds no options.
 ui-sdk sets `data-filled`, `data-disabled`, `data-readonly`, `data-required`
 on the input (`data-slot="input"`). `packages/styles/src/input.css` keys:
 
-- `[aria-invalid="true"]` — error border. (On-disk note: this file keys the invalid state via `aria-invalid`, not `data-invalid`; see gap G2 in `design-system/gaps.md`. ui-sdk sets `aria-invalid` when the surrounding Field shows as invalid.)
+- `[data-invalid]` — error border. ui-sdk sets it on the input inside an invalid Field; outside a Field the `@hashti/react` wrapper mirrors a passed `aria-invalid` onto `data-invalid`.
 - `[data-readonly]` — dashed border and accent background; `[data-disabled]` — disabled border, background, text and cursor.
 - `:focus-visible` — 2px `--hashti-focus` outline; `::placeholder` in secondary text color.
 

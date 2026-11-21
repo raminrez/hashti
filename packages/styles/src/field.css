@@ -42,7 +42,7 @@
   z-index: 1;
 }
 
-.hashti-field:has(.hashti-field__error) :is(.hashti-input, .hashti-textarea) {
+.hashti-field[data-invalid] :is(.hashti-input, .hashti-textarea) {
   position: relative;
   z-index: 2;
   border-end-start-radius: var(--hashti-border-radius-recovery);

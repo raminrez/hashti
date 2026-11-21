@@ -22,7 +22,7 @@
   outline-offset: 2px;
 }
 
-.hashti-input[aria-invalid="true"] {
+.hashti-input[data-invalid] {
   border-color: var(--hashti-support-error);
 }
 
