@@ -330,6 +330,7 @@ import os
 _tmp = out_path + ".tmp"
 with open(_tmp, 'w') as o:
     json.dump(report, o, indent=2)
+    o.write("\n")  # POSIX trailing newline; the formatter check flags a file without one
 os.replace(_tmp, out_path)
 
 print(f"\n✓ Wrote {out_path} — {len(findings)} findings ({errors} errors, {warnings} warnings, {info} info)")
