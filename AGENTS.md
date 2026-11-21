@@ -107,6 +107,10 @@ Commands:
 
 - `bun run deadcode`: knip — unused files, exports, dependencies. Zero is the
   baseline; keep it there.
+- `bun run deps:check`: every workspace import must be declared in that
+  workspace's `package.json`. The hoisted linker (see `bunfig.toml`) resolves
+  root-only and sibling-workspace deps, so install-time resolution no longer
+  proves the dependency is real; this check does.
 - `bun run duplicates`: jscpd, logic (strict) + markup (loose). Report-only
   until its gate lands.
 - `bun run react-doctor`: React-specific scan (effects, state, hydration).

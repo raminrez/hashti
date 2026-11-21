@@ -63,6 +63,8 @@ pre-push:
       run: bun test
     deadcode:
       run: bun run deadcode
+    deps-check:
+      run: bun run deps:check
     duplicates:
       run: bun run duplicates:new
     protect-main:

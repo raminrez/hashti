@@ -61,3 +61,8 @@ Backlog variant: **cleanup** — counts are tiny, so each rule lands fixed-to-ze
   - Commands: `bun run deadcode` (plant, then remove), `bun run lint`
   - Done when: a planted phantom import fails a gate; the gate is green after removal; the outcome (knip covers / rule added) recorded in the plan Log
   - Depends on: none
+- [x] **13. Close the root-deps hole left open by step 12** (root `devDependencies` were importable from any workspace under both linkers, so knip's `unlisted` deliberately allows them; oxlint 1.94 ships no `import/no-extraneous-dependencies`, so no off-the-shelf rule):
+  - Changes: `scripts/check-workspace-deps.ts` + root `deps:check` script + pre-push job. Fixed the two real violations it found (`storybook`, `@storybook/react-vite` imported by co-located stories, declared only at root) by adding them to `packages/react` devDependencies. Skips non-package specifiers only: relative/absolute paths, `node:`/`bun:`/`astro:` builtins, the `@/` tsconfig alias, and `@types/*` satisfying a bare package name.
+  - Commands: `bun run deps:check` (plant an undeclared import, then remove), `bun run deadcode` (new script is a knip entry)
+  - Done when: a planted undeclared import fails the gate; the gate is green after removal
+  - Depends on: step 12

@@ -18,15 +18,19 @@
 # Usage:
 #   refresh-usage.sh [ROOT]          # refresh the 3 JSONs for ROOT (default: .)
 #   refresh-usage.sh --docs [ROOT]   # ALSO re-stamp per-component usage MDX
+#   refresh-usage.sh --scan apps/docs/src --scan packages/react/src --scan packages/styles --scan design
+#                                    # monorepo: pass scan paths through to the inventory, flows, and
+#                                    # health scripts (their own defaults assume src/ app/frontend/)
 #
 # This is an ORCHESTRATOR: it needs the whole bundle present (it calls scripts owned by sb-inventory /
 # sb-flows / shared). Point SB_BUNDLE or CLAUDE_PLUGIN_ROOT at the bundle if autodetection from $0 fails.
 set -uo pipefail
-DOCS=false; ROOT="."
+DOCS=false; ROOT="."; SCAN=()
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --docs) DOCS=true; shift ;;
-    -h|--help) sed -n '2,28p' "$0"; exit 0 ;;
+    --scan) SCAN+=("$2"); shift 2 ;;
+    -h|--help) sed -n '2,26p' "$0"; exit 0 ;;
     *) ROOT="$1"; shift ;;
   esac
 done
@@ -34,7 +38,11 @@ done
 # Locate the bundle: explicit env wins, else walk up from this script (shared/scripts → bundle).
 BUNDLE="${SB_BUNDLE:-${CLAUDE_PLUGIN_ROOT:-}}"
 if [[ -z "$BUNDLE" || ! -d "$BUNDLE/skills" ]]; then
-  here="$(cd "$(dirname "$0")" && pwd)"; BUNDLE="$(cd "$here/../.." && pwd)"
+  here="$(cd "$(dirname "$0")" && pwd)"
+  # skills/<name>/scripts → the bundle root is two levels up (plugin layout), or
+  # three when the bundle is vendored under .agents/skills/ as it is in this repo.
+  BUNDLE="$(cd "$here/../.." && pwd)"
+  [[ -d "$BUNDLE/skills" ]] || BUNDLE="$(cd "$here/../../.." && pwd)"
 fi
 
 # find a named script anywhere under the bundle (shared or any skill); empty if absent
@@ -54,12 +62,12 @@ run_one(){ # run_one <label> <script-name> [args...]
 
 echo "== refresh-usage: $ROOT =="
 # Refresh EVERY rendered file: each autodocs embed / wrapper reads one of these, so they refresh together.
-run_one "inventory + token usage → project-inventory.json" inventory-project.sh
+run_one "inventory + token usage → project-inventory.json" inventory-project.sh ${SCAN[@]+"${SCAN[@]}"}
 run_one "component prop/variant usage → component-usage.json" extract-component-usage.sh
-run_one "routes + nav edges → flows.json" extract-flows.sh
+run_one "routes + nav edges → flows.json" extract-flows.sh ${SCAN[@]+"${SCAN[@]}"}
 # Composes the three JSONs above into the component↔page import graph the ComponentUsage worklist reads.
 run_one "component↔page import graph → component-pages.json" build-component-pages.py
-run_one "design-system health findings → design-system-health.json" validate-design-system.sh
+run_one "design-system health findings → design-system-health.json" validate-design-system.sh ${SCAN[@]+"${SCAN[@]}"}
 if $DOCS; then
   run_one "per-component usage MDX (--docs)" scaffold-usage-mdx.py
 fi
