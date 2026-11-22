@@ -6,7 +6,8 @@
 # after this reflects current reality with ZERO hand-editing.
 #
 #   .storybook/project-inventory.json   ← inventory-project.sh    (components real/dead + token usage map)
-#   .storybook/component-usage.json     ← extract-component-usage.sh (real prop/variant call-site counts)
+#   .storybook/component-usage.json     ← extract-component-usage.sh (real prop/variant call-site counts;
+#                                         all --scan roots forwarded, so it covers every workspace)
 #   .storybook/flows.json               ← extract-flows.sh        (routes defined + nav edges)
 #                                       ← or .storybook/scripts/extract-app-graph.mjs when the repo ships
 #                                         a resolver for a framework the bundle does not model (Astro, …)
@@ -76,7 +77,7 @@ run_local(){ # run_local <label> <path-relative-to-ROOT>
 echo "== refresh-usage: $ROOT =="
 # Refresh EVERY rendered file: each autodocs embed / wrapper reads one of these, so they refresh together.
 run_one "inventory + token usage → project-inventory.json" inventory-project.sh ${SCAN[@]+"${SCAN[@]}"}
-run_one "component prop/variant usage → component-usage.json" extract-component-usage.sh
+run_one "component prop/variant usage → component-usage.json" extract-component-usage.sh ${SCAN[@]+"${SCAN[@]}"}
 # A repo-local resolver (e.g. for Astro, which extract-flows.sh does not model) replaces the generic
 # route pass; it runs AFTER build-component-pages.py because it fills that map's `pages`.
 LOCAL_GRAPH=".storybook/scripts/extract-app-graph.mjs"

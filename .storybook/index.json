@@ -370,6 +370,48 @@
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "Range"
     },
+    "components-carousel--docs": {
+      "id": "components-carousel--docs",
+      "title": "Components/Carousel",
+      "name": "Docs",
+      "importPath": "./packages/react/src/carousel/carousel.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-carousel--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-carousel--default",
+      "name": "Default",
+      "title": "Components/Carousel",
+      "importPath": "./packages/react/src/carousel/carousel.stories.tsx",
+      "componentPath": "./packages/react/src/carousel/carousel.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-carousel--second-page": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-carousel--second-page",
+      "name": "Second Page",
+      "title": "Components/Carousel",
+      "importPath": "./packages/react/src/carousel/carousel.stories.tsx",
+      "componentPath": "./packages/react/src/carousel/carousel.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "SecondPage"
+    },
+    "components-carousel--loop": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-carousel--loop",
+      "name": "Loop",
+      "title": "Components/Carousel",
+      "importPath": "./packages/react/src/carousel/carousel.stories.tsx",
+      "componentPath": "./packages/react/src/carousel/carousel.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Loop"
+    },
     "components-checkbox--docs": {
       "id": "components-checkbox--docs",
       "title": "Components/Checkbox",
@@ -420,6 +462,68 @@
       "title": "Components/Checkbox",
       "importPath": "./packages/react/src/checkbox/checkbox.stories.tsx",
       "componentPath": "./packages/react/src/checkbox/checkbox.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
+    "components-collapsible--docs": {
+      "id": "components-collapsible--docs",
+      "title": "Components/Collapsible",
+      "name": "Docs",
+      "importPath": "./packages/react/src/collapsible/collapsible.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-collapsible--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-collapsible--default",
+      "name": "Default",
+      "title": "Components/Collapsible",
+      "importPath": "./packages/react/src/collapsible/collapsible.stories.tsx",
+      "componentPath": "./packages/react/src/collapsible/collapsible.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-collapsible--open": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-collapsible--open",
+      "name": "Open",
+      "title": "Components/Collapsible",
+      "importPath": "./packages/react/src/collapsible/collapsible.stories.tsx",
+      "componentPath": "./packages/react/src/collapsible/collapsible.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Open"
+    },
+    "components-colorpicker--docs": {
+      "id": "components-colorpicker--docs",
+      "title": "Components/ColorPicker",
+      "name": "Docs",
+      "importPath": "./packages/react/src/color-picker/color-picker.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-colorpicker--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-colorpicker--default",
+      "name": "Default",
+      "title": "Components/ColorPicker",
+      "importPath": "./packages/react/src/color-picker/color-picker.stories.tsx",
+      "componentPath": "./packages/react/src/color-picker/color-picker.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-colorpicker--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-colorpicker--disabled",
+      "name": "Disabled",
+      "title": "Components/ColorPicker",
+      "importPath": "./packages/react/src/color-picker/color-picker.stories.tsx",
+      "componentPath": "./packages/react/src/color-picker/color-picker.tsx",
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "Disabled"
     },
@@ -475,6 +579,154 @@
       "componentPath": "./packages/react/src/combobox/combobox.tsx",
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "Disabled"
+    },
+    "components-command--docs": {
+      "id": "components-command--docs",
+      "title": "Components/Command",
+      "name": "Docs",
+      "importPath": "./packages/react/src/command/command.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-command--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-command--default",
+      "name": "Default",
+      "title": "Components/Command",
+      "importPath": "./packages/react/src/command/command.stories.tsx",
+      "componentPath": "./packages/react/src/command/command.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-command--empty": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-command--empty",
+      "name": "Empty",
+      "title": "Components/Command",
+      "importPath": "./packages/react/src/command/command.stories.tsx",
+      "componentPath": "./packages/react/src/command/command.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Empty"
+    },
+    "components-command--pages": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-command--pages",
+      "name": "Pages",
+      "title": "Components/Command",
+      "importPath": "./packages/react/src/command/command.stories.tsx",
+      "componentPath": "./packages/react/src/command/command.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs", "play-fn"],
+      "exportName": "Pages"
+    },
+    "components-command--async-skeleton": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-command--async-skeleton",
+      "name": "Async Skeleton",
+      "title": "Components/Command",
+      "importPath": "./packages/react/src/command/command.stories.tsx",
+      "componentPath": "./packages/react/src/command/command.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs", "play-fn"],
+      "exportName": "AsyncSkeleton"
+    },
+    "components-dateinput--docs": {
+      "id": "components-dateinput--docs",
+      "title": "Components/DateInput",
+      "name": "Docs",
+      "importPath": "./packages/react/src/date-input/date-input.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-dateinput--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-dateinput--default",
+      "name": "Default",
+      "title": "Components/DateInput",
+      "importPath": "./packages/react/src/date-input/date-input.stories.tsx",
+      "componentPath": "./packages/react/src/date-input/date-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-dateinput--empty": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-dateinput--empty",
+      "name": "Empty",
+      "title": "Components/DateInput",
+      "importPath": "./packages/react/src/date-input/date-input.stories.tsx",
+      "componentPath": "./packages/react/src/date-input/date-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Empty"
+    },
+    "components-dateinput--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-dateinput--disabled",
+      "name": "Disabled",
+      "title": "Components/DateInput",
+      "importPath": "./packages/react/src/date-input/date-input.stories.tsx",
+      "componentPath": "./packages/react/src/date-input/date-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
+    "components-dateinput--read-only": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-dateinput--read-only",
+      "name": "Read Only",
+      "title": "Components/DateInput",
+      "importPath": "./packages/react/src/date-input/date-input.stories.tsx",
+      "componentPath": "./packages/react/src/date-input/date-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "ReadOnly"
+    },
+    "components-datepicker--docs": {
+      "id": "components-datepicker--docs",
+      "title": "Components/DatePicker",
+      "name": "Docs",
+      "importPath": "./packages/react/src/date-picker/date-picker.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-datepicker--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-datepicker--default",
+      "name": "Default",
+      "title": "Components/DatePicker",
+      "importPath": "./packages/react/src/date-picker/date-picker.stories.tsx",
+      "componentPath": "./packages/react/src/date-picker/date-picker.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-datepicker--open": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-datepicker--open",
+      "name": "Open",
+      "title": "Components/DatePicker",
+      "importPath": "./packages/react/src/date-picker/date-picker.stories.tsx",
+      "componentPath": "./packages/react/src/date-picker/date-picker.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Open"
+    },
+    "components-datepicker--range": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-datepicker--range",
+      "name": "Range",
+      "title": "Components/DatePicker",
+      "importPath": "./packages/react/src/date-picker/date-picker.stories.tsx",
+      "componentPath": "./packages/react/src/date-picker/date-picker.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Range"
     },
     "components-dialog--docs": {
       "id": "components-dialog--docs",
@@ -590,6 +842,110 @@
       "componentPath": "./packages/react/src/field/field.tsx",
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "Disabled"
+    },
+    "components-fileinput--docs": {
+      "id": "components-fileinput--docs",
+      "title": "Components/FileInput",
+      "name": "Docs",
+      "importPath": "./packages/react/src/file-input/file-input.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-fileinput--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-fileinput--default",
+      "name": "Default",
+      "title": "Components/FileInput",
+      "importPath": "./packages/react/src/file-input/file-input.stories.tsx",
+      "componentPath": "./packages/react/src/file-input/file-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-fileinput--empty": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-fileinput--empty",
+      "name": "Empty",
+      "title": "Components/FileInput",
+      "importPath": "./packages/react/src/file-input/file-input.stories.tsx",
+      "componentPath": "./packages/react/src/file-input/file-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Empty"
+    },
+    "components-fileinput--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-fileinput--disabled",
+      "name": "Disabled",
+      "title": "Components/FileInput",
+      "importPath": "./packages/react/src/file-input/file-input.stories.tsx",
+      "componentPath": "./packages/react/src/file-input/file-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
+    "components-hovercard--docs": {
+      "id": "components-hovercard--docs",
+      "title": "Components/HoverCard",
+      "name": "Docs",
+      "importPath": "./packages/react/src/hover-card/hover-card.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-hovercard--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-hovercard--default",
+      "name": "Default",
+      "title": "Components/HoverCard",
+      "importPath": "./packages/react/src/hover-card/hover-card.stories.tsx",
+      "componentPath": "./packages/react/src/hover-card/hover-card.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-hovercard--open": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-hovercard--open",
+      "name": "Open",
+      "title": "Components/HoverCard",
+      "importPath": "./packages/react/src/hover-card/hover-card.stories.tsx",
+      "componentPath": "./packages/react/src/hover-card/hover-card.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Open"
+    },
+    "components-imagecropper--docs": {
+      "id": "components-imagecropper--docs",
+      "title": "Components/ImageCropper",
+      "name": "Docs",
+      "importPath": "./packages/react/src/image-cropper/image-cropper.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-imagecropper--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-imagecropper--default",
+      "name": "Default",
+      "title": "Components/ImageCropper",
+      "importPath": "./packages/react/src/image-cropper/image-cropper.stories.tsx",
+      "componentPath": "./packages/react/src/image-cropper/image-cropper.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-imagecropper--square": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-imagecropper--square",
+      "name": "Square",
+      "title": "Components/ImageCropper",
+      "importPath": "./packages/react/src/image-cropper/image-cropper.stories.tsx",
+      "componentPath": "./packages/react/src/image-cropper/image-cropper.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Square"
     },
     "components-input--docs": {
       "id": "components-input--docs",
@@ -759,6 +1115,48 @@
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "InParagraph"
     },
+    "components-listbox--docs": {
+      "id": "components-listbox--docs",
+      "title": "Components/Listbox",
+      "name": "Docs",
+      "importPath": "./packages/react/src/listbox/listbox.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-listbox--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-listbox--default",
+      "name": "Default",
+      "title": "Components/Listbox",
+      "importPath": "./packages/react/src/listbox/listbox.stories.tsx",
+      "componentPath": "./packages/react/src/listbox/listbox.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-listbox--multiple": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-listbox--multiple",
+      "name": "Multiple",
+      "title": "Components/Listbox",
+      "importPath": "./packages/react/src/listbox/listbox.stories.tsx",
+      "componentPath": "./packages/react/src/listbox/listbox.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Multiple"
+    },
+    "components-listbox--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-listbox--disabled",
+      "name": "Disabled",
+      "title": "Components/Listbox",
+      "importPath": "./packages/react/src/listbox/listbox.stories.tsx",
+      "componentPath": "./packages/react/src/listbox/listbox.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
     "components-menu--docs": {
       "id": "components-menu--docs",
       "title": "Components/Menu",
@@ -789,6 +1187,37 @@
       "componentPath": "./packages/react/src/menu/menu.tsx",
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "Open"
+    },
+    "components-menubar--docs": {
+      "id": "components-menubar--docs",
+      "title": "Components/Menubar",
+      "name": "Docs",
+      "importPath": "./packages/react/src/menubar/menubar.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-menubar--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-menubar--default",
+      "name": "Default",
+      "title": "Components/Menubar",
+      "importPath": "./packages/react/src/menubar/menubar.stories.tsx",
+      "componentPath": "./packages/react/src/menubar/menubar.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-menubar--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-menubar--disabled",
+      "name": "Disabled",
+      "title": "Components/Menubar",
+      "importPath": "./packages/react/src/menubar/menubar.stories.tsx",
+      "componentPath": "./packages/react/src/menubar/menubar.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
     },
     "components-meter--docs": {
       "id": "components-meter--docs",
@@ -843,6 +1272,99 @@
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "CustomRange"
     },
+    "components-navigationmenu--docs": {
+      "id": "components-navigationmenu--docs",
+      "title": "Components/NavigationMenu",
+      "name": "Docs",
+      "importPath": "./packages/react/src/navigation-menu/navigation-menu.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-navigationmenu--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-navigationmenu--default",
+      "name": "Default",
+      "title": "Components/NavigationMenu",
+      "importPath": "./packages/react/src/navigation-menu/navigation-menu.stories.tsx",
+      "componentPath": "./packages/react/src/navigation-menu/navigation-menu.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-navigationmenu--open": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-navigationmenu--open",
+      "name": "Open",
+      "title": "Components/NavigationMenu",
+      "importPath": "./packages/react/src/navigation-menu/navigation-menu.stories.tsx",
+      "componentPath": "./packages/react/src/navigation-menu/navigation-menu.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Open"
+    },
+    "components-numberinput--docs": {
+      "id": "components-numberinput--docs",
+      "title": "Components/NumberInput",
+      "name": "Docs",
+      "importPath": "./packages/react/src/number-input/number-input.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-numberinput--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-numberinput--default",
+      "name": "Default",
+      "title": "Components/NumberInput",
+      "importPath": "./packages/react/src/number-input/number-input.stories.tsx",
+      "componentPath": "./packages/react/src/number-input/number-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-numberinput--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-numberinput--disabled",
+      "name": "Disabled",
+      "title": "Components/NumberInput",
+      "importPath": "./packages/react/src/number-input/number-input.stories.tsx",
+      "componentPath": "./packages/react/src/number-input/number-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
+    "components-otpinput--docs": {
+      "id": "components-otpinput--docs",
+      "title": "Components/OTPInput",
+      "name": "Docs",
+      "importPath": "./packages/react/src/otp-input/otp-input.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-otpinput--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-otpinput--default",
+      "name": "Default",
+      "title": "Components/OTPInput",
+      "importPath": "./packages/react/src/otp-input/otp-input.stories.tsx",
+      "componentPath": "./packages/react/src/otp-input/otp-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-otpinput--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-otpinput--disabled",
+      "name": "Disabled",
+      "title": "Components/OTPInput",
+      "importPath": "./packages/react/src/otp-input/otp-input.stories.tsx",
+      "componentPath": "./packages/react/src/otp-input/otp-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
     "components-pagination--docs": {
       "id": "components-pagination--docs",
       "title": "Components/Pagination",
@@ -896,6 +1418,48 @@
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "SinglePage"
     },
+    "components-passwordinput--docs": {
+      "id": "components-passwordinput--docs",
+      "title": "Components/PasswordInput",
+      "name": "Docs",
+      "importPath": "./packages/react/src/password-input/password-input.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-passwordinput--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-passwordinput--default",
+      "name": "Default",
+      "title": "Components/PasswordInput",
+      "importPath": "./packages/react/src/password-input/password-input.stories.tsx",
+      "componentPath": "./packages/react/src/password-input/password-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-passwordinput--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-passwordinput--disabled",
+      "name": "Disabled",
+      "title": "Components/PasswordInput",
+      "importPath": "./packages/react/src/password-input/password-input.stories.tsx",
+      "componentPath": "./packages/react/src/password-input/password-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
+    "components-passwordinput--toggle-visibility": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-passwordinput--toggle-visibility",
+      "name": "Toggle Visibility",
+      "title": "Components/PasswordInput",
+      "importPath": "./packages/react/src/password-input/password-input.stories.tsx",
+      "componentPath": "./packages/react/src/password-input/password-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs", "play-fn"],
+      "exportName": "ToggleVisibility"
+    },
     "components-popover--docs": {
       "id": "components-popover--docs",
       "title": "Components/Popover",
@@ -926,6 +1490,26 @@
       "componentPath": "./packages/react/src/popover/popover.tsx",
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "Open"
+    },
+    "components-preferences--docs": {
+      "id": "components-preferences--docs",
+      "title": "Components/Preferences",
+      "name": "Docs",
+      "importPath": "./packages/react/src/preferences/preferences.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-preferences--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-preferences--default",
+      "name": "Default",
+      "title": "Components/Preferences",
+      "importPath": "./packages/react/src/preferences/preferences.stories.tsx",
+      "componentPath": "./packages/react/src/preferences/preferences.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
     },
     "components-progress--docs": {
       "id": "components-progress--docs",
@@ -1094,6 +1678,110 @@
       "title": "Components/Rating",
       "importPath": "./packages/react/src/rating/rating.stories.tsx",
       "componentPath": "./packages/react/src/rating/rating.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
+    "components-resizable--docs": {
+      "id": "components-resizable--docs",
+      "title": "Components/Resizable",
+      "name": "Docs",
+      "importPath": "./packages/react/src/resizable/resizable.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-resizable--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-resizable--default",
+      "name": "Default",
+      "title": "Components/Resizable",
+      "importPath": "./packages/react/src/resizable/resizable.stories.tsx",
+      "componentPath": "./packages/react/src/resizable/resizable.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-scrollarea--docs": {
+      "id": "components-scrollarea--docs",
+      "title": "Components/ScrollArea",
+      "name": "Docs",
+      "importPath": "./packages/react/src/scroll-area/scroll-area.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-scrollarea--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-scrollarea--default",
+      "name": "Default",
+      "title": "Components/ScrollArea",
+      "importPath": "./packages/react/src/scroll-area/scroll-area.stories.tsx",
+      "componentPath": "./packages/react/src/scroll-area/scroll-area.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-scrollarea--always-visible": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-scrollarea--always-visible",
+      "name": "Always Visible",
+      "title": "Components/ScrollArea",
+      "importPath": "./packages/react/src/scroll-area/scroll-area.stories.tsx",
+      "componentPath": "./packages/react/src/scroll-area/scroll-area.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "AlwaysVisible"
+    },
+    "components-segmentedcontrol--docs": {
+      "id": "components-segmentedcontrol--docs",
+      "title": "Components/SegmentedControl",
+      "name": "Docs",
+      "importPath": "./packages/react/src/segmented-control/segmented-control.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-segmentedcontrol--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-segmentedcontrol--default",
+      "name": "Default",
+      "title": "Components/SegmentedControl",
+      "importPath": "./packages/react/src/segmented-control/segmented-control.stories.tsx",
+      "componentPath": "./packages/react/src/segmented-control/segmented-control.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-segmentedcontrol--week-selected": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-segmentedcontrol--week-selected",
+      "name": "Week Selected",
+      "title": "Components/SegmentedControl",
+      "importPath": "./packages/react/src/segmented-control/segmented-control.stories.tsx",
+      "componentPath": "./packages/react/src/segmented-control/segmented-control.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "WeekSelected"
+    },
+    "components-segmentedcontrol--vertical": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-segmentedcontrol--vertical",
+      "name": "Vertical",
+      "title": "Components/SegmentedControl",
+      "importPath": "./packages/react/src/segmented-control/segmented-control.stories.tsx",
+      "componentPath": "./packages/react/src/segmented-control/segmented-control.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Vertical"
+    },
+    "components-segmentedcontrol--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-segmentedcontrol--disabled",
+      "name": "Disabled",
+      "title": "Components/SegmentedControl",
+      "importPath": "./packages/react/src/segmented-control/segmented-control.stories.tsx",
+      "componentPath": "./packages/react/src/segmented-control/segmented-control.tsx",
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "Disabled"
     },
@@ -1393,6 +2081,110 @@
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "Invalid"
     },
+    "components-theme--docs": {
+      "id": "components-theme--docs",
+      "title": "Components/Theme",
+      "name": "Docs",
+      "importPath": "./packages/react/src/theme/theme.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-theme--light": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-theme--light",
+      "name": "Light",
+      "title": "Components/Theme",
+      "importPath": "./packages/react/src/theme/theme.stories.tsx",
+      "componentPath": "./packages/react/src/theme/theme.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Light"
+    },
+    "components-theme--dark": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-theme--dark",
+      "name": "Dark",
+      "title": "Components/Theme",
+      "importPath": "./packages/react/src/theme/theme.stories.tsx",
+      "componentPath": "./packages/react/src/theme/theme.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Dark"
+    },
+    "components-timeinput--docs": {
+      "id": "components-timeinput--docs",
+      "title": "Components/TimeInput",
+      "name": "Docs",
+      "importPath": "./packages/react/src/time-input/time-input.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-timeinput--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-timeinput--default",
+      "name": "Default",
+      "title": "Components/TimeInput",
+      "importPath": "./packages/react/src/time-input/time-input.stories.tsx",
+      "componentPath": "./packages/react/src/time-input/time-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-timeinput--empty": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-timeinput--empty",
+      "name": "Empty",
+      "title": "Components/TimeInput",
+      "importPath": "./packages/react/src/time-input/time-input.stories.tsx",
+      "componentPath": "./packages/react/src/time-input/time-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Empty"
+    },
+    "components-timeinput--twelve-hour": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-timeinput--twelve-hour",
+      "name": "Twelve Hour",
+      "title": "Components/TimeInput",
+      "importPath": "./packages/react/src/time-input/time-input.stories.tsx",
+      "componentPath": "./packages/react/src/time-input/time-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "TwelveHour"
+    },
+    "components-timeinput--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-timeinput--disabled",
+      "name": "Disabled",
+      "title": "Components/TimeInput",
+      "importPath": "./packages/react/src/time-input/time-input.stories.tsx",
+      "componentPath": "./packages/react/src/time-input/time-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
+    "components-timeline--docs": {
+      "id": "components-timeline--docs",
+      "title": "Components/Timeline",
+      "name": "Docs",
+      "importPath": "./packages/react/src/timeline/timeline.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-timeline--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-timeline--default",
+      "name": "Default",
+      "title": "Components/Timeline",
+      "importPath": "./packages/react/src/timeline/timeline.stories.tsx",
+      "componentPath": "./packages/react/src/timeline/timeline.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
     "components-toast--docs": {
       "id": "components-toast--docs",
       "title": "Components/Toast",
@@ -1510,6 +2302,110 @@
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "GroupSingle"
     },
+    "components-tokeninput--docs": {
+      "id": "components-tokeninput--docs",
+      "title": "Components/TokenInput",
+      "name": "Docs",
+      "importPath": "./packages/react/src/token-input/token-input.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-tokeninput--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-tokeninput--default",
+      "name": "Default",
+      "title": "Components/TokenInput",
+      "importPath": "./packages/react/src/token-input/token-input.stories.tsx",
+      "componentPath": "./packages/react/src/token-input/token-input.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-toolbar--docs": {
+      "id": "components-toolbar--docs",
+      "title": "Components/Toolbar",
+      "name": "Docs",
+      "importPath": "./packages/react/src/toolbar/toolbar.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-toolbar--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-toolbar--default",
+      "name": "Default",
+      "title": "Components/Toolbar",
+      "importPath": "./packages/react/src/toolbar/toolbar.stories.tsx",
+      "componentPath": "./packages/react/src/toolbar/toolbar.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-toolbar--vertical": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-toolbar--vertical",
+      "name": "Vertical",
+      "title": "Components/Toolbar",
+      "importPath": "./packages/react/src/toolbar/toolbar.stories.tsx",
+      "componentPath": "./packages/react/src/toolbar/toolbar.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Vertical"
+    },
+    "components-toolbar--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-toolbar--disabled",
+      "name": "Disabled",
+      "title": "Components/Toolbar",
+      "importPath": "./packages/react/src/toolbar/toolbar.stories.tsx",
+      "componentPath": "./packages/react/src/toolbar/toolbar.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
+    "components-tooltip--docs": {
+      "id": "components-tooltip--docs",
+      "title": "Components/Tooltip",
+      "name": "Docs",
+      "importPath": "./packages/react/src/tooltip/tooltip.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-tooltip--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-tooltip--default",
+      "name": "Default",
+      "title": "Components/Tooltip",
+      "importPath": "./packages/react/src/tooltip/tooltip.stories.tsx",
+      "componentPath": "./packages/react/src/tooltip/tooltip.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-tooltip--open": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-tooltip--open",
+      "name": "Open",
+      "title": "Components/Tooltip",
+      "importPath": "./packages/react/src/tooltip/tooltip.stories.tsx",
+      "componentPath": "./packages/react/src/tooltip/tooltip.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Open"
+    },
+    "components-tooltip--disabled": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-tooltip--disabled",
+      "name": "Disabled",
+      "title": "Components/Tooltip",
+      "importPath": "./packages/react/src/tooltip/tooltip.stories.tsx",
+      "componentPath": "./packages/react/src/tooltip/tooltip.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Disabled"
+    },
     "components-tree--docs": {
       "id": "components-tree--docs",
       "title": "Components/Tree",
@@ -1562,6 +2458,97 @@
       "componentPath": "./packages/react/src/tree/tree.tsx",
       "tags": ["dev", "test", "manifest", "autodocs"],
       "exportName": "MultipleSelection"
+    },
+    "components-triggermenu--docs": {
+      "id": "components-triggermenu--docs",
+      "title": "Components/TriggerMenu",
+      "name": "Docs",
+      "importPath": "./packages/react/src/trigger-menu/trigger-menu.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-triggermenu--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-triggermenu--default",
+      "name": "Default",
+      "title": "Components/TriggerMenu",
+      "importPath": "./packages/react/src/trigger-menu/trigger-menu.stories.tsx",
+      "componentPath": "./packages/react/src/trigger-menu/trigger-menu.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-waterfall--docs": {
+      "id": "components-waterfall--docs",
+      "title": "Components/Waterfall",
+      "name": "Docs",
+      "importPath": "./packages/react/src/waterfall/waterfall.stories.tsx",
+      "type": "docs",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "storiesImports": []
+    },
+    "components-waterfall--default": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-waterfall--default",
+      "name": "Default",
+      "title": "Components/Waterfall",
+      "importPath": "./packages/react/src/waterfall/waterfall.stories.tsx",
+      "componentPath": "./packages/react/src/waterfall/waterfall.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Default"
+    },
+    "components-waterfall--selected": {
+      "type": "story",
+      "subtype": "story",
+      "id": "components-waterfall--selected",
+      "name": "Selected",
+      "title": "Components/Waterfall",
+      "importPath": "./packages/react/src/waterfall/waterfall.stories.tsx",
+      "componentPath": "./packages/react/src/waterfall/waterfall.tsx",
+      "tags": ["dev", "test", "manifest", "autodocs"],
+      "exportName": "Selected"
+    },
+    "foundations-health--findings": {
+      "type": "story",
+      "subtype": "story",
+      "id": "foundations-health--findings",
+      "name": "Findings",
+      "title": "Foundations/Health",
+      "importPath": "./.storybook/stories/DesignSystemHealth.stories.jsx",
+      "tags": ["dev", "test", "manifest", "play-fn"],
+      "exportName": "Findings"
+    },
+    "foundations-inventory--report": {
+      "type": "story",
+      "subtype": "story",
+      "id": "foundations-inventory--report",
+      "name": "Report",
+      "title": "Foundations/Inventory",
+      "importPath": "./.storybook/stories/ProjectInventory.stories.jsx",
+      "tags": ["dev", "test", "manifest", "play-fn"],
+      "exportName": "Report"
+    },
+    "flows-app-map--route-map": {
+      "type": "story",
+      "subtype": "story",
+      "id": "flows-app-map--route-map",
+      "name": "Route Map",
+      "title": "Flows/App map",
+      "importPath": "./.storybook/stories/AppFlowGraph.stories.jsx",
+      "tags": ["dev", "test", "manifest", "play-fn"],
+      "exportName": "RouteMap"
+    },
+    "flows-docs-journey--read-the-button-docs": {
+      "type": "story",
+      "subtype": "story",
+      "id": "flows-docs-journey--read-the-button-docs",
+      "name": "Read The Button Docs",
+      "title": "Flows/Docs journey",
+      "importPath": "./.storybook/stories/JourneyGraph.stories.jsx",
+      "tags": ["dev", "test", "manifest", "play-fn"],
+      "exportName": "ReadTheButtonDocs"
     }
   }
 }

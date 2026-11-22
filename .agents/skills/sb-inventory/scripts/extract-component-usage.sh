@@ -11,30 +11,36 @@
 #
 # Usage:
 #   extract-component-usage.sh                 # scan ./src, components from inventory real[] (or glob)
-#   extract-component-usage.sh path/to/src
+#   extract-component-usage.sh path/to/src     # one scan root
+#   extract-component-usage.sh --src path/to/src --src other/src   # repeatable: scan several roots (monorepo)
 #   extract-component-usage.sh --out file
+# Aliases: --src X == positional X.
 #
 # Limits (v1, grep/regex — note in output.meta): {...spread} and dynamic prop values are recorded
 # as exprCount, not resolved; value-level "unused" needs a declared string-union (inline or a
 # `type X = '…'|'…'` alias in src) — props typed by imported enums aren't value-resolved.
 
 set -uo pipefail
-SRC="src"; OUT_PATH=".storybook/component-usage.json"
+SRCS=(); OUT_PATH=".storybook/component-usage.json"
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    --src) SRCS+=("$2"); shift 2 ;;
     --out) OUT_PATH="$2"; shift 2 ;;
     -h|--help) sed -n '2,20p' "$0"; exit 0 ;;
-    *) SRC="$1"; shift ;;
+    *) SRCS+=("$1"); shift ;;
   esac
 done
-[[ -d "$SRC" ]] || { echo "ERROR: src dir not found: $SRC" >&2; exit 2; }
+if [[ ${#SRCS[@]} -eq 0 ]]; then SRCS=("src"); fi
+for SRC in "${SRCS[@]}"; do
+  [[ -d "$SRC" ]] || { echo "ERROR: src dir not found: $SRC" >&2; exit 2; }
+done
 
 DIM=$'\033[2m'; RESET=$'\033[0m'; [[ -t 1 ]] || { DIM=""; RESET=""; }
 echo "${DIM}Scanning $SRC for component call-site usage…${RESET}"
 
-python3 - "$SRC" "$OUT_PATH" <<'PYEOF'
+python3 - "${SRCS[@]}" "$OUT_PATH" <<'PYEOF'
 import os, re, sys, json, glob, datetime
-src, out_path = sys.argv[1], sys.argv[2]
+srcs, out_path = sys.argv[1:-1], sys.argv[-1]
 
 # ── 1. component list ──
 # Union inventory real[] with PascalCase component files. The inventory list is capped, so usage
@@ -50,13 +56,14 @@ if os.path.isfile(inv):
                 names.setdefault(os.path.splitext(os.path.basename(f))[0], f)
     except Exception:
         pass
-for ext in ("tsx", "jsx"):
-    for f in glob.glob(os.path.join(src, "**", f"*.{ext}"), recursive=True):
-        if "/node_modules/" in f or f.endswith((".stories.tsx", ".stories.jsx", ".test.tsx")):
-            continue
-        base = os.path.splitext(os.path.basename(f))[0]
-        if base[:1].isupper():
-            names.setdefault(base, f)
+for _src in srcs:
+    for ext in ("tsx", "jsx"):
+        for f in glob.glob(os.path.join(_src, "**", f"*.{ext}"), recursive=True):
+            if "/node_modules/" in f or f.endswith((".stories.tsx", ".stories.jsx", ".test.tsx")):
+                continue
+            base = os.path.splitext(os.path.basename(f))[0]
+            if base[:1].isupper():
+                names.setdefault(base, f)
 
 # ── all source text (path -> text) ──
 # Exclude .stories.*/.test.*/.spec.* here too, not just from registration: these are CATALOG/test
@@ -66,23 +73,34 @@ for ext in ("tsx", "jsx"):
 def _is_catalog(p):
     return p.endswith((".stories.tsx", ".stories.jsx", ".test.tsx", ".test.jsx", ".spec.tsx", ".spec.jsx"))
 files = {}
-for ext in ("tsx", "jsx"):
-    for f in glob.glob(os.path.join(src, "**", f"*.{ext}"), recursive=True):
-        if "/node_modules/" in f or _is_catalog(f):
-            continue
-        try: files[f] = open(f, encoding="utf-8", errors="ignore").read()
-        except Exception: pass
+for _src in srcs:
+    for ext in ("tsx", "jsx"):
+        for f in glob.glob(os.path.join(_src, "**", f"*.{ext}"), recursive=True):
+            if "/node_modules/" in f or _is_catalog(f):
+                continue
+            try: files[f] = open(f, encoding="utf-8", errors="ignore").read()
+            except Exception: pass
 
 # ── register components by their PascalCase EXPORT name, not just a PascalCase filename ──
 # shadcn/ui primitives live in lowercase files (button.tsx → `export function Button`). Keying only on
 # filename case skips them — yet Button/Badge/Input are exactly where "which variants do we actually
-# ship" matters most. Scan exports so those primitives get usage counts too.
+# ship" matters most. Scan exports so those primitives get usage counts too. Two shapes:
+# `export function|const|class Name` and the re-export block `export { A, B, C }` (the Hashti wrapper
+# shape: a lowercase file declares `function Button` then `export { Button }`).
 EXPORT_RE = re.compile(r"export\s+(?:default\s+)?(?:function|const|class)\s+([A-Z][A-Za-z0-9]*)")
+REEXPORT_RE = re.compile(r"^export\s*\{([^}]*)\}", re.M)
 for f, txt in files.items():
     if f.endswith((".stories.tsx", ".stories.jsx", ".test.tsx")):
         continue
     for m in EXPORT_RE.finditer(txt):
         names.setdefault(m.group(1), f)
+    for m in REEXPORT_RE.finditer(txt):
+        for item in m.group(1).split(","):
+            item = item.strip()
+            # `Name as Alias` re-exports under the alias; the local name stays internal.
+            local = item.split(" as ")[-1].strip() if " as " in item else item
+            if local[:1].isupper():
+                names.setdefault(local, f)
 
 # ── declared string-union values for a component's props (inline union or `type X=` alias) ──
 def declared_unions(decl_file):
@@ -91,7 +109,10 @@ def declared_unions(decl_file):
     txt = open(decl_file, encoding="utf-8", errors="ignore").read()
     # resolve `type Alias = 'a' | 'b'` (this file + types.ts)
     aliases = {}
-    alias_src = txt + "\n" + (open(os.path.join(src, "types.ts")).read() if os.path.isfile(os.path.join(src, "types.ts")) else "")
+    alias_src = txt + "\n" + "\n".join(
+        open(os.path.join(s, "types.ts"), encoding="utf-8", errors="ignore").read()
+        for s in srcs if os.path.isfile(os.path.join(s, "types.ts"))
+    )
     for m in re.finditer(r"type\s+(\w+)\s*=\s*((?:'[^']*'\s*\|?\s*)+);", alias_src):
         aliases[m.group(1)] = set(re.findall(r"'([^']*)'", m.group(2)))
     out = {}
