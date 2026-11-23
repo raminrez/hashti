@@ -28,11 +28,19 @@ function AutocompleteLabel(props: ComponentProps<typeof UiAutocompleteLabel>) {
   );
 }
 
-function AutocompleteInput(props: ComponentProps<typeof UiAutocompleteInput>) {
+function AutocompleteInput({
+  className,
+  disabled,
+  ...props
+}: ComponentProps<typeof UiAutocompleteInput>) {
+  // Same mirror as ComboboxInput: ui-sdk passes `disabled` through without a
+  // data attribute, and the styles key on data-disabled.
   return (
     <UiAutocompleteInput
       {...props}
-      className={join("hashti-autocomplete-input", props.className)}
+      disabled={disabled}
+      data-disabled={disabled ? "" : undefined}
+      className={join("hashti-autocomplete-input", className)}
     />
   );
 }

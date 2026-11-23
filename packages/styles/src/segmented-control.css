@@ -34,11 +34,11 @@
   flex-direction: column;
 }
 
-/* Horizontal items get their 2.125rem height by stretching; in a column
-   flex-basis 0 collapses them, so floor them at the same height instead. */
+/* Horizontal items get their height by stretching; in a column flex-basis 0
+   collapses them, so floor them at the same 2.5rem height instead. */
 .hashti-segmented-control[data-orientation="vertical"]
   .hashti-segmented-control-item {
-  min-block-size: 2.125rem;
+  min-block-size: 2.5rem;
 }
 
 .hashti-segmented-control-indicator[data-activation-direction="none"] {
@@ -78,6 +78,18 @@
 .hashti-segmented-control-item[data-disabled] {
   color: var(--hashti-text-disabled);
   cursor: not-allowed;
+}
+
+/* Disabled mutes the whole control, indicator included — it must not read
+   live at a glance. */
+.hashti-segmented-control[data-disabled] .hashti-segmented-control-indicator {
+  background: var(--hashti-button-disabled);
+  box-shadow: none;
+}
+
+.hashti-segmented-control[data-disabled]
+  .hashti-segmented-control-item[data-checked] {
+  color: var(--hashti-text-disabled);
 }
 
 .hashti-segmented-control-item:focus-visible {

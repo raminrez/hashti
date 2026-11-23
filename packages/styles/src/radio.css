@@ -61,6 +61,12 @@
   cursor: not-allowed;
 }
 
+/* A fully disabled group mutes its labels too, matching option-disabled. */
+.hashti-radio-group[data-disabled] .hashti-choice {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
 .hashti-radio[data-disabled] .hashti-radio__indicator::before {
   background: var(--hashti-text-disabled);
 }

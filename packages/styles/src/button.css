@@ -117,6 +117,13 @@
   padding-inline: 0.75rem;
 }
 
+/* A pressed toggle-button keeps the selected vocabulary: selected fill with
+   focus ink, so the active state survives the variant backgrounds above. */
+.hashti-button[aria-pressed="true"] {
+  background: var(--hashti-background-selected);
+  color: var(--hashti-focus);
+}
+
 .hashti-button[data-variant="primary"][data-disabled],
 .hashti-button[data-variant="secondary"][data-disabled],
 .hashti-button[data-variant="danger"][data-disabled] {

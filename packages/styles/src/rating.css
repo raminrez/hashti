@@ -40,17 +40,20 @@
   clip-path: inset(0 0 0 calc((1 - var(--rating-fill, 0)) * 100%));
 }
 
+/* Disabled keeps the value legible: filled stars stay distinct from empty
+   ones, both at muted strength. */
+.hashti-rating-item[data-disabled] {
+  color: var(--hashti-border-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-rating-item[data-disabled][data-filled],
 .hashti-rating-item[data-disabled] .hashti-rating-item__fill {
-  color: var(--hashti-text-disabled);
+  color: var(--hashti-text-secondary);
 }
 
 .hashti-rating-item[data-readonly] {
   cursor: default;
-}
-
-.hashti-rating-item[data-disabled] {
-  color: var(--hashti-text-disabled);
-  cursor: not-allowed;
 }
 
 /* The radio overlays the icon; the ring paints around the badge. */

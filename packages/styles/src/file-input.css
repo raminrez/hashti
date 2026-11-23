@@ -76,6 +76,18 @@
   cursor: not-allowed;
 }
 
+/* Disabled mutes the whole control: rows and their remove buttons too. */
+.hashti-file-input[data-disabled] .hashti-file-input-item {
+  border-color: var(--hashti-border-disabled);
+  background: var(--hashti-button-disabled);
+  color: var(--hashti-text-disabled);
+}
+
+.hashti-file-input[data-disabled] .hashti-file-input-item-remove {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
 .hashti-file-input-list {
   display: grid;
   gap: 0.25rem;

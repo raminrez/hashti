@@ -42,9 +42,9 @@
   }
 }
 
+/* Disabled keeps its surface and mutes the ink — the arrow must not lose the
+   control chrome its enabled sibling has. */
 .hashti-carousel-arrow[data-disabled] {
-  border-color: transparent;
-  background: transparent;
   color: var(--hashti-text-disabled);
   cursor: not-allowed;
 }
