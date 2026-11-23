@@ -48,7 +48,19 @@ const meta = {
             <>
               <span>{file.name}</span>
               <FileInputItemRemove aria-label={`Remove ${file.name}`}>
-                ×
+                <svg
+                  viewBox="0 0 12 12"
+                  width="10"
+                  height="10"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 2l8 8M10 2l-8 8"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </FileInputItemRemove>
             </>
           )}

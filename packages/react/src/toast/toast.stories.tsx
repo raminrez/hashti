@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
 import { fn } from "storybook/test";
 import { createToaster } from "@ui-sdk/react/toast";
+import { Button } from "../button/button";
 import {
   Toast,
   ToastAction,
@@ -12,7 +12,16 @@ import {
 } from "./toast";
 
 // duration: Infinity keeps every toast until dismissed, so the canvas is deterministic.
+// Module-level toasters fire once at load, so every story renders its toasts
+// without needing a click first.
 const logDismiss = fn();
+
+const demoToaster = createToaster({ duration: Infinity });
+demoToaster("Changes saved", {
+  description: "Q3 report.pdf · just now",
+  action: { label: "Undo", onAction: () => undefined },
+  onDismiss: logDismiss,
+});
 
 function Demo(args: {
   side?: "top" | "bottom";
@@ -20,13 +29,12 @@ function Demo(args: {
   maxVisible?: number;
   expanded?: boolean;
 }) {
-  const [toaster] = useState(() => createToaster({ duration: Infinity }));
   return (
     <>
-      <button
-        type="button"
+      <Button
+        variant="secondary"
         onClick={() =>
-          toaster("Changes saved", {
+          demoToaster("Changes saved", {
             description: "Q3 report.pdf · just now",
             action: { label: "Undo", onAction: () => undefined },
             onDismiss: logDismiss,
@@ -34,9 +42,9 @@ function Demo(args: {
         }
       >
         Save Changes
-      </button>
+      </Button>
       <ToastRegion
-        toaster={toaster}
+        toaster={demoToaster}
         side={args.side ?? "bottom"}
         align={args.align ?? "end"}
         maxVisible={args.maxVisible ?? 3}
@@ -56,34 +64,42 @@ function Demo(args: {
   );
 }
 
+const typesToaster = createToaster({ duration: Infinity });
+typesToaster.success("Changes saved");
+typesToaster.info("A new version is available");
+typesToaster.warning("Storage is almost full");
+typesToaster.error("Couldn't save changes");
+
 function TypesDemo() {
-  const [toaster] = useState(() => createToaster({ duration: Infinity }));
   return (
     <>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <button type="button" onClick={() => toaster.success("Changes saved")}>
+        <Button
+          variant="secondary"
+          onClick={() => typesToaster.success("Changes saved")}
+        >
           Success
-        </button>
-        <button
-          type="button"
-          onClick={() => toaster.info("A new version is available")}
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => typesToaster.info("A new version is available")}
         >
           Info
-        </button>
-        <button
-          type="button"
-          onClick={() => toaster.warning("Storage is almost full")}
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => typesToaster.warning("Storage is almost full")}
         >
           Warning
-        </button>
-        <button
-          type="button"
-          onClick={() => toaster.error("Couldn't save changes")}
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => typesToaster.error("Couldn't save changes")}
         >
           Error
-        </button>
+        </Button>
       </div>
-      <ToastRegion toaster={toaster}>
+      <ToastRegion toaster={typesToaster}>
         {() => (
           <Toast>
             <div className="hashti-toast__icons">
@@ -128,22 +144,27 @@ function TypesDemo() {
   );
 }
 
+const dismissToaster = createToaster({ duration: Infinity });
+dismissToaster("Your session expires in 5 minutes", {
+  dismissible: false,
+  cancel: { label: "Got It" },
+});
+
 function DismissDemo() {
-  const [toaster] = useState(() => createToaster({ duration: Infinity }));
   return (
     <>
-      <button
-        type="button"
+      <Button
+        variant="secondary"
         onClick={() =>
-          toaster("Your session expires in 5 minutes", {
+          dismissToaster("Your session expires in 5 minutes", {
             dismissible: false,
             cancel: { label: "Got It" },
           })
         }
       >
         Session Warning
-      </button>
-      <ToastRegion toaster={toaster}>
+      </Button>
+      <ToastRegion toaster={dismissToaster}>
         {(item) => (
           <Toast>
             <ToastTitle />

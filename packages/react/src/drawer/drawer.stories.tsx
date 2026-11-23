@@ -31,7 +31,7 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
-    open: false,
+    open: true,
     side: "bottom",
     onOpenChange: fn(),
   },

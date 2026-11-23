@@ -34,7 +34,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: { hourCycle: 24 },
+};
 
 export const Empty: Story = {
   args: { defaultValue: undefined },

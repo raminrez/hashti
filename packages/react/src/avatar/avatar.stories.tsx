@@ -37,7 +37,11 @@ export const WithImage: Story = {
   render: function Render(args) {
     return (
       <Avatar {...args}>
-        <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+        <AvatarImage
+          // Inline asset: the story must render its image offline, too.
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23365ccb'/%3E%3Ccircle cx='16' cy='12' r='6' fill='%23ffffff'/%3E%3Cpath d='M4 32a12 12 0 0 1 24 0Z' fill='%23ffffff'/%3E%3C/svg%3E"
+          alt="shadcn"
+        />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
     );

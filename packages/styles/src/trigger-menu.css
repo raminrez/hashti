@@ -8,6 +8,10 @@
   color: var(--hashti-text-primary);
   font-size: 1rem;
   line-height: 1.5rem;
+
+  /* A mention field grows with content; the UA resize grip is chrome the
+     component never designed (TokenInput, its sibling, has none). */
+  resize: none;
   transition: border-color var(--hashti-duration-fast-01)
     var(--hashti-ease-entrance);
 }

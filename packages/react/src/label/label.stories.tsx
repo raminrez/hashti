@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
+import { Input } from "../input/input";
 import { Label } from "./label";
 
 const meta = {
@@ -20,7 +22,7 @@ const meta = {
   render: (args) => (
     <div style={{ display: "grid", gap: 8, inlineSize: 280 }}>
       <Label {...args} />
-      <input id="email" type="email" placeholder="you@example.com" />
+      <Input id="email" type="email" placeholder="you@example.com" />
     </div>
   ),
 } satisfies Meta<typeof Label>;
