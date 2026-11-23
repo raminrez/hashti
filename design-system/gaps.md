@@ -70,3 +70,37 @@ Heights`, story-only overrides) measured all six offenders; decided
   border-box control inside the wrapper, `scrollbar-gutter: stable` on both.
   Ghost and textarea now share clientWidth 303 and line counts within 1.5
   lines. Status: resolved (2026-11-21).
+- **G7 — Focus blue carries four unrelated jobs.** Progress fill, Slider
+  value fill, Badge `info` kind, and the transient keyboard highlight in
+  Command/Menu/Listbox/Combobox all borrow `--hashti-focus`. The Separate
+  Signals Rule gives blue to focus, selection, and current location; a data
+  fill, an informational badge, and a hover-tier highlight are none of those.
+  Found in the 2026-11-23 visual refinement pass
+  (.impeccable/review/findings.md §C34). Next step: one DESIGN.md decision —
+  either name a data/accent ink for non-interactive blue uses or document the
+  borrowed uses as intentional. Needs a plan before any component changes.
+- **G8 — Read-only has no visual cue on Radio and Rating.** Both render
+  pixel-identical to their selected states; read-only is semantics-only there.
+  Found in the same pass (§C35). Next step: decide whether read-only needs a
+  cue on non-text controls (the field recipe — dashed border + accent
+  surface — does not transfer to a radio dot or a star row), or document
+  semantics-only as the shipped behavior.
+- **G9 — Tree leaf rows align to the chevron column.** A leaf's label sits
+  where its parent's chevron is, one step left of the sibling branch's label.
+  ui-sdk's tree DOM carries no leaf/branch marker a class could key on, so the
+  fix needs either a ui-sdk hook or a wrapper-computed attribute (which the
+  framework-agnostic styles rule forbids styling against). Found in the same
+  pass (§B25). Next step: check ui-sdk for a part-level leaf signal before
+  designing around it.
+- **G10 — Number-input stepper hit targets are ~22px.** The split vertical
+  stepper caps each button at half the 44px field; no painted-mark/hit-area
+  split fixes that without a redesign (side-by-side steppers or an overlay
+  stepper). Found in the same pass (§B31). Next step: a deliberate control
+  anatomy decision, not a CSS patch.
+- **G11 — Ghost controls have no rest-state affordance.** Popover, Dialog,
+  AlertDialog triggers and Toast actions render borderless at rest and only
+  reveal themselves on hover/focus; the toggle group's unpressed items read
+  the same. This is the shipped ghost vocabulary (button.css), consistent
+  across every surface — the 2026-11-23 pass kept it and flags it once here.
+  Next step: a DESIGN.md line either blessing the borderless rest state or
+  defining one; do not patch component by component.
