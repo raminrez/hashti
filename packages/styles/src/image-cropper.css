@@ -108,10 +108,45 @@
   gap: 0.5rem;
 }
 
+/* The zoom control is a native range input; themed to match the Slider
+   vocabulary (track subtle, thumb layer-01 with a strong border) instead of
+   the UA's accent-color rendering. */
 .hashti-image-cropper-zoom {
+  appearance: none;
   flex: 1;
-  accent-color: var(--hashti-focus);
+  block-size: 1.125rem;
+  background: transparent;
   cursor: pointer;
+}
+
+.hashti-image-cropper-zoom::-webkit-slider-runnable-track {
+  block-size: 0.25rem;
+  border-radius: 9999px;
+  background: var(--hashti-border-subtle-00);
+}
+
+.hashti-image-cropper-zoom::-webkit-slider-thumb {
+  appearance: none;
+  margin-block-start: -0.4375rem;
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: 9999px;
+  background: var(--hashti-layer-01);
+}
+
+.hashti-image-cropper-zoom::-moz-range-track {
+  block-size: 0.25rem;
+  border-radius: 9999px;
+  background: var(--hashti-border-subtle-00);
+}
+
+.hashti-image-cropper-zoom::-moz-range-thumb {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  border: 1px solid var(--hashti-border-strong-01);
+  border-radius: 9999px;
+  background: var(--hashti-layer-01);
 }
 
 .hashti-image-cropper-zoom[data-disabled] {

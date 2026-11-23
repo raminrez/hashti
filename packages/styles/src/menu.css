@@ -89,6 +89,21 @@
   background: none;
 }
 
+/* One text column for the whole menu: when any item carries a checkable
+   indicator, plain items reserve the same inline gutter and the indicator
+   sits inside it, out of flow. */
+.hashti-menu-content:has(.hashti-menu-item-indicator) .hashti-menu-item {
+  position: relative;
+  padding-inline-start: 2.25rem;
+}
+
+.hashti-menu-checkbox-item .hashti-menu-item-indicator,
+.hashti-menu-radio-item .hashti-menu-item-indicator {
+  position: absolute;
+  inset-inline-start: 0.75rem;
+  inset-block: 0;
+}
+
 .hashti-menu-separator {
   block-size: 1px;
   margin: 0.25rem 0;

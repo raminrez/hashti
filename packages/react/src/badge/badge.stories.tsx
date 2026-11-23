@@ -92,6 +92,6 @@ export const Kinds: Story = {
 
 // No count/content: the children are the pill's own label.
 export const Label: Story = {
-  args: { kind: "neutral" },
+  args: { kind: "neutral", count: undefined },
   render: (args) => <Badge {...args}>Draft</Badge>,
 };

@@ -135,7 +135,8 @@
   border-inline-start: 1px solid var(--hashti-border-subtle-00);
 }
 
-/* The cell spans the timeline column; the visible bar sits on the row's geometry. */
+/* The cell spans the timeline column; the visible bar sits on the row's geometry.
+   Data ink is the interactive blue — the pale selected tint vanishes on white. */
 .hashti-waterfall__bar::before {
   content: "";
   position: absolute;
@@ -143,9 +144,5 @@
   inset-inline-start: var(--waterfall-start);
   inline-size: var(--waterfall-size);
   border-radius: var(--hashti-border-radius-08);
-  background: var(--hashti-background-selected);
-}
-
-.hashti-waterfall__bar[data-selected]::before {
   background: var(--hashti-interactive);
 }

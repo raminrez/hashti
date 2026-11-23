@@ -113,10 +113,16 @@ function MenuCheckboxItem(props: ComponentProps<typeof UiMenuCheckboxItem>) {
   );
 }
 
-function MenuItemIndicator(props: ComponentProps<typeof UiMenuItemIndicator>) {
+function MenuItemIndicator({
+  keepMounted = true,
+  ...props
+}: ComponentProps<typeof UiMenuItemIndicator>) {
+  // ui-sdk unmounts an unchecked indicator by default, which shifts the item
+  // text between rows; keep the slot mounted so every row shares one column.
   return (
     <UiMenuItemIndicator
       {...props}
+      keepMounted={keepMounted}
       className={join("hashti-menu-item-indicator", props.className)}
     />
   );
