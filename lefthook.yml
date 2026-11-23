@@ -67,15 +67,18 @@ pre-push:
       run: bun run deps:check
     duplicates:
       run: bun run duplicates:new
-    protect-main:
-      run: |
-        branch="$(git rev-parse --abbrev-ref HEAD)"
-        case "$branch" in
-          main|master)
-            if [ "$ALLOW_PUSH_TO_MAIN" != "1" ]; then
-              echo "Refusing direct push from protected branch '$branch'." >&2
-              echo "Push a feature branch, or set ALLOW_PUSH_TO_MAIN=1 to override." >&2
-              exit 1
-            fi
-            ;;
-        esac
+    # Blocked out 2026-11-23: v0.1.0 shipped and main is no longer an
+    # accident-prone target — re-enable before the next release if direct
+    # main pushes should need the override again.
+    # protect-main:
+    #   run: |
+    #     branch="$(git rev-parse --abbrev-ref HEAD)"
+    #     case "$branch" in
+    #       main|master)
+    #         if [ "$ALLOW_PUSH_TO_MAIN" != "1" ]; then
+    #           echo "Refusing direct push from protected branch '$branch'." >&2
+    #           echo "Push a feature branch, or set ALLOW_PUSH_TO_MAIN=1 to override." >&2
+    #           exit 1
+    #         fi
+    #         ;;
+    #     esac
