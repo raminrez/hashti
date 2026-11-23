@@ -94,10 +94,11 @@
 }
 
 /* Range days: edges keep the selected recipe with rounded outer corners;
-   middle days get a subtle tint, mirrored by the hover preview. */
+   middle days get the selected tint so the range reads as one selection, not
+   two disconnected picks. */
 .hashti-date-picker-content [data-slot="calendar-day"][data-range-middle] {
   border-radius: 0;
-  background: var(--hashti-background-hover);
+  background: var(--hashti-background-selected);
   color: var(--hashti-text-primary);
 }
 
@@ -182,6 +183,34 @@
   gap: 0.75rem;
 }
 
+/* ui-sdk's popup renders its header as an anonymous div around Previous,
+   heading, Next — give it the Calendar header's flex row. */
+.hashti-date-picker-content > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* The internal nav buttons ship a unicode chevron as their only content; hide
+   the glyph and draw the chevron with borders so the mark matches Calendar's
+   SVG icons. */
+.hashti-date-picker-content [data-slot="calendar-previous"]::before,
+.hashti-date-picker-content [data-slot="calendar-next"]::before {
+  content: "";
+  inline-size: 0.5625rem;
+  block-size: 0.5625rem;
+  border-inline-start: 1.5px solid currentcolor;
+  border-block-start: 1.5px solid currentcolor;
+}
+
+.hashti-date-picker-content [data-slot="calendar-previous"]::before {
+  rotate: -45deg;
+}
+
+.hashti-date-picker-content [data-slot="calendar-next"]::before {
+  rotate: 135deg;
+}
+
 .hashti-date-picker-content [data-slot="calendar-previous"],
 .hashti-date-picker-content [data-slot="calendar-next"] {
   display: inline-flex;
@@ -193,6 +222,9 @@
   border-radius: var(--hashti-control-radius);
   background: transparent;
   color: var(--hashti-text-primary);
+
+  /* font-size 0 hides ui-sdk's unicode chevron; ::before draws the mark. */
+  font-size: 0;
   cursor: pointer;
 }
 

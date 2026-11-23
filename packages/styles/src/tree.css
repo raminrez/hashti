@@ -34,6 +34,10 @@
 
 .hashti-tree-item-label[data-selected] {
   background: var(--hashti-background-selected);
+
+  /* The fill supports the indicator; focus ink is the second signal, the same
+     pairing Toggle and navigation-current use. */
+  color: var(--hashti-focus);
 }
 
 .hashti-tree-item-label[data-current] {

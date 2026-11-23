@@ -62,6 +62,7 @@ const meta = {
         }}
         style={{ maxInlineSize: range ? 420 : 260 }}
       >
+        <DatePickerHint />
         <div className="hashti-date-picker__field">
           <DatePickerInput
             aria-label={range ? "Start date" : "Due date"}
@@ -86,7 +87,6 @@ const meta = {
             <CalendarIcon />
           </DatePickerTrigger>
         </div>
-        <DatePickerHint />
         <DatePickerContent />
       </DatePicker>
     );

@@ -70,9 +70,7 @@
   gap: 0.375rem;
 }
 
-.hashti-color-picker-input,
-.hashti-color-picker-channel-input {
-  min-block-size: 2rem;
+:is(.hashti-color-picker-input, .hashti-color-picker-channel-input) {
   padding: 0 0.5rem;
   border: 1px solid var(--hashti-border-strong-01);
   border-radius: var(--hashti-control-radius);
@@ -82,11 +80,15 @@
   line-height: 1.25rem;
 }
 
+/* The hex value field is an ordinary field-level control; channel steppers
+   live inside the picker's dense grid, where the 32px tier is theirs. */
 .hashti-color-picker-input {
+  min-block-size: 2.75rem;
   inline-size: 100%;
 }
 
 .hashti-color-picker-channel-input {
+  min-block-size: 2rem;
   inline-size: 3.5rem;
   text-align: center;
 }

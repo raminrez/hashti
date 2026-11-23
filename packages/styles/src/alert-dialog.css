@@ -121,7 +121,7 @@
   }
 
   .hashti-alert-dialog-close[data-danger]:not([data-pending]):hover {
-    background: var(--hashti-notification-background-error);
+    background: var(--hashti-button-danger-hover);
   }
 }
 
@@ -130,9 +130,12 @@
   outline-offset: -2px;
 }
 
+/* The destructive decision is the dialog's primary action: the danger fill,
+   not an outline quieter than the Cancel beside it. */
 .hashti-alert-dialog-close[data-danger] {
-  border-color: var(--hashti-support-error);
-  color: var(--hashti-support-error);
+  border-color: transparent;
+  background: var(--hashti-button-danger-primary);
+  color: var(--hashti-text-on-color);
 }
 
 .hashti-alert-dialog-close[data-pending] {
