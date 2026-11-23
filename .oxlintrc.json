@@ -67,6 +67,9 @@
     ".storybook/wrappers/**",
     ".storybook/decorators/**",
     ".agents",
-    ".claude"
+    ".claude",
+    // Impeccable working material: capture scripts and review screenshots for
+    // design passes; never imported, never shipped.
+    ".impeccable/**"
   ]
 }
