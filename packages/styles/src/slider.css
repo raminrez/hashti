@@ -79,6 +79,15 @@
   cursor: not-allowed;
 }
 
+/* Disabled keeps its value legible but drops the interactive blue. */
+.hashti-slider-control[data-disabled] .hashti-slider-indicator {
+  background: var(--hashti-border-disabled);
+}
+
+.hashti-slider-control[data-disabled] .hashti-slider-thumb {
+  background: var(--hashti-button-disabled);
+}
+
 .hashti-slider-thumb[data-disabled] {
   border-color: var(--hashti-border-disabled);
   cursor: not-allowed;

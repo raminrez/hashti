@@ -58,6 +58,20 @@
   justify-content: center;
 }
 
+/* ui-sdk's indicator ships one check glyph for every state; the indeterminate
+   mark is a dash, drawn here so the two states never render identically. */
+.hashti-checkbox[data-indeterminate] .hashti-checkbox__indicator svg {
+  display: none;
+}
+
+.hashti-checkbox[data-indeterminate] .hashti-checkbox__indicator::before {
+  content: "";
+  inline-size: 0.625rem;
+  block-size: 1.5px;
+  border-radius: 1px;
+  background: currentcolor;
+}
+
 .hashti-checkbox__indicator > svg {
   inline-size: 0.75rem;
   block-size: 0.75rem;

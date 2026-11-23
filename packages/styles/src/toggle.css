@@ -31,9 +31,16 @@
   color: var(--hashti-focus);
 }
 
-.hashti-toggle[data-pressed][data-disabled],
 .hashti-toggle[data-disabled] {
   background: transparent;
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+/* A disabled pressed toggle keeps a dimmed selected fill: the state must stay
+   legible even when it can't be changed. */
+.hashti-toggle[data-pressed][data-disabled] {
+  background: var(--hashti-button-disabled);
   color: var(--hashti-text-disabled);
   cursor: not-allowed;
 }

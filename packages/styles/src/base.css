@@ -1,3 +1,11 @@
+/* Border-box everywhere: percentage-width controls (Input in Field) otherwise
+   overflow their container by padding + border. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Base typography. Tokens define --hashti-font-sans but nothing applied it:
    body fell back to the browser serif and form controls (button, input, …)
    showed their built-in font because they never inherit. Kept in the tokens

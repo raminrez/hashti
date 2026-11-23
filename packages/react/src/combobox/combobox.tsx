@@ -34,11 +34,20 @@ function ComboboxLabel(props: ComponentProps<typeof UiComboboxLabel>) {
   );
 }
 
-function ComboboxInput(props: ComponentProps<typeof UiComboboxInput>) {
+function ComboboxInput({
+  className,
+  disabled,
+  ...props
+}: ComponentProps<typeof UiComboboxInput>) {
+  // ui-sdk's ComboboxInput passes `disabled` through without exposing it as a
+  // data attribute; the styles key on data-disabled, so mirror it (same shape
+  // as Input's aria-invalid → data-invalid mirror).
   return (
     <UiComboboxInput
       {...props}
-      className={join("hashti-combobox-input", props.className)}
+      disabled={disabled}
+      data-disabled={disabled ? "" : undefined}
+      className={join("hashti-combobox-input", className)}
     />
   );
 }

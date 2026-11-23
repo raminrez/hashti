@@ -88,6 +88,39 @@
   font-size: 0.875rem;
 }
 
+.hashti-toolbar[data-orientation="vertical"] {
+  flex-direction: column;
+  align-items: stretch;
+  inline-size: fit-content;
+}
+
+/* Controls keep their intrinsic width in the stacked layout; the input and
+   separator are the only full-width rows. */
+.hashti-toolbar[data-orientation="vertical"]
+  :is(.hashti-toolbar-button, .hashti-toolbar-link, .hashti-toolbar-group) {
+  align-self: flex-start;
+}
+
+.hashti-toolbar[data-orientation="vertical"] .hashti-toolbar-separator {
+  inline-size: auto;
+  block-size: 1px;
+  margin: 0.125rem 0.25rem;
+}
+
+.hashti-toolbar[data-disabled] {
+  cursor: not-allowed;
+}
+
+.hashti-toolbar[data-disabled]
+  :is(.hashti-toolbar-button, .hashti-toolbar-link) {
+  color: var(--hashti-text-disabled);
+  cursor: not-allowed;
+}
+
+.hashti-toolbar[data-disabled] .hashti-toolbar-input {
+  color: var(--hashti-text-disabled);
+}
+
 .hashti-toolbar-input::placeholder {
   color: var(--hashti-text-secondary);
   opacity: 1;

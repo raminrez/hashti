@@ -1,0 +1,5 @@
+/* The themed subtree resolves its own tokens: descendants inherit the scoped
+   ink instead of the computed color passed down from outside the scope. */
+.hashti-theme {
+  color: var(--hashti-text-primary);
+}
