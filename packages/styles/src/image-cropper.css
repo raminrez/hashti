@@ -56,8 +56,7 @@
     );
   background-size: 33.333% 33.333%;
   opacity: 0;
-  transition: opacity var(--hashti-duration-fast-01)
-    var(--hashti-ease-entrance);
+  transition: opacity var(--hashti-duration-fast-01) var(--hashti-ease-entrance);
 }
 
 .hashti-image-cropper-grid[data-dragging] {

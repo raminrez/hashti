@@ -111,13 +111,18 @@ for path in "${SCAN_PATHS[@]}"; do
       emit "undefined-token" "error" "$file" "$line" "References $used_name but it isn't declared in any :root or @theme block" "Declare $used_name in a CSS token file, or fix the typo"
       UNDEF_COUNT=$((UNDEF_COUNT + 1))
     fi
-  done < <(grep -rnE -- "var\(\s*--" "$path" --include="*.css" --include="*.tsx" --include="*.ts" 2>/dev/null || true)
+  # no `--` before the pattern: with BSD grep everything after `--` is a path, so the
+  # --include flags below would be searched as directories and .md prose gets scanned
+  # (why: same portability trap the declared-token pass documents above)
+  done < <(grep -rnE "var\(\s*--" "$path" --include="*.css" --include="*.tsx" --include="*.ts" 2>/dev/null || true)
 done
 echo "${DIM}  ${USED_COUNT} token references, ${UNDEF_COUNT} undefined${RESET}"
 
 # ─── 3. scale-gap analysis (spacing tokens) ─────────────────────────────────────
 echo "${DIM}[3/7] analyzing spacing scale gaps…${RESET}"
-SPACING_VALUES=$(grep -rhoE -- "--space[a-z-]*-[a-z0-9-]+:\s*[0-9.]+(rem|px|em)" --include="*.css" "${SCAN_PATHS[@]}" 2>/dev/null \
+  # pattern starts with dashes so `--` is required; --include flags must come BEFORE it
+  # or BSD grep treats them as paths (why: same portability trap as the undefined-token pass)
+SPACING_VALUES=$(grep -rhoE --include="*.css" -- "--space[a-z-]*-[a-z0-9-]+:\s*[0-9.]+(rem|px|em)" "${SCAN_PATHS[@]}" 2>/dev/null \
   | grep -oE "[0-9.]+(rem|px|em)" | sort -u || true)
 
 if [[ -n "$SPACING_VALUES" ]]; then
@@ -325,6 +330,7 @@ import os
 _tmp = out_path + ".tmp"
 with open(_tmp, 'w') as o:
     json.dump(report, o, indent=2)
+    o.write("\n")  # POSIX trailing newline; the formatter check flags a file without one
 os.replace(_tmp, out_path)
 
 print(f"\n✓ Wrote {out_path} — {len(findings)} findings ({errors} errors, {warnings} warnings, {info} info)")

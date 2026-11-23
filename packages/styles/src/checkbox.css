@@ -21,8 +21,7 @@
   color: var(--hashti-icon-on-color);
   cursor: pointer;
   transition:
-    background-color var(--hashti-duration-fast-01)
-      var(--hashti-ease-entrance),
+    background-color var(--hashti-duration-fast-01) var(--hashti-ease-entrance),
     border-color var(--hashti-duration-fast-01) var(--hashti-ease-entrance),
     transform var(--hashti-duration-fast-01) var(--hashti-ease-press);
 }

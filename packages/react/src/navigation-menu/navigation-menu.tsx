@@ -11,10 +11,13 @@ import {
   NavigationMenuTrigger as UiNavigationMenuTrigger,
   NavigationMenuViewport as UiNavigationMenuViewport,
 } from "@ui-sdk/react/navigation-menu";
+import { useOverlayTheme } from "../theme";
 
 function NavigationMenu(props: ComponentProps<typeof UiNavigationMenu>) {
+  const theme = useOverlayTheme();
   return (
     <UiNavigationMenu
+      container={theme?.container}
       {...props}
       className={join("hashti-navigation-menu", props.className)}
     />

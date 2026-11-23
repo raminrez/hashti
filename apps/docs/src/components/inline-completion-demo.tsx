@@ -21,15 +21,23 @@ const colors = [
   "Yellow",
 ];
 
-function CompletionDemo({ multiline = false }: { multiline?: boolean }) {
-  const [value, setValue] = useState("");
+export function CompletionDemo({
+  multiline = false,
+  initialValue = "",
+  suggestions = colors,
+}: {
+  multiline?: boolean;
+  initialValue?: string;
+  suggestions?: string[];
+}) {
+  const [value, setValue] = useState(initialValue);
   const ghostRef = useRef<HTMLDivElement>(null);
 
   const rest =
     value === ""
       ? ""
       : (
-          colors.find(
+          suggestions.find(
             (c) =>
               c.toLowerCase().startsWith(value.toLowerCase()) &&
               c.toLowerCase() !== value.toLowerCase(),

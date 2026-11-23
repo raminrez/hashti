@@ -8,10 +8,8 @@ colors:
   on-action-light: "#ffffff"
   secondary-light: "#eef1f6"
   secondary-hover-light: "#dde1e8"
-  secondary-active-light: "#cbd2dc"
   focus-light: "#365ccb"
   selected-light: "#e7edff"
-  info-surface-light: "#edf2ff"
   canvas-light: "#f5f6f8"
   surface-light: "#ffffff"
   raised-light: "#eef1f6"
@@ -21,24 +19,19 @@ colors:
   control-border-light: "#7f8795"
   error-light: "#aa2735"
   error-hover-light: "#91212d"
-  error-active-light: "#771b25"
   error-surface-light: "#ffe8eb"
   warning-light: "#75500d"
   warning-surface-light: "#fff0ce"
   success-light: "#246343"
   success-surface-light: "#e1f2e8"
-  ai-start-light: "#5b3fc4"
-  ai-end-light: "#8b3fb0"
   action-dark: "#f1f2f6"
-  action-hover-dark: "#d2d7e4"
-  action-active-dark: "#b6bfd2"
+  action-hover-dark: "#d6dae3"
+  action-active-dark: "#ccd2df"
   on-action-dark: "#22242a"
   secondary-dark: "#2c2f38"
   secondary-hover-dark: "#3e424d"
-  secondary-active-dark: "#515765"
   focus-dark: "#a9bdff"
   selected-dark: "#333f62"
-  info-surface-dark: "#2c354e"
   canvas-dark: "#18191d"
   surface-dark: "#22242a"
   raised-dark: "#2c2f38"
@@ -48,14 +41,11 @@ colors:
   control-border-dark: "#7d8493"
   error-dark: "#ffacb3"
   error-hover-dark: "#ffb8be"
-  error-active-dark: "#ffc5ca"
   error-surface-dark: "#452830"
   warning-dark: "#e7c383"
   warning-surface-dark: "#3e3321"
   success-dark: "#a4d9b8"
   success-surface-dark: "#203a2b"
-  ai-start-dark: "#c4b0ff"
-  ai-end-dark: "#e6b3e0"
 typography:
   headline:
     fontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
@@ -208,8 +198,9 @@ document default. There is no separate tokens package in this tree; edit
 
 The full catalog ships as `@hashti/react` (wrappers over ui-sdk parts) with
 styles in `@hashti/styles`; all 54 ui-sdk components shipped in cycles
-001–069, and phase-2 advanced behaviors are complete
-([archived roadmap](plans/phase2-roadmap.md)). Per-component behavior and
+001–069, phase-2 advanced behaviors are complete
+([archived roadmap](plans/phase2-roadmap.md)), and `Theme` — Hashti-original,
+cycle 070 — scopes tokens to a subtree and carries overlay portals. Per-component behavior and
 accessibility requirements are described here; per-component appearance lives
 in the stylesheets, which follow the
 [CSS conventions](design/css-conventions.md): cascade order
@@ -228,6 +219,16 @@ CSS variable names. Each light role has a separately authored dark counterpart.
 Every role maps to a public `--hashti-*` token in
 [`design/tokens.css`](design/tokens.css).
 
+**Contrast policy · 20 November 2026.** Every foreground/background pair the
+stylesheets actually compose must pass WCAG 2.x AA and the APCA
+recommendation for its role (body text Lc ≥ 75, content text Lc ≥ 60,
+non-text UI Lc ≥ 30). The pairs are audited by
+`bun run contrast` (`design-system/scripts/contrast-audit.mjs`), which parses
+both theme blocks of `tokens.css` and fails on any regression — run it after
+any token value change. The methodology follows the
+[Harmony palette](https://github.com/evilmartians/harmony): equal contrast per
+role, mirrored light/dark pairs; the palette itself stays Hashti-authored.
+
 ### Primary
 
 **Ink action** is the filled primary control in light mode. **Light action**
@@ -240,8 +241,7 @@ support it.
 ### Focus and selection
 
 **Focus blue** identifies keyboard location, selected choices, current navigation,
-and links. Selected surfaces support the indicator; they do not replace it. The
-lighter information surface is for relevant supporting content.
+and links. Selected surfaces support the indicator; they do not replace it.
 
 **The Separate Signals Rule.** Focus, selection, current location, validation, and
 destructive intent must remain distinguishable when they occur together. Error
@@ -260,15 +260,9 @@ Higher layers saturate deliberately: layer 1 = surface, layer 2 = raised, layer
 
 Use the error, warning, and success foreground/surface pairs with explicit text
 and, when helpful, a small icon. Red means a problem or destructive intent; amber
-means attention; green confirms a result. Danger actions carry hover
-(`error-hover`) and active (`error-active`) steps. Success is feedback, not a
-decoration on every completed input. Test the actual pairing after customization.
-
-### AI accents
-
-A purple gradient (`ai-start` → `ai-end`) marks AI-generated content and the AI
-label's revert chip. It is decorative-only territory: never an action, focus, or
-status color.
+means attention; green confirms a result. Danger actions carry a hover step
+(`error-hover`). Success is feedback, not a decoration on every completed input.
+Test the actual pairing after customization.
 
 ## Typography
 
@@ -387,6 +381,17 @@ a square hit target equal to the control height plus a meaningful accessible
 name. Pending actions hide their label, show a spinner in the action's ink, and
 prevent repeat activation.
 
+#### Control height tier (decided 2026-11-21)
+
+The shipped heights are intentional, not an oversight. Standard controls
+(buttons, inputs, overlay closes) sit at 36px; dense navigational surfaces
+(menubar triggers) at 32px; segmented-control items at 40px inside a 48px
+root. The 44px ladder was evaluated against a before/after showcase and
+rejected: 44px made toolbar and menubar surfaces visibly too tall, and a
+32px-everywhere compact tier erased the distinction the current heights
+already draw. Toolbars, menubars, and overlay headers are the dense contexts
+that justify the smaller targets; forms keep the taller standard controls.
+
 ### Fields and recovery
 
 The visible label remains above the control, with guidance directly beneath it —
@@ -442,7 +447,9 @@ modals take the modal shadow, 18px corners, and the 50% scrim (xs–lg widths,
 against their edge, full-height or full-width travel, and bidirectional
 mirroring so `end` slides from the left in RTL and from the right in LTR. Theme,
 locale, keyboard direction, focus return, and the close order must all survive
-the portal (`useOverlayTheme` carries `data-theme`, layer, `dir`, `lang`).
+the portal (`Theme` renders the themed container and `useOverlayTheme` hands
+it to the wrappers as the overlays' portal target, carrying `data-theme`,
+`dir`, `lang`).
 Escape dismisses inner-first (a Select closes before its Dialog), and focus
 returns to the trigger.
 

@@ -1,0 +1,3356 @@
+{
+  "components": {
+    "kbd": {
+      "callSites": 1,
+      "files": ["packages/react/src/kbd/kbd.tsx"],
+      "props": {
+        "ref": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "className": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CompletionDemo": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/inline-completion-demo.tsx"],
+      "props": {
+        "multiline": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Home": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/home.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Provider": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/docs.tsx",
+        "apps/docs/src/components/home.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Button": {
+      "callSites": 4,
+      "files": [
+        "apps/docs/src/components/preferences-demo.tsx",
+        "apps/docs/src/components/theme-demo.tsx"
+      ],
+      "props": {
+        "size": {
+          "count": 2,
+          "values": {
+            "sm": 2
+          },
+          "exprCount": 0
+        },
+        "aria-pressed": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        },
+        "onClick": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Switch": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/switch-demo.tsx"],
+      "props": {
+        "defaultChecked": {
+          "count": 2,
+          "values": {},
+          "exprCount": 0
+        },
+        "disabled": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        },
+        "size": {
+          "count": 1,
+          "values": {
+            "sm": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "SwitchThumb": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/switch-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Avatar": {
+      "callSites": 9,
+      "files": [
+        "apps/docs/src/components/avatar-demo.tsx",
+        "apps/docs/src/components/avatar-group-demo.tsx",
+        "apps/docs/src/components/hover-card-demo.tsx"
+      ],
+      "props": {
+        "size": {
+          "count": 5,
+          "values": {
+            "xs": 1,
+            "sm": 1,
+            "lg": 2,
+            "xl": 1
+          },
+          "exprCount": 0
+        },
+        "key": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        }
+      },
+      "declaredButUnused": []
+    },
+    "AvatarImage": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/avatar-demo.tsx"],
+      "props": {
+        "src": {
+          "count": 1,
+          "values": {
+            "https://github.com/shadcn.png": 1
+          },
+          "exprCount": 0
+        },
+        "alt": {
+          "count": 1,
+          "values": {
+            "shadcn": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "AvatarFallback": {
+      "callSites": 9,
+      "files": [
+        "apps/docs/src/components/avatar-demo.tsx",
+        "apps/docs/src/components/avatar-group-demo.tsx",
+        "apps/docs/src/components/hover-card-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AvatarGroup": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/avatar-group-demo.tsx"],
+      "props": {
+        "size": {
+          "count": 2,
+          "values": {
+            "md": 2
+          },
+          "exprCount": 0
+        },
+        "max": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Badge": {
+      "callSites": 7,
+      "files": ["apps/docs/src/components/badge-demo.tsx"],
+      "props": {
+        "count": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        },
+        "isDot": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        },
+        "kind": {
+          "count": 4,
+          "values": {
+            "success": 1,
+            "warning": 1,
+            "info": 1,
+            "neutral": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Input": {
+      "callSites": 3,
+      "files": [
+        "apps/docs/src/components/field-demo.tsx",
+        "apps/docs/src/components/inline-completion-demo.tsx"
+      ],
+      "props": {
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "onValueChange": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "onKeyDown": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "placeholder": {
+          "count": 3,
+          "values": {
+            "Try \u201cte\u201d\u2026": 1,
+            "hollis@example.com": 1,
+            "https://example.com": 1
+          },
+          "exprCount": 0
+        },
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Color with inline completion": 1
+          },
+          "exprCount": 0
+        },
+        "type": {
+          "count": 2,
+          "values": {
+            "email": 1,
+            "url": 1
+          },
+          "exprCount": 0
+        },
+        "required": {
+          "count": 2,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "PasswordInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/password-input-demo.tsx"],
+      "props": {
+        "required": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "PasswordInputControl": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/password-input-demo.tsx"],
+      "props": {
+        "placeholder": {
+          "count": 1,
+          "values": {
+            "Enter your password": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "PasswordInputToggle": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/password-input-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Show password": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "NumberInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/number-input-demo.tsx"],
+      "props": {
+        "defaultValue": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "min": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "max": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "NumberInputControl": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/number-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "NumberInputDecrement": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/number-input-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Decrease": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "NumberInputGroup": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/number-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "NumberInputIncrement": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/number-input-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Increase": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "DateInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/date-input-demo.tsx"],
+      "props": {
+        "required": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "DatePicker": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/date-picker-demo.tsx"],
+      "props": {
+        "defaultValue": {
+          "count": 2,
+          "values": {
+            "2026-10-16": 1
+          },
+          "exprCount": 1
+        },
+        "style": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        },
+        "mode": {
+          "count": 1,
+          "values": {
+            "range": 1
+          },
+          "exprCount": 0
+        },
+        "months": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "DatePickerContent": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/date-picker-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DatePickerHint": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/date-picker-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DatePickerInput": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/date-picker-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 3,
+          "values": {
+            "Due date": 1,
+            "Start date": 1,
+            "End date": 1
+          },
+          "exprCount": 0
+        },
+        "placeholder": {
+          "count": 2,
+          "values": {
+            "Start date": 1,
+            "End date": 1
+          },
+          "exprCount": 0
+        },
+        "end": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "DatePickerTrigger": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/date-picker-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 2,
+          "values": {
+            "Choose date": 1,
+            "Choose range": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TimeInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/time-input-demo.tsx"],
+      "props": {
+        "required": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "FileInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/file-input-demo.tsx"],
+      "props": {
+        "multiple": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "FileInputTrigger": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/file-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "FileInputDropzone": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/file-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "FileInputList": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/file-input-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Files": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "FileInputItem": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/file-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "FileInputItemRemove": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/file-input-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Kbd": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/kbd-demo.tsx"],
+      "props": {
+        "keys": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Link": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/link-demo.tsx"],
+      "props": {
+        "href": {
+          "count": 3,
+          "values": {
+            "#docs": 1,
+            "#repo": 1,
+            "#visited": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Textarea": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/inline-completion-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "onValueChange": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "onKeyDown": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "onScroll": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "placeholder": {
+          "count": 1,
+          "values": {
+            "Try \u201cte\u201d\u2026": 1
+          },
+          "exprCount": 0
+        },
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Color with inline completion (textarea)": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Toggle": {
+      "callSites": 5,
+      "files": ["apps/docs/src/components/toggle-demo.tsx"],
+      "props": {
+        "pressed": {
+          "count": 3,
+          "values": {},
+          "exprCount": 2
+        },
+        "onPressedChange": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "aria-label": {
+          "count": 3,
+          "values": {
+            "Pin": 1,
+            "Like": 1,
+            "Muted": 1
+          },
+          "exprCount": 0
+        },
+        "disabled": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        },
+        "value": {
+          "count": 2,
+          "values": {
+            "grid": 1,
+            "rules": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ToggleGroup": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toggle-demo.tsx"],
+      "props": {
+        "multiple": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        },
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "onValueChange": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Layers": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Checkbox": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/checkbox-demo.tsx"],
+      "props": {
+        "defaultChecked": {
+          "count": 3,
+          "values": {
+            "indeterminate": 1
+          },
+          "exprCount": 0
+        },
+        "disabled": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CheckboxIndicator": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/checkbox-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Calendar": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/calendar-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Pick a date": 1
+          },
+          "exprCount": 0
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CalendarDay": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/calendar-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CalendarGrid": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/calendar-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CalendarHeading": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/calendar-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CalendarNext": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/calendar-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CalendarPrevious": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/calendar-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CalendarWeekday": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/calendar-demo.tsx"],
+      "props": {
+        "index": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CalendarWeekdays": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/calendar-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CalendarWeeks": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/calendar-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "RadioGroup": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/radio-demo.tsx"],
+      "props": {
+        "defaultValue": {
+          "count": 1,
+          "values": {
+            "standard": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Radio": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/radio-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 3,
+          "values": {
+            "standard": 1,
+            "express": 1,
+            "overnight": 1
+          },
+          "exprCount": 0
+        },
+        "disabled": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "RadioIndicator": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/radio-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Field": {
+      "callSites": 6,
+      "files": [
+        "apps/docs/src/components/date-input-demo.tsx",
+        "apps/docs/src/components/field-demo.tsx",
+        "apps/docs/src/components/number-input-demo.tsx",
+        "apps/docs/src/components/password-input-demo.tsx",
+        "apps/docs/src/components/time-input-demo.tsx"
+      ],
+      "props": {
+        "name": {
+          "count": 6,
+          "values": {
+            "delivery-date": 1,
+            "quantity": 1,
+            "reminder-time": 1,
+            "email": 1,
+            "website": 1,
+            "password": 1
+          },
+          "exprCount": 0
+        },
+        "style": {
+          "count": 4,
+          "values": {},
+          "exprCount": 4
+        }
+      },
+      "declaredButUnused": []
+    },
+    "FieldLabel": {
+      "callSites": 6,
+      "files": [
+        "apps/docs/src/components/date-input-demo.tsx",
+        "apps/docs/src/components/field-demo.tsx",
+        "apps/docs/src/components/number-input-demo.tsx",
+        "apps/docs/src/components/password-input-demo.tsx",
+        "apps/docs/src/components/time-input-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "FieldDescription": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/field-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "FieldError": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/field-demo.tsx"],
+      "props": {
+        "match": {
+          "count": 2,
+          "values": {
+            "valueMissing": 1,
+            "typeMismatch": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "AlertDialog": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/alert-dialog-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AlertDialogTrigger": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/alert-dialog-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AlertDialogBackdrop": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/alert-dialog-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AlertDialogContent": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/alert-dialog-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AlertDialogTitle": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/alert-dialog-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AlertDialogDescription": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/alert-dialog-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AlertDialogClose": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/alert-dialog-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 2,
+          "values": {
+            "cancel": 1,
+            "confirm": 1
+          },
+          "exprCount": 0
+        },
+        "data-danger": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Drawer": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/drawer-demo.tsx"],
+      "props": {
+        "side": {
+          "count": 1,
+          "values": {
+            "end": 1
+          },
+          "exprCount": 0
+        },
+        "snapPoints": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "defaultSnapPoint": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "DrawerTrigger": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/drawer-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DrawerBackdrop": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/drawer-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DrawerContent": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/drawer-demo.tsx"],
+      "props": {
+        "style": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        }
+      },
+      "declaredButUnused": []
+    },
+    "DrawerTitle": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/drawer-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DrawerDescription": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/drawer-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DrawerHandle": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/drawer-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Resize": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "DrawerClose": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/drawer-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Dialog": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/dialog-demo.tsx",
+        "apps/docs/src/components/theme-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DialogTrigger": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/dialog-demo.tsx",
+        "apps/docs/src/components/theme-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DialogBackdrop": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/dialog-demo.tsx",
+        "apps/docs/src/components/theme-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DialogContent": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/dialog-demo.tsx",
+        "apps/docs/src/components/theme-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DialogTitle": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/dialog-demo.tsx",
+        "apps/docs/src/components/theme-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DialogDescription": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/dialog-demo.tsx",
+        "apps/docs/src/components/theme-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "DialogClose": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/dialog-demo.tsx",
+        "apps/docs/src/components/theme-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Popover": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/popover-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "PopoverTrigger": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/popover-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "PopoverContent": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/popover-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "PopoverTitle": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/popover-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "PopoverDescription": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/popover-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "PopoverClose": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/popover-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Pagination": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/pagination-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Results pages": 1
+          },
+          "exprCount": 0
+        },
+        "pageCount": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "defaultPage": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "PaginationList": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/pagination-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "PaginationItem": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/pagination-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "PaginationLink": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/pagination-demo.tsx"],
+      "props": {
+        "page": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "PaginationEllipsis": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/pagination-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "PaginationPrevious": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/pagination-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Previous page": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "PaginationNext": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/pagination-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Next page": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Tooltip": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/tooltip-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TooltipTrigger": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/tooltip-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TooltipContent": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/tooltip-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "HoverCard": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/hover-card-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "HoverCardTrigger": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/hover-card-demo.tsx"],
+      "props": {
+        "href": {
+          "count": 1,
+          "values": {
+            "#profile": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "HoverCardContent": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/hover-card-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ImageCropper": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/image-cropper-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Cover photo": 1
+          },
+          "exprCount": 0
+        },
+        "src": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "aspectRatio": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ImageCropperFlip": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/image-cropper-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ImageCropperGrid": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/image-cropper-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ImageCropperHandle": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/image-cropper-demo.tsx"],
+      "props": {
+        "position": {
+          "count": 4,
+          "values": {
+            "nw": 1,
+            "ne": 1,
+            "sw": 1,
+            "se": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ImageCropperImage": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/image-cropper-demo.tsx"],
+      "props": {
+        "alt": {
+          "count": 1,
+          "values": {
+            "Mountains at sunset": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ImageCropperRotate": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/image-cropper-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ImageCropperSelection": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/image-cropper-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ImageCropperViewport": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/image-cropper-demo.tsx"],
+      "props": {
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ImageCropperZoom": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/image-cropper-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Zoom": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Menu": {
+      "callSites": 4,
+      "files": [
+        "apps/docs/src/components/menu-demo.tsx",
+        "apps/docs/src/components/menubar-demo.tsx"
+      ],
+      "props": {
+        "onAction": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "MenuTrigger": {
+      "callSites": 4,
+      "files": [
+        "apps/docs/src/components/menu-demo.tsx",
+        "apps/docs/src/components/menubar-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MenuContent": {
+      "callSites": 4,
+      "files": [
+        "apps/docs/src/components/menu-demo.tsx",
+        "apps/docs/src/components/menubar-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MenuItem": {
+      "callSites": 14,
+      "files": [
+        "apps/docs/src/components/menu-demo.tsx",
+        "apps/docs/src/components/menubar-demo.tsx"
+      ],
+      "props": {
+        "value": {
+          "count": 14,
+          "values": {
+            "new": 1,
+            "open": 1,
+            "close": 1,
+            "undo": 1,
+            "redo": 1,
+            "zoom-in": 1,
+            "zoom-out": 1,
+            "rename": 1,
+            "duplicate": 1,
+            "copy-link": 1,
+            "email": 1,
+            "find": 1,
+            "archive": 1,
+            "delete": 1
+          },
+          "exprCount": 0
+        },
+        "shortcut": {
+          "count": 1,
+          "values": {
+            "mod+f": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "MenuGroup": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MenuGroupLabel": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MenuSeparator": {
+      "callSites": 5,
+      "files": [
+        "apps/docs/src/components/menu-demo.tsx",
+        "apps/docs/src/components/menubar-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MenuSub": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MenuSubTrigger": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MenuSubContent": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MenuCheckboxItem": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 2,
+          "values": {
+            "status-bar": 1,
+            "minimap": 1
+          },
+          "exprCount": 0
+        },
+        "defaultChecked": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "MenuItemIndicator": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {
+        "keepMounted": {
+          "count": 2,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "MenuItemIcon": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MenuRadioGroup": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {
+        "name": {
+          "count": 1,
+          "values": {
+            "density": 1
+          },
+          "exprCount": 0
+        },
+        "defaultValue": {
+          "count": 1,
+          "values": {
+            "comfortable": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "MenuRadioItem": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/menu-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Listbox": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/listbox-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Toppings": 1
+          },
+          "exprCount": 0
+        },
+        "defaultValue": {
+          "count": 1,
+          "values": {
+            "basil": 1
+          },
+          "exprCount": 0
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ListboxItem": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/listbox-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 3,
+          "values": {
+            "basil": 1,
+            "olive": 1,
+            "mushroom": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ListboxItemIndicator": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/listbox-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Tabs": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/tabs-demo.tsx"],
+      "props": {
+        "defaultValue": {
+          "count": 2,
+          "values": {
+            "overview": 2
+          },
+          "exprCount": 0
+        },
+        "orientation": {
+          "count": 1,
+          "values": {
+            "vertical": 1
+          },
+          "exprCount": 0
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TabsList": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/tabs-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TabsTab": {
+      "callSites": 6,
+      "files": ["apps/docs/src/components/tabs-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 6,
+          "values": {
+            "overview": 2,
+            "activity": 2,
+            "settings": 2
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TabsIndicator": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/tabs-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TabsPanel": {
+      "callSites": 6,
+      "files": ["apps/docs/src/components/tabs-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 6,
+          "values": {
+            "overview": 2,
+            "activity": 2,
+            "settings": 2
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Accordion": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/accordion-demo.tsx"],
+      "props": {
+        "collapsible": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "AccordionItem": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/accordion-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 3,
+          "values": {
+            "shipping": 1,
+            "returns": 1,
+            "warranty": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "AccordionHeader": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/accordion-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AccordionTrigger": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/accordion-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AccordionPanel": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/accordion-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Collapsible": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/collapsible-demo.tsx"],
+      "props": {
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CollapsibleTrigger": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/collapsible-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CollapsiblePanel": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/collapsible-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Progress": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/progress-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 3,
+          "values": {},
+          "exprCount": 3
+        },
+        "aria-label": {
+          "count": 3,
+          "values": {
+            "Uploading": 1,
+            "Scanning": 1,
+            "Finished": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ProgressLabel": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/progress-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ProgressValue": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/progress-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ProgressTrack": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/progress-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ProgressIndicator": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/progress-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Meter": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/meter-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 3,
+          "values": {},
+          "exprCount": 3
+        },
+        "data-tone": {
+          "count": 2,
+          "values": {
+            "warning": 1,
+            "danger": 1
+          },
+          "exprCount": 0
+        },
+        "aria-label": {
+          "count": 2,
+          "values": {
+            "CPU": 1,
+            "Quota": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "MeterLabel": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/meter-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MeterValue": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/meter-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MeterTrack": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/meter-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "MeterIndicator": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/meter-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Slider": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/slider-demo.tsx"],
+      "props": {
+        "defaultValue": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        },
+        "aria-label": {
+          "count": 2,
+          "values": {
+            "Volume": 1
+          },
+          "exprCount": 1
+        },
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "orientation": {
+          "count": 1,
+          "values": {
+            "vertical": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "SliderValue": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/slider-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SliderControl": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/slider-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SliderTrack": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/slider-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SliderIndicator": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/slider-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SliderThumb": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/slider-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Toast": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toast-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ToastClose": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toast-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Dismiss": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ToastDescription": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toast-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ToastRegion": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toast-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ToastTitle": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toast-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ScrollArea": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/scroll-area-demo.tsx"],
+      "props": {
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ScrollAreaViewport": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/scroll-area-demo.tsx"],
+      "props": {
+        "role": {
+          "count": 1,
+          "values": {
+            "region": 1
+          },
+          "exprCount": 0
+        },
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Items": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ScrollAreaContent": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/scroll-area-demo.tsx"],
+      "props": {
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ScrollAreaScrollbar": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/scroll-area-demo.tsx"],
+      "props": {
+        "orientation": {
+          "count": 1,
+          "values": {
+            "vertical": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ScrollAreaThumb": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/scroll-area-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Timeline": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/timeline-demo.tsx"],
+      "props": {
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TimelineItem": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/timeline-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "status": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TimelineMarker": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/timeline-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TimelineConnector": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/timeline-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TimelineTitle": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/timeline-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TimelineTime": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/timeline-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TimelineDescription": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/timeline-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Rating": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/rating-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 4,
+          "values": {
+            "Your rating": 1,
+            "Average rating": 1,
+            "Half-star rating": 1,
+            "Average rating with half stars": 1
+          },
+          "exprCount": 0
+        },
+        "defaultValue": {
+          "count": 3,
+          "values": {},
+          "exprCount": 3
+        },
+        "readOnly": {
+          "count": 2,
+          "values": {},
+          "exprCount": 0
+        },
+        "step": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "getValueLabel": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "RatingItem": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/rating-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SegmentedControl": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/segmented-control-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        },
+        "onValueChange": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        },
+        "orientation": {
+          "count": 1,
+          "values": {
+            "vertical": 1
+          },
+          "exprCount": 0
+        },
+        "aria-label": {
+          "count": 2,
+          "values": {
+            "Vertical alignment": 1,
+            "Calendar view": 1
+          },
+          "exprCount": 0
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "SegmentedControlIndicator": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/segmented-control-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SegmentedControlItem": {
+      "callSites": 6,
+      "files": ["apps/docs/src/components/segmented-control-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 6,
+          "values": {
+            "top": 1,
+            "middle": 1,
+            "bottom": 1,
+            "day": 1,
+            "week": 1,
+            "month": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Select": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {
+        "items": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "defaultValue": {
+          "count": 1,
+          "values": {
+            "Editor": 1
+          },
+          "exprCount": 0
+        },
+        "placeholder": {
+          "count": 1,
+          "values": {
+            "Choose a plan": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "SelectLabel": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SelectTrigger": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SelectValue": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SelectContent": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SelectGroup": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SelectGroupLabel": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SelectItem": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "value": {
+          "count": 3,
+          "values": {
+            "free": 1,
+            "enterprise": 1
+          },
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "SelectItemIndicator": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "SelectSeparator": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/select-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Toolbar": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toolbar-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Document tools": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ToolbarButton": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/toolbar-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 4,
+          "values": {
+            "Bold": 1,
+            "Italic": 1,
+            "Align left": 1,
+            "Align center": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ToolbarGroup": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toolbar-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Align": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ToolbarSeparator": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/toolbar-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ToolbarLink": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toolbar-demo.tsx"],
+      "props": {
+        "href": {
+          "count": 1,
+          "values": {
+            "#help": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ToolbarInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/toolbar-demo.tsx"],
+      "props": {
+        "placeholder": {
+          "count": 1,
+          "values": {
+            "Find\u2026": 1
+          },
+          "exprCount": 0
+        },
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Find": 1
+          },
+          "exprCount": 0
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Carousel": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/carousel-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Highlights": 1
+          },
+          "exprCount": 0
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CarouselViewport": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/carousel-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CarouselContent": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/carousel-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CarouselItem": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/carousel-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CarouselPrevious": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/carousel-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Previous slide": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CarouselNext": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/carousel-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Next slide": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CarouselIndicatorGroup": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/carousel-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Choose a slide": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CarouselIndicator": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/carousel-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "page": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "aria-label": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Resizable": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/resizable-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Workspace": 1
+          },
+          "exprCount": 0
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ResizablePanel": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/resizable-demo.tsx"],
+      "props": {
+        "style": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ResizableHandle": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/resizable-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Resize files": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Menubar": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/menubar-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "App menus": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TriggerMenu": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/token-input-demo.tsx",
+        "apps/docs/src/components/trigger-menu-demo.tsx"
+      ],
+      "props": {
+        "triggers": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TriggerMenuInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/trigger-menu-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Message": 1
+          },
+          "exprCount": 0
+        },
+        "placeholder": {
+          "count": 1,
+          "values": {
+            "Mention someone with @\u2026": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TriggerMenuStatus": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/trigger-menu-demo.tsx"],
+      "props": {
+        "className": {
+          "count": 1,
+          "values": {
+            "sr-only": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TriggerMenuContent": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/token-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TriggerMenuList": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/token-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Autocomplete": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/autocomplete-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AutocompleteLabel": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/autocomplete-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AutocompleteInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/autocomplete-demo.tsx"],
+      "props": {
+        "placeholder": {
+          "count": 1,
+          "values": {
+            "Start typing a city\u2026": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "AutocompleteContent": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/autocomplete-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AutocompleteList": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/autocomplete-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "AutocompleteItem": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/autocomplete-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "AutocompleteEmpty": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/autocomplete-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Command": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/command-demo.tsx"],
+      "props": {
+        "onAction": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        },
+        "style": {
+          "count": 3,
+          "values": {},
+          "exprCount": 3
+        },
+        "controller": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "pages": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "onPagesChange": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "filter": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "status": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "onQueryChange": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CommandInput": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/command-demo.tsx"],
+      "props": {
+        "placeholder": {
+          "count": 3,
+          "values": {
+            "Type a command or search\u2026": 1,
+            "Search issues\u2026": 1
+          },
+          "exprCount": 1
+        },
+        "aria-label": {
+          "count": 3,
+          "values": {
+            "Command palette": 1,
+            "Search commands": 1,
+            "Search issues": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CommandList": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/command-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CommandItem": {
+      "callSites": 10,
+      "files": ["apps/docs/src/components/command-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 10,
+          "values": {
+            "new-file": 1,
+            "open": 1,
+            "undo": 1,
+            "disabled-one": 1,
+            "theme": 1,
+            "teams": 1,
+            "back": 1
+          },
+          "exprCount": 3
+        },
+        "disabled": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        },
+        "page": {
+          "count": 2,
+          "values": {
+            "theme": 1,
+            "teams": 1
+          },
+          "exprCount": 0
+        },
+        "key": {
+          "count": 3,
+          "values": {},
+          "exprCount": 3
+        },
+        "label": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "CommandGroup": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/command-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CommandGroupLabel": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/command-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CommandSeparator": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/command-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CommandEmpty": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/command-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "CommandPage": {
+      "callSites": 3,
+      "files": ["apps/docs/src/components/command-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 2,
+          "values": {
+            "theme": 1,
+            "teams": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "OTPInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/otp-input-demo.tsx"],
+      "props": {
+        "maxLength": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Verification code": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "OTPInputGroup": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/otp-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "OTPInputSeparator": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/otp-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "OTPInputSlot": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/otp-input-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        },
+        "index": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        }
+      },
+      "declaredButUnused": []
+    },
+    "NavigationMenu": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/navigation-menu-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Main navigation": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "NavigationMenuList": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/navigation-menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "NavigationMenuItem": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/navigation-menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "NavigationMenuTrigger": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/navigation-menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "NavigationMenuContent": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/navigation-menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "NavigationMenuLink": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/navigation-menu-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "href": {
+          "count": 2,
+          "values": {
+            "#guides": 1
+          },
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "NavigationMenuViewport": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/navigation-menu-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Combobox": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/combobox-demo.tsx",
+        "apps/docs/src/components/combobox-multi-demo.tsx"
+      ],
+      "props": {
+        "multiple": {
+          "count": 1,
+          "values": {},
+          "exprCount": 0
+        },
+        "defaultValue": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "itemToLabel": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ComboboxLabel": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/combobox-demo.tsx",
+        "apps/docs/src/components/combobox-multi-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ComboboxInput": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/combobox-demo.tsx",
+        "apps/docs/src/components/combobox-multi-demo.tsx"
+      ],
+      "props": {
+        "placeholder": {
+          "count": 2,
+          "values": {
+            "Pick or type a role\u2026": 1,
+            "Add a skill\u2026": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ComboboxContent": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/combobox-demo.tsx",
+        "apps/docs/src/components/combobox-multi-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ComboboxList": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/combobox-demo.tsx",
+        "apps/docs/src/components/combobox-multi-demo.tsx"
+      ],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ComboboxItem": {
+      "callSites": 2,
+      "files": [
+        "apps/docs/src/components/combobox-demo.tsx",
+        "apps/docs/src/components/combobox-multi-demo.tsx"
+      ],
+      "props": {
+        "key": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        },
+        "value": {
+          "count": 2,
+          "values": {},
+          "exprCount": 2
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ComboboxChips": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/combobox-multi-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ComboboxValue": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/combobox-multi-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ComboboxChip": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/combobox-multi-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ComboboxChipRemove": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/combobox-multi-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TokenInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/token-input-demo.tsx"],
+      "props": {
+        "renderToken": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TokenInputEditor": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/token-input-demo.tsx"],
+      "props": {
+        "placeholder": {
+          "count": 1,
+          "values": {
+            "Type @ to mention someone\u2026": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TokenInputToken": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/token-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TokenInputTokenRemove": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/token-input-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ColorPicker": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/color-picker-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Brand color": 1
+          },
+          "exprCount": 0
+        },
+        "defaultValue": {
+          "count": 1,
+          "values": {
+            "#0ea5e9": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ColorPickerArea": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/color-picker-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ColorPickerAreaThumb": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/color-picker-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ColorPickerSlider": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/color-picker-demo.tsx"],
+      "props": {
+        "channel": {
+          "count": 1,
+          "values": {
+            "hue": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ColorPickerSliderThumb": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/color-picker-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "ColorPickerSwatches": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/color-picker-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Presets": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ColorPickerSwatchItem": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/color-picker-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "ColorPickerInput": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/color-picker-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Hex": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Waterfall": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/waterfall-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Network requests": 1
+          },
+          "exprCount": 0
+        },
+        "items": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "WaterfallHeaderRow": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/waterfall-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "WaterfallColumnHeader": {
+      "callSites": 2,
+      "files": ["apps/docs/src/components/waterfall-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Timeline": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "WaterfallAxis": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/waterfall-demo.tsx"],
+      "props": {
+        "maxTicks": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "WaterfallRow": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/waterfall-demo.tsx"],
+      "props": {
+        "key": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "value": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "WaterfallRowHeader": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/waterfall-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "WaterfallBar": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/waterfall-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Tree": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/tree-demo.tsx"],
+      "props": {
+        "aria-label": {
+          "count": 1,
+          "values": {
+            "Project files": 1
+          },
+          "exprCount": 0
+        },
+        "defaultExpanded": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        },
+        "defaultValue": {
+          "count": 1,
+          "values": {
+            "src/index.ts": 1
+          },
+          "exprCount": 0
+        },
+        "style": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TreeItem": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/tree-demo.tsx"],
+      "props": {
+        "value": {
+          "count": 4,
+          "values": {
+            "src": 1,
+            "src/index.ts": 1,
+            "src/app.tsx": 1,
+            "package.json": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    },
+    "TreeItemLabel": {
+      "callSites": 4,
+      "files": ["apps/docs/src/components/tree-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TreeItemIndicator": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/tree-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "TreeGroup": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/tree-demo.tsx"],
+      "props": {},
+      "declaredButUnused": []
+    },
+    "Preferences": {
+      "callSites": 1,
+      "files": ["apps/docs/src/components/preferences-demo.tsx"],
+      "props": {
+        "preferences": {
+          "count": 1,
+          "values": {},
+          "exprCount": 1
+        }
+      },
+      "declaredButUnused": []
+    },
+    "Theme": {
+      "callSites": 4,
+      "files": [
+        "apps/docs/src/components/theme-demo.tsx",
+        "packages/react/src/theme/theme.tsx"
+      ],
+      "props": {
+        "theme": {
+          "count": 3,
+          "values": {
+            "dark": 1,
+            "light": 1,
+            "system": 1
+          },
+          "exprCount": 0
+        }
+      },
+      "declaredButUnused": []
+    }
+  },
+  "pages": {},
+  "meta": {
+    "generatedAt": "2026-11-22T15:00:32+03:30",
+    "componentsScanned": 395,
+    "componentsUsed": 272,
+    "note": "static call-site analysis; {...spread}/dynamic values counted as exprCount, not resolved"
+  }
+}

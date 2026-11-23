@@ -1,0 +1,19 @@
+{
+  "entry": null,
+  "providers": [],
+  "rootCss": {
+    "jsImports": [],
+    "htmlLinks": []
+  },
+  "portals": [],
+  "network": {
+    "libraries": [],
+    "hooks": [],
+    "needsMsw": false
+  },
+  "summary": {
+    "providers": 0,
+    "portals": 0,
+    "needsMsw": false
+  }
+}

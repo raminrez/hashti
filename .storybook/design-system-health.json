@@ -1,0 +1,195 @@
+{
+  "generatedAt": "2026-11-22T11:30:53Z",
+  "ranBy": "raminrezaei",
+  "findings": [
+    {
+      "kind": "raw-color",
+      "severity": "warning",
+      "message": "Raw hex literal \u2014 should use design token",
+      "file": "apps/docs/src/components/color-picker-demo.tsx",
+      "line": 15,
+      "fix": "Replace with var(--color-name) or token reference"
+    },
+    {
+      "kind": "raw-color",
+      "severity": "warning",
+      "message": "Raw hex literal \u2014 should use design token",
+      "file": "apps/docs/src/components/color-picker-demo.tsx",
+      "line": 16,
+      "fix": "Replace with var(--color-name) or token reference"
+    },
+    {
+      "kind": "raw-color",
+      "severity": "warning",
+      "message": "Raw hex literal \u2014 should use design token",
+      "file": "apps/docs/src/components/color-picker-demo.tsx",
+      "line": 17,
+      "fix": "Replace with var(--color-name) or token reference"
+    },
+    {
+      "kind": "raw-color",
+      "severity": "warning",
+      "message": "Raw hex literal \u2014 should use design token",
+      "file": "apps/docs/src/components/color-picker-demo.tsx",
+      "line": 18,
+      "fix": "Replace with var(--color-name) or token reference"
+    },
+    {
+      "kind": "raw-color",
+      "severity": "warning",
+      "message": "Raw hex literal \u2014 should use design token",
+      "file": "apps/docs/src/components/color-picker-demo.tsx",
+      "line": 19,
+      "fix": "Replace with var(--color-name) or token reference"
+    },
+    {
+      "kind": "raw-color",
+      "severity": "warning",
+      "message": "Raw hex literal \u2014 should use design token",
+      "file": "apps/docs/src/components/color-picker-demo.tsx",
+      "line": 20,
+      "fix": "Replace with var(--color-name) or token reference"
+    },
+    {
+      "kind": "raw-color",
+      "severity": "warning",
+      "message": "Raw hex literal \u2014 should use design token",
+      "file": "apps/docs/src/components/color-picker-demo.tsx",
+      "line": 21,
+      "fix": "Replace with var(--color-name) or token reference"
+    },
+    {
+      "kind": "raw-color",
+      "severity": "warning",
+      "message": "Raw hex literal \u2014 should use design token",
+      "file": "apps/docs/src/components/color-picker-demo.tsx",
+      "line": 22,
+      "fix": "Replace with var(--color-name) or token reference"
+    },
+    {
+      "kind": "raw-color",
+      "severity": "warning",
+      "message": "Raw hex literal \u2014 should use design token",
+      "file": "apps/docs/src/components/color-picker-demo.tsx",
+      "line": 27,
+      "fix": "Replace with var(--color-name) or token reference"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-border-strong is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 268,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-border-subtle is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 267,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-border-subtle-03 is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 44,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-button-primary-active is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 50,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-field is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 266,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-icon-interactive is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 59,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-link-primary-hover is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 67,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-text-helper is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 84,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-text-placeholder is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 87,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-overlay-radius is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 101,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--hashti-size-md is declared but never referenced",
+      "file": "design/tokens.css",
+      "line": 19,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "unused-token",
+      "severity": "info",
+      "message": "--removed-body-scroll-bar-size is declared but never referenced",
+      "file": "apps/docs/src/styles/global.css",
+      "line": 12,
+      "fix": "Remove if intentional, or audit usage"
+    },
+    {
+      "kind": "design-md",
+      "severity": "info",
+      "message": "DESIGN.md present \u2014 a claim about the visual identity, NOT ground truth (it drifts/lies like AGENTS.md). Cross-checked below; deep-audit or regenerate it with the design-md skill.",
+      "file": "./DESIGN.md",
+      "fix": "Audit DESIGN.md against code with the design-md skill"
+    }
+  ],
+  "summary": {
+    "total": 22,
+    "errors": 0,
+    "warnings": 9,
+    "info": 13,
+    "checksRun": [
+      "raw-color",
+      "undefined-token",
+      "scale-gap",
+      "unused-token",
+      "design-md",
+      "stylelint"
+    ]
+  }
+}

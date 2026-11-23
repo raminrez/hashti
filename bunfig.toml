@@ -1,1 +1,9 @@
 # Bun-native monorepo. Install, scripts, and tests all run through bun.
+
+# Hoisted node_modules, not Bun's default isolated layout: Storybook's vitest
+# addon prebundles deps into node_modules/.cache/storybook, a directory that
+# belongs to no workspace, so its bare imports (react-dom, chai, vite,
+# @storybook/global, ...) resolve by climbing to the root node_modules only.
+# Under isolated installs nothing is linked there and every such import fails.
+[install]
+linker = "hoisted"

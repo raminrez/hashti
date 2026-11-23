@@ -1,0 +1,1635 @@
+{
+  "generatedAt": "2026-11-22T11:30:32Z",
+  "ranBy": "raminrezaei",
+  "libraries": {
+    "react": true,
+    "vite": false,
+    "tailwindV4": false,
+    "tailwindV3": false,
+    "shadcn": false,
+    "radix": false,
+    "baseui": false,
+    "r3f": false
+  },
+  "designSystem": {
+    "dominant": "css-vars",
+    "mixed": false,
+    "mixedReason": null,
+    "tokenCounts": {
+      "tailwind-v4": 0,
+      "shadcn": 0,
+      "dtcg": 0,
+      "css-vars": 18
+    }
+  },
+  "components": {
+    "totalFiles": 68,
+    "realCount": 65,
+    "deadCount": 3,
+    "supportCount": 0,
+    "vendorCount": 0,
+    "moduleCount": 3,
+    "byKind": {
+      "components": {
+        "real": 61,
+        "dead": 1
+      },
+      "pages": {
+        "real": 2,
+        "dead": 1
+      },
+      "app": {
+        "real": 2,
+        "dead": 1
+      },
+      "scaffold": {
+        "real": 0,
+        "dead": 0
+      },
+      "support": {
+        "real": 0,
+        "dead": 0
+      },
+      "vendor": {
+        "real": 0,
+        "dead": 0
+      },
+      "module": {
+        "real": 3,
+        "dead": 0
+      }
+    },
+    "real": [
+      {
+        "file": "apps/docs/src/pages/[...path].ts",
+        "kind": "page",
+        "importers": 144
+      },
+      {
+        "file": "apps/docs/src/components/menu-demo.tsx",
+        "kind": "component",
+        "importers": 3
+      },
+      {
+        "file": "apps/docs/src/components/dialog-demo.tsx",
+        "kind": "component",
+        "importers": 2
+      },
+      {
+        "file": "apps/docs/src/components/home.tsx",
+        "kind": "component",
+        "importers": 2
+      },
+      {
+        "file": "apps/docs/src/components/provider.tsx",
+        "kind": "component",
+        "importers": 2
+      },
+      {
+        "file": "apps/docs/src/pages/api/search.ts",
+        "kind": "page",
+        "importers": 2
+      },
+      {
+        "file": "packages/react/src/badge/badge.tsx",
+        "kind": "app",
+        "importers": 2
+      },
+      {
+        "file": "packages/react/src/kbd/kbd.tsx",
+        "kind": "app",
+        "importers": 2
+      },
+      {
+        "file": "apps/docs/src/components/accordion-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/alert-dialog-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/autocomplete-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/avatar-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/avatar-group-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/badge-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/calendar-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/carousel-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/checkbox-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/collapsible-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/color-picker-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/combobox-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/combobox-multi-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/command-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/date-input-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/date-picker-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/docs.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/drawer-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/field-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/file-input-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/hover-card-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      },
+      {
+        "file": "apps/docs/src/components/image-cropper-demo.tsx",
+        "kind": "component",
+        "importers": 1
+      }
+    ],
+    "dead": [
+      {
+        "file": "apps/docs/src/components/mdx.tsx",
+        "kind": "component",
+        "importers": 0
+      },
+      {
+        "file": "apps/docs/src/content.config.ts",
+        "kind": "app",
+        "importers": 0
+      },
+      {
+        "file": "apps/docs/src/pages/og/docs/[...slug]/image.webp.ts",
+        "kind": "page",
+        "importers": 0
+      }
+    ],
+    "storyCoverage": {
+      "real": 61,
+      "storyFiles": 6,
+      "withColocatedStory": 0,
+      "withStory": 2,
+      "needsCount": 61,
+      "needsStory": [
+        "accordion-demo",
+        "alert-dialog-demo",
+        "autocomplete-demo",
+        "avatar-demo",
+        "avatar-group-demo",
+        "badge-demo",
+        "calendar-demo",
+        "carousel-demo",
+        "checkbox-demo",
+        "collapsible-demo",
+        "color-picker-demo",
+        "combobox-demo",
+        "combobox-multi-demo",
+        "command-demo",
+        "date-input-demo",
+        "date-picker-demo",
+        "dialog-demo",
+        "docs",
+        "drawer-demo",
+        "field-demo",
+        "file-input-demo",
+        "home",
+        "hover-card-demo",
+        "image-cropper-demo",
+        "inline-completion-demo",
+        "kbd-demo",
+        "link-demo",
+        "listbox-demo",
+        "menu-demo",
+        "menubar-demo",
+        "meter-demo",
+        "navigation-menu-demo",
+        "number-input-demo",
+        "otp-input-demo",
+        "pagination-demo",
+        "password-input-demo",
+        "popover-demo",
+        "preferences-demo",
+        "progress-demo",
+        "provider",
+        "radio-demo",
+        "rating-demo",
+        "resizable-demo",
+        "scroll-area-demo",
+        "search",
+        "segmented-control-demo",
+        "select-demo",
+        "slider-demo",
+        "switch-demo",
+        "tabs-demo"
+      ],
+      "source": "storybook-index",
+      "registeredStories": 184,
+      "withRegisteredStory": 0
+    }
+  },
+  "tokens": {
+    "totalDeclared": 84,
+    "usedCount": 72,
+    "orphanCount": 12,
+    "orphan": [
+      "--hashti-border-strong",
+      "--hashti-border-subtle",
+      "--hashti-border-subtle-03",
+      "--hashti-button-primary-active",
+      "--hashti-field",
+      "--hashti-icon-interactive",
+      "--hashti-link-primary-hover",
+      "--hashti-text-helper",
+      "--hashti-text-placeholder",
+      "--hashti-overlay-radius",
+      "--hashti-size-md",
+      "--removed-body-scroll-bar-size"
+    ],
+    "map": [
+      {
+        "token": "--hashti-border-strong",
+        "category": "color",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:268",
+        "aliasOf": "--hashti-border-strong-01"
+      },
+      {
+        "token": "--hashti-border-subtle",
+        "category": "color",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:267",
+        "aliasOf": "--hashti-border-subtle-00"
+      },
+      {
+        "token": "--hashti-border-subtle-03",
+        "category": "color",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:44"
+      },
+      {
+        "token": "--hashti-button-primary-active",
+        "category": "color",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:50"
+      },
+      {
+        "token": "--hashti-field",
+        "category": "color",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:266",
+        "aliasOf": "--hashti-field-01"
+      },
+      {
+        "token": "--hashti-icon-interactive",
+        "category": "color",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:59"
+      },
+      {
+        "token": "--hashti-link-primary-hover",
+        "category": "color",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:67"
+      },
+      {
+        "token": "--hashti-text-helper",
+        "category": "color",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:84"
+      },
+      {
+        "token": "--hashti-text-placeholder",
+        "category": "color",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:87"
+      },
+      {
+        "token": "--hashti-background",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/avatar.css"],
+        "declaredIn": "design/tokens.css:32"
+      },
+      {
+        "token": "--hashti-background-hover",
+        "category": "color",
+        "status": "used",
+        "count": 49,
+        "files": [
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/command.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/listbox.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/menubar.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/pagination.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/toggle.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/toolbar.css",
+          "packages/styles/src/tree.css",
+          "packages/styles/src/trigger-menu.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:33"
+      },
+      {
+        "token": "--hashti-background-inverse",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/tooltip.css"],
+        "declaredIn": "design/tokens.css:34"
+      },
+      {
+        "token": "--hashti-background-selected",
+        "category": "color",
+        "status": "used",
+        "count": 15,
+        "files": [
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/pagination.css",
+          "packages/styles/src/timeline.css",
+          "packages/styles/src/toggle.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/tree.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:35"
+      },
+      {
+        "token": "--hashti-background-selected-hover",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/token-input.css"],
+        "declaredIn": "design/tokens.css:36"
+      },
+      {
+        "token": "--hashti-border-disabled",
+        "category": "color",
+        "status": "used",
+        "count": 22,
+        "files": [
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/radio.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/slider.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/trigger-menu.css"
+        ],
+        "declaredIn": "design/tokens.css:37"
+      },
+      {
+        "token": "--hashti-border-strong-01",
+        "category": "color",
+        "status": "used",
+        "count": 35,
+        "files": [
+          "design/tokens.css",
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/color-picker.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/kbd.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/radio.css",
+          "packages/styles/src/rating.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/scroll-area.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/slider.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/timeline.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/trigger-menu.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:38"
+      },
+      {
+        "token": "--hashti-border-strong-02",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["design/tokens.css"],
+        "declaredIn": "design/tokens.css:39"
+      },
+      {
+        "token": "--hashti-border-strong-03",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["design/tokens.css"],
+        "declaredIn": "design/tokens.css:40"
+      },
+      {
+        "token": "--hashti-border-subtle-00",
+        "category": "color",
+        "status": "used",
+        "count": 54,
+        "files": [
+          "apps/docs/src/components/preferences-demo.tsx",
+          "apps/docs/src/components/scroll-area-demo.tsx",
+          "design/tokens.css",
+          "packages/styles/src/accordion.css",
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/badge.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/color-picker.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/command.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/hover-card.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/listbox.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/menubar.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/progress.css",
+          "packages/styles/src/segmented-control.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/separator.css",
+          "packages/styles/src/slider.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/timeline.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/toolbar.css",
+          "packages/styles/src/trigger-menu.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:41"
+      },
+      {
+        "token": "--hashti-border-subtle-01",
+        "category": "color",
+        "status": "used",
+        "count": 2,
+        "files": ["design/tokens.css", "packages/styles/src/otp-input.css"],
+        "declaredIn": "design/tokens.css:42"
+      },
+      {
+        "token": "--hashti-border-subtle-02",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["design/tokens.css"],
+        "declaredIn": "design/tokens.css:43"
+      },
+      {
+        "token": "--hashti-button-danger-hover",
+        "category": "color",
+        "status": "used",
+        "count": 2,
+        "files": ["packages/styles/src/button.css"],
+        "declaredIn": "design/tokens.css:45"
+      },
+      {
+        "token": "--hashti-button-danger-primary",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/button.css"],
+        "declaredIn": "design/tokens.css:46"
+      },
+      {
+        "token": "--hashti-button-danger-secondary",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/button.css"],
+        "declaredIn": "design/tokens.css:47"
+      },
+      {
+        "token": "--hashti-button-disabled",
+        "category": "color",
+        "status": "used",
+        "count": 20,
+        "files": [
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/radio.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/switch.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/trigger-menu.css"
+        ],
+        "declaredIn": "design/tokens.css:48"
+      },
+      {
+        "token": "--hashti-button-primary",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/button.css"],
+        "declaredIn": "design/tokens.css:49"
+      },
+      {
+        "token": "--hashti-button-primary-hover",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/button.css"],
+        "declaredIn": "design/tokens.css:51"
+      },
+      {
+        "token": "--hashti-button-secondary",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/button.css"],
+        "declaredIn": "design/tokens.css:52"
+      },
+      {
+        "token": "--hashti-button-secondary-hover",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/button.css"],
+        "declaredIn": "design/tokens.css:53"
+      },
+      {
+        "token": "--hashti-button-tertiary-hover",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/button.css"],
+        "declaredIn": "design/tokens.css:54"
+      },
+      {
+        "token": "--hashti-field-01",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["design/tokens.css"],
+        "declaredIn": "design/tokens.css:55"
+      },
+      {
+        "token": "--hashti-field-02",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["design/tokens.css"],
+        "declaredIn": "design/tokens.css:56"
+      },
+      {
+        "token": "--hashti-field-03",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["design/tokens.css"],
+        "declaredIn": "design/tokens.css:57"
+      },
+      {
+        "token": "--hashti-focus",
+        "category": "color",
+        "status": "used",
+        "count": 91,
+        "files": [
+          "packages/styles/src/accordion.css",
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/collapsible.css",
+          "packages/styles/src/color-picker.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/link.css",
+          "packages/styles/src/listbox.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/pagination.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/radio.css",
+          "packages/styles/src/rating.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/segmented-control.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/slider.css",
+          "packages/styles/src/switch.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/timeline.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/toggle.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/toolbar.css",
+          "packages/styles/src/tree.css",
+          "packages/styles/src/trigger-menu.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:58"
+      },
+      {
+        "token": "--hashti-icon-on-color",
+        "category": "color",
+        "status": "used",
+        "count": 3,
+        "files": [
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/switch.css"
+        ],
+        "declaredIn": "design/tokens.css:60"
+      },
+      {
+        "token": "--hashti-interactive",
+        "category": "color",
+        "status": "used",
+        "count": 5,
+        "files": [
+          "packages/styles/src/badge.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/progress.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:61"
+      },
+      {
+        "token": "--hashti-layer-01",
+        "category": "color",
+        "status": "used",
+        "count": 48,
+        "files": [
+          "apps/docs/src/components/resizable-demo.tsx",
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/color-picker.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/command.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/hover-card.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/kbd.css",
+          "packages/styles/src/listbox.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/radio.css",
+          "packages/styles/src/segmented-control.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/slider.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/trigger-menu.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:62"
+      },
+      {
+        "token": "--hashti-layer-02",
+        "category": "color",
+        "status": "used",
+        "count": 11,
+        "files": [
+          "apps/docs/src/components/resizable-demo.tsx",
+          "packages/styles/src/avatar.css",
+          "packages/styles/src/badge.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/menubar.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/toolbar.css"
+        ],
+        "declaredIn": "design/tokens.css:63"
+      },
+      {
+        "token": "--hashti-layer-03",
+        "category": "color",
+        "status": "used",
+        "count": 2,
+        "files": [
+          "apps/docs/src/components/carousel-demo.tsx",
+          "packages/styles/src/segmented-control.css"
+        ],
+        "declaredIn": "design/tokens.css:64"
+      },
+      {
+        "token": "--hashti-layer-accent-01",
+        "category": "color",
+        "status": "used",
+        "count": 5,
+        "files": [
+          "packages/styles/src/avatar.css",
+          "packages/styles/src/color-picker.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/switch.css",
+          "packages/styles/src/textarea.css"
+        ],
+        "declaredIn": "design/tokens.css:65"
+      },
+      {
+        "token": "--hashti-link-primary",
+        "category": "color",
+        "status": "used",
+        "count": 2,
+        "files": [
+          "packages/styles/src/link.css",
+          "packages/styles/src/toolbar.css"
+        ],
+        "declaredIn": "design/tokens.css:66"
+      },
+      {
+        "token": "--hashti-link-visited",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/link.css"],
+        "declaredIn": "design/tokens.css:68"
+      },
+      {
+        "token": "--hashti-notification-background-error",
+        "category": "color",
+        "status": "used",
+        "count": 3,
+        "files": [
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/field.css",
+          "packages/styles/src/toast.css"
+        ],
+        "declaredIn": "design/tokens.css:69"
+      },
+      {
+        "token": "--hashti-notification-background-success",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/toast.css"],
+        "declaredIn": "design/tokens.css:70"
+      },
+      {
+        "token": "--hashti-notification-background-warning",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/toast.css"],
+        "declaredIn": "design/tokens.css:71"
+      },
+      {
+        "token": "--hashti-overlay",
+        "category": "color",
+        "status": "used",
+        "count": 4,
+        "files": [
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/image-cropper.css"
+        ],
+        "declaredIn": "design/tokens.css:72"
+      },
+      {
+        "token": "--hashti-shadow",
+        "category": "color",
+        "status": "used",
+        "count": 3,
+        "files": [
+          "design/tokens.css",
+          "packages/styles/src/segmented-control.css"
+        ],
+        "declaredIn": "design/tokens.css:73"
+      },
+      {
+        "token": "--hashti-support-error",
+        "category": "color",
+        "status": "used",
+        "count": 15,
+        "files": [
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/badge.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/field.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/switch.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/toast.css"
+        ],
+        "declaredIn": "design/tokens.css:78"
+      },
+      {
+        "token": "--hashti-support-info",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/badge.css"],
+        "declaredIn": "design/tokens.css:79"
+      },
+      {
+        "token": "--hashti-support-success",
+        "category": "color",
+        "status": "used",
+        "count": 10,
+        "files": [
+          "packages/styles/src/badge.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/progress.css",
+          "packages/styles/src/switch.css",
+          "packages/styles/src/timeline.css",
+          "packages/styles/src/toast.css"
+        ],
+        "declaredIn": "design/tokens.css:80"
+      },
+      {
+        "token": "--hashti-support-warning",
+        "category": "color",
+        "status": "used",
+        "count": 6,
+        "files": [
+          "packages/styles/src/badge.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/token-input.css"
+        ],
+        "declaredIn": "design/tokens.css:81"
+      },
+      {
+        "token": "--hashti-text-disabled",
+        "category": "color",
+        "status": "used",
+        "count": 63,
+        "files": [
+          "packages/styles/src/accordion.css",
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/collapsible.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/command.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/listbox.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/pagination.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/radio.css",
+          "packages/styles/src/rating.css",
+          "packages/styles/src/segmented-control.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/switch.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/toggle.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/toolbar.css",
+          "packages/styles/src/tree.css",
+          "packages/styles/src/trigger-menu.css"
+        ],
+        "declaredIn": "design/tokens.css:82"
+      },
+      {
+        "token": "--hashti-text-error",
+        "category": "color",
+        "status": "used",
+        "count": 5,
+        "files": [
+          "packages/styles/src/field.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/tree.css"
+        ],
+        "declaredIn": "design/tokens.css:83"
+      },
+      {
+        "token": "--hashti-text-inverse",
+        "category": "color",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/tooltip.css"],
+        "declaredIn": "design/tokens.css:85"
+      },
+      {
+        "token": "--hashti-text-on-color",
+        "category": "color",
+        "status": "used",
+        "count": 3,
+        "files": [
+          "packages/styles/src/badge.css",
+          "packages/styles/src/button.css"
+        ],
+        "declaredIn": "design/tokens.css:86"
+      },
+      {
+        "token": "--hashti-text-primary",
+        "category": "color",
+        "status": "used",
+        "count": 99,
+        "files": [
+          "packages/styles/src/accordion.css",
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/badge.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/collapsible.css",
+          "packages/styles/src/color-picker.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/command.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/field.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/hover-card.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/kbd.css",
+          "packages/styles/src/label.css",
+          "packages/styles/src/listbox.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/pagination.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/progress.css",
+          "packages/styles/src/segmented-control.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/timeline.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/toggle.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/toolbar.css",
+          "packages/styles/src/tree.css",
+          "packages/styles/src/trigger-menu.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:88"
+      },
+      {
+        "token": "--hashti-text-secondary",
+        "category": "color",
+        "status": "used",
+        "count": 73,
+        "files": [
+          "apps/docs/src/components/hover-card-demo.tsx",
+          "apps/docs/src/components/navigation-menu-demo.tsx",
+          "apps/docs/src/components/preferences-demo.tsx",
+          "packages/styles/src/accordion.css",
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/avatar.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/color-picker.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/command.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/field.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/inline-completion.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/listbox.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/pagination.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/progress.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/scroll-area.css",
+          "packages/styles/src/segmented-control.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/slider.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/timeline.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/toolbar.css",
+          "packages/styles/src/tree.css",
+          "packages/styles/src/trigger-menu.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:89"
+      },
+      {
+        "token": "--hashti-overlay-radius",
+        "category": "other",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:101"
+      },
+      {
+        "token": "--hashti-size-md",
+        "category": "other",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "design/tokens.css:19"
+      },
+      {
+        "token": "--removed-body-scroll-bar-size",
+        "category": "other",
+        "status": "orphan",
+        "count": 0,
+        "files": [],
+        "declaredIn": "apps/docs/src/styles/global.css:12"
+      },
+      {
+        "token": "--avatar-size",
+        "category": "other",
+        "status": "used",
+        "count": 7,
+        "files": ["packages/styles/src/avatar.css"],
+        "declaredIn": "packages/styles/src/avatar.css:2"
+      },
+      {
+        "token": "--hashti-body-compact-01-font-size",
+        "category": "other",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/avatar.css"],
+        "declaredIn": "design/tokens.css:20"
+      },
+      {
+        "token": "--hashti-border-radius-04",
+        "category": "other",
+        "status": "used",
+        "count": 4,
+        "files": [
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/kbd.css",
+          "packages/styles/src/token-input.css"
+        ],
+        "declaredIn": "design/tokens.css:13"
+      },
+      {
+        "token": "--hashti-border-radius-08",
+        "category": "other",
+        "status": "used",
+        "count": 37,
+        "files": [
+          "apps/docs/src/components/preferences-demo.tsx",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/color-picker.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/command.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/tooltip.css",
+          "packages/styles/src/tree.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:14"
+      },
+      {
+        "token": "--hashti-border-radius-16",
+        "category": "other",
+        "status": "used",
+        "count": 8,
+        "files": ["packages/styles/src/drawer.css"],
+        "declaredIn": "design/tokens.css:17"
+      },
+      {
+        "token": "--hashti-border-radius-mark",
+        "category": "other",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/checkbox.css"],
+        "declaredIn": "design/tokens.css:15"
+      },
+      {
+        "token": "--hashti-border-radius-max",
+        "category": "other",
+        "status": "used",
+        "count": 12,
+        "files": [
+          "packages/styles/src/avatar.css",
+          "packages/styles/src/badge.css",
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/progress.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/scroll-area.css",
+          "packages/styles/src/timeline.css"
+        ],
+        "declaredIn": "design/tokens.css:18"
+      },
+      {
+        "token": "--hashti-border-radius-recovery",
+        "category": "other",
+        "status": "used",
+        "count": 4,
+        "files": ["packages/styles/src/field.css"],
+        "declaredIn": "design/tokens.css:16"
+      },
+      {
+        "token": "--hashti-control-radius",
+        "category": "other",
+        "status": "used",
+        "count": 52,
+        "files": [
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/color-picker.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/file-input.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/inline-completion.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/menubar.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/pagination.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/segmented-control.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/toggle.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/toolbar.css",
+          "packages/styles/src/trigger-menu.css"
+        ],
+        "declaredIn": "design/tokens.css:99"
+      },
+      {
+        "token": "--hashti-duration-fast-01",
+        "category": "other",
+        "status": "used",
+        "count": 42,
+        "files": [
+          "packages/styles/src/accordion.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/collapsible.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/drawer.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/radio.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/slider.css",
+          "packages/styles/src/switch.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/tree.css",
+          "packages/styles/src/trigger-menu.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:22"
+      },
+      {
+        "token": "--hashti-duration-fast-02",
+        "category": "other",
+        "status": "used",
+        "count": 31,
+        "files": [
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/hover-card.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/scroll-area.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/tooltip.css",
+          "packages/styles/src/trigger-menu.css"
+        ],
+        "declaredIn": "design/tokens.css:23"
+      },
+      {
+        "token": "--hashti-duration-moderate-01",
+        "category": "other",
+        "status": "used",
+        "count": 17,
+        "files": [
+          "packages/styles/src/accordion.css",
+          "packages/styles/src/collapsible.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/progress.css",
+          "packages/styles/src/segmented-control.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/toast.css"
+        ],
+        "declaredIn": "design/tokens.css:24"
+      },
+      {
+        "token": "--hashti-duration-moderate-02",
+        "category": "other",
+        "status": "used",
+        "count": 9,
+        "files": [
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/button.css",
+          "packages/styles/src/dialog.css"
+        ],
+        "declaredIn": "design/tokens.css:25"
+      },
+      {
+        "token": "--hashti-duration-slow-02",
+        "category": "other",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/toast.css"],
+        "declaredIn": "design/tokens.css:26"
+      },
+      {
+        "token": "--hashti-ease-entrance",
+        "category": "other",
+        "status": "used",
+        "count": 91,
+        "files": [
+          "packages/styles/src/accordion.css",
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/collapsible.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/date-input.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/hover-card.css",
+          "packages/styles/src/image-cropper.css",
+          "packages/styles/src/input.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/meter.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/number-input.css",
+          "packages/styles/src/otp-input.css",
+          "packages/styles/src/password-input.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/progress.css",
+          "packages/styles/src/radio.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/scroll-area.css",
+          "packages/styles/src/segmented-control.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/slider.css",
+          "packages/styles/src/switch.css",
+          "packages/styles/src/tabs.css",
+          "packages/styles/src/textarea.css",
+          "packages/styles/src/time-input.css",
+          "packages/styles/src/toast.css",
+          "packages/styles/src/token-input.css",
+          "packages/styles/src/tooltip.css",
+          "packages/styles/src/tree.css",
+          "packages/styles/src/trigger-menu.css"
+        ],
+        "declaredIn": "design/tokens.css:27"
+      },
+      {
+        "token": "--hashti-ease-press",
+        "category": "other",
+        "status": "used",
+        "count": 3,
+        "files": [
+          "packages/styles/src/button.css",
+          "packages/styles/src/checkbox.css",
+          "packages/styles/src/radio.css"
+        ],
+        "declaredIn": "design/tokens.css:28"
+      },
+      {
+        "token": "--hashti-focus-offset",
+        "category": "other",
+        "status": "used",
+        "count": 3,
+        "files": [
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/tree.css"
+        ],
+        "declaredIn": "design/tokens.css:103"
+      },
+      {
+        "token": "--hashti-focus-width",
+        "category": "other",
+        "status": "used",
+        "count": 3,
+        "files": [
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/resizable.css",
+          "packages/styles/src/tree.css"
+        ],
+        "declaredIn": "design/tokens.css:102"
+      },
+      {
+        "token": "--hashti-font-sans",
+        "category": "other",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/base.css"],
+        "declaredIn": "design/tokens.css:10"
+      },
+      {
+        "token": "--hashti-label-01-font-size",
+        "category": "other",
+        "status": "used",
+        "count": 1,
+        "files": ["packages/styles/src/kbd.css"],
+        "declaredIn": "design/tokens.css:21"
+      },
+      {
+        "token": "--hashti-popover-radius",
+        "category": "other",
+        "status": "used",
+        "count": 19,
+        "files": [
+          "apps/docs/src/components/carousel-demo.tsx",
+          "apps/docs/src/components/scroll-area-demo.tsx",
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/calendar.css",
+          "packages/styles/src/carousel.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/command.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/hover-card.css",
+          "packages/styles/src/listbox.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/trigger-menu.css",
+          "packages/styles/src/waterfall.css"
+        ],
+        "declaredIn": "design/tokens.css:100"
+      },
+      {
+        "token": "--hashti-shadow-modal",
+        "category": "other",
+        "status": "used",
+        "count": 4,
+        "files": [
+          "packages/styles/src/alert-dialog.css",
+          "packages/styles/src/dialog.css",
+          "packages/styles/src/drawer.css"
+        ],
+        "declaredIn": "design/tokens.css:74"
+      },
+      {
+        "token": "--hashti-shadow-popover",
+        "category": "other",
+        "status": "used",
+        "count": 11,
+        "files": [
+          "packages/styles/src/autocomplete.css",
+          "packages/styles/src/combobox.css",
+          "packages/styles/src/command.css",
+          "packages/styles/src/date-picker.css",
+          "packages/styles/src/hover-card.css",
+          "packages/styles/src/menu.css",
+          "packages/styles/src/navigation-menu.css",
+          "packages/styles/src/popover.css",
+          "packages/styles/src/select.css",
+          "packages/styles/src/trigger-menu.css"
+        ],
+        "declaredIn": "design/tokens.css:75"
+      },
+      {
+        "token": "--hashti-waterfall-columns",
+        "category": "other",
+        "status": "used",
+        "count": 2,
+        "files": ["packages/styles/src/waterfall.css"],
+        "declaredIn": "packages/styles/src/waterfall.css:3"
+      }
+    ]
+  },
+  "orphanStories": {
+    "count": 0,
+    "items": []
+  }
+}

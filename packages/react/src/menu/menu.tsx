@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { join } from "@hashti/utils";
 import {
-  Menu,
+  Menu as UiMenu,
   MenuContent as UiMenuContent,
   MenuCheckboxItem as UiMenuCheckboxItem,
   MenuGroup as UiMenuGroup,
@@ -19,6 +19,12 @@ import {
   MenuSubTrigger as UiMenuSubTrigger,
   MenuTrigger as UiMenuTrigger,
 } from "@ui-sdk/react/menu";
+import { useOverlayTheme } from "../theme";
+
+function Menu(props: ComponentProps<typeof UiMenu>) {
+  const theme = useOverlayTheme();
+  return <UiMenu container={theme?.container} {...props} />;
+}
 
 function MenuTrigger(props: ComponentProps<typeof UiMenuTrigger>) {
   return (

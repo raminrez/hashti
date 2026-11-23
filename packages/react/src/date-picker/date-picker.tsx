@@ -9,10 +9,13 @@ import {
   DatePickerInput as UiDatePickerInput,
   DatePickerTrigger as UiDatePickerTrigger,
 } from "@ui-sdk/react/date-picker";
+import { useOverlayTheme } from "../theme";
 
 function DatePicker(props: ComponentProps<typeof UiDatePicker>) {
+  const theme = useOverlayTheme();
   return (
     <UiDatePicker
+      container={theme?.container}
       {...props}
       className={join("hashti-date-picker", props.className)}
     />

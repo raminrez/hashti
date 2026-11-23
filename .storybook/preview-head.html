@@ -1,0 +1,18 @@
+<script>
+  // Deterministic first paint: system dark would otherwise win before the
+  // addon-themes decorator effect applies the toolbar choice.
+  document.documentElement.setAttribute("data-theme", "light");
+</script>
+<style>
+  /* Hashti tokens key on data-theme on any ancestor (design/tokens.css).
+     Theme the canvas itself so dark stories fill every layout. */
+  html,
+  body,
+  .sb-show-main {
+    background: var(--hashti-layer-01);
+    color: var(--hashti-text-primary);
+  }
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+</style>

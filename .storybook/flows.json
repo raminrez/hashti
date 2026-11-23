@@ -1,0 +1,1600 @@
+{
+  "generatedAt": "2026-11-22T11:30:32.576Z",
+  "dominantRouter": "astro",
+  "routerTies": [],
+  "routerCounts": {
+    "react-router": 0,
+    "nextjs-pages": 0,
+    "nextjs-app": 0,
+    "tanstack": 0,
+    "inertia": 0,
+    "nanostores": 0,
+    "astro": 61
+  },
+  "routes": {
+    "reactRouter": [],
+    "nextjsPages": [],
+    "nextjsApp": [],
+    "tanstack": [],
+    "inertia": [],
+    "nanostores": [],
+    "astro": [
+      {
+        "file": "apps/docs/src/pages/index.astro",
+        "path": "/",
+        "title": "Hashti",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/index.mdx",
+        "path": "/docs",
+        "title": "Hashti",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/accordion.mdx",
+        "path": "/docs/accordion",
+        "title": "Accordion",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/alert-dialog.mdx",
+        "path": "/docs/alert-dialog",
+        "title": "AlertDialog",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/autocomplete.mdx",
+        "path": "/docs/autocomplete",
+        "title": "Autocomplete",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/avatar.mdx",
+        "path": "/docs/avatar",
+        "title": "Avatar",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/badge.mdx",
+        "path": "/docs/badge",
+        "title": "Badge",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/button.mdx",
+        "path": "/docs/button",
+        "title": "Button",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/calendar.mdx",
+        "path": "/docs/calendar",
+        "title": "Calendar",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/carousel.mdx",
+        "path": "/docs/carousel",
+        "title": "Carousel",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/checkbox.mdx",
+        "path": "/docs/checkbox",
+        "title": "Checkbox",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/collapsible.mdx",
+        "path": "/docs/collapsible",
+        "title": "Collapsible",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/color-picker.mdx",
+        "path": "/docs/color-picker",
+        "title": "ColorPicker",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/combobox.mdx",
+        "path": "/docs/combobox",
+        "title": "Combobox",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/command.mdx",
+        "path": "/docs/command",
+        "title": "Command",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/date-input.mdx",
+        "path": "/docs/date-input",
+        "title": "DateInput",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/date-picker.mdx",
+        "path": "/docs/date-picker",
+        "title": "DatePicker",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/dialog.mdx",
+        "path": "/docs/dialog",
+        "title": "Dialog",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/drawer.mdx",
+        "path": "/docs/drawer",
+        "title": "Drawer",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/field.mdx",
+        "path": "/docs/field",
+        "title": "Field",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/file-input.mdx",
+        "path": "/docs/file-input",
+        "title": "FileInput",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/hover-card.mdx",
+        "path": "/docs/hover-card",
+        "title": "HoverCard",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/image-cropper.mdx",
+        "path": "/docs/image-cropper",
+        "title": "ImageCropper",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/inline-completion.mdx",
+        "path": "/docs/inline-completion",
+        "title": "Inline completion",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/input.mdx",
+        "path": "/docs/input",
+        "title": "Input",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/kbd.mdx",
+        "path": "/docs/kbd",
+        "title": "Kbd",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/label.mdx",
+        "path": "/docs/label",
+        "title": "Label",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/link.mdx",
+        "path": "/docs/link",
+        "title": "Link",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/listbox.mdx",
+        "path": "/docs/listbox",
+        "title": "Listbox",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/menu.mdx",
+        "path": "/docs/menu",
+        "title": "Menu",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/menubar.mdx",
+        "path": "/docs/menubar",
+        "title": "Menubar",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/meter.mdx",
+        "path": "/docs/meter",
+        "title": "Meter",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/navigation-menu.mdx",
+        "path": "/docs/navigation-menu",
+        "title": "NavigationMenu",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/number-input.mdx",
+        "path": "/docs/number-input",
+        "title": "NumberInput",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/otp-input.mdx",
+        "path": "/docs/otp-input",
+        "title": "OTPInput",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/pagination.mdx",
+        "path": "/docs/pagination",
+        "title": "Pagination",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/password-input.mdx",
+        "path": "/docs/password-input",
+        "title": "PasswordInput",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/popover.mdx",
+        "path": "/docs/popover",
+        "title": "Popover",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/preferences.mdx",
+        "path": "/docs/preferences",
+        "title": "Preferences",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/progress.mdx",
+        "path": "/docs/progress",
+        "title": "Progress",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/radio.mdx",
+        "path": "/docs/radio",
+        "title": "Radio",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/rating.mdx",
+        "path": "/docs/rating",
+        "title": "Rating",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/resizable.mdx",
+        "path": "/docs/resizable",
+        "title": "Resizable",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/scroll-area.mdx",
+        "path": "/docs/scroll-area",
+        "title": "ScrollArea",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/segmented-control.mdx",
+        "path": "/docs/segmented-control",
+        "title": "SegmentedControl",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/select.mdx",
+        "path": "/docs/select",
+        "title": "Select",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/separator.mdx",
+        "path": "/docs/separator",
+        "title": "Separator",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/slider.mdx",
+        "path": "/docs/slider",
+        "title": "Slider",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/switch.mdx",
+        "path": "/docs/switch",
+        "title": "Switch",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/tabs.mdx",
+        "path": "/docs/tabs",
+        "title": "Tabs",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/textarea.mdx",
+        "path": "/docs/textarea",
+        "title": "Textarea",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/theme.mdx",
+        "path": "/docs/theme",
+        "title": "Theme",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/time-input.mdx",
+        "path": "/docs/time-input",
+        "title": "TimeInput",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/timeline.mdx",
+        "path": "/docs/timeline",
+        "title": "Timeline",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/toast.mdx",
+        "path": "/docs/toast",
+        "title": "Toast",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/toggle.mdx",
+        "path": "/docs/toggle",
+        "title": "Toggle",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/token-input.mdx",
+        "path": "/docs/token-input",
+        "title": "TokenInput",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/toolbar.mdx",
+        "path": "/docs/toolbar",
+        "title": "Toolbar",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/tooltip.mdx",
+        "path": "/docs/tooltip",
+        "title": "Tooltip",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/tree.mdx",
+        "path": "/docs/tree",
+        "title": "Tree",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/trigger-menu.mdx",
+        "path": "/docs/trigger-menu",
+        "title": "TriggerMenu",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/content/docs/waterfall.mdx",
+        "path": "/docs/waterfall",
+        "title": "Waterfall",
+        "access": "public",
+        "recommendedStates": ["default"]
+      },
+      {
+        "file": "apps/docs/src/pages/404.astro",
+        "path": "/404",
+        "title": "Not found",
+        "access": "public",
+        "recommendedStates": ["default"]
+      }
+    ]
+  },
+  "routeCount": 63,
+  "edges": [
+    {
+      "kind": "link",
+      "from": "/",
+      "to": "/docs",
+      "label": "Open Docs",
+      "attribution": "page",
+      "file": "apps/docs/src/pages/index.astro",
+      "line": 14
+    },
+    {
+      "kind": "link",
+      "from": "/404",
+      "to": "/",
+      "label": "Back to Home",
+      "attribution": "page",
+      "file": "apps/docs/src/components/home.tsx",
+      "line": 20
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/accordion",
+      "label": "Accordion",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/alert-dialog",
+      "label": "AlertDialog",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/autocomplete",
+      "label": "Autocomplete",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/avatar",
+      "label": "Avatar",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/badge",
+      "label": "Badge",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/button",
+      "label": "Button",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/calendar",
+      "label": "Calendar",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/carousel",
+      "label": "Carousel",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/checkbox",
+      "label": "Checkbox",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/collapsible",
+      "label": "Collapsible",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/color-picker",
+      "label": "ColorPicker",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/combobox",
+      "label": "Combobox",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/command",
+      "label": "Command",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/date-input",
+      "label": "DateInput",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/date-picker",
+      "label": "DatePicker",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/dialog",
+      "label": "Dialog",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/drawer",
+      "label": "Drawer",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/field",
+      "label": "Field",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/file-input",
+      "label": "FileInput",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/hover-card",
+      "label": "HoverCard",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/image-cropper",
+      "label": "ImageCropper",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/inline-completion",
+      "label": "Inline completion",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/input",
+      "label": "Input",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/kbd",
+      "label": "Kbd",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/label",
+      "label": "Label",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/link",
+      "label": "Link",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/listbox",
+      "label": "Listbox",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/menu",
+      "label": "Menu",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/menubar",
+      "label": "Menubar",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/meter",
+      "label": "Meter",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/navigation-menu",
+      "label": "NavigationMenu",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/number-input",
+      "label": "NumberInput",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/otp-input",
+      "label": "OTPInput",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/pagination",
+      "label": "Pagination",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/password-input",
+      "label": "PasswordInput",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/popover",
+      "label": "Popover",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/preferences",
+      "label": "Preferences",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/progress",
+      "label": "Progress",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/radio",
+      "label": "Radio",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/rating",
+      "label": "Rating",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/resizable",
+      "label": "Resizable",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/scroll-area",
+      "label": "ScrollArea",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/segmented-control",
+      "label": "SegmentedControl",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/select",
+      "label": "Select",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/separator",
+      "label": "Separator",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/slider",
+      "label": "Slider",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/switch",
+      "label": "Switch",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/tabs",
+      "label": "Tabs",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/textarea",
+      "label": "Textarea",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/theme",
+      "label": "Theme",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/time-input",
+      "label": "TimeInput",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/timeline",
+      "label": "Timeline",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/toast",
+      "label": "Toast",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/toggle",
+      "label": "Toggle",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/token-input",
+      "label": "TokenInput",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/toolbar",
+      "label": "Toolbar",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/tooltip",
+      "label": "Tooltip",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/tree",
+      "label": "Tree",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/trigger-menu",
+      "label": "TriggerMenu",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "nav",
+      "from": "/docs",
+      "to": "/docs/waterfall",
+      "label": "Waterfall",
+      "attribution": "persistent-nav",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 43
+    },
+    {
+      "kind": "link",
+      "from": "/docs",
+      "to": "/docs/accordion",
+      "label": "Accordion",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/accordion",
+      "to": "/docs/alert-dialog",
+      "label": "AlertDialog",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/alert-dialog",
+      "to": "/docs/autocomplete",
+      "label": "Autocomplete",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/autocomplete",
+      "to": "/docs/avatar",
+      "label": "Avatar",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/avatar",
+      "to": "/docs/badge",
+      "label": "Badge",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/badge",
+      "to": "/docs/button",
+      "label": "Button",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/button",
+      "to": "/docs/calendar",
+      "label": "Calendar",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/calendar",
+      "to": "/docs/carousel",
+      "label": "Carousel",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/carousel",
+      "to": "/docs/checkbox",
+      "label": "Checkbox",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/checkbox",
+      "to": "/docs/collapsible",
+      "label": "Collapsible",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/collapsible",
+      "to": "/docs/color-picker",
+      "label": "ColorPicker",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/color-picker",
+      "to": "/docs/combobox",
+      "label": "Combobox",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/combobox",
+      "to": "/docs/command",
+      "label": "Command",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/command",
+      "to": "/docs/date-input",
+      "label": "DateInput",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/date-input",
+      "to": "/docs/date-picker",
+      "label": "DatePicker",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/date-picker",
+      "to": "/docs/dialog",
+      "label": "Dialog",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/dialog",
+      "to": "/docs/drawer",
+      "label": "Drawer",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/drawer",
+      "to": "/docs/field",
+      "label": "Field",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/field",
+      "to": "/docs/file-input",
+      "label": "FileInput",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/file-input",
+      "to": "/docs/hover-card",
+      "label": "HoverCard",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/hover-card",
+      "to": "/docs/image-cropper",
+      "label": "ImageCropper",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/image-cropper",
+      "to": "/docs/inline-completion",
+      "label": "Inline completion",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/inline-completion",
+      "to": "/docs/input",
+      "label": "Input",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/input",
+      "to": "/docs/kbd",
+      "label": "Kbd",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/kbd",
+      "to": "/docs/label",
+      "label": "Label",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/label",
+      "to": "/docs/link",
+      "label": "Link",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/link",
+      "to": "/docs/listbox",
+      "label": "Listbox",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/listbox",
+      "to": "/docs/menu",
+      "label": "Menu",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/menu",
+      "to": "/docs/menubar",
+      "label": "Menubar",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/menubar",
+      "to": "/docs/meter",
+      "label": "Meter",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/meter",
+      "to": "/docs/navigation-menu",
+      "label": "NavigationMenu",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/navigation-menu",
+      "to": "/docs/number-input",
+      "label": "NumberInput",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/number-input",
+      "to": "/docs/otp-input",
+      "label": "OTPInput",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/otp-input",
+      "to": "/docs/pagination",
+      "label": "Pagination",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/pagination",
+      "to": "/docs/password-input",
+      "label": "PasswordInput",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/password-input",
+      "to": "/docs/popover",
+      "label": "Popover",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/popover",
+      "to": "/docs/preferences",
+      "label": "Preferences",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/preferences",
+      "to": "/docs/progress",
+      "label": "Progress",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/progress",
+      "to": "/docs/radio",
+      "label": "Radio",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/radio",
+      "to": "/docs/rating",
+      "label": "Rating",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/rating",
+      "to": "/docs/resizable",
+      "label": "Resizable",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/resizable",
+      "to": "/docs/scroll-area",
+      "label": "ScrollArea",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/scroll-area",
+      "to": "/docs/segmented-control",
+      "label": "SegmentedControl",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/segmented-control",
+      "to": "/docs/select",
+      "label": "Select",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/select",
+      "to": "/docs/separator",
+      "label": "Separator",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/separator",
+      "to": "/docs/slider",
+      "label": "Slider",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/slider",
+      "to": "/docs/switch",
+      "label": "Switch",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/switch",
+      "to": "/docs/tabs",
+      "label": "Tabs",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/tabs",
+      "to": "/docs/textarea",
+      "label": "Textarea",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/textarea",
+      "to": "/docs/theme",
+      "label": "Theme",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/theme",
+      "to": "/docs/time-input",
+      "label": "TimeInput",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/time-input",
+      "to": "/docs/timeline",
+      "label": "Timeline",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/timeline",
+      "to": "/docs/toast",
+      "label": "Toast",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/toast",
+      "to": "/docs/toggle",
+      "label": "Toggle",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/toggle",
+      "to": "/docs/token-input",
+      "label": "TokenInput",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/token-input",
+      "to": "/docs/toolbar",
+      "label": "Toolbar",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/toolbar",
+      "to": "/docs/tooltip",
+      "label": "Tooltip",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/tooltip",
+      "to": "/docs/tree",
+      "label": "Tree",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/tree",
+      "to": "/docs/trigger-menu",
+      "label": "TriggerMenu",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/trigger-menu",
+      "to": "/docs/waterfall",
+      "label": "Waterfall",
+      "attribution": "pagination",
+      "file": "apps/docs/src/components/docs.tsx",
+      "line": 44
+    },
+    {
+      "kind": "link",
+      "from": "/docs/inline-completion",
+      "to": "/docs/autocomplete",
+      "label": "Autocomplete",
+      "attribution": "page-body",
+      "file": "apps/docs/content/docs/inline-completion.mdx",
+      "line": 19
+    }
+  ],
+  "edgeCount": 123,
+  "edgeNote": "Recovered by .storybook/scripts/extract-app-graph.mjs — the generic extractor has no Astro pass. Every edge carries file:line provenance; see app-graph.json for the full chains.",
+  "navSources": [
+    {
+      "kind": "sidebar",
+      "file": "apps/docs/src/components/docs.tsx",
+      "signal": "layout"
+    }
+  ],
+  "navSourceCount": 1,
+  "navSourceNote": "fumadocs DocsLayout renders the content page tree as sidebar chrome on every /docs page. Its links are folded into edges[] as kind:nav anchored at /docs.",
+  "adhocSwitchers": [],
+  "adhocSwitcherCount": 0,
+  "wizards": [],
+  "wizardCount": 0,
+  "overlays": [],
+  "overlayCount": 0,
+  "flowCount": 61,
+  "perScreenRecommendations": [],
+  "accessSummary": {
+    "public": 62,
+    "system": 0
+  },
+  "roleSignals": [],
+  "roleNote": "No access guards exist in this repo (grep for route guards/role checks is empty): a public component docs site with one persona."
+}

@@ -22,6 +22,10 @@ pre-commit:
             exclude:
               - .agents/**
               - .claude/**
+              # Generator-owned Workbench code is oxlint-ignored in .oxlintrc.json;
+              # passing ignored paths makes oxlint exit 1 with no files to lint.
+              - .storybook/wrappers/**
+              - .storybook/decorators/**
             run: bunx oxlint {staged_files}
           - name: stylelint
             glob: "*.css"
@@ -59,6 +63,8 @@ pre-push:
       run: bun test
     deadcode:
       run: bun run deadcode
+    deps-check:
+      run: bun run deps:check
     duplicates:
       run: bun run duplicates:new
     protect-main:

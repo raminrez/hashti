@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { join } from "@hashti/utils";
 import {
-  AlertDialog,
+  AlertDialog as UiAlertDialog,
   AlertDialogBackdrop as UiAlertDialogBackdrop,
   AlertDialogClose as UiAlertDialogClose,
   AlertDialogContent as UiAlertDialogContent,
@@ -11,6 +11,12 @@ import {
   AlertDialogTitle as UiAlertDialogTitle,
   AlertDialogTrigger as UiAlertDialogTrigger,
 } from "@ui-sdk/react/alert-dialog";
+import { useOverlayTheme } from "../theme";
+
+function AlertDialog(props: ComponentProps<typeof UiAlertDialog>) {
+  const theme = useOverlayTheme();
+  return <UiAlertDialog container={theme?.container} {...props} />;
+}
 
 function AlertDialogTrigger(
   props: ComponentProps<typeof UiAlertDialogTrigger>,

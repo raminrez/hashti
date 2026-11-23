@@ -56,3 +56,13 @@ Backlog variant: **cleanup** — counts are tiny, so each rule lands fixed-to-ze
   - Depends on: steps 4 and 7
 - [x] **11. Re-audit**: after the last step lands, or the day a git remote is added (then: CI workflow running typecheck+lint+lint:css+format:check+test becomes the deferred move-10 step, and react-doctor gets a scheduled `@latest` run). Update plan numbers, review ignore lists and rules that caught nothing.
   - Depends on: step 10
+- [x] **12. Phantom-import guard for the hoisted linker** (incident: cycle/vitest-runner, `caf2219` — Bun's isolated linker traded for `linker = "hoisted"` because Storybook's vitest addon prebundles into `node_modules/.cache/storybook`, a directory no workspace owns; hoisted makes phantom imports — importing a dep the package never declared — structurally possible again):
+  - Changes: first plant-test the existing cover: add an import of an undeclared dep in a `packages/react/src` file and run `bun run deadcode` — knip's `unlisted` class should fail it per-workspace. If it does: done, record the plant result in the Log, no new rule. If it doesn't catch it: add the check that does (oxlint `import/no-extraneous-dependencies` if supported, else knip config) at `error`, fixed to zero.
+  - Commands: `bun run deadcode` (plant, then remove), `bun run lint`
+  - Done when: a planted phantom import fails a gate; the gate is green after removal; the outcome (knip covers / rule added) recorded in the plan Log
+  - Depends on: none
+- [x] **13. Close the root-deps hole left open by step 12** (root `devDependencies` were importable from any workspace under both linkers, so knip's `unlisted` deliberately allows them; oxlint 1.94 ships no `import/no-extraneous-dependencies`, so no off-the-shelf rule):
+  - Changes: `scripts/check-workspace-deps.ts` + root `deps:check` script + pre-push job. Fixed the two real violations it found (`storybook`, `@storybook/react-vite` imported by co-located stories, declared only at root) by adding them to `packages/react` devDependencies. Skips non-package specifiers only: relative/absolute paths, `node:`/`bun:`/`astro:` builtins, the `@/` tsconfig alias, and `@types/*` satisfying a bare package name.
+  - Commands: `bun run deps:check` (plant an undeclared import, then remove), `bun run deadcode` (new script is a knip entry)
+  - Done when: a planted undeclared import fails the gate; the gate is green after removal
+  - Depends on: step 12

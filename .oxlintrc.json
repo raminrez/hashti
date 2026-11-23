@@ -62,6 +62,10 @@
     ".tools/**",
     ".taste-skill/**",
     "test-results/**",
+    // Generator-owned Storybook Workbench wrappers/decorators: fixes belong upstream; their TS
+    // config path differs from this repo root, so type-aware checks cannot resolve react here.
+    ".storybook/wrappers/**",
+    ".storybook/decorators/**",
     ".agents",
     ".claude"
   ]
