@@ -10,3 +10,6 @@ pnpm-workspace.yaml
 *storybook.log
 storybook-static
 .impeccable/
+
+# SwiftPM cache (qmd and other Swift tools)
+.build/
